@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+outputs/
+.DS_Store
+node_modules/
+authoring/renders/
+authoring/pdf_layout_report.json

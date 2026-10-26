@@ -1,0 +1,553 @@
+{
+  "title": "Bien démarrer Atlas sur Windows",
+  "subtitle": "Le guide de départ — Python, ETL et entrepôts de données",
+  "author": "Youssef Douma · Leaders University",
+  "pages": [
+    {
+      "title": "Votre point de départ",
+      "kicker": "DÉMARRER / 01",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Vous débutez : vous n'avez pas besoin de connaître la programmation. Dans ce cours, vous apprendrez à ouvrir un fichier, lire un tableau, modifier un petit programme et expliquer son résultat. Gardez ce guide à côté de vous lors de la première séance."
+        },
+        {
+          "type": "section",
+          "text": "Ce que vous allez construire"
+        },
+        {
+          "type": "text",
+          "text": "Atlas Papeterie possède deux boutiques fictives, à Nabeul et à Tunis. Leurs fichiers de ventes contiennent quelques erreurs. Votre projet : préparer ces données, les ranger dans un entrepôt SQLite et produire un rapport lisible dans un navigateur."
+        },
+        {
+          "type": "diagram",
+          "nodes": [
+            "Fichiers de ventes",
+            "Python : ETL",
+            "Entrepôt SQLite",
+            "Rapport local"
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Mot",
+            "Ce que vous devez repérer"
+          ],
+          "rows": [
+            [
+              "Dossier",
+              "Un emplacement qui contient des fichiers et parfois des sous-dossiers."
+            ],
+            [
+              "Fichier",
+              "Un élément nommé, par exemple 01_premiers_pas.py."
+            ],
+            [
+              "Programme / script",
+              "Un fichier de consignes que Python exécute."
+            ],
+            [
+              "Données",
+              "Les valeurs sur lesquelles le programme travaille."
+            ]
+          ],
+          "widths": [
+            1,
+            3
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Le matériel suffit"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Un PC Windows 10 ou 11 avec clavier et navigateur; le chemin principal utilise Thonny et son Python intégré.",
+            "Internet sert à télécharger le logiciel et le dossier du cours. Une fois ces éléments reçus, le socle du cours fonctionne hors ligne.",
+            "Aucun compte GitHub, Git, Excel, Power BI, serveur de base de données ou abonnement n’est requis."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Votre premier objectif",
+          "text": "À ce stade, je sais distinguer le programme, ses données et le rapport qu’il produit. Je peux décrire le résultat final en une phrase."
+        }
+      ]
+    },
+    {
+      "title": "Décompresser et trouver le bon dossier",
+      "kicker": "DÉMARRER / 02",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Un ZIP rassemble plusieurs fichiers. Voir son contenu ne signifie pas qu'il est extrait. Nous allons créer un vrai dossier de travail avant d’ouvrir les scripts."
+        },
+        {
+          "type": "section",
+          "text": "1 · Recevoir puis extraire le cours"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Enregistrez le ZIP du cours fourni dans Téléchargements. Aucun lien GitHub n’est nécessaire pour cette étape.",
+            "Dans l’Explorateur de fichiers Windows, faites un clic droit sur le ZIP puis Extraire tout… (Extract All…).",
+            "Choisissez un dossier de votre compte, par exemple Documents, puis validez Extraire. Fermez ensuite la fenêtre du ZIP.",
+            "Dans le dossier extrait, cherchez README.md, atelier.py et les dossiers data, scripts et pdf. S’il existe un dossier intermédiaire, ouvrez-le : ces éléments doivent être visibles ensemble.",
+            "Vous pouvez nommer ce dossier atlas-etl. Exemple de chemin : C:\\Users\\votre_nom\\Documents\\atlas-etl. « votre_nom » désigne votre compte Windows, pas un texte à recopier."
+          ]
+        },
+        {
+          "type": "section",
+          "text": "2 · Afficher les extensions"
+        },
+        {
+          "type": "text",
+          "text": "Windows 11 : Explorateur → Afficher → Afficher → Extensions de noms de fichiers. Windows 10 : onglet Affichage → cochez Extensions de noms de fichiers. Les libellés peuvent apparaître en anglais : View, Show, File name extensions."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Extension visible",
+            "À quoi elle sert"
+          ],
+          "rows": [
+            [
+              ".py",
+              "Programme Python à ouvrir dans Thonny."
+            ],
+            [
+              ".csv",
+              "Tableau de données en texte."
+            ],
+            [
+              ".pdf",
+              "Guide à lire."
+            ],
+            [
+              ".html",
+              "Rapport à ouvrir dans le navigateur."
+            ],
+            [
+              ".sqlite",
+              "Base à interroger avec les scripts, pas à modifier dans Word."
+            ]
+          ],
+          "widths": [
+            1,
+            3
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Contrôle visuel",
+          "text": "Le fichier s’appelle 01_premiers_pas.py, pas 01_premiers_pas.py.txt. Ne déplacez pas un script seul : les dossiers voisins font partie du projet."
+        }
+      ]
+    },
+    {
+      "title": "Installer Thonny avec Python",
+      "kicker": "DÉMARRER / 03",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Thonny est un éditeur conçu pour débuter en Python. Son installateur Windows inclut Python : n’installez pas un second Python pour suivre le chemin principal."
+        },
+        {
+          "type": "section",
+          "text": "1 · Choisir le téléchargement officiel"
+        },
+        {
+          "type": "text",
+          "text": "Ouvrez https://thonny.org/ et choisissez le téléchargement Windows. Pour un PC Intel ou AMD, prenez l’installateur x64. Pour un PC Windows sur processeur ARM, prenez ARM64. Dans Paramètres → Système → Informations système / À propos, regardez le type de système en cas de doute."
+        },
+        {
+          "type": "section",
+          "text": "2 · Installer pour votre compte"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Dans Téléchargements, ouvrez le fichier .exe reçu depuis le site officiel.",
+            "Suivez l’assistant et conservez l’installation pour votre compte et le dossier proposé. Le nom et le numéro de version peuvent évoluer.",
+            "Si Windows ou l’établissement refuse l’installation, gardez le message et demandez de l’aide. Ne désactivez pas les protections et ne changez pas de compte.",
+            "Lancez Thonny depuis le menu Démarrer. Choisissez la langue proposée que vous comprenez. Les menus anglais sont indiqués entre parenthèses dans le cours."
+          ]
+        },
+        {
+          "type": "section",
+          "text": "3 · Repérer les bonnes zones"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Zone",
+            "Votre action"
+          ],
+          "rows": [
+            [
+              "Éditeur",
+              "Ouvrir, lire et modifier le fichier .py; c’est votre travail enregistré."
+            ],
+            [
+              "Shell / console Python",
+              "Voir les résultats et messages; on y trouve l’invite >>>."
+            ],
+            [
+              "Run / Exécuter",
+              "Demander à Python d’exécuter le script ouvert."
+            ]
+          ],
+          "widths": [
+            1,
+            3
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Sans installation supplémentaire",
+          "text": "Le cours utilise des modules fournis avec Python : csv, pathlib, decimal et sqlite3. Aucun pip, Docker, WSL ou plugin n’est nécessaire. Si Thonny fonctionne déjà avec Python 3.10 ou plus récent, gardez-le."
+        }
+      ]
+    },
+    {
+      "title": "Faire un premier essai sans toucher aux données",
+      "kicker": "DÉMARRER / 04",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Cet essai distinct vérifie que vous savez enregistrer et exécuter un fichier, sans modifier les ventes."
+        },
+        {
+          "type": "section",
+          "text": "1 · Écrire dans l’éditeur"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Dans Thonny, choisissez Fichier → Nouveau (File → New). Cliquez dans la grande zone de l’éditeur.",
+            "Recopiez ces trois lignes avec des guillemets droits.",
+            "Choisissez Fichier → Enregistrer sous… (Save as…) et enregistrez essai.py directement dans votre dossier atlas-etl."
+          ]
+        },
+        {
+          "type": "code",
+          "text": "import sys\nprint(\"Bonjour Atlas\")\nprint(sys.version_info[:2])",
+          "label": "À enregistrer dans essai.py",
+          "source": "examples/00_installation_1.py",
+          "run_mode": "standalone"
+        },
+        {
+          "type": "section",
+          "text": "2 · Exécuter et observer"
+        },
+        {
+          "type": "text",
+          "text": "Appuyez sur F5 (ou Fn + F5), ou choisissez Run → Run current script. Le Shell affiche Bonjour Atlas puis deux nombres comme (3, 14) : il faut 3 puis 10 ou plus."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Vous faites…",
+            "Vous devez observer…"
+          ],
+          "rows": [
+            [
+              "Ctrl + S",
+              "Votre modification est enregistrée dans le fichier."
+            ],
+            [
+              "F5 dans l’éditeur",
+              "Le programme s’exécute; sa sortie apparaît dans le Shell."
+            ],
+            [
+              "Remplacer Atlas par votre prénom, puis Ctrl + S et F5",
+              "La nouvelle phrase s’affiche."
+            ]
+          ],
+          "widths": [
+            1,
+            2
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "À ce stade, je sais…",
+          "text": "Enregistrer un .py et lancer F5. Le Shell affiche le résultat sans l’enregistrer dans le script. Utilisez le Python local fourni avec Thonny, pas MicroPython. Si le choix d’interpréteur est incertain, demandez de l’aide sans installer de paquet."
+        }
+      ]
+    },
+    {
+      "title": "Ouvrir Atlas et suivre une seule route",
+      "kicker": "DÉMARRER / 05",
+      "blocks": [
+        {
+          "type": "section",
+          "text": "Le premier fichier du projet"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Gardez Thonny ouvert. Choisissez Fichier → Ouvrir… (File → Open…).",
+            "Dans votre dossier atlas-etl, ouvrez scripts puis 01_premiers_pas.py. Vérifiez le nom dans l’onglet avant de modifier quoi que ce soit.",
+            "Lisez les commentaires : une ligne qui commence par # explique le programme. Exécutez une première fois sans modification avec F5.",
+            "Lisez la sortie dans le Shell, puis revenez dans l’onglet .py pour faire la petite variation demandée dans le cours."
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Le guide principal vous accompagne"
+        },
+        {
+          "type": "text",
+          "text": "Ouvrez pdf/02_cours_atlas.pdf : chaque mission indique son script, son résultat et une variation. Gardez le même dossier et le même sens des données."
+        },
+        {
+          "type": "diagram",
+          "nodes": [
+            "Prédire",
+            "Modifier",
+            "Lancer",
+            "Expliquer"
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Dans le dossier",
+            "Votre repère"
+          ],
+          "rows": [
+            [
+              "scripts/01… à 10…",
+              "Ouvrir dans l’ordre indiqué par le cours."
+            ],
+            [
+              "data/",
+              "Conserver les originaux; travailler sur une copie si demandé."
+            ],
+            [
+              "outputs/",
+              "Retrouver les résultats générés par les missions."
+            ],
+            [
+              "pdf/03_reperes_et_\ndepannage.pdf",
+              "Retrouver un mot ou comprendre une erreur."
+            ],
+            [
+              "pdf/04_indices_et_\ncorriges.pdf",
+              "Chercher un indice après un véritable essai."
+            ]
+          ],
+          "widths": [
+            1.3,
+            2.7
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Votre trace de travail",
+          "text": "Lancez les fichiers depuis l’éditeur : aucun cd n’est nécessaire. Notez avant → prévu → obtenu → explication, puis restaurez la valeur initiale. Ne recopiez pas les scripts dans le Shell."
+        }
+      ]
+    },
+    {
+      "title": "Lire les données et retrouver le rapport",
+      "kicker": "DÉMARRER / 06",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Les extensions expliquent comment ouvrir chaque élément. Les ventes sont des données; les scripts les traitent; les sorties montrent ce qui a été calculé."
+        },
+        {
+          "type": "section",
+          "text": "Observer un CSV sans le transformer"
+        },
+        {
+          "type": "text",
+          "text": "Un CSV est un tableau enregistré en texte. Pour une première lecture, utilisez clic droit sur le fichier → Ouvrir avec → Bloc-notes. Dans le cours, Python fera la lecture du tableau; Excel n’est pas obligatoire."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Valeur dans les ventes",
+            "Ce qu’elle signifie"
+          ],
+          "rows": [
+            [
+              "S001",
+              "Identifiant d’une vente élémentaire."
+            ],
+            [
+              "2026-01-05",
+              "Date : année-mois-jour."
+            ],
+            [
+              "NBE et P01",
+              "Codes de boutique et de produit."
+            ],
+            [
+              "2 et 4.500",
+              "Deux articles, au prix unitaire de 4,500 TND."
+            ]
+          ],
+          "widths": [
+            1,
+            3
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Les fichiers du cours utilisent une virgule entre les colonnes et un point pour les décimales. Le prix 4.500 signifie 4,500 TND, soit quatre dinars et cinq cents millimes. Ce n’est pas 4 500 TND."
+        },
+        {
+          "type": "callout",
+          "label": "Si Excel affiche une seule colonne",
+          "text": "Ce peut être un choix de séparateur, pas une corruption du fichier. Fermez sans enregistrer, puis lisez avec Bloc-notes ou le script du cours. Évitez de réenregistrer les sources : Excel peut modifier séparateurs, dates ou décimales."
+        },
+        {
+          "type": "section",
+          "text": "Ouvrir le résultat final"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Après les missions de chargement et de rapport, ouvrez outputs dans l’Explorateur.",
+            "Double-cliquez sur rapport_atlas.html. Si nécessaire : clic droit → Ouvrir avec → votre navigateur.",
+            "Après une nouvelle exécution du script, actualisez le navigateur avec Ctrl + R.",
+            "Le fichier atlas.sqlite reste dans outputs. Il contient les tables de l’entrepôt; on le lit avec Python et SQL, pas avec un traitement de texte."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "À ce stade, je sais…",
+          "text": "Je peux retrouver la source, la base et le rapport. Je sais qu’un rapport de ventes ne donne pas automatiquement le stock, le bénéfice ou la demande future."
+        }
+      ]
+    },
+    {
+      "title": "Se débloquer sans perdre son travail",
+      "kicker": "DÉMARRER / 07",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Une erreur est une information. Relevez le nom du script, la dernière ligne du message et l’action qui la précède. Puis changez une seule chose pour vérifier une cause."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Symptôme",
+            "Ce que vous vérifiez d’abord"
+          ],
+          "rows": [
+            [
+              "La fenêtre se ferme au double-clic sur un .py",
+              "Ouvrez Thonny, puis File → Open. Lancez F5 depuis l’éditeur."
+            ],
+            [
+              "FileNotFoundError / fichier introuvable",
+              "Le projet est-il extrait ? atelier.py, data et scripts sont-ils encore voisins ? Le nom du fichier source est-il intact ?"
+            ],
+            [
+              "ModuleNotFoundError: atelier",
+              "Avez-vous déplacé un script seul ? Rouvrez la copie complète du cours. Aucun pip install atelier n’est nécessaire."
+            ],
+            [
+              "SyntaxError / parenthèse ou guillemet",
+              "Comparez la ligne modifiée avec l’original. Annulez la dernière modification avec Ctrl + Z."
+            ],
+            [
+              "IndentationError",
+              "Le début des lignes a changé. Restaurez les espaces de la zone modifiée; ne mélangez pas des lignes copiées au hasard."
+            ],
+            [
+              "PermissionError / accès refusé",
+              "Fermez le CSV s’il est ouvert dans Excel. Vérifiez que votre compte peut enregistrer un fichier dans le dossier choisi."
+            ],
+            [
+              "Le rapport paraît inchangé",
+              "Enregistrez, relancez le bon script, puis Ctrl + R dans le navigateur. Vérifiez la copie de cours ouverte."
+            ]
+          ],
+          "widths": [
+            1.2,
+            2.8
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Repartir d’une copie propre"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Enregistrez vos essais utiles et notez ce que vous avez modifié.",
+            "Extrayez à nouveau le ZIP dans un autre dossier, par exemple atlas-etl-reprise. Ne remplacez pas vos anciens fichiers sans les avoir conservés.",
+            "Ouvrez les scripts de cette nouvelle copie dans l’ordre. Pour revenir au jeu initial, suivez la procédure de reprise du cours : supprimer au hasard des lignes de la base ne répare pas une source."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Demander de l’aide utile",
+          "text": "« Dans 03_nettoyer.py, j’ai lancé F5 après avoir changé …; le dernier message est …; j’attendais … ». Montrez le message et le fichier, pas seulement « ça ne marche pas »."
+        }
+      ]
+    },
+    {
+      "title": "Solution de secours : Python et IDLE",
+      "kicker": "DÉMARRER / 08",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Si Thonny ne convient pas, utilisez ce secours avec le même code Atlas. Sur un PC géré qui refuse l’installation, demandez une solution autorisée."
+        },
+        {
+          "type": "section",
+          "text": "1 · Obtenir Python depuis son site officiel"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Ouvrez https://www.python.org/downloads/windows/ et prenez le Python install manager officiel. Ouvrez le fichier téléchargé puis choisissez Installer (Install).",
+            "Dans Démarrer, recherchez Windows PowerShell. Ouvrez une nouvelle fenêtre normalement, sans mode administrateur.",
+            "Dans PowerShell, saisissez cette commande puis Entrée. Un premier téléchargement de Python peut nécessiter Internet."
+          ]
+        },
+        {
+          "type": "code",
+          "text": "py -m idlelib",
+          "label": "Commande dans Windows PowerShell, pas dans le Shell Python"
+        },
+        {
+          "type": "section",
+          "text": "2 · Utiliser les deux fenêtres IDLE"
+        },
+        {
+          "type": "text",
+          "text": "Dans IDLE : File → Open… → scripts/01_premiers_pas.py, puis Ctrl + S et Run → Run Module (F5). L’éditeur contient le programme; le Shell affiche les résultats."
+        },
+        {
+          "type": "section",
+          "text": "3 · Vérifier avant de continuer"
+        },
+        {
+          "type": "text",
+          "text": "Dans le Shell IDLE, saisissez les deux lignes ci-dessous séparément. Il faut Python 3.10 ou plus récent. Vérifiez ensuite l’essai Bonjour Atlas décrit au début de ce guide."
+        },
+        {
+          "type": "code",
+          "text": "import sys\nprint(sys.version_info[:2])",
+          "label": "Dans le Shell IDLE",
+          "source": "examples/00_installation_2.py",
+          "run_mode": "standalone"
+        },
+        {
+          "type": "callout",
+          "label": "Suite ou dépannage",
+          "text": "Continuez dans pdf/02_cours_atlas.pdf. Si py manque, rouvrez PowerShell et vérifiez le gestionnaire officiel. Si idlelib ou tkinter manque, demandez une installation complète avec IDLE ou un poste préparé; ne modifiez pas les protections."
+        }
+      ]
+    }
+  ]
+}

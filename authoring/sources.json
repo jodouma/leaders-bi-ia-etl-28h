@@ -1,0 +1,65 @@
+{
+  "checked_at_utc": "2026-10-26 22:53 UTC",
+  "sources": [
+    {
+      "title": "Thonny : téléchargement officiel",
+      "url": "https://thonny.org/",
+      "use": "Choisir l’installateur Windows et vérifier le Python fourni."
+    },
+    {
+      "title": "Thonny : aide du Shell",
+      "url": "https://github.com/thonny/thonny/blob/master/thonny/plugins/help/shell.rst",
+      "use": "Comprendre le Shell, Run current script et F5."
+    },
+    {
+      "title": "Python : installation Windows",
+      "url": "https://docs.python.org/3/using/windows.html",
+      "use": "Installer Python via le gestionnaire officiel; solution de secours."
+    },
+    {
+      "title": "Python : IDLE",
+      "url": "https://docs.python.org/3/library/idle.html",
+      "use": "Éditeur, Shell, ouverture et exécution des scripts."
+    },
+    {
+      "title": "Windows : extraire un ZIP",
+      "url": "https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files",
+      "use": "Extraire le dossier du cours avant de travailler."
+    },
+    {
+      "title": "Windows : extensions de fichiers",
+      "url": "https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/common-file-name-extensions-in-windows",
+      "use": "Afficher .py, .csv, .pdf et .html dans l’Explorateur."
+    },
+    {
+      "title": "Python : CSV",
+      "url": "https://docs.python.org/3/library/csv.html",
+      "use": "Lire et écrire les données tabulaires; séparateurs et chaînes."
+    },
+    {
+      "title": "Python : Decimal",
+      "url": "https://docs.python.org/3/library/decimal.html",
+      "use": "Lire les montants décimaux sans passer par un float."
+    },
+    {
+      "title": "Python : SQLite",
+      "url": "https://docs.python.org/3/library/sqlite3.html",
+      "use": "Interroger une base locale depuis Python."
+    },
+    {
+      "title": "Microsoft Learn : schéma en étoile",
+      "url": "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema",
+      "use": "Comprendre faits, dimensions et granularité."
+    },
+    {
+      "title": "SQLite : usages adaptés",
+      "url": "https://www.sqlite.org/whentouse.html",
+      "use": "Comprendre le choix d’une base locale pour le projet pédagogique."
+    },
+    {
+      "title": "Python : origine et usages",
+      "url": "https://docs.python.org/3/faq/general.html",
+      "use": "Python commence avec Guido van Rossum à la fin de 1989; première publication en 1991."
+    }
+  ]
+}

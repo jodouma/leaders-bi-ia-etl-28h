@@ -1,0 +1,897 @@
+{
+  "title": "Atlas Papeterie — Python, ETL et entrepôts de données",
+  "author": "Youssef Douma",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "Python, ETL et\nentrepôts de données",
+      "subtitle": "Atlas Papeterie : un seul projet, des premiers gestes au rapport de ventes.",
+      "notes": "Module Langage avancé. Public : licence BI, débutants sans expérience informatique. Tous les exercices du socle utilisent la bibliothèque standard Python. Le calendrier reste à fixer."
+    },
+    {
+      "layout": "cards",
+      "kicker": "NOTRE CONTRAT · 28 H",
+      "title": "Vous allez construire quelque chose d’utile",
+      "items": [
+        {
+          "label": "Lire",
+          "text": "Ouvrir des fichiers, repérer les colonnes et expliquer ce qu’une ligne représente."
+        },
+        {
+          "label": "Fiabiliser",
+          "text": "Nettoyer, calculer, contrôler et charger un entrepôt de données."
+        },
+        {
+          "label": "Expliquer",
+          "text": "Produire un rapport et formuler une décision avec ses limites."
+        }
+      ],
+      "note": "70 % de pratique = 19 h 36 · 30 % de théorie = 8 h 24."
+    },
+    {
+      "layout": "cards",
+      "kicker": "LE FIL CONDUCTEUR",
+      "title": "Atlas Papeterie prépare ses prochains achats",
+      "items": [
+        {
+          "label": "Deux boutiques",
+          "text": "NBE = Nabeul\nTUN = Tunis\nDes ventes sur plusieurs jours."
+        },
+        {
+          "label": "Quatre produits",
+          "text": "Carnet · Stylo\nClasseur · Surligneur\nDes prix en dinars tunisiens."
+        },
+        {
+          "label": "Une question",
+          "text": "Quels produits suivre avant de décider des prochains achats ?"
+        }
+      ],
+      "note": "Atlas Papeterie et les données sont fictifs. Aucune donnée personnelle."
+    },
+    {
+      "layout": "process",
+      "kicker": "LE PROJET FINAL",
+      "title": "Du fichier brut au rapport lisible",
+      "items": [
+        {
+          "label": "Fichiers CSV",
+          "text": "Les ventes arrivent avec quelques erreurs volontaires."
+        },
+        {
+          "label": "Entrepôt SQLite",
+          "text": "Les tables sont reliées et les montants contrôlés."
+        },
+        {
+          "label": "Rapport HTML",
+          "text": "Un navigateur affiche les résultats et leur contexte."
+        }
+      ],
+      "note": "Tout fonctionne sur votre ordinateur après le téléchargement initial."
+    },
+    {
+      "layout": "process",
+      "kicker": "NOTRE FAÇON DE TRAVAILLER",
+      "title": "Prédire → essayer → expliquer",
+      "items": [
+        {
+          "label": "Avant",
+          "text": "Je prédis l’effet d’un petit changement et je l’écris."
+        },
+        {
+          "label": "Pendant",
+          "text": "Je change une seule chose, j’enregistre et j’exécute."
+        },
+        {
+          "label": "Après",
+          "text": "Je compare, j’explique, puis je restaure le cas de référence."
+        }
+      ],
+      "note": "Le professeur vous aide à comprendre. Aller plus vite n’est pas l’objectif."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 01 · PREMIERS GESTES",
+      "title": "Un dossier, un fichier, un programme",
+      "items": [
+        {
+          "label": "Dossier",
+          "text": "Il contient d’autres éléments.\nExemple : scripts/"
+        },
+        {
+          "label": "Fichier",
+          "text": "Il porte un nom et une extension.\nExemple : 01_premiers_pas.py"
+        },
+        {
+          "label": "Programme",
+          "text": "Python lit les instructions du fichier .py dans leur ordre."
+        }
+      ],
+      "note": "Extraire tout le ZIP avant de travailler. Ne pas exécuter depuis le ZIP."
+    },
+    {
+      "layout": "beforeafter",
+      "kicker": "MISSION 01 · THONNY",
+      "title": "Où écrire ? Où lire le résultat ?",
+      "leftLabel": "ÉDITEUR · EN HAUT",
+      "left": "Je modifie mon fichier .py.\n\nCtrl+S : enregistrer.\nF5 : exécuter le fichier.",
+      "rightLabel": "SHELL · EN BAS",
+      "right": "Je lis les résultats.\n\nLe symbole >>> indique une console Python.",
+      "note": "Ouvrir scripts/01_premiers_pas.py avec File → Open dans Thonny.",
+      "notes": "Documentation officielle Thonny : https://thonny.org/ et https://github.com/thonny/thonny/wiki. Les menus dépendent de la langue de l’interface."
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 01 · UN CALCUL COMPRÉHENSIBLE",
+      "title": "Deux carnets à 4.500 TND : 9.000 TND",
+      "code": "quantite = 2\nprix_millimes = 4500\nmontant = quantite * prix_millimes\nprint(montant)\n# 9000 millimes = 9.000 TND",
+      "items": [
+        "Une variable donne un nom à une valeur.",
+        "L’étoile * signifie multiplier.",
+        "print affiche une valeur dans le Shell."
+      ],
+      "note": "1 TND = 1 000 millimes. Nous stockerons l’argent en nombres entiers."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 01 · À VOUS",
+      "number": "01",
+      "title": "Changez une quantité, pas tout le script",
+      "question": "Si l’on vend 3 carnets au lieu de 2, quel montant attendez-vous ?",
+      "steps": [
+        "Dans 01_premiers_pas.py, repérer la quantité et prédire le résultat.",
+        "Modifier la valeur, enregistrer, puis exécuter avec F5.",
+        "Expliquer la différence, puis rétablir la valeur de départ."
+      ],
+      "note": "À ce stade, je sais ouvrir, modifier, enregistrer et exécuter un fichier."
+    },
+    {
+      "layout": "table",
+      "kicker": "MISSION 02 · LIRE LES VENTES",
+      "title": "Une table se lit ligne par ligne",
+      "headers": [
+        "sale_id",
+        "date",
+        "shop_id",
+        "product_id",
+        "quantité"
+      ],
+      "rows": [
+        [
+          "S001",
+          "2026-01-05",
+          "NBE",
+          "P01",
+          "2"
+        ],
+        [
+          "S002",
+          "2026-01-05",
+          "NBE",
+          "P02",
+          "3"
+        ],
+        [
+          "S003",
+          "2026-01-05",
+          "TUN",
+          "P03",
+          "1"
+        ]
+      ],
+      "widths": [
+        1,
+        1.65,
+        1.1,
+        1.2,
+        1.1
+      ],
+      "note": "Une colonne donne un type d’information. Une ligne rassemble une vente."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 02 · LE SENS DES DONNÉES",
+      "title": "Que représente exactement une ligne ?",
+      "items": [
+        {
+          "label": "Une vente",
+          "text": "Un identifiant sale_id, un produit, une boutique et une date."
+        },
+        {
+          "label": "Une quantité",
+          "text": "2 carnets peuvent appartenir à une seule ligne de vente."
+        },
+        {
+          "label": "Un montant",
+          "text": "Quantité × prix unitaire.\nCe montant est une vente, pas un bénéfice."
+        }
+      ],
+      "note": "12 lignes de vente ne signifient ni 12 clients ni 12 commandes."
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 02 · LA LECTURE AUTOMATIQUE",
+      "title": "Python peut parcourir un fichier CSV",
+      "code": "import csv\n\nwith open(\"exemple.csv\",\n          encoding=\"utf-8-sig\") as f:\n    lecteur = csv.DictReader(f)\n    lignes = list(lecteur)\nprint(len(lignes))",
+      "items": [
+        "CSV : du texte organisé en colonnes.",
+        "DictReader utilise la première ligne comme noms de colonnes.",
+        "len compte les lignes lues."
+      ],
+      "note": "Illustration : exemple.csv doit exister. Utiliser 02_lire_csv.py pour le vrai fichier.",
+      "notes": "Exemple illustratif autonome avec un fichier CSV nommé exemple.csv, séparé par des virgules. Le script fourni gère le chemin du vrai fichier. Source : https://docs.python.org/3/library/csv.html"
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 02 · À VOUS",
+      "number": "02",
+      "title": "Lire avant de calculer",
+      "question": "Le fichier brut contient 16 lignes. Sont-elles toutes exploitables ?",
+      "steps": [
+        "Ouvrir puis exécuter scripts/02_lire_csv.py.",
+        "Repérer sale_id, quantity et unit_price_tnd dans les premières lignes.",
+        "Décrire une ligne à votre voisin, sans simplement réciter ses valeurs."
+      ],
+      "note": "À ce stade, je sais distinguer les noms de colonnes des valeurs."
+    },
+    {
+      "layout": "beforeafter",
+      "kicker": "MISSION 03 · NETTOYER",
+      "title": "Même boutique, écritures différentes",
+      "leftLabel": "VALEURS BRUTES",
+      "left": "\" nbe \"\n\"NBE\"\n\"nbe\"",
+      "rightLabel": "VALEUR HARMONISÉE",
+      "right": "NBE\nNBE\nNBE",
+      "mono": true,
+      "note": "strip enlève les espaces autour. upper transforme les lettres en majuscules."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 03 · CONTRÔLER",
+      "title": "Une erreur doit avoir une raison visible",
+      "items": [
+        {
+          "label": "Quantité nulle",
+          "text": "I001 : quantity = 0\nLa règle exige un entier strictement positif."
+        },
+        {
+          "label": "Produit inconnu",
+          "text": "I002 : product_id = P99\nCe code n’existe pas dans le catalogue."
+        },
+        {
+          "label": "Date impossible",
+          "text": "I003 : 2026-02-30\nCette date n’existe pas."
+        }
+      ],
+      "note": "Rejeter une ligne n’est pas l’effacer : conserver la ligne et sa raison."
+    },
+    {
+      "layout": "accounting",
+      "kicker": "MISSION 03 · LA PREUVE DU NETTOYAGE",
+      "title": "Chaque ligne d’entrée reçoit une destination",
+      "values": [
+        {
+          "value": "16",
+          "label": "lignes brutes"
+        },
+        {
+          "value": "12",
+          "label": "retenues"
+        },
+        {
+          "value": "1",
+          "label": "doublon exact"
+        },
+        {
+          "value": "3",
+          "label": "rejets expliqués"
+        }
+      ],
+      "equation": "16 = 12 + 1 + 3",
+      "note": "Le doublon de S003 ne correspond pas à une nouvelle vente."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 03 · À VOUS",
+      "number": "03",
+      "title": "Contrôler un résultat, puis l’expliquer",
+      "question": "Pourquoi ne suffit-il pas d’annoncer « il reste 12 lignes » ?",
+      "steps": [
+        "Exécuter 03_nettoyer.py et lire les fichiers de contrôle dans outputs/03/.",
+        "Retrouver une ligne rejetée et expliquer sa règle en français.",
+        "Vérifier l’égalité : retenues + doublons + rejets = lignes brutes."
+      ],
+      "note": "À ce stade, je sais justifier ce qui a été retenu et ce qui a été isolé."
+    },
+    {
+      "layout": "beforeafter",
+      "kicker": "MISSION 04 · TRANSFORMER",
+      "title": "Le texte « 2 » n’est pas le nombre 2",
+      "leftLabel": "APRÈS LECTURE DU CSV",
+      "left": "quantity = \"2\"\n\nC’est du texte, même si le contenu ressemble à un nombre.",
+      "rightLabel": "APRÈS CONVERSION",
+      "right": "quantity = 2\n\nC’est un entier : on peut multiplier et additionner.",
+      "note": "Convertir après contrôle. Un texte vide ne devient pas une quantité valide."
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 04 · LES MONTANTS",
+      "title": "Des dinars lisibles, des millimes exacts",
+      "code": "from decimal import Decimal\n\nprix_tnd = Decimal(\"4.500\")\nprix_millimes = int(prix_tnd * 1000)\nmontant_millimes = 2 * prix_millimes\nprint(montant_millimes)  # 9000",
+      "items": [
+        "Decimal lit le prix décimal sans passer par float.",
+        "La base conserve 4500 millimes par carnet.",
+        "L’affichage final revient aux TND avec 3 décimales."
+      ],
+      "note": "Une conversion ne remplace pas la validation du prix et de sa précision.",
+      "notes": "Source : https://docs.python.org/3/library/decimal.html. Cet exemple utilise exactement trois décimales. Le pipeline valide les prix avant de convertir."
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 04 · RÉPÉTER UNE ACTION",
+      "title": "Une boucle traite plusieurs valeurs",
+      "code": "quantites = [2, 3, 1]\ntotal = 0\nfor quantite in quantites:\n    total = total + quantite\nprint(total)  # 6",
+      "items": [
+        "Une liste rassemble plusieurs valeurs.",
+        "for répète les lignes indentées pour chaque valeur.",
+        "Le total augmente à chaque passage."
+      ],
+      "note": "Les espaces au début d’une ligne font partie de la structure de Python."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 04 · À VOUS",
+      "number": "04",
+      "title": "Vérifier les unités avant d’additionner",
+      "question": "Les 12 ventes retenues donnent 99.000 TND pour 32 articles.",
+      "steps": [
+        "Exécuter 04_transformer.py et ouvrir outputs/04/ventes_transformees.csv.",
+        "Vérifier à la main le montant de S001 : 2 × 4500 millimes.",
+        "Expliquer pourquoi 32 articles et 12 ventes sont deux mesures différentes."
+      ],
+      "note": "À ce stade, je sais calculer un montant et nommer son unité."
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 05 · PREMIÈRE REQUÊTE SQL",
+      "title": "SELECT choisit ce que l’on veut voir",
+      "code": "SELECT sale_id, quantity\nFROM ventes;",
+      "items": [
+        "SELECT : quelles colonnes ?",
+        "FROM : quelle table ?",
+        "Une requête lit les données ; elle ne modifie pas ici la table."
+      ],
+      "note": "SQL sera exécuté par le script 05_sql.py ; ce n’est pas du code Python isolé.",
+      "notes": "La requête décrit la table d’exercice en mémoire du script 05_sql.py. Syntaxe SQL : https://www.sqlite.org/lang_select.html"
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 05 · FILTRER",
+      "title": "WHERE garde les lignes qui conviennent",
+      "code": "SELECT sale_id, quantity\nFROM ventes\nWHERE quantity >= 3;",
+      "items": [
+        "La condition est testée pour chaque ligne.",
+        "Une quantité de 3 est incluse par >= 3.",
+        "Le fichier source ne change pas."
+      ],
+      "note": "Prédire : une vente de 2 articles apparaîtra-t-elle dans le résultat ?"
+    },
+    {
+      "layout": "process",
+      "kicker": "MISSION 05 · RÉSUMER",
+      "title": "Regrouper, additionner, puis lire le sens",
+      "items": [
+        {
+          "label": "Regrouper",
+          "text": "GROUP BY rassemble les lignes de même boutique."
+        },
+        {
+          "label": "Additionner",
+          "text": "SUM additionne les montants de chaque groupe."
+        },
+        {
+          "label": "Interpréter",
+          "text": "NBE : 43.500 TND\nTUN : 55.500 TND\nSur les mêmes 3 jours."
+        }
+      ],
+      "note": "43.500 + 55.500 = 99.000 TND. Le total doit être conservé."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 05 · À VOUS",
+      "number": "05",
+      "title": "Poser une question précise aux données",
+      "question": "Que change le passage de la boutique NBE à la boutique TUN ?",
+      "steps": [
+        "Ouvrir 05_sql.py et repérer BOUTIQUE = \"NBE\".",
+        "Prédire le résultat, remplacer NBE par TUN, puis exécuter.",
+        "Comparer 43.500 TND et 55.500 TND, puis rétablir NBE."
+      ],
+      "note": "À ce stade, je sais lire et adapter une petite requête."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 06 · CONSTRUIRE L’ENTREPÔT",
+      "title": "Pourquoi séparer faits et dimensions ?",
+      "items": [
+        {
+          "label": "Les faits",
+          "text": "Ce qui a été mesuré : une quantité et un montant pour une vente."
+        },
+        {
+          "label": "Les dimensions",
+          "text": "Le contexte : quel produit, quelle boutique et quelle date ?"
+        },
+        {
+          "label": "Les liens",
+          "text": "Des clés relient chaque fait aux lignes qui décrivent son contexte."
+        }
+      ],
+      "note": "Notre entrepôt pédagogique est un fichier SQLite : outputs/atlas.sqlite."
+    },
+    {
+      "layout": "table",
+      "kicker": "MISSION 06 · LE GRAIN",
+      "title": "Définir la ligne avant de créer la table",
+      "headers": [
+        "Question",
+        "Réponse pour Atlas"
+      ],
+      "rows": [
+        [
+          "Une ligne de faits ?",
+          "Une vente élémentaire identifiée par sale_id"
+        ],
+        [
+          "Un produit ?",
+          "Un seul produit par vente élémentaire"
+        ],
+        [
+          "Une quantité ?",
+          "Plusieurs articles possibles sur cette ligne"
+        ],
+        [
+          "Une période ?",
+          "Une date de vente précise"
+        ]
+      ],
+      "widths": [
+        1,
+        2.4
+      ],
+      "note": "Si le sens d’une ligne change, les additions peuvent devenir trompeuses."
+    },
+    {
+      "layout": "star",
+      "kicker": "MISSION 06 · LE SCHÉMA EN ÉTOILE",
+      "title": "Trois dimensions autour d’une table de faits",
+      "note": "Une vente possède une seule référence de produit, de boutique et de date."
+    },
+    {
+      "layout": "keys",
+      "kicker": "MISSION 06 · LES CLÉS",
+      "title": "Code métier et clé substitut : deux rôles",
+      "note": "P01 identifie le produit métier ; product_key sert aux relations de notre entrepôt."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 06 · À VOUS",
+      "number": "06",
+      "title": "Dessiner avant de charger",
+      "question": "Où placer le nom « Carnet » et où placer la quantité 2 ?",
+      "steps": [
+        "Dessiner les quatre tables avec trois liens dimension → faits.",
+        "Placer product_name dans dim_product et quantity dans fact_sales.",
+        "Exécuter 06_modele.py et comparer le modèle au dessin."
+      ],
+      "note": "À ce stade, je sais distinguer une mesure de son contexte."
+    },
+    {
+      "layout": "process",
+      "kicker": "MISSION 07 · CHARGER",
+      "title": "Les dimensions d’abord, les faits ensuite",
+      "items": [
+        {
+          "label": "1 · Dimensions",
+          "text": "Créer les produits, les boutiques et les dates utiles."
+        },
+        {
+          "label": "2 · Clés",
+          "text": "Retrouver la clé interne qui correspond à chaque code métier."
+        },
+        {
+          "label": "3 · Faits",
+          "text": "Insérer la vente avec ses références et ses mesures."
+        }
+      ],
+      "note": "Une clé étrangère ne doit pas pointer vers une dimension absente."
+    },
+    {
+      "layout": "table",
+      "kicker": "MISSION 07 · LA TRANSFORMATION D’UNE VENTE",
+      "title": "S001 garde son sens pendant le chargement",
+      "headers": [
+        "Information source",
+        "Dans l’entrepôt",
+        "Signification"
+      ],
+      "rows": [
+        [
+          "S001",
+          "sale_id = S001",
+          "La même vente"
+        ],
+        [
+          "P01",
+          "product_key → Carnet",
+          "Le produit décrit"
+        ],
+        [
+          "NBE",
+          "shop_key → Nabeul",
+          "La boutique décrite"
+        ],
+        [
+          "2 × 4.500 TND",
+          "9000 millimes",
+          "Le même montant"
+        ]
+      ],
+      "widths": [
+        1.15,
+        1.5,
+        1.4
+      ],
+      "note": "Les clés internes peuvent changer d’un modèle à l’autre ; le sens doit rester stable."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 07 · CONTRÔLER LE CHARGEMENT",
+      "title": "Trois preuves valent mieux qu’un « terminé »",
+      "items": [
+        {
+          "label": "Volume",
+          "text": "12 faits chargés\n32 articles\nAucune vente valide perdue."
+        },
+        {
+          "label": "Montant",
+          "text": "99000 millimes\n= 99.000 TND\nLe total reste le même."
+        },
+        {
+          "label": "Relations",
+          "text": "Chaque fait retrouve sa date, son produit et sa boutique."
+        }
+      ],
+      "note": "Une transaction protège la cohérence : en cas d’erreur, on annule le lot."
+    },
+    {
+      "layout": "beforeafter",
+      "kicker": "MISSION 07 · LIRE LES RELATIONS",
+      "title": "Une jointure retrouve le nom du produit",
+      "leftLabel": "DANS LE FAIT",
+      "left": "S001\nproduct_key = 1\namount_millimes = 9000",
+      "rightLabel": "APRÈS LA JOINTURE",
+      "right": "S001\nCarnet\n9.000 TND",
+      "note": "JOIN associe les lignes dont la clé correspond. Il ne crée pas une nouvelle vente."
+    },
+    {
+      "layout": "code",
+      "kicker": "MISSION 07 · LA JOINTURE EN SQL",
+      "title": "Relier les faits et les noms, puis additionner",
+      "code": "SELECT p.product_name,\n       SUM(f.amount_millimes)\nFROM fact_sales AS f\nJOIN dim_product AS p\n  ON f.product_key = p.product_key\nGROUP BY p.product_name;",
+      "items": [
+        "JOIN : joindre la dimension produit.",
+        "ON : préciser les deux clés qui correspondent.",
+        "GROUP BY : totaliser par nom de produit."
+      ],
+      "note": "Requête illustrative dans SQLite : le résultat de SUM est encore en millimes.",
+      "notes": "Source : https://www.sqlite.org/lang_select.html. AS fournit des noms courts de tables, f et p, pour lire la requête. Les données de dim_product ont une clé unique, ce qui évite de multiplier les faits dans cette jointure."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 07 · À VOUS",
+      "number": "07",
+      "title": "Montrer que l’entrepôt respecte les ventes",
+      "question": "Le fichier SQLite existe. Comment prouver qu’il contient les bonnes données ?",
+      "steps": [
+        "Exécuter 07_charger.py et relever le nombre de faits et le montant.",
+        "Vérifier : 12 faits, 32 articles, 99.000 TND.",
+        "Rejouer le chargement et expliquer pourquoi le total ne doit pas doubler."
+      ],
+      "note": "À ce stade, je sais contrôler un chargement au lieu de seulement le lancer."
+    },
+    {
+      "layout": "table",
+      "kicker": "MISSION 08 · LES NOUVELLES VENTES",
+      "title": "Un nouveau fichier contient aussi une ancienne vente",
+      "headers": [
+        "sale_id",
+        "Contenu",
+        "Action attendue"
+      ],
+      "rows": [
+        [
+          "S013",
+          "1 carnet · 4.500 TND",
+          "Ajouter la nouvelle vente"
+        ],
+        [
+          "S014",
+          "2 classeurs · 12.000 TND",
+          "Ajouter la nouvelle vente"
+        ],
+        [
+          "S012",
+          "Vente déjà chargée · 18.000 TND",
+          "Reconnaître la même vente"
+        ]
+      ],
+      "widths": [
+        0.7,
+        1.6,
+        1.7
+      ],
+      "note": "Un identifiant stable aide à éviter de compter deux fois la même vente."
+    },
+    {
+      "layout": "replay",
+      "kicker": "MISSION 08 · REJOUER SANS DOUBLONNER",
+      "title": "Le deuxième passage doit conserver le résultat",
+      "note": "Idempotent : refaire la même opération n’ajoute pas une deuxième fois les mêmes faits."
+    },
+    {
+      "layout": "beforeafter",
+      "kicker": "MISSION 08 · LE CONFLIT",
+      "title": "Même identifiant, contenu différent : arrêter",
+      "leftLabel": "DÉJÀ CHARGÉ",
+      "left": "S012\n3 classeurs\n18.000 TND",
+      "rightLabel": "NOUVEL ARRIVAGE MODIFIÉ",
+      "right": "S012\n4 classeurs\n24.000 TND",
+      "note": "Ce n’est ni une nouvelle vente ni un doublon exact : le lot doit signaler le conflit."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 08 · À VOUS",
+      "number": "08",
+      "title": "Tester le premier passage et le rejeu",
+      "question": "Pourquoi 3 lignes entrantes donnent-elles seulement 2 ventes nouvelles ?",
+      "steps": [
+        "Exécuter 08_incremental.py et noter les ajouts et lignes déjà présentes.",
+        "Rejouer le script : attendre 0 nouvel ajout et 3 lignes déjà présentes.",
+        "Vérifier le total : 14 faits, 35 articles, 115.500 TND."
+      ],
+      "note": "À ce stade, je sais expliquer un chargement incrémental et son rejeu."
+    },
+    {
+      "layout": "kpis",
+      "kicker": "MISSION 09 · LE RAPPORT FINAL",
+      "title": "Trois mesures, trois significations",
+      "items": [
+        {
+          "value": "14",
+          "label": "ventes élémentaires après l’ajout"
+        },
+        {
+          "value": "35",
+          "label": "articles vendus après l’ajout"
+        },
+        {
+          "value": "115.500",
+          "label": "TND de ventes après l’ajout"
+        }
+      ],
+      "note": "Le rapport indique la période et l’unité. Il lit les données de l’entrepôt."
+    },
+    {
+      "layout": "chart",
+      "kicker": "MISSION 09 · COMPARER SANS TROMPER",
+      "title": "Quel produit réalise le plus de ventes ?",
+      "note": "Cas initial uniquement · 5–7 janvier 2026 · 12 ventes · Total : 99.000 TND.",
+      "notes": "Graphique natif PowerPoint. Données fictives calculées depuis les douze ventes initiales : Carnet 22.500, Stylo 18.000, Classeur 36.000, Surligneur 22.500 TND. Total 99.000 TND. Ne pas comparer ces barres au total après ajout sans recalcul."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 09 · LA DÉCISION ET SES LIMITES",
+      "title": "Dire ce que le chiffre permet de conclure",
+      "items": [
+        {
+          "label": "J’observe",
+          "text": "Sur les trois jours initiaux, le classeur est premier en montant vendu."
+        },
+        {
+          "label": "Je propose",
+          "text": "Examiner son stock et les délais du fournisseur avant le prochain achat."
+        },
+        {
+          "label": "Je limite",
+          "text": "Ces ventes ne suffisent pas à connaître la marge, le stock ou la demande future."
+        }
+      ],
+      "note": "Une recommandation utile distingue une observation, une action et une limite."
+    },
+    {
+      "layout": "exercise",
+      "kicker": "MISSION 09 · À VOUS",
+      "number": "09",
+      "title": "Produire puis lire le rapport",
+      "question": "Une personne qui ne connaît pas Python peut-elle comprendre votre résultat ?",
+      "steps": [
+        "Exécuter 09_rapport.py puis ouvrir outputs/rapport_atlas.html.",
+        "Repérer le nombre de ventes, les articles, le montant et la période.",
+        "Rédiger trois phrases : observation, proposition, limite."
+      ],
+      "note": "À ce stade, je sais transformer un calcul en explication compréhensible."
+    },
+    {
+      "layout": "cards",
+      "kicker": "MISSION 10 · LE DÉFI FINAL",
+      "title": "Réparer, rejouer, présenter",
+      "items": [
+        {
+          "label": "Réparer",
+          "text": "Dans la copie CSV de outputs/10/, corriger S015 : quantité 0 → 2."
+        },
+        {
+          "label": "Rejouer",
+          "text": "Choisir la copie réparée dans SOURCE_AJOUT et exécuter 10_defi.py."
+        },
+        {
+          "label": "Présenter",
+          "text": "Contrôler 15 faits, 37 articles et 118.500 TND. Expliquer le changement."
+        }
+      ],
+      "note": "Séance finale : 1 h prévue, dont 42 min de pratique et 18 min de synthèse.",
+      "notes": "Copie à réparer : outputs/10/ventes_a_reparer.csv. Exécuter 10_defi.py une première fois pour préparer cette copie, corriger S015, puis adapter SOURCE_AJOUT comme indiqué dans le cours. Résultat final corrigé : 15 faits, 37 articles, 118.500 TND. Le défi utilise sa propre base outputs/10/defi.sqlite."
+    },
+    {
+      "layout": "process",
+      "kicker": "MISSION 10 · VOTRE PREUVE D’APPRENTISSAGE",
+      "title": "Montrer le chemin, pas seulement l’écran final",
+      "items": [
+        {
+          "label": "Avant",
+          "text": "Le symptôme, la donnée ou l’hypothèse qui posait problème."
+        },
+        {
+          "label": "Changement",
+          "text": "La correction réalisée et la raison de ce choix."
+        },
+        {
+          "label": "Après",
+          "text": "Le résultat contrôlé, avec une valeur, une unité et une limite."
+        }
+      ],
+      "note": "Une autre solution est possible si vous pouvez la montrer, la vérifier et l’expliquer."
+    },
+    {
+      "layout": "process",
+      "kicker": "SYNTHÈSE · L’ETL COMPLET",
+      "title": "Extraire, transformer, charger : vous l’avez fait",
+      "items": [
+        {
+          "label": "Extract",
+          "text": "Lire les CSV et conserver les sources intactes."
+        },
+        {
+          "label": "Transform",
+          "text": "Harmoniser, contrôler, isoler les rejets et calculer les montants."
+        },
+        {
+          "label": "Load",
+          "text": "Alimenter les dimensions puis les faits ; rejouer sans doublonner."
+        }
+      ],
+      "note": "Le rapport vient ensuite : il exploite les données préparées dans l’entrepôt."
+    },
+    {
+      "layout": "table",
+      "kicker": "VOTRE PETIT DICTIONNAIRE",
+      "title": "Six mots pour expliquer votre projet",
+      "headers": [
+        "Mot",
+        "Explication courte"
+      ],
+      "rows": [
+        [
+          "CSV",
+          "Fichier texte structuré en colonnes"
+        ],
+        [
+          "ETL",
+          "Extraire, transformer, charger"
+        ],
+        [
+          "Fait",
+          "Une mesure au grain défini"
+        ],
+        [
+          "Dimension",
+          "Le contexte qui décrit les faits"
+        ],
+        [
+          "Clé",
+          "Une valeur utilisée pour identifier ou relier"
+        ],
+        [
+          "Incrémental",
+          "Ajouter les nouvelles données sans tout recompter"
+        ]
+      ],
+      "widths": [
+        1,
+        3.0
+      ],
+      "note": "Expliquer avec les ventes Atlas, puis seulement employer le terme technique."
+    },
+    {
+      "layout": "cards",
+      "kicker": "SI VOUS ÊTES BLOQUÉ",
+      "title": "Lire le message avant de changer le code",
+      "items": [
+        {
+          "label": "Fichier introuvable",
+          "text": "Le dossier a-t-il été extrait ? Avez-vous ouvert le bon fichier .py ?"
+        },
+        {
+          "label": "SyntaxError",
+          "text": "Vérifier les guillemets, les parenthèses et la ligne indiquée."
+        },
+        {
+          "label": "IndentationError",
+          "text": "Vérifier les espaces au début des lignes dans la boucle ou la condition."
+        }
+      ],
+      "note": "Dire : fichier → action → message exact → essai effectué. Une erreur est une information."
+    },
+    {
+      "layout": "process",
+      "kicker": "REPRENDRE LE COURS",
+      "title": "Retrouver votre point de départ",
+      "items": [
+        {
+          "label": "Le bon PDF",
+          "text": "Lire le guide 01 pour l’installation, puis ouvrir le cours 02."
+        },
+        {
+          "label": "Le bon fichier",
+          "text": "Ouvrir le script de la mission, enregistrer et exécuter avec F5."
+        },
+        {
+          "label": "La bonne preuve",
+          "text": "Comparer le résultat attendu avant de poursuivre la mission suivante."
+        }
+      ],
+      "note": "Le document 03 aide à dépanner ; le document 04 propose les indices et corrigés.",
+      "notes": "Fichiers : pdf/01_demarrer_windows.pdf pour l’installation et pdf/02_cours_atlas.pdf pour le parcours. pdf/03_reperes_et_depannage.pdf aide au dépannage ; pdf/04_indices_et_corriges.pdf fournit indices et corrigés."
+    },
+    {
+      "layout": "cards",
+      "kicker": "POUR ALLER PLUS LOIN · FACULTATIF",
+      "title": "Vous avez les bases pour une prochaine étape",
+      "items": [
+        {
+          "label": "pandas",
+          "text": "Manipuler des tables plus grandes avec une bibliothèque spécialisée."
+        },
+        {
+          "label": "Power BI",
+          "text": "Importer les résultats pour construire un tableau de bord interactif."
+        },
+        {
+          "label": "Historisation",
+          "text": "Conserver les changements de description d’une dimension."
+        }
+      ],
+      "note": "Ces extensions ne sont pas nécessaires pour réussir le projet de 28 h."
+    },
+    {
+      "layout": "closing",
+      "title": "Vous savez relier\nles données à une décision.",
+      "items": [
+        "Lire et contrôler des fichiers de ventes.",
+        "Construire et alimenter un petit entrepôt.",
+        "Rejouer un pipeline sans compter deux fois.",
+        "Montrer un résultat et expliquer ses limites."
+      ]
+    }
+  ]
+}

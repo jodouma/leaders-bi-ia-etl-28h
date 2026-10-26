@@ -1,0 +1,9 @@
+{
+  "name": "atlas-etl-course-authoring",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reconstruction locale de la présentation du cours Atlas ETL",
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  }
+}
