@@ -1,0 +1,6 @@
+// Créer une mesure à la fois dans Modélisation > Nouvelle mesure.
+CA TND = DIVIDE(SUM(fact_sales[amount_millimes]), 1000)
+
+Quantité vendue = SUM(fact_sales[quantity])
+
+Nombre de ventes = COUNTROWS(fact_sales)

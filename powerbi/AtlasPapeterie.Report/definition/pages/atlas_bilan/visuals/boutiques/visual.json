@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "boutiques",
+  "position": {
+    "x": 660,
+    "y": 200,
+    "width": 590,
+    "height": 460,
+    "z": 0,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_shop"
+                    }
+                  },
+                  "Property": "shop_name"
+                }
+              },
+              "queryRef": "dim_shop.shop_name",
+              "nativeQueryRef": "shop_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_shop"
+                    }
+                  },
+                  "Property": "commercial_zone"
+                }
+              },
+              "queryRef": "dim_shop.commercial_zone",
+              "nativeQueryRef": "commercial_zone"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_shop"
+                    }
+                  },
+                  "Property": "valid_from"
+                }
+              },
+              "queryRef": "dim_shop.valid_from",
+              "nativeQueryRef": "valid_from"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "CA TND"
+                }
+              },
+              "queryRef": "fact_sales.CA TND",
+              "nativeQueryRef": "CA TND"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Versions des boutiques · CA TND'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

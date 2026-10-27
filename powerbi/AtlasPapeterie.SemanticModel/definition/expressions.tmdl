@@ -1,0 +1,3 @@
+expression CSVFolder = "C:\AtlasPapeterie\export" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6b9bbaef-415e-4f09-8bfe-3b21386ab78a
+	annotation PBI_ResultType = Text
