@@ -48,6 +48,6 @@ Les mentions Free/modèle reprennent le plan pédagogique daté du 27 octobre 20
 
 Les 14 PNG ont été inspectés individuellement, puis en planche : accents, contraste, bords, texte, unités, flèches, cardinalités, fin de validité exclue et dates. Les limites de carte sont vérifiées par le générateur ; l'inspection a corrigé plusieurs retours de ligne. L'intégration finale aux PDF et slides reste à inspecter à leur taille réelle par leurs auteurs.
 
-Les anciens visuels V5 restent temporairement présents tant que des sources historiques les référencent. L'intégrateur décide de leur retrait après migration des références ; aucun visuel V6 ne dépend d'eux.
+Le dépôt courant conserve uniquement les quatorze schémas V6 utilisés par cette édition.
 
 Polices : `authoring/assets/fonts/Inter-400.ttf`, `Inter-700.ttf` et `PlusJakartaSans-800.ttf`. Conserver `Inter-OFL.txt` et `PlusJakartaSans-OFL.txt` avec les sources redistribuées. Illustrations originales ; fontes sous SIL OFL 1.1 ; aucun logo tiers ou élément d'interface repris.

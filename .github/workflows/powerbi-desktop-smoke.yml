@@ -1,11 +1,6 @@
 name: Essai natif Power BI Desktop (limité)
 on:
-  push:
-    branches: [cours-codex-bi-15h]
-    paths:
-      - 'powerbi/**'
-      - '.github/scripts/powerbi_smoke.ps1'
-      - '.github/workflows/powerbi-desktop-smoke.yml'
+  # Optional maintainer experiment. Hosted Windows installation is not a classroom preflight.
   workflow_dispatch:
 permissions:
   contents: read

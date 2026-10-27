@@ -24,6 +24,6 @@ python3 -m unittest discover -s tests -v
 
 Le contrôle compare les panneaux de code imprimés, exécute les exemples avec leurs prérequis, parcourt les sept jalons et vérifie les exports. Inspecter aussi chaque page et chaque diapositive à taille lisible. Les contrôles automatiques ne prouvent ni une installation WSL, ni l’accès d’un compte Free, ni une manipulation Power BI.
 
-Les [Actions GitHub](https://github.com/jodouma/leaders-bi-ia-etl-28h/actions) consignent les exécutions sur leurs systèmes. L’essai Power BI Desktop est un workflow séparé : son statut et ses captures doivent être lus avant d’en tirer une conclusion sur le chargement des données.
+Les [Actions GitHub](https://github.com/jodouma/leaders-bi-ia-etl-28h/actions) consignent les exécutions sur leurs systèmes. L’essai Power BI Desktop reste une expérience manuelle séparée : l’installation dans le runner Windows hébergé a dépassé son délai de neuf minutes. Elle ne valide donc ni l’application ni ses visuels. La vérification interactive doit être faite sur un poste Windows ; le contrôle du code et des PDF est indépendant.
 
 Après validation, `python3 authoring/package_course.py` crée `Atlas_CODEX_BI_15h_etudiants.zip` dans `livraison/`, à côté du dépôt. Tester ce ZIP extrait. Le dossier privé `formateur/` reste hors du dépôt et n’est jamais parcouru par le générateur d’archive.
