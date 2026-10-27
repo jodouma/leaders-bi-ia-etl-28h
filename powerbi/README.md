@@ -18,7 +18,7 @@ L'Explorateur Windows s'ouvre. Copiez les cinq fichiers dans `Documents\AtlasPap
 
 ## 2. Importer les quatre tables depuis un rapport vide
 
-Ouvrez Power BI Desktop, puis **Rapport vide**. Pour chaque fichier : **Accueil → Obtenir des données → Texte/CSV**, choisir le CSV dans le dossier Windows. Dans l'aperçu, choisir **65001 : Unicode (UTF-8)** et séparateur **Virgule**, puis **Transformer les données**. Les noms de tables doivent être exactement les noms de fichiers sans `.csv`.
+Ouvrez Power BI Desktop, puis **Rapport vide**. Pour chaque fichier : **Accueil → Obtenir des données → Texte/CSV**, choisir le CSV dans le dossier Windows. Dans l'aperçu, choisir **65001 : Unicode (UTF-8)** et séparateur **Virgule**, puis **Transformer les données**. Les noms de tables doivent être exactement les noms de fichiers sans `.csv`. Après la première importation, restez dans Power Query et utilisez **Accueil → Nouvelle source → Texte/CSV** pour les trois autres fichiers.
 
 Dans l'éditeur Power Query, vérifiez la première ligne d'en-têtes. Pour chaque colonne, cliquez l'icône du type à gauche du nom et fixez les types suivants ; supprimez ou corrigez une éventuelle étape automatique « Type modifié » erronée.
 
@@ -29,7 +29,7 @@ Dans l'éditeur Power Query, vérifiez la première ligne d'en-têtes. Pour chaq
 | `dim_date` | `date_key`, `year`, `month`, `day` | `full_date` | — |
 | `fact_sales` | `date_key`, `product_key`, `shop_key`, `quantity`, `unit_price_millimes`, `amount_millimes` | — | `sale_id` |
 
-Si une date ISO comme `2026-01-08` produit une erreur, utilisez **Modifier le type → Utiliser les paramètres régionaux → Date → Anglais (États-Unis)**. Dans `valid_to`, un champ vide représente une borne ouverte : il doit devenir `null`, jamais la date du jour. Si des textes vides restent présents, remplacez la valeur vide par `null` avant le type Date. Vérifiez l'absence d'erreurs, puis **Fermer et appliquer**. Le manifeste sert à contrôler la livraison ; il ne devient pas une cinquième table.
+Si une date ISO comme `2026-01-08` produit une erreur, utilisez **Modifier le type → Utiliser les paramètres régionaux → Date → Anglais (États-Unis)**. Dans `valid_to`, un champ vide représente une borne ouverte : il doit devenir `null`, jamais la date du jour. Les champs CSV vides deviennent normalement `null` ; si une erreur persiste, contrôlez que le CSV contient une case vide et non le texte `NULL` ou une date inventée. Vérifiez l'absence d'erreurs, puis **Fermer et appliquer**. Le manifeste sert à contrôler la livraison ; il ne devient pas une cinquième table.
 
 ## 3. Relier les tables par les clés substituts
 
