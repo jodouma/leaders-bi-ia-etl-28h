@@ -3,6 +3,7 @@ import csv
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import sqlite3
@@ -20,6 +21,13 @@ def outil(nom, chemin):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+def executer_verificateur(dossier, jalon):
+    # Même encodage aux deux extrémités du tube, quelle que soit la locale Windows.
+    environnement = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+    return subprocess.run([sys.executable, "verifier.py", jalon], cwd=dossier,
+                          text=True, encoding="utf-8", capture_output=True, env=environnement)
 
 
 class Atlas(unittest.TestCase):
@@ -348,7 +356,7 @@ class Atlas(unittest.TestCase):
     def test_checkpoint01_is_ready_and_refuses_overwrite(self):
         jalon = outil("jalon_test_fresh",ROOT / "outils/jalon.py")
         dossier = jalon.creer_reprise(1,self.home / "starter")
-        run = subprocess.run([sys.executable,"verifier.py","01"],cwd=dossier,text=True,capture_output=True)
+        run = executer_verificateur(dossier,"01")
         self.assertEqual(run.returncode,0,run.stderr)
         self.assertIn("OK 01",run.stdout)
         with self.assertRaises(FileExistsError):
@@ -359,13 +367,13 @@ class Atlas(unittest.TestCase):
     def test_challenge_isolated_reproducible_and_bounded(self):
         preparer = outil("defi_test",ROOT / "defi/preparer.py")
         dossier = preparer.preparer(self.home / "defi")
-        run = subprocess.run([sys.executable,"verifier.py","02"],cwd=dossier,text=True,capture_output=True)
+        run = executer_verificateur(dossier,"02")
         self.assertNotEqual(run.returncode,0)
         self.assertIn("32 unités",run.stderr)
         original = ROOT / "projet/data/ventes_initiales.csv"
         self.assertEqual((dossier / "data/ventes_initiales.csv").read_bytes(),original.read_bytes())
         shutil.copy2(ROOT / "solutions/atlas/nettoyage.py",dossier / "nettoyage.py")
-        run = subprocess.run([sys.executable,"verifier.py","tout"],cwd=dossier,text=True,capture_output=True)
+        run = executer_verificateur(dossier,"tout")
         self.assertEqual(run.returncode,0,run.stderr)
 
 
