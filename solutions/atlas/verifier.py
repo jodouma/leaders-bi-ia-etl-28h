@@ -4,6 +4,7 @@ Chaque contrôle travaille dans un dossier temporaire et lit les sorties existan
 Il ne termine pas une mission à votre place et ne remet pas votre base à zéro.
 """
 import argparse
+from contextlib import closing
 import importlib
 import sqlite3
 import tempfile
@@ -117,7 +118,7 @@ def verifier_04(dossier):
     finally:
         connexion.close()
     creer(base)
-    with sqlite3.connect(base) as connexion:
+    with closing(sqlite3.connect(base)) as connexion:
         exiger(connexion.execute("SELECT COUNT(*) FROM dim_product").fetchone()[0] == 1,
                "creer_modele ne doit pas effacer les dimensions existantes.")
     exiger((OUTPUTS / "atlas.sqlite").is_file(), "Exécuter modele.py pour créer outputs/atlas.sqlite.")

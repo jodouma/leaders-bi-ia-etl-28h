@@ -1,9 +1,11 @@
 """Contrats métier et parcours réels. Lancer :
 python -m unittest discover -s tests -p test_v4_atlas.py -v
 """
+from contextlib import closing
 import csv
 import importlib
 import json
+import os
 import shutil
 import sqlite3
 import subprocess
@@ -23,6 +25,7 @@ chargement = importlib.import_module("chargement")
 incremental = importlib.import_module("incremental")
 rapport = importlib.import_module("rapport")
 DATA = ROOT / "projet" / "data"
+PYTHON_ENV = {**os.environ, "PYTHONIOENCODING": "utf-8"}
 
 
 class AtlasContrats(unittest.TestCase):
@@ -109,7 +112,7 @@ class AtlasContrats(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "transaction annulée"):
             chargement.charger([nouvelle, conflit], {**self.produits, "P99": "Test"}, self.boutiques, self.base)
         self.assertEqual(chargement.total_base(self.base), (12, 32, 99000))
-        with sqlite3.connect(self.base) as connexion:
+        with closing(sqlite3.connect(self.base)) as connexion:
             self.assertEqual(connexion.execute("SELECT COUNT(*) FROM dim_date WHERE full_date='2026-12-31'").fetchone()[0], 0)
             self.assertEqual(connexion.execute("SELECT COUNT(*) FROM dim_product WHERE product_id='P99'").fetchone()[0], 0)
 
@@ -135,8 +138,8 @@ class AtlasContrats(unittest.TestCase):
         final = rapport.generer(self.base, self.dossier / "final.html")
         self.assertEqual((final["facts"], final["quantity"], final["amount_millimes"]), (14, 35, 115500))
         self.assertEqual(final["period_end"], "2026-01-08")
-        self.assertIn("115.500", (self.dossier / "final.html").read_text())
-        self.assertIn("SUM(f.amount_millimes)", (self.dossier / "final.html").read_text())
+        self.assertIn("115.500", (self.dossier / "final.html").read_text(encoding="utf-8"))
+        self.assertIn("SUM(f.amount_millimes)", (self.dossier / "final.html").read_text(encoding="utf-8"))
 
     def test_rapport_autre_periode_et_echappement_html(self):
         modele.creer_modele(self.base)
@@ -146,9 +149,9 @@ class AtlasContrats(unittest.TestCase):
         bilan = rapport.generer(self.base, fichier)
         self.assertEqual((bilan["facts"], bilan["quantity"], bilan["amount_millimes"]), (1, 7, 31500))
         self.assertEqual((bilan["period_start"], bilan["period_end"]), ("2028-09-10", "2028-09-10"))
-        self.assertIn("Carnet &lt;spécial&gt;", fichier.read_text())
-        self.assertIn("Nabeul &amp; nord", fichier.read_text())
-        self.assertNotIn("2026-01-05", fichier.read_text())
+        self.assertIn("Carnet &lt;spécial&gt;", fichier.read_text(encoding="utf-8"))
+        self.assertIn("Nabeul &amp; nord", fichier.read_text(encoding="utf-8"))
+        self.assertNotIn("2026-01-05", fichier.read_text(encoding="utf-8"))
 
 
 class ParcoursExecutable(unittest.TestCase):
@@ -159,7 +162,7 @@ class ParcoursExecutable(unittest.TestCase):
 
     def commande(self, script, *args, succes=0):
         resultat = subprocess.run([sys.executable, str(script), *map(str, args)], cwd=self.dossier,
-                                  text=True, encoding="utf-8", capture_output=True)
+                                  text=True, encoding="utf-8", capture_output=True, env=PYTHON_ENV)
         self.assertEqual(resultat.returncode, succes, resultat.stdout + resultat.stderr)
         return resultat.stdout
 
@@ -171,7 +174,7 @@ class ParcoursExecutable(unittest.TestCase):
         shutil.copytree(DATA, projet / "data")
         # Importer tous les modules ne doit créer ni base ni rapport.
         code = "import sys; sys.path.insert(0, sys.argv[1]); import calcul, lecture, nettoyage, modele, chargement, incremental, rapport, executer, verifier"
-        resultat = subprocess.run([sys.executable, "-c", code, str(projet)], cwd=self.dossier, capture_output=True, text=True)
+        resultat = subprocess.run([sys.executable, "-c", code, str(projet)], cwd=self.dossier, capture_output=True, text=True, encoding="utf-8", env=PYTHON_ENV)
         self.assertEqual(resultat.returncode, 0, resultat.stderr)
         self.assertFalse((projet / "outputs").exists())
         premiere = self.commande(projet / "executer.py")
@@ -186,7 +189,7 @@ class ParcoursExecutable(unittest.TestCase):
         seconde = self.commande(projet / "executer.py")
         self.assertIn("0 nouvelles, 12 existantes", seconde)
         self.assertIn("0 nouvelles, 3 existantes", seconde)
-        with sqlite3.connect(base) as connexion:
+        with closing(sqlite3.connect(base)) as connexion:
             self.assertEqual(connexion.execute("SELECT COUNT(*), SUM(quantity), SUM(amount_millimes) FROM fact_sales").fetchone(), (14, 35, 115500))
 
     def test_starter_incomplet_et_controles_sans_solution(self):
@@ -196,8 +199,8 @@ class ParcoursExecutable(unittest.TestCase):
         self.assertIn("À CONSTRUIRE 01", texte)
         self.assertFalse((projet / "outputs").exists())
         for nom in ("calcul", "lecture", "nettoyage", "modele", "chargement", "incremental", "rapport"):
-            self.assertIn("raise NotImplementedError", (projet / f"{nom}.py").read_text())
-        self.assertNotIn("solutions", (projet / "verifier.py").read_text())
+            self.assertIn("raise NotImplementedError", (projet / f"{nom}.py").read_text(encoding="utf-8"))
+        self.assertNotIn("solutions", (projet / "verifier.py").read_text(encoding="utf-8"))
 
     def test_jalons_incrementaux_reels_et_refus_ecrasement(self):
         for numero in ("00", "03", "05", "06", "07"):
@@ -221,9 +224,9 @@ class ParcoursExecutable(unittest.TestCase):
                 if numero == "07":
                     self.commande(destination / "verifier.py", "tout")
                 temoin = destination / "ne_pas_effacer.txt"
-                temoin.write_text("travail étudiant")
+                temoin.write_text("travail étudiant", encoding="utf-8")
                 self.commande(ROOT / "outils" / "jalon.py", numero, "--destination", destination, succes=1)
-                self.assertEqual(temoin.read_text(), "travail étudiant")
+                self.assertEqual(temoin.read_text(encoding="utf-8"), "travail étudiant")
 
 
 if __name__ == "__main__":

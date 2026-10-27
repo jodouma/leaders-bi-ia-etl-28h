@@ -402,7 +402,7 @@
         },
         {
           "type": "code",
-          "text": "import sqlite3\nfrom pathlib import Path\nracine = Path(__file__).resolve().parents[2]\nbase = racine / \"projet\" / \"outputs\" / \"atlas.sqlite\"\nuri = base.as_uri() + \"?mode=ro\"\nwith sqlite3.connect(uri, uri=True) as connexion:\n    resultat = connexion.execute(\n        \"SELECT COUNT(*), SUM(quantity), \"\n        \"SUM(amount_millimes) FROM fact_sales\"\n    ).fetchone()\nprint(resultat)",
+          "text": "from contextlib import closing\nimport sqlite3\nfrom pathlib import Path\nracine = Path(__file__).resolve().parents[2]\nbase = racine / \"projet\" / \"outputs\" / \"atlas.sqlite\"\nuri = base.as_uri() + \"?mode=ro\"\nwith closing(sqlite3.connect(uri, uri=True)) as connexion:\n    resultat = connexion.execute(\n        \"SELECT COUNT(*), SUM(quantity), \"\n        \"SUM(amount_millimes) FROM fact_sales\"\n    ).fetchone()\nprint(resultat)",
           "label": "Python · à exécuter après le chargement",
           "source": "docs/exemples/08_sql.py"
         },

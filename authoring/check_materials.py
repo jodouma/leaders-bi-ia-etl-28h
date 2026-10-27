@@ -6,9 +6,10 @@ from __future__ import annotations
 
 import ast
 import copy
-from contextlib import redirect_stdout
+from contextlib import closing, redirect_stdout
 import io
 import json
+import os
 import shutil
 import sqlite3
 import re
@@ -22,6 +23,7 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
+PYTHON_ENV = {**os.environ, "PYTHONIOENCODING": "utf-8"}
 BOOKS = [('setup.json', '01_demarrer_windows_ubuntu.pdf'),
          ('course.json', '02_cours_atlas_ia.pdf'),
          ('reference.json', '03_prompts_reperes_depannage.pdf'),
@@ -69,19 +71,19 @@ def run_reference_examples(examples, sql, snippets):
         shutil.copytree(ROOT/'solutions'/'atlas',temporary/'projet',ignore=shutil.ignore_patterns('outputs','__pycache__'))
         shutil.copytree(ROOT/'projet'/'data',temporary/'projet'/'data')
         for module in ['calcul.py','lecture.py','nettoyage.py','modele.py','chargement.py']:
-            result=subprocess.run([sys.executable,str(temporary/'projet'/module)],cwd=temporary,text=True,capture_output=True,timeout=30)
+            result=subprocess.run([sys.executable,str(temporary/'projet'/module)],cwd=temporary,text=True,encoding="utf-8",capture_output=True,timeout=30,env=PYTHON_ENV)
             if result.returncode:
                 raise RuntimeError(result.stderr)
         for relative, printed in examples.items():
             target=temporary/relative
             target.parent.mkdir(parents=True,exist_ok=True)
             target.write_text(printed,encoding='utf-8')
-            result=subprocess.run([sys.executable,str(target)],cwd=folder,text=True,capture_output=True,timeout=30)
+            result=subprocess.run([sys.executable,str(target)],cwd=folder,text=True,encoding="utf-8",capture_output=True,timeout=30,env=PYTHON_ENV)
             if result.returncode:
                 raise RuntimeError(f'{relative}: {result.stderr}')
             results.append({'example':relative,'exit':0,'stdout':result.stdout.strip()})
         base=temporary/'projet'/'outputs'/'atlas.sqlite'
-        with sqlite3.connect(base) as connection:
+        with closing(sqlite3.connect(base)) as connection:
             for relative, printed in sql.items():
                 rows=connection.execute(printed).fetchall()
                 if relative.endswith('controle_global.sql'):
@@ -98,11 +100,11 @@ def run_reference_examples(examples, sql, snippets):
                 assert function([{'quantity':3,'unit_price_millimes':4500},{'quantity':3,'unit_price_millimes':1500}])==18000
             results.append({'snippet':label,'executed':True,'stdout':captured.getvalue().strip()})
         for module in ['incremental.py','rapport.py']:
-            result=subprocess.run([sys.executable,str(temporary/'projet'/module)],cwd=folder,text=True,capture_output=True,timeout=30)
+            result=subprocess.run([sys.executable,str(temporary/'projet'/module)],cwd=folder,text=True,encoding="utf-8",capture_output=True,timeout=30,env=PYTHON_ENV)
             if result.returncode:
                 raise RuntimeError(result.stderr)
         target=temporary/'docs/exemples/08_sql.py'
-        result=subprocess.run([sys.executable,str(target)],cwd=folder,text=True,capture_output=True,timeout=30)
+        result=subprocess.run([sys.executable,str(target)],cwd=folder,text=True,encoding="utf-8",capture_output=True,timeout=30,env=PYTHON_ENV)
         assert result.returncode==0 and '(14, 35, 115500)' in result.stdout
         results.append({'example':'docs/exemples/08_sql.py','state':'after_06','stdout':result.stdout.strip()})
     return results
