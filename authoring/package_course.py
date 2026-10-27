@@ -9,7 +9,7 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT.parent / 'livraison' / 'Atlas_BI_IA_28h_etudiants.zip'
-EXCLUDED = {'.git', '__pycache__', '.DS_Store', '.venv', 'node_modules',
+EXCLUDED = {'.git', '.env', '__pycache__', '.DS_Store', '.venv', 'node_modules',
             'outputs', 'renders', 'pdf_layout_report.json'}
 
 

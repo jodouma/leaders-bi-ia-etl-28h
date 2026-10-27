@@ -1,5 +1,7 @@
 # Présentation Atlas BI avec l’IA — 28 h
 
+[Retour à la maintenance](../README.md) · [Retour au cours](../../README.md)
+
 62 diapositives françaises, 16:9, avec texte et schémas PowerPoint éditables, deux graphiques PowerPoint natifs et le logo fourni par Youssef Douma. Le PDF est une conversion du PPTX.
 
 ## Reconstruire

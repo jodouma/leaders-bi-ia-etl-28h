@@ -1,5 +1,7 @@
 # Provenance et reconstruction
 
+[Retour à la maintenance](README.md) · [Retour au cours](../README.md)
+
 - `assets/leaders-logo.jpeg` : copie inchangée du fichier `logo.jpeg` fourni par Youssef Douma à la racine du projet Leaders, le 26 octobre 2026. Le logo reste soumis aux droits de son titulaire ; il n’implique pas une validation institutionnelle du programme.
 - `assets/fonts/` : Inter Regular/Bold et Plus Jakarta Sans ExtraBold issus du kit personnel `leaders-pdf-design`. Les licences OFL sont fournies à côté des polices.
 - Textes, exemples et schémas : construits pour ce parcours académique. Données entièrement fictives ; aucun fichier d’étudiant.

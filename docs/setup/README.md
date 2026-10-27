@@ -1,13 +1,15 @@
 # Préparer l’atelier Atlas
 
+[Retour au parcours du cours](../../README.md)
+
 Le parcours complet, avec les commandes à copier et les fenêtres à ouvrir, est dans [01_demarrer_windows_ubuntu.pdf](../../pdf/01_demarrer_windows_ubuntu.pdf).
 
-- Windows : Windows 11 encore maintenu → WSL 2 → Docker Desktop ouvert → PowerShell normal.
+- Windows : Windows 11 encore maintenu, WSL 2 pour Docker et Docker Desktop ouvert. Saisir les commandes du cours dans **PowerShell Windows normal**, après les réglages du guide ; WSL n’est pas le terminal de travail de cette route.
 - Ubuntu : Ubuntu 24.04 LTS → dépôt APT officiel Docker → Engine et plugin Compose → Terminal avec `sudo docker …`.
 - Sans virtualisation : Thonny/Python natifs, mêmes fichiers `projet/`, aucun paquet pip.
 - IA : navigateur et aides locales pour le socle ; Codex CLI et Claude Code restent facultatifs, sur le PC hôte et seulement avec un accès éligible.
 
-À la racine extraite du cours, `compose.yaml` et `projet/` doivent être visibles ensemble. Les commandes Windows sont :
+À la racine extraite du cours, `compose.yaml` et `projet/` doivent être visibles ensemble. Les commandes ci-dessous concernent **Windows / PowerShell**, après installation. Pour Ubuntu, suivre d’abord la section Ubuntu plus bas :
 
 ```powershell
 docker compose build
@@ -16,7 +18,7 @@ docker compose run --rm atelier python calcul.py
 docker compose run --rm atelier python verifier.py 01
 ```
 
-Le fichier de départ reste à compléter pendant les missions : un contrôle qui demande de l’implémenter ne signifie pas que l’installation a échoué. Après les missions :
+Le build et la vérification de version doivent réussir. Le fichier de départ reste à compléter pendant les missions : `calcul.py` et son contrôle demandent ensuite de construire la fonction. Ce message attendu ne signifie pas que l’installation a échoué. Après les missions, **toujours sous Windows / PowerShell** :
 
 ```powershell
 docker compose run --rm atelier python executer.py
@@ -25,12 +27,16 @@ docker compose up -d
 
 Ouvrez `http://localhost:8000/rapport_atlas.html` dans le navigateur. Le serveur peut démarrer avant la création du rapport : ce fichier renvoie alors 404. Pour arrêter : `docker compose down`. Vos fichiers restent dans `projet/`.
 
-Sous Ubuntu, préfixez les commandes Docker par `sudo`. Créez une fois `.env` à la racine, sans écraser un fichier existant :
+## Ubuntu — avant les commandes Docker
+
+Suivre l’installation du guide 01, puis créer une fois `.env` à la racine, sans écraser un fichier existant :
 
 ```bash
 test -e .env || printf 'LOCAL_UID=%s\nLOCAL_GID=%s\n' \
   "$(id -u)" "$(id -g)" > .env
 ```
+
+Après ce réglage, utiliser les mêmes commandes Docker avec **`sudo docker compose`**, y compris pour `build`, `run`, `up -d` et `down`. Les saisir depuis la racine du cours.
 
 Ce fichier ne doit contenir que les identifiants numériques du compte pour la propriété des fichiers. Aucun secret ni clé IA. Si `.env` existe déjà, vérifiez ses valeurs avec le professeur.
 

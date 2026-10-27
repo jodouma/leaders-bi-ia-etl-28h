@@ -1,5 +1,7 @@
 # Campus Box — contrat des données
 
+[Retour au cours](../../README.md) · [Ouvrir l’énoncé du défi](../student_challenge.md)
+
 Ces données sont **entièrement fictives**, créées pour le défi pédagogique Campus Box. Aucun nom d’étudiant, client, identifiant de compte ou secret n’y figure.
 
 ## Fichiers et conventions
@@ -36,4 +38,4 @@ Conserver les originaux. Une expérience modifie une copie, avec une base d’es
 
 Jeu synthétique généré pour ce cours de Youssef Douma à Leaders University. Les données CSV sont fournies sous **CC0 1.0** : copie, modification et réutilisation autorisées. Cette mise à disposition concerne les données fictives du défi, pas les logos de l’université ni des données réelles ajoutées ultérieurement.
 
-Consulter `../student_challenge.md` pour les règles, les livrables et les jalons ; aucune solution complète n’est fournie dans ce dossier.
+Consulter [l’énoncé du défi](../student_challenge.md) pour les règles, les livrables et les jalons ; aucune solution complète n’est fournie dans ce dossier.

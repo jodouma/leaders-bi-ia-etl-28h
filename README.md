@@ -1,80 +1,74 @@
 # Construire une solution BI avec l’IA — Atlas Papeterie
 
-**28 h · Licence BI · grands débutants · français · Windows d’abord, Ubuntu aussi.**
+**28 h · Licence BI · grands débutants · français · Windows et Ubuntu · 70 % pratique.**
 
-Vous pilotez le besoin, les règles et les contrôles. Un assistant IA peut aider à écrire une fonction ; vous l’enregistrez, l’exécutez et expliquez sa preuve. Le même projet grandit : fichiers de ventes → ETL → entrepôt SQLite en étoile → rapport local.
+À partir des ventes fictives de deux papeteries, vous construisez un projet utile : **fichiers CSV → ETL → entrepôt SQLite en étoile → rapport de ventes**. L’IA aide à écrire de petites fonctions ; vous définissez les règles, exécutez le code et vérifiez les résultats.
 
-## Commencer
+## Commencer ici
 
-1. Recevoir le **ZIP de cette édition**, ou utiliser **Code → Download ZIP** si ce dépôt est publié. Dans l’Explorateur, **Extraire tout…** dans un nouveau dossier nommé `atlas-bi-ia-28h`. Aucun compte GitHub n’est requis pour un ZIP déjà fourni.
-2. Ouvrir **[pdf/01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf)**. Suivre uniquement la route de son système : PowerShell sous Windows, terminal sous Ubuntu. Le guide fournit aussi un repli Python natif.
-3. Ouvrir **[pdf/02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf)**. Votre travail se fait dans **`projet/`** ; conserver le dossier complet du cours autour de lui.
-4. Commencer par la mission 01. Les fonctions sont volontairement incomplètes : un message « mission à construire » est attendu avant votre première construction.
+1. **[Télécharger le cours en ZIP](https://github.com/jodouma/leaders-bi-ia-etl-28h/archive/refs/heads/main.zip)**, ou choisir **Code → Download ZIP** en haut du dépôt. Extraire tout dans un nouveau dossier, puis renommer le dossier contenant ce README en `atlas-bi-ia-28h`. Aucun compte GitHub ni commande Git n’est nécessaire.
+2. **Ouvrir [01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf)** dans le dossier extrait. Suivre la route de son poste : Windows **ou** Ubuntu. Installer les outils et vérifier leur fonctionnement avant de commencer les exercices.
+3. **Ouvrir [02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf)** et commencer la mission 01. Modifier les fichiers dans **`projet/`**, en gardant le reste du cours autour de ce dossier.
 
-**Ne pas lancer le corrigé comme point de départ.** Les indices et `solutions/atlas/` servent après un premier essai. Le vérificateur contrôle votre travail ; il ne lit jamais les solutions pour le terminer.
+Les fonctions de départ sont volontairement incomplètes. Le message « mission à construire » est attendu avant de les réaliser. **La construction de l’environnement Docker doit, elle, réussir** : une erreur d’installation est à résoudre avec le guide 01.
 
-## Un environnement reproductible
+## Comment avancer
 
-Après installation et démarrage de Docker, depuis la racine du cours :
+Pour chaque mission : **lire la consigne → demander une fonction à l’IA → enregistrer → exécuter → contrôler → expliquer le résultat**. Les [prompts prêts à copier](prompts/README.md) accompagnent le cours. Conserver une première tentative avant de consulter un corrigé.
 
-```text
-docker compose build
-docker compose run --rm atelier python calcul.py
-docker compose run --rm atelier python verifier.py 01
-```
+Le parcours comprend **sept missions guidées sur 21 h**, puis **7 h de défi Campus Box**, en groupes de trois maximum. Le livret 03 sert pendant les missions ; le livret 05 apporte des indices après un essai ; le défi 04 commence après les sept missions.
 
-Sous Ubuntu, suivre d’abord les réglages du guide ; ses commandes utilisent `sudo docker compose`. Les lignes ci-dessus échoueront avec une consigne tant que la fonction de la mission 01 n’est pas construite. C’est le comportement prévu.
-
-Une fois les sept missions terminées :
-
-```text
-docker compose run --rm atelier python executer.py
-docker compose run --rm atelier python verifier.py tout
-docker compose up -d
-```
-
-Ouvrir **[le rapport local](http://localhost:8000/rapport_atlas.html)**. Le lien fonctionne après création du rapport et démarrage du serveur. Pour arrêter : `docker compose down` ; les fichiers du projet restent présents.
-
-Docker n’est pas obligatoire pour terminer : le guide explique comment lancer les mêmes fichiers avec Python local, sans installation de paquet. Ne mélangez pas les commandes de Windows et celles d’Ubuntu.
-
-## Les supports
-
-| Support | Utilisation |
+| Quand l’ouvrir | Support |
 |---|---|
-| [01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf) | Installation, Docker, repli natif, Codex/Claude CLI facultatifs |
-| [02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf) | Le parcours guidé complet et ses preuves |
-| [03_prompts_reperes_depannage.pdf](pdf/03_prompts_reperes_depannage.pdf) | Demandes IA courtes, notions et dépannage |
-| [04_defi_campus_box.pdf](pdf/04_defi_campus_box.pdf) | Défi de transfert de 7 h, groupes de 3 maximum |
-| [05_indices_et_corriges.pdf](pdf/05_indices_et_corriges.pdf) | Indices puis corrections expliquées, après un premier essai |
-| [Atlas_BI_IA_28h.pptx](presentation/Atlas_BI_IA_28h.pptx) | Présentation modifiable, avec PDF voisin |
-| [TESTER_LE_COURS.md](TESTER_LE_COURS.md) | Protocole pour essayer le parcours depuis un poste neuf |
+| Avant toute manipulation | [01 — Installer son atelier sous Windows ou Ubuntu](pdf/01_demarrer_windows_ubuntu.pdf) |
+| Pendant les sept missions | [02 — Construire sa BI avec l’IA](pdf/02_cours_atlas_ia.pdf) |
+| Pour un mot, un prompt ou un problème | [03 — Prompts, repères et dépannage](pdf/03_prompts_reperes_depannage.pdf) |
+| Après les sept missions | [04 — Défi Campus Box](pdf/04_defi_campus_box.pdf) |
+| Après une première tentative, si besoin | [05 — Indices et corrigés](pdf/05_indices_et_corriges.pdf) |
+| En complément du cours | Présentation : [PowerPoint modifiable](presentation/Atlas_BI_IA_28h.pptx) · [PDF](presentation/Atlas_BI_IA_28h.pdf) |
+| Pour évaluer le parcours depuis zéro | [Fiche de test du cours](TESTER_LE_COURS.md) |
 
-## Sept missions, puis un défi
+Les temps sont des estimations pédagogiques : **8 h 24 de théorie et 19 h 36 de pratique**, installation et dépannage compris ; pauses à organiser dans le volume de présence.
 
-**21 h guidées** : calculer et contrôler → lire le CSV → nettoyer → modéliser → charger → ajouter et rejouer → expliquer le rapport.
+## Se repérer dans les dossiers
 
-**7 h de défi Campus Box** : nouvelle question, nouvelles données et nouveaux champs. L’IA reste autorisée ; chaque membre doit expliquer une contribution et un contrôle. Répartition prévue : **8 h 24 théorie / 19 h 36 pratique**. Les durées sont estimées, installation et dépannage compris ; pauses à organiser dans le volume de présence.
+| Dossier | Ce qu’on y fait |
+|---|---|
+| `projet/` | Modifier et exécuter les fichiers des missions |
+| `projet/data/` | Lire les CSV d’origine ; conserver ces fichiers intacts |
+| `projet/outputs/` | Retrouver les fichiers produits au fil des missions : CSV, base et rapport |
+| [prompts/](prompts/README.md) | Copier la demande correspondant à la mission en cours |
+| [defi/](defi/student_challenge.md) | Découvrir le nouveau cas après le parcours guidé |
+| `solutions/atlas/` | Consulter la référence après une tentative ; garder son propre travail dans `projet/` |
 
-Le jeu Atlas est fictif. Une ligne valide décrit une vente élémentaire, pas un client ou une commande complète. Le lot initial donne **16 = 12 retenues + 1 doublon + 3 rejets**, **32 articles**, **99.000 TND**. Après ajout : **14 faits, 35 articles, 115.500 TND**. Le rejeu conserve ces totaux. Les montants sont stockés en **millimes entiers** ; le chiffre d’affaires ne donne ni stock ni bénéfice.
+**Où saisir les commandes ?** Modifier les fichiers dans `projet/` dans tous les cas, mais choisir le bon dossier pour le terminal :
 
-## IA gratuite et options CLI
+| Route choisie dans le guide 01 | Terminal | Dossier depuis lequel lancer les commandes |
+|---|---|---|
+| Docker sous Windows | PowerShell Windows | Racine du cours, où se trouve `compose.yaml` |
+| Docker sous Ubuntu | Terminal Ubuntu, avec les commandes `sudo docker compose` du guide | Même racine du cours, après le réglage `.env` expliqué dans le guide |
+| Python natif, sans Docker | Thonny ou terminal indiqué dans le guide | `projet/` pour les commandes Python ; dans Thonny, ouvrir le fichier de cette mission |
 
-Le socle utilise un **chat web gratuit disponible sur votre compte**, puis des programmes locaux. Aucune clé API, aucun abonnement ni agent payant n’est nécessaire. Les cibles de demandes sont pédagogiques, jamais une promesse de quota.
+Sous Windows, WSL 2 sert au fonctionnement de Docker ; **les commandes Windows du cours se saisissent dans PowerShell**. Le [rappel d’environnement](docs/setup/README.md) complète le guide d’installation.
 
-Le guide explique les installations Codex CLI et Claude Code **pour les comptes qui disposent déjà de l’accès nécessaire**. Claude Free n’inclut pas Claude Code ; l’accès gratuit à un autre produit ne prouve pas celui du CLI. Si l’accès manque, continuer avec le chat web et les étapes manuelles.
+## Vérifier son résultat et trouver de l’aide
 
-Python et SQLite sont libres. Docker Engine fournit la route open source sous Ubuntu. Docker Desktop est gratuit pour l’éducation selon ses conditions, avec des composants propriétaires. ChatGPT et Claude sont des services propriétaires à offre gratuite.
+Le cours indique la commande de contrôle de chaque mission. Le vérificateur lit votre travail ; il ne termine pas les fonctions à votre place. En cas de blocage : consulter le livret 03, puis les indices du livret 05 si nécessaire. La reprise par jalon se fait dans **un nouveau dossier**, comme expliqué dans le cours.
 
-## Maintenir les supports
+À la fin, le rapport décrit **14 ventes élémentaires, 35 articles et 115.500 TND**. Le rejeu conserve ces totaux. Une ligne valide représente un produit vendu dans une boutique à une date ; les montants sont calculés et stockés en millimes entiers. Le chiffre d’affaires ne mesure ni le stock ni le bénéfice.
 
-Le code des exercices utilise la bibliothèque standard. Pour ses contrôles :
+Le lien [rapport local](http://localhost:8000/rapport_atlas.html) fonctionne après création du rapport et démarrage du serveur, selon votre route d’installation. Pour tester la clarté du parcours ou signaler un blocage, suivre la [fiche de test](TESTER_LE_COURS.md).
 
-```text
-python -m unittest discover -s tests -v
-```
+## IA et outils
 
-Les sources PDF sont dans `authoring/content/`, le rendu dans `authoring/build_pdfs.py`, et les sources de la présentation dans `authoring/slides/`. Les dépendances d’édition sont séparées dans `authoring/requirements.txt` et `authoring/slides/package.json` ; elles ne sont pas nécessaires aux étudiants.
+Le socle utilise un chat web gratuit disponible sur votre compte et des programmes locaux. **Aucune clé API ni abonnement payant n’est nécessaire au parcours principal.** Les demandes courtes limitent les échanges ; aucun quota fournisseur n’est garanti.
 
-La configuration CI prépare des vérifications Windows, Ubuntu et macOS. Seul le résultat réel d’une exécution CI prouve qu’elle a passé ; sa présence dans le dépôt ne le garantit pas.
+Codex CLI et Claude Code sont des options pour les comptes qui disposent déjà de l’accès nécessaire. Claude Free n’inclut pas Claude Code ; l’accès gratuit à un autre produit ne prouve pas celui du CLI. Le guide 01 explique les options et le repli vers le chat web.
+
+Python et SQLite sont libres. Docker Engine fournit la route open source sous Ubuntu. Docker Desktop est gratuit pour l’éducation selon ses [conditions](https://docs.docker.com/subscription-billing/desktop-license/), avec des composants propriétaires. ChatGPT et Claude sont des services propriétaires à offre gratuite.
+
+## Sources et maintenance
+
+Les exercices utilisent uniquement la bibliothèque standard de Python. Les dépendances pour reconstruire les documents concernent l’édition des supports. Consulter le [guide de maintenance](authoring/README.md) pour les sources PDF, la présentation et les contrôles du dépôt.
 
 Youssef Douma · Leaders University · édition du 27 octobre 2026
