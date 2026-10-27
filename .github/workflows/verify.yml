@@ -1,64 +1,36 @@
-name: Vérifier le parcours Atlas BI IA
+name: Vérifier le parcours Atlas BI 15 h
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
 jobs:
   student-route:
+    name: Python 3.13 · ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    env:
+      PYTHONIOENCODING: utf-8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - run: python -m unittest discover -s tests -v
-        env:
-          PYTHONIOENCODING: utf-8
-      - name: Vérifier la route native PowerShell, mission par mission
-        if: runner.os == 'Windows'
-        shell: pwsh
-        env:
-          PYTHONIOENCODING: utf-8
-        run: |
-          $ErrorActionPreference = 'Stop'
-          $PSNativeCommandUseErrorActionPreference = $true
-          $pyAtelier = (Get-Command python).Source
-          $dossier = Join-Path $env:RUNNER_TEMP ('Atlas PowerShell ' + [guid]::NewGuid())
-          New-Item -ItemType Directory -Path $dossier | Out-Null
-          Copy-Item solutions/atlas/*.py $dossier
-          Copy-Item projet/data $dossier -Recurse
-          Push-Location $dossier
-          try {
-            & $pyAtelier calcul.py
-            & $pyAtelier verifier.py 01
-            & $pyAtelier lecture.py
-            & $pyAtelier verifier.py 02
-            & $pyAtelier nettoyage.py
-            & $pyAtelier verifier.py 03
-            & $pyAtelier modele.py
-            & $pyAtelier verifier.py 04
-            & $pyAtelier chargement.py
-            & $pyAtelier verifier.py 05
-            & $pyAtelier incremental.py
-            & $pyAtelier verifier.py 06
-            & $pyAtelier rapport.py
-            & $pyAtelier verifier.py 07
-            & $pyAtelier executer.py
-            & $pyAtelier verifier.py tout
-          } finally {
-            Pop-Location
-          }
-  docker-reference:
+      - name: Contrats qualité, SQL, SCD2, transactions et exports
+        run: python -m unittest discover -s tests -v
+      - name: Sept jalons neufs et séquence initial / incrément / rejeu / export
+        run: python authoring/check_materials.py --runtime-only
+  printed-materials:
+    name: PDF et commandes Linux imprimées
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Préparer les identifiants locaux du conteneur
-        run: printf 'LOCAL_UID=%s\nLOCAL_GID=%s\n' "$(id -u)" "$(id -g)" > .env
-      - run: sudo docker compose config --quiet
-      - run: sudo docker compose build
-      - run: sudo docker compose run --rm atelier python ../solutions/atlas/executer.py
-      - run: sudo docker compose run --rm atelier python ../solutions/atlas/verifier.py tout
-      - if: always()
-        run: sudo docker compose down
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r authoring/requirements.txt
+      - name: Exécuter les extraits des PDF distribués
+        run: python authoring/check_materials.py
+      # Native ETL execution does not establish WSL GUI, Codex Free account
+      # availability or an interactive Power BI Desktop import/refresh.
