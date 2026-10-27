@@ -159,7 +159,7 @@
         {
           "type": "callout",
           "label": "Première demande, en lecture seule",
-          "text": "« Lis le fichier data/ventes_initiales.csv de mon atelier. Décris une ligne et les colonnes. Propose trois étapes pour comprendre les données. Ne modifie aucun fichier. Sépare ce que tu observes de ce que tu supposes. »"
+          "text": "« Lis le fichier atelier/data/ventes_initiales.csv. Décris une ligne et les colonnes. Propose trois étapes pour comprendre les données. Ne modifie aucun fichier. Sépare ce que tu observes de ce que tu supposes. »"
         },
         {
           "type": "text",
@@ -202,7 +202,7 @@
         },
         {
           "type": "text",
-          "text": "Suivez votre route du livre 01. Windows : application hôte, agent réglé sur WSL2 ; le terminal de travail est Ubuntu. Power BI reste sur Windows. Ubuntu : application Linux sur version prise en charge et ETL natif ; un vrai poste Windows servira en S4. Le terminal et l’agent doivent viser le même dossier."
+          "text": "Suivez votre route du livre 01. Windows : application hôte, agent WSL2 et terminal Ubuntu ; Power BI reste sur Windows. Ubuntu : application Linux prise en charge et ETL natif, puis poste Windows en S4. Dans Codex, ouvrez le dossier complet du cours, ~/cours-bi : il contient AGENTS.md et .agents/. Vos fichiers de travail sont dans son sous-dossier atelier/ ; les commandes pratiques se lancent depuis ce sous-dossier."
         },
         {
           "type": "code",
@@ -222,22 +222,22 @@
       ]
     },
     {
-      "title": "Créer mon atelier sans mélanger les copies",
+      "title": "Retrouver mon atelier sans recréer ma copie",
       "kicker": "S1 / JALON 01 · POINT DE DÉPART",
       "blocks": [
         {
           "type": "text",
-          "text": "Un jalon est une copie du projet complétée jusqu’à une étape. Les données d’origine restent dans data/. Les résultats iront dans outputs/. Le dossier solutions/atlas/ est une référence séparée à consulter après votre tentative."
+          "text": "Le livre 01 a déjà créé atelier/ dans le dossier du cours. Continuez cette copie. Dans le terminal, regardez pwd : si le chemin finit par /atelier, vous êtes prêts. S’il finit par /cours-bi, entrez cd atelier. Gardez le dossier complet ~/cours-bi ouvert dans Codex pour ses règles et ses Skills."
         },
         {
           "type": "code",
-          "label": "Terminal Ubuntu / WSL · départ dans le dossier téléchargé",
-          "text": "python3 outils/jalon.py 01 atelier\ncd atelier\npython3 verifier.py 01",
+          "label": "Terminal Ubuntu / WSL · depuis atelier",
+          "text": "python3 verifier.py 01",
           "language": "shell"
         },
         {
           "type": "text",
-          "text": "La première commande crée un nouveau dossier atelier. Elle ne lance pas les chargements. Si ce dossier existe déjà, gardez votre travail : choisissez un autre nom, par exemple atelier-reprise. Puis ouvrez ce même dossier dans Codex et dans votre éditeur."
+          "text": "Seulement si atelier/ n’existe pas encore : depuis la racine du cours, lancez python3 outils/jalon.py 01 atelier, puis cd atelier. La création prépare du code, sans exécuter les chargements. Si une copie existe, continuez-la ; gardez les reprises sous un nouveau nom et entrez ce nom exact dans le terminal."
         },
         {
           "type": "table",
@@ -281,12 +281,12 @@
       "blocks": [
         {
           "type": "text",
-          "text": "AGENTS.md est un fichier de règles du projet. Il évite de redire les mêmes contraintes. Il ne remplace pas votre demande précise du moment. Dans l’éditeur, ouvrez l’amorce de votre atelier, complétez-la puis enregistrez."
+          "text": "AGENTS.md contient les règles du projet. Il se trouve à la racine du cours, ~/cours-bi/AGENTS.md, à côté de atelier/ : ouvrez ce fichier dans l’éditeur, complétez-le puis enregistrez. Codex reste ouvert sur ~/cours-bi. Les règles ne remplacent pas votre demande précise du moment."
         },
         {
           "type": "code",
-          "label": "Texte à adapter · atelier/AGENTS.md",
-          "text": "Projet : Atlas Papeterie, données fictives.\nExplique en français simple avant de modifier.\nPréserve data/ et les noms des fonctions.\nChange seulement la fonction demandée.\nGarde les montants en millimes entiers.\nMontre la commande et le résultat du contrôle.",
+          "label": "Texte à adapter · AGENTS.md à la racine du cours",
+          "text": "Projet : Atlas Papeterie, données fictives.\nExplique en français simple avant de modifier.\nPréserve atelier/data/ et les noms des fonctions.\nChange seulement la fonction demandée.\nGarde les montants en millimes entiers.\nMontre la commande et le résultat du contrôle.",
           "language": "text"
         },
         {
@@ -476,13 +476,13 @@
         {
           "type": "figure",
           "path": "../docs/images/diagrams/v6-qualite.png",
-          "height": 140,
+          "height": 240,
           "caption": "Une destination pour chacune des 16 lignes reçues."
         },
         {
           "type": "callout",
           "label": "À essayer avant le code",
-          "text": "Ouvrez data/ventes_initiales.csv dans l’éditeur. Repérez l’en-tête et une ligne douteuse. Notez votre décision sans modifier le fichier. Deux produits identiques à des dates différentes peuvent être deux ventes réelles : le doublon se décide avec l’identité de la vente."
+          "text": "Avant le code, ouvrez data/ventes_initiales.csv. Repérez une ligne douteuse et notez sa décision sans modifier la source. Deux ventes du même produit à des dates différentes peuvent être distinctes : regardez sale_id."
         },
         {
           "type": "text",
@@ -512,7 +512,7 @@
         {
           "type": "callout",
           "label": "Petite mission Codex",
-          "text": "« Lis l’amorce normaliser_vente de nettoyage.py et les fonctions d’aide fournies. Complète seulement cette fonction : identifiants normalisés, date réelle, quantité entière positive, prix exact en millimes. Préserve son interface. Donne le contrôle à lancer et explique une ligne modifiée. »"
+          "text": "« Lis l’amorce normaliser_vente de atelier/nettoyage.py et les fonctions d’aide fournies. Complète seulement cette fonction : identifiants normalisés, date réelle, quantité entière positive, prix exact en millimes. Préserve son interface. Donne le contrôle à lancer et explique une ligne modifiée. »"
         },
         {
           "type": "code",
@@ -743,7 +743,7 @@
         {
           "type": "callout",
           "label": "Demande Codex ciblée",
-          "text": "« Complète lire_increment_sql dans lecture.py. Exécute réellement SQL_VENTES et SQL_CHANGEMENTS sur la connexion source fournie, avec batch_id comme paramètre. Garde les trois sorties prévues : ventes, changements, preuve. Ne remplace pas SQL par un CSV. Explique le rôle du ?. »"
+          "text": "« Complète lire_increment_sql dans atelier/lecture.py. Exécute réellement SQL_VENTES et SQL_CHANGEMENTS sur la connexion source fournie, avec batch_id comme paramètre. Garde les trois sorties prévues : ventes, changements, preuve. Ne remplace pas SQL par un CSV. Explique le rôle du ?. »"
         },
         {
           "type": "code",
@@ -1061,7 +1061,7 @@
         {
           "type": "callout",
           "label": "Petite mission Codex",
-          "text": "« Complète seulement trouver_shop_key(conn, shop_id, sale_date) dans incremental.py avec SQL_VERSION. La requête reçoit trois paramètres. Il faut exactement un résultat : zéro ou plusieurs signalent une erreur. Retourne son shop_key. Ne change pas les anciennes ventes. Explique la frontière du 8 janvier. »"
+          "text": "« Complète seulement trouver_shop_key(conn, shop_id, sale_date) dans atelier/incremental.py avec SQL_VERSION. La requête reçoit trois paramètres. Il faut exactement un résultat : zéro ou plusieurs signalent une erreur. Retourne son shop_key. Ne change pas les anciennes ventes. Explique la frontière du 8 janvier. »"
         },
         {
           "type": "code",
@@ -1087,9 +1087,20 @@
         {
           "type": "code",
           "label": "Terminal Ubuntu / WSL · depuis atelier",
-          "text": "python3 executer.py increment\npython3 executer.py rapport\npython3 verifier.py 06\npython3 executer.py increment\npython3 executer.py rapport",
+          "text": "python3 executer.py increment\npython3 executer.py rapport\npython3 verifier.py 06",
           "language": "shell",
           "state": "initial"
+        },
+        {
+          "type": "text",
+          "text": "Avant de continuer, ouvrez outputs/chargement_increment.json. Notez dans SUIVI.md le premier résultat : 2 ventes nouvelles, 1 déjà présente et 1 nouvelle version. Gardez aussi les valeurs et clés observées. Le prochain lancement remplace le reçu."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu / WSL · depuis atelier · même lot rejoué",
+          "text": "python3 executer.py increment\npython3 executer.py rapport",
+          "language": "shell",
+          "state": "final"
         },
         {
           "type": "table",
@@ -1128,7 +1139,7 @@
         },
         {
           "type": "text",
-          "text": "Ouvrez outputs/extraction_sql.json et outputs/chargement_increment.json. Avant le rejeu, gardez la première observation dans votre journal, car un reçu de la dernière action peut remplacer le précédent. Le contrôle compare aussi les valeurs et les anciennes clés ; conserver le seul total ne suffirait pas."
+          "text": "Ouvrez outputs/extraction_sql.json et le nouveau outputs/chargement_increment.json. Comparez au premier résultat conservé : aucune insertion, 3 ventes déjà présentes et aucune nouvelle version. Le contrôle compare aussi les anciennes clés et valeurs ; le total seul ne suffirait pas."
         },
         {
           "type": "callout",
@@ -1143,17 +1154,17 @@
       "blocks": [
         {
           "type": "text",
-          "text": "Une revue cherche un défaut établi. Demandez une lecture courte du nettoyage ou de la recherche temporelle. Donnez la règle, les fichiers et les résultats ; demandez que les limites non vérifiées soient indiquées."
+          "text": "Une revue cherche un défaut établi sur une petite cible. Donnez la règle et les fichiers ; demandez les preuves et les limites non vérifiées."
         },
         {
           "type": "callout",
           "label": "Demande de revue",
-          "text": "« Lis en lecture seule incremental.py et les preuves du contrôle 06. Vérifie la borne du 8 janvier et la stabilité des anciennes clés. Rapporte au plus trois défauts avec fichier, règle et exemple ; ne corrige rien. Si une preuve manque, dis laquelle. »"
+          "text": "« Lis atelier/incremental.py et les preuves du contrôle 06, sans écriture. Vérifie la borne du 8 janvier et les anciennes clés. Cite règle, fichier et exemple pour chaque défaut établi ; sinon indique la preuve manquante. »"
         },
         {
           "type": "figure",
           "path": "../docs/images/diagrams/v6-revue.png",
-          "height": 155,
+          "height": 240,
           "caption": "Une nouvelle lecture porte sur le résultat corrigé."
         },
         {
@@ -1163,7 +1174,7 @@
         {
           "type": "callout",
           "label": "Variation",
-          "text": "Si aucun défaut n’est trouvé, demandez comment serait traitée une vente tardive du 7 janvier, puis comparez à la règle. N’inventez pas une erreur pour remplir le journal. « Pas de défaut trouvé » décrit une lecture, pas une garantie."
+          "text": "Si aucun défaut n’est trouvé, discutez une vente tardive du 7 janvier. « Pas de défaut trouvé » décrit une lecture ; n’inventez pas une erreur pour remplir le journal."
         },
         {
           "type": "callout",
@@ -1489,7 +1500,7 @@
         },
         {
           "type": "text",
-          "text": "Dans l’éditeur, créez .agents/skills/ma-revue-bi/SKILL.md. Copiez le contenu du modèle revoir-bi/SKILL.md. Changez name: revoir-bi en name: ma-revue-bi. Ajoutez une règle : « demander la preuve du 7 et du 8 janvier avant de conclure ». Enregistrez. Vérifiez la découverte dans le sélecteur s’il existe ; une nouvelle conversation peut être nécessaire."
+          "text": "À la racine du cours, créez .agents/skills/ma-revue-bi/SKILL.md dans l’éditeur. Copiez le contenu du modèle revoir-bi/SKILL.md. Changez name: revoir-bi en name: ma-revue-bi. Ajoutez une règle : « demander la preuve du 7 et du 8 janvier avant de conclure ». Enregistrez. Vérifiez la découverte dans le sélecteur s’il existe ; une nouvelle conversation peut être nécessaire."
         },
         {
           "type": "code",
@@ -1565,7 +1576,7 @@
         {
           "type": "figure",
           "path": "../docs/images/diagrams/v6-parcours.png",
-          "height": 150,
+          "height": 260,
           "caption": "Cinq séances, un même projet et des preuves qui grandissent."
         },
         {

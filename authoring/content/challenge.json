@@ -28,7 +28,7 @@
         },
         {
           "type": "text",
-          "text": "La séance dure 180 min : 15 min de lancement, 155 min de pratique et 10 min de pause. Les indices et la référence sont autorisés après une tentative ; indiquez les aides utilisées dans votre journal. La difficulté porte sur la preuve et la compréhension, pas sur la quantité de code."
+          "text": "Pratique : 15 min de plan, 40 min de diagnostic et réparation, 25 min de revue, 30 min d’actualisation Power BI, 25 min de comparaison et explications, puis 20 min de reprise et remise : 155 min. Le lancement de 15 min et la pause de 10 min portent la séance à 180 min. Après une tentative, les aides restent autorisées ; notez celles utilisées."
         },
         {
           "type": "callout",
@@ -51,7 +51,7 @@
         },
         {
           "type": "text",
-          "text": "Le dossier doit être neuf. La commande prépare un pipeline complet avec un défaut borné et aucune sortie. Elle ne remplace pas votre atelier de S4. Ouvrez atelier-defi dans l’éditeur et dans Codex, puis conservez le message du contrôle avant de regarder une solution."
+          "text": "Le dossier doit être neuf. La commande prépare un pipeline complet avec un défaut borné et aucune sortie. Gardez ~/cours-bi ouvert dans Codex ; demandez explicitement de travailler dans atelier-defi/, et ouvrez ses fichiers dans l’éditeur. Le terminal reste dans atelier-defi. Conservez le premier échec avant de regarder une solution."
         },
         {
           "type": "table",
@@ -100,7 +100,7 @@
         {
           "type": "callout",
           "label": "Prompt de diagnostic",
-          "text": "« Lis AGENTS.md et normaliser_vente de nettoyage.py. Voici le premier échec observé et ma prédiction. Explique la cause. Propose une correction limitée à cette fonction ; préserve les helpers, les noms et les données. Donne une variation qui révélerait le même défaut. »"
+          "text": "« Lis AGENTS.md et normaliser_vente de atelier-defi/nettoyage.py. Voici le premier échec observé et ma prédiction. Explique la cause. Propose une correction limitée à cette fonction ; préserve les helpers, les noms et les données. Donne une variation qui révélerait le même défaut. »"
         },
         {
           "type": "bullets",
@@ -113,7 +113,7 @@
         },
         {
           "type": "code",
-          "label": "Terminal Ubuntu / WSL · depuis atelier",
+          "label": "Terminal Ubuntu / WSL · depuis atelier-defi",
           "text": "python3 verifier.py 02\npython3 verifier.py tout",
           "language": "shell"
         },
@@ -129,8 +129,12 @@
       "kicker": "DÉFI / DES SORTIES QUI VIENNENT DU CODE CORRIGÉ",
       "blocks": [
         {
+          "type": "text",
+          "text": "Exécutez les lignes une par une. Après le premier increment, avant le second, conservez le reçu : 2 ventes nouvelles, 1 déjà présente, 1 nouvelle version. La deuxième exécution le remplacera par la preuve de rejeu."
+        },
+        {
           "type": "code",
-          "label": "Terminal Ubuntu / WSL · depuis la copie corrigée sans anciennes sorties",
+          "label": "Terminal Ubuntu / WSL · atelier-defi corrigé, sorties vides",
           "text": "python3 executer.py initial\npython3 executer.py increment\npython3 executer.py increment\npython3 executer.py rapport\npython3 executer.py export",
           "language": "shell",
           "state": "none"

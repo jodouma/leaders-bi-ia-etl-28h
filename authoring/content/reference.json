@@ -43,7 +43,7 @@
         },
         {
           "type": "text",
-          "text": "Dossier de travail : atelier/. Source CSV et source SQL : atelier/data/. Résultats : atelier/outputs/. La référence solutions/atlas/ reste séparée. Les jalons créent une copie neuve ; ils ne remplacent pas silencieusement votre travail et ne préchargent pas la base."
+          "text": "Codex ouvre le dossier complet du cours, ~/cours-bi, où se trouvent AGENTS.md et .agents/. Travaillez sur les fichiers de atelier/ et lancez les commandes depuis ce sous-dossier. Les sources restent dans atelier/data/ et les résultats dans atelier/outputs/. Les jalons créent une copie neuve, sans remplacer votre travail."
         },
         {
           "type": "callout",
@@ -88,7 +88,7 @@
         {
           "type": "code",
           "label": "Prompt · exemple à adapter",
-          "text": "Lis AGENTS.md et nettoyage.py.\nComplète seulement normaliser_vente(ligne).\nConserve ses clés et les helpers fournis.\nPrévois le cas quantity=\"0\" avant de lancer.\nExécute python3 verifier.py 02.\nExplique une ligne et cite le résultat réel.",
+          "text": "Lis AGENTS.md et atelier/nettoyage.py.\nComplète seulement normaliser_vente(ligne).\nConserve ses clés et les helpers fournis.\nPrévois le cas quantity=\"0\" avant de lancer.\nDepuis atelier, lance python3 verifier.py 02.\nExplique une ligne et cite le résultat réel.",
           "language": "text"
         },
         {
@@ -109,7 +109,7 @@
         {
           "type": "code",
           "label": "Prompt · exemple de symptôme, à utiliser seulement si observé",
-          "text": "Jalon 05, incremental.py.\nUne vente NBE du 8 janvier doit être Grand Tunis.\nLe contrôle observe la version Cap Bon.\nLis trouver_shop_key et SQL_VERSION.\nExplique l’écart puis corrige cette fonction seule.\nNe change pas les données ni le vérificateur.\nRelance le contrôle 05 puis montre la différence.",
+          "text": "Jalon 05, atelier/incremental.py.\nUne vente NBE du 8 janvier doit être Grand Tunis.\nLe contrôle observe la version Cap Bon.\nLis trouver_shop_key et SQL_VERSION.\nExplique l’écart puis corrige cette fonction seule.\nNe change pas les données ni le vérificateur.\nRelance le contrôle 05 puis montre la différence.",
           "language": "text"
         },
         {
@@ -436,7 +436,7 @@
           "rows": [
             [
               "Le fichier modifié ne change rien",
-              "Ai-je enregistré ? Codex et terminal sont-ils dans le même atelier ?"
+              "Ai-je enregistré ? Codex vise-t-il le dossier du cours et le fichier atelier voulu ? Le terminal est-il dans cet atelier ?"
             ],
             [
               "Python ne trouve pas le script",
