@@ -328,6 +328,23 @@ class Atlas(unittest.TestCase):
             engine.exporter(self.base,dossier,"missing")
         self.assertEqual(list(dossier.iterdir()),[])
 
+    def test_html_uses_actual_report_and_escapes_source_text(self):
+        self.final()
+        from rapport import ecrire_html
+        resultat = engine.rapport(self.base)
+        chemin = ecrire_html(resultat,self.outputs / "rapport_atlas.html")
+        html = chemin.read_text(encoding="utf-8")
+        for valeur in ("115.500", "43.500", "72.000", ">14</strong>", ">35</strong>", "2026-01-08", "Power BI Desktop"):
+            self.assertIn(valeur,html)
+        self.assertEqual(resultat,engine.rapport(self.base))
+        resultat["zone_amounts_millimes"] = {'<script>alert("zone")</script>':115500}
+        resultat["shop_version_amounts_millimes"] = {'<img src=x onerror=alert(1)>@2026-01-08':115500}
+        html = ecrire_html(resultat,chemin).read_text(encoding="utf-8")
+        self.assertNotIn("<script>",html)
+        self.assertNotIn("<img",html)
+        self.assertIn("&lt;script&gt;",html)
+        self.assertIn("&lt;img",html)
+
     def test_checkpoint01_is_ready_and_refuses_overwrite(self):
         jalon = outil("jalon_test_fresh",ROOT / "outils/jalon.py")
         dossier = jalon.creer_reprise(1,self.home / "starter")

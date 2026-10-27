@@ -5,6 +5,7 @@ import sqlite3
 from chargement import initial, increment
 from engine import ecrire_json, exporter, rapport
 from lecture import DATA, OUTPUTS
+from rapport import ecrire_html
 
 
 def main():
@@ -21,6 +22,7 @@ def main():
         else:
             resultat = rapport(OUTPUTS / "atlas.sqlite")
             ecrire_json(OUTPUTS / "rapport.json", resultat)
+            ecrire_html(resultat, OUTPUTS / "rapport_atlas.html")
     except (ValueError, NotImplementedError, FileNotFoundError, sqlite3.Error, OverflowError) as erreur:
         parser.exit(1, f"À corriger : {erreur}\n")
     print(json.dumps(resultat, ensure_ascii=False, indent=2))
