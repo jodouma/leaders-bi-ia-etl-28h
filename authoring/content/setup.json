@@ -1,50 +1,43 @@
 {
-  "title": "Démarrer sur Windows et Ubuntu",
-  "subtitle": "Atlas BI avec l’IA · Python, Docker et parcours natif",
+  "title": "Démarrer avec Codex, Windows et Ubuntu",
+  "subtitle": "Atlas BI · 15 h · Python, SQLite et Power BI",
   "author": "Youssef Douma · Leaders University",
   "subject_label": "Atlas BI · Guide de démarrage",
   "output_filename": "01_demarrer_windows_ubuntu.pdf",
   "pages": [
     {
-      "id": "parcours",
-      "title": "Votre parcours : préparer, puis construire",
-      "kicker": "B / PRÉPARER SON POSTE · 02",
+      "id": "route",
+      "title": "Commencer : un projet, deux systèmes",
+      "kicker": "01 / PRÉPARER SON POSTE · 02",
       "blocks": [
         {
           "type": "text",
-          "text": "Atlas Papeterie vend des fournitures à Nabeul et Tunis. Vous préparerez ses CSV avec Python, les chargerez dans SQLite et produirez un rapport local."
+          "text": "Vous rejoignez Atlas Papeterie, une entreprise fictive. En cinq séances de trois heures, vous préparez des ventes avec Python et SQLite, puis vous construisez un rapport Power BI. Ce guide sert à préparer le poste pendant le début de la séance 1."
         },
         {
-          "type": "diagram",
-          "nodes": [
-            "CSV : ventes",
-            "Python : ETL",
-            "SQLite : entrepôt",
-            "Rapport HTML"
-          ]
+          "type": "figure",
+          "path": "../docs/images/diagrams/v6-postes-wsl.png",
+          "height": 230,
+          "caption": "Schéma de fonctionnement, pas une capture : la fenêtre Codex et son agent peuvent travailler dans deux environnements différents."
         },
         {
           "type": "table",
           "headers": [
             "Votre poste",
-            "Les pages à suivre"
+            "Votre route"
           ],
           "rows": [
             [
               "Windows 11 maintenu",
-              "3–10, puis 13–17 : PowerShell et Docker Desktop avec WSL 2."
+              "Pages 5–8 : Ubuntu dans WSL2 ; Codex reste une application Windows."
             ],
             [
-              "Ubuntu 24.04 LTS",
-              "3–6, puis 11–17 : Terminal, Engine et Compose."
+              "Ubuntu 24.04 ou 26.04 LTS",
+              "Pages 9–10 : application Linux en preview ; Python fonctionne dans Ubuntu."
             ],
             [
-              "Docker ou virtualisation bloqués",
-              "3–6, puis 18–19 : mêmes fichiers avec Python et Thonny, sans Docker."
-            ],
-            [
-              "Aide IA",
-              "20 : chat web et aides locales. 21–24 : CLI facultatifs, si votre compte y donne accès."
+              "Tout le monde",
+              "Pages 3–4, puis 11–18. Préparer un vrai poste Windows pour Power BI avant la séance 4."
             ]
           ],
           "widths": [
@@ -54,50 +47,54 @@
         },
         {
           "type": "callout",
-          "label": "Le point de départ",
-          "text": "Téléchargez le cours et les outils avec Internet. Aucun abonnement ni clé API n’est nécessaire au projet. Les captures servent de repères ; elles ne prouvent pas une installation faite sur votre PC."
-        },
-        {
-          "type": "text",
-          "text": "Après l’installation, ouvrez 02_cours_atlas_ia.pdf et commencez la mission 01. Gardez les solutions pour après votre premier essai."
+          "label": "Le contrôle avant de travailler",
+          "text": "Votre compte personnel doit ouvrir Codex dans l’application et disposer d’un usage gratuit disponible. Le déploiement et le quota varient. Aucun paiement ni clé API n’est demandé."
         }
       ],
-      "source_ids": [],
+      "source_ids": [
+        "desktop",
+        "windows",
+        "linux",
+        "pricing",
+        "powerbi-desktop"
+      ],
       "printed_page": 2
     },
     {
-      "id": "trois-espaces",
-      "title": "Trois espaces, trois actions",
-      "kicker": "B / PRÉPARER SON POSTE · 03",
+      "id": "vocabulaire",
+      "title": "Repérer les fenêtres et les fichiers",
+      "kicker": "01 / PRÉPARER SON POSTE · 03",
       "blocks": [
         {
           "type": "text",
-          "text": "Un dossier contient des fichiers. Un chemin indique où les trouver. Un fichier .py contient du code Python ; un fichier .csv contient un tableau de données."
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/diagrams/trois-espaces.png",
-          "height": 230,
-          "caption": "Schéma du cours : vous passerez de l’éditeur au terminal, puis au navigateur."
+          "text": "Un dossier range des fichiers. Une extension précise le type : .py pour du code Python, .csv pour un tableau, .sqlite pour une base de données et .pdf pour un document. Un chemin indique leur emplacement."
         },
         {
           "type": "table",
           "headers": [
-            "Repère",
-            "Rôle dans le cours"
+            "Fenêtre",
+            "Ce que vous y faites"
           ],
           "rows": [
             [
-              "Éditeur : Thonny",
-              "Ouvrir calcul.py, modifier une petite fonction, enregistrer avec Ctrl + S."
+              "Explorateur Windows / Fichiers Ubuntu",
+              "Télécharger, extraire une archive ZIP, ouvrir un dossier et copier des fichiers."
             ],
             [
-              "Terminal du système",
-              "Windows : PowerShell. Ubuntu : Terminal. Y saisir cd, docker ou sudo."
+              "Application Codex",
+              "Écrire une demande, lire la réponse et examiner un changement dans les fichiers."
             ],
             [
-              "Console Python : >>>",
-              "Y saisir seulement du Python. Pour en sortir : quit()."
+              "PowerShell Windows",
+              "Installer et vérifier WSL. Les commandes commencent ici par wsl."
+            ],
+            [
+              "Terminal Ubuntu",
+              "Lancer Python dans Linux. Sur Windows, ouvrir Ubuntu depuis Démarrer ; sur Ubuntu natif, Ctrl + Alt + T."
+            ],
+            [
+              "Power BI Desktop",
+              "Sur Windows : importer les quatre tableaux et construire le rapport dès la séance 4."
             ]
           ],
           "widths": [
@@ -106,692 +103,724 @@
           ]
         },
         {
+          "type": "code",
+          "label": "Terminal Ubuntu · exemple de commande",
+          "text": "pwd"
+        },
+        {
+          "type": "text",
+          "text": "Saisissez la commande puis appuyez sur Entrée. pwd affiche le dossier courant. Une invite comme utilisateur@poste:~$ est ajoutée par le logiciel : ne la recopiez pas. Chaque bloc indique la fenêtre où il faut agir."
+        },
+        {
           "type": "callout",
-          "label": "Avant de continuer",
-          "text": "Montrez l’endroit où vous écrivez le code et celui où vous lancez une commande. Ne recopiez jamais l’invite PS …>, $ ou >>> imprimée par le logiciel."
+          "label": "Les raccourcis essentiels",
+          "text": "Ctrl + C copie dans une fenêtre de texte, mais interrompt un programme dans le terminal. Pour coller dans le terminal Ubuntu, utilisez Ctrl + Maj + V. Entrée lance la commande ; attendez le retour de l’invite."
         }
       ],
       "source_ids": [],
       "printed_page": 3
     },
     {
-      "id": "extraire",
-      "title": "Windows : sortir les fichiers du ZIP",
-      "kicker": "B / PRÉPARER SON POSTE · 04",
+      "id": "dossiers",
+      "title": "Le dossier du cours et votre travail",
+      "kicker": "01 / PRÉPARER SON POSTE · 04",
       "blocks": [
         {
           "type": "text",
-          "text": "Un ZIP est une archive : extrayez-la avant de travailler. Sur la page du dépôt : bouton Code → Download ZIP. Un ZIP déjà fourni suffit, sans Git ni compte GitHub."
+          "text": "Le dossier principal s’appellera cours-bi. Son chemin Linux est ~/cours-bi : ~ représente votre dossier personnel. projet contient le modèle fourni. La commande de la page 11 créera atelier, votre copie de travail : ses scripts liront atelier/data et écriront dans atelier/outputs."
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/diagrams/v6-dossiers.png",
+          "height": 220,
+          "caption": "La distribution contient le modèle projet ; le jalon 01 crée votre copie atelier avec ses propres données et résultats."
         },
         {
           "type": "bullets",
           "items": [
-            "Enregistrez le ZIP du cours dans Téléchargements.",
-            "Explorateur de fichiers → clic droit sur le ZIP → Extraire tout… → Extraire.",
-            "Choisissez un dossier personnel, par exemple Documents. Fermez ensuite la fenêtre du ZIP."
-          ]
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/real/github-telecharger.jpg",
-          "height": 300,
-          "caption": "Capture du vrai dépôt GitHub, recadrée pour repérer Code et Download ZIP (27/10/2026).",
-          "crop": [
-            250,
-            310,
-            680,
-            660
+            "Téléchargez le ZIP fourni pour cette édition. Sur GitHub : Code → Download ZIP. Le compte GitHub et Git ne sont pas nécessaires pour télécharger une archive publique.",
+            "Le ZIP est un paquet compressé. Extrayez-le avant de modifier un fichier. Une fenêtre montrant encore le ZIP ne suffit pas.",
+            "Gardez les données originales et les vérificateurs. En cas de reprise, conservez d’abord votre dossier actuel sous un autre nom."
           ]
         },
         {
           "type": "callout",
-          "label": "La preuve",
-          "text": "Ouvrez le dossier extrait. Vous devez pouvoir ouvrir ses sous-dossiers sans rester dans une fenêtre de ZIP. Ne modifiez jamais un fichier directement dans l’archive."
-        },
-        {
-          "type": "text",
-          "text": "Ubuntu : dans Fichiers, clic droit sur le ZIP → Extraire ici. Placez le dossier extrait dans votre Dossier personnel ; nommez-le atlas-bi-ia."
+          "label": "Reconnaître la bonne racine",
+          "text": "La racine cours-bi contient README.md, AGENTS.md, projet, outils, solutions, tests et defi. Si vous voyez seulement un dossier portant le nom du dépôt, ouvrez-le : son contenu doit être placé dans cours-bi. atelier sera créé page 11."
         }
       ],
-      "source_ids": [],
+      "source_ids": [
+        "github-zip"
+      ],
       "printed_page": 4
     },
     {
-      "id": "dossier",
-      "title": "Reconnaître le bon dossier extrait",
-      "source_ids": [],
+      "id": "windows-wsl",
+      "title": "Windows : installer Ubuntu dans WSL2",
+      "kicker": "01 / PRÉPARER SON POSTE · 05",
       "blocks": [
         {
           "type": "text",
-          "text": "Ouvrez le dossier extrait. Descendez dans les éventuels dossiers intermédiaires jusqu’à voir compose.yaml, Dockerfile, README.md et projet ensemble : c’est la racine du cours."
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/real/dossier-extrait.jpg",
-          "height": 285,
-          "caption": "Vrai ZIP extrait, Finder macOS, 27/10/2026. Sous Windows : Explorateur ; sous Ubuntu : Fichiers.",
-          "crop": [
-            290,
-            45,
-            905,
-            450
-          ]
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Dans ce dossier",
-            "Ce que vous y trouvez"
-          ],
-          "rows": [
-            [
-              "projet/",
-              "Votre code, data/ pour les CSV et outputs/ pour les résultats."
-            ],
-            [
-              "pdf/",
-              "Les cinq supports du cours."
-            ],
-            [
-              "compose.yaml",
-              "La configuration Docker ; restez à côté pour les commandes Compose."
-            ]
-          ],
-          "widths": [
-            1,
-            3
-          ]
-        },
-        {
-          "type": "callout",
-          "label": "Votre vérification",
-          "text": "Montrez compose.yaml et le dossier projet dans la même fenêtre. Dans projet : data contient les CSV et outputs recevra les résultats. Ne déplacez pas projet seul hors du dossier du cours."
-        }
-      ],
-      "printed_page": 5,
-      "kicker": "B / PRÉPARER SON POSTE · 05"
-    },
-    {
-      "id": "racine",
-      "title": "Ouvrir le terminal au bon endroit",
-      "kicker": "B / PRÉPARER SON POSTE · 06",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Le terminal doit travailler dans la racine repérée page 5. Une commande cd change de dossier ; elle ne lance pas Python."
-        },
-        {
-          "type": "section",
-          "text": "Windows · PowerShell normal"
-        },
-        {
-          "type": "text",
-          "text": "Démarrer → cherchez PowerShell → ouvrez-le. Dans l’Explorateur, copiez le chemin de la barre d’adresse et remplacez tout le chemin entre guillemets :"
-        },
-        {
-          "type": "code",
-          "text": "cd \"C:\\Users\\VOTRE_COMPTE\\Documents\\atlas-bi-ia\"\nGet-Location\nGet-ChildItem",
-          "label": "PowerShell · chemin À ADAPTER"
-        },
-        {
-          "type": "callout",
-          "label": "À remplacer avant Entrée",
-          "text": "VOTRE_COMPTE et atlas-bi-ia sont des exemples. Les guillemets protègent les espaces. Get-ChildItem doit afficher compose.yaml et projet ; sinon, changez de dossier."
-        },
-        {
-          "type": "section",
-          "text": "Ubuntu · Terminal"
-        },
-        {
-          "type": "text",
-          "text": "Ouvrez Terminal avec Ctrl + Alt + T. Le dossier extrait doit être nommé atlas-bi-ia dans votre Dossier personnel ; sinon, adaptez le chemin :"
-        },
-        {
-          "type": "code",
-          "text": "cd \"$HOME/atlas-bi-ia\"\npwd\nls",
-          "label": "Terminal Ubuntu"
-        },
-        {
-          "type": "text",
-          "text": "Get-Location ou pwd montre l’emplacement. Get-ChildItem ou ls liste les fichiers. Si vous voyez >>>, vous êtes dans Python : quit(), puis revenez au terminal du système."
-        }
-      ],
-      "source_ids": [],
-      "printed_page": 6
-    },
-    {
-      "id": "windows-preparer",
-      "title": "Windows : votre PC est-il prêt ?",
-      "kicker": "B / PRÉPARER SON POSTE · 07",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Au 27 octobre 2026 : utilisez Windows 11 maintenu, de préférence 25H2 ou 26H2 sur un PC compatible. Home/Pro 24H2 n’est plus maintenu depuis le 13 octobre 2026. Enterprise/Education suit un autre calendrier."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Où regarder",
-            "Ce qu’il faut noter"
-          ],
-          "rows": [
-            [
-              "Windows + R → winver",
-              "Édition, version et numéro de build."
-            ],
-            [
-              "Paramètres → Système → Informations système",
-              "Type du système : x64 ou ARM64 ; mémoire : 8 Go minimum pour Docker Desktop."
-            ],
-            [
-              "Ctrl + Maj + Échap → Performances → Processeur",
-              "Virtualisation : Activé. Sinon, faire vérifier le réglage BIOS/UEFI."
-            ]
-          ],
-          "widths": [
-            1.8,
-            2.2
-          ]
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/setup/docker-windows-virtualization.png",
-          "height": 60,
-          "caption": "Détail officiel Docker d’une interface Windows ancienne : « Enabled » signifie « Activée ».",
-          "crop": [
-            1086,
-            1114,
-            1527,
-            1175
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Intel/AMD x64 : choisir l’installateur Windows x86_64. ARM64 : téléchargement distinct, encore annoncé Early Access dans la documentation consultée. Faites valider ce cas avant la séance."
-        },
-        {
-          "type": "callout",
-          "label": "Si le poste est géré ou bloqué",
-          "text": "Demandez de l’aide au professeur ou à la personne qui gère le PC. Ne contournez pas ses restrictions. Le parcours natif des pages 18–19 évite Docker et la virtualisation."
-        },
-        {
-          "type": "text",
-          "text": "Docker demande aussi le service Windows LanmanServer actif avec démarrage automatique. Faites vérifier ce réglage seulement s’il bloque l’installation."
-        },
-        {
-          "type": "text",
-          "text": "Exigences officielles : https://docs.docker.com/desktop/setup/install/windows-install/"
-        }
-      ],
-      "source_ids": [
-        "docker-windows",
-        "windows11-home-pro",
-        "microsoft-wsl-commands"
-      ],
-      "printed_page": 7
-    },
-    {
-      "id": "wsl",
-      "title": "Windows : activer WSL 2, puis redémarrer",
-      "kicker": "B / PRÉPARER SON POSTE · 08",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "WSL 2 permet à Docker Desktop d’exécuter des conteneurs Linux. Dans ce cours, vos commandes resteront dans PowerShell Windows."
-        },
-        {
-          "type": "section",
-          "text": "Une fois · PowerShell administrateur"
-        },
-        {
-          "type": "text",
-          "text": "Démarrer → chercher PowerShell → Exécuter en tant qu’administrateur. Sur un Windows sans WSL, saisir :"
-        },
-        {
-          "type": "code",
-          "text": "wsl --install --no-distribution",
-          "label": "PowerShell · administrateur · une fois"
-        },
-        {
-          "type": "callout",
-          "label": "Redémarrage nécessaire",
-          "text": "Sauvegardez le travail ouvert, puis redémarrez Windows. Rouvrez ensuite PowerShell administrateur pour les contrôles ci-dessous."
-        },
-        {
-          "type": "code",
-          "text": "wsl --update\nwsl --version\nwsl --status",
-          "label": "PowerShell · après redémarrage"
-        },
-        {
-          "type": "text",
-          "text": "WSL doit être en version 2.1.5 ou plus. Cette installation n’ajoute pas d’Ubuntu personnel ; Docker n’en a pas besoin pour la route PowerShell. Si WSL existe déjà, mettez-le à jour sans le réinstaller."
-        },
-        {
-          "type": "text",
-          "text": "Une installation Ubuntu déjà présente peut rester. N’y ajoutez pas un deuxième Docker Engine pour ce parcours."
-        },
-        {
-          "type": "text",
-          "text": "Commandes WSL officielles : https://learn.microsoft.com/en-us/windows/wsl/basic-commands"
-        }
-      ],
-      "source_ids": [
-        "docker-windows",
-        "desktop-license",
-        "microsoft-wsl-commands"
-      ],
-      "printed_page": 8
-    },
-    {
-      "id": "desktop-installer",
-      "title": "Windows : installer et ouvrir Docker Desktop",
-      "kicker": "B / PRÉPARER SON POSTE · 09",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Depuis la page officielle Docker, téléchargez l’installateur adapté au PC repéré page 7. Ouvrez-le, conservez WSL 2 et le mode par utilisateur proposé par défaut, puis terminez l’installation."
-        },
-        {
-          "type": "text",
-          "text": "Démarrer → Docker Desktop. Lisez ses conditions et acceptez-les si elles conviennent. Attendez la fin du démarrage du moteur ; une icône présente ne suffit pas."
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/setup/docker-desktop-container-running.webp",
-          "height": 120,
-          "caption": "Détail officiel Docker : « Running » = « En cours ». Exemple générique, pas installation locale.",
-          "crop": [
-            145,
-            345,
-            1120,
-            530
-          ]
+          "text": "WSL2 permet de travailler dans Linux tout en gardant Windows. Cette étape demande Internet, les droits d’administration et un redémarrage. Si Ubuntu existe déjà, commencez par le contrôle en bas de page et faites confirmer la distribution avant toute installation."
         },
         {
           "type": "bullets",
           "items": [
-            "Cet exemple Docker montre un conteneur déjà lancé ; ses noms et ports ne sont pas ceux d’Atlas. Votre liste peut encore être vide : c’est normal.",
-            "Gardez Docker Desktop ouvert pendant les exercices, en mode conteneurs Linux.",
-            "Fermez le PowerShell administrateur. Ouvrez un PowerShell normal pour la page suivante."
+            "Enregistrez vos documents. Dans Démarrer, cherchez PowerShell, puis clic droit → Exécuter en tant qu’administrateur. Acceptez la demande Windows autorisée pour ce poste.",
+            "Saisissez la commande ci-dessous. Attendez la fin de l’installation, puis redémarrez Windows. Ne fermez pas une installation en cours."
           ]
-        },
-        {
-          "type": "callout",
-          "label": "Droits et licence",
-          "text": "L’activation initiale de WSL peut demander un administrateur. Desktop par utilisateur n’en exige pas systématiquement. Desktop est propriétaire, gratuit pour l’éducation sous ses conditions ; Engine sur Ubuntu fournit la route libre."
-        },
-        {
-          "type": "callout",
-          "label": "L’écran aide ; le terminal confirme",
-          "text": "La page suivante contrôle Client et Server, puis hello-world. Un moteur indisponible se repère dans ces contrôles, même si la fenêtre Desktop est ouverte."
-        },
-        {
-          "type": "text",
-          "text": "Téléchargement et exigences : https://docs.docker.com/desktop/setup/install/windows-install/"
-        }
-      ],
-      "source_ids": [
-        "docker-windows",
-        "desktop-license",
-        "microsoft-wsl-commands"
-      ],
-      "printed_page": 9
-    },
-    {
-      "title": "Windows : vérifier que Docker répond",
-      "kicker": "B / PRÉPARER SON POSTE · 10",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Dans PowerShell normal, Docker Desktop ouvert et prêt, saisir les commandes suivantes :"
         },
         {
           "type": "code",
-          "text": "docker --version\ndocker compose version\ndocker version\ndocker run --rm hello-world",
-          "label": "PowerShell · normal"
+          "label": "PowerShell Windows · administrateur · installation",
+          "text": "wsl --install"
         },
         {
-          "type": "table",
-          "headers": [
-            "Commande",
-            "Preuve attendue"
-          ],
-          "rows": [
-            [
-              "docker --version",
-              "Une version du client Docker s’affiche. Cela ne suffit pas à prouver que le moteur tourne."
-            ],
-            [
-              "docker compose version",
-              "Une version récente de Compose s’affiche (commande avec un espace)."
-            ],
-            [
-              "docker version",
-              "Deux sections Client et Server ; une erreur de connexion au Server signale un moteur indisponible."
-            ],
-            [
-              "hello-world",
-              "Un téléchargement au premier lancement, puis le message Hello from Docker! et retour à l’invite."
-            ]
-          ],
-          "widths": [
-            1.2,
-            3
+          "type": "text",
+          "text": "Après le redémarrage, ouvrez Ubuntu depuis Démarrer. Au premier lancement, attendez la décompression, puis créez votre nom d’utilisateur Linux, par exemple ines, et votre mot de passe Ubuntu."
+        },
+        {
+          "type": "callout",
+          "label": "Le mot de passe ne s’affiche pas",
+          "text": "Pendant la saisie, aucun caractère ni point n’apparaît. C’est normal. Saisissez le mot de passe, Entrée, puis saisissez-le une seconde fois. Ce compte est distinct du compte Windows. Ne partagez pas ce mot de passe."
+        },
+        {
+          "type": "code",
+          "label": "PowerShell Windows · fenêtre normale · contrôle",
+          "text": "wsl --list --verbose"
+        },
+        {
+          "type": "text",
+          "text": "Dans la ligne Ubuntu, la colonne VERSION doit afficher 2. Notez le nom exact de la distribution. Si la colonne indique 1, ou si une erreur de virtualisation apparaît, faites préparer WSL2 par le professeur avant de continuer. Un poste partenaire prêt permet de commencer."
+        }
+      ],
+      "source_ids": [
+        "microsoft-wsl-install",
+        "microsoft-wsl-environment"
+      ],
+      "printed_page": 5
+    },
+    {
+      "id": "windows-app",
+      "title": "Windows : installer et ouvrir l’application",
+      "kicker": "01 / PRÉPARER SON POSTE · 06",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Dans le navigateur Windows, ouvrez la documentation officielle : https://learn.chatgpt.com/docs/app/windows. Suivez son lien de téléchargement Windows vers Microsoft Store. Vérifiez l’éditeur OpenAI, installez l’application, puis ouvrez-la depuis Démarrer."
+        },
+        {
+          "type": "section",
+          "text": "Se connecter, puis choisir Codex"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Connectez votre compte personnel ChatGPT. Une fenêtre de navigateur peut servir à la connexion ; revenez ensuite dans l’application de bureau.",
+            "Choisissez Codex, puis New chat (nouvelle conversation). Le produit peut être nommé ChatGPT desktop app dans le téléchargement : Codex est l’espace de travail utilisé dans le cours.",
+            "Vérifiez que le compte utilisé est Free et que Codex est accessible. La carte Free annonce GPT-6 Luna à vitesse Standard, sous déploiement. Utilisez seulement le modèle effectivement proposé à ce compte."
           ]
         },
         {
           "type": "callout",
-          "label": "En cas d’échec",
-          "text": "docker introuvable : fermez puis rouvrez PowerShell, vérifiez l’installation. Cannot connect / daemon : ouvrez Docker Desktop, attendez, relancez docker version. WSL ou virtualisation bloqués : page 18. La première image demande Internet."
-        },
-        {
-          "type": "section",
-          "text": "Revenir dans le bon dossier"
+          "label": "Point d’arrêt si l’accès manque",
+          "text": "Si Codex n’apparaît pas, si le compte demande un achat, ou si l’usage est déjà épuisé, montrez le message au professeur. Gardez les fichiers locaux ; vous pourrez exécuter Python et utiliser les indices. N’ajoutez pas de moyen de paiement."
         },
         {
           "type": "text",
-          "text": "Revenez à la racine du cours avec le cd de la page 6. Vérifiez compose.yaml, puis continuez page 13. N’ouvrez pas Ubuntu pour les commandes de cette route."
+          "text": "Le menu des modèles et l’affichage du quota évoluent. Relevez ce que montre votre propre compte. Standard désigne la vitesse, pas l’effort de réflexion. Si le réglage d’effort est visible, High est le départ conseillé pour Luna ; sinon, gardez la valeur proposée. Un effort plus élevé peut augmenter l’usage."
         },
         {
           "type": "callout",
           "label": "À ce stade, je sais…",
-          "text": "…repérer ma version Windows, distinguer client et moteur Docker, ouvrir PowerShell et retrouver la racine extraite du cours."
+          "text": "…ouvrir l’application sur Windows, reconnaître mon compte et distinguer l’application Codex de la page de connexion. Le lancement de l’application ne prouve pas encore que l’agent utilise WSL2."
         }
       ],
       "source_ids": [
-        "docker-windows",
-        "docker-engine"
+        "windows",
+        "desktop",
+        "pricing",
+        "models"
       ],
-      "printed_page": 10,
-      "id": "windows-verifier"
+      "printed_page": 6
     },
     {
-      "title": "Ubuntu 24.04 : préparer le dépôt officiel",
-      "kicker": "B / PRÉPARER SON POSTE · 11",
+      "id": "windows-reglages",
+      "title": "Windows : agent WSL et terminal WSL",
+      "kicker": "01 / PRÉPARER SON POSTE · 07",
       "blocks": [
         {
           "type": "text",
-          "text": "Sur un PC Ubuntu 24.04 LTS 64 bits, ouvrez Terminal (Ctrl + Alt + T). Ce parcours installe Engine et Compose depuis le dépôt Docker ; Docker Desktop n’est pas nécessaire."
+          "text": "L’agent est le programme qui lit les fichiers et exécute les commandes pour Codex. Son environnement et le terminal visible sont deux réglages indépendants. Nous utilisons Ubuntu pour les deux."
         },
         {
           "type": "section",
-          "text": "1 · Vérifier le système dans Terminal"
+          "text": "1 · Régler l’agent"
         },
         {
-          "type": "code",
-          "text": "cat /etc/os-release\nuname -m\nsudo -v",
-          "label": "Terminal Ubuntu"
-        },
-        {
-          "type": "text",
-          "text": "Vérifiez VERSION_ID=\"24.04\". uname -m indique notamment x86_64 (amd64) ou aarch64 (arm64). sudo demande votre mot de passe Ubuntu : rien ne s’affiche pendant la frappe, c’est normal."
+          "type": "bullets",
+          "items": [
+            "Dans l’application, ouvrez Settings (paramètres). Repérez Agent environment.",
+            "Passez de Windows native à Windows Subsystem for Linux / WSL. Fermez complètement puis relancez l’application : le changement attend ce redémarrage."
+          ]
         },
         {
           "type": "section",
-          "text": "2 · Préparer le dépôt officiel"
+          "text": "2 · Régler le terminal intégré"
         },
         {
-          "type": "text",
-          "text": "Si Docker ou containerd sont déjà installés, faites vérifier les conflits de paquets avant de poursuivre. Ces commandes visent un poste neuf ; ne supprimez pas des données existantes."
+          "type": "bullets",
+          "items": [
+            "Dans Settings, repérez Integrated terminal shell. Choisissez WSL.",
+            "Le nouveau choix concerne les nouveaux terminaux. Ouvrez une nouvelle conversation après le réglage, ou redémarrez l’application, puis vérifiez le terminal."
+          ]
         },
         {
           "type": "code",
-          "text": "sudo apt update\nsudo apt install ca-certificates curl\nsudo install -m 0755 -d /etc/apt/keyrings\nsudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg \\\n  -o /etc/apt/keyrings/docker.asc\nsudo chmod a+r /etc/apt/keyrings/docker.asc",
-          "label": "Terminal Ubuntu · commandes une par une"
+          "label": "Terminal Ubuntu · contrôle du système",
+          "text": "uname -s\npwd"
+        },
+        {
+          "type": "text",
+          "text": "uname -s doit afficher Linux. Un chemin commençant par /home/ correspond au dossier personnel Ubuntu. Un chemin /mnt/c/ correspond au disque Windows : le travail du cours sera placé dans /home/…/cours-bi."
         },
         {
           "type": "callout",
-          "label": "Comprendre l’action",
-          "text": "APT installe les logiciels du système. La clé sert à vérifier les paquets du dépôt Docker. Vous ajoutez une source officielle ; vous n’exécutez aucun script reçu d’un assistant IA."
-        },
-        {
-          "type": "text",
-          "text": "Procédure officielle : https://docs.docker.com/engine/install/ubuntu/"
+          "label": "Garder les permissions du cours",
+          "text": "Sous la zone de demande Codex, conservez Ask for approval (demander l’autorisation), conformément à la documentation Windows. Lisez l’action demandée avant de l’accepter. Une première exploration peut rester entièrement en lecture seule."
         }
       ],
       "source_ids": [
-        "docker-ubuntu"
+        "windows",
+        "microsoft-wsl-files"
       ],
-      "printed_page": 11,
-      "id": "ubuntu-preparer"
+      "printed_page": 7
     },
     {
-      "title": "Ubuntu : installer, puis vérifier",
-      "kicker": "B / PRÉPARER SON POSTE · 12",
+      "id": "windows-copie",
+      "title": "Windows : placer le cours dans Ubuntu",
+      "kicker": "01 / PRÉPARER SON POSTE · 08",
       "blocks": [
         {
           "type": "text",
-          "text": "Ajoutez le dépôt avec le nom de votre version Ubuntu et l’architecture détectée. Copiez le bloc entier, y compris la dernière ligne EOF ; elle termine le texte écrit dans le fichier."
+          "text": "Téléchargez le ZIP dans Téléchargements Windows. Dans l’Explorateur : clic droit sur le ZIP → Extraire tout… → Extraire. Ouvrez le dossier extrait et retrouvez la racine contenant README.md, AGENTS.md, projet et outils."
+        },
+        {
+          "type": "section",
+          "text": "1 · Créer le dossier Linux"
         },
         {
           "type": "code",
-          "text": "sudo tee /etc/apt/sources.list.d/docker.sources <<EOF\nTypes: deb\nURIs: https://download.docker.com/linux/ubuntu\nSuites: $(. /etc/os-release && echo \"$VERSION_CODENAME\")\nComponents: stable\nArchitectures: $(dpkg --print-architecture)\nSigned-By: /etc/apt/keyrings/docker.asc\nEOF\nsudo apt update\nsudo apt install docker-ce docker-ce-cli containerd.io \\\n  docker-buildx-plugin docker-compose-plugin",
-          "label": "Terminal Ubuntu"
-        },
-        {
-          "type": "code",
-          "text": "sudo systemctl status docker --no-pager\nsudo docker --version\nsudo docker compose version\nsudo docker version\nsudo docker run --rm hello-world",
-          "label": "Terminal Ubuntu"
+          "label": "Ubuntu lancé depuis Démarrer · pas PowerShell",
+          "text": "cd ~\nmkdir -p cours-bi\ncd cours-bi\nexplorer.exe ."
         },
         {
           "type": "text",
-          "text": "Le service doit être active (running). Si nécessaire : sudo systemctl start docker. docker version doit afficher Client et Server ; hello-world affiche Hello from Docker! Le premier téléchargement nécessite Internet."
+          "text": "La dernière commande ouvre l’Explorateur sur ce dossier Linux. Le point signifie « ici ». Copiez le contenu de la racine extraite dans cette fenêtre. Si le dossier contient déjà votre travail, arrêtez la copie et conservez-le avant de choisir une reprise."
+        },
+        {
+          "type": "section",
+          "text": "2 · Vérifier la copie"
+        },
+        {
+          "type": "code",
+          "label": "Même terminal Ubuntu",
+          "text": "pwd\nls"
+        },
+        {
+          "type": "text",
+          "text": "pwd doit se terminer par /cours-bi. ls doit montrer README.md, AGENTS.md, projet et outils. atelier sera créé page 11. Le ZIP peut rester dans Téléchargements : travaillez dans la copie extraite."
+        },
+        {
+          "type": "section",
+          "text": "3 · Ouvrir ce dossier dans Codex"
+        },
+        {
+          "type": "text",
+          "text": "Dans l’application Windows, cliquez Add new project ou appuyez sur Ctrl + O. Dans la fenêtre de l’Explorateur, saisissez \\\\wsl$\\ puis Entrée. Ouvrez votre distribution Ubuntu, puis home, votre nom Linux et cours-bi. Choisissez ce dossier. Revenez dans Codex et ouvrez New chat dans ce projet."
         },
         {
           "type": "callout",
-          "label": "Pourquoi sudo ici ?",
-          "text": "Ce parcours conserve sudo devant les commandes Docker Ubuntu. Nous n’ajoutons pas votre compte au groupe docker, qui donne des privilèges importants sur l’ordinateur. Windows utilise les commandes sans sudo."
-        },
-        {
-          "type": "text",
-          "text": "À ce stade, je sais reconnaître le client et le service Docker. Retrouvez la racine du cours, puis continuez page 13."
+          "label": "Le bon dossier",
+          "text": "Gardez ~/cours-bi ouvert dans Codex : AGENTS.md et le futur dossier .agents/skills doivent y être accessibles. Les modifications des missions se feront dans atelier/. Continuez page 11 pour créer cette copie de travail."
         }
       ],
       "source_ids": [
-        "docker-ubuntu",
-        "docker-linux-postinstall"
+        "microsoft-wsl-files",
+        "windows",
+        "github-zip"
       ],
-      "printed_page": 12,
-      "id": "ubuntu-installer"
+      "printed_page": 8
     },
     {
-      "id": "docker-comprendre",
-      "title": "Docker : qu’est-ce qui reste sur votre PC ?",
-      "kicker": "B / PRÉPARER SON POSTE · 13",
+      "id": "ubuntu-app",
+      "title": "Ubuntu : installer l’application Linux",
+      "kicker": "01 / PRÉPARER SON POSTE · 09",
       "blocks": [
         {
           "type": "text",
-          "text": "Une image fournit Python prêt à utiliser. Un conteneur exécute cet environnement. Vos fichiers de cours restent sur votre PC ; le montage rend ce dossier visible dans le conteneur."
+          "text": "Cette page concerne Ubuntu installé sur le PC, avec son bureau graphique. La preview Linux documente Ubuntu 24.04 LTS et 26.04 LTS. Dans Windows avec WSL, gardez l’application Windows : suivez les pages 5–8."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu natif · Ctrl + Alt + T",
+          "text": "cat /etc/os-release\nuname -m"
+        },
+        {
+          "type": "text",
+          "text": "Vérifiez VERSION_ID : 24.04 ou 26.04. x86_64 désigne un processeur x64 ; aarch64 ou arm64 désigne ARM64. Ouvrez https://learn.chatgpt.com/docs/linux/linux-app et téléchargez le .deb correspondant."
+        },
+        {
+          "type": "section",
+          "text": "Installer le paquet téléchargé"
+        },
+        {
+          "type": "text",
+          "text": "Dans Fichiers, ouvrez le dossier qui contient le téléchargement, puis ouvrez un terminal dans ce dossier. Vérifiez son emplacement avec pwd et la présence du paquet avec ls. Si le fichier x64 porte le nom officiel ci-dessous :"
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu natif · dossier du paquet .deb",
+          "text": "sudo apt install ./chatgpt_amd64.deb"
+        },
+        {
+          "type": "text",
+          "text": "Pour ARM64, utilisez ./chatgpt_arm64.deb. Si le nom réellement téléchargé diffère, recopiez ce nom exact après ./ ; ne saisissez pas les deux commandes. sudo demande le mot de passe Ubuntu ; sa saisie reste invisible."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu natif · lancement après installation",
+          "text": "chatgpt"
+        },
+        {
+          "type": "text",
+          "text": "L’application peut aussi s’ouvrir depuis le menu des applications. Connectez votre compte personnel, choisissez Codex puis New chat. Vérifiez Free, l’accès à Codex et le modèle disponible selon la page 6. La preview peut évoluer : signalez un blocage au professeur."
+        }
+      ],
+      "source_ids": [
+        "linux",
+        "desktop",
+        "pricing"
+      ],
+      "printed_page": 9
+    },
+    {
+      "id": "ubuntu-copie",
+      "title": "Ubuntu : extraire puis ouvrir le cours",
+      "kicker": "01 / PRÉPARER SON POSTE · 10",
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            "Téléchargez le ZIP du cours dans votre navigateur. Ouvrez Fichiers, puis le dossier de téléchargement. Ouvrez l’archive avec le gestionnaire d’archives et choisissez Extraire.",
+            "Extrayez dans votre dossier personnel. La racine contient README.md, AGENTS.md, projet, outils, solutions, tests et defi. atelier sera créé page 11 ; data se trouvera dans atelier.",
+            "Renommez cette racine cours-bi. Si un dossier cours-bi existe déjà, conservez-le et demandez une reprise propre ; ne fusionnez pas silencieusement deux éditions."
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu natif · contrôle de la racine",
+          "text": "cd ~/cours-bi\npwd\nls"
+        },
+        {
+          "type": "text",
+          "text": "pwd doit se terminer par /cours-bi ; projet et outils doivent apparaître avec ls. Un dossier peut être ouvert dans Fichiers pour le parcourir et dans Codex pour y travailler : les fichiers restent au même endroit."
+        },
+        {
+          "type": "section",
+          "text": "Choisir ce dossier dans l’application"
+        },
+        {
+          "type": "text",
+          "text": "Dans Codex, ouvrez ou ajoutez le dossier local ~/cours-bi, puis commencez New chat dans ce projet. Gardez la racine du cours ouverte : AGENTS.md et le futur dossier .agents/skills doivent y être accessibles. Les modifications des missions se feront dans atelier/. Le libellé du sélecteur dépend de la version Linux."
+        },
+        {
+          "type": "callout",
+          "label": "La preuve avant la première mission",
+          "text": "Dans Codex, demandez le dossier courant et les noms des fichiers, sans modification. Retrouvez README.md, AGENTS.md, projet et outils. Si l’application montre un autre dossier, corrigez l’emplacement. atelier sera créé page 11 avant la première mission."
+        },
+        {
+          "type": "text",
+          "text": "Git reste facultatif. Si vous savez déjà cloner un dépôt, vous pouvez cloner l’URL fournie dans ~/cours-bi ; les mêmes contrôles de racine s’appliquent. Le parcours ZIP suffit pour toutes les missions."
+        }
+      ],
+      "source_ids": [
+        "github-zip",
+        "desktop"
+      ],
+      "printed_page": 10
+    },
+    {
+      "id": "python",
+      "title": "Tout le monde : vérifier Python",
+      "kicker": "01 / PRÉPARER SON POSTE · 11",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "À partir d’ici, Windows utilise le terminal Ubuntu de WSL ; Ubuntu natif utilise son propre Terminal. Les commandes sont les mêmes. Python exécute le programme ; sqlite3, csv et decimal font partie de sa bibliothèque standard."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu · contrôle sans modifier le cours",
+          "text": "cd ~/cours-bi\npython3 --version\npython3 -c \"import csv, sqlite3, decimal; print('OK Python')\""
+        },
+        {
+          "type": "text",
+          "text": "Une version Python 3 puis OK Python doivent s’afficher. Vous n’avez aucun paquet pip à installer pour le cours. Le programme sqlite3 en ligne de commande est lui aussi inutile : les scripts utilisent le module Python."
+        },
+        {
+          "type": "section",
+          "text": "Si python3 est introuvable"
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu · seulement si Python manque",
+          "text": "sudo apt update\nsudo apt install python3"
+        },
+        {
+          "type": "text",
+          "text": "Lisez la proposition d’installation et confirmez si elle correspond à Python. Attendez la fin, puis refaites les deux contrôles ci-dessus. Si sudo est refusé ou si le réseau bloque, faites préparer le poste ; ne modifiez pas les protections du système."
+        },
+        {
+          "type": "callout",
+          "label": "Reconnaître >>>",
+          "text": "Si vous avez lancé python3 tout seul, vous êtes dans la console Python et voyez >>>. Saisissez quit() puis Entrée pour revenir au terminal. Les commandes cd et python3 fichier.py appartiennent au terminal, pas à >>>."
+        },
+        {
+          "type": "section",
+          "text": "Créer votre atelier de départ"
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu · seulement si atelier n’existe pas",
+          "text": "cd ~/cours-bi\npython3 outils/jalon.py 01 atelier"
+        },
+        {
+          "type": "text",
+          "text": "Attendez « Jalon 01 créé ». Si atelier existe déjà, ne relancez pas cette commande : gardez votre essai et continuez avec ce dossier. Ne supprimez pas votre travail pour recommencer au jalon 01. Gardez ~/cours-bi ouvert dans Codex et passez page 12."
+        }
+      ],
+      "source_ids": [
+        "ubuntu-python"
+      ],
+      "printed_page": 11
+    },
+    {
+      "id": "premier-prompt",
+      "title": "Première demande : explorer sans écrire",
+      "kicker": "01 / PRÉPARER SON POSTE · 12",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Le projet cours-bi est ouvert dans Codex. Le modèle proposé par le compte peut être Luna Standard. Standard est une vitesse ; High est l’effort conseillé pour Luna si ce réglage est proposé. Sinon, gardez la valeur disponible. Avant d’écrire une demande, dites ce que vous voulez obtenir et quels fichiers l’agent doit lire."
         },
         {
           "type": "figure",
-          "path": "../docs/images/diagrams/poste-docker.png",
-          "height": 250,
-          "caption": "Schéma du cours : même dossier vu depuis votre PC et depuis le conteneur."
+          "path": "../docs/images/diagrams/v6-codex-boucle.png",
+          "height": 170,
+          "caption": "Une demande courte produit une action que vous pouvez lire, exécuter et expliquer."
         },
         {
-          "type": "table",
-          "headers": [
-            "Sur votre PC",
-            "Dans le conteneur"
-          ],
-          "rows": [
-            [
-              "Racine du cours",
-              "/workspace"
-            ],
-            [
-              "projet/",
-              "/workspace/projet : dossier de travail"
-            ],
-            [
-              "projet/outputs/",
-              "outputs/ : résultats conservés sur votre PC"
-            ]
-          ],
-          "widths": [
-            1.5,
-            2.5
+          "type": "code",
+          "label": "Dans la zone de demande de la conversation Codex",
+          "text": "Je débute. Lis uniquement README.md et AGENTS.md,\npuis liste les fichiers du dossier atelier.\nExplique en français où sera mon travail en 5 phrases.\nNe modifie aucun fichier et ne lance aucune installation."
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Lisez la réponse et les actions réellement affichées. Vérifiez que l’agent décrit le dossier que vous avez ouvert.",
+            "Comparez les noms de fichiers avec ls atelier dans votre terminal. Une réponse plausible ne remplace pas ce contrôle.",
+            "Si une action de modification ou d’installation est proposée, refusez-la pour ce premier essai et rappelez la demande de lecture."
           ]
         },
         {
           "type": "callout",
-          "label": "Une tâche, puis arrêt",
-          "text": "docker compose run --rm atelier python … lance le programme demandé, puis retire le conteneur temporaire. Les fichiers montés restent. Le CLI IA, facultatif, s’installe sur le PC : aucun compte ni secret n’est ajouté au conteneur."
+          "label": "Votre preuve",
+          "text": "Vous pouvez montrer le dossier cours-bi, le dossier atelier et une réponse qui explique leur rôle. Vous pouvez dire ce que Codex a lu et confirmer qu’aucun fichier n’a changé pendant cet essai."
+        }
+      ],
+      "source_ids": [
+        "desktop",
+        "models",
+        "windows"
+      ],
+      "printed_page": 12
+    },
+    {
+      "id": "executer",
+      "title": "Lancer et contrôler un petit programme",
+      "kicker": "01 / PRÉPARER SON POSTE · 13",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Pendant les missions, Codex aide à compléter une petite partie du programme. Vous lisez les changements, puis vous lancez le script depuis le terminal. La commande doit toujours partir du dossier indiqué."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu · vérifier le premier état de travail",
+          "text": "cd ~/cours-bi/atelier\npython3 verifier.py 01"
+        },
+        {
+          "type": "text",
+          "text": "Après la création du jalon 01, ce contrôle doit afficher OK 01 et annoncer un calcul de 9000 millimes. Puis lancez python3 calcul.py : vous devez lire 2 × 4500 = 9000 millimes = 9.000 TND. Les missions suivantes contiennent des parties à compléter ; une erreur y servira de point de départ."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Commande du cours",
+            "À quel moment ?"
+          ],
+          "rows": [
+            [
+              "python3 verifier.py 01",
+              "Contrôler la mission 01 ; remplacer 01 par le numéro demandé."
+            ],
+            [
+              "python3 executer.py initial",
+              "Après les missions de chargement : traiter le premier lot."
+            ],
+            [
+              "python3 executer.py increment",
+              "Après la mission SQL/SCD2 : traiter le lot suivant."
+            ],
+            [
+              "python3 executer.py export",
+              "Après les contrôles : produire les quatre CSV pour Power BI."
+            ],
+            [
+              "python3 verifier.py tout",
+              "Vérifier l’ensemble quand les étapes demandées sont terminées."
+            ]
+          ],
+          "widths": [
+            1.7,
+            2.3
+          ]
         },
         {
           "type": "callout",
-          "label": "Pour travailler hors ligne",
-          "text": "Gardez le dossier extrait, l’éditeur et l’image construite. Windows : Desktop reste ouvert ; Ubuntu : Engine tourne. Ne nettoyez pas les images ni la base pendant un exercice de rejeu."
+          "label": "Conserver le message exact",
+          "text": "Copiez la commande et le texte complet de l’erreur. Indiquez le dossier courant obtenu avec pwd. Demandez une explication et un indice avant une réparation : cela évite de corriger le mauvais fichier."
+        },
+        {
+          "type": "text",
+          "text": "Ne modifiez jamais le vérificateur pour masquer une erreur. Pour l’essai suivant, travaillez seulement dans le fichier atelier indiqué par la mission. Lisez le changement, enregistrez votre essai, relancez le même contrôle et expliquez le résultat."
         }
       ],
       "source_ids": [],
       "printed_page": 13
     },
     {
-      "title": "Construire l’image et trouver Python",
-      "kicker": "B / PRÉPARER SON POSTE · 14",
+      "id": "usage",
+      "title": "Usage gratuit : garder un rythme utile",
+      "kicker": "01 / PRÉPARER SON POSTE · 14",
       "blocks": [
         {
           "type": "text",
-          "text": "Restez à la racine du cours (page 6). Dockerfile décrit Python 3.13 ; compose.yaml définit le service atelier. Le premier build demande Internet."
+          "text": "Les cinq séances durent 15 heures ; elles comprennent lecture, manipulations, tests et discussion. Cette durée ne garantit pas 15 heures de réponses Codex. Chaque demande consomme un usage variable selon les fichiers, le modèle, l’effort et les outils."
         },
         {
           "type": "section",
-          "text": "Windows · PowerShell normal"
-        },
-        {
-          "type": "code",
-          "text": "docker compose build\ndocker compose run --rm atelier python --version",
-          "label": "PowerShell · racine du cours"
-        },
-        {
-          "type": "section",
-          "text": "Ubuntu · Terminal"
-        },
-        {
-          "type": "text",
-          "text": "Créez .env une fois, sans écraser un fichier existant. Il donne au conteneur vos identifiants numériques pour garder les fichiers modifiables. Si .env existe, faites vérifier LOCAL_UID et LOCAL_GID. Aucune clé IA dans ce fichier."
-        },
-        {
-          "type": "code",
-          "text": "cd \"$HOME/atlas-bi-ia\"\ntest -e .env || printf \"LOCAL_UID=%s\\nLOCAL_GID=%s\\n\" \\\n  \"$(id -u)\" \"$(id -g)\" > .env\nsudo docker compose build\nsudo docker compose run --rm atelier python --version",
-          "label": "Terminal Ubuntu · racine du cours"
-        },
-        {
-          "type": "callout",
-          "label": "Résultat attendu",
-          "text": "Python 3.13.x apparaît. Le premier build télécharge l’image officielle : Internet est nécessaire. Une fois l’image construite et conservée, les programmes du cours utilisent seulement la bibliothèque standard. Aucun pip install n’est requis."
-        },
-        {
-          "type": "text",
-          "text": "run --rm lance une tâche puis retire son conteneur temporaire. Le montage conserve vos fichiers dans projet sur votre PC. Ne lancez pas de nettoyage des images si vous devez travailler hors ligne."
-        }
-      ],
-      "source_ids": [
-        "python-docker-official",
-        "docker-compose-run"
-      ],
-      "printed_page": 14,
-      "id": "docker-construire"
-    },
-    {
-      "id": "editeur",
-      "title": "Thonny : démarrer, puis ouvrir calcul.py",
-      "kicker": "B / PRÉPARER SON POSTE · 15",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Windows : téléchargez la version portable ZIP de Thonny depuis https://thonny.org/, extrayez-la dans un dossier personnel et ouvrez l’application. Ubuntu : installez l’éditeur avec sudo apt install thonny."
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/real/thonny-premier-demarrage.jpg",
-          "height": 190,
-          "caption": "Premier écran réel de Thonny 5 sur macOS, 27/10/2026 ; ce n’est pas une installation Windows."
-        },
-        {
-          "type": "text",
-          "text": "Au premier écran, Language permet de choisir Français, puis Let’s go! ouvre l’espace de travail. La capture montre seulement cet accueil. Une fois Thonny ouvert, suivez Fichier → Ouvrir et les étapes ci-dessous."
+          "text": "Avant une nouvelle demande"
         },
         {
           "type": "bullets",
           "items": [
-            "Thonny → Fichier (File) → Ouvrir (Open) → dossier du cours → projet → calcul.py.",
-            "Repérez la fonction à compléter. Ne remplacez pas tout le fichier.",
-            "Ctrl + S enregistre votre modification. Docker lit seulement la version enregistrée."
+            "Regardez l’usage et l’heure de remise à disposition affichés par votre compte, lorsqu’ils sont disponibles.",
+            "Écrivez une seule tâche, les fichiers utiles et le résultat à vérifier. Évitez de joindre tout le cours pour corriger cinq lignes.",
+            "Après la réponse, lisez la modification, exécutez le contrôle local et notez ce que vous avez compris avant de demander la suite."
           ]
         },
         {
           "type": "code",
-          "text": "def calculer_total(ventes):\n    # TODO — mission 01 : construire cette fonction avec aide de l’IA, puis vérifier.\n    raise NotImplementedError(\"Compléter calcul.py : calculer_total.\")",
-          "label": "LIRE · extrait exact de projet/calcul.py",
-          "source": "projet/calcul.py"
+          "label": "Prompt d’aide ciblée · remplir les crochets",
+          "text": "Dans atelier/[fichier.py], je travaille sur [fonction].\nRésultat attendu : [valeur ou forme attendue].\nCommande lancée : [commande exacte].\nRésultat observé : [message exact].\nExplique le problème et donne un seul indice.\nNe modifie aucun fichier pour le moment."
+        },
+        {
+          "type": "section",
+          "text": "Si le quota est épuisé"
         },
         {
           "type": "text",
-          "text": "TODO signifie « à compléter ». Pendant la mission 01, vous remplacerez cette fonction et garderez le reste du fichier. Enregistrez avant toute exécution."
+          "text": "Notez l’heure de reprise affichée. Gardez votre essai et continuez localement : lire la consigne, prédire le résultat, lancer Python, examiner la sortie et consulter l’indice du PDF 03. Un jalon fourni permet de reprendre une étape avec le professeur. Revenez à Codex lorsque l’usage se rétablit."
         },
         {
           "type": "callout",
-          "label": "Deux parcours, un même fichier",
-          "text": "Avec Docker : lancez le fichier depuis PowerShell ou Terminal, page 16. En secours natif : F5 dans Thonny peut lancer le fichier, ou utilisez les commandes des pages 18–19."
+          "label": "Un jalon aide à reprendre",
+          "text": "Un jalon est un état de référence de l’atelier, pas votre preuve de travail. Conservez votre premier essai avant de l’utiliser ; expliquez ensuite ce que vous avez changé ou appris. L’usage d’un jalon n’exige aucun appel IA."
         }
       ],
       "source_ids": [
-        "thonny-official"
+        "pricing",
+        "models"
+      ],
+      "printed_page": 14
+    },
+    {
+      "id": "powerbi",
+      "title": "Préparer Power BI avant la séance 4",
+      "kicker": "01 / PRÉPARER SON POSTE · 15",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Power BI Desktop est le logiciel Windows utilisé pour le modèle et les graphiques. Python et SQLite préparent les données dans Ubuntu ; Power BI Desktop les lit ensuite sur Windows. Les fichiers locaux et le rapport .pbix suffisent au cours."
+        },
+        {
+          "type": "section",
+          "text": "Sur le vrai poste Windows prévu"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Ouvrez https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop et suivez le lien Microsoft Store Power BI Desktop.",
+            "Installez l’application publiée par Microsoft, puis ouvrez Power BI Desktop depuis Démarrer. Le Microsoft Store peut être géré par l’établissement : signalez un blocage avant la séance 4.",
+            "Vérifiez que la fenêtre du logiciel s’ouvre et qu’un rapport local peut être créé. Gardez un dossier local Windows pour les CSV du cours et le futur fichier .pbix."
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Si vous travaillez sous Ubuntu natif"
+        },
+        {
+          "type": "text",
+          "text": "Repérez dès maintenant le poste Windows du laboratoire ou du binôme sur lequel vous ferez réellement l’import Power BI. À la séance 4, transférez le dossier d’export complet vers ce poste. Une capture d’un autre groupe ne prouve pas votre import ni votre actualisation."
+        },
+        {
+          "type": "callout",
+          "label": "La préparation est terminée quand…",
+          "text": "…vous pouvez ouvrir Power BI Desktop sur le poste Windows que vous utiliserez. Une procédure lue ou une installation proposée ne suffit pas. Un éventuel rapport HTML local sert de preuve ETL, il ne remplace pas le travail Power BI."
+        },
+        {
+          "type": "text",
+          "text": "Le téléchargement direct .exe depuis la même page Microsoft est possible si le Store est indisponible ; cette installation demande les droits d’administration. Utilisez la version Desktop courante, pas l’édition Power BI Report Server."
+        }
+      ],
+      "source_ids": [
+        "powerbi-desktop",
+        "powerbi-requirements"
       ],
       "printed_page": 15
     },
     {
-      "title": "Lancer, lire le résultat, expliquer",
-      "kicker": "B / PRÉPARER SON POSTE · 16",
+      "id": "transferer",
+      "title": "Du dossier Linux aux quatre CSV Windows",
+      "kicker": "01 / PRÉPARER SON POSTE · 16",
       "blocks": [
         {
-          "type": "section",
-          "text": "Depuis la racine · une commande à la fois"
-        },
-        {
-          "type": "code",
-          "text": "docker compose run --rm atelier python calcul.py\ndocker compose run --rm atelier python verifier.py 01",
-          "label": "PowerShell · Windows"
-        },
-        {
-          "type": "code",
-          "text": "sudo docker compose run --rm atelier python calcul.py\nsudo docker compose run --rm atelier python verifier.py 01",
-          "label": "Terminal Ubuntu"
-        },
-        {
           "type": "text",
-          "text": "verifier.py 01 contrôle votre fonction pour le jalon 01. Avant la mission, « mission à construire » est normal : Python est installé, mais votre fonction reste à écrire."
-        },
-        {
-          "type": "code",
-          "text": "[OK 01] Calcul entier validé, y compris une variation.",
-          "label": "LIRE · résultat réellement obtenu dans Docker Linux"
-        },
-        {
-          "type": "text",
-          "text": "Résultat observé dans Docker Linux sur le poste de fabrication macOS, le 27/10/2026. Il montre le contrôle d’une fonction terminée ; sur votre starter, le message demande d’abord de la construire."
+          "text": "Cette page servira en séance 4, après un export réussi. Un export est une copie organisée des tables pour un autre logiciel. Le dossier contient quatre CSV et un manifest.json qui décrit cette livraison. Gardez-les ensemble."
         },
         {
           "type": "table",
           "headers": [
-            "Dans ce résultat",
-            "Ce que cela prouve"
+            "Fichier",
+            "Rôle"
           ],
           "rows": [
             [
-              "01",
-              "Le contrôle concerne le jalon 01."
+              "dim_product.csv",
+              "Les produits et leur clé."
             ],
             [
-              "Calcul entier validé",
-              "La fonction respecte les cas contrôlés, pas seulement le premier panier."
+              "dim_shop.csv",
+              "Les versions historiques des boutiques et leur clé."
             ],
             [
-              "Une variation",
-              "Un autre panier a aussi été contrôlé."
+              "dim_date.csv",
+              "Les dates et leur clé."
+            ],
+            [
+              "fact_sales.csv",
+              "Les ventes liées aux trois dimensions."
+            ],
+            [
+              "manifest.json",
+              "Les noms, nombres et empreintes de cette livraison."
+            ]
+          ],
+          "widths": [
+            1.2,
+            2.8
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Windows avec WSL2"
+        },
+        {
+          "type": "text",
+          "text": "Lisez le chemin exact imprimé par python3 executer.py export. Dans le terminal Ubuntu, placez-vous dans ce dossier d’export. Exemple de chemin : ~/cours-bi/atelier/outputs/powerbi/ suivi de l’identifiant de livraison affiché. Ne recopiez pas un identifiant inventé."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu · depuis le dossier de livraison réussi",
+          "text": "pwd\nls\nexplorer.exe ."
+        },
+        {
+          "type": "text",
+          "text": "Dans l’Explorateur, copiez le dossier de livraison entier vers un dossier local Windows, par exemple Documents/AtlasBI. Importez ensuite les quatre CSV de cette copie Windows dans Power BI Desktop ; gardez le même emplacement pour l’actualisation."
+        },
+        {
+          "type": "section",
+          "text": "Ubuntu natif"
+        },
+        {
+          "type": "text",
+          "text": "Copiez le dossier complet sur une clé USB ou un autre support autorisé, puis sur le poste Windows prévu. Vérifiez les cinq fichiers après la copie. Ouvrez Power BI sur ce poste et suivez le PDF 02 pour importer, typer, relier et contrôler les quatre tables."
+        }
+      ],
+      "source_ids": [
+        "microsoft-wsl-files"
+      ],
+      "printed_page": 16
+    },
+    {
+      "id": "depannage",
+      "title": "Un blocage : lire, localiser, reprendre",
+      "kicker": "01 / PRÉPARER SON POSTE · 17",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Ce que vous voyez",
+            "Prochain geste"
+          ],
+          "rows": [
+            [
+              "wsl introuvable / installation refusée",
+              "Vérifier le poste Windows et ses droits avec le professeur. Garder un poste prêt pour commencer."
+            ],
+            [
+              "VERSION 1 dans wsl --list --verbose",
+              "Faire préparer WSL2 avant de lancer l’agent WSL. Ne pas poursuivre en supposant que WSL1 suffit."
+            ],
+            [
+              "Le mot de passe ne s’affiche pas",
+              "Saisir normalement puis Entrée. Ubuntu masque toute la saisie."
+            ],
+            [
+              "cd: No such file or directory",
+              "Exécuter pwd puis ls. Rechercher la racine extraite ; ne pas créer un atelier vide pour cacher le problème."
+            ],
+            [
+              "python3 introuvable",
+              "Installer python3 avec apt selon la page 11, puis refaire les contrôles."
+            ],
+            [
+              "SyntaxError après cd ou python3",
+              "Si vous voyez >>>, taper quit() puis relancer la commande dans le terminal."
+            ],
+            [
+              "Codex regarde les mauvais fichiers",
+              "Vérifier le projet et le chemin. Windows : agent WSL, redémarrage, dossier sous /home/."
+            ],
+            [
+              "Codex absent / quota épuisé",
+              "Garder l’essai, les indices et les contrôles locaux. Reprendre à l’heure indiquée ou sur un poste autorisé prêt."
+            ],
+            [
+              "Vérification en échec",
+              "Copier commande + message exact. Lire la consigne et l’indice ; conserver les données et le vérificateur."
             ]
           ],
           "widths": [
@@ -801,546 +830,27 @@
         },
         {
           "type": "callout",
-          "label": "À ce stade, je sais…",
-          "text": "…différencier enregistrer et exécuter ; je peux nommer le fichier lancé, lire un message d’erreur et retrouver le contrôle de mon jalon."
+          "label": "Pour demander une aide utile",
+          "text": "Montrez la fenêtre, le dossier courant, la commande et le résultat. Dites ce que vous attendiez. Une photo de l’erreur peut aider le professeur ; ne partagez aucun mot de passe ni donnée personnelle."
+        },
+        {
+          "type": "text",
+          "text": "Les erreurs de mission font partie du travail. Les commandes d’installation, elles, sont des préparations du poste : si les droits ou le réseau les bloquent, le professeur organise la reprise sur un poste disponible."
         }
       ],
       "source_ids": [
-        "thonny-official"
-      ],
-      "printed_page": 16,
-      "id": "executer"
-    },
-    {
-      "id": "rapport",
-      "title": "Ouvrir le rapport et arrêter le serveur",
-      "kicker": "B / PRÉPARER SON POSTE · 17",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Après les sept missions, executer.py crée le rapport. Lancer ensuite le serveur :"
-        },
-        {
-          "type": "code",
-          "text": "docker compose run --rm atelier python executer.py\ndocker compose up -d",
-          "label": "PowerShell · après les missions"
-        },
-        {
-          "type": "code",
-          "text": "sudo docker compose run --rm atelier python executer.py\nsudo docker compose up -d",
-          "label": "Terminal Ubuntu · après les missions"
-        },
-        {
-          "type": "text",
-          "text": "Dans le navigateur : http://localhost:8000/rapport_atlas.html"
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/real/rapport-atlas-final.jpg",
-          "height": 190,
-          "caption": "Aperçu réel du rapport Atlas sur macOS, 27/10/2026 : 14 faits, 35 unités, 115.500 TND.",
-          "crop": [
-            130,
-            40,
-            1120,
-            380
-          ]
-        },
-        {
-          "type": "text",
-          "text": "localhost désigne votre PC. Le port est publié seulement sur 127.0.0.1. Une erreur 404 signifie que le fichier n’existe pas encore dans projet/outputs/."
-        },
-        {
-          "type": "code",
-          "text": "docker compose down",
-          "label": "PowerShell · Windows"
-        },
-        {
-          "type": "text",
-          "text": "Ubuntu : sudo docker compose down. Cet arrêt conserve vos scripts, CSV, base SQLite et rapport. Sauvegardez régulièrement projet."
-        }
-      ],
-      "source_ids": [
-        "docker-localhost-port",
-        "docker-bind-mount"
+        "microsoft-wsl-install",
+        "microsoft-wsl-environment",
+        "windows",
+        "pricing"
       ],
       "printed_page": 17
     },
     {
-      "title": "Secours Windows : Python et Thonny",
-      "kicker": "B / PRÉPARER SON POSTE · 18",
+      "id": "recap",
+      "title": "Prêt pour la mission 01",
+      "kicker": "01 / PRÉPARER SON POSTE · 18",
       "blocks": [
-        {
-          "type": "text",
-          "text": "Si WSL, la virtualisation ou Docker sont bloqués, utilisez Python directement. Le code du cours emploie la bibliothèque standard : les mêmes fichiers et les mêmes contrôles restent utilisables."
-        },
-        {
-          "type": "section",
-          "text": "1 · Décompresser Thonny portable"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Sur https://thonny.org/, choisissez le téléchargement Windows portable ZIP adapté au PC. Extrayez-le dans un dossier personnel ; ouvrez Thonny depuis le dossier extrait. Ce mode évite un installateur, mais une politique informatique peut quand même bloquer l’application.",
-            "Thonny fournit l’éditeur et Python. Fichier (File) → Ouvrir (Open) → projet/calcul.py. Ctrl + S enregistre ; F5 lance le fichier. Le Shell affiche les résultats."
-          ]
-        },
-        {
-          "type": "section",
-          "text": "2 · Repérer Python dans le Shell Thonny"
-        },
-        {
-          "type": "code",
-          "text": "import sys\nimport sqlite3\nprint(sys.version)\nprint(sys.executable)\nprint(sqlite3.sqlite_version)",
-          "label": "Python · Shell Thonny, invite >>>"
-        },
-        {
-          "type": "text",
-          "text": "Vérifiez Python 3.10 ou plus et une version SQLite. Copiez le chemin affiché par sys.executable. Dans PowerShell normal, remplacez le chemin d’exemple de $pyAtelier par ce chemin exact, entre guillemets."
-        },
-        {
-          "type": "code",
-          "text": "$pyAtelier = \"C:\\CHEMIN_COPIE\\python.exe\"\ncd \"C:\\Users\\VOTRE_COMPTE\\Documents\\atlas-bi-ia\\projet\"\n& $pyAtelier --version\n& $pyAtelier calcul.py\n& $pyAtelier verifier.py 01",
-          "label": "PowerShell · les DEUX chemins sont À ADAPTER"
-        },
-        {
-          "type": "callout",
-          "label": "Même terminal pour la suite",
-          "text": "Gardez ce PowerShell ouvert. Dans les missions, remplacez docker compose run --rm atelier python par & $pyAtelier et travaillez dans projet. Après fermeture, redéfinissez $pyAtelier. Aucun paquet pip n’est requis."
-        }
-      ],
-      "source_ids": [
-        "thonny-official",
-        "thonny-release",
-        "python-windows"
-      ],
-      "printed_page": 18,
-      "id": "natif-windows"
-    },
-    {
-      "title": "Secours Ubuntu et rapport sans Docker",
-      "kicker": "B / PRÉPARER SON POSTE · 19",
-      "blocks": [
-        {
-          "type": "section",
-          "text": "Ubuntu 24.04 · installer Python et un éditeur"
-        },
-        {
-          "type": "text",
-          "text": "Le Python du système (Ubuntu 24.04 : Python 3.12) convient au socle du cours. Il peut différer du Python 3.13 du conteneur : notez la version dans un signalement. Si Python est déjà disponible, le premier contrôle suffit ; sinon, installez les paquets autorisés."
-        },
-        {
-          "type": "code",
-          "text": "sudo apt update\nsudo apt install python3 python3-tk thonny\npython3 --version\npython3 -c \"import sqlite3; print(sqlite3.sqlite_version)\"\ncd \"$HOME/atlas-bi-ia/projet\"\npython3 calcul.py\npython3 verifier.py 01",
-          "label": "Terminal Ubuntu"
-        },
-        {
-          "type": "text",
-          "text": "Menu Applications → Thonny, puis Fichier (File) → Ouvrir (Open) → projet/calcul.py. Enregistrez. Dans les missions, remplacez docker compose run --rm atelier python par python3 ; restez dans projet."
-        },
-        {
-          "type": "section",
-          "text": "Après les missions · produire puis ouvrir le rapport"
-        },
-        {
-          "type": "code",
-          "text": "& $pyAtelier executer.py\n& $pyAtelier -m http.server 8000 `\n  --bind 127.0.0.1 --directory outputs",
-          "label": "PowerShell · même terminal que la page précédente"
-        },
-        {
-          "type": "code",
-          "text": "python3 executer.py\npython3 -m http.server 8000 \\\n  --bind 127.0.0.1 --directory outputs",
-          "label": "Terminal Ubuntu · dossier projet"
-        },
-        {
-          "type": "text",
-          "text": "Gardez ce terminal ouvert, puis ouvrez http://localhost:8000/rapport_atlas.html dans le navigateur. Ctrl + C dans le terminal arrête le serveur. Une erreur 404 signifie que le rapport n’a pas encore été créé à cet emplacement."
-        },
-        {
-          "type": "callout",
-          "label": "À ce stade, je sais…",
-          "text": "…utiliser le projet sans Docker, identifier mon interpréteur et ouvrir un résultat HTML local. Il n’y a aucun paquet pip ou serveur de base de données à installer."
-        }
-      ],
-      "source_ids": [
-        "ubuntu-python",
-        "thonny-official",
-        "python-httpserver"
-      ],
-      "printed_page": 19,
-      "id": "natif-ubuntu"
-    },
-    {
-      "title": "L’IA : commencer dans le navigateur",
-      "kicker": "B / PRÉPARER SON POSTE · 20",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Un assistant peut expliquer une erreur ou proposer une petite fonction. Vous restez responsable du résultat. Le cours n’exige ni abonnement, ni clé API, ni CLI : vous pouvez travailler avec le chat web disponible et les indices locaux."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Outil",
-            "Accès à distinguer"
-          ],
-          "rows": [
-            [
-              "Claude dans le navigateur",
-              "Le chat Claude Free n’inclut pas Claude Code. Utilisez claude.ai avec votre compte personnel si le service est disponible."
-            ],
-            [
-              "ChatGPT dans le navigateur",
-              "Utilisez chatgpt.com si votre compte le permet. Les fonctions et limites dépendent du plan et peuvent évoluer."
-            ],
-            [
-              "Codex CLI",
-              "L’accès universel du plan Free au CLI n’est pas établi par les sources consultées. Ne déduisez pas son accès de la présence du nom Codex dans une application."
-            ],
-            [
-              "Claude Code",
-              "Option avec compte personnel éligible déjà disponible. Le cours ne demande aucun achat ni configuration de facturation API."
-            ]
-          ],
-          "widths": [
-            1.2,
-            3
-          ]
-        },
-        {
-          "type": "section",
-          "text": "Votre routine : prédire → demander → essayer → expliquer"
-        },
-        {
-          "type": "code",
-          "text": "Je débute en Python. Dans projet/calcul.py, ma fonction\ndoit multiplier quantité par prix en millimes.\nVoici mon essai : [coller seulement la fonction].\nVoici le résultat observé : [copier la sortie exacte].\nExplique le problème en 3 phrases et donne un indice.",
-          "label": "Prompt web · remplacez les parties entre crochets"
-        },
-        {
-          "type": "text",
-          "text": "Copiez une proposition seulement après l’avoir lue. Enregistrez, exécutez le contrôle local et expliquez ce qui change. Deux à quatre demandes ciblées par étape sont un repère de travail, jamais un quota garanti. Ne transmettez aucun identifiant ni fichier personnel."
-        },
-        {
-          "type": "callout",
-          "label": "Si l’IA est indisponible",
-          "text": "Gardez votre prédiction et votre essai. Consultez l’indice local, discutez en binôme et poursuivez avec Python. Les quotas du chat et de l’API sont distincts ; aucune quantité fixe de messages n’est promise."
-        },
-        {
-          "type": "text",
-          "text": "Accès officiels : https://claude.com/pricing et https://learn.chatgpt.com/docs/pricing"
-        }
-      ],
-      "source_ids": [
-        "claude_pricing",
-        "claude_setup",
-        "codex_access"
-      ],
-      "printed_page": 20,
-      "id": "ia-web"
-    },
-    {
-      "title": "Option : installer Codex sur le PC",
-      "kicker": "B / PRÉPARER SON POSTE · 21",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Option : installez Codex seulement si votre compte a déjà accès au CLI. Sinon, gardez le navigateur. Utilisez le terminal du PC hôte, jamais le conteneur Python."
-        },
-        {
-          "type": "section",
-          "text": "Windows · PowerShell normal"
-        },
-        {
-          "type": "code",
-          "text": "irm https://chatgpt.com/codex/install.ps1 | iex",
-          "label": "PowerShell · installateur officiel Codex"
-        },
-        {
-          "type": "text",
-          "text": "La commande télécharge et exécute l’installateur officiel. Vérifiez le domaine. Fermez puis rouvrez PowerShell."
-        },
-        {
-          "type": "code",
-          "text": "Get-Command codex\ncodex --version",
-          "label": "PowerShell · contrôle"
-        },
-        {
-          "type": "section",
-          "text": "Ubuntu · Terminal"
-        },
-        {
-          "type": "code",
-          "text": "curl -fsSL https://chatgpt.com/codex/install.sh | sh",
-          "label": "Terminal Ubuntu · installateur officiel Codex"
-        },
-        {
-          "type": "text",
-          "text": "Ouvrez un nouveau terminal. Si curl manque : faites préparer sudo apt install curl. Ne lancez pas Codex avec sudo."
-        },
-        {
-          "type": "code",
-          "text": "command -v codex\ncodex --version",
-          "label": "Terminal Ubuntu · contrôle"
-        },
-        {
-          "type": "callout",
-          "label": "Preuve attendue",
-          "text": "Un chemin et une version doivent s’afficher. Node.js n’est pas nécessaire. Si la commande manque encore après réouverture du terminal, faites vérifier le PATH utilisateur ; ne contournez pas une règle de sécurité."
-        },
-        {
-          "type": "text",
-          "text": "Documentation : https://learn.chatgpt.com/docs/codex/cli ; installateur Windows : https://learn.chatgpt.com/docs/config-file/environment-variables"
-        }
-      ],
-      "source_ids": [
-        "codex_cli",
-        "codex_install_paths",
-        "codex_windows_verify",
-        "codex_access"
-      ],
-      "printed_page": 21,
-      "id": "codex-installer"
-    },
-    {
-      "title": "Codex : connexion et premier essai",
-      "kicker": "B / PRÉPARER SON POSTE · 22",
-      "blocks": [
-        {
-          "type": "section",
-          "text": "1 · Connecter votre compte personnel éligible"
-        },
-        {
-          "type": "code",
-          "text": "codex login\ncodex login status",
-          "label": "PowerShell ou Terminal Ubuntu · hôte"
-        },
-        {
-          "type": "text",
-          "text": "Terminez la connexion ChatGPT autorisée dans le navigateur. login status confirme l’authentification, pas le quota. Si une clé API ou un paiement est demandé, arrêtez et utilisez le chat web disponible."
-        },
-        {
-          "type": "section",
-          "text": "2 · Ouvrir le cours en lecture seule"
-        },
-        {
-          "type": "text",
-          "text": "Refaites le cd vers la racine extraite du cours (compose.yaml visible). Puis lancez :"
-        },
-        {
-          "type": "code",
-          "text": "codex --sandbox read-only --ask-for-approval on-request",
-          "label": "PowerShell ou Terminal Ubuntu · racine du cours"
-        },
-        {
-          "type": "text",
-          "text": "Dans la conversation Codex, saisissez /status pour lire le contexte, puis cette première demande :"
-        },
-        {
-          "type": "code",
-          "text": "Lis uniquement README.md et projet/calcul.py.\nExplique en français leur rôle en cinq phrases.\nNe modifie aucun fichier et ne lance aucune installation.",
-          "label": "Conversation Codex · premier prompt"
-        },
-        {
-          "type": "callout",
-          "label": "Garder les protections",
-          "text": "/permissions affiche les permissions. Restez en lecture seule pour cet essai. Plus tard, sauvegardez le fichier avant une correction, autorisez seulement l’exercice demandé et gardez les confirmations. N’utilisez aucun mode de contournement."
-        },
-        {
-          "type": "text",
-          "text": "Après une correction, lisez le diff proposé. Avec Git déjà installé : git diff. Sans Git : comparez votre copie sauvegardée au fichier actuel. Relancez vous-même le contrôle. Aucun dossier d’authentification n’est monté dans Docker."
-        },
-        {
-          "type": "text",
-          "text": "Documentation : https://learn.chatgpt.com/docs/auth et https://learn.chatgpt.com/docs/agent-approvals-security"
-        }
-      ],
-      "source_ids": [
-        "codex_auth",
-        "codex_permissions",
-        "codex_windows_sandbox",
-        "codex_workflow"
-      ],
-      "printed_page": 22,
-      "id": "codex-demarrer"
-    },
-    {
-      "title": "Option : installer Claude Code sur le PC",
-      "kicker": "B / PRÉPARER SON POSTE · 23",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Option : Claude Free n’inclut pas Claude Code. Faites vérifier votre accès avant l’installation. Le cours fonctionne avec le navigateur et les aides locales, sans achat."
-        },
-        {
-          "type": "section",
-          "text": "Windows · PowerShell normal"
-        },
-        {
-          "type": "code",
-          "text": "irm https://claude.ai/install.ps1 | iex",
-          "label": "PowerShell · installateur officiel Claude Code"
-        },
-        {
-          "type": "section",
-          "text": "Ubuntu · Terminal"
-        },
-        {
-          "type": "code",
-          "text": "curl -fsSL https://claude.ai/install.sh | bash",
-          "label": "Terminal Ubuntu · installateur officiel Claude Code"
-        },
-        {
-          "type": "text",
-          "text": "Vérifiez le domaine de l’installateur, puis rouvrez le terminal. Node.js n’est pas nécessaire. Sur Windows, Git Bash est facultatif : PowerShell est pris en charge."
-        },
-        {
-          "type": "section",
-          "text": "Vérifier l’installation"
-        },
-        {
-          "type": "code",
-          "text": "claude --version\nclaude doctor",
-          "label": "PowerShell ou Terminal Ubuntu · hôte"
-        },
-        {
-          "type": "callout",
-          "label": "Preuve attendue",
-          "text": "La version doit s’afficher ; doctor fournit un diagnostic. Commande introuvable : rouvrez le terminal, puis faites vérifier son PATH utilisateur. Ne remplacez pas tout le PATH et n’installez pas le CLI dans l’image du cours."
-        },
-        {
-          "type": "text",
-          "text": "Gardez un seul assistant à la fois. Lancez-le depuis le dossier de l’exercice, sur le PC. N’ajoutez au montage Docker aucun compte, secret ou dossier d’authentification."
-        },
-        {
-          "type": "text",
-          "text": "Documentation et prérequis : https://code.claude.com/docs/en/setup"
-        }
-      ],
-      "source_ids": [
-        "claude_setup",
-        "claude_auth",
-        "claude_path"
-      ],
-      "printed_page": 23,
-      "id": "claude-installer"
-    },
-    {
-      "title": "Claude Code : connexion et permissions",
-      "kicker": "B / PRÉPARER SON POSTE · 24",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Depuis la racine du cours, connectez votre compte puis vérifiez son état. Le mode Plan permet ensuite d’explorer sans modifier le code :"
-        },
-        {
-          "type": "code",
-          "text": "claude auth login\nclaude auth status --text\nclaude --permission-mode plan",
-          "label": "PowerShell ou Terminal Ubuntu · hôte"
-        },
-        {
-          "type": "text",
-          "text": "Terminez la connexion personnelle dans le navigateur, puis attendez Login successful. S’il apparaît, saisissez le code seulement dans le terminal qui a lancé la connexion. auth status confirme l’authentification ; ne transmettez aucun identifiant dans un prompt."
-        },
-        {
-          "type": "code",
-          "text": "Lis uniquement README.md et projet/calcul.py.\nExplique leur rôle en cinq phrases, sans écrire de code.\nNe modifie aucun fichier.",
-          "label": "Conversation Claude Code · premier prompt"
-        },
-        {
-          "type": "text",
-          "text": "Tapez /permissions pour inspecter les règles. Lorsque vous travaillerez sur une petite modification, quittez avec Ctrl + C, puis utilisez le mode Manual :"
-        },
-        {
-          "type": "code",
-          "text": "claude --permission-mode default",
-          "label": "Terminal · pour une modification ultérieure"
-        },
-        {
-          "type": "callout",
-          "label": "Manual et sandbox sont différents",
-          "text": "Manual confirme les modifications et de nombreuses commandes, pas toutes les lectures. Windows natif : pas de sandbox des commandes. Ubuntu/WSL 2 : sandbox désactivé par défaut ; le professeur prépare ses dépendances et /sandbox. Plan, Manual et sandbox ont des rôles différents."
-        },
-        {
-          "type": "text",
-          "text": "Lisez chaque action. Refusez une modification des données, du vérificateur, des règles ou d’un autre fichier. Une consigne écrite ne remplace pas une protection technique. Si l’outil bloque, utilisez le navigateur."
-        },
-        {
-          "type": "text",
-          "text": "Gardez une copie, examinez le diff, puis relancez le contrôle. /usage indique l’usage du compte ; il ne promet aucun nombre fixe de demandes."
-        },
-        {
-          "type": "text",
-          "text": "Documentation : https://code.claude.com/docs/en/permissions et https://code.claude.com/docs/en/sandboxing"
-        }
-      ],
-      "source_ids": [
-        "claude_quickstart",
-        "claude_auth",
-        "claude_permissions",
-        "claude_sandbox",
-        "claude_usage",
-        "claude_cli_reference"
-      ],
-      "printed_page": 24,
-      "id": "claude-demarrer"
-    },
-    {
-      "title": "Se dépanner et continuer",
-      "kicker": "B / PRÉPARER SON POSTE · 25",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Symptôme",
-            "Prochain geste"
-          ],
-          "rows": [
-            [
-              "Commande dans >>>",
-              "Quitter Python avec quit() ; ouvrir PowerShell ou Terminal."
-            ],
-            [
-              "Docker introuvable",
-              "Rouvrir le terminal ; vérifier l’installation et le PATH."
-            ],
-            [
-              "Client sans Server",
-              "Windows : ouvrir Docker Desktop et attendre. Ubuntu : sudo systemctl status docker --no-pager."
-            ],
-            [
-              "Permission denied Ubuntu",
-              "Employer sudo docker ; vérifier LOCAL_UID/GID dans .env si le problème concerne les fichiers produits."
-            ],
-            [
-              "Configuration absente",
-              "Afficher le dossier courant et ses fichiers ; retrouver compose.yaml."
-            ],
-            [
-              "Port 8000 occupé",
-              "Arrêter le serveur précédent (Ctrl + C ou Compose down). Sinon, dans compose.yaml, remplacer 127.0.0.1:8000:8000 par 127.0.0.1:8001:8000 et relancer up -d. Ouvrir localhost:8001. En natif, remplacer 8000 par 8001 dans http.server."
-            ],
-            [
-              "404 sur le rapport",
-              "Vérifier projet/outputs/rapport_atlas.html après le traitement réussi. Le serveur seul ne crée pas le rapport."
-            ],
-            [
-              "Page localhost inaccessible",
-              "Essayer http://127.0.0.1:8000/rapport_atlas.html ; vérifier le serveur et son port."
-            ],
-            [
-              "CLI installé, accès refusé",
-              "Vérifier compte et éligibilité ; reprendre le chat web ou les indices."
-            ],
-            [
-              "Installation / image bloquée",
-              "Vérifier réseau et droits avec le professeur ; utiliser Python natif ou un poste partenaire préparé."
-            ]
-          ],
-          "widths": [
-            1.2,
-            3
-          ]
-        },
         {
           "type": "section",
           "text": "À ce stade, je sais…"
@@ -1348,31 +858,53 @@
         {
           "type": "bullets",
           "items": [
-            "…montrer mon dossier extrait et distinguer code, données, résultats et terminal.",
-            "…nommer mon runtime, exécuter un fichier, lire une erreur et ouvrir le rapport local.",
-            "…arrêter le serveur en conservant mon travail et choisir un secours sans Docker.",
-            "…cadrer une aide IA courte, lire les changements et vérifier le résultat moi-même."
+            "…montrer la racine cours-bi, son fichier AGENTS.md et ma copie atelier, qui contient data et outputs.",
+            "…dire si j’utilise Ubuntu natif ou Ubuntu dans WSL2 et ouvrir le bon terminal.",
+            "…ouvrir le projet local dans Codex, vérifier mon accès Free et formuler une première demande limitée.",
+            "…lancer python3 depuis atelier, lire une erreur et conserver mon premier essai.",
+            "…expliquer où sera utilisé Power BI Desktop et comment lui transmettre les quatre CSV."
           ]
         },
         {
+          "type": "callout",
+          "label": "Dernier contrôle observable",
+          "text": "Fermez le terminal, rouvrez Ubuntu, puis exécutez cd ~/cours-bi/atelier et python3 --version. Dans Codex, retrouvez le même projet. Montrez au professeur votre première réponse de lecture et le résultat de Python."
+        },
+        {
+          "type": "section",
+          "text": "La suite"
+        },
+        {
           "type": "text",
-          "text": "Suite : 02_cours_atlas_ia.pdf. Sources logicielles : docs/setup/sources.json. Provenance et droits des captures : docs/images/SOURCES.json. Captures officielles et captures locales sont distinguées ; aucune installation Windows/Ubuntu ni connexion IA gratuite n’est présentée comme réalisée."
+          "text": "Ouvrez 02_cours_atlas_ia.pdf et commencez la mission 01. Gardez 03_prompts_reperes_depannage.pdf pour les indices ; consultez les solutions seulement après votre essai. Si un fichier porte un autre nom dans l’archive fournie, suivez la liste des PDF de son README."
+        },
+        {
+          "type": "section",
+          "text": "D’où viennent les étapes ?"
+        },
+        {
+          "type": "text",
+          "text": "Documentation officielle vérifiée le 27 octobre 2026 : pages OpenAI de l’application Windows et Linux, tarifs et modèles ; Microsoft Learn pour WSL2 et Power BI ; documentation Ubuntu Python et GitHub ZIP. Les liens exacts et leur correspondance figurent dans docs/setup/sources.json."
+        },
+        {
+          "type": "text",
+          "text": "Les schémas expliquent le fonctionnement ; ils ne représentent pas une capture de votre écran. La vérification documentaire ne constitue pas un essai d’installation Windows/Ubuntu ni un essai de compte Free. Les noms de menus peuvent évoluer : vérifiez ce qui apparaît réellement sur votre poste."
         }
       ],
       "source_ids": [
-        "docker-localhost-port",
-        "docker-bind-mount",
-        "codex_access",
-        "claude_pricing"
+        "desktop",
+        "windows",
+        "linux",
+        "pricing",
+        "models"
       ],
-      "printed_page": 25,
-      "id": "depanner"
+      "printed_page": 18
     }
   ],
   "source_verification_date": "2026-10-27",
   "source_catalog": "../../docs/setup/sources.json",
-  "verification_scope": "Documentation officielle et vérification de syntaxe locale ; aucune installation Windows/Ubuntu ou connexion IA de compte gratuit revendiquée.",
-  "visual_edition": "V5 visuelle",
+  "verification_scope": "Documentation officielle consultée ; aucune installation Windows/Ubuntu, aucun compte Free ou quota réel présenté comme testé.",
+  "visual_edition": "V6 · AI / CODEX / BI · 15 h",
   "image_catalog": "../../docs/images/SOURCES.json",
-  "pagination_note": "25 pages prévues avec la couverture automatique, références alignées sur ce plan."
+  "pagination_note": "18 pages prévues avec couverture ; à confirmer au rendu intégré."
 }

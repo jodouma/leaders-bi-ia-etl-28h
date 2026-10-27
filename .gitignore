@@ -10,5 +10,6 @@ projet/outputs/*
 !projet/outputs/.gitkeep
 solutions/atlas/outputs/
 reprises/
+atelier/
 authoring/renders/
 authoring/pdf_layout_report.json

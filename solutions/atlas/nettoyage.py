@@ -1,71 +1,73 @@
-"""03 — Normaliser, vérifier, puis distinguer rejets et doublons."""
+"""Une ligne devient une vente canonique ; le contrôle du lot est fourni."""
 from datetime import date
-from decimal import Decimal, InvalidOperation
-from lecture import DATA, OUTPUTS, catalogues, ecrire_csv, lire_csv
+from decimal import Decimal, InvalidOperation, localcontext
+import re
 
 CHAMPS_SOURCE = ["sale_id", "date", "shop_id", "product_id", "quantity", "unit_price_tnd"]
-CHAMPS_VENTES = CHAMPS_SOURCE + ["unit_price_millimes", "amount_millimes"]
+CHAMPS_VENTES = ["sale_id", "date", "shop_id", "product_id", "quantity", "unit_price_millimes", "amount_millimes"]
 
 
-def normaliser(ligne, produits, boutiques):
-    """Valider une vente. Les prix sont lus avec Decimal, puis stockés en entiers."""
-    vente = {champ: str(ligne.get(champ, "") or "").strip() for champ in CHAMPS_SOURCE}
-    for champ in ("sale_id", "shop_id", "product_id"):
-        vente[champ] = vente[champ].upper()
-    if not vente["sale_id"]:
-        raise ValueError("sale_id manquant")
-    jour = date.fromisoformat(vente["date"])
-    vente["date"] = jour.isoformat()
-    if vente["product_id"] not in produits:
-        raise ValueError("produit inconnu")
-    if vente["shop_id"] not in boutiques:
-        raise ValueError("boutique inconnue")
-    quantite = int(vente["quantity"])
-    if quantite <= 0:
-        raise ValueError("quantité non positive")
-    prix = Decimal(vente["unit_price_tnd"].replace(",", "."))
-    millimes = prix * 1000
-    if not prix.is_finite() or prix <= 0 or millimes != millimes.to_integral_value():
-        raise ValueError("prix positif avec au plus trois décimales requis")
-    vente["quantity"] = quantite
-    vente["unit_price_tnd"] = f"{prix:.3f}"
-    vente["unit_price_millimes"] = int(millimes)
-    vente["amount_millimes"] = quantite * int(millimes)
+def date_iso(texte):
+    texte = str(texte).strip()
+    if date.fromisoformat(texte).isoformat() != texte:
+        raise ValueError("date attendue YYYY-MM-DD")
+    return texte
+
+
+def entier_positif(texte):
+    texte = str(texte).strip()
+    if not re.fullmatch(r"[0-9]+", texte) or int(texte) <= 0:
+        raise ValueError("quantité entière strictement positive attendue")
+    return int(texte)
+
+
+def millimes(texte):
+    try:
+        prix = Decimal(str(texte).strip())
+        if not prix.is_finite() or prix <= 0:
+            raise ValueError("prix fini strictement positif attendu")
+        # Assez de précision pour ne jamais arrondir silencieusement un long texte.
+        with localcontext() as contexte:
+            contexte.prec = max(28, len(prix.as_tuple().digits) + 4)
+            valeur = prix * 1000
+        if valeur != valeur.to_integral_value():
+            raise ValueError("prix non représentable en millimes sans arrondi")
+        return int(valeur)
+    except InvalidOperation as erreur:
+        raise ValueError("prix décimal invalide") from erreur
+
+
+def normaliser_vente(ligne):
+    for nom in ("sale_id", "shop_id", "product_id"):
+        if not isinstance(ligne[nom], str):
+            raise ValueError(f"Identifiant texte non nul attendu : {nom}")
+    vente = {nom: ligne[nom].strip().upper()
+             for nom in ("sale_id", "shop_id", "product_id")}
+    if not all(vente.values()):
+        raise ValueError("identifiant vide")
+    vente["date"] = date_iso(ligne["date"])
+    vente["quantity"] = entier_positif(ligne["quantity"])
+    vente["unit_price_millimes"] = millimes(ligne["unit_price_tnd"])
+    vente["amount_millimes"] = vente["quantity"] * vente["unit_price_millimes"]
     return vente
 
 
 def nettoyer(lignes, produits, boutiques):
-    """Renvoyer retenues, rejets avec motif, doublons. Un ID contradictoire arrête le lot."""
-    retenues, rejets, doublons = [], [], []
-    vues = {}
-    for ligne in lignes:
+    retenues, rejets, doublons, vus = [], [], [], {}
+    for numero, ligne in enumerate(lignes, 2):
         try:
-            vente = normaliser(ligne, produits, boutiques)
-        except (ValueError, InvalidOperation, OverflowError) as erreur:
-            rejet = {champ: ligne.get(champ, "") for champ in CHAMPS_SOURCE}
-            rejet["motif"] = str(erreur)
-            rejets.append(rejet)
+            vente = normaliser_vente(ligne)
+            if vente["product_id"] not in produits or vente["shop_id"] not in boutiques:
+                raise ValueError("produit ou boutique absent du catalogue")
+        except (ValueError, KeyError, TypeError) as erreur:
+            rejets.append({"line": numero, "source": dict(ligne), "reason": str(erreur)})
             continue
         identifiant = vente["sale_id"]
-        if identifiant in vues:
-            if vente != vues[identifiant]:
-                raise ValueError(f"Conflit sale_id {identifiant} : contenus différents.")
+        if identifiant in vus:
+            if vente != vus[identifiant]:
+                raise ValueError(f"Conflit dans le lot : {identifiant}")
             doublons.append(vente)
         else:
-            vues[identifiant] = vente
+            vus[identifiant] = vente
             retenues.append(vente)
     return retenues, rejets, doublons
-
-
-def main():
-    produits, boutiques = catalogues()
-    retenues, rejets, doublons = nettoyer(lire_csv(DATA / "ventes_initiales.csv"), produits, boutiques)
-    ecrire_csv(OUTPUTS / "ventes_nettoyees.csv", retenues, CHAMPS_VENTES)
-    ecrire_csv(OUTPUTS / "rejets.csv", rejets, CHAMPS_SOURCE + ["motif"])
-    ecrire_csv(OUTPUTS / "doublons.csv", doublons, CHAMPS_VENTES)
-    print(f"Qualité : {len(retenues)} retenues, {len(rejets)} rejets, {len(doublons)} doublon(s).")
-    print("Journaux et ventes enregistrés dans outputs/.")
-
-
-if __name__ == "__main__":
-    main()

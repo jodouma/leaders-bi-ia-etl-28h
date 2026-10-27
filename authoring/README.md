@@ -1,42 +1,29 @@
-# Maintenir les supports du cours
+# Reconstruire les supports
 
-[Retour au parcours étudiant](../README.md)
+[Retour au cours](../README.md)
 
-Ce dossier sert à modifier et reconstruire les documents. Les étudiants peuvent suivre les missions sans installer les dépendances d’édition ci-dessous.
+Les étudiants suivent les missions sans installer ces dépendances d’édition.
 
-## Retrouver les sources
-
-| Élément | Source | Résultat |
+| Support | Sources | Résultat |
 |---|---|---|
-| Cinq livrets PDF | `content/` et `build_pdfs.py` | `../pdf/` |
-| Présentation PowerPoint et conversion PDF | [Guide des slides](slides/README.md) | `../presentation/` |
-| Logo, polices et droits | [Provenance des assets](ASSETS.md) | Ressources utilisées dans les documents |
-| Installation et références logicielles | [Guide d’environnement](../docs/setup/README.md) · [sources officielles](../docs/setup/sources.json) | Guide 01 |
+| Cinq livrets | `content/` et `build_pdfs.py` | `../pdf/` |
+| Présentation éditable et PDF | [Guide des diapositives](slides/README.md) | `../presentation/` |
+| Quatorze schémas | [Sources des visuels](visuals/README.md) | `../docs/images/diagrams/` |
+| Logo et polices | [Provenance](ASSETS.md) | Ressources redistribuées avec licences |
+| Installation | [Références officielles](../docs/setup/sources.json) | Guide 01 |
 
-## Schémas et captures
-
-Les [schémas et graphiques](visuals/README.md) ont leurs sources reproductibles ; les [captures](../docs/images/README.md) conservent provenance, licences et limites. Après installation des dépendances d’édition, `python authoring/visuals/generate.py` régénère les six visuels depuis les CSV.
-
-## Reconstruire les PDF
-
-Avec Python 3.10 ou ultérieur et un environnement virtuel d’édition séparé, depuis la racine du cours :
+Avec Python 3.10 ou ultérieur dans un environnement d’édition séparé, depuis la racine :
 
 ```text
-python -m pip install -r authoring/requirements.txt
-python authoring/build_pdfs.py
-python authoring/check_materials.py
+python3 -m pip install -r authoring/requirements.txt
+python3 authoring/visuals/generate.py
+python3 authoring/build_pdfs.py
+python3 authoring/check_materials.py
+python3 -m unittest discover -s tests -v
 ```
 
-`build_pdfs.py` lit les cinq fichiers JSON de `content/` et écrit les cinq PDF. Le contrôle suivant compare le code imprimé aux sources et exécute les exemples avec leurs prérequis. Inspecter aussi chaque page modifiée à taille lisible ; un contrôle automatique ne remplace pas la revue visuelle.
+Le contrôle compare les panneaux de code imprimés, exécute les exemples avec leurs prérequis, parcourt les sept jalons et vérifie les exports. Inspecter aussi chaque page et chaque diapositive à taille lisible. Les contrôles automatiques ne prouvent ni une installation WSL, ni l’accès d’un compte Free, ni une manipulation Power BI.
 
-## Vérifier les exercices et distribuer
+Les [Actions GitHub](https://github.com/jodouma/leaders-bi-ia-etl-28h/actions) consignent les exécutions sur leurs systèmes. L’essai Power BI Desktop reste une expérience manuelle séparée : l’installation dans le runner Windows hébergé a dépassé son délai de neuf minutes. Elle ne valide donc ni l’application ni ses visuels. La vérification interactive doit être faite sur un poste Windows ; le contrôle du code et des PDF est indépendant.
 
-Depuis la racine, les tests des exercices utilisent uniquement la bibliothèque standard :
-
-```text
-python -m unittest discover -s tests -v
-```
-
-Les résultats réellement exécutés par GitHub sont consultables dans [Actions](https://github.com/jodouma/leaders-bi-ia-etl-28h/actions). Ils vérifient le code sur Windows, Ubuntu et macOS et la référence Docker sur Ubuntu ; ils ne prouvent pas une installation réalisée sur un poste étudiant neuf.
-
-Après les modifications et leurs vérifications, `python authoring/package_course.py` reconstruit le ZIP étudiant dans le dossier `livraison/` adjacent au dépôt. Vérifier ce ZIP extrait et conserver les guides privés hors du dépôt public. Le [protocole d’essai depuis zéro](../TESTER_LE_COURS.md) décrit les retours attendus des testeurs.
+Après validation, `python3 authoring/package_course.py` crée `Atlas_CODEX_BI_15h_etudiants.zip` dans `livraison/`, à côté du dépôt. Tester ce ZIP extrait. Le dossier privé `formateur/` reste hors du dépôt et n’est jamais parcouru par le générateur d’archive.

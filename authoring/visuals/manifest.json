@@ -1,144 +1,308 @@
 {
-  "version": 1,
+  "version": 6,
   "language": "fr",
+  "source": "authoring/visuals/generate.py",
+  "data_source": "authoring/visuals/v6-data.json",
+  "data_sha256": "ebca3a9a0f7f73529a99ca14dfaf1821e89f4db79d53b1f3c26368ad6266e7d4",
+  "quantitative_assertions": {
+    "initial": {
+      "raw": 16,
+      "accepted": 12,
+      "duplicate": 1,
+      "rejected": 3,
+      "facts": 12,
+      "quantity": 32,
+      "amount_millimes": 99000,
+      "products": 4,
+      "shop_versions": 2,
+      "dates": 3
+    },
+    "increment": {
+      "extracted_sales": 3,
+      "extracted_changes": 1,
+      "inserted": 2,
+      "existing": 1,
+      "new_shop_versions": 1
+    },
+    "final": {
+      "facts": 14,
+      "quantity": 35,
+      "amount_millimes": 115500,
+      "products": 4,
+      "shop_versions": 3,
+      "dates": 4
+    },
+    "replay": {
+      "inserted": 0,
+      "existing": 3,
+      "new_shop_versions": 0,
+      "facts": 14,
+      "quantity": 35,
+      "amount_millimes": 115500
+    },
+    "zone_amounts_millimes": {
+      "Cap Bon": 43500,
+      "Grand Tunis": 72000
+    },
+    "shop_version_amounts_millimes": {
+      "NBE@2026-01-05": 43500,
+      "NBE@2026-01-08": 4500,
+      "TUN@2026-01-05": 67500
+    }
+  },
+  "provenance": {
+    "source": "V6 frozen implementation contract",
+    "sha256": "daf01b8df5282fbd140a96be5e99a515a6f2319d8d36d2f8c842c580fe1d08e5",
+    "meaning": "Expected values, not evidence of a runtime execution or Power BI installation."
+  },
   "palette": {
     "navy": "#2B3180",
     "deep": "#07152F",
     "orange": "#FF9A3C"
   },
-  "source": "authoring/visuals/generate.py",
-  "generated_from_csv": {
-    "projet/data/ventes_ajout.csv": "283057dc7b453610127a6665d7228401d1ebcaf7cb994fbb3f6c0c1575058ca6",
-    "projet/data/ventes_initiales.csv": "24682d75ca68c9dc368fd107bb8f6ac3a896c1ac15bc3c436d87b29f45cd8669",
-    "projet/data/boutiques.csv": "146b976a4a588583e78d50ace4da7b1b1346c56d0f59cb09ef8abeb1c1d6d523",
-    "projet/data/produits.csv": "e4815583ddabcd8b42eb0c34b843ec8dddc7d7877d9193016b26a39926fb0661"
-  },
-  "quantitative_assertions": {
-    "initial_rows": 16,
-    "accepted": 12,
-    "duplicates": 1,
-    "rejected": 3,
-    "base_millimes": 99000,
-    "final_millimes": 115500,
-    "replay_millimes": 115500,
-    "replay_inserted": 0,
-    "replay_existing": 3,
-    "base_period": [
-      "2026-01-05",
-      "2026-01-07"
-    ],
-    "final_period": [
-      "2026-01-05",
-      "2026-01-08"
-    ]
-  },
   "fonts": {
     "Inter": "authoring/assets/fonts/Inter-OFL.txt",
     "Plus Jakarta Sans": "authoring/assets/fonts/PlusJakartaSans-OFL.txt"
   },
-  "license": "Original diagrams authored for the course; no third-party screenshots or logos. Fonts: SIL OFL 1.1. SVG glyphs are paths.",
+  "license": "Original course diagrams; no simulated UI, no third-party screenshots/logos. Fonts SIL OFL 1.1; SVG glyphs are outlined paths.",
   "assets": [
     {
-      "id": "parcours-a-e",
-      "title": "Un projet, cinq étapes",
-      "description": "A Comprendre le projet ; B Préparer son poste ; C Construire avec l’IA ; D Contrôler le rapport ; E Réaliser le défi.",
-      "svg": "docs/images/diagrams/parcours-a-e.svg",
-      "png": "docs/images/diagrams/parcours-a-e.png",
+      "id": "v6-pipeline",
+      "title": "Toute la chaîne, un même projet",
+      "description": "Question : quelles ventes sont fiables, et dans quelle zone commerciale ?",
+      "svg": "docs/images/diagrams/v6-pipeline.svg",
+      "png": "docs/images/diagrams/v6-pipeline.png",
       "viewbox": [
         1600,
-        540
+        800
       ],
       "png_pixels": [
         2400,
+        1200
+      ],
+      "alt": "Question : quelles ventes sont fiables, et dans quelle zone commerciale ?",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-postes-wsl",
+      "title": "Sur quel système travaille chaque outil ?",
+      "description": "Deux parcours ETL ; le rapport Power BI Desktop se fait sur Windows.",
+      "svg": "docs/images/diagrams/v6-postes-wsl.svg",
+      "png": "docs/images/diagrams/v6-postes-wsl.png",
+      "viewbox": [
+        1600,
+        940
+      ],
+      "png_pixels": [
+        2400,
+        1410
+      ],
+      "alt": "Deux parcours ETL ; le rapport Power BI Desktop se fait sur Windows.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-codex-boucle",
+      "title": "Construire avec Codex, puis vérifier",
+      "description": "Une petite demande ; une modification que vous pouvez lire et expliquer.",
+      "svg": "docs/images/diagrams/v6-codex-boucle.svg",
+      "png": "docs/images/diagrams/v6-codex-boucle.png",
+      "viewbox": [
+        1600,
+        720
+      ],
+      "png_pixels": [
+        2400,
+        1080
+      ],
+      "alt": "Une petite demande ; une modification que vous pouvez lire et expliquer.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-dossiers",
+      "title": "Un dossier distribué, puis votre copie de travail",
+      "description": "Dans Ubuntu ou WSL : ~/cours-bi · le jalon 01 crée atelier/.",
+      "svg": "docs/images/diagrams/v6-dossiers.svg",
+      "png": "docs/images/diagrams/v6-dossiers.png",
+      "viewbox": [
+        1600,
+        850
+      ],
+      "png_pixels": [
+        2400,
+        1275
+      ],
+      "alt": "Dans Ubuntu ou WSL : ~/cours-bi · le jalon 01 crée atelier/.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-etoile",
+      "title": "L’étoile : décrire chaque vente",
+      "description": "Trois relations actives 1 → plusieurs, de la dimension vers les ventes.",
+      "svg": "docs/images/diagrams/v6-etoile.svg",
+      "png": "docs/images/diagrams/v6-etoile.png",
+      "viewbox": [
+        1600,
+        990
+      ],
+      "png_pixels": [
+        2400,
+        1485
+      ],
+      "alt": "Trois relations actives 1 → plusieurs, de la dimension vers les ventes.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-scd2",
+      "title": "Nabeul change de zone, ses ventes gardent leur histoire",
+      "description": "SCD2 : une nouvelle version de la boutique, sans réécrire les anciennes ventes.",
+      "svg": "docs/images/diagrams/v6-scd2.svg",
+      "png": "docs/images/diagrams/v6-scd2.png",
+      "viewbox": [
+        1600,
+        850
+      ],
+      "png_pixels": [
+        2400,
+        1275
+      ],
+      "alt": "SCD2 : une nouvelle version de la boutique, sans réécrire les anciennes ventes.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-chiffres-zones",
+      "title": "Le CA par zone commerciale historique",
+      "description": "Après le lot du 8 janvier 2026 · axe et valeurs en TND · valeurs attendues du contrat.",
+      "svg": "docs/images/diagrams/v6-chiffres-zones.svg",
+      "png": "docs/images/diagrams/v6-chiffres-zones.png",
+      "viewbox": [
+        1600,
+        900
+      ],
+      "png_pixels": [
+        2400,
+        1350
+      ],
+      "alt": "Après le lot du 8 janvier 2026 · axe et valeurs en TND · valeurs attendues du contrat.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-millimes",
+      "title": "Compter les montants sans perdre de précision",
+      "description": "Une unité claire dans les données ; une conversion lisible dans le rapport.",
+      "svg": "docs/images/diagrams/v6-millimes.svg",
+      "png": "docs/images/diagrams/v6-millimes.png",
+      "viewbox": [
+        1600,
+        690
+      ],
+      "png_pixels": [
+        2400,
+        1035
+      ],
+      "alt": "Une unité claire dans les données ; une conversion lisible dans le rapport.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-contexte-quota",
+      "title": "Contexte et limite d’usage : deux idées différentes",
+      "description": "Lire seulement les indicateurs réellement affichés dans votre client.",
+      "svg": "docs/images/diagrams/v6-contexte-quota.svg",
+      "png": "docs/images/diagrams/v6-contexte-quota.png",
+      "viewbox": [
+        1600,
+        750
+      ],
+      "png_pixels": [
+        2400,
+        1125
+      ],
+      "alt": "Lire seulement les indicateurs réellement affichés dans votre client.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-modele-effort",
+      "title": "Modèle, effort et vitesse : lire les bons choix",
+      "description": "Utiliser les options visibles sur le poste ; ne pas supposer leur disponibilité sur Free.",
+      "svg": "docs/images/diagrams/v6-modele-effort.svg",
+      "png": "docs/images/diagrams/v6-modele-effort.png",
+      "viewbox": [
+        1600,
+        770
+      ],
+      "png_pixels": [
+        2400,
+        1155
+      ],
+      "alt": "Utiliser les options visibles sur le poste ; ne pas supposer leur disponibilité sur Free.",
+      "text_min_px": 26
+    },
+    {
+      "id": "v6-revue",
+      "title": "Deux revues indépendantes, un seul auteur",
+      "description": "Au plus deux lecteurs sur des cibles distinctes ; personne ne modifie en parallèle.",
+      "svg": "docs/images/diagrams/v6-revue.svg",
+      "png": "docs/images/diagrams/v6-revue.png",
+      "viewbox": [
+        1600,
         810
       ],
-      "alt": "A Comprendre le projet ; B Préparer son poste ; C Construire avec l’IA ; D Contrôler le rapport ; E Réaliser le défi.",
-      "text_min_px": 28
+      "png_pixels": [
+        2400,
+        1215
+      ],
+      "alt": "Au plus deux lecteurs sur des cibles distinctes ; personne ne modifie en parallèle.",
+      "text_min_px": 26
     },
     {
-      "id": "trois-espaces",
-      "title": "Trois espaces de travail",
-      "description": "Dans l’éditeur on écrit et enregistre le code. Dans le terminal on lance une commande. Dans le navigateur on consulte le rapport HTML. Les trois travaillent avec le même dossier.",
-      "svg": "docs/images/diagrams/trois-espaces.svg",
-      "png": "docs/images/diagrams/trois-espaces.png",
+      "id": "v6-parcours",
+      "title": "Cinq séances, cinq victoires visibles",
+      "description": "5 × 3 h = 15 h, pauses comprises · un seul projet Atlas Papeterie.",
+      "svg": "docs/images/diagrams/v6-parcours.svg",
+      "png": "docs/images/diagrams/v6-parcours.png",
       "viewbox": [
         1600,
-        700
+        760
       ],
       "png_pixels": [
         2400,
-        1050
+        1140
       ],
-      "alt": "Dans l’éditeur on écrit et enregistre le code. Dans le terminal on lance une commande. Dans le navigateur on consulte le rapport HTML. Les trois travaillent avec le même dossier.",
-      "text_min_px": 28
+      "alt": "5 × 3 h = 15 h, pauses comprises · un seul projet Atlas Papeterie.",
+      "text_min_px": 26
     },
     {
-      "id": "poste-docker",
-      "title": "Le poste et le conteneur",
-      "description": "L’éditeur et le navigateur restent sur le PC. Docker exécute Python dans un conteneur. Un montage relie le dossier projet du PC au dossier /workspace du conteneur : ce sont les mêmes fichiers. Le rapport HTML écrit dans outputs est ouvert dans le navigateur du PC. L’assistant IA reste sur le PC ou dans le chat web.",
-      "svg": "docs/images/diagrams/poste-docker.svg",
-      "png": "docs/images/diagrams/poste-docker.png",
+      "id": "v6-qualite",
+      "title": "Une ligne lue a une issue explicite",
+      "description": "Lot initial · chiffres attendus du contrat · les sources restent intactes.",
+      "svg": "docs/images/diagrams/v6-qualite.svg",
+      "png": "docs/images/diagrams/v6-qualite.png",
       "viewbox": [
         1600,
-        820
+        760
       ],
       "png_pixels": [
         2400,
-        1230
+        1140
       ],
-      "alt": "L’éditeur et le navigateur restent sur le PC. Docker exécute Python dans un conteneur. Un montage relie le dossier projet du PC au dossier /workspace du conteneur : ce sont les mêmes fichiers. Le rapport HTML écrit dans outputs est ouvert dans le navigateur du PC. L’assistant IA reste sur le PC ou dans le chat web.",
-      "text_min_px": 28
+      "alt": "Lot initial · chiffres attendus du contrat · les sources restent intactes.",
+      "text_min_px": 26
     },
     {
-      "id": "boucle-ia",
-      "title": "Une petite boucle avec l’IA",
-      "description": "Spécifier le besoin et le résultat attendu, demander une petite fonction, exécuter le fichier, contrôler avec une preuve puis expliquer le résultat. Si la preuve échoue, revenir au besoin et corriger une seule chose.",
-      "svg": "docs/images/diagrams/boucle-ia.svg",
-      "png": "docs/images/diagrams/boucle-ia.png",
+      "id": "v6-ajout-rejeu",
+      "title": "Ajouter une fois ; rejouer sans doubler les ventes",
+      "description": "Une nouvelle livraison étend la période ; le rejeu conserve les clés et les valeurs.",
+      "svg": "docs/images/diagrams/v6-ajout-rejeu.svg",
+      "png": "docs/images/diagrams/v6-ajout-rejeu.png",
       "viewbox": [
         1600,
-        620
+        760
       ],
       "png_pixels": [
         2400,
-        930
+        1140
       ],
-      "alt": "Spécifier le besoin et le résultat attendu, demander une petite fonction, exécuter le fichier, contrôler avec une preuve puis expliquer le résultat. Si la preuve échoue, revenir au besoin et corriger une seule chose.",
-      "text_min_px": 28
-    },
-    {
-      "id": "etl-qualite",
-      "title": "Un lot, trois issues, un grain",
-      "description": "Le lot initial contient 16 lignes : 12 ventes retenues, 1 doublon identique et 3 rejets. Le doublon est S003. Les rejets portent sur une quantité nulle, un produit inconnu et une date impossible. Une ligne retenue représente une vente élémentaire ; deux carnets à 4500 millimes donnent 9000 millimes, soit 9,000 TND.",
-      "svg": "docs/images/diagrams/etl-qualite.svg",
-      "png": "docs/images/diagrams/etl-qualite.png",
-      "viewbox": [
-        1600,
-        780
-      ],
-      "png_pixels": [
-        2400,
-        1170
-      ],
-      "alt": "Le lot initial contient 16 lignes : 12 ventes retenues, 1 doublon identique et 3 rejets. Le doublon est S003. Les rejets portent sur une quantité nulle, un produit inconnu et une date impossible. Une ligne retenue représente une vente élémentaire ; deux carnets à 4500 millimes donnent 9000 millimes, soit 9,000 TND.",
-      "text_min_px": 28
-    },
-    {
-      "id": "ca-ajout-rejeu",
-      "title": "Un ajout, puis un rejeu sans double comptage",
-      "description": "Le chiffre d’affaires chargé passe de 99,000 TND pour 12 ventes du 5 au 7 janvier 2026 à 115,500 TND pour 14 ventes du 5 au 8 janvier 2026. Le rejeu conserve 115,500 TND et 14 ventes. Ces cumuls de périodes différentes ne mesurent pas une performance.",
-      "svg": "docs/images/diagrams/ca-ajout-rejeu.svg",
-      "png": "docs/images/diagrams/ca-ajout-rejeu.png",
-      "viewbox": [
-        1600,
-        780
-      ],
-      "png_pixels": [
-        2400,
-        1170
-      ],
-      "alt": "Le chiffre d’affaires chargé passe de 99,000 TND pour 12 ventes du 5 au 7 janvier 2026 à 115,500 TND pour 14 ventes du 5 au 8 janvier 2026. Le rejeu conserve 115,500 TND et 14 ventes. Ces cumuls de périodes différentes ne mesurent pas une performance.",
-      "text_min_px": 28
+      "alt": "Une nouvelle livraison étend la période ; le rejeu conserve les clés et les valeurs.",
+      "text_min_px": 26
     }
   ]
 }

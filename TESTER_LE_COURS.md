@@ -1,50 +1,31 @@
-# Essayer le cours depuis un poste neuf
+# Essayer le cours depuis zéro
 
-[Retour au parcours du cours](README.md)
+[Retour au départ](README.md)
 
-**But : vérifier qu’un grand débutant peut installer, construire, contrôler et reprendre le projet avec les seuls supports fournis.**
+Suivre les supports comme un étudiant débutant, sans préparer les réponses à l’avance. Conserver la première tentative avant de consulter les solutions. Noter l’édition du ZIP, le système et les étapes réellement essayées.
 
-Commencer sous Windows, puis essayer Ubuntu. Ne pas supposer qu’une installation a déjà été faite. Le second système peut être testé par une autre personne ; ne pas confondre Ubuntu natif et une fenêtre WSL sous Windows.
+1. Télécharger et extraire le cours dans un dossier neuf. Suivre le PDF 01 : Windows avec WSL2, ou Ubuntu pris en charge. Vérifier où se trouvent les fichiers et dans quel terminal saisir les commandes.
+2. Vérifier **Codex avec un compte Free** : accès effectif, modèle, effort et usage affichés. Ne relever aucun identifiant, mot de passe ni secret. Un essai avec un autre abonnement ne prouve pas l’accès Free.
+3. Suivre les cinq séances du PDF 02. Créer `atelier/`, conserver les demandes à Codex, faire les modifications et lancer chaque contrôle. Une fonction à construire peut échouer au départ ; une erreur d’installation doit être résolue.
+4. Prouver l’extraction SQL, les rejets et doublons, le chargement initial, l’ajout du lot, le rejeu stable et l’historique des boutiques.
+5. Exporter les quatre CSV. Sur **Power BI Desktop Windows**, contrôler les types, les trois relations, les mesures, un filtre et une actualisation. Un rapport HTML ou un fichier PBIP validé ne remplace pas cet essai.
+6. Essayer les méthodes locales d’explication et de revue. Distinguer un Skill découvert automatiquement d’un fichier lu explicitement. Essayer deux sous-agents seulement si disponibles ; sinon, faire deux contrôles successifs et le noter.
+7. Essayer une reprise dans un nouveau dossier et les activités locales prévues si Codex n’est plus disponible. Lire puis réaliser le défi Atlas.
 
-## Avant de commencer
-
-1. Télécharger ou recevoir le ZIP de cette édition et l’extraire dans un nouveau dossier. Conserver la révision ou le nom de l’archive testée.
-2. Noter le système, son édition/version, le type de processeur et la mémoire disponible. Ne noter aucun mot de passe ni clé.
-3. Ouvrir [01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf) et suivre la route correspondant au poste. Si Docker est impossible, essayer le repli natif indiqué, sans désactiver les protections du poste.
-4. Garder une trace de la première tentative avant d’ouvrir une solution. Ne pas corriger silencieusement une instruction manquante.
-
-## Ce qu’il faut essayer
-
-- Installation et vérification des outils, téléchargement/extraction, ouverture du bon terminal et positionnement dans le dossier du cours.
-- Construction de l’environnement Docker, ou route Python native indiquée. Avec Docker, lancer les commandes depuis la racine contenant `compose.yaml` ; en Python natif, depuis `projet/`. Modifier les fichiers dans `projet/` dans les deux cas. Le build doit réussir ; le message « mission à construire » concerne ensuite les fonctions encore incomplètes.
-- Ouvrir [02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf), commencer la mission 01, puis construire la première fonction avec le chat IA de son choix ; conserver demande, réponse utile, code enregistré, résultat et explication.
-- Route des sept missions jusqu’au rapport ; ne pas ouvrir les références pour faire passer artificiellement un contrôle.
-- Reprise après une erreur et restauration d’un jalon dans **un nouveau dossier**, sans écraser le travail existant.
-- Ajout puis rejeu du lot : le résultat final reste à 14 faits, 35 articles et 115.500 TND au second passage.
-- Ouverture du rapport dans le navigateur ; mise à jour visible après nouvelle exécution ; arrêt de l’environnement sans suppression des fichiers.
-- Lecture de la branche Codex/Claude CLI : vérifier l’accès réel du compte avant d’installer ou d’activer une option. Si le compte n’est pas éligible, poursuivre la route chat web ; aucun achat n’est nécessaire au socle.
-- Lecture de l’énoncé Campus Box : les nouvelles règles doivent être compréhensibles sans consulter la correction.
-
-## Pour chaque blocage
-
-Conserver **l’étape**, **l’action**, **le résultat attendu**, **le résultat obtenu** et **le message exact**. Prendre une capture montrant la zone utile ; masquer nom personnel, compte, clé ou chemin sensible. Indiquer ce qui a permis de reprendre, et si cette aide existait dans le cours.
-
-Ne pas utiliser une capture simulée. Une lecture de la documentation, une commande réellement exécutée et une manipulation d’interface sont trois preuves différentes.
-
-## Retour à transmettre
+Pour chaque blocage, noter l’étape, l’action, l’attendu, l’observé et l’aide nécessaire. Garder une capture réelle de la zone utile, sans information personnelle. Une capture d’un autre système doit être identifiée.
 
 ```text
-Édition testée :
+Édition du cours :
 Système et version :
-Route : Docker / Python natif / CLI optionnel
-Étape exacte :
-Action effectuée :
-Attendu :
-Observé / message :
+Compte Free vérifié : oui / non
+Modèle et effort réellement affichés :
+Étape et action :
+Résultat attendu :
+Résultat observé / message exact :
 Capture disponible :
 Aide nécessaire pour reprendre :
-Temps passé, approximatif :
-Phrase ou mot incompréhensible :
+Temps approximatif :
+Mot ou instruction difficile :
 ```
 
-Terminer par trois points : ce qui est clair, les blocages qui empêchent d’avancer et la première amélioration utile. Un test partiel reste utile si son périmètre est indiqué. Ne pas conclure « tout fonctionne » à partir du seul démarrage de Docker ou de l’ouverture d’un PDF.
+Terminer par ce qui est clair, ce qui bloque et la première amélioration utile. Un essai partiel est utile si son périmètre est précis ; ne pas conclure que tout fonctionne à partir d’un seul écran.

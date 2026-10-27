@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "AtlasPapeterie"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "36b54bec-656b-5d86-9c50-4b307da5fb01"
+  }
+}

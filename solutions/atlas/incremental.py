@@ -1,35 +1,9 @@
-"""06 — Réutiliser le nettoyage et le chargement pour un nouveau lot."""
-from pathlib import Path
-from chargement import charger, total_base
-from lecture import DATA, OUTPUTS, catalogues, ecrire_csv, lire_csv
-from nettoyage import CHAMPS_SOURCE, CHAMPS_VENTES, nettoyer
+"""La transaction et SCD2 sont fournis ; adapter la recherche d'une version."""
+SQL_VERSION = "SELECT shop_key FROM dim_shop WHERE shop_id=? AND valid_from<=? AND (valid_to IS NULL OR ?<valid_to)"
 
 
-def ajouter(chemin_source, chemin_base, chemin_data):
-    """Traiter le lot fourni ; aucun effacement et aucun chargement initial caché."""
-    produits, boutiques = catalogues(chemin_data)
-    lignes = lire_csv(chemin_source)
-    retenues, rejets, doublons = nettoyer(lignes, produits, boutiques)
-    compteurs = charger(retenues, produits, boutiques, chemin_base)
-    # Les journaux ne sont remplacés qu'après validation de la transaction.
-    dossier = Path(chemin_base).parent
-    ecrire_csv(dossier / "rejets_ajout.csv", rejets, CHAMPS_SOURCE + ["motif"])
-    ecrire_csv(dossier / "doublons_ajout.csv", doublons, CHAMPS_VENTES)
-    return {"raw": len(lignes), "accepted": len(retenues), "rejected": len(rejets),
-            "duplicates": len(doublons), **compteurs}
-
-
-def main():
-    base = OUTPUTS / "atlas.sqlite"
-    resultat = ajouter(DATA / "ventes_ajout.csv", base, DATA)
-    print(f"Ajout : {resultat['inserted']} nouvelles, {resultat['existing']} existantes.")
-    print(f"Qualité ajout : {resultat['accepted']} retenues, {resultat['rejected']} rejets, "
-          f"{resultat['duplicates']} doublons.")
-    faits, quantite, montant = total_base(base)
-    print(f"Base actuelle : {faits} faits, {quantite} unités, {montant / 1000:.3f} TND.")
-    rejeu = ajouter(DATA / "ventes_ajout.csv", base, DATA)
-    print(f"Rejeu : {rejeu['inserted']} nouvelle(s), {rejeu['existing']} existantes.")
-
-
-if __name__ == "__main__":
-    main()
+def trouver_shop_key(conn, shop_id, sale_date):
+    versions = conn.execute(SQL_VERSION, (shop_id, sale_date, sale_date)).fetchall()
+    if len(versions) != 1:
+        raise ValueError(f"Version temporelle unique attendue : {shop_id} au {sale_date}")
+    return versions[0][0]

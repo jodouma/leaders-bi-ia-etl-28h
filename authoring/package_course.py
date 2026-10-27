@@ -8,7 +8,7 @@ import hashlib
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-DEST = ROOT.parent / 'livraison' / 'Atlas_BI_IA_28h_etudiants.zip'
+DEST = ROOT.parent / 'livraison' / 'Atlas_CODEX_BI_15h_etudiants.zip'
 EXCLUDED = {'.git', '.env', '__pycache__', '.DS_Store', '.venv', 'node_modules',
             'outputs', 'renders', 'pdf_layout_report.json'}
 
@@ -24,7 +24,7 @@ def main():
     DEST.parent.mkdir(parents=True, exist_ok=True)
     with ZipFile(DEST, 'w', ZIP_DEFLATED) as archive:
         for path in files:
-            archive.write(path, Path('atlas-bi-ia-28h') / path.relative_to(ROOT))
+            archive.write(path, Path('atlas-codex-bi-15h') / path.relative_to(ROOT))
     print(json.dumps({'archive':str(DEST),'files':len(files),
                       'sha256':hashlib.sha256(DEST.read_bytes()).hexdigest()},
                      ensure_ascii=False,indent=2))

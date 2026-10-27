@@ -290,7 +290,7 @@ def cover(c, data, label):
                 ParagraphStyle('sub',parent=BODY,fontSize=13,leading=19,textColor=colors.white))
     _,sh=p.wrap(WIDTH-45,300)
     p.drawOn(c,LEFT,H-230-h-sh)
-    for i,(large,small) in enumerate([('28 h','AU TOTAL'),('70 %','PRATIQUE'),('0','PRÉREQUIS IT')]):
+    for i,(large,small) in enumerate([('15 h','5 SÉANCES DE 3 H'),('70 %','PRATIQUE HORS PAUSES'),('0','PRÉREQUIS IT')]):
         x=LEFT+i*173
         c.setFillColor(colors.HexColor('#142443'))
         c.roundRect(x,250,158,80,12,fill=1,stroke=0)
@@ -304,7 +304,7 @@ def cover(c, data, label):
     c.setFont('InterBold',13)
     c.drawString(LEFT,204,'ATLAS PAPETERIE')
     c.setFont('Inter',11)
-    c.drawString(LEFT,180,'Fichiers de ventes   →   ETL   →   Entrepôt   →   Rapport')
+    c.drawString(LEFT,180,'Codex   +   CSV et SQL   →   Entrepôt   →   Power BI')
     c.setFillColor(colors.HexColor('#C9D4EE'))
     c.setFont('Inter',10)
     c.drawString(LEFT,108,label)
@@ -317,7 +317,7 @@ def cover(c, data, label):
 def header(c, data, page, num, continued=False):
     c.setFillColor(NAVY)
     c.setFont('InterBold',8.2)
-    c.drawString(LEFT,H-35,'ATLAS  /  CONSTRUIRE SA BI AVEC IA')
+    c.drawString(LEFT,H-35,'ATLAS  /  IA, CODEX ET BI')
     c.setFillColor(MUTED)
     c.setFont('Inter',8)
     c.drawRightString(RIGHT,H-35,'Leaders University')
@@ -342,7 +342,7 @@ def build(source, output, label):
     c=canvas.Canvas(str(output),pagesize=(W,H),pageCompression=1)
     c.setTitle(data['title'])
     c.setAuthor(data.get('author','Youssef Douma'))
-    c.setSubject('Licence BI · Python, ETL et entrepôts de données · 28 heures')
+    c.setSubject('Licence BI · Codex, Python, ETL et Power BI · 15 heures')
     cover(c,data,label)
     num=2
     report=[]
@@ -375,7 +375,7 @@ def main():
     books=[('content/setup.json','01_demarrer_windows_ubuntu.pdf','01 / INSTALLER SON ATELIER'),
            ('content/course.json','02_cours_atlas_ia.pdf','02 / CONSTRUIRE SA BI AVEC IA'),
            ('content/reference.json','03_prompts_reperes_depannage.pdf','03 / PROMPTS, REPÈRES ET AIDE'),
-           ('content/challenge.json','04_defi_campus_box.pdf','04 / DÉFI CAMPUS BOX'),
+           ('content/challenge.json','04_defi_atlas.pdf','04 / DÉFI ATLAS'),
            ('content/solutions.json','05_indices_et_corriges.pdf','05 / INDICES ET CORRIGÉS')]
     reports=[]
     for src,dest,label in books:

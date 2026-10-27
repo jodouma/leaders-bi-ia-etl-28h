@@ -1,0 +1,61 @@
+table fact_sales
+	lineageTag: 0cc90cb2-caa3-52d6-ac4f-95ea559d1ffe
+
+	measure 'CA TND' = DIVIDE(SUM(fact_sales[amount_millimes]), 1000)
+		formatString: #,0.000 "TND"
+		lineageTag: a022b0a1-68f3-4fcf-a872-31e1539484b3
+
+	measure 'Quantité vendue' = SUM(fact_sales[quantity])
+		formatString: #,0
+		lineageTag: 457330d4-8011-4b41-a555-a1eab6ee25e8
+
+	measure 'Nombre de ventes' = COUNTROWS(fact_sales)
+		formatString: #,0
+		lineageTag: 25785e08-470b-48db-ac7a-a8f8d51329f2
+
+	column sale_id
+		dataType: string
+		sourceColumn: sale_id
+		summarizeBy: none
+
+	column date_key
+		dataType: int64
+		sourceColumn: date_key
+		summarizeBy: none
+
+	column product_key
+		dataType: int64
+		sourceColumn: product_key
+		summarizeBy: none
+
+	column shop_key
+		dataType: int64
+		sourceColumn: shop_key
+		summarizeBy: none
+
+	column quantity
+		dataType: int64
+		sourceColumn: quantity
+		summarizeBy: none
+
+	column unit_price_millimes
+		dataType: int64
+		sourceColumn: unit_price_millimes
+		summarizeBy: none
+
+	column amount_millimes
+		dataType: int64
+		sourceColumn: amount_millimes
+		summarizeBy: none
+
+	partition fact_sales = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(CSVFolder & "\fact_sales.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"sale_id", type text}, {"date_key", Int64.Type}, {"product_key", Int64.Type}, {"shop_key", Int64.Type}, {"quantity", Int64.Type}, {"unit_price_millimes", Int64.Type}, {"amount_millimes", Int64.Type}}, "en-US")
+			in
+			    Typed
+
+	annotation PBI_ResultType = Table

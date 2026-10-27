@@ -1,0 +1,49 @@
+table dim_shop
+	lineageTag: bee9e82f-3498-55d2-aa8e-35081899a2a6
+
+	column shop_key
+		dataType: int64
+		sourceColumn: shop_key
+		summarizeBy: none
+
+	column shop_id
+		dataType: string
+		sourceColumn: shop_id
+		summarizeBy: none
+
+	column shop_name
+		dataType: string
+		sourceColumn: shop_name
+		summarizeBy: none
+
+	column commercial_zone
+		dataType: string
+		sourceColumn: commercial_zone
+		summarizeBy: none
+
+	column valid_from
+		dataType: dateTime
+		sourceColumn: valid_from
+		summarizeBy: none
+		formatString: yyyy-mm-dd
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		sourceColumn: valid_to
+		summarizeBy: none
+		formatString: yyyy-mm-dd
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_shop = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(CSVFolder & "\dim_shop.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    NullDates = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, {"valid_to"}),
+			    Typed = Table.TransformColumnTypes(NullDates, {{"shop_key", Int64.Type}, {"shop_id", type text}, {"shop_name", type text}, {"commercial_zone", type text}, {"valid_from", type date}, {"valid_to", type date}}, "en-US")
+			in
+			    Typed
+
+	annotation PBI_ResultType = Table

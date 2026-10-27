@@ -1,9 +1,8 @@
-# Captures et schémas
+# Images du cours
 
-[Retour au cours](../../README.md) · [Guide en images](../DEMARRER_EN_IMAGES.md)
+[Retour au parcours visuel](../DEMARRER_EN_IMAGES.md)
 
-- `real/` : vraies captures du dépôt, du dossier extrait, de l’accueil Thonny et du rapport. Les exemples de gestion de fichiers et Thonny ont été observés sous macOS ; ils ne prouvent pas une installation Windows ou Ubuntu.
-- `setup/` : captures officielles, [licences et attributions](setup/ATTRIBUTIONS.md). Les interfaces Windows historiques aident à reconnaître un repère ; suivre les commandes actuelles du guide 01.
-- `diagrams/` : schémas conceptuels et graphique calculé depuis les CSV. [Sources reproductibles](../../authoring/visuals/README.md).
+- `diagrams/` : quatorze schémas originaux en français ; ils expliquent les concepts et ne simulent aucune interface. [Générateur, valeurs et licences](../../authoring/visuals/README.md).
+- `real/` : captures authentiques, avec contexte et plateforme dans le catalogue. Une capture macOS ne prouve pas une installation Windows/WSL ou Ubuntu.
 
-Le [catalogue des images](SOURCES.json) indique provenance, dimensions, empreintes et limites. Les originaux restent inchangés ; les cadrages éventuels sont indiqués dans le PDF.
+Le [catalogue des captures](SOURCES.json) donne la provenance et les limites. Les images d’un rapport HTML prouvent uniquement ce rapport local ; elles ne prouvent pas une manipulation Power BI Desktop.
