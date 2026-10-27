@@ -146,7 +146,7 @@
         {
           "type": "callout",
           "label": "Reconnaître la bonne racine",
-          "text": "À l’intérieur de cours-bi, README.md, AGENTS.md, projet et outils doivent être visibles ensemble. Si vous voyez seulement un autre dossier portant le nom du dépôt, ouvrez ce dossier intérieur : c’est son contenu qu’il faut placer dans cours-bi. atelier sera créé ensuite."
+          "text": "La racine cours-bi contient README.md, AGENTS.md, projet, outils, solutions, tests et defi. Si vous voyez seulement un dossier portant le nom du dépôt, ouvrez-le : son contenu doit être placé dans cours-bi. atelier sera créé page 11."
         }
       ],
       "source_ids": [
@@ -342,7 +342,7 @@
         {
           "type": "callout",
           "label": "Le bon dossier",
-          "text": "Le projet sélectionné est cours-bi dans Ubuntu. Ne choisissez ni le ZIP, ni seulement projet, ni la copie conservée dans Téléchargements Windows. Continuez page 11 : vous créerez votre copie atelier."
+          "text": "Gardez ~/cours-bi ouvert dans Codex : AGENTS.md et le futur dossier .agents/skills doivent y être accessibles. Les modifications des missions se feront dans atelier/. Continuez page 11 pour créer cette copie de travail."
         }
       ],
       "source_ids": [
@@ -413,7 +413,7 @@
           "type": "bullets",
           "items": [
             "Téléchargez le ZIP du cours dans votre navigateur. Ouvrez Fichiers, puis le dossier de téléchargement. Ouvrez l’archive avec le gestionnaire d’archives et choisissez Extraire.",
-            "Extrayez dans votre dossier personnel. Ouvrez le résultat : la racine doit contenir README.md, AGENTS.md, data et atelier.",
+            "Extrayez dans votre dossier personnel. La racine contient README.md, AGENTS.md, projet, outils, solutions, tests et defi. atelier sera créé page 11 ; data se trouvera dans atelier.",
             "Renommez cette racine cours-bi. Si un dossier cours-bi existe déjà, conservez-le et demandez une reprise propre ; ne fusionnez pas silencieusement deux éditions."
           ]
         },
@@ -432,7 +432,7 @@
         },
         {
           "type": "text",
-          "text": "Dans Codex, utilisez l’action permettant d’ouvrir un dossier ou d’ajouter un projet local. Sélectionnez cours-bi dans votre dossier personnel, puis commencez New chat dans cet emplacement. La documentation prévoit ce choix de dossier ; le libellé exact dépend de la version Linux."
+          "text": "Dans Codex, ouvrez ou ajoutez le dossier local ~/cours-bi, puis commencez New chat dans ce projet. Gardez la racine du cours ouverte : AGENTS.md et le futur dossier .agents/skills doivent y être accessibles. Les modifications des missions se feront dans atelier/. Le libellé du sélecteur dépend de la version Linux."
         },
         {
           "type": "callout",
@@ -492,12 +492,12 @@
         },
         {
           "type": "code",
-          "label": "Terminal Ubuntu · racine du cours",
+          "label": "Terminal Ubuntu · seulement si atelier n’existe pas",
           "text": "cd ~/cours-bi\npython3 outils/jalon.py 01 atelier"
         },
         {
           "type": "text",
-          "text": "Attendez « Jalon 01 créé ». atelier contient maintenant votre copie de travail, ses données et ses scripts. Si atelier existe déjà, conservez votre essai : ne le supprimez pas pour relancer la commande. Passez à la première demande Codex page 12."
+          "text": "Attendez « Jalon 01 créé ». Si atelier existe déjà, ne relancez pas cette commande : gardez votre essai et continuez avec ce dossier. Ne supprimez pas votre travail pour recommencer au jalon 01. Gardez ~/cours-bi ouvert dans Codex et passez page 12."
         }
       ],
       "source_ids": [
@@ -593,8 +593,8 @@
             ]
           ],
           "widths": [
-            1.2,
-            2.8
+            1.7,
+            2.3
           ]
         },
         {
@@ -858,7 +858,7 @@
         {
           "type": "bullets",
           "items": [
-            "…montrer la racine cours-bi et reconnaître atelier, data et outputs.",
+            "…montrer la racine cours-bi, son fichier AGENTS.md et ma copie atelier, qui contient data et outputs.",
             "…dire si j’utilise Ubuntu natif ou Ubuntu dans WSL2 et ouvrir le bon terminal.",
             "…ouvrir le projet local dans Codex, vérifier mon accès Free et formuler une première demande limitée.",
             "…lancer python3 depuis atelier, lire une erreur et conserver mon premier essai.",

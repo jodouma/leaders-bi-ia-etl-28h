@@ -9,21 +9,31 @@ Le guide 01 accompagne les manipulations depuis zéro : dossiers, ZIP, terminal,
 - **Codex gratuit** : compte personnel Free, disponibilité réelle et usage à contrôler avant la mission. Luna Standard est annoncé sous déploiement. Standard désigne la vitesse ; High est l’effort de départ conseillé pour Luna si le compte affiche ce réglage. N’inventez pas une option absente.
 - **Power BI** : un vrai poste Windows avec Power BI Desktop ouvert doit être prêt avant la séance 4. Depuis Ubuntu natif, prévoyez le transfert du dossier d’export sur ce poste.
 
-Après extraction du ZIP, la racine `~/cours-bi` contient notamment `README.md`, `AGENTS.md`, `projet/` et `outils/`. `projet/` est le modèle fourni. Ouvrez cette racine dans Codex. Le guide explique la copie dans Linux pour WSL ; ne travaillez pas dans le ZIP.
+Après extraction du ZIP, la racine `~/cours-bi` contient `README.md`, `AGENTS.md`, `projet/`, `outils/`, `solutions/`, `tests/` et `defi/`. `projet/` est le modèle fourni. Gardez **cette racine** ouverte dans Codex : les consignes `AGENTS.md` et le futur dossier `.agents/skills/` doivent être accessibles. Les modifications des missions se feront dans `atelier/`, créé ensuite. Le guide explique la copie dans Linux pour WSL ; ne travaillez pas dans le ZIP.
 
-Dans le **Terminal Ubuntu**, vérifiez Python puis créez la copie de travail :
+Dans le **Terminal Ubuntu**, vérifiez Python :
 
 ```bash
 cd ~/cours-bi
 python3 --version
 python3 -c "import csv, sqlite3, decimal; print('OK Python')"
+```
+
+Si `atelier` n’existe pas encore, créez une seule fois la copie de départ :
+
+```bash
 python3 outils/jalon.py 01 atelier
-cd atelier
+```
+
+Si `atelier` existe déjà, ne relancez pas le jalon 01 : conservez votre essai et reprenez dans ce dossier. Ne supprimez pas votre travail pour recommencer. Puis :
+
+```bash
+cd ~/cours-bi/atelier
 python3 calcul.py
 python3 verifier.py 01
 ```
 
-Les deux premiers contrôles doivent afficher une version Python 3 puis `OK Python`. La création du jalon annonce `Jalon 01 créé`. `calcul.py` doit afficher `2 × 4500 = 9000 millimes = 9.000 TND` ; le contrôle doit afficher `OK 01`. Si `atelier` existe déjà, conservez votre travail avant toute reprise. Ne modifiez pas les vérificateurs ou les données pour masquer une erreur.
+Les deux premiers contrôles doivent afficher une version Python 3 puis `OK Python`. La création du jalon annonce `Jalon 01 créé`. `calcul.py` doit afficher `2 × 4500 = 9000 millimes = 9.000 TND` ; le contrôle doit afficher `OK 01`. Ne modifiez pas les vérificateurs ou les données pour masquer une erreur.
 
 `atelier/` contient votre copie de travail, dont `data/` et `outputs/`. Python utilise sa bibliothèque standard : aucun paquet pip n’est requis. Si `python3` manque, le guide décrit l’installation Ubuntu avec `apt` et le nouveau contrôle.
 
