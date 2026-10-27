@@ -80,11 +80,16 @@ def check_delivery(base, directory):
     manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
     require(set(manifest["files"]) == {f"{t}.csv" for t in TABLES}, "Manifest must name exactly four tables")
     expected = database_rows(base)
+    require(manifest["schema_version"] == "atlas-v6-1", "Export schema version")
+    require((manifest["encoding"], manifest["delimiter"]) == ("utf-8-sig", ","), "Export format declaration")
+    require(manifest["sums"] == {"quantity": sum(r[4] for r in expected["fact_sales"]),
+                                 "amount_millimes": sum(r[6] for r in expected["fact_sales"])}, "Manifest sums")
     for table, columns in TABLES.items():
         path = directory / f"{table}.csv"
         raw = path.read_bytes()
         require(raw.startswith(b"\xef\xbb\xbf"), f"Missing UTF-8 BOM: {path.name}")
         info = manifest["files"][path.name]
+        require(info["columns"] == list(columns), f"Manifest columns: {path.name}")
         require(hashlib.sha256(raw).hexdigest() == info["sha256"], f"Export hash: {path.name}")
         with path.open(encoding="utf-8-sig", newline="") as stream:
             reader = csv.reader(stream)
@@ -109,10 +114,12 @@ def check_runtime(root):
         initial = action(atelier, "initial")
         base = atelier / "outputs/atlas.sqlite"
         require(tuple(initial[k] for k in ("raw", "accepted", "rejected", "duplicate")) == (16, 12, 3, 1), "Initial quality receipt")
-        assert_state(base, (12, 32, 99000))
+        initial_rows = assert_state(base, (12, 32, 99000))
+        require([len(initial_rows[t]) for t in TABLES] == [4, 2, 3, 12], "Initial dimension/fact counts")
         increment = action(atelier, "increment")
         require(tuple(increment[k] for k in ("inserted", "existing", "new_shop_versions")) == (2, 1, 1), "Increment receipt")
         before = assert_state(base, (14, 35, 115500))
+        require([len(before[t]) for t in TABLES] == [4, 3, 4, 14], "Final dimension/fact counts")
         replay = action(atelier, "increment")
         require(tuple(replay[k] for k in ("inserted", "existing", "new_shop_versions")) == (0, 3, 0), "Replay receipt")
         require(database_rows(base) == before, "Replay changed keys or values")
@@ -212,6 +219,9 @@ def execute_python(root, block, printed, temporary):
     source = block.get("source", "")
     if source.startswith("solutions/atlas/"):
         return execute_function(root, printed, source, temporary)
+    definitions = [n for n in ast.parse(printed).body if isinstance(n, ast.FunctionDef)]
+    require(not any(n.name in FUNCTION_STAGES for n in definitions),
+            "A course function needs its source path for execution in the genuine starter")
     atelier = prepared_reference(root, temporary, block.get("state", "initial"))
     if block.get("fixture") == "source_connection":
         # This context is explicitly declared in the book, using the genuine
@@ -219,7 +229,8 @@ def execute_python(root, block, printed, temporary):
         prefix = ("from lecture import connexion_source, SQL_VENTES, DATA\n"
                   "conn = connexion_source(DATA / 'source_operationnelle.sqlite')\n"
                   "batch_id = '2026-01-08'\ntry:\n")
-        script = prefix + "\n".join("    " + line for line in printed.splitlines()) + "\nfinally:\n    conn.close()\n"
+        script = prefix + "\n".join("    " + line for line in printed.splitlines())
+        script += "\n    assert len(lignes) == 3\nfinally:\n    conn.close()\n"
     else:
         script = "\n".join(block.get("prerequisites", [])) + "\n" + printed
     if source.startswith("docs/exemples/"):
@@ -251,6 +262,8 @@ def execute_sql(root, block, printed, temporary):
 
 def execute_shell(root, block, printed, temporary):
     label = block.get("label", "")
+    if block.get("verify") == "manual-route":
+        return {"coverage": "manual route/path template; not executed", "label": label}
     if "explorer.exe" in printed:
         return {"coverage": "Windows/WSL GUI transfer; requires manual execution"}
     # Installers, account login and edited path templates are checked as
@@ -261,14 +274,19 @@ def execute_shell(root, block, printed, temporary):
         return {"coverage": "setup/platform instruction; not executed", "label": label}
     if os.name == "nt":
         return {"coverage": "Linux shell; executed in Ubuntu PDF job"}
-    snapshot = temporary / "cours"
-    shutil.copytree(root, snapshot, ignore=shutil.ignore_patterns(".git", "outputs", "__pycache__"))
-    if "outils/jalon.py" in printed:
-        cwd = snapshot
+    if "outils/jalon.py" in printed or "dossier téléchargé" in label:
+        cwd = temporary / "cours"
+        shutil.copytree(root, cwd, ignore=shutil.ignore_patterns(".git", "outputs", "__pycache__"))
     else:
-        cwd = checkpoint(snapshot, temporary / "atelier")
-        action(cwd, "initial")
-        if block.get("state", "initial") == "final":
+        cwd = checkpoint(root, temporary / "atelier", block.get("checkpoint", 7))
+        default_state = ("none" if "executer.py initial" in printed
+                         else "initial" if "executer.py increment" in printed or "executer.py rapport" in printed
+                         else "final" if "executer.py export" in printed else "none")
+        state = block.get("state", default_state)
+        require(state in ("none", "initial", "final"), "Unknown shell context: " + state)
+        if state != "none":
+            action(cwd, "initial")
+        if state == "final":
             action(cwd, "increment")
     # Use the literal python3 commands from the panel, bound to this verifier's
     # interpreter through PATH, so no globally installed Python is assumed.
@@ -278,8 +296,19 @@ def execute_shell(root, block, printed, temporary):
     result = subprocess.run(["/bin/sh", "-eu", "-c", printed], cwd=cwd,
                             env={**PYTHON_ENV, "PATH": str(bin_dir) + os.pathsep + os.environ.get("PATH", "")},
                             text=True, encoding="utf-8", capture_output=True, timeout=90)
-    require(result.returncode == 0, f"Printed shell failed: {printed}\n{result.stdout}\n{result.stderr}")
-    return {"coverage": "isolated completed reference context", "stdout": result.stdout.strip()}
+    require(result.returncode == block.get("expected_exit", 0),
+            f"Printed shell exit differs: {printed}\n{result.stdout}\n{result.stderr}")
+    if "expected_stderr" in block:
+        require(block["expected_stderr"] in result.stderr, "Expected shell error absent: " + result.stderr)
+    if "expected_stdout" in block:
+        require(result.stdout.strip() == block["expected_stdout"].strip(), "Shell output differs: " + result.stdout)
+    export_check = None
+    if "executer.py export" in printed and (cwd / "outputs/atlas.sqlite").is_file():
+        deliveries = list((cwd / "outputs/powerbi").glob("*/manifest.json"))
+        require(len(deliveries) == 1, "Printed export must create exactly one complete delivery")
+        export_check = check_delivery(cwd / "outputs/atlas.sqlite", deliveries[0].parent)
+    return {"coverage": "isolated reference context", "exit": result.returncode,
+            "stdout": result.stdout.strip(), "stderr": result.stderr.strip(), "export": export_check}
 
 
 def check_books(root):
