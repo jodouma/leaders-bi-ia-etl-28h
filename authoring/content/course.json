@@ -183,8 +183,8 @@
               "Ouvrir le dossier, voir les CSV, retrouver les résultats."
             ],
             [
-              "Éditeur",
-              "Lire et enregistrer un fichier Python, AGENTS.md ou SUIVI.md."
+              "Éditeur nano",
+              "Lire et enregistrer un fichier texte dans le terminal Ubuntu / WSL : AGENTS.md, SUIVI.md ou un Skill."
             ],
             [
               "Terminal Ubuntu / WSL",
@@ -276,18 +276,73 @@
       ]
     },
     {
+      "title": "Modifier et enregistrer un fichier avec nano",
+      "kicker": "S1 / MON ÉDITEUR TEXTE GRATUIT",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "nano est un éditeur de texte dans le terminal Ubuntu / WSL. Il permet d’écrire et sauvegarder un fichier ; il n’exécute pas le Python. Gardez Codex ouvert sur le dossier du cours. Dans le terminal, ouvrez le fichier de règles :"
+        },
+        {
+          "type": "code",
+          "text": "cd ~/cours-bi\nnano AGENTS.md",
+          "label": "Terminal Ubuntu / WSL · ouvrir les règles du cours",
+          "language": "shell",
+          "verify": "manual-route",
+          "manual_reason": "nano ouvre un éditeur interactif ; l’étudiant saisit et sauvegarde."
+        },
+        {
+          "type": "text",
+          "text": "Utilisez les flèches pour placer le curseur. Tapez une règle personnelle, par exemple « Indique l’unité de chaque montant ». Pour enregistrer : maintenez Ctrl et appuyez sur O, la lettre O. Appuyez sur Entrée pour garder le même nom. Puis Ctrl+X quitte nano."
+        },
+        {
+          "type": "code",
+          "text": "cat AGENTS.md\ncd atelier",
+          "label": "Terminal Ubuntu / WSL · après avoir enregistré et quitté nano",
+          "language": "shell",
+          "verify": "manual-route",
+          "manual_reason": "Vérification du texte personnel après l’édition interactive, puis retour dans atelier."
+        },
+        {
+          "type": "callout",
+          "label": "Lire le fichier sauvegardé",
+          "text": "cat affiche le contenu. Retrouvez votre règle : vous avez vérifié l’enregistrement, sans exécuter le fichier. Les commandes Python du cours se lancent ensuite depuis atelier/. Pour éditer un autre texte, nano suivi de son nom utilise les mêmes touches."
+        },
+        {
+          "type": "text",
+          "text": "Si nano est introuvable, depuis le terminal Ubuntu / WSL, installez-le avec les commandes suivantes. sudo peut demander votre mot de passe du poste ; aucun caractère n’apparaît pendant sa saisie. Reprenez ensuite nano AGENTS.md depuis ~/cours-bi."
+        },
+        {
+          "type": "code",
+          "text": "sudo apt update\nsudo apt install nano",
+          "label": "Terminal Ubuntu / WSL · seulement si nano manque",
+          "language": "shell",
+          "verify": "manual-route",
+          "manual_reason": "Installation Ubuntu interactive : réseau, droits du poste et confirmation éventuelle."
+        },
+        {
+          "type": "text",
+          "text": "Aide officielle : https://www.nano-editor.org/dist/latest/nano.html. En bas de nano, ^O signifie Ctrl+O et ^X signifie Ctrl+X. Le fichier reste modifiable après sa sauvegarde."
+        }
+      ]
+    },
+    {
       "title": "Écrire une instruction qui reste dans le dossier",
       "kicker": "S1 / AGENTS.md ET PLAN",
       "blocks": [
         {
           "type": "text",
-          "text": "AGENTS.md contient les règles du projet. Il se trouve à la racine du cours, ~/cours-bi/AGENTS.md, à côté de atelier/ : ouvrez ce fichier dans l’éditeur, complétez-le puis enregistrez. Codex reste ouvert sur ~/cours-bi. Les règles ne remplacent pas votre demande précise du moment."
+          "text": "AGENTS.md contient les règles du projet. Il se trouve à la racine du cours : ~/cours-bi/AGENTS.md, à côté de atelier/. Ouvrez-le dans nano avec les gestes de la page « Modifier et enregistrer un fichier avec nano ». Codex reste ouvert sur ~/cours-bi. Les règles ne remplacent pas votre demande précise."
         },
         {
           "type": "code",
           "label": "Texte à adapter · AGENTS.md à la racine du cours",
           "text": "Projet : Atlas Papeterie, données fictives.\nExplique en français simple avant de modifier.\nPréserve atelier/data/ et les noms des fonctions.\nChange seulement la fonction demandée.\nGarde les montants en millimes entiers.\nMontre la commande et le résultat du contrôle.",
           "language": "text"
+        },
+        {
+          "type": "text",
+          "text": "Ajoutez une règle personnelle. Enregistrez : Ctrl+O (lettre O), Entrée pour garder AGENTS.md, puis Ctrl+X. Affichez cat AGENTS.md pour vérifier la règle sauvegardée, puis cd atelier pour retrouver le dossier des commandes Python."
         },
         {
           "type": "callout",
@@ -412,13 +467,25 @@
       "blocks": [
         {
           "type": "text",
-          "text": "Une preuve relie une attente à une observation. « Codex dit que cela fonctionne » ne montre pas l’exécution. Gardez plutôt la commande, la sortie, une courte explication et la prochaine action dans SUIVI.md."
+          "text": "Une preuve relie attente et observation. « Codex dit que cela fonctionne » ne montre pas l’exécution. Gardez commande, sortie, explication et prochaine action dans ~/cours-bi/SUIVI.md, à la racine du cours. Depuis le terminal Ubuntu / WSL :"
+        },
+        {
+          "type": "code",
+          "text": "cd ~/cours-bi\nnano SUIVI.md",
+          "label": "Terminal Ubuntu / WSL · créer ou rouvrir le journal à la racine",
+          "language": "shell",
+          "verify": "manual-route",
+          "manual_reason": "nano interactif : saisie et sauvegarde manuelles de l’étudiant."
         },
         {
           "type": "code",
           "label": "Exemple de note · à adapter à ce qui a été observé",
           "text": "Mission : lire et expliquer une vente.\nPrédiction : 2 x 4500 = 9000 millimes.\nFichiers lus : data/ventes_initiales.csv.\nCommande : python3 -c \"print(2 * 4500)\"\nObservé : 9000 ; accord avec ma prédiction.\nProchaine action : classer les lignes douteuses.",
           "language": "text"
+        },
+        {
+          "type": "text",
+          "text": "Si le fichier est nouveau, saisissez votre note sur le modèle ci-dessus ; sinon ajoutez la suite. Ctrl+O, Entrée, Ctrl+X sauvegardent et quittent. Tapez cat SUIVI.md : retrouvez votre dernière phrase. Puis cd atelier ; les prochaines commandes Python se lancent depuis ce sous-dossier."
         },
         {
           "type": "text",
@@ -1434,11 +1501,11 @@
         },
         {
           "type": "text",
-          "text": "Ajoutez une Carte avec CA TND. Désactivez l’abréviation des unités d’affichage et montrez trois décimales. Selon la langue du poste, 115,500 ou 115.500 signifie ici cent quinze dinars et cinq cents millimes ; vérifiez la valeur avant la mise en forme."
+          "text": "Revenez à la vue Rapport : icône de rapport dans la barre de gauche. Cliquez une zone vide. Dans Visualisations → Générer un visuel (ou Construire le visuel selon la version), choisissez Carte. Depuis Données, glissez CA TND dans Valeurs, ou le champ équivalent proposé. Dans Format du visuel → Visuel → Valeurs de légende → Valeurs, réglez les unités sur Aucune et les décimales sur 3 ; les noms peuvent varier selon la version."
         },
         {
           "type": "text",
-          "text": "Ajoutez un graphique en colonnes : axe commercial_zone de dim_shop, valeur CA TND. Titre proposé : « Ventes par zone à la date de vente — TND ». Les barres ne montrent ni bénéfice ni nombre de personnes."
+          "text": "Cliquez de nouveau une zone vide. Choisissez Histogramme groupé dans Visualisations. Glissez dim_shop[commercial_zone] vers Axe X, puis CA TND vers Axe Y / Valeurs. Donnez le titre « Ventes par zone à la date de vente — TND ». Les barres décrivent des ventes, pas un bénéfice ou des personnes."
         },
         {
           "type": "table",
@@ -1511,7 +1578,7 @@
       "blocks": [
         {
           "type": "text",
-          "text": "Un Skill est une méthode gardée dans un dossier avec un fichier SKILL.md. Son en-tête indique name et description. Il n’ajoute ni outil, ni modèle, ni quota. Les deux Skills locaux fournis servent de modèles ; vous allez en créer un troisième dans votre copie."
+          "text": "Un Skill garde une méthode dans un fichier SKILL.md. name et description indiquent son nom et son usage. Les deux Skills fournis servent de modèles ; créez votre propre copie locale. Aucun outil, modèle ni quota supplémentaire n’est ajouté."
         },
         {
           "type": "table",
@@ -1536,7 +1603,19 @@
         },
         {
           "type": "text",
-          "text": "À la racine du cours, créez .agents/skills/ma-revue-bi/SKILL.md dans l’éditeur. Copiez le contenu du modèle revoir-bi/SKILL.md. Changez name: revoir-bi en name: ma-revue-bi. Ajoutez une règle : « demander la preuve du 7 et du 8 janvier avant de conclure ». Enregistrez. Vérifiez la découverte dans le sélecteur s’il existe ; une nouvelle conversation peut être nécessaire."
+          "text": "Depuis le terminal Ubuntu / WSL, revenez à la racine du cours. Créez le dossier, copiez le modèle, puis ouvrez votre copie :"
+        },
+        {
+          "type": "code",
+          "text": "cd ~/cours-bi\nmkdir -p .agents/skills/ma-revue-bi\ncp .agents/skills/revoir-bi/SKILL.md \\\n  .agents/skills/ma-revue-bi/SKILL.md\nnano .agents/skills/ma-revue-bi/SKILL.md",
+          "label": "Terminal Ubuntu / WSL · copie locale puis édition",
+          "language": "shell",
+          "verify": "manual-route",
+          "manual_reason": "nano interactif et copie personnelle : manipulation manuelle de l’étudiant."
+        },
+        {
+          "type": "text",
+          "text": "Avec les flèches, changez name: revoir-bi en name: ma-revue-bi. Ajoutez la règle « demander la preuve du 7 et du 8 janvier avant de conclure ». Ctrl+O, Entrée, Ctrl+X. Vérifiez avec cat .agents/skills/ma-revue-bi/SKILL.md. Puis cd atelier. Essayez la découverte dans le sélecteur ; une nouvelle conversation peut être nécessaire."
         },
         {
           "type": "code",
@@ -1547,7 +1626,7 @@
         {
           "type": "callout",
           "label": "Autre manipulation honnête",
-          "text": "Si le Skill n’apparaît pas : « Lis .agents/skills/ma-revue-bi/SKILL.md et suis sa méthode sur la recherche de version. » La lecture explicite vérifie la méthode, pas sa découverte automatique. Gardez le nouveau fichier et une réponse qui applique votre règle."
+          "text": "Si le Skill n’apparaît pas : « Lis .agents/skills/ma-revue-bi/SKILL.md et applique sa méthode. » Cela vérifie la lecture explicite, pas la découverte automatique. Gardez fichier et réponse appliquant votre règle."
         },
         {
           "type": "text",

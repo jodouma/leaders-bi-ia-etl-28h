@@ -476,6 +476,10 @@
         {
           "type": "text",
           "text": "Les données d’origine et le vérificateur ne se modifient pas pour faire disparaître une erreur. Utilisez une copie pour les expériences qui changent une base ; gardez votre atelier principal explicable."
+        },
+        {
+          "type": "text",
+          "text": "Éditeur nano : les flèches déplacent le curseur ; Ctrl+O (lettre O), Entrée, Ctrl+X enregistrent puis quittent. cat suivi du chemin affiche le texte sauvegardé. Pour AGENTS.md, SUIVI.md et les Skills, partez de ~/cours-bi ; revenez avec cd atelier avant les commandes Python."
         }
       ]
     },
