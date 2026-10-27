@@ -1,46 +1,41 @@
-"""02 — Lire les fichiers CSV du projet."""
+"""CSV et vraie source SQL. Seul lire_increment_sql est à compléter."""
 import csv
+import hashlib
 from pathlib import Path
+import sqlite3
 
 ROOT = Path(__file__).resolve().parent
-# La référence utilise les mêmes sources ; une copie de projet reste autonome.
 DATA = ROOT / "data"
-if not DATA.is_dir():
-    DATA = ROOT.parents[1] / "projet" / "data"
 OUTPUTS = ROOT / "outputs"
+SQL_VENTES = "SELECT sale_id, date, shop_id, product_id, quantity, unit_price_tnd FROM source_sales WHERE batch_id = ? ORDER BY sale_id"
+SQL_CHANGEMENTS = "SELECT shop_id, effective_date, commercial_zone FROM source_shop_changes WHERE batch_id = ? ORDER BY effective_date, shop_id"
 
 
 def lire_csv(chemin):
-    """Renvoyer une liste de dictionnaires ; chaque valeur reste du texte."""
     with Path(chemin).open(encoding="utf-8-sig", newline="") as fichier:
         return list(csv.DictReader(fichier))
 
 
-def catalogues(chemin_data=DATA):
-    """Préparer les deux dictionnaires attendus par le nettoyage."""
-    chemin_data = Path(chemin_data)
-    produits = {ligne["product_id"]: ligne["product_name"]
-                for ligne in lire_csv(chemin_data / "produits.csv")}
-    boutiques = {ligne["shop_id"]: ligne["shop_name"]
-                 for ligne in lire_csv(chemin_data / "boutiques.csv")}
-    return produits, boutiques
+def connexion_source(chemin):
+    # mode=ro refuse de créer silencieusement une base vide.
+    chemin = Path(chemin).resolve(strict=True)
+    conn = sqlite3.connect(chemin.as_uri() + "?mode=ro", uri=True)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
-def ecrire_csv(chemin, lignes, champs):
-    """Sauver un résultat lisible ; même un journal vide possède un en-tête."""
-    chemin = Path(chemin)
-    chemin.parent.mkdir(parents=True, exist_ok=True)
-    with chemin.open("w", encoding="utf-8", newline="") as fichier:
-        writer = csv.DictWriter(fichier, fieldnames=champs)
-        writer.writeheader()
-        writer.writerows(lignes)
+def preuve_source(chemin, batch_id):
+    chemin = Path(chemin).resolve(strict=True)
+    return {"path": str(chemin), "sha256": hashlib.sha256(chemin.read_bytes()).hexdigest(),
+            "queries": [{"sql": SQL_VENTES, "params": [batch_id]},
+                        {"sql": SQL_CHANGEMENTS, "params": [batch_id]}]}
 
 
-def main():
-    lignes = lire_csv(DATA / "ventes_initiales.csv")
-    print(f"Lecture : {len(lignes)} lignes ; champs : {', '.join(lignes[0])}")
-    print("Première vente :", lignes[0])
-
-
-if __name__ == "__main__":
-    main()
+def lire_increment_sql(chemin_source, batch_id="2026-01-08"):
+    conn = connexion_source(chemin_source)
+    try:
+        ventes = [dict(row) for row in conn.execute(SQL_VENTES, (batch_id,))]
+        changements = [dict(row) for row in conn.execute(SQL_CHANGEMENTS, (batch_id,))]
+    finally:
+        conn.close()
+    return ventes, changements, preuve_source(chemin_source, batch_id)

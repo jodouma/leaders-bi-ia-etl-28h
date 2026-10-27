@@ -1,41 +1,27 @@
-"""05 — Charger un lot dans une transaction, avec identifiants stables."""
-from datetime import date
+"""Commandes métier fournies ; réutilisées par executer.py et les contrôles."""
 from pathlib import Path
-from lecture import OUTPUTS, catalogues, lire_csv
-from modele import connecter
+from engine import charger, ecrire_json
+from lecture import lire_csv
+import lecture
+import incremental
 
 
-def charger(ventes, produits, boutiques, chemin_base):
-    # TODO — mission 05 : construire cette fonction avec aide de l’IA, puis vérifier.
-    raise NotImplementedError("Compléter chargement.py : charger.")
+def initial(data, outputs):
+    data, outputs = Path(data), Path(outputs)
+    bilan = charger(lire_csv(data / "ventes_initiales.csv"), [], outputs / "atlas.sqlite", data)
+    ecrire_json(outputs / "qualite_initial.json", {k: bilan[k] for k in ("raw", "accepted", "rejected", "duplicate", "rejects")})
+    ecrire_json(outputs / "chargement_initial.json", bilan)
+    return bilan
 
 
-def lire_ventes_nettoyees(chemin):
-    """Relire le résultat de 03 ; les colonnes numériques quittent le format texte CSV."""
-    ventes = lire_csv(chemin)
-    for vente in ventes:
-        for champ in ("quantity", "unit_price_millimes", "amount_millimes"):
-            vente[champ] = int(vente[champ])
-    return ventes
-
-
-def total_base(chemin_base):
-    connexion = connecter(chemin_base)
-    try:
-        return connexion.execute("SELECT COUNT(*), COALESCE(SUM(quantity), 0), "
-                                 "COALESCE(SUM(amount_millimes), 0) FROM fact_sales").fetchone()
-    finally:
-        connexion.close()
-
-
-def main():
-    produits, boutiques = catalogues()
-    ventes = lire_ventes_nettoyees(OUTPUTS / "ventes_nettoyees.csv")
-    resultat = charger(ventes, produits, boutiques, OUTPUTS / "atlas.sqlite")
-    faits, quantite, montant = total_base(OUTPUTS / "atlas.sqlite")
-    print(f"Lot initial : {resultat['inserted']} nouvelles, {resultat['existing']} existantes.")
-    print(f"Base actuelle : {faits} faits, {quantite} unités, {montant / 1000:.3f} TND.")
-
-
-if __name__ == "__main__":
-    main()
+def increment(data, outputs, batch_id="2026-01-08"):
+    data, outputs = Path(data), Path(outputs)
+    base = outputs / "atlas.sqlite"
+    if not base.is_file():
+        raise FileNotFoundError("Exécuter initial avant increment")
+    ventes, changements, preuve = lecture.lire_increment_sql(data / "source_operationnelle.sqlite", batch_id)
+    preuve.update({"extracted_sales": len(ventes), "extracted_changes": len(changements)})
+    ecrire_json(outputs / "extraction_sql.json", preuve)
+    bilan = charger(ventes, changements, base, data, incremental.trouver_shop_key, strict=True)
+    ecrire_json(outputs / "chargement_increment.json", bilan)
+    return bilan
