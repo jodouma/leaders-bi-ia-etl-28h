@@ -1,4 +1,4 @@
-"""Rebuild the four student books from their editable JSON sources.
+"""Rebuild the five student books from their editable JSON sources.
 
 Python 3.10+, reportlab and Pillow. No university skill installation needed.
 Run from any folder: python authoring/build_pdfs.py
@@ -52,7 +52,17 @@ def marked(text):
     text = html.escape(str(text))
     text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
     text = re.sub(r'`([^`]+)`', r'<font name="Courier">\1</font>', text)
-    text = re.sub(r'(https?://[^\s<>]+)', r'<link href="\1" color="#2B3180">\1</link>', text)
+    def linked(match):
+        url = match.group(1)
+        suffix = ''
+        while url and url[-1] in '.,;!?':
+            suffix = url[-1] + suffix
+            url = url[:-1]
+        while url.endswith(')') and url.count(')') > url.count('('):
+            suffix = ')' + suffix
+            url = url[:-1]
+        return f'<link href="{url}" color="#2B3180">{url}</link>{suffix}'
+    text = re.sub(r'(https?://[^\s<>]+)', linked, text)
     return text.replace('\n', '<br/>')
 
 
@@ -104,6 +114,8 @@ def measure(block):
         return 96, block['nodes']
     if kind == 'star':
         return 323, None
+    if kind == 'branches':
+        return 52 * len(block['outcomes']) + 10, block
     if kind in ('figure','image'):
         height = block.get('height', 170)
         return height + 38, block
@@ -218,6 +230,31 @@ def draw_block(c, block, obj, y, height):
                     'Chaque vente retrouve un seul produit, une seule boutique et une seule date.',SMALL)
         ph=p.wrap(WIDTH,2000)[1]
         p.drawOn(c,LEFT,y-294-ph)
+    elif kind == 'branches':
+        outcomes = obj['outcomes']
+        centre = y - (52 * len(outcomes)) / 2
+        source_width, output_x = 165, LEFT + 235
+        c.setStrokeColor(ORANGE)
+        c.setLineWidth(1.5)
+        c.line(LEFT+source_width, centre, LEFT+205, centre)
+        c.line(LEFT+205,y-26,LEFT+205,y-26-52*(len(outcomes)-1))
+        c.setFillColor(DEEP)
+        c.roundRect(LEFT,centre-30,source_width,60,10,fill=1,stroke=0)
+        p=paragraph(obj['source'],WHITE)
+        ph=p.wrap(source_width-24,2000)[1]
+        p.drawOn(c,LEFT+12,centre+ph/2-ph)
+        for index,label in enumerate(outcomes):
+            top=y-index*52
+            c.line(LEFT+205,top-26,output_x-7,top-26)
+            c.line(output_x-11,top-22,output_x-7,top-26)
+            c.line(output_x-11,top-30,output_x-7,top-26)
+            c.setFillColor(PALE)
+            c.roundRect(output_x,top-46,WIDTH-235,40,9,fill=1,stroke=0)
+            p=paragraph(label,SMALL)
+            ph=p.wrap(WIDTH-259,2000)[1]
+            if ph>30:
+                raise ValueError('Branch label too long: '+label)
+            p.drawOn(c,output_x+12,top-26+ph/2-ph)
 
 
 def cover(c, data, label):
@@ -239,7 +276,7 @@ def cover(c, data, label):
                 ParagraphStyle('sub',parent=BODY,fontSize=13,leading=19,textColor=colors.white))
     _,sh=p.wrap(WIDTH-45,300)
     p.drawOn(c,LEFT,H-230-h-sh)
-    for i,(large,small) in enumerate([('28 h','PARCOURS GUIDÉ'),('70 %','PRATIQUE'),('0','PRÉREQUIS IT')]):
+    for i,(large,small) in enumerate([('28 h','AU TOTAL'),('70 %','PRATIQUE'),('0','PRÉREQUIS IT')]):
         x=LEFT+i*173
         c.setFillColor(colors.HexColor('#142443'))
         c.roundRect(x,250,158,80,12,fill=1,stroke=0)
@@ -259,14 +296,14 @@ def cover(c, data, label):
     c.drawString(LEFT,108,label)
     c.drawString(LEFT,87,data.get('author','Youssef Douma'))
     c.setFont('Inter',8.5)
-    c.drawString(LEFT,49,'Édition pédagogique · 26 octobre 2026 · données fictives')
+    c.drawString(LEFT,49,'Édition pédagogique · 27 octobre 2026 · données fictives')
     c.showPage()
 
 
 def header(c, data, page, num, continued=False):
     c.setFillColor(NAVY)
     c.setFont('InterBold',8.2)
-    c.drawString(LEFT,H-35,'ATLAS  /  PYTHON · ETL · ENTREPÔTS')
+    c.drawString(LEFT,H-35,'ATLAS  /  CONSTRUIRE SA BI AVEC IA')
     c.setFillColor(MUTED)
     c.setFont('Inter',8)
     c.drawRightString(RIGHT,H-35,'Leaders University')
@@ -321,10 +358,11 @@ def build(source, output, label):
 
 
 def main():
-    books=[('start.json','01_demarrer_windows.pdf','01 / DÉMARRER SUR WINDOWS'),
-           ('course.json','02_cours_atlas.pdf','02 / LE COURS ET LES MISSIONS'),
-           ('reference.json','03_reperes_et_depannage.pdf','03 / REPÈRES ET DÉPANNAGE'),
-           ('solutions.json','04_indices_et_corriges.pdf','04 / INDICES ET CORRIGÉS')]
+    books=[('content/setup.json','01_demarrer_windows_ubuntu.pdf','01 / INSTALLER SON ATELIER'),
+           ('content/course.json','02_cours_atlas_ia.pdf','02 / CONSTRUIRE SA BI AVEC IA'),
+           ('content/reference.json','03_prompts_reperes_depannage.pdf','03 / PROMPTS, REPÈRES ET AIDE'),
+           ('content/challenge.json','04_defi_campus_box.pdf','04 / DÉFI CAMPUS BOX'),
+           ('content/solutions.json','05_indices_et_corriges.pdf','05 / INDICES ET CORRIGÉS')]
     reports=[]
     for src,dest,label in books:
         reports.append(build(HERE/src,ROOT/'pdf'/dest,label))

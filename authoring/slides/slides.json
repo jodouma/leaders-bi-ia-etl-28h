@@ -1,0 +1,938 @@
+{
+  "title": "Construire une solution BI avec l’IA — Atlas",
+  "author": "Youssef Douma",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "Construire une\nsolution BI avec l’IA",
+      "subtitle": "Python, ETL et entrepôts de données\nUn projet Atlas, du premier calcul au rapport."
+    },
+    {
+      "layout": "beforeafter",
+      "title": "Une réponse plausible peut être fausse",
+      "leftLabel": "CANDIDAT FAUTIF CONSTRUIT",
+      "left": "2 carnets à 4.500 TND\n3 stylos à 1.500 TND\n\n4 500 + 1 500 = 6 000",
+      "rightLabel": "CE QUE NOUS AVONS VENDU",
+      "right": "2 × 4 500 + 3 × 1 500\n= 13 500 millimes\n\n= 13.500 TND",
+      "note": "Exemple pédagogique construit. Ce n’est pas une réponse observée d’une offre gratuite."
+    },
+    {
+      "layout": "equation",
+      "title": "La preuve commence avant le code",
+      "terms": [
+        [
+          "Carnets",
+          "2 × 4 500",
+          "9 000"
+        ],
+        [
+          "Stylos",
+          "3 × 1 500",
+          "4 500"
+        ]
+      ],
+      "result": "13 500 millimes = 13.500 TND",
+      "variation": "Variation : 3 carnets et 3 stylos → 18 000 millimes.",
+      "note": "Prédire le résultat, exécuter, expliquer l’écart. Le modèle propose ; vous vérifiez."
+    },
+    {
+      "layout": "cards",
+      "title": "Votre résultat après 28 heures",
+      "items": [
+        {
+          "label": "Construire",
+          "text": "Un pipeline Python, un entrepôt SQLite et un rapport HTML."
+        },
+        {
+          "label": "Vérifier",
+          "text": "Les montants, les lignes rejetées et un ajout rejoué sans doublon."
+        },
+        {
+          "label": "Expliquer",
+          "text": "Le grain, les unités, les clés et les limites de la décision."
+        }
+      ],
+      "note": "Aucune mémorisation de syntaxe demandée. Vous pouvez consulter les repères.",
+      "kicker": ""
+    },
+    {
+      "layout": "cards",
+      "title": "Atlas Papeterie prépare ses achats",
+      "items": [
+        {
+          "label": "Boutiques",
+          "text": "NBE : Nabeul\nTUN : Tunis"
+        },
+        {
+          "label": "Produits",
+          "text": "P01 Carnet · P02 Stylo\nP03 Classeur\nP04 Surligneur"
+        },
+        {
+          "label": "Question métier",
+          "text": "Quelles ventes observées faut-il examiner avant les prochains achats ?"
+        }
+      ],
+      "note": "Cas fictif. Les données ne décrivent ni stock, ni coût, ni marge, ni prévision.",
+      "kicker": ""
+    },
+    {
+      "layout": "process",
+      "title": "Une seule chaîne, des preuves à chaque étape",
+      "items": [
+        {
+          "label": "Extraire",
+          "text": "Lire les fichiers CSV sans changer leur sens."
+        },
+        {
+          "label": "Transformer",
+          "text": "Normaliser, contrôler et calculer les montants."
+        },
+        {
+          "label": "Charger",
+          "text": "Relier les tables et produire un rapport depuis SQLite."
+        }
+      ],
+      "note": "ETL = Extract, Transform, Load. Le rapport rend les résultats lisibles.",
+      "kicker": ""
+    },
+    {
+      "layout": "schedule",
+      "title": "28 heures pour pratiquer et comprendre",
+      "rows": [
+        [
+          "S01",
+          "Installation + calcul",
+          "3 h"
+        ],
+        [
+          "S02–S03",
+          "Lecture + qualité",
+          "6 h"
+        ],
+        [
+          "S04–S05",
+          "Modèle + chargement",
+          "6 h"
+        ],
+        [
+          "S06–S07",
+          "Incrément + rapport",
+          "6 h"
+        ],
+        [
+          "Défi",
+          "CampusBox en autonomie",
+          "7 h"
+        ]
+      ],
+      "note": "70 % pratique : 19 h 36 · 30 % théorie : 8 h 24. Installation incluse dans S01."
+    },
+    {
+      "layout": "cards",
+      "title": "Commencer dans le bon dossier",
+      "items": [
+        {
+          "label": "Télécharger",
+          "text": "Décompresser le cours dans un dossier personnel simple, puis ouvrir ce dossier."
+        },
+        {
+          "label": "Lire",
+          "text": "PDF 01 : démarrage Windows / Ubuntu.\nPDF 02 : cours Atlas guidé."
+        },
+        {
+          "label": "Produire",
+          "text": "Modifier projet/ et conserver les preuves dans projet/outputs/."
+        }
+      ],
+      "note": "Solutions et indices sont séparés. Avancez d’abord avec les fichiers de départ.",
+      "kicker": ""
+    },
+    {
+      "layout": "workspace",
+      "title": "Trois outils, trois fonctions",
+      "note": "Dans l’éditeur : modifier et enregistrer. Dans le terminal : exécuter. Dans le navigateur : lire le rapport."
+    },
+    {
+      "layout": "cards",
+      "title": "Windows : préparer une fois, puis travailler",
+      "items": [
+        {
+          "label": "Vérifier",
+          "text": "Windows 11 pris en charge et à jour, virtualisation active et WSL 2 opérationnel selon le guide officiel."
+        },
+        {
+          "label": "Installer",
+          "text": "Docker Desktop : choisir les conteneurs Linux. Ouvrir l’éditeur et le terminal du dossier décompressé."
+        },
+        {
+          "label": "Confirmer",
+          "text": "Docker Desktop démarré. Dans le terminal :\ndocker --version\ndocker compose version"
+        }
+      ],
+      "note": "Docker Desktop est propriétaire ; usage éducatif gratuit selon ses conditions. Voir le PDF 01.",
+      "kicker": "",
+      "notes": "Sources publiques : https://docs.docker.com/desktop/setup/install/windows-install/ ; https://docs.docker.com/subscription/desktop-license/ . Les prérequis exacts évoluent ; consulter le guide officiel. Aucune capture Windows reconstituée."
+    },
+    {
+      "layout": "cards",
+      "title": "Ubuntu ou installation Docker bloquée",
+      "items": [
+        {
+          "label": "Ubuntu",
+          "text": "Installer Docker Engine et le plugin Compose depuis le dépôt officiel. Vérifier les deux commandes de version."
+        },
+        {
+          "label": "Repli natif",
+          "text": "Installer Python 3.13. Dans projet/ : python3 verifier.py 01. Sous Windows : py -3.13 verifier.py 01."
+        },
+        {
+          "label": "Même projet",
+          "text": "La bibliothèque standard suffit. Aucun serveur cloud ni clé API requis pour exécuter le projet."
+        }
+      ],
+      "note": "Ubuntu : Docker Engine est open source. Les droits Docker donnent des capacités importantes sur la machine.",
+      "kicker": "",
+      "notes": "Sources publiques : https://docs.docker.com/engine/install/ubuntu/ ; https://docs.docker.com/engine/security/ ; https://www.python.org/downloads/ . Repli : en local Windows remplacer python par py -3.13 ; Ubuntu par python3."
+    },
+    {
+      "layout": "docker",
+      "title": "Docker : une recette, une exécution, vos fichiers",
+      "note": "L’image contient Python. Le conteneur exécute une commande. Vos fichiers restent dans le dossier du cours.",
+      "notes": "Source publique : https://docs.docker.com/get-started/docker-concepts/the-basics/ . Image python:3.13-slim pour l’environnement du cours."
+    },
+    {
+      "layout": "mount",
+      "title": "Le dossier partagé et localhost",
+      "note": "Le montage relie vos fichiers au conteneur. Le port publié sur 127.0.0.1 est accessible depuis votre ordinateur.",
+      "notes": "Sources : https://docs.docker.com/engine/storage/bind-mounts/ ; https://docs.docker.com/engine/network/port-publishing/ . Le dépôt est monté dans /workspace et le service atelier travaille dans /workspace/projet."
+    },
+    {
+      "layout": "commands",
+      "title": "Premier lancement : dans le dossier du cours",
+      "code": "docker compose build\n\ndocker compose run --rm atelier python calcul.py",
+      "items": [
+        "La construction télécharge Python une première fois.",
+        "Exécuter la seconde commande sur une ligne.",
+        "Enregistrer calcul.py avant de relancer."
+      ],
+      "fontSize": 20,
+      "note": "Une commande → un résultat local. --rm supprime le conteneur terminé, pas le dossier partagé."
+    },
+    {
+      "layout": "cards",
+      "title": "L’IA web suffit pour suivre le cours",
+      "items": [
+        {
+          "label": "Socle gratuit",
+          "text": "Un chat web accessible avec votre compte. Ses limites varient ; fractionner les demandes et reprendre plus tard."
+        },
+        {
+          "label": "Options payantes",
+          "text": "Un abonnement peut offrir plus de capacité. Aucune fonction payante n’est exigée par les missions."
+        },
+        {
+          "label": "CLI facultative",
+          "text": "Un assistant en terminal peut agir sur les fichiers. Son accès dépend de votre compte et de l’offre en vigueur."
+        }
+      ],
+      "note": "Ne jamais déduire « chat gratuit » ⇒ « CLI gratuite ». Vérifier l’éligibilité avant toute installation.",
+      "kicker": "",
+      "notes": "Sources publiques à consulter pour les conditions à jour : https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus ; https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan ; https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan . Aucun accès CLI gratuit n’est promis."
+    },
+    {
+      "layout": "loop",
+      "title": "Une boucle courte économise votre attention",
+      "note": "Cible de travail : 2 à 4 demandes par mission, pas un quota garanti. Un échec local apporte le contexte suivant."
+    },
+    {
+      "layout": "code",
+      "title": "Un prompt utile tient dans un petit périmètre",
+      "code": "But : calculer un total en millimes.\nFichier : projet/calcul.py.\nEntrée : quantité et prix entiers.\nSortie : un entier.\nPropose seulement calculer_total.\nExplique le test 13 500 puis 18 000.",
+      "items": [
+        "Donner le contrat avant le code.",
+        "Joindre seulement la fonction et l’erreur utile.",
+        "Relancer localement et lire la modification."
+      ],
+      "fontSize": 19,
+      "note": "Pour le chat web : copier une petite fonction. Pour une CLI : limiter son périmètre au projet."
+    },
+    {
+      "layout": "cards",
+      "title": "Gardez la main sur les changements",
+      "items": [
+        {
+          "label": "Avant",
+          "text": "Sauvegarder un jalon. Préciser le fichier autorisé et le comportement attendu."
+        },
+        {
+          "label": "Pendant",
+          "text": "Lire les demandes de permission. Accepter seulement une action comprise et utile."
+        },
+        {
+          "label": "Après",
+          "text": "Inspecter le diff, lancer le vérificateur local et expliquer une ligne modifiée."
+        }
+      ],
+      "note": "Ne pas contourner les permissions, transmettre des secrets, ni modifier les contrôles pour les faire passer.",
+      "kicker": ""
+    },
+    {
+      "layout": "exercise",
+      "title": "Jalon de départ : votre poste répond",
+      "question": "Ouvrir, enregistrer, exécuter.",
+      "steps": [
+        "Montrer le dossier projet/ et distinguer calcul.py de outputs/.",
+        "Exécuter le fichier de départ et lire le message affiché.",
+        "Conserver une trace de la commande, puis décrire son rôle."
+      ],
+      "note": "Si Docker bloque : suivre le repli Python du PDF 01. L’objectif est un premier résultat local.",
+      "number": "00"
+    },
+    {
+      "layout": "equation",
+      "title": "S01 · Un entier qui représente de l’argent",
+      "terms": [
+        [
+          "Carnets",
+          "2 × 4 500",
+          "9 000"
+        ],
+        [
+          "Stylos",
+          "3 × 1 500",
+          "4 500"
+        ]
+      ],
+      "result": "13 500 millimes, stockés comme un entier",
+      "variation": "1 TND = 1 000 millimes. Affichage : 13.500 TND.",
+      "note": "quantity = nombre d’unités ; unit_price_millimes = prix d’une unité ; amount = quantité × prix."
+    },
+    {
+      "layout": "code",
+      "title": "Une fonction a une entrée et une sortie",
+      "code": "def calculer_total(ventes):\n    total = 0\n    for vente in ventes:\n        total += (vente[\"quantity\"]\n          * vente[\"unit_price_millimes\"])\n    return total",
+      "items": [
+        "ventes est une liste de lignes.",
+        "Chaque ligne porte deux valeurs entières.",
+        "return donne le résultat au programme appelant."
+      ],
+      "fontSize": 19,
+      "note": "Contrat : calculer_total(ventes) → int. Le code se lit avant de se modifier."
+    },
+    {
+      "layout": "exercise",
+      "title": "S01 · Corriger puis faire varier",
+      "question": "Obtenir un résultat dont vous connaissez la valeur.",
+      "steps": [
+        "Faire proposer la fonction ; lire chaque opération.",
+        "Vérifier 13 500, puis prévoir et tester 3 carnets : 18 000.",
+        "Restaurer le cas initial et exécuter verifier.py 01."
+      ],
+      "note": "Preuve : deux valeurs + une phrase expliquant pourquoi le prix seul ne suffit pas.",
+      "number": "01"
+    },
+    {
+      "layout": "cards",
+      "title": "S01 · À ce stade, je sais…",
+      "items": [
+        {
+          "label": "Lire",
+          "text": "Une quantité, un prix unitaire, un total et une unité."
+        },
+        {
+          "label": "Exécuter",
+          "text": "Enregistrer un fichier puis lancer la bonne commande."
+        },
+        {
+          "label": "Vérifier",
+          "text": "Prédire une variation et expliquer un résultat local."
+        }
+      ],
+      "note": "Une explication + une exécution + une trace conservée.",
+      "kicker": "À CE STADE, JE SAIS…"
+    },
+    {
+      "layout": "grain",
+      "title": "S02 · Que représente une ligne ?",
+      "note": "Grain Atlas : une vente élémentaire d’un produit, dans une boutique, à une date. sale_id identifie cette vente."
+    },
+    {
+      "layout": "table",
+      "title": "Un CSV devient une liste de dictionnaires",
+      "headers": [
+        "Colonne CSV",
+        "Valeur lue",
+        "Sens"
+      ],
+      "rows": [
+        [
+          "sale_id",
+          "\"S001\"",
+          "Vente stable"
+        ],
+        [
+          "product_id",
+          "\"P01\"",
+          "Produit vendu"
+        ],
+        [
+          "quantity",
+          "\"2\"",
+          "Texte à convertir"
+        ],
+        [
+          "unit_price_tnd",
+          "\"4.500\"",
+          "Prix d’une unité"
+        ]
+      ],
+      "widths": [
+        1.1,
+        1,
+        1.5
+      ],
+      "note": "CSV = texte tabulaire. DictReader associe le nom de colonne à sa valeur ; rien n’est encore validé."
+    },
+    {
+      "layout": "code",
+      "title": "Lire depuis le dossier du fichier Python",
+      "code": "from pathlib import Path\nimport csv\nROOT = Path(__file__).resolve().parent\n\nwith chemin.open(encoding=\"utf-8\",\n                 newline=\"\") as fichier:\n    lignes = list(csv.DictReader(fichier))",
+      "items": [
+        "Écrire lire_csv(chemin) dans lecture.py.",
+        "chemin désigne un fichier ; ROOT désigne projet/.",
+        "Lire ne nettoie pas et ne calcule pas encore."
+      ],
+      "fontSize": 18,
+      "note": "Extrait illustratif dans la fonction lire_csv. ROOT / \"data\" / \"ventes_initiales.csv\" construit le chemin."
+    },
+    {
+      "layout": "exercise",
+      "title": "S02 · À ce stade, je sais lire les données",
+      "question": "Faire entrer les 16 lignes, sans en perdre une.",
+      "steps": [
+        "Proposer et tester lire_csv(chemin), puis verifier.py 02.",
+        "Afficher le nombre de lignes et les clés de la première.",
+        "Expliquer le grain et pourquoi \"2\" est encore du texte."
+      ],
+      "note": "Preuve : 16 lignes lues. Si fichier introuvable, inspecter le chemin et la décompression.",
+      "number": "02"
+    },
+    {
+      "layout": "process",
+      "title": "S03 · La qualité préserve le sens",
+      "items": [
+        {
+          "label": "Normaliser",
+          "text": "\" nbe \" devient \"NBE\". Même boutique, écriture cohérente."
+        },
+        {
+          "label": "Valider",
+          "text": "Quantité > 0, prix > 0, date réelle et références connues."
+        },
+        {
+          "label": "Tracer",
+          "text": "Conserver le motif du rejet et identifier les doublons."
+        }
+      ],
+      "note": "Ne jamais inventer une date ou un produit pour conserver une ligne incorrecte.",
+      "kicker": ""
+    },
+    {
+      "layout": "table",
+      "title": "Rejet, doublon et conflit : trois décisions",
+      "headers": [
+        "Situation",
+        "Décision",
+        "Pourquoi"
+      ],
+      "rows": [
+        [
+          "Quantité 0 / P99 / 30 février",
+          "Rejeter + motif",
+          "Vente non exploitable"
+        ],
+        [
+          "Même ID, même contenu",
+          "Compter un doublon",
+          "Même vente répétée"
+        ],
+        [
+          "Même ID, contenu différent",
+          "Arrêter : conflit",
+          "Ne pas choisir en silence"
+        ]
+      ],
+      "widths": [
+        1.5,
+        1.1,
+        1.2
+      ],
+      "note": "Le nettoyage conserve les six champs source normalisés et ajoute les deux montants entiers."
+    },
+    {
+      "layout": "money",
+      "title": "Lire un prix sans perdre les millimes",
+      "note": "Decimal lit le texte décimal. Vérifier la précision et la positivité, puis stocker un entier de millimes.",
+      "notes": "Sources publiques : https://docs.python.org/3/library/decimal.html ; https://docs.python.org/3/library/csv.html . Une valeur à plus de trois décimales ne doit pas être arrondie silencieusement."
+    },
+    {
+      "layout": "accounting",
+      "title": "Aucune ligne ne disparaît sans explication",
+      "values": [
+        {
+          "value": "16",
+          "label": "lignes brutes"
+        },
+        {
+          "value": "12",
+          "label": "retenues"
+        },
+        {
+          "value": "1",
+          "label": "doublon"
+        },
+        {
+          "value": "3",
+          "label": "rejets"
+        }
+      ],
+      "equation": "16 = 12 + 1 + 3",
+      "note": "Base Atlas : 32 unités vendues et 99 000 millimes retenus. Les comptes de qualité expliquent l’écart."
+    },
+    {
+      "layout": "exercise",
+      "title": "S03 · Transformer avec des traces",
+      "question": "Écrire nettoyer(lignes, produits, boutiques).",
+      "steps": [
+        "Demander une petite fonction à la fois : normaliser puis contrôler.",
+        "Tester les erreurs fournies et le doublon, puis verifier.py 03.",
+        "Présenter retenues, rejets et doublons avec un exemple."
+      ],
+      "note": "Preuve : 12 / 3 / 1 et 99 000 millimes. Un conflit de contenu doit provoquer une erreur claire.",
+      "number": "03"
+    },
+    {
+      "layout": "cards",
+      "title": "S03 · À ce stade, je sais…",
+      "items": [
+        {
+          "label": "Réparer l’écriture",
+          "text": "Une normalisation conserve la signification."
+        },
+        {
+          "label": "Préserver les faits",
+          "text": "Un rejet a un motif ; un doublon n’est pas une nouvelle vente."
+        },
+        {
+          "label": "Contrôler le calcul",
+          "text": "Les millimes restent des entiers du calcul au stockage."
+        }
+      ],
+      "note": "Une explication + une exécution + une trace conservée.",
+      "kicker": "À CE STADE, JE SAIS…"
+    },
+    {
+      "layout": "cards",
+      "title": "S04 · Organiser pour poser des questions",
+      "items": [
+        {
+          "label": "Table",
+          "text": "Des lignes de même nature et des colonnes nommées."
+        },
+        {
+          "label": "Clé primaire",
+          "text": "Une valeur unique désigne une ligne. Exemple : sale_id."
+        },
+        {
+          "label": "Clé étrangère",
+          "text": "Une valeur relie une vente à une ligne de dimension."
+        }
+      ],
+      "note": "SQLite stocke l’entrepôt dans un fichier local. SQL permet de le créer et de l’interroger.",
+      "kicker": ""
+    },
+    {
+      "layout": "star",
+      "title": "Une étoile autour des faits de vente",
+      "note": "Le fait répond « combien ? ». Les dimensions répondent « quoi, où, quand ? ». Chaque flèche se lit 1 vers N."
+    },
+    {
+      "layout": "keys",
+      "title": "Identifiant métier et clé de l’entrepôt",
+      "note": "product_id est le code source. product_key est la clé locale. Une vente conserve les références vers les dimensions."
+    },
+    {
+      "layout": "code",
+      "title": "Décrire des règles dans le schéma SQL",
+      "code": "sale_id TEXT PRIMARY KEY,\nproduct_key INTEGER NOT NULL\n  REFERENCES dim_product(product_key),\nquantity INTEGER CHECK (quantity > 0),\nunit_price_millimes INTEGER\n  CHECK (unit_price_millimes > 0),\namount_millimes INTEGER\n  CHECK (amount_millimes =\n    quantity * unit_price_millimes)",
+      "items": [
+        "Extrait de CREATE TABLE fact_sales.",
+        "Activer PRAGMA foreign_keys = ON.",
+        "Le schéma complète les contrôles Python."
+      ],
+      "fontSize": 18,
+      "note": "modele.py : creer_modele(chemin_base) crée les tables si absentes, sans effacer les données.",
+      "notes": "Sources : https://www.sqlite.org/foreignkeys.html ; https://www.sqlite.org/lang_createtable.html . Colonnes exactes dans le contrat du cours ; extrait SQL pédagogique."
+    },
+    {
+      "layout": "exercise",
+      "title": "S04 · À ce stade, je sais relier les tables",
+      "question": "Créer trois dimensions et une table de faits.",
+      "steps": [
+        "Faire dessiner puis expliquer l’étoile avant de proposer le SQL.",
+        "Créer le fichier SQLite, puis exécuter verifier.py 04.",
+        "Montrer une clé primaire et une clé étrangère sur le dessin."
+      ],
+      "note": "Preuve : dim_product, dim_shop, dim_date et fact_sales. Une seconde création ne doit rien effacer.",
+      "number": "04"
+    },
+    {
+      "layout": "process",
+      "title": "S05 · Charger dans le bon ordre",
+      "items": [
+        {
+          "label": "Dimensions",
+          "text": "Insérer les produits, boutiques et dates. Retrouver leurs clés."
+        },
+        {
+          "label": "Faits",
+          "text": "Insérer chaque vente avec ses références et ses mesures."
+        },
+        {
+          "label": "Contrôle",
+          "text": "Compter les faits et additionner les montants depuis SQLite."
+        }
+      ],
+      "note": "chargement.py : charger(ventes, produits, boutiques, chemin_base) → inserted / existing.",
+      "kicker": ""
+    },
+    {
+      "layout": "transaction",
+      "title": "Une transaction protège tout le lot",
+      "note": "Même ID + même contenu : existing. Même ID + autre contenu : erreur et annulation de tout le lot.",
+      "notes": "Source : https://docs.python.org/3/library/sqlite3.html . La gestion de transaction doit être explicite et testée. Ne pas ignorer un conflit de contenu avec INSERT OR IGNORE."
+    },
+    {
+      "layout": "code",
+      "title": "SQL répond à la question métier",
+      "code": "SELECT p.product_name,\n       SUM(f.amount_millimes) AS total\nFROM fact_sales AS f\nJOIN dim_product AS p\n  ON p.product_key = f.product_key\nGROUP BY p.product_key, p.product_name\nORDER BY total DESC;",
+      "items": [
+        "JOIN retrouve le nom du produit.",
+        "GROUP BY rassemble les ventes du même produit.",
+        "SUM additionne des montants, pas des prix."
+      ],
+      "fontSize": 19,
+      "note": "Une jointure 1 vers N correcte ne multiplie pas une vente. Vérifier aussi COUNT(*) avant / après jointure."
+    },
+    {
+      "layout": "chart",
+      "title": "Base Atlas : ventes par produit",
+      "period": "Du 05 au 07 janvier 2026 · 12 faits · total 99.000 TND",
+      "labels": [
+        "Carnet",
+        "Stylo",
+        "Classeur",
+        "Surligneur"
+      ],
+      "values": [
+        22.5,
+        18,
+        36,
+        22.5
+      ],
+      "insight": "Classeur\n36.000 TND",
+      "explanation": "Premier montant vendu sur la période.",
+      "note": "Chaque barre représente un montant vendu en TND. Ces ventes ne donnent pas la marge."
+    },
+    {
+      "layout": "exercise",
+      "title": "S05 · Recharger la base sans doubler les ventes",
+      "question": "Charger, contrôler, puis relancer le même lot.",
+      "steps": [
+        "Tester charger et lancer verifier.py 05.",
+        "Premier passage : inserted = 12 ; existing = 0.",
+        "Deuxième passage : inserted = 0 ; existing = 12."
+      ],
+      "note": "Preuve : le total reste 99 000 millimes et la base garde 12 faits. Lire aussi le test du conflit.",
+      "number": "05"
+    },
+    {
+      "layout": "cards",
+      "title": "S05 · À ce stade, je sais…",
+      "items": [
+        {
+          "label": "Stocker",
+          "text": "Les dimensions décrivent ; les faits mesurent."
+        },
+        {
+          "label": "Interroger",
+          "text": "Relier, regrouper et sommer avec SQL."
+        },
+        {
+          "label": "Protéger",
+          "text": "Un lot est cohérent et un rejeu identique ne crée rien."
+        }
+      ],
+      "note": "Une explication + une exécution + une trace conservée.",
+      "kicker": "À CE STADE, JE SAIS…"
+    },
+    {
+      "layout": "increment",
+      "title": "S06 · Un petit ajout, une mise à jour fiable",
+      "note": "ventes_ajout.csv : S013 et S014 sont nouvelles ; S012 existe déjà. Ajouter = nettoyer puis charger, sans vider la base."
+    },
+    {
+      "layout": "replay",
+      "title": "Le second passage ne change plus rien",
+      "note": "Premier ajout : 2 nouvelles + 1 existante. Rejeu du même fichier : 0 nouvelle + 3 existantes."
+    },
+    {
+      "layout": "chart",
+      "title": "Après ajout : annoncer la nouvelle période",
+      "period": "Du 05 au 08 janvier 2026 · 14 faits · total 115.500 TND",
+      "labels": [
+        "Carnet",
+        "Stylo",
+        "Classeur",
+        "Surligneur"
+      ],
+      "values": [
+        27,
+        18,
+        48,
+        22.5
+      ],
+      "insight": "+16.500 TND",
+      "explanation": "Deux ventes nouvelles ; un jour de plus.",
+      "note": "99.000 sur 3 jours et 115.500 sur 4 jours : cette hausse ne prouve pas une amélioration de performance."
+    },
+    {
+      "layout": "exercise",
+      "title": "S06 · À ce stade, je sais mettre à jour",
+      "question": "Réutiliser les fonctions déjà fiables.",
+      "steps": [
+        "Écrire ajouter(source, base, data) dans incremental.py.",
+        "Lancer verifier.py 06 et rejouer le même ajout.",
+        "Expliquer 12 → 14 → 14 faits et 32 → 35 unités."
+      ],
+      "note": "Preuve : 115 500 millimes à chaque rejeu. Si le total augmente encore, inspecter sale_id.",
+      "number": "06"
+    },
+    {
+      "layout": "cards",
+      "title": "S07 · Un rapport est une preuve lisible",
+      "items": [
+        {
+          "label": "Contexte",
+          "text": "Le nom du cas, les dates et le grain apparaissent dans le rapport."
+        },
+        {
+          "label": "Résultats",
+          "text": "Les indicateurs et barres viennent de la base réelle, avec leurs unités."
+        },
+        {
+          "label": "Interprétation",
+          "text": "Une observation, une action prudente et une limite explicite."
+        }
+      ],
+      "note": "rapport.py : generer(chemin_base, chemin_html) → résumé + HTML autonome.",
+      "kicker": ""
+    },
+    {
+      "layout": "beforeafter",
+      "title": "Distinguer observation et décision",
+      "leftLabel": "CE QUE LES DONNÉES DISENT",
+      "left": "Le classeur représente\n48.000 TND vendus\ndu 05 au 08 janvier.\n\n14 faits au total.",
+      "rightLabel": "CE QU’IL RESTE À VÉRIFIER",
+      "right": "Examiner les stocks\net les coûts avant achat.\n\nAucune conclusion de marge\nou de prévision.",
+      "note": "Un rapport utile aide à poser la prochaine question ; il ne fabrique pas la réponse manquante."
+    },
+    {
+      "layout": "commands",
+      "title": "Exécuter toute la chaîne et ouvrir le rapport",
+      "code": "docker compose run --rm atelier python executer.py\ndocker compose up -d\n\nhttp://localhost:8000/rapport_atlas.html\n\ndocker compose down",
+      "items": [
+        "Exécuter la chaîne avec la première commande.",
+        "Ouvrir l’adresse dans le navigateur de l’hôte.",
+        "Après vérification, arrêter le serveur avec down."
+      ],
+      "fontSize": 19,
+      "note": "Depuis le dossier du cours. Repli natif : voir le PDF 01 pour lancer le serveur de outputs/."
+    },
+    {
+      "layout": "cards",
+      "title": "Quand cela bloque : réduire le problème",
+      "items": [
+        {
+          "label": "Lire",
+          "text": "Dernière ligne de l’erreur, fichier et numéro de ligne. Reproduire une seule commande."
+        },
+        {
+          "label": "Isoler",
+          "text": "Demander une hypothèse sur la petite fonction concernée. Joindre entrée, attendu et obtenu."
+        },
+        {
+          "label": "Réparer",
+          "text": "Inspecter la différence, relancer le test concerné, puis le parcours complet."
+        }
+      ],
+      "note": "Ne pas réécrire tout le projet à chaque erreur. Les contrôles sont des repères à comprendre.",
+      "kicker": ""
+    },
+    {
+      "layout": "exercise",
+      "title": "S07 · À ce stade, je sais livrer une chaîne",
+      "question": "Faire fonctionner le rapport depuis une base réelle.",
+      "steps": [
+        "Tester rapport.py, executer.py puis verifier.py 07 et tout.",
+        "Ouvrir le HTML et vérifier période, total et barres.",
+        "Relancer executer.py et démontrer un résultat stable."
+      ],
+      "note": "Preuve : 14 faits, 35 unités, 115.500 TND + un rapport lisible et une limite métier.",
+      "number": "07"
+    },
+    {
+      "layout": "cover",
+      "title": "Défi CampusBox\nVotre transfert en 7 h",
+      "subtitle": "Même démarche, nouvelle activité :\nfiabiliser des ventes de repas sur le campus."
+    },
+    {
+      "layout": "cards",
+      "title": "CampusBox : choisir le périmètre",
+      "items": [
+        {
+          "label": "Source",
+          "text": "Une ligne décrit une vente de portions. Garder l’identifiant de vente stable."
+        },
+        {
+          "label": "Statuts",
+          "text": "Seules les ventes SERVIE alimentent les indicateurs."
+        },
+        {
+          "label": "Trace",
+          "text": "ANNULEE et EN_ATTENTE restent expliquées dans le journal hors périmètre."
+        }
+      ],
+      "note": "Ne pas traiter une commande en attente comme un repas vendu. Consulter defi/ et le PDF 04.",
+      "kicker": ""
+    },
+    {
+      "layout": "campus",
+      "title": "La base et l’ajout doivent se réconcilier",
+      "note": "Base : 14 lignes = 9 retenues + 1 doublon + 4 non retenues. Ajout : 4 lignes = 3 valides + 1 rejet."
+    },
+    {
+      "layout": "cards",
+      "title": "Au plus trois personnes, une preuve par personne",
+      "items": [
+        {
+          "label": "Piloter",
+          "text": "Formuler le contrat, prévoir les valeurs et garder les jalons."
+        },
+        {
+          "label": "Construire",
+          "text": "Proposer une petite modification et lire le diff avec le groupe."
+        },
+        {
+          "label": "Vérifier",
+          "text": "Exécuter, inspecter les sorties et expliquer les limites."
+        }
+      ],
+      "note": "Faire tourner les rôles. Seul : les exercer successivement. Chacun montre une modification et une explication.",
+      "kicker": ""
+    },
+    {
+      "layout": "schedule",
+      "title": "Sept heures avec des jalons visibles",
+      "rows": [
+        [
+          "0 h–1 h",
+          "Comprendre données et périmètre",
+          "Contrat écrit"
+        ],
+        [
+          "1 h–3 h",
+          "Lire, nettoyer, calculer",
+          "Base expliquée"
+        ],
+        [
+          "3 h–5 h",
+          "Modéliser et charger",
+          "SQL + contrôles"
+        ],
+        [
+          "5 h–6 h",
+          "Ajouter et rejouer",
+          "Stabilité prouvée"
+        ],
+        [
+          "6 h–7 h",
+          "Rapport et démonstration",
+          "Livraison expliquée"
+        ]
+      ],
+      "note": "Cible de travail, à adapter au rythme réel. Garder un résultat utilisable à chaque jalon."
+    },
+    {
+      "layout": "exercise",
+      "title": "CampusBox · Tester une variation comprise",
+      "question": "Prouver votre raisonnement, pas seulement une sortie.",
+      "steps": [
+        "Chaque personne prédit l’effet d’une petite variation.",
+        "Modifier sur une copie, exécuter et expliquer le résultat.",
+        "Restaurer la source et conserver commande, preuve et diff."
+      ],
+      "note": "Une erreur expliquée et réparée apporte une preuve d’apprentissage. Les repères restent autorisés.",
+      "number": "DÉFI"
+    },
+    {
+      "layout": "cards",
+      "title": "Livrer un projet que quelqu’un peut vérifier",
+      "items": [
+        {
+          "label": "Fichiers",
+          "text": "Code exécutable, sources et rapport. README court : démarrer et reproduire."
+        },
+        {
+          "label": "Preuves",
+          "text": "Comptes qualité, total de base, ajout, rejeu stable et résultat SQL."
+        },
+        {
+          "label": "Explication",
+          "text": "Le grain, les unités, une décision prudente, une limite et une contribution personnelle."
+        }
+      ],
+      "note": "Avant de déposer : refaire le démarrage depuis une copie propre et vérifier les fichiers réellement inclus.",
+      "kicker": ""
+    },
+    {
+      "layout": "cards",
+      "title": "À ce stade, je sais construire une solution BI",
+      "items": [
+        {
+          "label": "Données fiables",
+          "text": "Lire et conserver le sens, contrôler les rejets et les montants."
+        },
+        {
+          "label": "Entrepôt utile",
+          "text": "Relier les tables, interroger et recharger sans doublon."
+        },
+        {
+          "label": "IA maîtrisée",
+          "text": "Définir un petit contrat, vérifier localement et expliquer le changement."
+        }
+      ],
+      "note": "Une explication + une exécution + une trace conservée.",
+      "kicker": "À CE STADE, JE SAIS…"
+    },
+    {
+      "layout": "closing",
+      "title": "Une proposition devient utile\nquand vous pouvez la vérifier.",
+      "items": [
+        "Un contrat court avant chaque demande.",
+        "Un test local avant chaque confiance.",
+        "Une explication claire avant chaque décision."
+      ]
+    }
+  ]
+}

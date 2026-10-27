@@ -1,0 +1,665 @@
+{
+  "title": "Sources officielles du guide de démarrage Atlas",
+  "verified_on": "2026-10-27",
+  "verification_scope": "Recherche documentaire officielle ; vérification de configuration Compose séparée. Aucune installation Windows ou Ubuntu, connexion IA ni éligibilité individuelle de compte gratuit testée.",
+  "source_count": 47,
+  "sources": [
+    {
+      "id": "docker-windows",
+      "title": "Install Docker Desktop on Windows",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/desktop/setup/install/windows-install/",
+      "supports": [
+        "Planchers techniques Windows et WSL",
+        "8 Go RAM, SLAT et virtualisation BIOS/UEFI",
+        "Prise en charge liée au cycle Microsoft",
+        "Per-user sans droits admin pour installation et mise à jour",
+        "Activation initiale WSL nécessite admin",
+        "Démarrage manuel Desktop et acceptation des conditions",
+        "Service LanmanServer",
+        "x86_64 et Arm Early Access"
+      ]
+    },
+    {
+      "id": "docker-wsl",
+      "title": "Docker Desktop WSL 2 backend on Windows",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/desktop/features/wsl/",
+      "supports": [
+        "WSL >= 2.1.5",
+        "Commandes Docker depuis terminal Windows sans distribution personnelle",
+        "Desktop utilise sa distribution docker-desktop",
+        "Ne pas doubler Engine dans WSL",
+        "Intégration d'une distribution facultative"
+      ]
+    },
+    {
+      "id": "microsoft-wsl-install",
+      "title": "How to install Linux on Windows with WSL",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+      "supports": [
+        "PowerShell administrateur",
+        "wsl --install et redémarrage",
+        "Ubuntu par défaut",
+        "Premier lancement et compte Linux si distribution installée",
+        "--web-download pour installation bloquée à 0 %"
+      ]
+    },
+    {
+      "id": "microsoft-wsl-commands",
+      "title": "Basic commands for WSL",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/basic-commands",
+      "supports": [
+        "wsl --install --no-distribution",
+        "wsl --update",
+        "wsl --version",
+        "wsl --status",
+        "wsl --list --verbose",
+        "--web-download"
+      ]
+    },
+    {
+      "id": "windows11-home-pro",
+      "title": "Windows 11 Home and Pro — Microsoft Lifecycle",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro",
+      "supports": [
+        "24H2 fin 2026-10-13",
+        "25H2 fin 2027-10-12",
+        "26H2 encore maintenu",
+        "Différencier version et édition"
+      ]
+    },
+    {
+      "id": "windows11-enterprise-education",
+      "title": "Windows 11 Enterprise and Education — Microsoft Lifecycle",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/windows-11-enterprise-and-education",
+      "supports": [
+        "23H2 fin 2026-11-10",
+        "24H2 fin 2027-10-12",
+        "Maintenance différente Home/Pro"
+      ]
+    },
+    {
+      "id": "windows10-home-pro",
+      "title": "Windows 10 Home and Pro — Microsoft Lifecycle",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/windows-10-home-and-pro",
+      "supports": [
+        "22H2 dernière version",
+        "Fin du support ordinaire 2025-10-14",
+        "LTSC dépend de cycles spécifiques"
+      ]
+    },
+    {
+      "id": "windows10-esu",
+      "title": "Windows 10 Consumer Extended Security Updates (ESU)",
+      "publisher": "Microsoft",
+      "url": "https://www.microsoft.com/en-us/windows/extended-security-updates",
+      "supports": [
+        "Mises à jour importantes/critiques pour Windows10 22H2 inscrit",
+        "Ne comprend ni support technique ni nouvelles fonctionnalités",
+        "Page actuellement prolongée jusqu'au 2027-10-12",
+        "Ne pas promettre tout Windows10 pris en charge par Docker"
+      ]
+    },
+    {
+      "id": "desktop-license",
+      "title": "Docker Desktop license agreement",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/subscription-billing/desktop-license/",
+      "supports": [
+        "Education gratuite",
+        "Usage personnel gratuit",
+        "Petite entreprise moins de250 ET moins de10MUSD",
+        "Gouvernement et usages professionnels hors limites payants",
+        "Conditions distinctes pour projets open source"
+      ]
+    },
+    {
+      "id": "docker-desktop-engine-distinction",
+      "title": "How to Check Your Docker Installation: Docker Desktop vs. Docker Engine",
+      "publisher": "Docker",
+      "url": "https://www.docker.com/blog/how-to-check-docker-version/",
+      "published_at": "2024-05-20",
+      "supports": [
+        "Desktop inclut composants propriétaires et open source",
+        "Engine seul gratuit sur Linux",
+        "Client vs daemon",
+        "Ne pas désigner Desktop entièrement open source"
+      ]
+    },
+    {
+      "id": "docker-engine",
+      "title": "Docker Engine",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/engine/",
+      "supports": [
+        "Engine est technologie open source",
+        "Architecture CLI + daemon + API",
+        "Licence Apache2 mentionnée"
+      ]
+    },
+    {
+      "id": "docker-ubuntu",
+      "title": "Install Docker Engine on Ubuntu",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/engine/install/ubuntu/",
+      "supports": [
+        "Ubuntu64bits26.10,26.04LTS,24.04LTS,22.04LTS actuellement listés",
+        "CléGPG et dépôtApt officiel au format docker.sources",
+        "docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin",
+        "systemctl puis hello-world",
+        "Attention conflits paquets déjà installés"
+      ]
+    },
+    {
+      "id": "ubuntu-release-cycle",
+      "title": "Ubuntu release cycle",
+      "publisher": "Canonical / Ubuntu",
+      "url": "https://ubuntu.com/about/release-cycle",
+      "supports": [
+        "24.04LTS maintenance standard mai2029",
+        "26.04LTS mai2031",
+        "22.04LTS mai2027"
+      ]
+    },
+    {
+      "id": "docker-linux-postinstall",
+      "title": "Linux post-installation steps for Docker Engine",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/engine/install/linux-postinstall/",
+      "supports": [
+        "sudo par défaut",
+        "Groupe docker donne privilègesroot",
+        "usermod-aG et déconnexion/reconnexion",
+        "Ne pas masquer les droits nécessaires"
+      ]
+    },
+    {
+      "id": "docker-compose-install",
+      "title": "Overview of installing Docker Compose",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/compose/install/",
+      "supports": [
+        "Compose inclus dans Desktop",
+        "Plugin Linux depuis dépôt",
+        "Ancienne installation standalone déconseillée"
+      ]
+    },
+    {
+      "id": "docker-localhost-port",
+      "title": "Port publishing and mapping",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/engine/network/port-publishing/",
+      "supports": [
+        "Port sans adresse se publie sur interfaces hôte",
+        "127.0.0.1 restreint accès au poste",
+        "Distinguer porthôte et portconteneur",
+        "Anciennes versionsEngine avant28 avaient exception réseauL2"
+      ]
+    },
+    {
+      "id": "docker-bind-mount",
+      "title": "Bind mounts",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/engine/storage/bind-mounts/",
+      "supports": [
+        "Répertoire hôte accessible au conteneur",
+        "Montage en écriture permet modifications hôte",
+        "Limiter le partage au projet"
+      ]
+    },
+    {
+      "id": "docker-desktop-signin",
+      "title": "Explore Docker Desktop",
+      "publisher": "Docker",
+      "url": "https://docs.docker.com/desktop/use-desktop/",
+      "supports": [
+        "Connexion recommandée",
+        "Limites de téléchargement",
+        "Administrateurs peuvent imposer connexion"
+      ]
+    },
+    {
+      "id": "python-windows",
+      "title": "Using Python on Windows",
+      "publisher": "Python Software Foundation",
+      "url": "https://docs.python.org/3/using/windows.html",
+      "supports": [
+        "Gestionnaire installation Python officiel",
+        "Commandes python et py",
+        "Windows ne fournit pas Python système par défaut",
+        "Interpréteur distinct de l'éditeur"
+      ]
+    },
+    {
+      "id": "python-httpserver",
+      "title": "http.server — HTTP servers",
+      "publisher": "Python Software Foundation",
+      "url": "https://docs.python.org/3/library/http.server.html",
+      "supports": [
+        "python -m http.server",
+        "--bind127.0.0.1",
+        "--directory",
+        "Outil de développement pas serveurproduction"
+      ]
+    },
+    {
+      "id": "thonny-official",
+      "title": "Thonny, Python IDE for beginners",
+      "publisher": "Thonny project",
+      "url": "https://thonny.org/",
+      "supports": [
+        "Windows variante portableZIP officielle",
+        "InstallateurWindows IntelAMD etArm distincts",
+        "Python embarqué",
+        "InstallationUbuntu via apt mentionnée"
+      ],
+      "caveat": "Version site5.0.0. Le nom de fichier portable contient py38 mais le texte décrit Python3.14; ne pas déduire une versionPython de ce nom, vérifier dans le logiciel. Aucun téléchargement ou lancement réalisé."
+    },
+    {
+      "id": "thonny-release",
+      "title": "Release Version 5.0.0",
+      "publisher": "Thonny project on GitHub",
+      "url": "https://github.com/thonny/thonny/releases/tag/v5.0.0",
+      "supports": [
+        "Version officielle courante vers laquelle /releases/latest redirigeait au moment du contrôle"
+      ]
+    },
+    {
+      "id": "codex_cli",
+      "title": "Codex CLI",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "publisher": "OpenAI",
+      "supports": [
+        "Standalone Linux installer",
+        "npm alternative",
+        "Project-directory launch",
+        "Git checkpoints"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_install_paths",
+      "title": "Environment variables",
+      "url": "https://learn.chatgpt.com/docs/config-file/environment-variables",
+      "publisher": "OpenAI",
+      "supports": [
+        "Standalone PowerShell installer endpoint",
+        "Standalone install locations on Linux and Windows"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_windows_verify",
+      "title": "Deploy the Windows app and Codex CLI",
+      "url": "https://learn.chatgpt.com/docs/enterprise/windows-deployment",
+      "publisher": "OpenAI",
+      "supports": [
+        "Get-Command codex",
+        "codex --version",
+        "Windows standalone and npm routes"
+      ],
+      "status": "confirmed_documentation",
+      "note": "Enterprise deployment specifics are not proposed for students; only native installation and verification facts are used. Security-policy bypass examples from this page are intentionally omitted from the teaching route."
+    },
+    {
+      "id": "codex_auth",
+      "title": "Authentication",
+      "url": "https://learn.chatgpt.com/docs/auth",
+      "publisher": "OpenAI",
+      "supports": [
+        "codex login browser flow",
+        "codex login status",
+        "Distinct authentication choices"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_access",
+      "title": "Pricing",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "publisher": "OpenAI",
+      "supports": [
+        "Free/Go desktop access subject to rollout",
+        "CLI explicitly listed for Plus",
+        "API billing separate from subscription usage",
+        "Usage depends on tokens and task context"
+      ],
+      "status": "confirmed_documentation_with_explicit_unknown",
+      "unknown": "Universal Free-plan Codex CLI eligibility is not established by the fetched page. Do not promise free CLI access or equate desktop rollout with CLI entitlement."
+    },
+    {
+      "id": "codex_windows_sandbox",
+      "title": "Windows sandbox",
+      "url": "https://learn.chatgpt.com/docs/windows/windows-sandbox",
+      "publisher": "OpenAI",
+      "supports": [
+        "Native Windows CLI supported",
+        "Bounded filesystem and network permissions"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_wsl",
+      "title": "WSL",
+      "url": "https://learn.chatgpt.com/docs/windows/wsl",
+      "publisher": "OpenAI",
+      "supports": [
+        "Linux installer inside WSL",
+        "Keep repository under Linux home for performance"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_permissions",
+      "title": "Agent approvals & security",
+      "url": "https://learn.chatgpt.com/docs/agent-approvals-security",
+      "publisher": "OpenAI",
+      "supports": [
+        "Read-only plus on-request flags",
+        "Workspace-write plus on-request semantics",
+        "Permission boundary distinct from model instructions"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_project_rules",
+      "title": "Custom instructions with AGENTS.md",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "publisher": "OpenAI",
+      "supports": [
+        "Project instructions discovery",
+        "Concise AGENTS.md context"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "codex_workflow",
+      "title": "Best practices",
+      "url": "https://learn.chatgpt.com/guides/best-practices",
+      "publisher": "OpenAI",
+      "supports": [
+        "Goal, context, constraints and done-when prompt structure",
+        "Plan difficult tasks",
+        "Human review"
+      ],
+      "status": "confirmed_documentation",
+      "note": "Beginner teaching routine and one-agent recommendation are course design choices rather than claims that the source prescribes exactly that pedagogy."
+    },
+    {
+      "id": "codex_commands",
+      "title": "Developer commands — CLI",
+      "url": "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+      "publisher": "OpenAI",
+      "supports": [
+        "/status",
+        "Permissions inspection",
+        "CLI flags"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_pricing",
+      "title": "Plans & pricing",
+      "url": "https://claude.com/pricing",
+      "publisher": "Anthropic",
+      "supports": [
+        "Free web chat",
+        "Claude Code not in Free",
+        "Claude Code present in Pro and Max",
+        "Usage limits apply"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_quickstart",
+      "title": "Quickstart",
+      "url": "https://code.claude.com/docs/en/quickstart",
+      "publisher": "Anthropic",
+      "supports": [
+        "Windows PowerShell installer",
+        "Linux/WSL native installer",
+        "Version check",
+        "Project launch"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_setup",
+      "title": "Advanced setup",
+      "url": "https://code.claude.com/docs/en/setup",
+      "publisher": "Anthropic",
+      "supports": [
+        "Windows and Ubuntu requirements",
+        "4 GB RAM",
+        "Git for Windows optional",
+        "claude doctor",
+        "No Free claude.ai Code access"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_auth",
+      "title": "Authentication",
+      "url": "https://code.claude.com/docs/en/authentication",
+      "publisher": "Anthropic",
+      "supports": [
+        "Eligible subscriptions and Console routes",
+        "Browser flow and callback code",
+        "Console without an API key still distinct from consumer free chat"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_permissions",
+      "title": "Configure permissions",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "publisher": "Anthropic",
+      "supports": [
+        "default/manual permission mode",
+        "plan mode",
+        "/permissions",
+        "Instructions do not replace enforced rules"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_sandbox",
+      "title": "Configure the sandboxed Bash tool",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "publisher": "Anthropic",
+      "supports": [
+        "Native Windows lacks shell sandbox",
+        "WSL2 and Linux support",
+        "Sandbox off by default",
+        "bubblewrap and socat",
+        "Ubuntu AppArmor considerations"
+      ],
+      "status": "confirmed_documentation",
+      "note": "Do not weaken OS protections as a student workaround. Teacher must prepare and verify environment; manual/browser path remains available."
+    },
+    {
+      "id": "claude_instructions",
+      "title": "Best practices for Claude Code",
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "publisher": "Anthropic",
+      "supports": [
+        "Short CLAUDE.md",
+        "Exact verification commands",
+        "Model instructions versus deterministic controls"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_usage",
+      "title": "Manage costs effectively",
+      "url": "https://code.claude.com/docs/en/costs",
+      "publisher": "Anthropic",
+      "supports": [
+        "/usage",
+        "Subscription usage bars distinct from API dollar estimate",
+        "Context contributes to consumption",
+        "Multiple agents/instances can consume more"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "claude_path",
+      "title": "Troubleshoot installation and login",
+      "url": "https://code.claude.com/docs/en/troubleshoot-install",
+      "publisher": "Anthropic",
+      "supports": [
+        "Native binary locations",
+        "New terminal after PATH change",
+        "Windows user PATH",
+        "Avoid conflicting installs"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "microsoft_wsl",
+      "title": "Install WSL",
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
+      "publisher": "Microsoft",
+      "supports": [
+        "wsl --install",
+        "Prerequisite Windows versions",
+        "Restart and Linux user creation",
+        "wsl --list --verbose",
+        "New installs use WSL2"
+      ],
+      "status": "confirmed_documentation"
+    },
+    {
+      "id": "python-docker-official",
+      "publisher": "Docker Official Images / Python",
+      "title": "Python official image and supported tags",
+      "url": "https://hub.docker.com/_/python",
+      "supports": [
+        "python:3.13-slim supported tag"
+      ],
+      "verified_on": "2026-10-27"
+    },
+    {
+      "id": "docker-compose-run",
+      "publisher": "Docker",
+      "title": "docker compose run",
+      "url": "https://docs.docker.com/reference/cli/docker/compose/run/",
+      "supports": [
+        "Override service command with one-off task",
+        "--rm temporary container",
+        "run does not publish service ports by default"
+      ],
+      "verified_on": "2026-10-27"
+    },
+    {
+      "id": "ubuntu-python",
+      "publisher": "Ubuntu",
+      "title": "Python development on Ubuntu",
+      "url": "https://documentation.ubuntu.com/ubuntu-for-developers/howto/python-setup/",
+      "supports": [
+        "Python system interpreter installation",
+        "Use Python3 from Ubuntu repositories"
+      ],
+      "verified_on": "2026-10-27"
+    },
+    {
+      "id": "claude_cli_reference",
+      "title": "Claude Code CLI reference",
+      "publisher": "Anthropic",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "verified_on": "2026-10-27",
+      "supports": [
+        "claude auth login",
+        "claude auth status --text",
+        "Exit status 0 when logged in;1 otherwise",
+        "claude doctor read-only diagnostics"
+      ]
+    }
+  ],
+  "page_sources": {
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [
+      "docker-windows",
+      "windows11-home-pro",
+      "microsoft-wsl-commands"
+    ],
+    "6": [
+      "docker-windows",
+      "desktop-license",
+      "microsoft-wsl-commands"
+    ],
+    "7": [
+      "docker-windows",
+      "docker-engine"
+    ],
+    "8": [
+      "docker-ubuntu"
+    ],
+    "9": [
+      "docker-ubuntu",
+      "docker-linux-postinstall"
+    ],
+    "10": [
+      "python-docker-official",
+      "docker-compose-run"
+    ],
+    "11": [
+      "thonny-official"
+    ],
+    "12": [],
+    "13": [
+      "thonny-official",
+      "thonny-release",
+      "python-windows"
+    ],
+    "14": [
+      "ubuntu-python",
+      "thonny-official",
+      "python-httpserver"
+    ],
+    "15": [
+      "claude_pricing",
+      "claude_setup",
+      "codex_access"
+    ],
+    "16": [
+      "codex_cli",
+      "codex_install_paths",
+      "codex_windows_verify",
+      "codex_access"
+    ],
+    "17": [
+      "codex_auth",
+      "codex_permissions",
+      "codex_windows_sandbox",
+      "codex_workflow"
+    ],
+    "18": [
+      "claude_setup",
+      "claude_auth",
+      "claude_path"
+    ],
+    "19": [
+      "claude_quickstart",
+      "claude_auth",
+      "claude_permissions",
+      "claude_sandbox",
+      "claude_usage",
+      "claude_cli_reference"
+    ],
+    "20": [
+      "docker-localhost-port",
+      "docker-bind-mount",
+      "codex_access",
+      "claude_pricing"
+    ]
+  }
+}

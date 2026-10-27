@@ -1,68 +1,80 @@
-# Atlas Papeterie — Python, ETL et entrepôts de données
+# Construire une solution BI avec l’IA — Atlas Papeterie
 
-**Un parcours de 28 h pour débuter en licence Business Intelligence, sur Windows.**
-Vous partez de fichiers de ventes et construisez un entrepôt de données, puis un rapport qui aide à préparer les achats de deux boutiques fictives.
+**28 h · Licence BI · grands débutants · français · Windows d’abord, Ubuntu aussi.**
 
-## Commencer ici
+Vous pilotez le besoin, les règles et les contrôles. Un assistant IA peut aider à écrire une fonction ; vous l’enregistrez, l’exécutez et expliquez sa preuve. Le même projet grandit : fichiers de ventes → ETL → entrepôt SQLite en étoile → rapport local.
 
-1. Récupérer le **ZIP du cours fourni par votre enseignant**, puis clic droit → **Extraire tout…**. Travailler dans le dossier extrait, jamais dans le ZIP.
-2. Ouvrir **[pdf/01_demarrer_windows.pdf](pdf/01_demarrer_windows.pdf)** : installation de Thonny, premiers gestes et dépannage. Aucun compte GitHub ni Git à installer.
-3. Ouvrir **[pdf/02_cours_atlas.pdf](pdf/02_cours_atlas.pdf)** : le cours se suit dans l’ordre, mission après mission.
-4. Dans Thonny : **Fichier → Ouvrir → scripts/01_premiers_pas.py**, puis **F5**. Lire le résultat dans la zone Shell.
+## Commencer
 
-**Python ≥ 3.10, bibliothèque standard uniquement.** Après téléchargement du logiciel et du dossier, le parcours fonctionne hors connexion. Aucun paquet à installer, aucun serveur à configurer.
+1. Recevoir le **ZIP de cette édition**, ou utiliser **Code → Download ZIP** si ce dépôt est publié. Dans l’Explorateur, **Extraire tout…** dans un nouveau dossier nommé `atlas-bi-ia-28h`. Aucun compte GitHub n’est requis pour un ZIP déjà fourni.
+2. Ouvrir **[pdf/01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf)**. Suivre uniquement la route de son système : PowerShell sous Windows, terminal sous Ubuntu. Le guide fournit aussi un repli Python natif.
+3. Ouvrir **[pdf/02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf)**. Votre travail se fait dans **`projet/`** ; conserver le dossier complet du cours autour de lui.
+4. Commencer par la mission 01. Les fonctions sont volontairement incomplètes : un message « mission à construire » est attendu avant votre première construction.
 
-## Un seul projet qui grandit
+**Ne pas lancer le corrigé comme point de départ.** Les indices et `solutions/atlas/` servent après un premier essai. Le vérificateur contrôle votre travail ; il ne lit jamais les solutions pour le terminer.
 
-| Mission | Ce que vous construisez |
+## Un environnement reproductible
+
+Après installation et démarrage de Docker, depuis la racine du cours :
+
+```text
+docker compose build
+docker compose run --rm atelier python calcul.py
+docker compose run --rm atelier python verifier.py 01
+```
+
+Sous Ubuntu, suivre d’abord les réglages du guide ; ses commandes utilisent `sudo docker compose`. Les lignes ci-dessus échoueront avec une consigne tant que la fonction de la mission 01 n’est pas construite. C’est le comportement prévu.
+
+Une fois les sept missions terminées :
+
+```text
+docker compose run --rm atelier python executer.py
+docker compose run --rm atelier python verifier.py tout
+docker compose up -d
+```
+
+Ouvrir **[le rapport local](http://localhost:8000/rapport_atlas.html)**. Le lien fonctionne après création du rapport et démarrage du serveur. Pour arrêter : `docker compose down` ; les fichiers du projet restent présents.
+
+Docker n’est pas obligatoire pour terminer : le guide explique comment lancer les mêmes fichiers avec Python local, sans installation de paquet. Ne mélangez pas les commandes de Windows et celles d’Ubuntu.
+
+## Les supports
+
+| Support | Utilisation |
 |---|---|
-| 01 · Premiers gestes | Un calcul de vente et votre première modification de code |
-| 02 · Extraction | La lecture d’un fichier CSV et un aperçu des lignes |
-| 03 · Qualité | Des données nettoyées, des rejets expliqués et des doublons identifiés |
-| 04 · Transformation | Des montants calculés et contrôlés, en millimes |
-| 05 · SQL | Vos premières questions à une base de données |
-| 06 · Modélisation | Un entrepôt en étoile : faits, dimensions et clés |
-| 07 · Chargement | Des dimensions puis des faits dans `outputs/atlas.sqlite` |
-| 08 · Incrémental | De nouvelles ventes, sans compter deux fois les anciennes |
-| 09 · Rapport | `outputs/rapport_atlas.html`, à ouvrir dans votre navigateur |
-| 10 · Défi | Une réparation, une nouvelle exécution et une décision expliquée |
+| [01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf) | Installation, Docker, repli natif, Codex/Claude CLI facultatifs |
+| [02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf) | Le parcours guidé complet et ses preuves |
+| [03_prompts_reperes_depannage.pdf](pdf/03_prompts_reperes_depannage.pdf) | Demandes IA courtes, notions et dépannage |
+| [04_defi_campus_box.pdf](pdf/04_defi_campus_box.pdf) | Défi de transfert de 7 h, groupes de 3 maximum |
+| [05_indices_et_corriges.pdf](pdf/05_indices_et_corriges.pdf) | Indices puis corrections expliquées, après un premier essai |
+| [Atlas_BI_IA_28h.pptx](presentation/Atlas_BI_IA_28h.pptx) | Présentation modifiable, avec PDF voisin |
+| [TESTER_LE_COURS.md](TESTER_LE_COURS.md) | Protocole pour essayer le parcours depuis un poste neuf |
 
-À chaque étape : **comprendre → prédire → essayer → vérifier → expliquer**. Une courte variante vérifie votre compréhension ; les extensions sont facultatives. Les durées sont des estimations pédagogiques, pas des temps mesurés auprès d’étudiants.
+## Sept missions, puis un défi
 
-## Vos supports
+**21 h guidées** : calculer et contrôler → lire le CSV → nettoyer → modéliser → charger → ajouter et rejouer → expliquer le rapport.
 
-| Fichier | Utilisation |
-|---|---|
-| [01_demarrer_windows.pdf](pdf/01_demarrer_windows.pdf) | Commencer et installer les outils |
-| [02_cours_atlas.pdf](pdf/02_cours_atlas.pdf) | Comprendre les notions et suivre les travaux pratiques |
-| [03_reperes_et_depannage.pdf](pdf/03_reperes_et_depannage.pdf) | Retrouver le vocabulaire, les gestes et les solutions aux erreurs courantes |
-| [04_indices_et_corriges.pdf](pdf/04_indices_et_corriges.pdf) | Chercher un indice après un premier essai, puis comparer une correction expliquée |
-| [Atlas_ETL_28h.pptx](presentation/Atlas_ETL_28h.pptx) | Présentation modifiable ; version PDF dans le même dossier |
+**7 h de défi Campus Box** : nouvelle question, nouvelles données et nouveaux champs. L’IA reste autorisée ; chaque membre doit expliquer une contribution et un contrôle. Répartition prévue : **8 h 24 théorie / 19 h 36 pratique**. Les durées sont estimées, installation et dépannage compris ; pauses à organiser dans le volume de présence.
 
-Les `scripts/` sont les fichiers à ouvrir dans Thonny. Les `examples/` reproduisent les courts exemples du cours. `atelier.py` contient les fonctions communes, expliquées progressivement. Garder les fichiers de `data/` intacts ; les résultats vont dans `outputs/`.
+Le jeu Atlas est fictif. Une ligne valide décrit une vente élémentaire, pas un client ou une commande complète. Le lot initial donne **16 = 12 retenues + 1 doublon + 3 rejets**, **32 articles**, **99.000 TND**. Après ajout : **14 faits, 35 articles, 115.500 TND**. Le rejeu conserve ces totaux. Les montants sont stockés en **millimes entiers** ; le chiffre d’affaires ne donne ni stock ni bénéfice.
 
-## Les données, sans ambiguïté
+## IA gratuite et options CLI
 
-Une ligne valide décrit **une vente élémentaire d’un produit, dans une boutique, à une date**. Elle ne compte ni un client ni une commande complète. Toutes les données sont fictives.
+Le socle utilise un **chat web gratuit disponible sur votre compte**, puis des programmes locaux. Aucune clé API, aucun abonnement ni agent payant n’est nécessaire. Les cibles de demandes sont pédagogiques, jamais une promesse de quota.
 
-- Lot initial : **16 lignes = 12 ventes retenues + 1 doublon + 3 rejets**.
-- Ces ventes représentent **32 articles** et **99.000 TND** ; le point est le séparateur décimal des fichiers.
-- Lot suivant : **2 nouvelles ventes + 1 vente déjà présente** ; après ajout : **14 ventes, 35 articles, 115.500 TND**.
-- Rejouer le même lot ne doit pas augmenter ces totaux. Une même référence de vente avec un autre contenu provoque un conflit explicite.
+Le guide explique les installations Codex CLI et Claude Code **pour les comptes qui disposent déjà de l’accès nécessaire**. Claude Free n’inclut pas Claude Code ; l’accès gratuit à un autre produit ne prouve pas celui du CLI. Si l’accès manque, continuer avec le chat web et les étapes manuelles.
 
-**1 TND = 1 000 millimes.** Les montants en base sont des entiers en millimes. Le chiffre d’affaires décrit les seules ventes acceptées ; il ne donne ni le bénéfice, ni le stock disponible, ni une prévision.
+Python et SQLite sont libres. Docker Engine fournit la route open source sous Ubuntu. Docker Desktop est gratuit pour l’éducation selon ses conditions, avec des composants propriétaires. ChatGPT et Claude sont des services propriétaires à offre gratuite.
 
-## Reconstruire et vérifier le dépôt
+## Maintenir les supports
 
-Pour les personnes qui maintiennent le cours, depuis la racine du dossier :
+Le code des exercices utilise la bibliothèque standard. Pour ses contrôles :
 
 ```text
 python -m unittest discover -s tests -v
-python authoring/check_materials.py
 ```
 
-Les quatre PDF se reconstruisent avec `python authoring/build_pdfs.py` après installation, dans un environnement séparé, des dépendances de `authoring/requirements.txt`. La présentation possède son propre générateur `authoring/build_slides.js` ; les instructions sont dans `authoring/README_slides.md`. Ces outils d’édition ne sont pas nécessaires aux étudiants.
+Les sources PDF sont dans `authoring/content/`, le rendu dans `authoring/build_pdfs.py`, et les sources de la présentation dans `authoring/slides/`. Les dépendances d’édition sont séparées dans `authoring/requirements.txt` et `authoring/slides/package.json` ; elles ne sont pas nécessaires aux étudiants.
 
-Le dépôt contient une configuration de vérification Windows, macOS et Ubuntu. La présence de ce fichier ne signifie pas que ces vérifications distantes ont déjà été exécutées.
+La configuration CI prépare des vérifications Windows, Ubuntu et macOS. Seul le résultat réel d’une exécution CI prouve qu’elle a passé ; sa présence dans le dépôt ne le garantit pas.
 
-Youssef Douma · Leaders University · édition du 26 octobre 2026
+Youssef Douma · Leaders University · édition du 27 octobre 2026

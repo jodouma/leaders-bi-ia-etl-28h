@@ -1,0 +1,13 @@
+services:
+  atelier:
+    build: .
+    working_dir: /workspace/projet
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    volumes:
+      - .:/workspace
+    ports:
+      - "127.0.0.1:8000:8000"
+    command:
+      - sh
+      - -c
+      - mkdir -p outputs && exec python -m http.server 8000 --bind 0.0.0.0 --directory outputs

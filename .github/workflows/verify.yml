@@ -1,4 +1,4 @@
-name: Vérifier le parcours Atlas
+name: Vérifier le parcours Atlas BI IA
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -12,7 +12,19 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'
       - run: python -m unittest discover -s tests -v
         env:
           PYTHONIOENCODING: utf-8
+  docker-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Préparer les identifiants locaux du conteneur
+        run: printf 'LOCAL_UID=%s\nLOCAL_GID=%s\n' "$(id -u)" "$(id -g)" > .env
+      - run: docker compose config --quiet
+      - run: docker compose build
+      - run: docker compose run --rm atelier python ../solutions/atlas/executer.py
+      - run: docker compose run --rm atelier python ../solutions/atlas/verifier.py tout
+      - if: always()
+        run: docker compose down
