@@ -2143,7 +2143,7 @@
   },
   {
     "slide": 19,
-    "text": "Lire AGENTS.md fourni à la racine.",
+    "text": "À la racine :\nnano AGENTS.md",
     "x": 9.68,
     "y": 2.27,
     "w": 2.98,
@@ -2161,7 +2161,7 @@
   },
   {
     "slide": 19,
-    "text": "Ajouter une règle utile au groupe.",
+    "text": "Enregistrer : Ctrl+O (lettre O), puis Entrée.",
     "x": 9.68,
     "y": 3.41,
     "w": 2.98,
@@ -2179,7 +2179,7 @@
   },
   {
     "slide": 19,
-    "text": "Faire relire la règle par Codex.",
+    "text": "Quitter : Ctrl+X. Garder les règles fournies.",
     "x": 9.68,
     "y": 4.55,
     "w": 2.98,
@@ -2674,7 +2674,7 @@
   },
   {
     "slide": 25,
-    "text": "Écrire dans SUIVI.md : fait, preuve, problème, prochaine action.",
+    "text": "Écrire SUIVI.md avec la méthode nano du guide : fait, preuve et prochaine action.",
     "x": 1.55,
     "y": 5.240000000000001,
     "w": 10.81,
@@ -5743,7 +5743,7 @@
   },
   {
     "slide": 53,
-    "text": "1 carnet · 4.500 TND",
+    "text": "1 carnet · 4,500 TND",
     "x": 3.461111111111111,
     "y": 2.98,
     "w": 5.7299999999999995,
@@ -5770,7 +5770,7 @@
   },
   {
     "slide": 53,
-    "text": "2 classeurs · 12.000 TND",
+    "text": "2 classeurs · 12,000 TND",
     "x": 3.461111111111111,
     "y": 3.71,
     "w": 5.7299999999999995,
@@ -5824,7 +5824,7 @@
   },
   {
     "slide": 53,
-    "text": "2 faits nouveaux · +3 unités · +16.500 TND",
+    "text": "2 faits nouveaux · +3 unités · +16,500 TND",
     "x": 0.85,
     "y": 5.25,
     "w": 11.5,
@@ -5896,7 +5896,7 @@
   },
   {
     "slide": 54,
-    "text": "99.000 TND",
+    "text": "99,000 TND",
     "x": 0.89,
     "y": 4.66,
     "w": 3.3,
@@ -5923,7 +5923,7 @@
   },
   {
     "slide": 54,
-    "text": "115.500 TND",
+    "text": "115,500 TND",
     "x": 5.010000000000001,
     "y": 4.66,
     "w": 3.3,
@@ -5950,7 +5950,7 @@
   },
   {
     "slide": 54,
-    "text": "115.500 TND",
+    "text": "115,500 TND",
     "x": 9.13,
     "y": 4.66,
     "w": 3.3,
@@ -8092,7 +8092,7 @@
   },
   {
     "slide": 71,
-    "text": "Changer une règle utile de l’amorce.",
+    "text": "Éditer SKILL.md avec la méthode nano du guide.",
     "x": 9.68,
     "y": 3.41,
     "w": 2.98,
@@ -8110,7 +8110,7 @@
   },
   {
     "slide": 71,
-    "text": "Utiliser le Skill puis observer son effet.",
+    "text": "Changer une règle utile, puis essayer le Skill.",
     "x": 9.68,
     "y": 4.55,
     "w": 2.98,

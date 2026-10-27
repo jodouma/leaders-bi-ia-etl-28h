@@ -339,9 +339,9 @@
       "title": "AGENTS.md : garder les règles du projet",
       "code": "Explique en français simple.\nTravaille une mission à la fois.\nNe change pas les sources.\nGarde les montants en millimes entiers.\nMontre la commande et son résultat.\nNe cache pas un écart.",
       "items": [
-        "Lire AGENTS.md fourni à la racine.",
-        "Ajouter une règle utile au groupe.",
-        "Faire relire la règle par Codex."
+        "À la racine :\nnano AGENTS.md",
+        "Enregistrer : Ctrl+O (lettre O), puis Entrée.",
+        "Quitter : Ctrl+X. Garder les règles fournies."
       ],
       "note": "Modifier ~/cours-bi/AGENTS.md en gardant les règles fournies. Ne créez pas un second fichier dans atelier/.",
       "fontSize": 20,
@@ -425,7 +425,7 @@
       "steps": [
         "Repérer la vente, prédire son montant, lancer le calcul fourni.",
         "Noter le résultat observé et l’option modèle/effort visible.",
-        "Écrire dans SUIVI.md : fait, preuve, problème, prochaine action."
+        "Écrire SUIVI.md avec la méthode nano du guide : fait, preuve et prochaine action."
       ],
       "note": "Quota atteint : continuer le calcul et les contrôles locaux ; noter « agent indisponible ».",
       "number": "À VOUS",
@@ -1200,8 +1200,8 @@
       "code": "---\nname: revoir-bi\ndescription: Vérifier le rapport Atlas.\n---\nComparer les totaux SQL et Power BI.\nVérifier les relations avec shop_key.\nCiter un écart avec sa preuve.",
       "items": [
         "À la racine du cours, créer le dossier du Skill.",
-        "Changer une règle utile de l’amorce.",
-        "Utiliser le Skill puis observer son effet."
+        "Éditer SKILL.md avec la méthode nano du guide.",
+        "Changer une règle utile, puis essayer le Skill."
       ],
       "note": "À la racine : .agents/skills/revoir-bi/SKILL.md. Si non découvert, demander sa lecture et le noter.",
       "fontSize": 18,
