@@ -38,7 +38,10 @@ def millimes(texte):
 
 
 def normaliser_vente(ligne):
-    vente = {nom: str(ligne[nom]).strip().upper()
+    for nom in ("sale_id", "shop_id", "product_id"):
+        if not isinstance(ligne[nom], str):
+            raise ValueError(f"Identifiant texte non nul attendu : {nom}")
+    vente = {nom: ligne[nom].strip().upper()
              for nom in ("sale_id", "shop_id", "product_id")}
     if not all(vente.values()):
         raise ValueError("identifiant vide")

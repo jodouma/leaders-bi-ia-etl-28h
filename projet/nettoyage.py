@@ -38,7 +38,8 @@ def millimes(texte):
 
 
 def normaliser_vente(ligne):
-    # TODO 02 : strip/upper sur sale_id, shop_id, product_id ; vérifier non vides.
+    # TODO 02 : exiger des textes non nuls pour sale_id, shop_id, product_id.
+    # Appliquer strip/upper et vérifier non vides ; ne pas convertir None en texte.
     # Utiliser date_iso, entier_positif et millimes. Ne pas utiliser float.
     # Renvoyer CHAMPS_VENTES : amount_millimes = quantity * unit_price_millimes.
     raise NotImplementedError("Compléter nettoyage.normaliser_vente")

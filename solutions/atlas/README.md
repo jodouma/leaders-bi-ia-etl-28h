@@ -27,7 +27,7 @@ Pour reprendre un point précis, utiliser un autre dossier neuf. Un jalon signif
 | 06 | Toutes les fonctions complétées | Incrément, zones historiques et rejeu |
 | 07 | Toutes les fonctions complétées | Quatre exports CSV et manifeste |
 
-`normaliser_vente(ligne)` renvoie un dictionnaire avec `sale_id`, `date`, `shop_id`, `product_id`, `quantity`, `unit_price_millimes`, `amount_millimes`. Les identifiants sont des textes sans espaces aux extrémités et en majuscules ; les quantités et montants sont des entiers ; la date est un texte ISO. Les helpers `date_iso`, `entier_positif`, `millimes` sont fournis.
+`normaliser_vente(ligne)` renvoie un dictionnaire avec `sale_id`, `date`, `shop_id`, `product_id`, `quantity`, `unit_price_millimes`, `amount_millimes`. Les identifiants doivent être des textes non nuls ; aucun autre type n’est converti en texte. Ils sont sans espaces aux extrémités et en majuscules ; les quantités et montants sont des entiers ; la date est un texte ISO. Les helpers `date_iso`, `entier_positif`, `millimes` sont fournis.
 
 `lire_increment_sql(chemin_source, batch_id="2026-01-08")` renvoie `(ventes, changements, preuve)` : deux listes de dictionnaires et un dictionnaire de traçabilité. La connexion est en lecture seule ; les deux requêtes utilisent `(batch_id,)`. Le fichier absent est une erreur.
 

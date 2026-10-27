@@ -85,11 +85,14 @@ def charger_catalogues(conn, produits, boutiques):
 
 
 def appliquer_changement(conn, changement):
-    identifiant = str(changement["shop_id"]).strip().upper()
+    for nom in ("shop_id", "effective_date", "commercial_zone"):
+        if not isinstance(changement[nom], str):
+            raise ValueError(f"Changement : texte non nul attendu pour {nom}")
+    identifiant = changement["shop_id"].strip().upper()
     debut = date_iso(changement["effective_date"])
-    zone = str(changement["commercial_zone"]).strip()
-    if not zone:
-        raise ValueError("Zone commerciale vide")
+    zone = changement["commercial_zone"].strip()
+    if not identifiant or not zone:
+        raise ValueError("Boutique ou zone commerciale vide")
     meme_date = conn.execute("SELECT commercial_zone FROM dim_shop WHERE shop_id=? AND valid_from=?",
                              (identifiant, debut)).fetchone()
     if meme_date:

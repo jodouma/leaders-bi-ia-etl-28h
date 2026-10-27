@@ -217,6 +217,56 @@ class Atlas(unittest.TestCase):
             self.load([], [{"shop_id":"NBE","effective_date":"2026-01-08","commercial_zone":"Grand Tunis"}])
         self.assertEqual(self.snapshot(), avant)
 
+    def test_sql_null_sale_identifiers_never_create_fabricated_facts(self):
+        self.init()
+        avant = self.snapshot()
+        source = self.data / "source_operationnelle.sqlite"
+        for champ in ("sale_id", "shop_id", "product_id"):
+            with self.subTest(champ=champ):
+                conn = sqlite3.connect(source)
+                try:
+                    conn.execute(f"UPDATE source_sales SET {champ}=NULL WHERE sale_id='S013'")
+                    conn.commit()
+                    with self.assertRaisesRegex(ValueError, "Lot SQL rejeté entièrement"):
+                        chargement.increment(self.data,self.outputs)
+                    self.assertEqual(self.snapshot(),avant)
+                finally:
+                    conn.execute("DELETE FROM source_sales WHERE sale_id IS NULL OR sale_id='S013'")
+                    conn.execute("INSERT INTO source_sales VALUES (?,?,?,?,?,?,?)",
+                                 ("2026-01-08","S013","2026-01-08","NBE","P01",1,"4.500"))
+                    conn.commit()
+                    conn.close()
+        for champ in ("sale_id", "shop_id", "product_id"):
+            for valeur in (None, 99, False):
+                with self.subTest(champ=champ,valeur=valeur), self.assertRaises(ValueError):
+                    nettoyage.normaliser_vente(self.sale(**{champ:valeur}))
+
+    def test_sql_null_or_blob_change_zone_rolls_back_entire_batch(self):
+        self.init()
+        avant = self.snapshot()
+        for zone in (None, sqlite3.Binary(b"Grand Tunis")):
+            with self.subTest(zone=zone):
+                conn = sqlite3.connect(self.data / "source_operationnelle.sqlite")
+                try:
+                    conn.execute("UPDATE source_shop_changes SET commercial_zone=?", (zone,))
+                    conn.commit()
+                finally:
+                    conn.close()
+                with self.assertRaisesRegex(ValueError, "texte non nul"):
+                    chargement.increment(self.data,self.outputs)
+                self.assertEqual(self.snapshot(),avant)
+
+    def test_change_text_fields_reject_invalid_types(self):
+        self.init()
+        avant = self.snapshot()
+        for champ in ("shop_id", "effective_date", "commercial_zone"):
+            for valeur in (None, 99, False, b"NBE"):
+                evenement = {"shop_id":"NBE","effective_date":"2026-01-08","commercial_zone":"Grand Tunis"}
+                evenement[champ] = valeur
+                with self.subTest(champ=champ,valeur=valeur), self.assertRaisesRegex(ValueError,"texte non nul"):
+                    self.load([self.sale(sale_id="SNEW")], [evenement])
+                self.assertEqual(self.snapshot(),avant)
+
     def test_invalid_sql_batch_rejects_whole_change(self):
         self.init()
         avant = self.snapshot()
