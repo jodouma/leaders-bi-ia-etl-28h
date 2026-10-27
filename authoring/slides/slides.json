@@ -560,13 +560,13 @@
       "section": "B",
       "layout": "code",
       "title": "Python : une transformation minuscule",
-      "code": "def normaliser_code(texte):\n    # espaces autour, puis majuscules\n    return texte.strip().upper()\n\n# \" nbe \" devient \"NBE\"",
+      "code": "def normaliser_code(texte):\n    if not isinstance(texte, str):\n        raise ValueError(\"code non texte\")\n    return texte.strip().upper()\n\n# \" nbe \" devient \"NBE\"",
       "items": [
-        "Lire le nom et l’entrée de la fonction.",
+        "Vérifier que l’entrée est du texte.",
         "Prédire le résultat de \" tun \".",
-        "Modifier seulement l’amorce demandée."
+        "None signifie une valeur absente : erreur."
       ],
-      "note": "Une fonction reçoit une entrée et renvoie un résultat. Elle ne corrige pas toute la donnée à elle seule.",
+      "note": "Vérifier le type avant de retirer les espaces. None doit être refusé ; il ne doit pas devenir le faux code \"NONE\".",
       "fontSize": 20,
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-32"

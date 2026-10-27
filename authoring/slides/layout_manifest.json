@@ -3538,7 +3538,7 @@
   },
   {
     "slide": 32,
-    "text": "def normaliser_code(texte):\n    # espaces autour, puis majuscules\n    return texte.strip().upper()\n\n# \" nbe \" devient \"NBE\"",
+    "text": "def normaliser_code(texte):\n    if not isinstance(texte, str):\n        raise ValueError(\"code non texte\")\n    return texte.strip().upper()\n\n# \" nbe \" devient \"NBE\"",
     "x": 0.93,
     "y": 2.45,
     "w": 7.59,
@@ -3556,7 +3556,7 @@
   },
   {
     "slide": 32,
-    "text": "Lire le nom et l’entrée de la fonction.",
+    "text": "Vérifier que l’entrée est du texte.",
     "x": 9.68,
     "y": 2.27,
     "w": 2.98,
@@ -3592,7 +3592,7 @@
   },
   {
     "slide": 32,
-    "text": "Modifier seulement l’amorce demandée.",
+    "text": "None signifie une valeur absente : erreur.",
     "x": 9.68,
     "y": 4.55,
     "w": 2.98,
@@ -3601,7 +3601,7 @@
   },
   {
     "slide": 32,
-    "text": "Une fonction reçoit une entrée et renvoie un résultat. Elle ne corrige pas toute la donnée à elle seule.",
+    "text": "Vérifier le type avant de retirer les espaces. None doit être refusé ; il ne doit pas devenir le faux code \"NONE\".",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
