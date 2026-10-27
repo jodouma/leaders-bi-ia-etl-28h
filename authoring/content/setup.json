@@ -6,150 +6,227 @@
   "output_filename": "01_demarrer_windows_ubuntu.pdf",
   "pages": [
     {
-      "title": "Votre atelier Atlas",
-      "kicker": "DÉMARRER / 01",
+      "id": "parcours",
+      "title": "Votre parcours : préparer, puis construire",
+      "kicker": "B / PRÉPARER SON POSTE · 02",
       "blocks": [
         {
           "type": "text",
-          "text": "Construire une solution BI avec l’IA — Python, ETL et entrepôts de données. Guide 01 : préparer son ordinateur avant la première mission."
+          "text": "Atlas Papeterie vend des fournitures à Nabeul et Tunis. Vous préparerez ses CSV avec Python, les chargerez dans SQLite et produirez un rapport local."
         },
         {
           "type": "diagram",
           "nodes": [
-            "Fichiers de ventes",
+            "CSV : ventes",
             "Python : ETL",
             "SQLite : entrepôt",
             "Rapport HTML"
           ]
         },
         {
-          "type": "text",
-          "text": "Atlas Papeterie possède deux boutiques fictives, à Nabeul et à Tunis. Vous construirez progressivement le programme qui transforme leurs ventes en un rapport local. Vous gardez les mêmes fichiers pendant tout le cours."
-        },
-        {
           "type": "table",
           "headers": [
-            "Votre situation",
-            "Parcours à suivre"
+            "Votre poste",
+            "Les pages à suivre"
           ],
           "rows": [
             [
-              "Windows 11 maintenu, virtualisation disponible",
-              "Pages 3–7, puis 10–12. Docker Desktop utilise WSL 2."
+              "Windows 11 maintenu",
+              "3–10, puis 13–17 : PowerShell et Docker Desktop avec WSL 2."
             ],
             [
               "Ubuntu 24.04 LTS",
-              "Pages 3–4 pour les fichiers, puis 8–12. Docker Engine et Compose."
+              "3–6, puis 11–17 : Terminal, Engine et Compose."
             ],
             [
-              "Virtualisation ou installation Docker bloquée",
-              "Pages 13–14 : Python et éditeur natifs, sans Docker."
+              "Docker ou virtualisation bloqués",
+              "3–6, puis 18–19 : mêmes fichiers avec Python et Thonny, sans Docker."
             ],
             [
-              "IA",
-              "Page 15 : chat web. Pages 16–19 : CLI facultatifs si votre accès les autorise."
+              "Aide IA",
+              "20 : chat web et aides locales. 21–24 : CLI facultatifs, si votre compte y donne accès."
             ]
           ],
           "widths": [
-            1.3,
+            1.2,
             2.8
           ]
         },
         {
           "type": "callout",
-          "label": "Ce qu’il faut prévoir",
-          "text": "Une connexion pour télécharger le cours et les outils. Le calcul local ne demande ensuite ni clé API ni abonnement. L’installation dépend des droits et de l’équipement : si elle bloque, utilisez le parcours natif avec le professeur."
+          "label": "Le point de départ",
+          "text": "Téléchargez le cours et les outils avec Internet. Aucun abonnement ni clé API n’est nécessaire au projet. Les captures servent de repères ; elles ne prouvent pas une installation faite sur votre PC."
         },
         {
           "type": "text",
-          "text": "Après ce guide, ouvrez 02_cours_atlas_ia.pdf. Les solutions et indices sont dans un document séparé : commencez avec vos propres fichiers de projet."
+          "text": "Après l’installation, ouvrez 02_cours_atlas_ia.pdf et commencez la mission 01. Gardez les solutions pour après votre premier essai."
         }
       ],
       "source_ids": [],
       "printed_page": 2
     },
     {
-      "title": "Un fichier, un dossier, une commande",
-      "kicker": "DÉMARRER / 02",
+      "id": "trois-espaces",
+      "title": "Trois espaces, trois actions",
+      "kicker": "B / PRÉPARER SON POSTE · 03",
       "blocks": [
         {
           "type": "text",
-          "text": "Un dossier contient des fichiers. Un chemin indique où ils sont. Un script Python est un fichier texte terminé par .py : il contient le programme. Le terminal reçoit des commandes ; l’éditeur permet de modifier le contenu d’un fichier."
+          "text": "Un dossier contient des fichiers. Un chemin indique où les trouver. Un fichier .py contient du code Python ; un fichier .csv contient un tableau de données."
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/diagrams/trois-espaces.png",
+          "height": 230,
+          "caption": "Schéma du cours : vous passerez de l’éditeur au terminal, puis au navigateur."
         },
         {
           "type": "table",
           "headers": [
             "Repère",
-            "Exemple et rôle"
+            "Rôle dans le cours"
           ],
           "rows": [
             [
-              "Racine du cours",
-              "Le dossier où README.md, compose.yaml, Dockerfile et projet sont visibles ensemble."
-            ],
-            [
-              "Fichier à modifier",
-              "projet/calcul.py : votre première fonction."
-            ],
-            [
-              "Données d’entrée",
-              "projet/data/ : les CSV fournis."
-            ],
-            [
-              "Résultats",
-              "projet/outputs/ : fichiers créés par vos programmes."
+              "Éditeur : Thonny",
+              "Ouvrir calcul.py, modifier une petite fonction, enregistrer avec Ctrl + S."
             ],
             [
               "Terminal du système",
-              "Windows : PowerShell. Ubuntu : application Terminal."
+              "Windows : PowerShell. Ubuntu : Terminal. Y saisir cd, docker ou sudo."
             ],
             [
-              "Console Python",
-              "Invite >>> : seulement du Python, pas les commandes docker, cd ou sudo."
+              "Console Python : >>>",
+              "Y saisir seulement du Python. Pour en sortir : quit()."
             ]
           ],
           "widths": [
-            1.15,
-            3
-          ]
-        },
-        {
-          "type": "section",
-          "text": "Savoir dans quelle fenêtre écrire"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Les panneaux de commandes de ce guide portent une étiquette PowerShell ou Terminal Ubuntu. N’écrivez pas l’étiquette elle-même.",
-            "Dans PowerShell, une invite ressemble à PS C:\\Users\\…>. Sur Ubuntu, elle se termine souvent par $. Ne recopiez pas ces invites.",
-            "Si vous voyez >>>, quittez la console Python avec quit(), puis ouvrez le terminal du système."
+            1.2,
+            2.8
           ]
         },
         {
           "type": "callout",
-          "label": "Mini-vérification",
-          "text": "Expliquez à un voisin : où se trouve le code ? Où les résultats seront-ils enregistrés ? Quelle fenêtre reçoit docker compose build ?"
+          "label": "Avant de continuer",
+          "text": "Montrez l’endroit où vous écrivez le code et celui où vous lancez une commande. Ne recopiez jamais l’invite PS …>, $ ou >>> imprimée par le logiciel."
         }
       ],
       "source_ids": [],
       "printed_page": 3
     },
     {
-      "title": "Recevoir et extraire le cours",
-      "kicker": "DÉMARRER / 03",
+      "id": "extraire",
+      "title": "Windows : sortir les fichiers du ZIP",
+      "kicker": "B / PRÉPARER SON POSTE · 04",
       "blocks": [
         {
-          "type": "section",
-          "text": "Windows : créer un vrai dossier de travail"
+          "type": "text",
+          "text": "Un ZIP est une archive : extrayez-la avant de travailler. Sur la page du dépôt : bouton Code → Download ZIP. Un ZIP déjà fourni suffit, sans Git ni compte GitHub."
         },
         {
           "type": "bullets",
           "items": [
-            "Téléchargez le ZIP du cours depuis le lien donné par le professeur. Dans l’Explorateur, clic droit sur le ZIP → Extraire tout… → Extraire. Fermez la fenêtre du ZIP.",
-            "Placez le dossier extrait dans Documents, par exemple atlas-bi-ia. Ouvrez les éventuels dossiers intermédiaires jusqu’à voir compose.yaml et projet ensemble.",
-            "Activez Afficher → Afficher → Extensions de noms de fichiers. Cela évite de créer calcul.py.txt au lieu de calcul.py.",
-            "Cliquez dans la barre d’adresse de l’Explorateur et copiez le chemin complet. Les guillemets protègent les espaces dans une commande."
+            "Enregistrez le ZIP du cours dans Téléchargements.",
+            "Explorateur de fichiers → clic droit sur le ZIP → Extraire tout… → Extraire.",
+            "Choisissez un dossier personnel, par exemple Documents. Fermez ensuite la fenêtre du ZIP."
           ]
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/real/github-telecharger.jpg",
+          "height": 300,
+          "caption": "Capture du vrai dépôt GitHub, recadrée pour repérer Code et Download ZIP (27/10/2026).",
+          "crop": [
+            250,
+            310,
+            680,
+            660
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "La preuve",
+          "text": "Ouvrez le dossier extrait. Vous devez pouvoir ouvrir ses sous-dossiers sans rester dans une fenêtre de ZIP. Ne modifiez jamais un fichier directement dans l’archive."
+        },
+        {
+          "type": "text",
+          "text": "Ubuntu : dans Fichiers, clic droit sur le ZIP → Extraire ici. Placez le dossier extrait dans votre Dossier personnel ; nommez-le atlas-bi-ia."
+        }
+      ],
+      "source_ids": [],
+      "printed_page": 4
+    },
+    {
+      "id": "dossier",
+      "title": "Reconnaître le bon dossier extrait",
+      "source_ids": [],
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Ouvrez le dossier extrait. Descendez dans les éventuels dossiers intermédiaires jusqu’à voir compose.yaml, Dockerfile, README.md et projet ensemble : c’est la racine du cours."
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/real/dossier-extrait.jpg",
+          "height": 285,
+          "caption": "Vrai ZIP extrait, Finder macOS, 27/10/2026. Sous Windows : Explorateur ; sous Ubuntu : Fichiers.",
+          "crop": [
+            290,
+            45,
+            905,
+            450
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Dans ce dossier",
+            "Ce que vous y trouvez"
+          ],
+          "rows": [
+            [
+              "projet/",
+              "Votre code, data/ pour les CSV et outputs/ pour les résultats."
+            ],
+            [
+              "pdf/",
+              "Les cinq supports du cours."
+            ],
+            [
+              "compose.yaml",
+              "La configuration Docker ; restez à côté pour les commandes Compose."
+            ]
+          ],
+          "widths": [
+            1,
+            3
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Votre vérification",
+          "text": "Montrez compose.yaml et le dossier projet dans la même fenêtre. Dans projet : data contient les CSV et outputs recevra les résultats. Ne déplacez pas projet seul hors du dossier du cours."
+        }
+      ],
+      "printed_page": 5,
+      "kicker": "B / PRÉPARER SON POSTE · 05"
+    },
+    {
+      "id": "racine",
+      "title": "Ouvrir le terminal au bon endroit",
+      "kicker": "B / PRÉPARER SON POSTE · 06",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Le terminal doit travailler dans la racine repérée page 5. Une commande cd change de dossier ; elle ne lance pas Python."
+        },
+        {
+          "type": "section",
+          "text": "Windows · PowerShell normal"
+        },
+        {
+          "type": "text",
+          "text": "Démarrer → cherchez PowerShell → ouvrez-le. Dans l’Explorateur, copiez le chemin de la barre d’adresse et remplacez tout le chemin entre guillemets :"
         },
         {
           "type": "code",
@@ -158,16 +235,16 @@
         },
         {
           "type": "callout",
-          "label": "Remplacement obligatoire",
-          "text": "VOTRE_COMPTE et atlas-bi-ia sont des exemples. Remplacez toute la partie entre guillemets par le chemin que vous venez de copier. Get-ChildItem doit afficher compose.yaml et projet. Sinon, changez de dossier avant de continuer."
+          "label": "À remplacer avant Entrée",
+          "text": "VOTRE_COMPTE et atlas-bi-ia sont des exemples. Les guillemets protègent les espaces. Get-ChildItem doit afficher compose.yaml et projet ; sinon, changez de dossier."
         },
         {
           "type": "section",
-          "text": "Ubuntu : même principe"
+          "text": "Ubuntu · Terminal"
         },
         {
           "type": "text",
-          "text": "Dans Fichiers, clic droit sur le ZIP → Extraire ici. Placez le dossier dans votre Dossier personnel et renommez-le atlas-bi-ia. La commande suivante suppose ce nom exact."
+          "text": "Ouvrez Terminal avec Ctrl + Alt + T. Le dossier extrait doit être nommé atlas-bi-ia dans votre Dossier personnel ; sinon, adaptez le chemin :"
         },
         {
           "type": "code",
@@ -176,52 +253,74 @@
         },
         {
           "type": "text",
-          "text": "Git n’est pas nécessaire pour télécharger ni utiliser le cours. Vous pouvez conserver des copies datées des fichiers. Un outil IA facultatif pourra demander Git : ce besoin sera signalé dans sa section."
+          "text": "Get-Location ou pwd montre l’emplacement. Get-ChildItem ou ls liste les fichiers. Si vous voyez >>>, vous êtes dans Python : quit(), puis revenez au terminal du système."
         }
       ],
       "source_ids": [],
-      "printed_page": 4
+      "printed_page": 6
     },
     {
-      "title": "Windows : vérifier avant d’installer",
-      "kicker": "DÉMARRER / 04",
+      "id": "windows-preparer",
+      "title": "Windows : votre PC est-il prêt ?",
+      "kicker": "B / PRÉPARER SON POSTE · 07",
       "blocks": [
         {
           "type": "text",
-          "text": "Le parcours conseillé est Windows 11 encore maintenu, 64 bits : au 27 octobre 2026, privilégiez 25H2 ou 26H2 sur un PC compatible. Home/Pro 24H2 a quitté la maintenance le 13 octobre 2026. Les éditions Enterprise/Education ont un autre calendrier. Ne vous fiez pas seulement au plancher technique Docker."
+          "text": "Au 27 octobre 2026 : utilisez Windows 11 maintenu, de préférence 25H2 ou 26H2 sur un PC compatible. Home/Pro 24H2 n’est plus maintenu depuis le 13 octobre 2026. Enterprise/Education suit un autre calendrier."
         },
         {
-          "type": "section",
-          "text": "1 · Repérer version, architecture et mémoire"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Appuyez sur Windows + R, tapez winver puis Entrée. Notez la version et le numéro de build.",
-            "Paramètres → Système → Informations système : notez Type du système (x64 ou ARM64) et RAM installée. Docker Desktop demande au moins 8 Go de RAM pour ce parcours.",
-            "Sur le site officiel Docker, vérifiez les exigences actuelles. Intel/AMD x64 : installateur Windows x86_64. ARM64 : version distincte encore annoncée Early Access ; faites valider ce parcours avant la séance."
+          "type": "table",
+          "headers": [
+            "Où regarder",
+            "Ce qu’il faut noter"
+          ],
+          "rows": [
+            [
+              "Windows + R → winver",
+              "Édition, version et numéro de build."
+            ],
+            [
+              "Paramètres → Système → Informations système",
+              "Type du système : x64 ou ARM64 ; mémoire : 8 Go minimum pour Docker Desktop."
+            ],
+            [
+              "Ctrl + Maj + Échap → Performances → Processeur",
+              "Virtualisation : Activé. Sinon, faire vérifier le réglage BIOS/UEFI."
+            ]
+          ],
+          "widths": [
+            1.8,
+            2.2
           ]
         },
         {
-          "type": "section",
-          "text": "2 · Vérifier la virtualisation et WSL"
+          "type": "figure",
+          "path": "../docs/images/setup/docker-windows-virtualization.png",
+          "height": 60,
+          "caption": "Détail officiel Docker d’une interface Windows ancienne : « Enabled » signifie « Activée ».",
+          "crop": [
+            1086,
+            1114,
+            1527,
+            1175
+          ]
         },
         {
           "type": "text",
-          "text": "Docker Desktop exécute ici des conteneurs Linux grâce à WSL 2, une couche Linux de Windows. Le programme Python restera dans le conteneur ; vous écrirez les commandes du cours dans PowerShell."
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Ctrl + Maj + Échap → Gestionnaire des tâches → Performances → Processeur : cherchez Virtualisation : Activé. Si elle est désactivée, demandez de l’aide pour le réglage BIOS/UEFI.",
-            "Un ordinateur géré par une organisation peut bloquer ces fonctions. Ne contournez pas ses restrictions : passez à Python natif, page 13.",
-            "Docker demande aussi le service Windows LanmanServer actif et en démarrage automatique. Si son état bloque Docker, faites vérifier ce réglage par la personne qui gère le PC."
-          ]
+          "text": "Intel/AMD x64 : choisir l’installateur Windows x86_64. ARM64 : téléchargement distinct, encore annoncé Early Access dans la documentation consultée. Faites valider ce cas avant la séance."
         },
         {
           "type": "callout",
-          "label": "Décision",
-          "text": "Architecture connue + Windows maintenu + RAM suffisante + virtualisation active : continuez page 6. Sinon, le parcours Python natif permet de suivre le même projet."
+          "label": "Si le poste est géré ou bloqué",
+          "text": "Demandez de l’aide au professeur ou à la personne qui gère le PC. Ne contournez pas ses restrictions. Le parcours natif des pages 18–19 évite Docker et la virtualisation."
+        },
+        {
+          "type": "text",
+          "text": "Docker demande aussi le service Windows LanmanServer actif avec démarrage automatique. Faites vérifier ce réglage seulement s’il bloque l’installation."
+        },
+        {
+          "type": "text",
+          "text": "Exigences officielles : https://docs.docker.com/desktop/setup/install/windows-install/"
         }
       ],
       "source_ids": [
@@ -229,19 +328,24 @@
         "windows11-home-pro",
         "microsoft-wsl-commands"
       ],
-      "printed_page": 5
+      "printed_page": 7
     },
     {
-      "title": "Windows : WSL 2 puis Docker Desktop",
-      "kicker": "DÉMARRER / 05",
+      "id": "wsl",
+      "title": "Windows : activer WSL 2, puis redémarrer",
+      "kicker": "B / PRÉPARER SON POSTE · 08",
       "blocks": [
         {
+          "type": "text",
+          "text": "WSL 2 permet à Docker Desktop d’exécuter des conteneurs Linux. Dans ce cours, vos commandes resteront dans PowerShell Windows."
+        },
+        {
           "type": "section",
-          "text": "1 · Activer WSL : étape avec droits administrateur"
+          "text": "Une fois · PowerShell administrateur"
         },
         {
           "type": "text",
-          "text": "Menu Démarrer → cherchez PowerShell → Exécuter en tant qu’administrateur. Acceptez la demande Windows si vous êtes autorisé à administrer cet ordinateur."
+          "text": "Démarrer → chercher PowerShell → Exécuter en tant qu’administrateur. Sur un Windows sans WSL, saisir :"
         },
         {
           "type": "code",
@@ -249,8 +353,9 @@
           "label": "PowerShell · administrateur · une fois"
         },
         {
-          "type": "text",
-          "text": "Redémarrez Windows après cette étape. Rouvrez PowerShell administrateur pour les contrôles suivants. Cette variante active WSL sans installer une distribution Ubuntu personnelle : Docker Desktop peut être utilisé depuis PowerShell sans elle."
+          "type": "callout",
+          "label": "Redémarrage nécessaire",
+          "text": "Sauvegardez le travail ouvert, puis redémarrez Windows. Rouvrez ensuite PowerShell administrateur pour les contrôles ci-dessous."
         },
         {
           "type": "code",
@@ -259,24 +364,15 @@
         },
         {
           "type": "text",
-          "text": "La version du logiciel WSL doit atteindre 2.1.5 au minimum. Le « 2 » de WSL 2 décrit son architecture. Si WSL est déjà présent, mettez-le à jour sans réinstaller. Si vous aviez installé Ubuntu avec wsl --install, gardez-le ; ne réinstallez pas Docker Engine dedans pour ce parcours."
+          "text": "WSL doit être en version 2.1.5 ou plus. Cette installation n’ajoute pas d’Ubuntu personnel ; Docker n’en a pas besoin pour la route PowerShell. Si WSL existe déjà, mettez-le à jour sans le réinstaller."
         },
         {
-          "type": "section",
-          "text": "2 · Installer et ouvrir Docker Desktop"
+          "type": "text",
+          "text": "Une installation Ubuntu déjà présente peut rester. N’y ajoutez pas un deuxième Docker Engine pour ce parcours."
         },
         {
-          "type": "bullets",
-          "items": [
-            "Téléchargez Docker Desktop for Windows sur https://docs.docker.com/desktop/setup/install/windows-install/. Choisissez l’architecture repérée page 5 et le moteur WSL 2.",
-            "L’installation par utilisateur est désormais le mode par défaut : elle n’exige pas systématiquement une installation pour tous les comptes. L’activation initiale de WSL peut tout de même demander un administrateur.",
-            "Lisez les conditions, terminez l’installation puis ouvrez Docker Desktop depuis Démarrer. Attendez que le moteur soit en cours d’exécution avant les commandes. Utilisez les conteneurs Linux."
-          ]
-        },
-        {
-          "type": "callout",
-          "label": "Licence",
-          "text": "Docker Desktop est un logiciel propriétaire, gratuit notamment pour l’éducation sous ses conditions. Docker Engine est disponible en logiciel libre sur Ubuntu. Le cours fonctionne aussi avec Python natif."
+          "type": "text",
+          "text": "Commandes WSL officielles : https://learn.microsoft.com/en-us/windows/wsl/basic-commands"
         }
       ],
       "source_ids": [
@@ -284,15 +380,70 @@
         "desktop-license",
         "microsoft-wsl-commands"
       ],
-      "printed_page": 6
+      "printed_page": 8
     },
     {
-      "title": "Windows : prouver que Docker fonctionne",
-      "kicker": "DÉMARRER / 06",
+      "id": "desktop-installer",
+      "title": "Windows : installer et ouvrir Docker Desktop",
+      "kicker": "B / PRÉPARER SON POSTE · 09",
       "blocks": [
         {
           "type": "text",
-          "text": "Fermez le PowerShell administrateur. Ouvrez un PowerShell normal depuis Démarrer. Gardez Docker Desktop ouvert et attendez son démarrage complet."
+          "text": "Depuis la page officielle Docker, téléchargez l’installateur adapté au PC repéré page 7. Ouvrez-le, conservez WSL 2 et le mode par utilisateur proposé par défaut, puis terminez l’installation."
+        },
+        {
+          "type": "text",
+          "text": "Démarrer → Docker Desktop. Lisez ses conditions et acceptez-les si elles conviennent. Attendez la fin du démarrage du moteur ; une icône présente ne suffit pas."
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/setup/docker-desktop-container-running.webp",
+          "height": 120,
+          "caption": "Détail officiel Docker : « Running » = « En cours ». Exemple générique, pas installation locale.",
+          "crop": [
+            145,
+            345,
+            1120,
+            530
+          ]
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Cet exemple Docker montre un conteneur déjà lancé ; ses noms et ports ne sont pas ceux d’Atlas. Votre liste peut encore être vide : c’est normal.",
+            "Gardez Docker Desktop ouvert pendant les exercices, en mode conteneurs Linux.",
+            "Fermez le PowerShell administrateur. Ouvrez un PowerShell normal pour la page suivante."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Droits et licence",
+          "text": "L’activation initiale de WSL peut demander un administrateur. Desktop par utilisateur n’en exige pas systématiquement. Desktop est propriétaire, gratuit pour l’éducation sous ses conditions ; Engine sur Ubuntu fournit la route libre."
+        },
+        {
+          "type": "callout",
+          "label": "L’écran aide ; le terminal confirme",
+          "text": "La page suivante contrôle Client et Server, puis hello-world. Un moteur indisponible se repère dans ces contrôles, même si la fenêtre Desktop est ouverte."
+        },
+        {
+          "type": "text",
+          "text": "Téléchargement et exigences : https://docs.docker.com/desktop/setup/install/windows-install/"
+        }
+      ],
+      "source_ids": [
+        "docker-windows",
+        "desktop-license",
+        "microsoft-wsl-commands"
+      ],
+      "printed_page": 9
+    },
+    {
+      "title": "Windows : vérifier que Docker répond",
+      "kicker": "B / PRÉPARER SON POSTE · 10",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Dans PowerShell normal, Docker Desktop ouvert et prêt, saisir les commandes suivantes :"
         },
         {
           "type": "code",
@@ -331,7 +482,7 @@
         {
           "type": "callout",
           "label": "En cas d’échec",
-          "text": "docker introuvable : fermez puis rouvrez PowerShell, vérifiez l’installation. Cannot connect / daemon : ouvrez Docker Desktop, attendez, relancez docker version. WSL ou virtualisation bloqués : page 13. La première image demande Internet."
+          "text": "docker introuvable : fermez puis rouvrez PowerShell, vérifiez l’installation. Cannot connect / daemon : ouvrez Docker Desktop, attendez, relancez docker version. WSL ou virtualisation bloqués : page 18. La première image demande Internet."
         },
         {
           "type": "section",
@@ -339,7 +490,7 @@
         },
         {
           "type": "text",
-          "text": "Refaites le cd de la page 4 avec votre vrai chemin ; vérifiez que compose.yaml est visible. Continuez page 10. Docker Desktop n’a pas besoin d’un terminal Ubuntu pour les commandes de ce parcours."
+          "text": "Revenez à la racine du cours avec le cd de la page 6. Vérifiez compose.yaml, puis continuez page 13. N’ouvrez pas Ubuntu pour les commandes de cette route."
         },
         {
           "type": "callout",
@@ -351,15 +502,16 @@
         "docker-windows",
         "docker-engine"
       ],
-      "printed_page": 7
+      "printed_page": 10,
+      "id": "windows-verifier"
     },
     {
-      "title": "Ubuntu 24.04 LTS : préparer Docker Engine",
-      "kicker": "DÉMARRER / 07",
+      "title": "Ubuntu 24.04 : préparer le dépôt officiel",
+      "kicker": "B / PRÉPARER SON POSTE · 11",
       "blocks": [
         {
           "type": "text",
-          "text": "Ce parcours utilise Ubuntu 24.04 LTS 64 bits avec Docker Engine depuis le dépôt APT officiel, puis le plugin Compose. Une connexion et un compte autorisé à utiliser sudo sont nécessaires. N’installez pas Docker Desktop pour cette route."
+          "text": "Sur un PC Ubuntu 24.04 LTS 64 bits, ouvrez Terminal (Ctrl + Alt + T). Ce parcours installe Engine et Compose depuis le dépôt Docker ; Docker Desktop n’est pas nécessaire."
         },
         {
           "type": "section",
@@ -380,7 +532,7 @@
         },
         {
           "type": "text",
-          "text": "Si Docker a déjà été installé, demandez au professeur de vérifier les paquets en conflit listés dans la documentation officielle avant de poursuivre. Les commandes suivantes visent une installation neuve ; ne supprimez pas vos données Docker existantes."
+          "text": "Si Docker ou containerd sont déjà installés, faites vérifier les conflits de paquets avant de poursuivre. Ces commandes visent un poste neuf ; ne supprimez pas des données existantes."
         },
         {
           "type": "code",
@@ -400,11 +552,12 @@
       "source_ids": [
         "docker-ubuntu"
       ],
-      "printed_page": 8
+      "printed_page": 11,
+      "id": "ubuntu-preparer"
     },
     {
-      "title": "Ubuntu : dépôt, installation et vérification",
-      "kicker": "DÉMARRER / 08",
+      "title": "Ubuntu : installer, puis vérifier",
+      "kicker": "B / PRÉPARER SON POSTE · 12",
       "blocks": [
         {
           "type": "text",
@@ -431,30 +584,77 @@
         },
         {
           "type": "text",
-          "text": "À ce stade, je sais vérifier l’origine du dépôt et distinguer le service, le client et Compose. Retrouvez votre dossier atlas-bi-ia, puis passez page 10."
+          "text": "À ce stade, je sais reconnaître le client et le service Docker. Retrouvez la racine du cours, puis continuez page 13."
         }
       ],
       "source_ids": [
         "docker-ubuntu",
         "docker-linux-postinstall"
       ],
-      "printed_page": 9
+      "printed_page": 12,
+      "id": "ubuntu-installer"
     },
     {
-      "title": "Construire l’environnement du projet",
-      "kicker": "DÉMARRER / 09",
+      "id": "docker-comprendre",
+      "title": "Docker : qu’est-ce qui reste sur votre PC ?",
+      "kicker": "B / PRÉPARER SON POSTE · 13",
       "blocks": [
         {
           "type": "text",
-          "text": "Dans le terminal de votre système, placez-vous à la racine du cours (page 4). Le fichier Dockerfile décrit Python 3.13 et le fichier compose.yaml décrit le service atelier. Le dossier du cours sera accessible dans le conteneur sous /workspace ; le programme travaillera dans /workspace/projet."
+          "text": "Une image fournit Python prêt à utiliser. Un conteneur exécute cet environnement. Vos fichiers de cours restent sur votre PC ; le montage rend ce dossier visible dans le conteneur."
         },
         {
-          "type": "diagram",
-          "nodes": [
-            "PC : atlas-bi-ia/projet",
-            "Montage partagé",
-            "Conteneur : /workspace/projet"
+          "type": "figure",
+          "path": "../docs/images/diagrams/poste-docker.png",
+          "height": 250,
+          "caption": "Schéma du cours : même dossier vu depuis votre PC et depuis le conteneur."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Sur votre PC",
+            "Dans le conteneur"
+          ],
+          "rows": [
+            [
+              "Racine du cours",
+              "/workspace"
+            ],
+            [
+              "projet/",
+              "/workspace/projet : dossier de travail"
+            ],
+            [
+              "projet/outputs/",
+              "outputs/ : résultats conservés sur votre PC"
+            ]
+          ],
+          "widths": [
+            1.5,
+            2.5
           ]
+        },
+        {
+          "type": "callout",
+          "label": "Une tâche, puis arrêt",
+          "text": "docker compose run --rm atelier python … lance le programme demandé, puis retire le conteneur temporaire. Les fichiers montés restent. Le CLI IA, facultatif, s’installe sur le PC : aucun compte ni secret n’est ajouté au conteneur."
+        },
+        {
+          "type": "callout",
+          "label": "Pour travailler hors ligne",
+          "text": "Gardez le dossier extrait, l’éditeur et l’image construite. Windows : Desktop reste ouvert ; Ubuntu : Engine tourne. Ne nettoyez pas les images ni la base pendant un exercice de rejeu."
+        }
+      ],
+      "source_ids": [],
+      "printed_page": 13
+    },
+    {
+      "title": "Construire l’image et trouver Python",
+      "kicker": "B / PRÉPARER SON POSTE · 14",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Restez à la racine du cours (page 6). Dockerfile décrit Python 3.13 ; compose.yaml définit le service atelier. Le premier build demande Internet."
         },
         {
           "type": "section",
@@ -471,7 +671,7 @@
         },
         {
           "type": "text",
-          "text": "Créez une fois .env avec les identifiants de votre compte, sans écraser un fichier existant. Cela garde vos résultats modifiables sur Ubuntu. Si .env existe déjà, faites vérifier ses deux valeurs LOCAL_UID et LOCAL_GID. N’y mettez aucune clé IA."
+          "text": "Créez .env une fois, sans écraser un fichier existant. Il donne au conteneur vos identifiants numériques pour garder les fichiers modifiables. Si .env existe, faites vérifier LOCAL_UID et LOCAL_GID. Aucune clé IA dans ce fichier."
         },
         {
           "type": "code",
@@ -492,23 +692,64 @@
         "python-docker-official",
         "docker-compose-run"
       ],
-      "printed_page": 10
+      "printed_page": 14,
+      "id": "docker-construire"
     },
     {
-      "title": "Modifier, enregistrer, exécuter",
-      "kicker": "DÉMARRER / 10",
+      "id": "editeur",
+      "title": "Thonny : démarrer, puis ouvrir calcul.py",
+      "kicker": "B / PRÉPARER SON POSTE · 15",
       "blocks": [
         {
-          "type": "section",
-          "text": "1 · Ouvrir le fichier et enregistrer"
+          "type": "text",
+          "text": "Windows : téléchargez la version portable ZIP de Thonny depuis https://thonny.org/, extrayez-la dans un dossier personnel et ouvrez l’application. Ubuntu : installez l’éditeur avec sudo apt install thonny."
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/real/thonny-premier-demarrage.jpg",
+          "height": 190,
+          "caption": "Premier écran réel de Thonny 5 sur macOS, 27/10/2026 ; ce n’est pas une installation Windows."
         },
         {
           "type": "text",
-          "text": "Windows : téléchargez Thonny sur https://thonny.org/ et extrayez sa version portable ZIP dans un dossier personnel. Ubuntu : installez l’éditeur avec sudo apt install thonny. Ouvrez Thonny, puis Fichier → Ouvrir → projet/calcul.py. Enregistrez avec Ctrl + S. Avec Docker, exécutez depuis le terminal ci-dessous plutôt qu’avec F5."
+          "text": "Au premier écran, Language permet de choisir Français, puis Let’s go! ouvre l’espace de travail. La capture montre seulement cet accueil. Une fois Thonny ouvert, suivez Fichier → Ouvrir et les étapes ci-dessous."
         },
         {
+          "type": "bullets",
+          "items": [
+            "Thonny → Fichier (File) → Ouvrir (Open) → dossier du cours → projet → calcul.py.",
+            "Repérez la fonction à compléter. Ne remplacez pas tout le fichier.",
+            "Ctrl + S enregistre votre modification. Docker lit seulement la version enregistrée."
+          ]
+        },
+        {
+          "type": "code",
+          "text": "def calculer_total(ventes):\n    # TODO — mission 01 : construire cette fonction avec aide de l’IA, puis vérifier.\n    raise NotImplementedError(\"Compléter calcul.py : calculer_total.\")",
+          "label": "LIRE · extrait exact de projet/calcul.py",
+          "source": "projet/calcul.py"
+        },
+        {
+          "type": "text",
+          "text": "TODO signifie « à compléter ». Pendant la mission 01, vous remplacerez cette fonction et garderez le reste du fichier. Enregistrez avant toute exécution."
+        },
+        {
+          "type": "callout",
+          "label": "Deux parcours, un même fichier",
+          "text": "Avec Docker : lancez le fichier depuis PowerShell ou Terminal, page 16. En secours natif : F5 dans Thonny peut lancer le fichier, ou utilisez les commandes des pages 18–19."
+        }
+      ],
+      "source_ids": [
+        "thonny-official"
+      ],
+      "printed_page": 15
+    },
+    {
+      "title": "Lancer, lire le résultat, expliquer",
+      "kicker": "B / PRÉPARER SON POSTE · 16",
+      "blocks": [
+        {
           "type": "section",
-          "text": "2 · Lancer le fichier depuis la racine"
+          "text": "Depuis la racine · une commande à la fois"
         },
         {
           "type": "code",
@@ -522,38 +763,39 @@
         },
         {
           "type": "text",
-          "text": "Le script verifier.py contrôle votre travail pour le jalon 01. Un message À compléter ou une erreur sur le fichier de départ signifie qu’une fonction reste à construire pendant le cours. L’installation est prouvée par Python 3.13.x ; elle ne remplit pas les missions à votre place."
+          "text": "verifier.py 01 contrôle votre fonction pour le jalon 01. Avant la mission, « mission à construire » est normal : Python est installé, mais votre fonction reste à écrire."
         },
         {
-          "type": "section",
-          "text": "3 · Comparer et expliquer"
+          "type": "code",
+          "text": "[OK 01] Calcul entier validé, y compris une variation.",
+          "label": "LIRE · résultat réellement obtenu dans Docker Linux"
+        },
+        {
+          "type": "text",
+          "text": "Résultat observé dans Docker Linux sur le poste de fabrication macOS, le 27/10/2026. Il montre le contrôle d’une fonction terminée ; sur votre starter, le message demande d’abord de la construire."
         },
         {
           "type": "table",
           "headers": [
-            "Situation",
-            "Action utile"
+            "Dans ce résultat",
+            "Ce que cela prouve"
           ],
           "rows": [
             [
-              "Rien n’a changé après une modification",
-              "Enregistrer le bon fichier ; vérifier que c’est projet/calcul.py dans le dossier monté."
+              "01",
+              "Le contrôle concerne le jalon 01."
             ],
             [
-              "SyntaxError",
-              "Lire le nom du fichier et le numéro de ligne ; vérifier deux-points, indentation et parenthèses."
+              "Calcul entier validé",
+              "La fonction respecte les cas contrôlés, pas seulement le premier panier."
             ],
             [
-              "NotImplementedError / À compléter",
-              "Lire la consigne de la mission, écrire la fonction, relancer le contrôle."
-            ],
-            [
-              "no configuration file provided",
-              "Revenir à la racine où compose.yaml est visible."
+              "Une variation",
+              "Un autre panier a aussi été contrôlé."
             ]
           ],
           "widths": [
-            1.4,
+            1.2,
             2.8
           ]
         },
@@ -566,15 +808,17 @@
       "source_ids": [
         "thonny-official"
       ],
-      "printed_page": 11
+      "printed_page": 16,
+      "id": "executer"
     },
     {
-      "title": "Voir le rapport et conserver son travail",
-      "kicker": "DÉMARRER / 11",
+      "id": "rapport",
+      "title": "Ouvrir le rapport et arrêter le serveur",
+      "kicker": "B / PRÉPARER SON POSTE · 17",
       "blocks": [
         {
           "type": "text",
-          "text": "À la fin du parcours Atlas, executer.py enchaîne le traitement et écrit projet/outputs/rapport_atlas.html. Ne l’utilisez pas comme preuve de réussite avant d’avoir construit les modules demandés."
+          "text": "Après les sept missions, executer.py crée le rapport. Lancer ensuite le serveur :"
         },
         {
           "type": "code",
@@ -588,20 +832,23 @@
         },
         {
           "type": "text",
-          "text": "Ouvrez votre navigateur habituel et tapez exactement l’adresse suivante dans sa barre d’adresse :"
+          "text": "Dans le navigateur : http://localhost:8000/rapport_atlas.html"
         },
         {
-          "type": "code",
-          "text": "http://localhost:8000/rapport_atlas.html",
-          "label": "Navigateur · adresse, pas une commande"
+          "type": "figure",
+          "path": "../docs/images/real/rapport-atlas-final.jpg",
+          "height": 190,
+          "caption": "Aperçu réel du rapport Atlas sur macOS, 27/10/2026 : 14 faits, 35 unités, 115.500 TND.",
+          "crop": [
+            130,
+            40,
+            1120,
+            380
+          ]
         },
         {
           "type": "text",
-          "text": "localhost désigne votre ordinateur. Le serveur affiche le dossier outputs ; avant la création du rapport, l’adresse du fichier renvoie 404. Le port est publié seulement sur 127.0.0.1 : cette page est prévue pour votre poste."
-        },
-        {
-          "type": "section",
-          "text": "Arrêter proprement"
+          "text": "localhost désigne votre PC. Le port est publié seulement sur 127.0.0.1. Une erreur 404 signifie que le fichier n’existe pas encore dans projet/outputs/."
         },
         {
           "type": "code",
@@ -610,24 +857,18 @@
         },
         {
           "type": "text",
-          "text": "Ubuntu : utilisez sudo docker compose down. Cette commande arrête le serveur ; elle ne supprime pas votre travail."
-        },
-        {
-          "type": "callout",
-          "label": "Ce qui reste enregistré",
-          "text": "Vos scripts, CSV et résultats restent dans le dossier du cours. Sauvegardez régulièrement projet. Ne supprimez pas outputs ou la base SQLite pendant un exercice de rejeu."
-        },
-        {
-          "type": "text",
-          "text": "Hors ligne : conservez le dossier extrait, l’éditeur et l’image construite. Windows : Docker Desktop reste ouvert ; Ubuntu : Engine doit tourner. Ne lancez pas de nettoyage des images. L’IA reste dépendante de sa connexion."
+          "text": "Ubuntu : sudo docker compose down. Cet arrêt conserve vos scripts, CSV, base SQLite et rapport. Sauvegardez régulièrement projet."
         }
       ],
-      "source_ids": [],
-      "printed_page": 12
+      "source_ids": [
+        "docker-localhost-port",
+        "docker-bind-mount"
+      ],
+      "printed_page": 17
     },
     {
       "title": "Secours Windows : Python et Thonny",
-      "kicker": "DÉMARRER / 12",
+      "kicker": "B / PRÉPARER SON POSTE · 18",
       "blocks": [
         {
           "type": "text",
@@ -641,7 +882,7 @@
           "type": "bullets",
           "items": [
             "Sur https://thonny.org/, choisissez le téléchargement Windows portable ZIP adapté au PC. Extrayez-le dans un dossier personnel ; ouvrez Thonny depuis le dossier extrait. Ce mode évite un installateur, mais une politique informatique peut quand même bloquer l’application.",
-            "Thonny fournit un éditeur et un interpréteur Python. Fichier → Ouvrir → dossier du cours → projet → calcul.py. Enregistrez avec Ctrl + S. F5 lance le fichier ; les résultats s’affichent dans le Shell de Thonny."
+            "Thonny fournit l’éditeur et Python. Fichier (File) → Ouvrir (Open) → projet/calcul.py. Ctrl + S enregistre ; F5 lance le fichier. Le Shell affiche les résultats."
           ]
         },
         {
@@ -673,11 +914,12 @@
         "thonny-release",
         "python-windows"
       ],
-      "printed_page": 13
+      "printed_page": 18,
+      "id": "natif-windows"
     },
     {
       "title": "Secours Ubuntu et rapport sans Docker",
-      "kicker": "DÉMARRER / 13",
+      "kicker": "B / PRÉPARER SON POSTE · 19",
       "blocks": [
         {
           "type": "section",
@@ -694,7 +936,7 @@
         },
         {
           "type": "text",
-          "text": "Ouvrez Thonny depuis le menu Applications, puis Fichier → Ouvrir → projet/calcul.py. Enregistrez vos modifications. Dans les missions, remplacez docker compose run --rm atelier python par python3 ; restez dans projet."
+          "text": "Menu Applications → Thonny, puis Fichier (File) → Ouvrir (Open) → projet/calcul.py. Enregistrez. Dans les missions, remplacez docker compose run --rm atelier python par python3 ; restez dans projet."
         },
         {
           "type": "section",
@@ -725,11 +967,12 @@
         "thonny-official",
         "python-httpserver"
       ],
-      "printed_page": 14
+      "printed_page": 19,
+      "id": "natif-ubuntu"
     },
     {
       "title": "L’IA : commencer dans le navigateur",
-      "kicker": "DÉMARRER / 14",
+      "kicker": "B / PRÉPARER SON POSTE · 20",
       "blocks": [
         {
           "type": "text",
@@ -792,15 +1035,16 @@
         "claude_setup",
         "codex_access"
       ],
-      "printed_page": 15
+      "printed_page": 20,
+      "id": "ia-web"
     },
     {
       "title": "Option : installer Codex sur le PC",
-      "kicker": "DÉMARRER / 15",
+      "kicker": "B / PRÉPARER SON POSTE · 21",
       "blocks": [
         {
           "type": "text",
-          "text": "Faites cette étape seulement si votre accès au CLI est confirmé. Sinon, gardez le navigateur. Codex s’installe sur le PC hôte : ouvrez PowerShell sous Windows, Terminal sous Ubuntu. N’entrez pas ces commandes dans le conteneur Python."
+          "text": "Option : installez Codex seulement si votre compte a déjà accès au CLI. Sinon, gardez le navigateur. Utilisez le terminal du PC hôte, jamais le conteneur Python."
         },
         {
           "type": "section",
@@ -813,7 +1057,7 @@
         },
         {
           "type": "text",
-          "text": "Cette commande télécharge puis exécute l’installateur officiel. Lisez son domaine avant de valider. Fermez et rouvrez PowerShell après installation."
+          "text": "La commande télécharge et exécute l’installateur officiel. Vérifiez le domaine. Fermez puis rouvrez PowerShell."
         },
         {
           "type": "code",
@@ -831,7 +1075,7 @@
         },
         {
           "type": "text",
-          "text": "Ouvrez un nouveau terminal. Si curl est absent, faites préparer curl par le professeur avec sudo apt install curl. Ne lancez pas Codex lui-même avec sudo."
+          "text": "Ouvrez un nouveau terminal. Si curl manque : faites préparer sudo apt install curl. Ne lancez pas Codex avec sudo."
         },
         {
           "type": "code",
@@ -841,7 +1085,7 @@
         {
           "type": "callout",
           "label": "Preuve attendue",
-          "text": "Un chemin et un numéro de version s’affichent. Aucun Node.js n’est nécessaire pour cette installation autonome. Commande inconnue : rouvrez le terminal ; si elle manque encore, faites vérifier le PATH utilisateur. Ne modifiez pas une politique de sécurité pour forcer l’installation."
+          "text": "Un chemin et une version doivent s’afficher. Node.js n’est pas nécessaire. Si la commande manque encore après réouverture du terminal, faites vérifier le PATH utilisateur ; ne contournez pas une règle de sécurité."
         },
         {
           "type": "text",
@@ -854,11 +1098,12 @@
         "codex_windows_verify",
         "codex_access"
       ],
-      "printed_page": 16
+      "printed_page": 21,
+      "id": "codex-installer"
     },
     {
       "title": "Codex : connexion et premier essai",
-      "kicker": "DÉMARRER / 16",
+      "kicker": "B / PRÉPARER SON POSTE · 22",
       "blocks": [
         {
           "type": "section",
@@ -871,7 +1116,7 @@
         },
         {
           "type": "text",
-          "text": "Choisissez la connexion ChatGPT autorisée et terminez dans le navigateur. login status confirme l’authentification ; cela ne garantit aucun quota précis. Si une clé API ou un paiement est requis pour votre accès, arrêtez ici et utilisez le chat web disponible."
+          "text": "Terminez la connexion ChatGPT autorisée dans le navigateur. login status confirme l’authentification, pas le quota. Si une clé API ou un paiement est demandé, arrêtez et utilisez le chat web disponible."
         },
         {
           "type": "section",
@@ -898,11 +1143,11 @@
         {
           "type": "callout",
           "label": "Garder les protections",
-          "text": "/permissions montre les permissions actives. Pour cet essai, restez en lecture seule ; refusez toute élévation hors de ce besoin. Pour une modification plus tard, sauvegardez le fichier, autorisez seulement l’exercice indiqué et gardez les confirmations. N’utilisez aucun mode de contournement des protections."
+          "text": "/permissions affiche les permissions. Restez en lecture seule pour cet essai. Plus tard, sauvegardez le fichier avant une correction, autorisez seulement l’exercice demandé et gardez les confirmations. N’utilisez aucun mode de contournement."
         },
         {
           "type": "text",
-          "text": "Après une correction, comparez le fichier avant/après : diff affiché par l’agent, ou git diff si Git est déjà installé. Sans Git, ouvrez votre copie sauvegardée à côté du fichier. Exécutez vous-même le contrôle du cours. Aucune authentification du PC n’est montée dans Docker."
+          "text": "Après une correction, lisez le diff proposé. Avec Git déjà installé : git diff. Sans Git : comparez votre copie sauvegardée au fichier actuel. Relancez vous-même le contrôle. Aucun dossier d’authentification n’est monté dans Docker."
         },
         {
           "type": "text",
@@ -915,15 +1160,16 @@
         "codex_windows_sandbox",
         "codex_workflow"
       ],
-      "printed_page": 17
+      "printed_page": 22,
+      "id": "codex-demarrer"
     },
     {
       "title": "Option : installer Claude Code sur le PC",
-      "kicker": "DÉMARRER / 17",
+      "kicker": "B / PRÉPARER SON POSTE · 23",
       "blocks": [
         {
           "type": "text",
-          "text": "Claude Code est un autre agent en terminal. Le chat Claude Free ne l’inclut pas. Faites vérifier votre accès éligible avant l’installation ; aucun achat n’est nécessaire pour suivre le cours avec le navigateur et les aides locales."
+          "text": "Option : Claude Free n’inclut pas Claude Code. Faites vérifier votre accès avant l’installation. Le cours fonctionne avec le navigateur et les aides locales, sans achat."
         },
         {
           "type": "section",
@@ -945,7 +1191,7 @@
         },
         {
           "type": "text",
-          "text": "Ces commandes téléchargent puis exécutent l’installateur officiel. Vérifiez le domaine, puis ouvrez un nouveau terminal après l’installation. Node.js n’est pas nécessaire. Git Bash est facultatif pour ce parcours Windows : PowerShell est pris en charge."
+          "text": "Vérifiez le domaine de l’installateur, puis rouvrez le terminal. Node.js n’est pas nécessaire. Sur Windows, Git Bash est facultatif : PowerShell est pris en charge."
         },
         {
           "type": "section",
@@ -959,11 +1205,11 @@
         {
           "type": "callout",
           "label": "Preuve attendue",
-          "text": "La version s’affiche ; doctor donne un diagnostic. Si la commande est inconnue, rouvrez le terminal puis faites vérifier son PATH utilisateur. N’écrasez jamais tout le PATH ; n’installez pas le CLI dans l’image du cours."
+          "text": "La version doit s’afficher ; doctor fournit un diagnostic. Commande introuvable : rouvrez le terminal, puis faites vérifier son PATH utilisateur. Ne remplacez pas tout le PATH et n’installez pas le CLI dans l’image du cours."
         },
         {
           "type": "text",
-          "text": "N’installez qu’un assistant à la fois si cela vous aide à rester orienté. Le CLI s’utilise sur le PC, dans le dossier de l’exercice. Aucun compte, fichier de clé ou dossier d’authentification ne doit être ajouté au montage Compose."
+          "text": "Gardez un seul assistant à la fois. Lancez-le depuis le dossier de l’exercice, sur le PC. N’ajoutez au montage Docker aucun compte, secret ou dossier d’authentification."
         },
         {
           "type": "text",
@@ -975,11 +1221,12 @@
         "claude_auth",
         "claude_path"
       ],
-      "printed_page": 18
+      "printed_page": 23,
+      "id": "claude-installer"
     },
     {
       "title": "Claude Code : connexion et permissions",
-      "kicker": "DÉMARRER / 18",
+      "kicker": "B / PRÉPARER SON POSTE · 24",
       "blocks": [
         {
           "type": "text",
@@ -992,7 +1239,7 @@
         },
         {
           "type": "text",
-          "text": "Suivez la connexion dans le navigateur avec votre compte personnel éligible. Attendez Login successful. Si un code est demandé, saisissez-le seulement dans le terminal qui a démarré la connexion. auth status confirme l’authentification ; ne copiez ni code ni identifiant dans un prompt."
+          "text": "Terminez la connexion personnelle dans le navigateur, puis attendez Login successful. S’il apparaît, saisissez le code seulement dans le terminal qui a lancé la connexion. auth status confirme l’authentification ; ne transmettez aucun identifiant dans un prompt."
         },
         {
           "type": "code",
@@ -1011,15 +1258,15 @@
         {
           "type": "callout",
           "label": "Manual et sandbox sont différents",
-          "text": "Manual demande confirmation pour les modifications et de nombreuses commandes ; toute lecture n’est pas forcément confirmée. Sur Windows natif, les commandes Claude Code ne sont pas isolées par son sandbox. Sous Ubuntu/WSL 2, le sandbox est désactivé par défaut : sa préparation et /sandbox relèvent du poste préparé par le professeur."
+          "text": "Manual confirme les modifications et de nombreuses commandes, pas toutes les lectures. Windows natif : pas de sandbox des commandes. Ubuntu/WSL 2 : sandbox désactivé par défaut ; le professeur prépare ses dépendances et /sandbox. Plan, Manual et sandbox ont des rôles différents."
         },
         {
           "type": "text",
-          "text": "Lisez chaque action avant de l’autoriser. Refusez une modification des données, du vérificateur, des règles ou d’un fichier hors exercice. Les consignes écrites cadrent l’agent ; elles ne remplacent pas les protections techniques. En cas de blocage, utilisez le navigateur."
+          "text": "Lisez chaque action. Refusez une modification des données, du vérificateur, des règles ou d’un autre fichier. Une consigne écrite ne remplace pas une protection technique. Si l’outil bloque, utilisez le navigateur."
         },
         {
           "type": "text",
-          "text": "Avant/après : gardez une copie, examinez le diff proposé, puis lancez le contrôle local. Consultez /usage pour l’usage de votre compte, sans en déduire un nombre fixe de demandes."
+          "text": "Gardez une copie, examinez le diff, puis relancez le contrôle. /usage indique l’usage du compte ; il ne promet aucun nombre fixe de demandes."
         },
         {
           "type": "text",
@@ -1034,11 +1281,12 @@
         "claude_usage",
         "claude_cli_reference"
       ],
-      "printed_page": 19
+      "printed_page": 24,
+      "id": "claude-demarrer"
     },
     {
-      "title": "Dépanner, puis vérifier son autonomie",
-      "kicker": "DÉMARRER / 19",
+      "title": "Se dépanner et continuer",
+      "kicker": "B / PRÉPARER SON POSTE · 25",
       "blocks": [
         {
           "type": "table",
@@ -1108,7 +1356,7 @@
         },
         {
           "type": "text",
-          "text": "Suite : 02_cours_atlas_ia.pdf. Sources officielles vérifiées le 27 octobre 2026 ; catalogue détaillé : docs/setup/sources.json. Les installations Windows/Ubuntu et comptes IA ne sont pas présentés comme des essais réalisés. Les versions et offres doivent être revérifiées si elles changent."
+          "text": "Suite : 02_cours_atlas_ia.pdf. Sources logicielles : docs/setup/sources.json. Provenance et droits des captures : docs/images/SOURCES.json. Captures officielles et captures locales sont distinguées ; aucune installation Windows/Ubuntu ni connexion IA gratuite n’est présentée comme réalisée."
         }
       ],
       "source_ids": [
@@ -1117,10 +1365,14 @@
         "codex_access",
         "claude_pricing"
       ],
-      "printed_page": 20
+      "printed_page": 25,
+      "id": "depanner"
     }
   ],
   "source_verification_date": "2026-10-27",
   "source_catalog": "../../docs/setup/sources.json",
-  "verification_scope": "Documentation officielle et vérification de syntaxe locale ; aucune installation Windows/Ubuntu ou connexion IA de compte gratuit revendiquée."
+  "verification_scope": "Documentation officielle et vérification de syntaxe locale ; aucune installation Windows/Ubuntu ou connexion IA de compte gratuit revendiquée.",
+  "visual_edition": "V5 visuelle",
+  "image_catalog": "../../docs/images/SOURCES.json",
+  "pagination_note": "25 pages prévues avec la couverture automatique, références alignées sur ce plan."
 }

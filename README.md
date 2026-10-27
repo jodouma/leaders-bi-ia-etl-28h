@@ -12,6 +12,8 @@
 
 Les fonctions de départ sont volontairement incomplètes. Le message « mission à construire » est attendu avant de les réaliser. **La construction de l’environnement Docker doit, elle, réussir** : une erreur d’installation est à résoudre avec le guide 01.
 
+**[Voir le parcours A → E en images](docs/DEMARRER_EN_IMAGES.md)** : captures commentées, rôle de Docker, éditeur/terminal/navigateur et exemple de demande IA.
+
 ## Comment avancer
 
 Pour chaque mission : **lire la consigne → demander une fonction à l’IA → enregistrer → exécuter → contrôler → expliquer le résultat**. Les [prompts prêts à copier](prompts/README.md) accompagnent le cours. Conserver une première tentative avant de consulter un corrigé.

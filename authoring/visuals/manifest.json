@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "language": "fr",
+  "palette": {
+    "navy": "#2B3180",
+    "deep": "#07152F",
+    "orange": "#FF9A3C"
+  },
+  "source": "authoring/visuals/generate.py",
+  "generated_from_csv": {
+    "projet/data/ventes_ajout.csv": "283057dc7b453610127a6665d7228401d1ebcaf7cb994fbb3f6c0c1575058ca6",
+    "projet/data/ventes_initiales.csv": "24682d75ca68c9dc368fd107bb8f6ac3a896c1ac15bc3c436d87b29f45cd8669",
+    "projet/data/boutiques.csv": "146b976a4a588583e78d50ace4da7b1b1346c56d0f59cb09ef8abeb1c1d6d523",
+    "projet/data/produits.csv": "e4815583ddabcd8b42eb0c34b843ec8dddc7d7877d9193016b26a39926fb0661"
+  },
+  "quantitative_assertions": {
+    "initial_rows": 16,
+    "accepted": 12,
+    "duplicates": 1,
+    "rejected": 3,
+    "base_millimes": 99000,
+    "final_millimes": 115500,
+    "replay_millimes": 115500,
+    "replay_inserted": 0,
+    "replay_existing": 3,
+    "base_period": [
+      "2026-01-05",
+      "2026-01-07"
+    ],
+    "final_period": [
+      "2026-01-05",
+      "2026-01-08"
+    ]
+  },
+  "fonts": {
+    "Inter": "authoring/assets/fonts/Inter-OFL.txt",
+    "Plus Jakarta Sans": "authoring/assets/fonts/PlusJakartaSans-OFL.txt"
+  },
+  "license": "Original diagrams authored for the course; no third-party screenshots or logos. Fonts: SIL OFL 1.1. SVG glyphs are paths.",
+  "assets": [
+    {
+      "id": "parcours-a-e",
+      "title": "Un projet, cinq étapes",
+      "description": "A Comprendre le projet ; B Préparer son poste ; C Construire avec l’IA ; D Contrôler le rapport ; E Réaliser le défi.",
+      "svg": "docs/images/diagrams/parcours-a-e.svg",
+      "png": "docs/images/diagrams/parcours-a-e.png",
+      "viewbox": [
+        1600,
+        540
+      ],
+      "png_pixels": [
+        2400,
+        810
+      ],
+      "alt": "A Comprendre le projet ; B Préparer son poste ; C Construire avec l’IA ; D Contrôler le rapport ; E Réaliser le défi.",
+      "text_min_px": 28
+    },
+    {
+      "id": "trois-espaces",
+      "title": "Trois espaces de travail",
+      "description": "Dans l’éditeur on écrit et enregistre le code. Dans le terminal on lance une commande. Dans le navigateur on consulte le rapport HTML. Les trois travaillent avec le même dossier.",
+      "svg": "docs/images/diagrams/trois-espaces.svg",
+      "png": "docs/images/diagrams/trois-espaces.png",
+      "viewbox": [
+        1600,
+        700
+      ],
+      "png_pixels": [
+        2400,
+        1050
+      ],
+      "alt": "Dans l’éditeur on écrit et enregistre le code. Dans le terminal on lance une commande. Dans le navigateur on consulte le rapport HTML. Les trois travaillent avec le même dossier.",
+      "text_min_px": 28
+    },
+    {
+      "id": "poste-docker",
+      "title": "Le poste et le conteneur",
+      "description": "L’éditeur et le navigateur restent sur le PC. Docker exécute Python dans un conteneur. Un montage relie le dossier projet du PC au dossier /workspace du conteneur : ce sont les mêmes fichiers. Le rapport HTML écrit dans outputs est ouvert dans le navigateur du PC. L’assistant IA reste sur le PC ou dans le chat web.",
+      "svg": "docs/images/diagrams/poste-docker.svg",
+      "png": "docs/images/diagrams/poste-docker.png",
+      "viewbox": [
+        1600,
+        820
+      ],
+      "png_pixels": [
+        2400,
+        1230
+      ],
+      "alt": "L’éditeur et le navigateur restent sur le PC. Docker exécute Python dans un conteneur. Un montage relie le dossier projet du PC au dossier /workspace du conteneur : ce sont les mêmes fichiers. Le rapport HTML écrit dans outputs est ouvert dans le navigateur du PC. L’assistant IA reste sur le PC ou dans le chat web.",
+      "text_min_px": 28
+    },
+    {
+      "id": "boucle-ia",
+      "title": "Une petite boucle avec l’IA",
+      "description": "Spécifier le besoin et le résultat attendu, demander une petite fonction, exécuter le fichier, contrôler avec une preuve puis expliquer le résultat. Si la preuve échoue, revenir au besoin et corriger une seule chose.",
+      "svg": "docs/images/diagrams/boucle-ia.svg",
+      "png": "docs/images/diagrams/boucle-ia.png",
+      "viewbox": [
+        1600,
+        620
+      ],
+      "png_pixels": [
+        2400,
+        930
+      ],
+      "alt": "Spécifier le besoin et le résultat attendu, demander une petite fonction, exécuter le fichier, contrôler avec une preuve puis expliquer le résultat. Si la preuve échoue, revenir au besoin et corriger une seule chose.",
+      "text_min_px": 28
+    },
+    {
+      "id": "etl-qualite",
+      "title": "Un lot, trois issues, un grain",
+      "description": "Le lot initial contient 16 lignes : 12 ventes retenues, 1 doublon identique et 3 rejets. Le doublon est S003. Les rejets portent sur une quantité nulle, un produit inconnu et une date impossible. Une ligne retenue représente une vente élémentaire ; deux carnets à 4500 millimes donnent 9000 millimes, soit 9,000 TND.",
+      "svg": "docs/images/diagrams/etl-qualite.svg",
+      "png": "docs/images/diagrams/etl-qualite.png",
+      "viewbox": [
+        1600,
+        780
+      ],
+      "png_pixels": [
+        2400,
+        1170
+      ],
+      "alt": "Le lot initial contient 16 lignes : 12 ventes retenues, 1 doublon identique et 3 rejets. Le doublon est S003. Les rejets portent sur une quantité nulle, un produit inconnu et une date impossible. Une ligne retenue représente une vente élémentaire ; deux carnets à 4500 millimes donnent 9000 millimes, soit 9,000 TND.",
+      "text_min_px": 28
+    },
+    {
+      "id": "ca-ajout-rejeu",
+      "title": "Un ajout, puis un rejeu sans double comptage",
+      "description": "Le chiffre d’affaires chargé passe de 99,000 TND pour 12 ventes du 5 au 7 janvier 2026 à 115,500 TND pour 14 ventes du 5 au 8 janvier 2026. Le rejeu conserve 115,500 TND et 14 ventes. Ces cumuls de périodes différentes ne mesurent pas une performance.",
+      "svg": "docs/images/diagrams/ca-ajout-rejeu.svg",
+      "png": "docs/images/diagrams/ca-ajout-rejeu.png",
+      "viewbox": [
+        1600,
+        780
+      ],
+      "png_pixels": [
+        2400,
+        1170
+      ],
+      "alt": "Le chiffre d’affaires chargé passe de 99,000 TND pour 12 ventes du 5 au 7 janvier 2026 à 115,500 TND pour 14 ventes du 5 au 8 janvier 2026. Le rejeu conserve 115,500 TND et 14 ventes. Ces cumuls de périodes différentes ne mesurent pas une performance.",
+      "text_min_px": 28
+    }
+  ]
+}

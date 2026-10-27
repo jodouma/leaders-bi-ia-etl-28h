@@ -1,0 +1,205 @@
+{
+  "edition": "V5 visuelle",
+  "verified_utc": "2026-10-27T12:36:36.154907+00:00",
+  "policy_fr": "Captures réelles ou officielles attribuées ; plateformes et limites précisées, aucun écran reconstruit par IA.",
+  "assets": [
+    {
+      "file": "docker-windows-wsl-features.png",
+      "dimensions": [
+        910,
+        792
+      ],
+      "repository_path": "content/manuals/desktop/images/wsl2-enabled.png",
+      "revision": "901bf91e15089ce5dae5e493530cabf101025df5",
+      "source_page": "https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/topics/#wsl-2-and-windows-home",
+      "os": "Windows, dialogue classique; version exacte non indiquée",
+      "stage": "Repérer Virtual Machine Platform et Windows Subsystem for Linux",
+      "caption_fr": "Repère Windows : les fonctionnalités Virtual Machine Platform et Windows Subsystem for Linux. Capture officielle Docker, interface historique; non réalisée sur notre poste.",
+      "limitations": [
+        "Ne montre ni installateur Docker actuel, ni mode per-user.",
+        "Cercles rouges présents dans le fichier officiel; aucune annotation ajoutée.",
+        "Ce repère de dépannage ne remplace pas la procédure PowerShell Windows 11 actuelle.",
+        "L’apparence peut différer sur le poste de l’étudiant."
+      ],
+      "recommended": true,
+      "origin": "official-published-screenshot",
+      "author": "Docker, Inc. and Docker Docs contributors",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/docker/docs/blob/901bf91e15089ce5dae5e493530cabf101025df5/LICENSE",
+      "license_evidence": "Docker Docs README declares Copyright 2013–2026 Docker, Inc., released under Apache 2.0; repository LICENSE applies to documentation source. No more-specific image license or NOTICE found in repository tree.",
+      "attribution": "Docker, Inc. et contributeurs Docker Docs — Apache 2.0 — capture originale inchangée.",
+      "original_url": "https://raw.githubusercontent.com/docker/docs/901bf91e15089ce5dae5e493530cabf101025df5/content/manuals/desktop/images/wsl2-enabled.png",
+      "source_repository": "https://github.com/docker/docs",
+      "modifications": "None: original downloaded bytes retained; upstream callouts are part of the original.",
+      "capture_created_at": "Unknown; do not confuse retrieval date with capture date.",
+      "public_path": "docs/images/setup/docker-windows-wsl-features.png",
+      "renderer_path": "../docs/images/setup/docker-windows-wsl-features.png",
+      "bytes": 50571,
+      "sha256": "579fd8e9f14686d3978fc3690b9c823e9c119b116c3858d08793f7820a5ec8ce",
+      "reviewed_visually": true
+    },
+    {
+      "file": "docker-windows-virtualization.png",
+      "dimensions": [
+        1722,
+        1490
+      ],
+      "repository_path": "content/manuals/desktop/images/virtualization-enabled.png",
+      "revision": "901bf91e15089ce5dae5e493530cabf101025df5",
+      "source_page": "https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/topics/#virtualization-must-be-turned-on",
+      "os": "Windows, ancien Gestionnaire des tâches; version exacte non indiquée",
+      "stage": "Vérifier la virtualisation dans Performances > Processeur",
+      "caption_fr": "Dans le Gestionnaire des tâches, rechercher Virtualization: Enabled (Virtualisation : Activé). Capture officielle Docker, interface Windows historique; non réalisée sur notre poste.",
+      "limitations": [
+        "L’interface Windows 11 actuelle diffère; suivre les mots et non la position exacte.",
+        "Surlignage jaune et cercle rouge déjà présents dans la source officielle.",
+        "Les valeurs CPU/RAM appartiennent au poste de démonstration de Docker.",
+        "Préférer une grande reproduction ou un détail cadré honnêtement dans le PDF; le fichier original reste inchangé."
+      ],
+      "recommended": true,
+      "pdf_detail_region_source_pixels": {
+        "x": 1070,
+        "y": 1065,
+        "width": 455,
+        "height": 125,
+        "description": "Zone de repérage comprenant Virtualization: Enabled; coordonnées indicatives à valider au rendu. Ne pas présenter comme plein écran."
+      },
+      "origin": "official-published-screenshot",
+      "author": "Docker, Inc. and Docker Docs contributors",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/docker/docs/blob/901bf91e15089ce5dae5e493530cabf101025df5/LICENSE",
+      "license_evidence": "Docker Docs README declares Copyright 2013–2026 Docker, Inc., released under Apache 2.0; repository LICENSE applies to documentation source. No more-specific image license or NOTICE found in repository tree.",
+      "attribution": "Docker, Inc. et contributeurs Docker Docs — Apache 2.0 — capture originale inchangée.",
+      "original_url": "https://raw.githubusercontent.com/docker/docs/901bf91e15089ce5dae5e493530cabf101025df5/content/manuals/desktop/images/virtualization-enabled.png",
+      "source_repository": "https://github.com/docker/docs",
+      "modifications": "None: original downloaded bytes retained; upstream callouts are part of the original.",
+      "capture_created_at": "Unknown; do not confuse retrieval date with capture date.",
+      "public_path": "docs/images/setup/docker-windows-virtualization.png",
+      "renderer_path": "../docs/images/setup/docker-windows-virtualization.png",
+      "bytes": 104058,
+      "sha256": "fbe525a46ffb979aa14af0002fd3a2740dc1b040f2ff2ddcd6566ccbc9b9d75a",
+      "reviewed_visually": true
+    },
+    {
+      "file": "docker-desktop-container-running.webp",
+      "dimensions": [
+        1999,
+        711
+      ],
+      "repository_path": "content/get-started/docker-concepts/the-basics/images/view-your-containers.webp",
+      "revision": "901bf91e15089ce5dae5e493530cabf101025df5",
+      "source_page": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/#view-your-container",
+      "os": "Non identifiable : extrait de la zone Containers sans bordure système",
+      "stage": "Reconnaître un conteneur en cours d’exécution",
+      "caption_fr": "Exemple officiel : la colonne Status indique Running et Port(s) affiche le port publié. Les noms et ports de cet exemple Docker diffèrent de ceux du cours. Capture officielle, non réalisée sur notre poste.",
+      "limitations": [
+        "Ne prouve pas que le projet Atlas a été lancé.",
+        "Le nom keen_lamarr et le port 8080:80 sont ceux de l’exemple Docker, pas les instructions du cours.",
+        "Ne montre ni l’installation, ni les réglages WSL, ni l’état complet du moteur.",
+        "OS et version du logiciel non indiqués dans cet extrait."
+      ],
+      "recommended": true,
+      "origin": "official-published-screenshot",
+      "author": "Docker, Inc. and Docker Docs contributors",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/docker/docs/blob/901bf91e15089ce5dae5e493530cabf101025df5/LICENSE",
+      "license_evidence": "Docker Docs README declares Copyright 2013–2026 Docker, Inc., released under Apache 2.0; repository LICENSE applies to documentation source. No more-specific image license or NOTICE found in repository tree.",
+      "attribution": "Docker, Inc. et contributeurs Docker Docs — Apache 2.0 — capture originale inchangée.",
+      "original_url": "https://raw.githubusercontent.com/docker/docs/901bf91e15089ce5dae5e493530cabf101025df5/content/get-started/docker-concepts/the-basics/images/view-your-containers.webp",
+      "source_repository": "https://github.com/docker/docs",
+      "modifications": "None: original downloaded bytes retained; upstream callouts are part of the original.",
+      "capture_created_at": "Unknown; do not confuse retrieval date with capture date.",
+      "public_path": "docs/images/setup/docker-desktop-container-running.webp",
+      "renderer_path": "../docs/images/setup/docker-desktop-container-running.webp",
+      "bytes": 23202,
+      "sha256": "9ae1a2cf63766f6b24c6000d6c069c44a76c338a1405bfdb689bfa06efe4d877",
+      "reviewed_visually": true
+    },
+    {
+      "public_path": "docs/images/real/github-telecharger.jpg",
+      "origin": "author-real-ui-capture",
+      "captured_at_utc": "2026-10-27T12:29:45.666178+00:00",
+      "title_fr": "Menu Code → Download ZIP",
+      "caption_fr": "Vrai dépôt public, sans compte connecté ; téléchargement effectué par ce bouton.",
+      "source": "https://github.com/jodouma/leaders-bi-ia-etl-28h",
+      "environment": "macOS ARM ; navigateur IAB, Finder ou Thonny selon la capture",
+      "dimensions": [
+        684,
+        697
+      ],
+      "format": "JPEG",
+      "sha256": "0d2577f51693cd44fe80de8e1362a3270e58c3117d95782ce36ce1bd20c25548",
+      "modifications": "Aucune retouche ; éventuels cadrages indiqués dans le PDF.",
+      "attribution": "Capture pédagogique de Youssef Douma ; logiciels et marques soumis aux droits de leurs titulaires."
+    },
+    {
+      "public_path": "docs/images/real/dossier-extrait.jpg",
+      "origin": "author-real-ui-capture",
+      "captured_at_utc": "2026-10-27T12:31:20.566268+00:00",
+      "title_fr": "Dossier réellement extrait, Finder macOS",
+      "caption_fr": "Capture sous macOS, pas une capture de l’Explorateur Windows. Les noms des fichiers du cours sont communs aux systèmes.",
+      "source": "local:extracted-course-zip",
+      "environment": "macOS ARM ; navigateur IAB, Finder ou Thonny selon la capture",
+      "dimensions": [
+        920,
+        492
+      ],
+      "format": "JPEG",
+      "sha256": "2ef5d464b0567c4e4c9a5089b9413b4ad7cf210cecf973f199b81110a3245384",
+      "modifications": "Aucune retouche ; éventuels cadrages indiqués dans le PDF.",
+      "attribution": "Capture pédagogique de Youssef Douma ; logiciels et marques soumis aux droits de leurs titulaires."
+    },
+    {
+      "public_path": "docs/images/real/thonny-premier-demarrage.jpg",
+      "origin": "author-real-ui-capture",
+      "captured_at_utc": "2026-10-27T12:28:16.952528+00:00",
+      "title_fr": "Thonny 5, premier accueil macOS",
+      "caption_fr": "Paquet officiel ARM extrait temporairement. Ce premier écran ne prouve pas une installation Windows/Ubuntu ni une configuration terminée.",
+      "source": "https://github.com/thonny/thonny/releases/tag/v5.0.0",
+      "environment": "macOS ARM ; navigateur IAB, Finder ou Thonny selon la capture",
+      "dimensions": [
+        614,
+        292
+      ],
+      "format": "JPEG",
+      "sha256": "395ad45aed09c57c98c8990845b85074b6ad1d2dd3ace9e5cb29b650256967a6",
+      "modifications": "Aucune retouche ; éventuels cadrages indiqués dans le PDF.",
+      "attribution": "Capture pédagogique de Youssef Douma ; logiciels et marques soumis aux droits de leurs titulaires."
+    },
+    {
+      "public_path": "docs/images/real/rapport-atlas-final.jpg",
+      "origin": "author-real-ui-capture",
+      "captured_at_utc": "2026-10-27T12:29:45.260468+00:00",
+      "title_fr": "Rapport final Atlas, aperçu",
+      "caption_fr": "Vrai rapport servi par Python3.13 dans Docker Linux sur macOS ARM ; 14faits,35unités,115500millimes,période2026-01-05au08.",
+      "source": "local:http://localhost:8000/rapport_atlas.html",
+      "environment": "macOS ARM ; navigateur IAB, Finder ou Thonny selon la capture",
+      "dimensions": [
+        1265,
+        712
+      ],
+      "format": "JPEG",
+      "sha256": "3adcffb234e107433cc999bc6552499c569faa5669747628cfaffb470640b481",
+      "modifications": "Aucune retouche ; éventuels cadrages indiqués dans le PDF.",
+      "attribution": "Capture pédagogique de Youssef Douma ; logiciels et marques soumis aux droits de leurs titulaires."
+    },
+    {
+      "public_path": "docs/images/real/rapport-atlas-complet.jpg",
+      "origin": "author-real-ui-capture",
+      "captured_at_utc": "2026-10-27T12:29:45.364572+00:00",
+      "title_fr": "Rapport final Atlas, page entière",
+      "caption_fr": "Même exécution réelle, capture complète sans retouche.",
+      "source": "local:http://localhost:8000/rapport_atlas.html",
+      "environment": "macOS ARM ; navigateur IAB, Finder ou Thonny selon la capture",
+      "dimensions": [
+        1265,
+        1410
+      ],
+      "format": "JPEG",
+      "sha256": "72cd7bb2336882d729be6eeb591499eda7cb781b0cc2892070aeac3636eab7a4",
+      "modifications": "Aucune retouche ; éventuels cadrages indiqués dans le PDF.",
+      "attribution": "Capture pédagogique de Youssef Douma ; logiciels et marques soumis aux droits de leurs titulaires."
+    }
+  ],
+  "diagrams_manifest": "../../authoring/visuals/manifest.json"
+}

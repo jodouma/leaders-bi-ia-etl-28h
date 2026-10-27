@@ -117,8 +117,20 @@ def measure(block):
     if kind == 'branches':
         return 52 * len(block['outcomes']) + 10, block
     if kind in ('figure','image'):
-        height = block.get('height', 170)
-        return height + 38, block
+        from PIL import Image
+        path = HERE / block['path']
+        with Image.open(path) as im:
+            iw, ih = im.size
+        left, top, right, bottom = block.get('crop', (0, 0, iw, ih))
+        if not (0 <= left < right <= iw and 0 <= top < bottom <= ih):
+            raise ValueError('Invalid figure crop: ' + str(path))
+        scale = min(WIDTH / (right-left), block.get('height', 170) / (bottom-top))
+        visible_width, visible_height = (right-left)*scale, (bottom-top)*scale
+        caption = paragraph(block.get('caption', ''), SMALL)
+        caption_height = caption.wrap(WIDTH, 2000)[1] if block.get('caption') else 0
+        layout = (path, iw, ih, left, top, scale, visible_width, visible_height,
+                  caption, caption_height)
+        return visible_height + (8+caption_height if caption_height else 0) + 10, layout
     raise ValueError('Unsupported block: ' + kind)
 
 
@@ -182,16 +194,18 @@ def draw_block(c, block, obj, y, height):
                 c.line(x+boxw+9,y-47,x+boxw+12,y-50)
                 c.line(x+boxw+9,y-53,x+boxw+12,y-50)
     elif kind in ('figure','image'):
-        path = HERE/obj['path']
-        from PIL import Image
-        with Image.open(path) as im:
-            iw,ih = im.size
-        scale=min(WIDTH/iw, obj.get('height',170)/ih)
-        c.drawImage(str(path), LEFT+(WIDTH-iw*scale)/2,y-ih*scale,
-                    width=iw*scale,height=ih*scale,mask='auto')
-        p=paragraph(obj.get('caption',''),SMALL)
-        ph=p.wrap(WIDTH,2000)[1]
-        p.drawOn(c,LEFT,y-ih*scale-8-ph)
+        path, iw, ih, left, top, scale, vw, vh, caption, ph = obj
+        x = LEFT + (WIDTH-vw)/2
+        c.saveState()
+        clip = c.beginPath()
+        clip.rect(x, y-vh, vw, vh)
+        c.clipPath(clip, stroke=0, fill=0)
+        # Clip the original pixels on the PDF page; never retouch the source UI.
+        c.drawImage(str(path), x-left*scale, y-(ih-top)*scale,
+                    width=iw*scale, height=ih*scale, mask='auto')
+        c.restoreState()
+        if ph:
+            caption.drawOn(c, LEFT, y-vh-8-ph)
     elif kind == 'star':
         def card(x, top, width, height, title, lines, dark=False):
             c.setFillColor(DEEP if dark else PALE)

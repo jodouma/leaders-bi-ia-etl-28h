@@ -5,7 +5,8 @@
     {
       "layout": "cover",
       "title": "Construire une\nsolution BI avec l’IA",
-      "subtitle": "Python, ETL et entrepôts de données\nUn projet Atlas, du premier calcul au rapport."
+      "subtitle": "Python, ETL et entrepôts de données\nUn projet Atlas, du premier calcul au rapport.",
+      "section": "A"
     },
     {
       "layout": "beforeafter",
@@ -14,7 +15,8 @@
       "left": "2 carnets à 4.500 TND\n3 stylos à 1.500 TND\n\n4 500 + 1 500 = 6 000",
       "rightLabel": "CE QUE NOUS AVONS VENDU",
       "right": "2 × 4 500 + 3 × 1 500\n= 13 500 millimes\n\n= 13.500 TND",
-      "note": "Exemple pédagogique construit. Ce n’est pas une réponse observée d’une offre gratuite."
+      "note": "Exemple pédagogique construit. Ce n’est pas une réponse observée d’une offre gratuite.",
+      "section": "A"
     },
     {
       "layout": "equation",
@@ -33,7 +35,8 @@
       ],
       "result": "13 500 millimes = 13.500 TND",
       "variation": "Variation : 3 carnets et 3 stylos → 18 000 millimes.",
-      "note": "Prédire le résultat, exécuter, expliquer l’écart. Le modèle propose ; vous vérifiez."
+      "note": "Prédire le résultat, exécuter, expliquer l’écart. Le modèle propose ; vous vérifiez.",
+      "section": "A"
     },
     {
       "layout": "cards",
@@ -53,7 +56,41 @@
         }
       ],
       "note": "Aucune mémorisation de syntaxe demandée. Vous pouvez consulter les repères.",
-      "kicker": ""
+      "kicker": "",
+      "section": "A"
+    },
+    {
+      "layout": "navigation",
+      "section": "A",
+      "title": "Votre parcours : du projet à la preuve",
+      "items": [
+        {
+          "letter": "A",
+          "label": "Comprendre",
+          "text": "Le cas Atlas et le résultat à construire."
+        },
+        {
+          "letter": "B",
+          "label": "Préparer",
+          "text": "Les fichiers, les outils et le premier lancement."
+        },
+        {
+          "letter": "C",
+          "label": "Construire",
+          "text": "Une fonction à la fois, avec l’IA et des tests."
+        },
+        {
+          "letter": "D",
+          "label": "Contrôler",
+          "text": "Lire le rapport et vérifier ses limites."
+        },
+        {
+          "letter": "E",
+          "label": "Réaliser",
+          "text": "Le défi CampusBox et votre preuve personnelle."
+        }
+      ],
+      "note": "Les mêmes lettres A → E vous repèrent dans les guides, les captures et la présentation."
     },
     {
       "layout": "cards",
@@ -73,7 +110,8 @@
         }
       ],
       "note": "Cas fictif. Les données ne décrivent ni stock, ni coût, ni marge, ni prévision.",
-      "kicker": ""
+      "kicker": "",
+      "section": "A"
     },
     {
       "layout": "process",
@@ -93,7 +131,8 @@
         }
       ],
       "note": "ETL = Extract, Transform, Load. Le rapport rend les résultats lisibles.",
-      "kicker": ""
+      "kicker": "",
+      "section": "A"
     },
     {
       "layout": "schedule",
@@ -125,32 +164,33 @@
           "7 h"
         ]
       ],
-      "note": "70 % pratique : 19 h 36 · 30 % théorie : 8 h 24. Installation incluse dans S01."
+      "note": "70 % pratique : 19 h 36 · 30 % théorie : 8 h 24. Installation incluse dans S01.",
+      "section": "A"
     },
     {
-      "layout": "cards",
-      "title": "Commencer dans le bon dossier",
+      "layout": "capture",
+      "section": "B",
+      "title": "Télécharger le cours depuis le vrai dépôt",
+      "asset": "docs/images/real/github-telecharger.jpg",
       "items": [
-        {
-          "label": "Télécharger",
-          "text": "Décompresser le cours dans un dossier personnel simple, puis ouvrir ce dossier."
-        },
-        {
-          "label": "Lire",
-          "text": "PDF 01 : démarrage Windows / Ubuntu.\nPDF 02 : cours Atlas guidé."
-        },
-        {
-          "label": "Produire",
-          "text": "Modifier projet/ et conserver les preuves dans projet/outputs/."
-        }
+        "Ouvrir le dépôt du cours et le bouton Code.",
+        "Choisir Download ZIP ; ouvrir le fichier téléchargé.",
+        "Décompresser avant de modifier le dossier projet/."
       ],
-      "note": "Solutions et indices sont séparés. Avancez d’abord avec les fichiers de départ.",
-      "kicker": ""
+      "caption": "Vrai dépôt Atlas — capture du navigateur réalisée le 27 octobre 2026. Aucun compte étudiant affiché.",
+      "provenance": "Capture du projet\nGitHub, accès public.",
+      "notes": "Capture authentique du dépôt public du cours réalisée dans le navigateur le 27 octobre 2026. Elle illustre le menu Code / Download ZIP ; ce n’est pas un écran reconstruit.",
+      "tall": true,
+      "pixelSize": [
+        684,
+        697
+      ]
     },
     {
       "layout": "workspace",
-      "title": "Trois outils, trois fonctions",
-      "note": "Dans l’éditeur : modifier et enregistrer. Dans le terminal : exécuter. Dans le navigateur : lire le rapport."
+      "title": "Éditeur, terminal, navigateur : trois espaces",
+      "note": "Schéma de principe : l’éditeur modifie les fichiers ; le terminal exécute ; le navigateur affiche le rapport.",
+      "section": "B"
     },
     {
       "layout": "cards",
@@ -171,7 +211,27 @@
       ],
       "note": "Docker Desktop est propriétaire ; usage éducatif gratuit selon ses conditions. Voir le PDF 01.",
       "kicker": "",
-      "notes": "Sources publiques : https://docs.docker.com/desktop/setup/install/windows-install/ ; https://docs.docker.com/subscription/desktop-license/ . Les prérequis exacts évoluent ; consulter le guide officiel. Aucune capture Windows reconstituée."
+      "notes": "Sources publiques : https://docs.docker.com/desktop/setup/install/windows-install/ ; https://docs.docker.com/subscription/desktop-license/ . Les prérequis exacts évoluent ; consulter le guide officiel. Aucune capture Windows reconstituée.",
+      "section": "B"
+    },
+    {
+      "layout": "capture",
+      "section": "B",
+      "title": "Windows : reconnaître les deux fonctions utiles",
+      "asset": "docs/images/setup/docker-windows-wsl-features.png",
+      "tall": true,
+      "items": [
+        "Virtual Machine Platform : prise en charge de la virtualisation.",
+        "Windows Subsystem for Linux : la couche WSL utilisée par Docker Desktop.",
+        "Sur Windows 11, suivre le parcours actuel du PDF 01. L’apparence peut différer."
+      ],
+      "caption": "Windows Features : interface historique en anglais. Documentation Docker, licence Apache 2.0.",
+      "provenance": "Capture officielle,\nnon réalisée sur notre poste.",
+      "notes": "Capture officielle, non réalisée sur notre poste. Interface Windows historique. Docker, Inc. et contributeurs Docker Docs — Apache 2.0 — capture originale inchangée. Source exacte : https://raw.githubusercontent.com/docker/docs/901bf91e15089ce5dae5e493530cabf101025df5/content/manuals/desktop/images/wsl2-enabled.png ; page de contexte : https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/topics/#wsl-2-and-windows-home . La capture aide à reconnaître les libellés des composants ; suivre le parcours Windows 11 actuel du PDF 01. Licence complète distribuée dans docs/images/setup/LICENSE-Docker-Apache-2.0.txt.",
+      "pixelSize": [
+        910,
+        792
+      ]
     },
     {
       "layout": "cards",
@@ -192,19 +252,22 @@
       ],
       "note": "Ubuntu : Docker Engine est open source. Les droits Docker donnent des capacités importantes sur la machine.",
       "kicker": "",
-      "notes": "Sources publiques : https://docs.docker.com/engine/install/ubuntu/ ; https://docs.docker.com/engine/security/ ; https://www.python.org/downloads/ . Repli : en local Windows remplacer python par py -3.13 ; Ubuntu par python3."
+      "notes": "Sources publiques : https://docs.docker.com/engine/install/ubuntu/ ; https://docs.docker.com/engine/security/ ; https://www.python.org/downloads/ . Repli : en local Windows remplacer python par py -3.13 ; Ubuntu par python3.",
+      "section": "B"
     },
     {
       "layout": "docker",
-      "title": "Docker : une recette, une exécution, vos fichiers",
-      "note": "L’image contient Python. Le conteneur exécute une commande. Vos fichiers restent dans le dossier du cours.",
-      "notes": "Source publique : https://docs.docker.com/get-started/docker-concepts/the-basics/ . Image python:3.13-slim pour l’environnement du cours."
+      "title": "Docker : un modèle et son exécution",
+      "note": "Dockerfile est la recette ; l’image contient Python ; le conteneur exécute. Vos fichiers restent dans le dossier du cours.",
+      "notes": "Source publique : https://docs.docker.com/get-started/docker-concepts/the-basics/ . Image python:3.13-slim pour l’environnement du cours.",
+      "section": "B"
     },
     {
       "layout": "mount",
       "title": "Le dossier partagé et localhost",
       "note": "Le montage relie vos fichiers au conteneur. Le port publié sur 127.0.0.1 est accessible depuis votre ordinateur.",
-      "notes": "Sources : https://docs.docker.com/engine/storage/bind-mounts/ ; https://docs.docker.com/engine/network/port-publishing/ . Le dépôt est monté dans /workspace et le service atelier travaille dans /workspace/projet."
+      "notes": "Sources : https://docs.docker.com/engine/storage/bind-mounts/ ; https://docs.docker.com/engine/network/port-publishing/ . Le dépôt est monté dans /workspace et le service atelier travaille dans /workspace/projet.",
+      "section": "B"
     },
     {
       "layout": "commands",
@@ -216,7 +279,8 @@
         "Enregistrer calcul.py avant de relancer."
       ],
       "fontSize": 20,
-      "note": "Une commande → un résultat local. --rm supprime le conteneur terminé, pas le dossier partagé."
+      "note": "Une commande → un résultat local. --rm supprime le conteneur terminé, pas le dossier partagé.",
+      "section": "B"
     },
     {
       "layout": "cards",
@@ -237,12 +301,14 @@
       ],
       "note": "Ne jamais déduire « chat gratuit » ⇒ « CLI gratuite ». Vérifier l’éligibilité avant toute installation.",
       "kicker": "",
-      "notes": "Sources publiques à consulter pour les conditions à jour : https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus ; https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan ; https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan . Aucun accès CLI gratuit n’est promis."
+      "notes": "Sources publiques à consulter pour les conditions à jour : https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus ; https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan ; https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan . Aucun accès CLI gratuit n’est promis.",
+      "section": "C"
     },
     {
       "layout": "loop",
       "title": "Une boucle courte économise votre attention",
-      "note": "Cible de travail : 2 à 4 demandes par mission, pas un quota garanti. Un échec local apporte le contexte suivant."
+      "note": "Cible de travail : 2 à 4 demandes par mission, pas un quota garanti. Un échec local apporte le contexte suivant.",
+      "section": "C"
     },
     {
       "layout": "code",
@@ -254,7 +320,8 @@
         "Relancer localement et lire la modification."
       ],
       "fontSize": 19,
-      "note": "Pour le chat web : copier une petite fonction. Pour une CLI : limiter son périmètre au projet."
+      "note": "Pour le chat web : copier une petite fonction. Pour une CLI : limiter son périmètre au projet.",
+      "section": "C"
     },
     {
       "layout": "cards",
@@ -270,11 +337,12 @@
         },
         {
           "label": "Après",
-          "text": "Inspecter le diff, lancer le vérificateur local et expliquer une ligne modifiée."
+          "text": "Comparer avant / après (diff), lancer le contrôle local et expliquer une ligne modifiée."
         }
       ],
       "note": "Ne pas contourner les permissions, transmettre des secrets, ni modifier les contrôles pour les faire passer.",
-      "kicker": ""
+      "kicker": "",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -286,7 +354,8 @@
         "Conserver une trace de la commande, puis décrire son rôle."
       ],
       "note": "Si Docker bloque : suivre le repli Python du PDF 01. L’objectif est un premier résultat local.",
-      "number": "00"
+      "number": "00",
+      "section": "C"
     },
     {
       "layout": "equation",
@@ -305,7 +374,8 @@
       ],
       "result": "13 500 millimes, stockés comme un entier",
       "variation": "1 TND = 1 000 millimes. Affichage : 13.500 TND.",
-      "note": "quantity = nombre d’unités ; unit_price_millimes = prix d’une unité ; amount = quantité × prix."
+      "note": "quantity = nombre d’unités ; unit_price_millimes = prix d’une unité ; amount = quantité × prix.",
+      "section": "C"
     },
     {
       "layout": "code",
@@ -317,7 +387,8 @@
         "return donne le résultat au programme appelant."
       ],
       "fontSize": 19,
-      "note": "Contrat : calculer_total(ventes) → int. Le code se lit avant de se modifier."
+      "note": "Contrat : calculer_total(ventes) → int. Le code se lit avant de se modifier.",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -329,7 +400,8 @@
         "Restaurer le cas initial et exécuter verifier.py 01."
       ],
       "note": "Preuve : deux valeurs + une phrase expliquant pourquoi le prix seul ne suffit pas.",
-      "number": "01"
+      "number": "01",
+      "section": "C"
     },
     {
       "layout": "cards",
@@ -349,12 +421,14 @@
         }
       ],
       "note": "Une explication + une exécution + une trace conservée.",
-      "kicker": "À CE STADE, JE SAIS…"
+      "kicker": "À CE STADE, JE SAIS…",
+      "section": "C"
     },
     {
       "layout": "grain",
       "title": "S02 · Que représente une ligne ?",
-      "note": "Grain Atlas : une vente élémentaire d’un produit, dans une boutique, à une date. sale_id identifie cette vente."
+      "note": "Grain Atlas : une vente élémentaire d’un produit, dans une boutique, à une date. sale_id identifie cette vente.",
+      "section": "C"
     },
     {
       "layout": "table",
@@ -391,7 +465,8 @@
         1,
         1.5
       ],
-      "note": "CSV = texte tabulaire. DictReader associe le nom de colonne à sa valeur ; rien n’est encore validé."
+      "note": "CSV = texte tabulaire. DictReader associe le nom de colonne à sa valeur ; rien n’est encore validé.",
+      "section": "C"
     },
     {
       "layout": "code",
@@ -403,7 +478,8 @@
         "Lire ne nettoie pas et ne calcule pas encore."
       ],
       "fontSize": 18,
-      "note": "Extrait illustratif dans la fonction lire_csv. ROOT / \"data\" / \"ventes_initiales.csv\" construit le chemin."
+      "note": "Extrait illustratif dans la fonction lire_csv. ROOT / \"data\" / \"ventes_initiales.csv\" construit le chemin.",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -415,7 +491,8 @@
         "Expliquer le grain et pourquoi \"2\" est encore du texte."
       ],
       "note": "Preuve : 16 lignes lues. Si fichier introuvable, inspecter le chemin et la décompression.",
-      "number": "02"
+      "number": "02",
+      "section": "C"
     },
     {
       "layout": "process",
@@ -435,7 +512,8 @@
         }
       ],
       "note": "Ne jamais inventer une date ou un produit pour conserver une ligne incorrecte.",
-      "kicker": ""
+      "kicker": "",
+      "section": "C"
     },
     {
       "layout": "table",
@@ -467,13 +545,15 @@
         1.1,
         1.2
       ],
-      "note": "Le nettoyage conserve les six champs source normalisés et ajoute les deux montants entiers."
+      "note": "Le nettoyage conserve les six champs source normalisés et ajoute les deux montants entiers.",
+      "section": "C"
     },
     {
       "layout": "money",
       "title": "Lire un prix sans perdre les millimes",
       "note": "Decimal lit le texte décimal. Vérifier la précision et la positivité, puis stocker un entier de millimes.",
-      "notes": "Sources publiques : https://docs.python.org/3/library/decimal.html ; https://docs.python.org/3/library/csv.html . Une valeur à plus de trois décimales ne doit pas être arrondie silencieusement."
+      "notes": "Sources publiques : https://docs.python.org/3/library/decimal.html ; https://docs.python.org/3/library/csv.html . Une valeur à plus de trois décimales ne doit pas être arrondie silencieusement.",
+      "section": "C"
     },
     {
       "layout": "accounting",
@@ -497,7 +577,8 @@
         }
       ],
       "equation": "16 = 12 + 1 + 3",
-      "note": "Base Atlas : 32 unités vendues et 99 000 millimes retenus. Les comptes de qualité expliquent l’écart."
+      "note": "Base Atlas : 32 unités vendues et 99 000 millimes retenus. Les comptes de qualité expliquent l’écart.",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -509,7 +590,8 @@
         "Présenter retenues, rejets et doublons avec un exemple."
       ],
       "note": "Preuve : 12 / 3 / 1 et 99 000 millimes. Un conflit de contenu doit provoquer une erreur claire.",
-      "number": "03"
+      "number": "03",
+      "section": "C"
     },
     {
       "layout": "cards",
@@ -529,7 +611,8 @@
         }
       ],
       "note": "Une explication + une exécution + une trace conservée.",
-      "kicker": "À CE STADE, JE SAIS…"
+      "kicker": "À CE STADE, JE SAIS…",
+      "section": "C"
     },
     {
       "layout": "cards",
@@ -549,17 +632,20 @@
         }
       ],
       "note": "SQLite stocke l’entrepôt dans un fichier local. SQL permet de le créer et de l’interroger.",
-      "kicker": ""
+      "kicker": "",
+      "section": "C"
     },
     {
       "layout": "star",
       "title": "Une étoile autour des faits de vente",
-      "note": "Le fait répond « combien ? ». Les dimensions répondent « quoi, où, quand ? ». Chaque flèche se lit 1 vers N."
+      "note": "Le fait répond « combien ? ». Les dimensions répondent « quoi, où, quand ? ». Chaque flèche se lit 1 vers N.",
+      "section": "C"
     },
     {
       "layout": "keys",
       "title": "Identifiant métier et clé de l’entrepôt",
-      "note": "product_id est le code source. product_key est la clé locale. Une vente conserve les références vers les dimensions."
+      "note": "product_id est le code source. product_key est la clé locale. Une vente conserve les références vers les dimensions.",
+      "section": "C"
     },
     {
       "layout": "code",
@@ -572,7 +658,8 @@
       ],
       "fontSize": 18,
       "note": "modele.py : creer_modele(chemin_base) crée les tables si absentes, sans effacer les données.",
-      "notes": "Sources : https://www.sqlite.org/foreignkeys.html ; https://www.sqlite.org/lang_createtable.html . Colonnes exactes dans le contrat du cours ; extrait SQL pédagogique."
+      "notes": "Sources : https://www.sqlite.org/foreignkeys.html ; https://www.sqlite.org/lang_createtable.html . Colonnes exactes dans le contrat du cours ; extrait SQL pédagogique.",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -584,7 +671,8 @@
         "Montrer une clé primaire et une clé étrangère sur le dessin."
       ],
       "note": "Preuve : dim_product, dim_shop, dim_date et fact_sales. Une seconde création ne doit rien effacer.",
-      "number": "04"
+      "number": "04",
+      "section": "C"
     },
     {
       "layout": "process",
@@ -604,13 +692,15 @@
         }
       ],
       "note": "chargement.py : charger(ventes, produits, boutiques, chemin_base) → inserted / existing.",
-      "kicker": ""
+      "kicker": "",
+      "section": "C"
     },
     {
       "layout": "transaction",
       "title": "Une transaction protège tout le lot",
       "note": "Même ID + même contenu : existing. Même ID + autre contenu : erreur et annulation de tout le lot.",
-      "notes": "Source : https://docs.python.org/3/library/sqlite3.html . La gestion de transaction doit être explicite et testée. Ne pas ignorer un conflit de contenu avec INSERT OR IGNORE."
+      "notes": "Source : https://docs.python.org/3/library/sqlite3.html . La gestion de transaction doit être explicite et testée. Ne pas ignorer un conflit de contenu avec INSERT OR IGNORE.",
+      "section": "C"
     },
     {
       "layout": "code",
@@ -622,7 +712,8 @@
         "SUM additionne des montants, pas des prix."
       ],
       "fontSize": 19,
-      "note": "Une jointure 1 vers N correcte ne multiplie pas une vente. Vérifier aussi COUNT(*) avant / après jointure."
+      "note": "Une jointure 1 vers N correcte ne multiplie pas une vente. Vérifier aussi COUNT(*) avant / après jointure.",
+      "section": "C"
     },
     {
       "layout": "chart",
@@ -642,7 +733,8 @@
       ],
       "insight": "Classeur\n36.000 TND",
       "explanation": "Premier montant vendu sur la période.",
-      "note": "Chaque barre représente un montant vendu en TND. Ces ventes ne donnent pas la marge."
+      "note": "Chaque barre représente un montant vendu en TND. Ces ventes ne donnent pas la marge.",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -654,7 +746,8 @@
         "Deuxième passage : inserted = 0 ; existing = 12."
       ],
       "note": "Preuve : le total reste 99 000 millimes et la base garde 12 faits. Lire aussi le test du conflit.",
-      "number": "05"
+      "number": "05",
+      "section": "C"
     },
     {
       "layout": "cards",
@@ -674,17 +767,20 @@
         }
       ],
       "note": "Une explication + une exécution + une trace conservée.",
-      "kicker": "À CE STADE, JE SAIS…"
+      "kicker": "À CE STADE, JE SAIS…",
+      "section": "C"
     },
     {
       "layout": "increment",
       "title": "S06 · Un petit ajout, une mise à jour fiable",
-      "note": "ventes_ajout.csv : S013 et S014 sont nouvelles ; S012 existe déjà. Ajouter = nettoyer puis charger, sans vider la base."
+      "note": "ventes_ajout.csv : S013 et S014 sont nouvelles ; S012 existe déjà. Ajouter = nettoyer puis charger, sans vider la base.",
+      "section": "C"
     },
     {
       "layout": "replay",
       "title": "Le second passage ne change plus rien",
-      "note": "Premier ajout : 2 nouvelles + 1 existante. Rejeu du même fichier : 0 nouvelle + 3 existantes."
+      "note": "Premier ajout : 2 nouvelles + 1 existante. Rejeu du même fichier : 0 nouvelle + 3 existantes.",
+      "section": "C"
     },
     {
       "layout": "chart",
@@ -704,7 +800,8 @@
       ],
       "insight": "+16.500 TND",
       "explanation": "Deux ventes nouvelles ; un jour de plus.",
-      "note": "99.000 sur 3 jours et 115.500 sur 4 jours : cette hausse ne prouve pas une amélioration de performance."
+      "note": "99.000 sur 3 jours et 115.500 sur 4 jours : cette hausse ne prouve pas une amélioration de performance.",
+      "section": "C"
     },
     {
       "layout": "exercise",
@@ -716,7 +813,8 @@
         "Expliquer 12 → 14 → 14 faits et 32 → 35 unités."
       ],
       "note": "Preuve : 115 500 millimes à chaque rejeu. Si le total augmente encore, inspecter sale_id.",
-      "number": "06"
+      "number": "06",
+      "section": "C"
     },
     {
       "layout": "cards",
@@ -736,7 +834,8 @@
         }
       ],
       "note": "rapport.py : generer(chemin_base, chemin_html) → résumé + HTML autonome.",
-      "kicker": ""
+      "kicker": "",
+      "section": "D"
     },
     {
       "layout": "beforeafter",
@@ -745,7 +844,8 @@
       "left": "Le classeur représente\n48.000 TND vendus\ndu 05 au 08 janvier.\n\n14 faits au total.",
       "rightLabel": "CE QU’IL RESTE À VÉRIFIER",
       "right": "Examiner les stocks\net les coûts avant achat.\n\nAucune conclusion de marge\nou de prévision.",
-      "note": "Un rapport utile aide à poser la prochaine question ; il ne fabrique pas la réponse manquante."
+      "note": "Un rapport utile aide à poser la prochaine question ; il ne fabrique pas la réponse manquante.",
+      "section": "D"
     },
     {
       "layout": "commands",
@@ -757,7 +857,26 @@
         "Après vérification, arrêter le serveur avec down."
       ],
       "fontSize": 19,
-      "note": "Depuis le dossier du cours. Repli natif : voir le PDF 01 pour lancer le serveur de outputs/."
+      "note": "Depuis le dossier du cours. Repli natif : voir le PDF 01 pour lancer le serveur de outputs/.",
+      "section": "D"
+    },
+    {
+      "layout": "capture",
+      "section": "D",
+      "title": "Votre cible : le vrai rapport Atlas dans le navigateur",
+      "asset": "docs/images/real/rapport-atlas-final.jpg",
+      "items": [
+        "Lire les dates avant de comparer.",
+        "Retrouver 14 faits, 35 unités et 115.500 TND.",
+        "Défiler : produits et limites métier."
+      ],
+      "caption": "Rapport réel : Docker Linux / Python 3.13 sur hôte macOS ARM. Navigateur du poste auteur, 27 octobre 2026.",
+      "provenance": "Capture du projet\nDonnées fictives Atlas.",
+      "notes": "Capture authentique du rapport HTML généré depuis la base SQLite du projet Atlas, après ajout. Période 05–08 janvier 2026, 14 faits, 35 unités, 115.500 TND. Service dans Docker Linux / Python 3.13 sur hôte macOS ARM ; navigateur du poste auteur. Cette capture ne documente pas une installation Windows ou Ubuntu GUI.",
+      "pixelSize": [
+        1265,
+        712
+      ]
     },
     {
       "layout": "cards",
@@ -777,7 +896,8 @@
         }
       ],
       "note": "Ne pas réécrire tout le projet à chaque erreur. Les contrôles sont des repères à comprendre.",
-      "kicker": ""
+      "kicker": "",
+      "section": "D"
     },
     {
       "layout": "exercise",
@@ -789,12 +909,14 @@
         "Relancer executer.py et démontrer un résultat stable."
       ],
       "note": "Preuve : 14 faits, 35 unités, 115.500 TND + un rapport lisible et une limite métier.",
-      "number": "07"
+      "number": "07",
+      "section": "D"
     },
     {
       "layout": "cover",
       "title": "Défi CampusBox\nVotre transfert en 7 h",
-      "subtitle": "Même démarche, nouvelle activité :\nfiabiliser des ventes de repas sur le campus."
+      "subtitle": "Même démarche, nouvelle activité :\nfiabiliser des ventes de repas sur le campus.",
+      "section": "E"
     },
     {
       "layout": "cards",
@@ -814,12 +936,29 @@
         }
       ],
       "note": "Ne pas traiter une commande en attente comme un repas vendu. Consulter defi/ et le PDF 04.",
-      "kicker": ""
+      "kicker": "",
+      "section": "E"
     },
     {
-      "layout": "campus",
-      "title": "La base et l’ajout doivent se réconcilier",
-      "note": "Base : 14 lignes = 9 retenues + 1 doublon + 4 non retenues. Ajout : 4 lignes = 3 valides + 1 rejet."
+      "layout": "cards",
+      "section": "E",
+      "title": "CampusBox : quelles preuves faut-il produire ?",
+      "items": [
+        {
+          "label": "Base",
+          "text": "Réconcilier lignes lues, retenues, doublons et motifs hors périmètre."
+        },
+        {
+          "label": "Ajout",
+          "text": "Distinguer les ventes nouvelles des identifiants déjà présents."
+        },
+        {
+          "label": "Rejeu",
+          "text": "Relancer le même ajout et prouver que les indicateurs restent stables."
+        }
+      ],
+      "note": "Conserver vos résultats et expliquer leur sens. Les réponses numériques sont réservées au corrigé.",
+      "notes": "Cas pédagogique fictif CampusBox. L’énoncé demande les preuves de qualité et d’idempotence sans afficher les résultats numériques du corrigé."
     },
     {
       "layout": "cards",
@@ -839,7 +978,8 @@
         }
       ],
       "note": "Faire tourner les rôles. Seul : les exercer successivement. Chacun montre une modification et une explication.",
-      "kicker": ""
+      "kicker": "",
+      "section": "E"
     },
     {
       "layout": "schedule",
@@ -871,7 +1011,8 @@
           "Livraison expliquée"
         ]
       ],
-      "note": "Cible de travail, à adapter au rythme réel. Garder un résultat utilisable à chaque jalon."
+      "note": "Cible de travail, à adapter au rythme réel. Garder un résultat utilisable à chaque jalon.",
+      "section": "E"
     },
     {
       "layout": "exercise",
@@ -883,7 +1024,8 @@
         "Restaurer la source et conserver commande, preuve et diff."
       ],
       "note": "Une erreur expliquée et réparée apporte une preuve d’apprentissage. Les repères restent autorisés.",
-      "number": "DÉFI"
+      "number": "DÉFI",
+      "section": "E"
     },
     {
       "layout": "cards",
@@ -903,7 +1045,8 @@
         }
       ],
       "note": "Avant de déposer : refaire le démarrage depuis une copie propre et vérifier les fichiers réellement inclus.",
-      "kicker": ""
+      "kicker": "",
+      "section": "E"
     },
     {
       "layout": "cards",
@@ -923,7 +1066,8 @@
         }
       ],
       "note": "Une explication + une exécution + une trace conservée.",
-      "kicker": "À CE STADE, JE SAIS…"
+      "kicker": "À CE STADE, JE SAIS…",
+      "section": "E"
     },
     {
       "layout": "closing",
@@ -932,7 +1076,9 @@
         "Un contrat court avant chaque demande.",
         "Un test local avant chaque confiance.",
         "Une explication claire avant chaque décision."
-      ]
+      ],
+      "section": "E"
     }
-  ]
+  ],
+  "version": "V5 visuelle"
 }

@@ -16,15 +16,49 @@ jobs:
       - run: python -m unittest discover -s tests -v
         env:
           PYTHONIOENCODING: utf-8
+      - name: Vérifier la route native PowerShell, mission par mission
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          $pyAtelier = (Get-Command python).Source
+          $dossier = Join-Path $env:RUNNER_TEMP ('Atlas PowerShell ' + [guid]::NewGuid())
+          New-Item -ItemType Directory -Path $dossier | Out-Null
+          Copy-Item solutions/atlas/*.py $dossier
+          Copy-Item projet/data $dossier -Recurse
+          Push-Location $dossier
+          try {
+            & $pyAtelier calcul.py
+            & $pyAtelier verifier.py 01
+            & $pyAtelier lecture.py
+            & $pyAtelier verifier.py 02
+            & $pyAtelier nettoyage.py
+            & $pyAtelier verifier.py 03
+            & $pyAtelier modele.py
+            & $pyAtelier verifier.py 04
+            & $pyAtelier chargement.py
+            & $pyAtelier verifier.py 05
+            & $pyAtelier incremental.py
+            & $pyAtelier verifier.py 06
+            & $pyAtelier rapport.py
+            & $pyAtelier verifier.py 07
+            & $pyAtelier executer.py
+            & $pyAtelier verifier.py tout
+          } finally {
+            Pop-Location
+          }
   docker-reference:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Préparer les identifiants locaux du conteneur
         run: printf 'LOCAL_UID=%s\nLOCAL_GID=%s\n' "$(id -u)" "$(id -g)" > .env
-      - run: docker compose config --quiet
-      - run: docker compose build
-      - run: docker compose run --rm atelier python ../solutions/atlas/executer.py
-      - run: docker compose run --rm atelier python ../solutions/atlas/verifier.py tout
+      - run: sudo docker compose config --quiet
+      - run: sudo docker compose build
+      - run: sudo docker compose run --rm atelier python ../solutions/atlas/executer.py
+      - run: sudo docker compose run --rm atelier python ../solutions/atlas/verifier.py tout
       - if: always()
-        run: docker compose down
+        run: sudo docker compose down

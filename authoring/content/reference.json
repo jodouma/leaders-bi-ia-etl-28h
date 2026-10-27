@@ -11,28 +11,28 @@
           "type": "table",
           "headers": [
             "Document",
-            "Quand l’utiliser"
+            "Quand l’utiliser · repères A à E"
           ],
           "rows": [
             [
               "01_demarrer_windows_ubuntu.pdf",
-              "Installer le socle, ouvrir le dossier et choisir Docker ou le mode natif."
+              "B · Préparer son poste : installer, ouvrir le dossier et choisir Docker ou le mode natif."
             ],
             [
               "02_cours_atlas_ia.pdf",
-              "Suivre le parcours principal dans l’ordre : concepts, construction, essais, preuve."
+              "A → C → D · Comprendre le projet, construire les fonctions puis contrôler le rapport."
             ],
             [
               "03_prompts_reperes_depannage.pdf",
-              "Copier une demande, lire une instruction ou diagnostiquer une erreur."
+              "C et D · Copier une demande, lire une instruction et diagnostiquer une erreur."
             ],
             [
               "04_defi_campus_box.pdf",
-              "Transférer la méthode à un cas avec statut et canal."
+              "E · Réaliser le défi : adapter le contrat aux statuts et canaux."
             ],
             [
               "05_indices_et_corriges.pdf",
-              "Chercher un indice après une tentative ; consulter ensuite les corrigés."
+              "Après une tentative · Ouvrir l’indice utile, puis comparer au corrigé si nécessaire."
             ]
           ],
           "widths": [
@@ -53,11 +53,11 @@
     },
     {
       "title": "L’IA web constitue le parcours de base",
-      "kicker": "ASSISTANCE / ACCÈS ET CONTEXTE",
+      "kicker": "C–D / ASSISTANCE / ACCÈS ET CONTEXTE",
       "blocks": [
         {
           "type": "text",
-          "text": "Utiliser ChatGPT ou Claude dans le navigateur avec un compte personnel disponible. Le cours peut être suivi sans API, sans abonnement et sans outil agent. Les offres et limites peuvent varier : le nombre de demandes conseillé ici est une méthode de travail, pas une garantie du fournisseur."
+          "text": "Utiliser ChatGPT ou Claude dans le navigateur avec un compte personnel disponible. Le cours peut être suivi sans API, sans abonnement et sans outil agent. Les offres et limites peuvent varier : le nombre de demandes conseillé ici est une méthode de travail, pas une garantie du fournisseur. Le chat du navigateur ne lit pas automatiquement votre dossier : joindre seulement la fonction ou l’extrait utile."
         },
         {
           "type": "diagram",
@@ -90,7 +90,7 @@
     },
     {
       "title": "Une demande qui laisse le contrôle au programmeur",
-      "kicker": "PROMPTS / SIX INFORMATIONS UTILES",
+      "kicker": "C–D / PROMPTS / SIX INFORMATIONS UTILES",
       "blocks": [
         {
           "type": "table",
@@ -146,7 +146,7 @@
     },
     {
       "title": "Lire une fonction sans tout connaître de Python",
-      "kicker": "REPÈRES / def, ARGUMENT, return",
+      "kicker": "C–D / REPÈRES / def, ARGUMENT, return",
       "blocks": [
         {
           "type": "code",
@@ -189,7 +189,23 @@
         },
         {
           "type": "text",
-          "text": "Créer docs/exemples/05_fonction.py et lancer sur une ligne depuis la racine : docker compose run --rm atelier python ../docs/exemples/05_fonction.py. En route native depuis projet/, utiliser py -3 ou python3 suivi du même chemin."
+          "text": "Créer docs/exemples/05_fonction.py puis choisir votre route, depuis la racine :"
+        },
+        {
+          "type": "code",
+          "text": "docker compose run --rm atelier python ../docs/exemples/05_fonction.py",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python ../docs/exemples/05_fonction.py",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "text",
+          "text": "En natif depuis projet/ : Windows, & $pyAtelier ../docs/exemples/05_fonction.py ; Ubuntu, python3 ../docs/exemples/05_fonction.py."
         },
         {
           "type": "callout",
@@ -200,7 +216,7 @@
     },
     {
       "title": "Lire une boucle et une décision",
-      "kicker": "REPÈRES / for, if, else",
+      "kicker": "C–D / REPÈRES / for, if, else",
       "blocks": [
         {
           "type": "code",
@@ -233,7 +249,7 @@
     },
     {
       "title": "Les chemins : de quel dossier parle-t-on ?",
-      "kicker": "REPÈRES / FICHIER, DOSSIER ET TERMINAL",
+      "kicker": "C–D / REPÈRES / FICHIER, DOSSIER ET TERMINAL",
       "blocks": [
         {
           "type": "table",
@@ -270,7 +286,7 @@
         },
         {
           "type": "text",
-          "text": "Avec Docker, les commandes partent toujours de la racine où se trouve compose.yaml ; le programme travaille dans /workspace/projet. En natif, placer le terminal dans projet/ pour les commandes python. Le livre 01 montre comment repérer ces deux niveaux."
+          "text": "Docker : ouvrir à la racine, où se trouve compose.yaml. PowerShell utilise docker compose ; Ubuntu utilise sudo docker compose dans les blocs du cours. Python travaille dans /workspace/projet. En natif, placer le terminal dans projet/."
         },
         {
           "type": "callout",
@@ -280,12 +296,17 @@
         {
           "type": "text",
           "text": "Un nom de fichier est exact : ventes_ajout.csv et ventes-ajout.csv ne sont pas le même nom. Un chemin avec espaces se met entre guillemets dans le terminal. Ne pas coller un chemin personnel à l’intérieur des fonctions du projet."
+        },
+        {
+          "type": "callout",
+          "label": "Windows natif · nouvelle fenêtre PowerShell",
+          "text": "Réinitialiser $pyAtelier dans chaque nouvelle fenêtre avec le chemin sys.executable fourni par Thonny, comme dans le guide 01 « Secours Windows ». Utiliser ensuite & $pyAtelier pour lancer Python. Sous Ubuntu natif, utiliser python3."
         }
       ]
     },
     {
       "title": "Les interfaces que les fichiers partagent",
-      "kicker": "REPÈRES / PETIT CONTRAT DU CODE",
+      "kicker": "C–D / REPÈRES / PETIT CONTRAT DU CODE",
       "blocks": [
         {
           "type": "table",
@@ -341,7 +362,7 @@
     },
     {
       "title": "Le dictionnaire du rapport",
-      "kicker": "REPÈRES / UNE SORTIE RÉUTILISABLE",
+      "kicker": "C–D / REPÈRES / UNE SORTIE RÉUTILISABLE",
       "blocks": [
         {
           "type": "table",
@@ -394,7 +415,7 @@
     },
     {
       "title": "Exécuter une requête sur ma vraie base",
-      "kicker": "SQL / OBSERVER SANS MODIFIER",
+      "kicker": "C–D / SQL / OBSERVER SANS MODIFIER",
       "blocks": [
         {
           "type": "text",
@@ -408,7 +429,23 @@
         },
         {
           "type": "text",
-          "text": "Depuis la racine, saisir sur une ligne : docker compose run --rm atelier python ../docs/exemples/08_sql.py. En natif depuis projet/, utiliser py -3 ou python3 devant ../docs/exemples/08_sql.py."
+          "text": "Depuis la racine du cours :"
+        },
+        {
+          "type": "code",
+          "text": "docker compose run --rm atelier python ../docs/exemples/08_sql.py",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python ../docs/exemples/08_sql.py",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "text",
+          "text": "En natif depuis projet/ : Windows, & $pyAtelier ../docs/exemples/08_sql.py ; Ubuntu, python3 ../docs/exemples/08_sql.py."
         },
         {
           "type": "callout",
@@ -419,7 +456,7 @@
     },
     {
       "title": "Demande 01 · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -428,30 +465,34 @@
         {
           "type": "callout",
           "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
+          "text": "Exemple de demande rédigée, pas une réponse de compte IA. Joindre seulement la fonction utile ; garder les imports et main() fournis."
         },
         {
           "type": "section",
-          "text": "Après réception"
+          "text": "Un fichier à compléter, puis un contrôle local"
         },
         {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
+          "type": "code",
+          "label": "Départ · extrait exact de projet/calcul.py",
+          "language": "python-starter",
+          "source": "projet/calcul.py",
+          "text": "def calculer_total(ventes):\n    # TODO — mission 01 : construire cette fonction avec aide de l’IA, puis vérifier.\n    raise NotImplementedError(\"Compléter calcul.py : calculer_total.\")"
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/diagrams/trois-espaces.png",
+          "height": 225,
+          "caption": "Schéma conceptuel, pas une capture d’interface. Saisir les commandes exactes de votre route ; enregistrer avant d’exécuter."
         },
         {
           "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
+          "text": "Après intégration : enregistrer, lancer le module puis son contrôle. Le cours montre une sortie réellement observée dans « Faire travailler le code enregistré ». Suivi possible : « Pourquoi renvoyer un entier plutôt qu’afficher ? Réponds en trois phrases, sans écrire la fonction. »"
         }
       ]
     },
     {
       "title": "Demande 02 · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -483,7 +524,7 @@
     },
     {
       "title": "Demande 03 · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -515,7 +556,7 @@
     },
     {
       "title": "Demande 04 · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -547,7 +588,7 @@
     },
     {
       "title": "Demande 05 · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -579,7 +620,7 @@
     },
     {
       "title": "Demande 06 · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -611,7 +652,7 @@
     },
     {
       "title": "Demande 07a · à copier",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -643,7 +684,7 @@
     },
     {
       "title": "Demande 07b · expliquer un assemblage",
-      "kicker": "DEMANDES / À COPIER AU JALON CONCERNÉ",
+      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
       "blocks": [
         {
           "type": "text",
@@ -675,7 +716,7 @@
     },
     {
       "title": "Mon script affiche une erreur",
-      "kicker": "DÉPANNAGE / LIRE LA DERNIÈRE LIGNE",
+      "kicker": "C–D / DÉPANNAGE / LIRE LA DERNIÈRE LIGNE",
       "blocks": [
         {
           "type": "table",
@@ -727,7 +768,7 @@
     },
     {
       "title": "La commande, la sortie et le sens",
-      "kicker": "DÉPANNAGE / TROIS NIVEAUX À SÉPARER",
+      "kicker": "C–D / DÉPANNAGE / TROIS NIVEAUX À SÉPARER",
       "blocks": [
         {
           "type": "table",

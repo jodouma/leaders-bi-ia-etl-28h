@@ -586,68 +586,82 @@
     "2": [],
     "3": [],
     "4": [],
-    "5": [
+    "5": [],
+    "6": [],
+    "7": [
       "docker-windows",
       "windows11-home-pro",
       "microsoft-wsl-commands"
     ],
-    "6": [
+    "8": [
       "docker-windows",
       "desktop-license",
       "microsoft-wsl-commands"
     ],
-    "7": [
+    "9": [
+      "docker-windows",
+      "desktop-license",
+      "microsoft-wsl-commands"
+    ],
+    "10": [
       "docker-windows",
       "docker-engine"
     ],
-    "8": [
+    "11": [
       "docker-ubuntu"
     ],
-    "9": [
+    "12": [
       "docker-ubuntu",
       "docker-linux-postinstall"
     ],
-    "10": [
+    "13": [],
+    "14": [
       "python-docker-official",
       "docker-compose-run"
     ],
-    "11": [
+    "15": [
       "thonny-official"
     ],
-    "12": [],
-    "13": [
+    "16": [
+      "thonny-official"
+    ],
+    "17": [
+      "docker-localhost-port",
+      "docker-bind-mount"
+    ],
+    "18": [
       "thonny-official",
       "thonny-release",
       "python-windows"
     ],
-    "14": [
+    "19": [
       "ubuntu-python",
       "thonny-official",
       "python-httpserver"
     ],
-    "15": [
+    "20": [
       "claude_pricing",
       "claude_setup",
       "codex_access"
     ],
-    "16": [
+    "21": [
       "codex_cli",
       "codex_install_paths",
       "codex_windows_verify",
       "codex_access"
     ],
-    "17": [
+    "22": [
       "codex_auth",
       "codex_permissions",
       "codex_windows_sandbox",
       "codex_workflow"
     ],
-    "18": [
+    "23": [
       "claude_setup",
       "claude_auth",
       "claude_path"
     ],
-    "19": [
+    "24": [
       "claude_quickstart",
       "claude_auth",
       "claude_permissions",
@@ -655,11 +669,12 @@
       "claude_usage",
       "claude_cli_reference"
     ],
-    "20": [
+    "25": [
       "docker-localhost-port",
       "docker-bind-mount",
       "codex_access",
       "claude_pricing"
     ]
-  }
+  },
+  "image_catalog": "../images/SOURCES.json"
 }

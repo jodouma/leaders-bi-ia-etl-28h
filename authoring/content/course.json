@@ -6,7 +6,7 @@
   "pages": [
     {
       "title": "Construire une BI que je peux défendre",
-      "kicker": "LE PROJET / DU FICHIER AU RAPPORT",
+      "kicker": "A / LE PROJET / DU FICHIER AU RAPPORT",
       "blocks": [
         {
           "type": "text",
@@ -22,12 +22,10 @@
           ]
         },
         {
-          "type": "bullets",
-          "items": [
-            "Vous écrirez de petits contrats en français et ferez produire du code avec une IA.",
-            "Vous enregistrerez ce code dans projet/, puis exécuterez et contrôlerez chaque étape.",
-            "Votre rapport sera produit depuis les données ; vous saurez retrouver la source d’un chiffre."
-          ]
+          "type": "figure",
+          "path": "../docs/images/real/rapport-atlas-final.jpg",
+          "height": 285,
+          "caption": "Capture réelle du rapport de référence Atlas, navigateur local, 27/10/2026. À la fin : 14 ventes, 35 articles, 115.500 TND ; ce rapport est votre cible à reconstruire."
         },
         {
           "type": "callout",
@@ -38,7 +36,7 @@
     },
     {
       "title": "Python, ETL, BI : trois outils pour une question",
-      "kicker": "COMPRENDRE AVANT DE CONSTRUIRE",
+      "kicker": "A / COMPRENDRE AVANT DE CONSTRUIRE",
       "blocks": [
         {
           "type": "text",
@@ -89,8 +87,8 @@
       ]
     },
     {
-      "title": "L’itinéraire : sept missions puis un défi",
-      "kicker": "28 HEURES / UN SEUL PROJET QUI GRANDIT",
+      "title": "De A à E : sept missions puis un défi",
+      "kicker": "A / 28 HEURES / UN SEUL PROJET QUI GRANDIT",
       "blocks": [
         {
           "type": "table",
@@ -149,7 +147,7 @@
         },
         {
           "type": "text",
-          "text": "Prévision : 504 minutes de théorie et 1 176 minutes de pratique. Chaque mission guidée prévoit 54 minutes de concepts et 126 minutes de manipulation, lecture active, essais, dépannage et explication. Le défi prévoit 126 + 294 minutes. L’installation fait partie de la mission 01."
+          "text": "A · Comprendre le projet. B · Préparer son poste (livre 01). C · Construire avec l’IA (missions 01–06). D · Contrôler le rapport et sa reprise (mission 07). E · Réaliser le défi CampusBox.\nBudget : 504 min de concepts + 1 176 min de pratique ; 54 + 126 min par mission guidée, 126 + 294 min pour le défi. L’installation fait partie de la mission 01."
         },
         {
           "type": "callout",
@@ -160,25 +158,20 @@
     },
     {
       "title": "Le geste qui revient à chaque mission",
-      "kicker": "MÉTHODE / PRÉDIRE → CONSTRUIRE → PROUVER",
+      "kicker": "A / MÉTHODE / PRÉDIRE → CONSTRUIRE → PROUVER",
       "blocks": [
         {
-          "type": "diagram",
-          "nodes": [
-            "Prédire",
-            "Demander",
-            "Exécuter",
-            "Expliquer"
-          ]
+          "type": "figure",
+          "path": "../docs/images/diagrams/boucle-ia.png",
+          "height": 195,
+          "caption": "Une fonction à la fois. En cas d’écart, revenir au contrat avant de modifier le code."
         },
         {
           "type": "bullets",
           "items": [
-            "Lire le petit exemple et calculer le résultat attendu avant de consulter une réponse IA.",
-            "Ouvrir le fichier annoncé dans l’éditeur. Une demande produit une fonction ou un petit fichier.",
-            "Lire ce que la réponse importe, lit et écrit. Coller uniquement le code dans ce fichier et enregistrer.",
-            "Revenir au terminal, lancer la commande de la mission, puis comparer la sortie à la prédiction.",
-            "Tester une variation proche et expliquer pourquoi le résultat change. Garder les CSV originaux intacts."
+            "Avant la réponse IA, lire le cas et écrire le résultat attendu. Garder les CSV originaux intacts.",
+            "Ouvrir le fichier annoncé ; lire l’entrée, le retour et les opérations du code proposé. Remplacer seulement la fonction TODO puis enregistrer avec Ctrl+S.",
+            "Lancer le module, puis son contrôle local. Essayer une variation proche et expliquer pourquoi son résultat change."
           ]
         },
         {
@@ -194,11 +187,11 @@
     },
     {
       "title": "Préparer un espace où je sais agir",
-      "kicker": "AVANT LA MISSION 01 / LIRE LE LIVRE 01",
+      "kicker": "B / AVANT LA MISSION 01 / LIRE LE LIVRE 01",
       "blocks": [
         {
           "type": "text",
-          "text": "Télécharger puis extraire le dossier complet du cours. Ouvrir ce dossier dans l’éditeur, pas seulement un PDF. Il contient compose.yaml, projet/, outils/, solutions/ et les livres dans pdf/. Dans Windows, afficher les extensions : calcul.py ne doit pas devenir calcul.py.txt."
+          "text": "Extraire le dossier complet du cours puis l’ouvrir dans l’éditeur. Il contient compose.yaml, projet/, outils/, solutions/ et pdf/. Sous Windows, afficher les extensions : le fichier doit s’appeler calcul.py, pas calcul.py.txt."
         },
         {
           "type": "table",
@@ -217,7 +210,7 @@
             ],
             [
               "Terminal Ubuntu",
-              "Ouvrir au même niveau ; utiliser les mêmes commandes Docker."
+              "Ouvrir à la racine ; utiliser les blocs Ubuntu avec sudo. Cette route ne suppose pas une appartenance au groupe docker."
             ],
             [
               "Navigateur",
@@ -231,28 +224,35 @@
         },
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose build\ndocker compose run --rm atelier python --version"
+          "text": "docker compose build\ndocker compose run --rm atelier python --version",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose build\nsudo docker compose run --rm atelier python --version",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
-          "text": "Le livre 01 explique Docker Desktop sous Windows, Docker Engine et Compose sous Ubuntu, ainsi que l’installation native de secours. Si Docker est indisponible, ouvrir un terminal dans projet/ et remplacer la commande Docker par py -3 sous Windows ou python3 sous Ubuntu : par exemple py -3 verifier.py 01. Conserver cette même route pour toute la séance."
+          "text": "Windows natif : dans chaque nouvelle fenêtre PowerShell, redéfinir $pyAtelier au chemin Python de Thonny. Suivre le guide 01 « Secours Windows » : print(sys.executable) dans le Shell Thonny, puis affectation de $pyAtelier dans PowerShell. Depuis projet/, utiliser & $pyAtelier, par exemple & $pyAtelier verifier.py 01. Ubuntu natif : depuis projet/, utiliser python3. Aucun sudo sous Windows."
         },
         {
           "type": "callout",
           "label": "Tout ne doit pas déjà fonctionner",
-          "text": "Avant votre première construction, le vérificateur peut signaler NotImplementedError : cela indique un fichier à compléter. Un message « fichier introuvable » indique plutôt le mauvais dossier ou un nom mal enregistré."
+          "text": "Avant construction, NotImplementedError signifie : compléter la fonction TODO. « Fichier introuvable » indique plutôt un nom ou un dossier erroné."
         },
         {
           "type": "callout",
           "label": "Ne remplacer que la fonction annoncée",
-          "text": "Chaque fichier contient les imports, les chemins et un main() déjà fournis. Remplacer seulement def de la mission et son bloc TODO/NotImplementedError. Garder les autres fonctions et le lancement en bas du fichier. Les prompts demandent cette seule définition."
+          "text": "Imports, chemins, main() et lancement sont fournis. Remplacer seulement la fonction def et son bloc TODO/NotImplementedError. Garder le reste du fichier."
         }
       ]
     },
     {
       "title": "01 · Le panier qui révèle un programme faux",
-      "kicker": "MISSION 01 / UN BESOIN MESURABLE",
+      "kicker": "C / MISSION 01 / UN BESOIN MESURABLE",
       "blocks": [
         {
           "type": "text",
@@ -306,7 +306,7 @@
     },
     {
       "title": "Les objets Python du panier",
-      "kicker": "MISSION 01 / LISTE, DICTIONNAIRE, NOMBRE",
+      "kicker": "C / MISSION 01 / LISTE, DICTIONNAIRE, NOMBRE",
       "blocks": [
         {
           "type": "text",
@@ -324,12 +324,19 @@
         },
         {
           "type": "code",
-          "label": "PowerShell / Ubuntu · racine du cours",
-          "text": "docker compose run --rm atelier python ../docs/exemples/01_panier.py"
+          "text": "docker compose run --rm atelier python ../docs/exemples/01_panier.py",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python ../docs/exemples/01_panier.py",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
-          "text": "La commande tient sur une seule ligne, sous PowerShell comme sous Ubuntu. En mode natif depuis projet/, utiliser py -3 ../docs/exemples/01_panier.py ou python3 ../docs/exemples/01_panier.py."
+          "text": "Route native, depuis projet/ : PowerShell Windows : & $pyAtelier ../docs/exemples/01_panier.py ; Ubuntu : python3 ../docs/exemples/01_panier.py. Réutiliser la variable définie avec Thonny ; la redéfinir dans toute nouvelle fenêtre PowerShell (guide 01)."
         },
         {
           "type": "callout",
@@ -340,7 +347,7 @@
     },
     {
       "title": "Mon premier contrat pour l’assistant",
-      "kicker": "MISSION 01 / UNE FONCTION, UNE SORTIE",
+      "kicker": "C / MISSION 01 / UNE FONCTION, UNE SORTIE",
       "blocks": [
         {
           "type": "text",
@@ -372,16 +379,33 @@
     },
     {
       "title": "Faire travailler le code enregistré",
-      "kicker": "MISSION 01 / PREMIÈRE EXÉCUTION RÉELLE",
+      "kicker": "C / MISSION 01 / PREMIÈRE EXÉCUTION RÉELLE",
       "blocks": [
         {
           "type": "text",
-          "text": "Dans PowerShell ou le terminal Ubuntu à la racine du cours, saisir la commande. Le conteneur exécute le fichier enregistré dans projet/. Une modification oubliée dans l’éditeur n’est pas encore un changement du programme exécuté."
+          "text": "Depuis la racine, choisir votre système. Enregistrer d’abord projet/calcul.py : le terminal exécute le fichier sauvegardé."
         },
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python calcul.py\ndocker compose run --rm atelier python verifier.py 01"
+          "text": "docker compose run --rm atelier python calcul.py\ndocker compose run --rm atelier python verifier.py 01",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python calcul.py\nsudo docker compose run --rm atelier python verifier.py 01",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "label": "Sortie réelle de référence · macOS 26.3 / Python 3.12.14",
+          "language": "output",
+          "text": "Panier : 13.500 TND\nVariation : 18.000 TND\n[OK 01] Calcul entier validé, y compris une variation."
+        },
+        {
+          "type": "text",
+          "text": "Sortie de référence observée le 27/10/2026 dans une copie neuve ; ce texte n’est pas une photo de terminal. Comparer votre propre sortie."
         },
         {
           "type": "table",
@@ -392,19 +416,19 @@
           "rows": [
             [
               "Contrôle réussi",
-              "Le panier, la liste vide et la variation sont compatibles avec le contrat. Lire aussi le code."
+              "Comparer encore le code et votre prédiction."
             ],
             [
               "NotImplementedError",
-              "Le fichier contient encore le repère à compléter ; coller puis enregistrer."
+              "Compléter la fonction TODO et enregistrer."
             ],
             [
               "Résultat 6000",
-              "Le code additionne 4500 et 1500 : il ignore les quantités."
+              "La multiplication par quantity manque."
             ],
             [
               "SyntaxError / IndentationError",
-              "Lire la dernière ligne de l’erreur ; vérifier les guillemets, deux-points et espaces."
+              "Relire la ligne indiquée et ses espaces."
             ]
           ],
           "widths": [
@@ -425,7 +449,7 @@
     },
     {
       "title": "Changer une chose et expliquer l’écart",
-      "kicker": "MISSION 01 / DU RÉSULTAT À LA COMPRÉHENSION",
+      "kicker": "C / MISSION 01 / DU RÉSULTAT À LA COMPRÉHENSION",
       "blocks": [
         {
           "type": "text",
@@ -478,7 +502,7 @@
     },
     {
       "title": "Jalon 01 · une preuve que je peux expliquer",
-      "kicker": "MISSION 01 / CONTRÔLER ET REPRENDRE",
+      "kicker": "C / MISSION 01 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -517,7 +541,7 @@
     },
     {
       "title": "02 · Recevoir des lignes sans perdre leur sens",
-      "kicker": "MISSION 02 / EXTRAIRE",
+      "kicker": "C / MISSION 02 / EXTRAIRE",
       "blocks": [
         {
           "type": "text",
@@ -561,19 +585,21 @@
           "text": "Une ligne représente un produit vendu dans une boutique à une date. Elle ne prouve pas un client unique, une commande complète ou un paiement. Ce sens de la ligne s’appelle le grain ; toutes nos sommes doivent le respecter."
         },
         {
-          "type": "callout",
-          "label": "Première inspection",
-          "text": "Ouvrir projet/data/ dans l’éditeur et repérer le fichier initial ainsi que les catalogues de produits et boutiques. Lire le texte sans le réenregistrer avec un tableur, qui pourrait transformer les dates et séparateurs."
+          "type": "code",
+          "label": "CSV réel · lecture dans l’éditeur, pas du Python",
+          "language": "csv",
+          "source": "projet/data/ventes_initiales.csv",
+          "text": "sale_id,date,shop_id,product_id,quantity,unit_price_tnd\nS001,2026-01-05,NBE,P01,2,4.500\nS002,2026-01-05,NBE,P02,3,1.500"
         },
         {
           "type": "text",
-          "text": "Les fichiers sont projet/data/ventes_initiales.csv, ventes_ajout.csv, produits.csv et boutiques.csv. La période initiale est du 5 au 7 janvier 2026 ; après ajout, elle se termine le 8 janvier 2026."
+          "text": "Ouvrir dans l’éditeur projet/data/ventes_initiales.csv, ventes_ajout.csv, produits.csv et boutiques.csv. Garder les originaux intacts ; un tableur peut transformer leurs dates ou séparateurs. Période initiale : du 5 au 7 janvier 2026 ; fin après ajout : le 8 janvier."
         }
       ]
     },
     {
       "title": "Texte reçu, nombre compris",
-      "kicker": "MISSION 02 / LE CSV RESTE DU TEXTE",
+      "kicker": "C / MISSION 02 / LE CSV RESTE DU TEXTE",
       "blocks": [
         {
           "type": "code",
@@ -596,7 +622,23 @@
         },
         {
           "type": "text",
-          "text": "Créer docs/exemples/02_csv_texte.py avec ce code. Depuis la racine, lancer sur une ligne : docker compose run --rm atelier python ../docs/exemples/02_csv_texte.py. En route native depuis projet/, remplacer le préfixe par py -3 ou python3."
+          "text": "Créer docs/exemples/02_csv_texte.py avec le code ci-dessus, puis lancer votre route depuis la racine :"
+        },
+        {
+          "type": "code",
+          "text": "docker compose run --rm atelier python ../docs/exemples/02_csv_texte.py",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python ../docs/exemples/02_csv_texte.py",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "text",
+          "text": "En natif depuis projet/ : Windows, & $pyAtelier ../docs/exemples/02_csv_texte.py ; Ubuntu, python3 ../docs/exemples/02_csv_texte.py."
         },
         {
           "type": "callout",
@@ -607,7 +649,7 @@
     },
     {
       "title": "Demander une lecture fidèle du fichier",
-      "kicker": "MISSION 02 / CONTRAT DE lecture.py",
+      "kicker": "C / MISSION 02 / CONTRAT DE lecture.py",
       "blocks": [
         {
           "type": "text",
@@ -638,12 +680,19 @@
     },
     {
       "title": "Vérifier la première extraction",
-      "kicker": "MISSION 02 / DE L’ENTRÉE À LA SORTIE",
+      "kicker": "C / MISSION 02 / DE L’ENTRÉE À LA SORTIE",
       "blocks": [
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python lecture.py\ndocker compose run --rm atelier python verifier.py 02"
+          "text": "docker compose run --rm atelier python lecture.py\ndocker compose run --rm atelier python verifier.py 02",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python lecture.py\nsudo docker compose run --rm atelier python verifier.py 02",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
@@ -691,7 +740,7 @@
     },
     {
       "title": "Changer le fichier, garder le lecteur",
-      "kicker": "MISSION 02 / PETITE VARIATION",
+      "kicker": "C / MISSION 02 / PETITE VARIATION",
       "blocks": [
         {
           "type": "text",
@@ -743,7 +792,7 @@
     },
     {
       "title": "Jalon 02 · une preuve que je peux expliquer",
-      "kicker": "MISSION 02 / CONTRÔLER ET REPRENDRE",
+      "kicker": "C / MISSION 02 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -782,60 +831,36 @@
     },
     {
       "title": "03 · Donner une issue à chaque ligne",
-      "kicker": "MISSION 03 / TRANSFORMER SANS DISPARITION",
+      "kicker": "C / MISSION 03 / TRANSFORMER SANS DISPARITION",
       "blocks": [
         {
           "type": "text",
           "text": "La qualité consiste à appliquer des règles annoncées, puis à rendre chaque décision visible. Normaliser répare une forme sans changer le sens, par exemple enlever les espaces autour de nbe puis obtenir NBE. Rejeter explique pourquoi une ligne ne peut pas devenir un fait. Dédupliquer conserve une seule vente quand une répétition identique arrive."
         },
         {
-          "type": "branches",
-          "source": "16 lignes reçues",
-          "outcomes": [
-            "12 retenues",
-            "1 doublon",
-            "3 rejets"
-          ]
+          "type": "figure",
+          "path": "../docs/images/diagrams/etl-qualite.png",
+          "height": 235,
+          "caption": "Lot initial Atlas : la partition des 16 lignes et le chemin d’une vente retenue. Chaque issue reste traçable."
         },
         {
-          "type": "table",
-          "headers": [
-            "Issue",
-            "Signification"
-          ],
-          "rows": [
-            [
-              "Retenue",
-              "Valeurs valides et identifiant non encore retenu dans ce fichier."
-            ],
-            [
-              "Doublon",
-              "Même sale_id, même contenu normalisé dans le fichier."
-            ],
-            [
-              "Rejet",
-              "Valeur invalide ; la ligne et sa raison restent consultables."
-            ],
-            [
-              "Conflit",
-              "Même identifiant, contenu différent : signaler explicitement ; ne pas choisir au hasard."
-            ]
-          ],
-          "widths": [
-            0.95,
-            3.05
+          "type": "bullets",
+          "items": [
+            "Retenue : valeurs valides et identifiant distinct. Doublon : même identifiant et même contenu normalisé.",
+            "Rejet : valeur invalide ; conserver la ligne et son motif.",
+            "Conflit : même identifiant mais contenu différent. Signaler le conflit et arrêter le lot ; ne pas choisir au hasard."
           ]
         },
         {
           "type": "callout",
           "label": "Un bilan avant l’argent",
-          "text": "16 = 12 + 1 + 3. Une somme financière correcte avec une ligne perdue n’est pas une preuve suffisante. Vos contrôles portent sur les lignes et sur les montants."
+          "text": "16 = 12 + 1 + 3. Vérifier ce bilan avant la somme d’argent. Un montant correct ne suffit pas si une ligne a disparu sans explication."
         }
       ]
     },
     {
       "title": "Lire le prix avec son unité exacte",
-      "kicker": "MISSION 03 / TND → MILLIMES",
+      "kicker": "C / MISSION 03 / TND → MILLIMES",
       "blocks": [
         {
           "type": "text",
@@ -884,7 +909,7 @@
     },
     {
       "title": "Décider avec des règles observables",
-      "kicker": "MISSION 03 / CONTRAT DE QUALITÉ",
+      "kicker": "C / MISSION 03 / CONTRAT DE QUALITÉ",
       "blocks": [
         {
           "type": "table",
@@ -940,7 +965,7 @@
     },
     {
       "title": "Faire produire un nettoyage borné",
-      "kicker": "MISSION 03 / CONTRAT DE nettoyage.py",
+      "kicker": "C / MISSION 03 / CONTRAT DE nettoyage.py",
       "blocks": [
         {
           "type": "callout",
@@ -967,12 +992,19 @@
     },
     {
       "title": "Vérifier les comptes et une vente réelle",
-      "kicker": "MISSION 03 / EXÉCUTER ET CONTREDIRE",
+      "kicker": "C / MISSION 03 / EXÉCUTER ET CONTREDIRE",
       "blocks": [
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python nettoyage.py\ndocker compose run --rm atelier python verifier.py 03"
+          "text": "docker compose run --rm atelier python nettoyage.py\ndocker compose run --rm atelier python verifier.py 03",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python nettoyage.py\nsudo docker compose run --rm atelier python verifier.py 03",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "table",
@@ -1020,7 +1052,7 @@
     },
     {
       "title": "Jalon 03 · une preuve que je peux expliquer",
-      "kicker": "MISSION 03 / CONTRÔLER ET REPRENDRE",
+      "kicker": "C / MISSION 03 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -1059,7 +1091,7 @@
     },
     {
       "title": "04 · Ranger les faits et leur contexte",
-      "kicker": "MISSION 04 / DESSINER AVANT DE CRÉER",
+      "kicker": "C / MISSION 04 / DESSINER AVANT DE CRÉER",
       "blocks": [
         {
           "type": "text",
@@ -1076,7 +1108,7 @@
     },
     {
       "title": "Trois sortes de clés, trois responsabilités",
-      "kicker": "MISSION 04 / NE PAS CONFONDRE LES IDENTIFIANTS",
+      "kicker": "C / MISSION 04 / NE PAS CONFONDRE LES IDENTIFIANTS",
       "blocks": [
         {
           "type": "table",
@@ -1133,7 +1165,7 @@
     },
     {
       "title": "Écrire les questions avant SQL",
-      "kicker": "MISSION 04 / LIRE UN SELECT",
+      "kicker": "C / MISSION 04 / LIRE UN SELECT",
       "blocks": [
         {
           "type": "text",
@@ -1183,7 +1215,7 @@
     },
     {
       "title": "Une jointure retrouve une description",
-      "kicker": "MISSION 04 / SUIVRE LE LIEN",
+      "kicker": "C / MISSION 04 / SUIVRE LE LIEN",
       "blocks": [
         {
           "type": "table",
@@ -1246,7 +1278,7 @@
     },
     {
       "title": "Créer des tables vides, sans effacer",
-      "kicker": "MISSION 04 / CONTRAT DE modele.py",
+      "kicker": "C / MISSION 04 / CONTRAT DE modele.py",
       "blocks": [
         {
           "type": "callout",
@@ -1259,8 +1291,15 @@
         },
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python modele.py\ndocker compose run --rm atelier python verifier.py 04"
+          "text": "docker compose run --rm atelier python modele.py\ndocker compose run --rm atelier python verifier.py 04",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python modele.py\nsudo docker compose run --rm atelier python verifier.py 04",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "callout",
@@ -1271,7 +1310,7 @@
     },
     {
       "title": "Jalon 04 · une preuve que je peux expliquer",
-      "kicker": "MISSION 04 / CONTRÔLER ET REPRENDRE",
+      "kicker": "C / MISSION 04 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -1311,7 +1350,7 @@
     },
     {
       "title": "05 · Faire entrer les bonnes ventes",
-      "kicker": "MISSION 05 / CHARGER",
+      "kicker": "C / MISSION 05 / CHARGER",
       "blocks": [
         {
           "type": "text",
@@ -1368,7 +1407,7 @@
     },
     {
       "title": "Une transaction protège un lot entier",
-      "kicker": "MISSION 05 / TOUT ACCEPTER OU TOUT ANNULER",
+      "kicker": "C / MISSION 05 / TOUT ACCEPTER OU TOUT ANNULER",
       "blocks": [
         {
           "type": "text",
@@ -1420,7 +1459,7 @@
     },
     {
       "title": "Faire produire le chargement",
-      "kicker": "MISSION 05 / CONTRAT DE chargement.py",
+      "kicker": "C / MISSION 05 / CONTRAT DE chargement.py",
       "blocks": [
         {
           "type": "callout",
@@ -1433,8 +1472,15 @@
         },
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python chargement.py\ndocker compose run --rm atelier python verifier.py 05"
+          "text": "docker compose run --rm atelier python chargement.py\ndocker compose run --rm atelier python verifier.py 05",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python chargement.py\nsudo docker compose run --rm atelier python verifier.py 05",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
@@ -1444,7 +1490,7 @@
     },
     {
       "title": "Suivre un fait du CSV à SQLite",
-      "kicker": "MISSION 05 / TROIS PREUVES COMPLÉMENTAIRES",
+      "kicker": "C / MISSION 05 / TROIS PREUVES COMPLÉMENTAIRES",
       "blocks": [
         {
           "type": "text",
@@ -1500,7 +1546,7 @@
     },
     {
       "title": "Poser une question utile à la base",
-      "kicker": "MISSION 05 / REGROUPER SANS DÉFORMER",
+      "kicker": "C / MISSION 05 / REGROUPER SANS DÉFORMER",
       "blocks": [
         {
           "type": "code",
@@ -1550,7 +1596,7 @@
     },
     {
       "title": "Jalon 05 · une preuve que je peux expliquer",
-      "kicker": "MISSION 05 / CONTRÔLER ET REPRENDRE",
+      "kicker": "C / MISSION 05 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -1589,7 +1635,7 @@
     },
     {
       "title": "06 · Le prochain fichier arrive",
-      "kicker": "MISSION 06 / L’INCRÉMENTAL",
+      "kicker": "C / MISSION 06 / L’INCRÉMENTAL",
       "blocks": [
         {
           "type": "text",
@@ -1641,7 +1687,7 @@
     },
     {
       "title": "Réutiliser le pipeline plutôt que le dupliquer",
-      "kicker": "MISSION 06 / CONTRAT DE incremental.py",
+      "kicker": "C / MISSION 06 / CONTRAT DE incremental.py",
       "blocks": [
         {
           "type": "callout",
@@ -1654,8 +1700,15 @@
         },
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python incremental.py\ndocker compose run --rm atelier python verifier.py 06"
+          "text": "docker compose run --rm atelier python incremental.py\ndocker compose run --rm atelier python verifier.py 06",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python incremental.py\nsudo docker compose run --rm atelier python verifier.py 06",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "callout",
@@ -1666,50 +1719,21 @@
     },
     {
       "title": "Prouver l’ajout et son rejeu",
-      "kicker": "MISSION 06 / AVANT → APRÈS → APRÈS",
+      "kicker": "C / MISSION 06 / AVANT → APRÈS → APRÈS",
       "blocks": [
         {
-          "type": "table",
-          "headers": [
-            "État",
-            "Faits",
-            "Articles",
-            "Montant TND"
-          ],
-          "rows": [
-            [
-              "Après base",
-              "12",
-              "32",
-              "99.000"
-            ],
-            [
-              "Après ajout",
-              "14",
-              "35",
-              "115.500"
-            ],
-            [
-              "Après rejeu du même ajout",
-              "14",
-              "35",
-              "115.500"
-            ]
-          ],
-          "widths": [
-            1.7,
-            0.55,
-            0.65,
-            1.1
-          ]
+          "type": "figure",
+          "path": "../docs/images/diagrams/ca-ajout-rejeu.png",
+          "height": 235,
+          "caption": "La hauteur des barres représente le montant chargé, en TND. Le rejeu laisse la dernière barre inchangée."
         },
         {
           "type": "text",
-          "text": "Le gain est de 3 articles et 16.500 TND. Le rejeu ne doit rien augmenter. Garder trois lignes d’état dans le journal avec les résultats réels : elles montrent la différence entre un ajout utile et une répétition inoffensive."
+          "text": "Les quantités suivent le même contrôle : 32 → 35 → 35 articles. L’ajout apporte 3 articles et 16.500 TND ; le même lot rejoué n’apporte plus rien."
         },
         {
           "type": "text",
-          "text": "Le module incremental.py modifie votre base et effectue son rejeu ; le vérificateur teste aussi votre fonction dans une base temporaire et lit ensuite vos sorties existantes. Son rôle est de détecter l’erreur de comportement. Lorsque le contrôle est vert, lire encore les nombres : un message vert sans compréhension de 2 nouvelles / 1 existante ne suffit pas à expliquer le système."
+          "text": "La période passe de trois à quatre jours. La différence de montant vient de ventes ajoutées : elle ne mesure pas une amélioration de performance. Garder les états avant, après et après rejeu dans le journal."
         },
         {
           "type": "callout",
@@ -1718,13 +1742,13 @@
         },
         {
           "type": "text",
-          "text": "Une demande IA utile contient l’interface, l’erreur, attendu et obtenu. Exemple : « Au rejeu j’ai inserted=3 et 17 faits, attendu inserted=0 et 14. Voici la comparaison d’identité dans charger. Corrige cette comparaison seulement. »"
+          "text": "incremental.py charge puis rejoue sur votre base. Le vérificateur teste aussi une base temporaire et lit vos sorties : comprendre « 2 nouvelles / 1 existante » reste nécessaire même si le contrôle est vert."
         }
       ]
     },
     {
       "title": "Tester une contradiction sans casser sa base",
-      "kicker": "MISSION 06 / LE CONFLIT CONTRÔLÉ",
+      "kicker": "C / MISSION 06 / LE CONFLIT CONTRÔLÉ",
       "blocks": [
         {
           "type": "text",
@@ -1761,7 +1785,7 @@
     },
     {
       "title": "Lire une erreur pour choisir une action",
-      "kicker": "MISSION 06 / DIAGNOSTIQUER AVANT DE DEMANDER",
+      "kicker": "C / MISSION 06 / DIAGNOSTIQUER AVANT DE DEMANDER",
       "blocks": [
         {
           "type": "text",
@@ -1813,7 +1837,7 @@
     },
     {
       "title": "Jalon 06 · une preuve que je peux expliquer",
-      "kicker": "MISSION 06 / CONTRÔLER ET REPRENDRE",
+      "kicker": "C / MISSION 06 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -1853,7 +1877,7 @@
     },
     {
       "title": "07 · Un rapport dont je peux retrouver la source",
-      "kicker": "MISSION 07 / PRÉSENTER UNE OBSERVATION",
+      "kicker": "D / MISSION 07 / PRÉSENTER UNE OBSERVATION",
       "blocks": [
         {
           "type": "text",
@@ -1910,7 +1934,7 @@
     },
     {
       "title": "Faire construire le rapport depuis la base",
-      "kicker": "MISSION 07 / CONTRAT DE rapport.py",
+      "kicker": "D / MISSION 07 / CONTRAT DE rapport.py",
       "blocks": [
         {
           "type": "callout",
@@ -1930,7 +1954,7 @@
     },
     {
       "title": "Assembler le bouton de relance",
-      "kicker": "MISSION 07 / CONTRAT DE executer.py",
+      "kicker": "D / MISSION 07 / CONTRAT DE executer.py",
       "blocks": [
         {
           "type": "text",
@@ -1952,8 +1976,15 @@
         },
         {
           "type": "code",
-          "label": "PowerShell / Ubuntu · racine du cours",
-          "text": "docker compose run --rm atelier python executer.py\ndocker compose run --rm atelier python verifier.py 07"
+          "text": "docker compose run --rm atelier python executer.py\ndocker compose run --rm atelier python verifier.py 07",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python executer.py\nsudo docker compose run --rm atelier python verifier.py 07",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
@@ -1963,16 +1994,23 @@
     },
     {
       "title": "Ouvrir et vérifier ce qui est vraiment livré",
-      "kicker": "MISSION 07 / LE RAPPORT DANS LE NAVIGATEUR",
+      "kicker": "D / MISSION 07 / LE RAPPORT DANS LE NAVIGATEUR",
       "blocks": [
         {
           "type": "code",
-          "label": "Terminal · racine du cours",
-          "text": "docker compose up -d"
+          "text": "docker compose up -d",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose up -d",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
-          "text": "Ouvrir ensuite http://localhost:8000/rapport_atlas.html dans le navigateur. Le service web sert le dossier outputs de projet/. En mode natif, ouvrir directement projet/outputs/rapport_atlas.html par double-clic, ou lancer depuis projet/ : py -3 -m http.server 8000 --directory outputs ; sous Ubuntu remplacer py -3 par python3."
+          "text": "Ouvrir http://localhost:8000/rapport_atlas.html dans le navigateur. Le service Docker sert projet/outputs/. En natif, double-cliquer projet/outputs/rapport_atlas.html ; ou, depuis projet/, lancer sous PowerShell & $pyAtelier -m http.server 8000 --bind 127.0.0.1 --directory outputs. Sous Ubuntu natif, remplacer & $pyAtelier par python3."
         },
         {
           "type": "bullets",
@@ -1980,7 +2018,7 @@
             "Comparer le total du HTML au récapitulatif réellement imprimé par executer.py.",
             "Vérifier la période dans les données, le nombre de faits, les articles et les unités.",
             "Retrouver deux montants par boutique ou produit dans les résultats SQL.",
-            "Fermer ou arrêter le serveur après la séance : docker compose down ; en mode natif Ctrl+C dans le terminal du serveur."
+            "Arrêter après la séance : Windows Docker, docker compose down ; Ubuntu Docker, sudo docker compose down ; serveur natif, Ctrl+C dans son terminal."
           ]
         },
         {
@@ -1996,7 +2034,7 @@
     },
     {
       "title": "Écrire une conclusion et préparer la reprise",
-      "kicker": "MISSION 07 / DU CHIFFRE À L’EXPLICATION",
+      "kicker": "D / MISSION 07 / DU CHIFFRE À L’EXPLICATION",
       "blocks": [
         {
           "type": "text",
@@ -2029,7 +2067,7 @@
     },
     {
       "title": "Jalon 07 · une preuve que je peux expliquer",
-      "kicker": "MISSION 07 / CONTRÔLER ET REPRENDRE",
+      "kicker": "D / MISSION 07 / CONTRÔLER ET REPRENDRE",
       "blocks": [
         {
           "type": "section",
@@ -2068,7 +2106,7 @@
     },
     {
       "title": "Je suis bloqué : une reprise qui garde ma tentative",
-      "kicker": "REPRENDRE / SANS ÉCRASER MES FICHIERS",
+      "kicker": "D / REPRENDRE / SANS ÉCRASER MES FICHIERS",
       "blocks": [
         {
           "type": "text",
@@ -2077,11 +2115,23 @@
         {
           "type": "code",
           "label": "Natif Windows · racine du cours",
-          "text": "py -3 outils/jalon.py 03 --destination reprise-03"
+          "text": "& $pyAtelier outils/jalon.py 03 --destination reprise-03"
         },
         {
           "type": "text",
-          "text": "Sous Ubuntu natif : remplacer py -3 par python3. Avec Docker, depuis la racine saisir sur une ligne : docker compose run --rm -w /workspace atelier python outils/jalon.py 03 --destination reprises/reprise-03. Le livre 05 explique ensuite comment exécuter cette copie dans le même conteneur."
+          "text": "Sous Ubuntu natif : remplacer & $pyAtelier par python3. Avec Docker, rester à la racine du cours et choisir le bloc de votre système :"
+        },
+        {
+          "type": "code",
+          "text": "docker compose run --rm -w /workspace atelier python `\n  outils/jalon.py 03 --destination reprises/reprise-03",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm -w /workspace atelier python \\\n  outils/jalon.py 03 --destination reprises/reprise-03",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
@@ -2105,7 +2155,7 @@
     },
     {
       "title": "Carte du projet que j’ai construit",
-      "kicker": "RECAP / DU CONTRAT À LA LIVRAISON",
+      "kicker": "D / RECAP / DU CONTRAT À LA LIVRAISON",
       "blocks": [
         {
           "type": "table",
@@ -2162,8 +2212,15 @@
         },
         {
           "type": "code",
-          "label": "Terminal · racine du dossier du cours",
-          "text": "docker compose run --rm atelier python verifier.py tout"
+          "text": "docker compose run --rm atelier python verifier.py tout",
+          "label": "PowerShell Windows · racine du cours",
+          "language": "shell"
+        },
+        {
+          "type": "code",
+          "text": "sudo docker compose run --rm atelier python verifier.py tout",
+          "label": "Terminal Ubuntu · racine du cours",
+          "language": "shell"
         },
         {
           "type": "text",
@@ -2173,7 +2230,7 @@
     },
     {
       "title": "Avant le défi : vérifier mon autonomie",
-      "kicker": "AUTO-CONTRÔLE / SANS NOUVELLE RÉPONSE IA",
+      "kicker": "D / AUTO-CONTRÔLE / SANS NOUVELLE RÉPONSE IA",
       "blocks": [
         {
           "type": "table",
@@ -2229,7 +2286,7 @@
     },
     {
       "title": "CampusBox : préparer le travail collectif",
-      "kicker": "TRANSFÉRER / 7 HEURES EN ÉQUIPE DE 1 À 3",
+      "kicker": "E / TRANSFÉRER / 7 HEURES EN ÉQUIPE DE 1 À 3",
       "blocks": [
         {
           "type": "text",
@@ -2292,7 +2349,7 @@
     },
     {
       "title": "Après ces 28 heures",
-      "kicker": "ACQUIS / CONTINUER AVEC UNE PETITE VARIATION",
+      "kicker": "E / ACQUIS / CONTINUER AVEC UNE PETITE VARIATION",
       "blocks": [
         {
           "type": "text",

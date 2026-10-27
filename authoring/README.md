@@ -13,6 +13,10 @@ Ce dossier sert à modifier et reconstruire les documents. Les étudiants peuven
 | Logo, polices et droits | [Provenance des assets](ASSETS.md) | Ressources utilisées dans les documents |
 | Installation et références logicielles | [Guide d’environnement](../docs/setup/README.md) · [sources officielles](../docs/setup/sources.json) | Guide 01 |
 
+## Schémas et captures
+
+Les [schémas et graphiques](visuals/README.md) ont leurs sources reproductibles ; les [captures](../docs/images/README.md) conservent provenance, licences et limites. Après installation des dépendances d’édition, `python authoring/visuals/generate.py` régénère les six visuels depuis les CSV.
+
 ## Reconstruire les PDF
 
 Avec Python 3.10 ou ultérieur et un environnement virtuel d’édition séparé, depuis la racine du cours :
