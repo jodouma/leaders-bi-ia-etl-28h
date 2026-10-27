@@ -1184,6 +1184,42 @@
       ]
     },
     {
+      "title": "Voir les preuves locales avant Power BI",
+      "kicker": "S3 / LE RÉSULTAT VISIBLE DE MON ETL",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Après le chargement et le rejeu, l’action rapport produit deux lectures des mêmes résultats : rapport.json et rapport_atlas.html dans outputs/. Le HTML se consulte dans un navigateur à partir du fichier local ; aucun service supplémentaire n’est nécessaire."
+        },
+        {
+          "type": "code",
+          "label": "Terminal Ubuntu / WSL · depuis atelier · après l’incrément",
+          "text": "python3 executer.py rapport",
+          "language": "shell",
+          "state": "final"
+        },
+        {
+          "type": "text",
+          "text": "Dans l’explorateur de fichiers, ouvrez atelier/outputs/rapport_atlas.html avec votre navigateur. Retrouvez les trois indicateurs puis les zones historiques. Comparez-les à votre propre reçu et au rapport JSON."
+        },
+        {
+          "type": "figure",
+          "path": "../docs/images/real/rapport-etl-v6.jpg",
+          "height": 285,
+          "caption": "Capture réelle du rapport HTML local, auteur sur macOS, données Atlas : preuve ETL. Power BI reste à réaliser sur Windows. Cette capture ne prouve aucun accès Free ni installation WSL."
+        },
+        {
+          "type": "callout",
+          "label": "À essayer et à expliquer",
+          "text": "Montrez pourquoi 14 ventes représentent 35 articles. Retrouvez 43,500 TND pour Cap Bon et 72,000 TND pour Grand Tunis. Expliquez les deux lignes NBE : la même boutique possède deux versions à des dates différentes."
+        },
+        {
+          "type": "text",
+          "text": "Ce rapport rend vos preuves ETL faciles à lire. La séance suivante construit le modèle Power BI Windows : import des quatre tables, relations, mesure, filtre et actualisation. Vous comparerez les résultats aux mêmes contrôles locaux."
+        }
+      ]
+    },
+    {
       "title": "Quatre tables voyagent ensemble",
       "kicker": "S4 / JALON 07 · EXPORT",
       "blocks": [
