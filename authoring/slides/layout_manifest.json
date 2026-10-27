@@ -1828,7 +1828,7 @@
   },
   {
     "slide": 16,
-    "text": "data/ventes_initiales.csv",
+    "text": "atelier/data/\nventes_initiales.csv",
     "x": 0.89,
     "y": 4.38,
     "w": 3.3,
@@ -1864,7 +1864,7 @@
   },
   {
     "slide": 16,
-    "text": "python3 executer.py",
+    "text": "cd atelier",
     "x": 5.010000000000001,
     "y": 4.38,
     "w": 3.3,
@@ -1873,7 +1873,7 @@
   },
   {
     "slide": 16,
-    "text": "Je lance une commande.",
+    "text": "Je choisis le dossier.",
     "x": 5.010000000000001,
     "y": 5.1,
     "w": 3.3,
@@ -1900,7 +1900,7 @@
   },
   {
     "slide": 16,
-    "text": "AGENTS.md",
+    "text": "AGENTS.md\n(racine du cours)",
     "x": 9.13,
     "y": 4.38,
     "w": 3.3,
@@ -1918,7 +1918,7 @@
   },
   {
     "slide": 16,
-    "text": "Le dossier courant indique où une commande cherche les fichiers. Enregistrer avant d’exécuter.",
+    "text": "Codex ouvre ~/cours-bi ; le terminal entre dans atelier/ avec cd atelier. Enregistrer avant d’exécuter.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -2008,7 +2008,7 @@
   },
   {
     "slide": 18,
-    "text": "Lis AGENTS.md et data/ventes_initiales.csv.\nExplique ce que décrit une ligne.\nPropose un plan de trois étapes.\nNe modifie aucun fichier.",
+    "text": "Lis AGENTS.md à la racine du cours.\nLis atelier/data/ventes_initiales.csv.\nExplique ce que décrit une ligne.\nPropose un plan de trois étapes.\nNe modifie aucun fichier.",
     "x": 0.93,
     "y": 2.45,
     "w": 7.59,
@@ -2071,7 +2071,7 @@
   },
   {
     "slide": 18,
-    "text": "Envoyer depuis la copie de travail atelier/. Si le fichier manque, vérifier le dossier courant.",
+    "text": "Codex reste ouvert sur ~/cours-bi. AGENTS.md est à la racine ; les données sont dans atelier/data/.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -2143,7 +2143,7 @@
   },
   {
     "slide": 19,
-    "text": "Compléter l’amorce fournie.",
+    "text": "Lire AGENTS.md fourni à la racine.",
     "x": 9.68,
     "y": 2.27,
     "w": 2.98,
@@ -2179,7 +2179,7 @@
   },
   {
     "slide": 19,
-    "text": "Demander à Codex de citer la règle.",
+    "text": "Faire relire la règle par Codex.",
     "x": 9.68,
     "y": 4.55,
     "w": 2.98,
@@ -2188,7 +2188,7 @@
   },
   {
     "slide": 19,
-    "text": "AGENTS.md donne des consignes durables au dossier ; vos demandes précisent la tâche du moment.",
+    "text": "Modifier ~/cours-bi/AGENTS.md en gardant les règles fournies. Ne créez pas un second fichier dans atelier/.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -2269,7 +2269,7 @@
   },
   {
     "slide": 20,
-    "text": "Compléter AGENTS.md sans demander de code complet.",
+    "text": "À la racine du cours, lire AGENTS.md fourni et ajouter une règle.",
     "x": 1.55,
     "y": 3.68,
     "w": 10.81,
@@ -2314,7 +2314,7 @@
   },
   {
     "slide": 20,
-    "text": "Preuve : votre règle ajoutée + votre prompt avant/après + le plan retenu.",
+    "text": "Preuve : règle ajoutée dans ~/cours-bi/AGENTS.md + prompt avant/après + plan retenu.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -4015,7 +4015,7 @@
   },
   {
     "slide": 37,
-    "text": "Conserver la requête et son résultat : 3 lignes de ventes + 1 événement de changement de zone.",
+    "text": "Cette requête lit 3 ventes : S012, S013 et S014. Conserver le SQL, le paramètre et le résultat.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -4024,21 +4024,30 @@
   },
   {
     "slide": 38,
-    "text": "S2 · FIABILISER",
+    "text": "B",
     "x": 0.65,
-    "y": 0.1,
-    "w": 11.7,
-    "h": 0.2,
-    "size": 10
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
   },
   {
     "slide": 38,
-    "text": "Une ligne fact_sales = une vente. Les clés relient les tables sans recopier toutes les descriptions.",
-    "x": 0.85,
-    "y": 6.4,
-    "w": 11.62,
-    "h": 0.46,
-    "size": 16
+    "text": "S2 · FIABILISER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 38,
+    "text": "Lire aussi le changement de zone",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
   },
   {
     "slide": 38,
@@ -4059,31 +4068,94 @@
     "size": 12
   },
   {
-    "slide": 39,
-    "text": "B",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
+    "slide": 38,
+    "text": "SELECT shop_id, effective_date,\n       commercial_zone\nFROM source_shop_changes\nWHERE batch_id = ?\nORDER BY effective_date, shop_id",
+    "x": 0.93,
+    "y": 2.45,
+    "w": 7.59,
+    "h": 3.18,
+    "size": 20
+  },
+  {
+    "slide": 38,
+    "text": "1",
+    "x": 9.08,
+    "y": 2.32,
+    "w": 0.47,
+    "h": 0.47,
     "size": 16
+  },
+  {
+    "slide": 38,
+    "text": "Même paramètre :\n2026-01-08.",
+    "x": 9.68,
+    "y": 2.27,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
+  },
+  {
+    "slide": 38,
+    "text": "2",
+    "x": 9.08,
+    "y": 3.46,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 16
+  },
+  {
+    "slide": 38,
+    "text": "Une ligne : NBE change de zone.",
+    "x": 9.68,
+    "y": 3.41,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
+  },
+  {
+    "slide": 38,
+    "text": "3",
+    "x": 9.08,
+    "y": 4.6,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 16
+  },
+  {
+    "slide": 38,
+    "text": "Conserver aussi ce résultat SQL.",
+    "x": 9.68,
+    "y": 4.55,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
+  },
+  {
+    "slide": 38,
+    "text": "Cette deuxième requête lit 1 événement : NBE → Grand Tunis, effectif le 8 janvier 2026.",
+    "x": 0.85,
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
   },
   {
     "slide": 39,
     "text": "S2 · FIABILISER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "x": 0.65,
+    "y": 0.1,
+    "w": 11.7,
+    "h": 0.2,
+    "size": 10
   },
   {
     "slide": 39,
-    "text": "Deux identifiants, deux rôles",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
+    "text": "Une ligne fact_sales = une vente. Les clés relient les tables sans recopier toutes les descriptions.",
+    "x": 0.85,
+    "y": 6.4,
+    "w": 11.62,
+    "h": 0.46,
+    "size": 16
   },
   {
     "slide": 39,
@@ -4104,123 +4176,6 @@
     "size": 12
   },
   {
-    "slide": 39,
-    "text": "Catalogue métier",
-    "x": 0.79,
-    "y": 2.25,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 39,
-    "text": "Dimension",
-    "x": 4.54625,
-    "y": 2.25,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 39,
-    "text": "Fait de vente",
-    "x": 8.3025,
-    "y": 2.25,
-    "w": 4.227499999999999,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 39,
-    "text": "P01 = Carnet",
-    "x": 0.79,
-    "y": 2.98,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "product_key = 1",
-    "x": 4.54625,
-    "y": 2.98,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "S001 → product_key 1",
-    "x": 8.3025,
-    "y": 2.98,
-    "w": 4.227499999999999,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "P02 = Stylo",
-    "x": 0.79,
-    "y": 3.71,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "product_key = 2",
-    "x": 4.54625,
-    "y": 3.71,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "S002 → product_key 2",
-    "x": 8.3025,
-    "y": 3.71,
-    "w": 4.227499999999999,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "Code du produit",
-    "x": 0.79,
-    "y": 4.44,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "Clé locale de liaison",
-    "x": 4.54625,
-    "y": 4.44,
-    "w": 3.4762499999999994,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "Référence la dimension",
-    "x": 8.3025,
-    "y": 4.44,
-    "w": 4.227499999999999,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 39,
-    "text": "product_id est le code métier. product_key est la clé de liaison de l’entrepôt.",
-    "x": 0.85,
-    "y": 6.22,
-    "w": 11.62,
-    "h": 0.6,
-    "size": 18
-  },
-  {
     "slide": 40,
     "text": "B",
     "x": 0.65,
@@ -4240,7 +4195,7 @@
   },
   {
     "slide": 40,
-    "text": "À vous · lire et ranger les cartes",
+    "text": "Deux identifiants, deux rôles",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -4267,79 +4222,115 @@
   },
   {
     "slide": 40,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
-  },
-  {
-    "slide": 40,
-    "text": "Prouver l’extraction, puis expliquer l’étoile.",
-    "x": 2.27,
+    "text": "Catalogue métier",
+    "x": 0.79,
     "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 40,
-    "text": "1",
-    "x": 0.82,
-    "y": 3.7,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "Dimension",
+    "x": 4.54625,
+    "y": 2.25,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 40,
-    "text": "Exécuter la requête fournie avec le bon paramètre de lot.",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Fait de vente",
+    "x": 8.3025,
+    "y": 2.25,
+    "w": 4.227499999999999,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 40,
-    "text": "2",
-    "x": 0.82,
-    "y": 4.48,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "P01 = Carnet",
+    "x": 0.79,
+    "y": 2.98,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 40,
-    "text": "Montrer S013, S014 et S012 dans le résultat SQL.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "product_key = 1",
+    "x": 4.54625,
+    "y": 2.98,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 40,
-    "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "S001 → product_key 1",
+    "x": 8.3025,
+    "y": 2.98,
+    "w": 4.227499999999999,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 40,
-    "text": "Classer quantité, nom produit, zone et date autour de la vente.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "P02 = Stylo",
+    "x": 0.79,
+    "y": 3.71,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 40,
-    "text": "Source SQL réellement lue ; les données originales restent intactes.",
+    "text": "product_key = 2",
+    "x": 4.54625,
+    "y": 3.71,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 40,
+    "text": "S002 → product_key 2",
+    "x": 8.3025,
+    "y": 3.71,
+    "w": 4.227499999999999,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 40,
+    "text": "Code du produit",
+    "x": 0.79,
+    "y": 4.44,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 40,
+    "text": "Clé locale de liaison",
+    "x": 4.54625,
+    "y": 4.44,
+    "w": 3.4762499999999994,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 40,
+    "text": "Référence la dimension",
+    "x": 8.3025,
+    "y": 4.44,
+    "w": 4.227499999999999,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 40,
+    "text": "product_id est le code métier. product_key est la clé de liaison de l’entrepôt.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -4366,7 +4357,7 @@
   },
   {
     "slide": 41,
-    "text": "À ce stade, je sais…",
+    "text": "À vous · lire et ranger les cartes",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -4393,88 +4384,79 @@
   },
   {
     "slide": 41,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 41,
+    "text": "Prouver l’extraction, puis expliquer l’étoile.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
+  },
+  {
+    "slide": 41,
     "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
     "slide": 41,
-    "text": "Je décide",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
-  },
-  {
-    "slide": 41,
-    "text": "Je justifie nettoyage,\ndoublon et rejet.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
+    "text": "Exécuter les deux requêtes avec le bon paramètre de lot.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
     "slide": 41,
     "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
     "slide": 41,
-    "text": "Je lis",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
-  },
-  {
-    "slide": 41,
-    "text": "Je montre une ligne\nobtenue par SELECT.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
+    "text": "Montrer les trois ventes et le changement de zone de NBE.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
     "slide": 41,
     "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
     "slide": 41,
-    "text": "Je relie",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "Classer quantité, nom produit, zone et date autour de la vente.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
     "slide": 41,
-    "text": "Je distingue vente,\ndimension et clé.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 41,
-    "text": "Sortie S2 : ventes propres, preuve SQL, étoile expliquée. Si un total diffère, revenir à la ligne source.",
+    "text": "Source SQL réellement lue ; les données originales restent intactes.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -4483,61 +4465,7 @@
   },
   {
     "slide": 42,
-    "text": "C · S3 · CHARGER",
-    "x": 0.75,
-    "y": 0.68,
-    "w": 9.22,
-    "h": 0.44,
-    "size": 16
-  },
-  {
-    "slide": 42,
-    "text": "S3 · Je charge demain\nsans abîmer hier",
-    "x": 0.75,
-    "y": 1.66,
-    "w": 9.4,
-    "h": 2.19,
-    "size": 43
-  },
-  {
-    "slide": 42,
-    "text": "Victoire : ajouter un lot, le rejouer et conserver la zone historique.",
-    "x": 0.78,
-    "y": 4.15,
-    "w": 8.9,
-    "h": 0.92,
-    "size": 25
-  },
-  {
-    "slide": 42,
-    "text": "3 h",
-    "x": 0.78,
-    "y": 5.59,
-    "w": 2.5,
-    "h": 0.69,
-    "size": 40
-  },
-  {
-    "slide": 42,
-    "text": "Une petite victoire · des preuves visibles",
-    "x": 3.45,
-    "y": 5.72,
-    "w": 7.9,
-    "h": 0.45,
-    "size": 23
-  },
-  {
-    "slide": 42,
-    "text": "Youssef Douma · Leaders University",
-    "x": 0.8,
-    "y": 6.83,
-    "w": 9,
-    "h": 0.3,
-    "size": 15
-  },
-  {
-    "slide": 43,
-    "text": "C",
+    "text": "B",
     "x": 0.65,
     "y": 0.29,
     "w": 0.42,
@@ -4545,8 +4473,8 @@
     "size": 16
   },
   {
-    "slide": 43,
-    "text": "S3 · CHARGER",
+    "slide": 42,
+    "text": "S2 · FIABILISER",
     "x": 1.23,
     "y": 0.34,
     "w": 11.3,
@@ -4554,8 +4482,8 @@
     "size": 12
   },
   {
-    "slide": 43,
-    "text": "Votre séance 3 · 180 minutes",
+    "slide": 42,
+    "text": "À ce stade, je sais…",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -4563,7 +4491,7 @@
     "size": 34
   },
   {
-    "slide": 43,
+    "slide": 42,
     "text": "Youssef Douma · Leaders University",
     "x": 0.65,
     "y": 7.04,
@@ -4572,8 +4500,8 @@
     "size": 10
   },
   {
-    "slide": 43,
-    "text": "43",
+    "slide": 42,
+    "text": "42",
     "x": 12,
     "y": 6.97,
     "w": 0.65,
@@ -4581,193 +4509,148 @@
     "size": 12
   },
   {
-    "slide": 43,
+    "slide": 42,
     "text": "1",
-    "x": 0.77,
-    "y": 2.2,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
-    "slide": 43,
-    "text": "0–40",
-    "x": 1.5,
-    "y": 2.19,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "slide": 42,
+    "text": "Je décide",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
-    "slide": 43,
-    "text": "Charger les dimensions puis les faits",
-    "x": 3.78,
-    "y": 2.21,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "15 T / 25 P",
-    "x": 10.1,
-    "y": 2.21,
-    "w": 2.15,
-    "h": 0.44,
+    "slide": 42,
+    "text": "Je justifie nettoyage,\ndoublon et rejet.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
-    "slide": 43,
+    "slide": 42,
     "text": "2",
-    "x": 0.77,
-    "y": 2.95,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
-    "slide": 43,
-    "text": "40–80",
-    "x": 1.5,
-    "y": 2.94,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "slide": 42,
+    "text": "Je lis",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
-    "slide": 43,
-    "text": "Ajouter et rejouer le lot SQL",
-    "x": 3.78,
-    "y": 2.96,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "15 T / 25 P",
-    "x": 10.1,
-    "y": 2.96,
-    "w": 2.15,
-    "h": 0.44,
+    "slide": 42,
+    "text": "Je montre une ligne\nobtenue par SELECT.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
-    "slide": 43,
+    "slide": 42,
     "text": "3",
-    "x": 0.77,
-    "y": 3.7,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
-    "slide": 43,
-    "text": "80–90",
-    "x": 1.5,
-    "y": 3.69,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "slide": 42,
+    "text": "Je relie",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
-    "slide": 43,
-    "text": "Pause",
-    "x": 3.78,
-    "y": 3.71,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "10 min",
-    "x": 10.1,
-    "y": 3.71,
-    "w": 2.15,
-    "h": 0.44,
+    "slide": 42,
+    "text": "Je distingue vente,\ndimension et clé.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
-    "slide": 43,
-    "text": "4",
-    "x": 0.77,
-    "y": 4.45,
-    "w": 0.48,
-    "h": 0.48,
-    "size": 18
-  },
-  {
-    "slide": 43,
-    "text": "90–145",
-    "x": 1.5,
-    "y": 4.44,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "Deux versions pour une boutique",
-    "x": 3.78,
-    "y": 4.46,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "20 T / 35 P",
-    "x": 10.1,
-    "y": 4.46,
-    "w": 2.15,
-    "h": 0.44,
-    "size": 20
-  },
-  {
-    "slide": 43,
-    "text": "5",
-    "x": 0.77,
-    "y": 5.2,
-    "w": 0.48,
-    "h": 0.48,
-    "size": 18
-  },
-  {
-    "slide": 43,
-    "text": "145–180",
-    "x": 1.5,
-    "y": 5.19,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "Clés, contrôles et revue",
-    "x": 3.78,
-    "y": 5.21,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 43,
-    "text": "10 T / 25 P",
-    "x": 10.1,
-    "y": 5.21,
-    "w": 2.15,
-    "h": 0.44,
-    "size": 20
-  },
-  {
-    "slide": 43,
-    "text": "La transaction et l’historisation générale sont fournies ; vous adaptez et vérifiez une petite partie.",
+    "slide": 42,
+    "text": "Sortie S2 : ventes propres, preuve SQL, étoile expliquée. Si un total diffère, revenir à la ligne source.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
     "h": 0.6,
     "size": 18
+  },
+  {
+    "slide": 43,
+    "text": "C · S3 · CHARGER",
+    "x": 0.75,
+    "y": 0.68,
+    "w": 9.22,
+    "h": 0.44,
+    "size": 16
+  },
+  {
+    "slide": 43,
+    "text": "S3 · Je charge demain\nsans abîmer hier",
+    "x": 0.75,
+    "y": 1.66,
+    "w": 9.4,
+    "h": 2.19,
+    "size": 43
+  },
+  {
+    "slide": 43,
+    "text": "Victoire : ajouter un lot, le rejouer et conserver la zone historique.",
+    "x": 0.78,
+    "y": 4.15,
+    "w": 8.9,
+    "h": 0.92,
+    "size": 25
+  },
+  {
+    "slide": 43,
+    "text": "3 h",
+    "x": 0.78,
+    "y": 5.59,
+    "w": 2.5,
+    "h": 0.69,
+    "size": 40
+  },
+  {
+    "slide": 43,
+    "text": "Une petite victoire · des preuves visibles",
+    "x": 3.45,
+    "y": 5.72,
+    "w": 7.9,
+    "h": 0.45,
+    "size": 23
+  },
+  {
+    "slide": 43,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.8,
+    "y": 6.83,
+    "w": 9,
+    "h": 0.3,
+    "size": 15
   },
   {
     "slide": 44,
@@ -4789,7 +4672,7 @@
   },
   {
     "slide": 44,
-    "text": "Pourquoi charger les descriptions d’abord ?",
+    "text": "Votre séance 3 · 180 minutes",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -4817,87 +4700,186 @@
   {
     "slide": 44,
     "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
+    "x": 0.77,
+    "y": 2.2,
+    "w": 0.48,
+    "h": 0.48,
     "size": 18
   },
   {
     "slide": 44,
-    "text": "1 · Dimensions",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "0–40",
+    "x": 1.5,
+    "y": 2.19,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 44,
-    "text": "Créer les cartes Produit,\nBoutique et Date.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
+    "text": "Charger les dimensions puis les faits",
+    "x": 3.78,
+    "y": 2.21,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "15 T / 25 P",
+    "x": 10.1,
+    "y": 2.21,
+    "w": 2.15,
+    "h": 0.44,
     "size": 20
   },
   {
     "slide": 44,
     "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
+    "x": 0.77,
+    "y": 2.95,
+    "w": 0.48,
+    "h": 0.48,
     "size": 18
   },
   {
     "slide": 44,
-    "text": "2 · Faits",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "40–95",
+    "x": 1.5,
+    "y": 2.94,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 44,
-    "text": "La vente référence\nles clés de ces cartes.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
+    "text": "Deux versions et recherche temporelle",
+    "x": 3.78,
+    "y": 2.96,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "20 T / 35 P",
+    "x": 10.1,
+    "y": 2.96,
+    "w": 2.15,
+    "h": 0.44,
     "size": 20
   },
   {
     "slide": 44,
     "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
+    "x": 0.77,
+    "y": 3.7,
+    "w": 0.48,
+    "h": 0.48,
     "size": 18
   },
   {
     "slide": 44,
-    "text": "3 · Contrôle",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "95–105",
+    "x": 1.5,
+    "y": 3.69,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 44,
-    "text": "Une clé étrangère refuse\nune carte absente.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
+    "text": "Pause",
+    "x": 3.78,
+    "y": 3.71,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "10 min",
+    "x": 10.1,
+    "y": 3.71,
+    "w": 2.15,
+    "h": 0.44,
     "size": 20
   },
   {
     "slide": 44,
-    "text": "Dans SQLite, le chargement active les clés étrangères avant la transaction.",
+    "text": "4",
+    "x": 0.77,
+    "y": 4.45,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
+  },
+  {
+    "slide": 44,
+    "text": "105–145",
+    "x": 1.5,
+    "y": 4.44,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "Ajouter et rejouer le lot SQL",
+    "x": 3.78,
+    "y": 4.46,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "15 T / 25 P",
+    "x": 10.1,
+    "y": 4.46,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 44,
+    "text": "5",
+    "x": 0.77,
+    "y": 5.2,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
+  },
+  {
+    "slide": 44,
+    "text": "145–180",
+    "x": 1.5,
+    "y": 5.19,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "Clés, contrôles et revue",
+    "x": 3.78,
+    "y": 5.21,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 44,
+    "text": "10 T / 25 P",
+    "x": 10.1,
+    "y": 5.21,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 44,
+    "text": "Ordre des jalons : initial 04 → recherche temporelle 05 → incrément et rejeu 06.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -4924,7 +4906,7 @@
   },
   {
     "slide": 45,
-    "text": "Premier chargement : observer le résultat",
+    "text": "Pourquoi charger les descriptions d’abord ?",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -4951,70 +4933,88 @@
   },
   {
     "slide": 45,
-    "text": "# Depuis la racine du cours\ncd atelier\npython3 executer.py initial\npython3 verifier.py 04",
-    "x": 0.93,
-    "y": 2.43,
-    "w": 11.45,
-    "h": 2.28,
-    "size": 19
-  },
-  {
-    "slide": 45,
     "text": "1",
-    "x": 0.65,
-    "y": 5.24,
-    "w": 0.42,
-    "h": 0.42,
-    "size": 16
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
   },
   {
     "slide": 45,
-    "text": "Dimensions avant faits.",
-    "x": 1.21,
-    "y": 5.18,
-    "w": 3.15,
-    "h": 0.72,
-    "size": 18
+    "text": "1 · Dimensions",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 45,
+    "text": "Créer les cartes Produit,\nBoutique et Date.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
   },
   {
     "slide": 45,
     "text": "2",
-    "x": 4.7700000000000005,
-    "y": 5.24,
-    "w": 0.42,
-    "h": 0.42,
-    "size": 16
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
   },
   {
     "slide": 45,
-    "text": "12 faits · 32 unités.",
-    "x": 5.33,
-    "y": 5.18,
-    "w": 3.15,
-    "h": 0.72,
-    "size": 18
+    "text": "2 · Faits",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 45,
+    "text": "La vente référence\nles clés de ces cartes.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
   },
   {
     "slide": 45,
     "text": "3",
-    "x": 8.89,
-    "y": 5.24,
-    "w": 0.42,
-    "h": 0.42,
-    "size": 16
-  },
-  {
-    "slide": 45,
-    "text": "99 000 millimes.",
-    "x": 9.450000000000001,
-    "y": 5.18,
-    "w": 3.15,
-    "h": 0.72,
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 45,
-    "text": "Ces commandes sont lancées dans le terminal Ubuntu/WSL. Lire toute erreur avant de continuer.",
+    "text": "3 · Contrôle",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 45,
+    "text": "Une clé étrangère refuse\nune carte absente.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 45,
+    "text": "Dans SQLite, le chargement active les clés étrangères avant la transaction.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -5023,21 +5023,30 @@
   },
   {
     "slide": 46,
-    "text": "S3 · CHARGER",
+    "text": "C",
     "x": 0.65,
-    "y": 0.1,
-    "w": 11.7,
-    "h": 0.2,
-    "size": 10
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
   },
   {
     "slide": 46,
-    "text": "S013 + S014 nouvelles ; S012 identique déjà connue. Le rejeu ne change plus les chiffres.",
-    "x": 0.85,
-    "y": 6.4,
-    "w": 11.62,
-    "h": 0.46,
-    "size": 16
+    "text": "S3 · CHARGER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 46,
+    "text": "Premier chargement : observer le résultat",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
   },
   {
     "slide": 46,
@@ -5058,31 +5067,94 @@
     "size": 12
   },
   {
-    "slide": 47,
-    "text": "C",
+    "slide": 46,
+    "text": "# Depuis la racine du cours\ncd atelier\npython3 executer.py initial\npython3 verifier.py 04",
+    "x": 0.93,
+    "y": 2.43,
+    "w": 11.45,
+    "h": 2.28,
+    "size": 19
+  },
+  {
+    "slide": 46,
+    "text": "1",
     "x": 0.65,
-    "y": 0.29,
+    "y": 5.24,
     "w": 0.42,
     "h": 0.42,
     "size": 16
   },
   {
-    "slide": 47,
-    "text": "S3 · CHARGER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "slide": 46,
+    "text": "Dimensions avant faits.",
+    "x": 1.21,
+    "y": 5.18,
+    "w": 3.15,
+    "h": 0.72,
+    "size": 18
+  },
+  {
+    "slide": 46,
+    "text": "2",
+    "x": 4.7700000000000005,
+    "y": 5.24,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
+  },
+  {
+    "slide": 46,
+    "text": "12 faits · 32 unités.",
+    "x": 5.33,
+    "y": 5.18,
+    "w": 3.15,
+    "h": 0.72,
+    "size": 18
+  },
+  {
+    "slide": 46,
+    "text": "3",
+    "x": 8.89,
+    "y": 5.24,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
+  },
+  {
+    "slide": 46,
+    "text": "99 000 millimes.",
+    "x": 9.450000000000001,
+    "y": 5.18,
+    "w": 3.15,
+    "h": 0.72,
+    "size": 18
+  },
+  {
+    "slide": 46,
+    "text": "Ces commandes sont lancées dans le terminal Ubuntu/WSL. Lire toute erreur avant de continuer.",
+    "x": 0.85,
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
   },
   {
     "slide": 47,
-    "text": "Trois lignes reçues, deux ventes ajoutées",
+    "text": "S3 · CHARGER",
     "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
+    "y": 0.1,
+    "w": 11.7,
+    "h": 0.2,
+    "size": 10
+  },
+  {
+    "slide": 47,
+    "text": "Avant le 8 : Cap Bon. Dès le 8 : Grand Tunis. La fin de validité est exclue.",
+    "x": 0.85,
+    "y": 6.4,
+    "w": 11.62,
+    "h": 0.46,
+    "size": 16
   },
   {
     "slide": 47,
@@ -5103,132 +5175,6 @@
     "size": 12
   },
   {
-    "slide": 47,
-    "text": "Vente",
-    "x": 0.79,
-    "y": 2.25,
-    "w": 2.391111111111111,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 47,
-    "text": "Contenu",
-    "x": 3.461111111111111,
-    "y": 2.25,
-    "w": 5.7299999999999995,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 47,
-    "text": "Effet",
-    "x": 9.47111111111111,
-    "y": 2.25,
-    "w": 3.0588888888888883,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 47,
-    "text": "S013",
-    "x": 0.79,
-    "y": 2.98,
-    "w": 2.391111111111111,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "1 carnet · 4.500 TND",
-    "x": 3.461111111111111,
-    "y": 2.98,
-    "w": 5.7299999999999995,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "+1 fait",
-    "x": 9.47111111111111,
-    "y": 2.98,
-    "w": 3.0588888888888883,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "S014",
-    "x": 0.79,
-    "y": 3.71,
-    "w": 2.391111111111111,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "2 classeurs · 12.000 TND",
-    "x": 3.461111111111111,
-    "y": 3.71,
-    "w": 5.7299999999999995,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "+1 fait",
-    "x": 9.47111111111111,
-    "y": 3.71,
-    "w": 3.0588888888888883,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "S012",
-    "x": 0.79,
-    "y": 4.44,
-    "w": 2.391111111111111,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "Déjà présente, identique",
-    "x": 3.461111111111111,
-    "y": 4.44,
-    "w": 5.7299999999999995,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "0 fait",
-    "x": 9.47111111111111,
-    "y": 4.44,
-    "w": 3.0588888888888883,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 47,
-    "text": "Le prix de S014 est 6,000 TND par classeur : 2 × 6,000 = 12,000 TND.",
-    "x": 0.85,
-    "y": 6.22,
-    "w": 11.62,
-    "h": 0.6,
-    "size": 18
-  },
-  {
-    "slide": 47,
-    "text": "2 faits nouveaux · +3 unités · +16.500 TND",
-    "x": 0.85,
-    "y": 5.25,
-    "w": 11.5,
-    "h": 0.6,
-    "size": 29
-  },
-  {
     "slide": 48,
     "text": "C",
     "x": 0.65,
@@ -5248,7 +5194,7 @@
   },
   {
     "slide": 48,
-    "text": "La preuve du rejeu : le résultat reste stable",
+    "text": "À quelle carte rattacher la vente ?",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -5275,88 +5221,115 @@
   },
   {
     "slide": 48,
-    "text": "Avant ajout",
-    "x": 0.89,
-    "y": 2.53,
-    "w": 3.3,
-    "h": 0.7,
-    "size": 22
+    "text": "Version boutique",
+    "x": 0.79,
+    "y": 2.25,
+    "w": 3.3259999999999996,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 48,
-    "text": "12 faits",
-    "x": 0.89,
-    "y": 3.45,
-    "w": 3.3,
-    "h": 0.9,
-    "size": 38
+    "text": "Période de validité",
+    "x": 4.396,
+    "y": 2.25,
+    "w": 3.6265,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 48,
-    "text": "99.000 TND",
-    "x": 0.89,
-    "y": 4.66,
-    "w": 3.3,
-    "h": 0.54,
-    "size": 25
+    "text": "Vente concernée",
+    "x": 8.3025,
+    "y": 2.25,
+    "w": 4.2275,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 48,
-    "text": "Premier passage",
-    "x": 5.010000000000001,
-    "y": 2.53,
-    "w": 3.3,
-    "h": 0.7,
-    "size": 22
+    "text": "NBE · Cap Bon",
+    "x": 0.79,
+    "y": 2.98,
+    "w": 3.3259999999999996,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 48,
-    "text": "14 faits",
-    "x": 5.010000000000001,
-    "y": 3.45,
-    "w": 3.3,
-    "h": 0.9,
-    "size": 38
+    "text": "[05/01, 08/01[",
+    "x": 4.396,
+    "y": 2.98,
+    "w": 3.6265,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 48,
-    "text": "115.500 TND",
-    "x": 5.010000000000001,
-    "y": 4.66,
-    "w": 3.3,
-    "h": 0.54,
-    "size": 25
+    "text": "07/01 → ancienne clé",
+    "x": 8.3025,
+    "y": 2.98,
+    "w": 4.2275,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 48,
-    "text": "Deuxième passage",
-    "x": 9.13,
-    "y": 2.53,
-    "w": 3.3,
-    "h": 0.7,
-    "size": 22
+    "text": "NBE · Grand Tunis",
+    "x": 0.79,
+    "y": 3.71,
+    "w": 3.3259999999999996,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 48,
-    "text": "14 faits",
-    "x": 9.13,
-    "y": 3.45,
-    "w": 3.3,
-    "h": 0.9,
-    "size": 38
+    "text": "[08/01, sans fin[",
+    "x": 4.396,
+    "y": 3.71,
+    "w": 3.6265,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 48,
-    "text": "115.500 TND",
-    "x": 9.13,
-    "y": 4.66,
-    "w": 3.3,
-    "h": 0.54,
-    "size": 25
+    "text": "08/01 → nouvelle clé",
+    "x": 8.3025,
+    "y": 3.71,
+    "w": 4.2275,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 48,
-    "text": "12 + 2 = 14 ventes · 32 + 3 = 35 unités · 99,000 + 16,500 = 115,500 TND.",
+    "text": "TUN · Grand Tunis",
+    "x": 0.79,
+    "y": 4.44,
+    "w": 3.3259999999999996,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 48,
+    "text": "[05/01, sans fin[",
+    "x": 4.396,
+    "y": 4.44,
+    "w": 3.6265,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 48,
+    "text": "Toutes les dates de ce lot",
+    "x": 8.3025,
+    "y": 4.44,
+    "w": 4.2275,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 48,
+    "text": "Notation SQL : [valid_from, valid_to). NULL signifie « pas de fin connue ». Deux boutiques, trois versions.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -5383,7 +5356,7 @@
   },
   {
     "slide": 49,
-    "text": "À vous · 25 min",
+    "text": "La date choisit la version de boutique",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -5410,79 +5383,70 @@
   },
   {
     "slide": 49,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
-  },
-  {
-    "slide": 49,
-    "text": "Exécuter le lot du 8 janvier, puis le rejouer.",
-    "x": 2.27,
-    "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
+    "text": "WHERE shop_id = ?\n  AND valid_from <= ?\n  AND (valid_to IS NULL OR ? < valid_to)",
+    "x": 0.93,
+    "y": 2.45,
+    "w": 7.59,
+    "h": 3.18,
+    "size": 20
   },
   {
     "slide": 49,
     "text": "1",
-    "x": 0.82,
-    "y": 3.7,
+    "x": 9.08,
+    "y": 2.32,
     "w": 0.47,
     "h": 0.47,
-    "size": 17
+    "size": 16
   },
   {
     "slide": 49,
-    "text": "Lancer python3 executer.py increment.",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Le premier ? reçoit le code boutique.",
+    "x": 9.68,
+    "y": 2.27,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
   },
   {
     "slide": 49,
     "text": "2",
-    "x": 0.82,
-    "y": 4.48,
+    "x": 9.08,
+    "y": 3.46,
     "w": 0.47,
     "h": 0.47,
-    "size": 17
+    "size": 16
   },
   {
     "slide": 49,
-    "text": "Contrôler les chiffres puis relancer exactement le même lot.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Les deux autres reçoivent la date de vente.",
+    "x": 9.68,
+    "y": 3.41,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
   },
   {
     "slide": 49,
     "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
+    "x": 9.08,
+    "y": 4.6,
     "w": 0.47,
     "h": 0.47,
-    "size": 17
+    "size": 16
   },
   {
     "slide": 49,
-    "text": "Comparer faits, unités, montant et clés avant/après le rejeu.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Une seule version doit correspondre.",
+    "x": 9.68,
+    "y": 4.55,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
   },
   {
     "slide": 49,
-    "text": "Preuve : même résultat final à deux passages. Une erreur de contrôle n’autorise pas à changer l’attendu.",
+    "text": "Nom technique : SCD2. Les anciennes ventes conservent leur shop_key ; on ne réécrit pas leur histoire.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -5491,87 +5455,6 @@
   },
   {
     "slide": 50,
-    "text": "10",
-    "x": 0.85,
-    "y": 1.3,
-    "w": 2.2,
-    "h": 2.2,
-    "size": 64
-  },
-  {
-    "slide": 50,
-    "text": "MINUTES",
-    "x": 1,
-    "y": 3.67,
-    "w": 1.9,
-    "h": 0.4,
-    "size": 22
-  },
-  {
-    "slide": 50,
-    "text": "Pause · 10 minutes",
-    "x": 3.6,
-    "y": 1.65,
-    "w": 8.2,
-    "h": 0.85,
-    "size": 42
-  },
-  {
-    "slide": 50,
-    "text": "Notez les chiffres du rejeu.\nReprenez à la boutique Nabeul.",
-    "x": 3.6,
-    "y": 3,
-    "w": 8.25,
-    "h": 1.7,
-    "size": 28
-  },
-  {
-    "slide": 50,
-    "text": "S3 · CHARGER · prochaine étape sauvegardée",
-    "x": 0.85,
-    "y": 6.8,
-    "w": 11.5,
-    "h": 0.35,
-    "size": 16
-  },
-  {
-    "slide": 51,
-    "text": "S3 · CHARGER",
-    "x": 0.65,
-    "y": 0.1,
-    "w": 11.7,
-    "h": 0.2,
-    "size": 10
-  },
-  {
-    "slide": 51,
-    "text": "Avant le 8 : Cap Bon. Dès le 8 : Grand Tunis. La fin de validité est exclue.",
-    "x": 0.85,
-    "y": 6.4,
-    "w": 11.62,
-    "h": 0.46,
-    "size": 16
-  },
-  {
-    "slide": 51,
-    "text": "Youssef Douma · Leaders University",
-    "x": 0.65,
-    "y": 7.04,
-    "w": 10,
-    "h": 0.19,
-    "size": 10
-  },
-  {
-    "slide": 51,
-    "text": "51",
-    "x": 12,
-    "y": 6.97,
-    "w": 0.65,
-    "h": 0.3,
-    "size": 12
-  },
-  {
-    "slide": 52,
     "text": "C",
     "x": 0.65,
     "y": 0.29,
@@ -5580,7 +5463,7 @@
     "size": 16
   },
   {
-    "slide": 52,
+    "slide": 50,
     "text": "S3 · CHARGER",
     "x": 1.23,
     "y": 0.34,
@@ -5589,13 +5472,175 @@
     "size": 12
   },
   {
-    "slide": 52,
-    "text": "À quelle carte rattacher la vente ?",
+    "slide": 50,
+    "text": "À vous · recherche temporelle · 35 min",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
     "h": 1.08,
     "size": 34
+  },
+  {
+    "slide": 50,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 50,
+    "text": "50",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
+    "h": 0.3,
+    "size": 12
+  },
+  {
+    "slide": 50,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 50,
+    "text": "Compléter la recherche avant de lancer l’incrément.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
+  },
+  {
+    "slide": 50,
+    "text": "1",
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 50,
+    "text": "Dans incremental.py, compléter trouver_shop_key avec l’ossature fournie.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 50,
+    "text": "2",
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 50,
+    "text": "Lancer python3 verifier.py 05 sur le petit cas de deux versions fourni.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 50,
+    "text": "3",
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 50,
+    "text": "Prédire puis expliquer la clé du 7 janvier et celle du 8 janvier.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 50,
+    "text": "Le contrôle 05 utilise un cas isolé. Le lot réel sera appliqué seulement après ce contrôle réussi.",
+    "x": 0.85,
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
+  },
+  {
+    "slide": 51,
+    "text": "10",
+    "x": 0.85,
+    "y": 1.3,
+    "w": 2.2,
+    "h": 2.2,
+    "size": 64
+  },
+  {
+    "slide": 51,
+    "text": "MINUTES",
+    "x": 1,
+    "y": 3.67,
+    "w": 1.9,
+    "h": 0.4,
+    "size": 22
+  },
+  {
+    "slide": 51,
+    "text": "Pause · 10 minutes",
+    "x": 3.6,
+    "y": 1.65,
+    "w": 8.2,
+    "h": 0.85,
+    "size": 42
+  },
+  {
+    "slide": 51,
+    "text": "Conservez le contrôle 05 et votre explication de la frontière.\nReprenez au lot du 8 janvier.",
+    "x": 3.6,
+    "y": 3,
+    "w": 8.25,
+    "h": 1.7,
+    "size": 28
+  },
+  {
+    "slide": 51,
+    "text": "S3 · CHARGER · prochaine étape sauvegardée",
+    "x": 0.85,
+    "y": 6.8,
+    "w": 11.5,
+    "h": 0.35,
+    "size": 16
+  },
+  {
+    "slide": 52,
+    "text": "S3 · CHARGER",
+    "x": 0.65,
+    "y": 0.1,
+    "w": 11.7,
+    "h": 0.2,
+    "size": 10
+  },
+  {
+    "slide": 52,
+    "text": "S013 + S014 nouvelles ; S012 identique déjà connue. Le rejeu ne change plus les chiffres.",
+    "x": 0.85,
+    "y": 6.4,
+    "w": 11.62,
+    "h": 0.46,
+    "size": 16
   },
   {
     "slide": 52,
@@ -5616,123 +5661,6 @@
     "size": 12
   },
   {
-    "slide": 52,
-    "text": "Version boutique",
-    "x": 0.79,
-    "y": 2.25,
-    "w": 3.3259999999999996,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 52,
-    "text": "Période de validité",
-    "x": 4.396,
-    "y": 2.25,
-    "w": 3.6265,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 52,
-    "text": "Vente concernée",
-    "x": 8.3025,
-    "y": 2.25,
-    "w": 4.2275,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 52,
-    "text": "NBE · Cap Bon",
-    "x": 0.79,
-    "y": 2.98,
-    "w": 3.3259999999999996,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "[05/01, 08/01[",
-    "x": 4.396,
-    "y": 2.98,
-    "w": 3.6265,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "07/01 → ancienne clé",
-    "x": 8.3025,
-    "y": 2.98,
-    "w": 4.2275,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "NBE · Grand Tunis",
-    "x": 0.79,
-    "y": 3.71,
-    "w": 3.3259999999999996,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "[08/01, sans fin[",
-    "x": 4.396,
-    "y": 3.71,
-    "w": 3.6265,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "08/01 → nouvelle clé",
-    "x": 8.3025,
-    "y": 3.71,
-    "w": 4.2275,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "TUN · Grand Tunis",
-    "x": 0.79,
-    "y": 4.44,
-    "w": 3.3259999999999996,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "[05/01, sans fin[",
-    "x": 4.396,
-    "y": 4.44,
-    "w": 3.6265,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "Toutes les dates de ce lot",
-    "x": 8.3025,
-    "y": 4.44,
-    "w": 4.2275,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 52,
-    "text": "Notation SQL : [valid_from, valid_to). NULL signifie « pas de fin connue ». Deux boutiques, trois versions.",
-    "x": 0.85,
-    "y": 6.22,
-    "w": 11.62,
-    "h": 0.6,
-    "size": 18
-  },
-  {
     "slide": 53,
     "text": "C",
     "x": 0.65,
@@ -5752,7 +5680,7 @@
   },
   {
     "slide": 53,
-    "text": "La date choisit la version de boutique",
+    "text": "Trois lignes reçues, deux ventes ajoutées",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -5779,75 +5707,129 @@
   },
   {
     "slide": 53,
-    "text": "WHERE shop_id = ?\n  AND valid_from <= ?\n  AND (valid_to IS NULL OR ? < valid_to)",
-    "x": 0.93,
-    "y": 2.45,
-    "w": 7.59,
-    "h": 3.18,
+    "text": "Vente",
+    "x": 0.79,
+    "y": 2.25,
+    "w": 2.391111111111111,
+    "h": 0.63,
+    "size": 19
+  },
+  {
+    "slide": 53,
+    "text": "Contenu",
+    "x": 3.461111111111111,
+    "y": 2.25,
+    "w": 5.7299999999999995,
+    "h": 0.63,
+    "size": 19
+  },
+  {
+    "slide": 53,
+    "text": "Effet",
+    "x": 9.47111111111111,
+    "y": 2.25,
+    "w": 3.0588888888888883,
+    "h": 0.63,
+    "size": 19
+  },
+  {
+    "slide": 53,
+    "text": "S013",
+    "x": 0.79,
+    "y": 2.98,
+    "w": 2.391111111111111,
+    "h": 0.63,
     "size": 20
   },
   {
     "slide": 53,
-    "text": "1",
-    "x": 9.08,
-    "y": 2.32,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 16
+    "text": "1 carnet · 4.500 TND",
+    "x": 3.461111111111111,
+    "y": 2.98,
+    "w": 5.7299999999999995,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 53,
-    "text": "Le premier ? reçoit le code boutique.",
-    "x": 9.68,
-    "y": 2.27,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
+    "text": "+1 fait",
+    "x": 9.47111111111111,
+    "y": 2.98,
+    "w": 3.0588888888888883,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 53,
-    "text": "2",
-    "x": 9.08,
-    "y": 3.46,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 16
+    "text": "S014",
+    "x": 0.79,
+    "y": 3.71,
+    "w": 2.391111111111111,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 53,
-    "text": "Les deux autres reçoivent la date de vente.",
-    "x": 9.68,
-    "y": 3.41,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
+    "text": "2 classeurs · 12.000 TND",
+    "x": 3.461111111111111,
+    "y": 3.71,
+    "w": 5.7299999999999995,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 53,
-    "text": "3",
-    "x": 9.08,
-    "y": 4.6,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 16
+    "text": "+1 fait",
+    "x": 9.47111111111111,
+    "y": 3.71,
+    "w": 3.0588888888888883,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 53,
-    "text": "Une seule version doit correspondre.",
-    "x": 9.68,
-    "y": 4.55,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
+    "text": "S012",
+    "x": 0.79,
+    "y": 4.44,
+    "w": 2.391111111111111,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 53,
-    "text": "Nom technique : SCD2. Les anciennes ventes conservent leur shop_key ; on ne réécrit pas leur histoire.",
+    "text": "Déjà présente, identique",
+    "x": 3.461111111111111,
+    "y": 4.44,
+    "w": 5.7299999999999995,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 53,
+    "text": "0 fait",
+    "x": 9.47111111111111,
+    "y": 4.44,
+    "w": 3.0588888888888883,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 53,
+    "text": "Le prix de S014 est 6,000 TND par classeur : 2 × 6,000 = 12,000 TND.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
     "h": 0.6,
     "size": 18
+  },
+  {
+    "slide": 53,
+    "text": "2 faits nouveaux · +3 unités · +16.500 TND",
+    "x": 0.85,
+    "y": 5.25,
+    "w": 11.5,
+    "h": 0.6,
+    "size": 29
   },
   {
     "slide": 54,
@@ -5869,7 +5851,7 @@
   },
   {
     "slide": 54,
-    "text": "Si un conflit apparaît, garder un état cohérent",
+    "text": "La preuve du rejeu : le résultat reste stable",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -5896,70 +5878,88 @@
   },
   {
     "slide": 54,
-    "text": "DÉBUT",
-    "x": 0.9,
-    "y": 2.65,
-    "w": 3.28,
-    "h": 0.4,
+    "text": "Avant ajout",
+    "x": 0.89,
+    "y": 2.53,
+    "w": 3.3,
+    "h": 0.7,
     "size": 22
   },
   {
     "slide": 54,
-    "text": "Ouvrir une transaction",
-    "x": 0.9,
-    "y": 3.5,
-    "w": 3.28,
-    "h": 0.8,
-    "size": 24
+    "text": "12 faits",
+    "x": 0.89,
+    "y": 3.45,
+    "w": 3.3,
+    "h": 0.9,
+    "size": 38
   },
   {
     "slide": 54,
-    "text": "LOT",
-    "x": 5.0200000000000005,
-    "y": 2.65,
-    "w": 3.28,
-    "h": 0.4,
+    "text": "99.000 TND",
+    "x": 0.89,
+    "y": 4.66,
+    "w": 3.3,
+    "h": 0.54,
+    "size": 25
+  },
+  {
+    "slide": 54,
+    "text": "Premier passage",
+    "x": 5.010000000000001,
+    "y": 2.53,
+    "w": 3.3,
+    "h": 0.7,
     "size": 22
   },
   {
     "slide": 54,
-    "text": "Vérifier puis insérer",
-    "x": 5.0200000000000005,
-    "y": 3.5,
-    "w": 3.28,
-    "h": 0.8,
-    "size": 24
+    "text": "14 faits",
+    "x": 5.010000000000001,
+    "y": 3.45,
+    "w": 3.3,
+    "h": 0.9,
+    "size": 38
   },
   {
     "slide": 54,
-    "text": "FIN",
-    "x": 9.14,
-    "y": 2.65,
-    "w": 3.28,
-    "h": 0.4,
+    "text": "115.500 TND",
+    "x": 5.010000000000001,
+    "y": 4.66,
+    "w": 3.3,
+    "h": 0.54,
+    "size": 25
+  },
+  {
+    "slide": 54,
+    "text": "Deuxième passage",
+    "x": 9.13,
+    "y": 2.53,
+    "w": 3.3,
+    "h": 0.7,
     "size": 22
   },
   {
     "slide": 54,
-    "text": "Tout valider ensemble",
-    "x": 9.14,
-    "y": 3.5,
-    "w": 3.28,
-    "h": 0.8,
-    "size": 24
+    "text": "14 faits",
+    "x": 9.13,
+    "y": 3.45,
+    "w": 3.3,
+    "h": 0.9,
+    "size": 38
   },
   {
     "slide": 54,
-    "text": "Conflit détecté → rollback : aucune insertion de ce lot.",
-    "x": 1.05,
-    "y": 5.32,
-    "w": 11.2,
-    "h": 0.42,
-    "size": 23
+    "text": "115.500 TND",
+    "x": 9.13,
+    "y": 4.66,
+    "w": 3.3,
+    "h": 0.54,
+    "size": 25
   },
   {
     "slide": 54,
-    "text": "Le mécanisme est fourni. Vous expliquez ce qu’il protège et vous contrôlez le résultat.",
+    "text": "12 + 2 = 14 ventes · 32 + 3 = 35 unités · 99,000 + 16,500 = 115,500 TND.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -5986,7 +5986,7 @@
   },
   {
     "slide": 55,
-    "text": "À vous · frontière et revue ciblée",
+    "text": "À vous · 25 min",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -6022,7 +6022,7 @@
   },
   {
     "slide": 55,
-    "text": "Prédire la carte du 7 janvier, puis celle du 8.",
+    "text": "Exécuter le lot du 8 janvier, puis le rejouer.",
     "x": 2.27,
     "y": 2.25,
     "w": 9.92,
@@ -6040,7 +6040,7 @@
   },
   {
     "slide": 55,
-    "text": "Compléter la recherche temporelle ou son contrôle ciblé.",
+    "text": "Lancer python3 executer.py increment, puis python3 executer.py rapport.",
     "x": 1.55,
     "y": 3.68,
     "w": 10.81,
@@ -6058,7 +6058,7 @@
   },
   {
     "slide": 55,
-    "text": "Vérifier qu’une ancienne vente garde sa clé après le changement.",
+    "text": "Rejouer le lot, relire le rapport et comparer les chiffres et les clés.",
     "x": 1.55,
     "y": 4.460000000000001,
     "w": 10.81,
@@ -6076,7 +6076,7 @@
   },
   {
     "slide": 55,
-    "text": "Sur une copie, tester une clé absente ; lire le refus et faire relire.",
+    "text": "Exécuter python3 verifier.py 06 ; distinguer ce contrôle isolé et vos sorties.",
     "x": 1.55,
     "y": 5.240000000000001,
     "w": 10.81,
@@ -6085,7 +6085,7 @@
   },
   {
     "slide": 55,
-    "text": "Corriger le point établi, relancer le contrôle, puis demander une deuxième revue de ce point.",
+    "text": "Le contrôle 06 vérifie un cas isolé ; gardez aussi les sorties de votre entrepôt dans atelier/outputs/.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -6112,7 +6112,7 @@
   },
   {
     "slide": 56,
-    "text": "À ce stade, je sais…",
+    "text": "Si un conflit apparaît, garder un état cohérent",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -6139,88 +6139,70 @@
   },
   {
     "slide": 56,
-    "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "text": "DÉBUT",
+    "x": 0.9,
+    "y": 2.65,
+    "w": 3.28,
+    "h": 0.4,
+    "size": 22
   },
   {
     "slide": 56,
-    "text": "Je charge",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
+    "text": "Ouvrir une transaction",
+    "x": 0.9,
+    "y": 3.5,
+    "w": 3.28,
+    "h": 0.8,
     "size": 24
   },
   {
     "slide": 56,
-    "text": "Les dimensions existent\navant leurs ventes.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
+    "text": "LOT",
+    "x": 5.0200000000000005,
+    "y": 2.65,
+    "w": 3.28,
+    "h": 0.4,
+    "size": 22
   },
   {
     "slide": 56,
-    "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
-  },
-  {
-    "slide": 56,
-    "text": "Je rejoue",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
+    "text": "Vérifier puis insérer",
+    "x": 5.0200000000000005,
+    "y": 3.5,
+    "w": 3.28,
+    "h": 0.8,
     "size": 24
   },
   {
     "slide": 56,
-    "text": "Le lot identique garde\n14 faits et 35 unités.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
+    "text": "FIN",
+    "x": 9.14,
+    "y": 2.65,
+    "w": 3.28,
+    "h": 0.4,
+    "size": 22
   },
   {
     "slide": 56,
-    "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
-  },
-  {
-    "slide": 56,
-    "text": "Je garde l’histoire",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
+    "text": "Tout valider ensemble",
+    "x": 9.14,
+    "y": 3.5,
+    "w": 3.28,
+    "h": 0.8,
     "size": 24
   },
   {
     "slide": 56,
-    "text": "La date choisit la version ;\nl’ancienne clé reste stable.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
+    "text": "Conflit détecté → rollback : aucune insertion de ce lot.",
+    "x": 1.05,
+    "y": 5.32,
+    "w": 11.2,
+    "h": 0.42,
+    "size": 23
   },
   {
     "slide": 56,
-    "text": "Sortie S3 : entrepôt final contrôlé, rejeu stable, frontière du 8 janvier expliquée.",
+    "text": "Le mécanisme est fourni. Vous expliquez ce qu’il protège et vous contrôlez le résultat.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -6229,61 +6211,133 @@
   },
   {
     "slide": 57,
-    "text": "D · S4 · MONTRER",
-    "x": 0.75,
-    "y": 0.68,
-    "w": 9.22,
-    "h": 0.44,
+    "text": "C",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
     "size": 16
   },
   {
     "slide": 57,
-    "text": "S4 · Je montre\net je révise le rapport",
-    "x": 0.75,
-    "y": 1.66,
-    "w": 9.4,
-    "h": 2.19,
-    "size": 43
+    "text": "S3 · CHARGER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
   },
   {
     "slide": 57,
-    "text": "Victoire : un vrai rapport Power BI et des chiffres reliés aux preuves.",
-    "x": 0.78,
-    "y": 4.15,
-    "w": 8.9,
-    "h": 0.92,
-    "size": 25
-  },
-  {
-    "slide": 57,
-    "text": "3 h",
-    "x": 0.78,
-    "y": 5.59,
-    "w": 2.5,
-    "h": 0.69,
-    "size": 40
-  },
-  {
-    "slide": 57,
-    "text": "Une petite victoire · des preuves visibles",
-    "x": 3.45,
-    "y": 5.72,
-    "w": 7.9,
-    "h": 0.45,
-    "size": 23
+    "text": "À vous · contrôler et revoir · 25 min",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
   },
   {
     "slide": 57,
     "text": "Youssef Douma · Leaders University",
-    "x": 0.8,
-    "y": 6.83,
-    "w": 9,
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 57,
+    "text": "57",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
     "h": 0.3,
-    "size": 15
+    "size": 12
+  },
+  {
+    "slide": 57,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 57,
+    "text": "Prouver la stabilité des clés et faire relire.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
+  },
+  {
+    "slide": 57,
+    "text": "1",
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 57,
+    "text": "Vérifier que les anciennes ventes gardent leur shop_key après le changement.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 57,
+    "text": "2",
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 57,
+    "text": "Sur une copie de test, essayer une clé absente et expliquer le refus.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 57,
+    "text": "3",
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 57,
+    "text": "Demander une revue ciblée, corriger, retester et refaire la revue.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 57,
+    "text": "Ne supprimez pas un contrôle pour obtenir un succès. Gardez le dernier état fonctionnel.",
+    "x": 0.85,
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
   },
   {
     "slide": 58,
-    "text": "D",
+    "text": "C",
     "x": 0.65,
     "y": 0.29,
     "w": 0.42,
@@ -6292,7 +6346,7 @@
   },
   {
     "slide": 58,
-    "text": "S4 · MONTRER",
+    "text": "S3 · CHARGER",
     "x": 1.23,
     "y": 0.34,
     "w": 11.3,
@@ -6301,7 +6355,7 @@
   },
   {
     "slide": 58,
-    "text": "Votre séance 4 · 180 minutes",
+    "text": "À ce stade, je sais…",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -6329,186 +6383,87 @@
   {
     "slide": 58,
     "text": "1",
-    "x": 0.77,
-    "y": 2.2,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 58,
-    "text": "0–35",
-    "x": 1.5,
-    "y": 2.19,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "text": "Je charge",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 58,
-    "text": "Exporter et transférer le paquet",
-    "x": 3.78,
-    "y": 2.21,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "15 T / 20 P",
-    "x": 10.1,
-    "y": 2.21,
-    "w": 2.15,
-    "h": 0.44,
+    "text": "Les dimensions existent\navant leurs ventes.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
     "slide": 58,
     "text": "2",
-    "x": 0.77,
-    "y": 2.95,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 58,
-    "text": "35–85",
-    "x": 1.5,
-    "y": 2.94,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "text": "Je rejoue",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 58,
-    "text": "Importer, typer, relier dans Power BI",
-    "x": 3.78,
-    "y": 2.96,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "15 T / 35 P",
-    "x": 10.1,
-    "y": 2.96,
-    "w": 2.15,
-    "h": 0.44,
+    "text": "Le lot identique garde\n14 faits et 35 unités.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
     "slide": 58,
     "text": "3",
-    "x": 0.77,
-    "y": 3.7,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 58,
-    "text": "85–95",
-    "x": 1.5,
-    "y": 3.69,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "text": "Je garde l’histoire",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 58,
-    "text": "Pause",
-    "x": 3.78,
-    "y": 3.71,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "10 min",
-    "x": 10.1,
-    "y": 3.71,
-    "w": 2.15,
-    "h": 0.44,
+    "text": "La date choisit la version ;\nl’ancienne clé reste stable.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
     "slide": 58,
-    "text": "4",
-    "x": 0.77,
-    "y": 4.45,
-    "w": 0.48,
-    "h": 0.48,
-    "size": 18
-  },
-  {
-    "slide": 58,
-    "text": "95–140",
-    "x": 1.5,
-    "y": 4.44,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "Mesure, graphique et filtre",
-    "x": 3.78,
-    "y": 4.46,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "15 T / 30 P",
-    "x": 10.1,
-    "y": 4.46,
-    "w": 2.15,
-    "h": 0.44,
-    "size": 20
-  },
-  {
-    "slide": 58,
-    "text": "5",
-    "x": 0.77,
-    "y": 5.2,
-    "w": 0.48,
-    "h": 0.48,
-    "size": 18
-  },
-  {
-    "slide": 58,
-    "text": "140–180",
-    "x": 1.5,
-    "y": 5.19,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "Skill local et revue",
-    "x": 3.78,
-    "y": 5.21,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 58,
-    "text": "15 T / 25 P",
-    "x": 10.1,
-    "y": 5.21,
-    "w": 2.15,
-    "h": 0.44,
-    "size": 20
-  },
-  {
-    "slide": 58,
-    "text": "Le premier rapport Power BI est construit aujourd’hui, avant le défi de S5.",
+    "text": "Sortie S3 : entrepôt final contrôlé, rejeu stable, frontière du 8 janvier expliquée.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -6517,192 +6472,57 @@
   },
   {
     "slide": 59,
-    "text": "D",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
+    "text": "D · S4 · MONTRER",
+    "x": 0.75,
+    "y": 0.68,
+    "w": 9.22,
+    "h": 0.44,
     "size": 16
   },
   {
     "slide": 59,
-    "text": "S4 · MONTRER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "text": "S4 · Je montre\net je révise le rapport",
+    "x": 0.75,
+    "y": 1.66,
+    "w": 9.4,
+    "h": 2.19,
+    "size": 43
   },
   {
     "slide": 59,
-    "text": "Exporter quatre tables complètes",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
+    "text": "Victoire : un vrai rapport Power BI et des chiffres reliés aux preuves.",
+    "x": 0.78,
+    "y": 4.15,
+    "w": 8.9,
+    "h": 0.92,
+    "size": 25
+  },
+  {
+    "slide": 59,
+    "text": "3 h",
+    "x": 0.78,
+    "y": 5.59,
+    "w": 2.5,
+    "h": 0.69,
+    "size": 40
+  },
+  {
+    "slide": 59,
+    "text": "Une petite victoire · des preuves visibles",
+    "x": 3.45,
+    "y": 5.72,
+    "w": 7.9,
+    "h": 0.45,
+    "size": 23
   },
   {
     "slide": 59,
     "text": "Youssef Douma · Leaders University",
-    "x": 0.65,
-    "y": 7.04,
-    "w": 10,
-    "h": 0.19,
-    "size": 10
-  },
-  {
-    "slide": 59,
-    "text": "59",
-    "x": 12,
-    "y": 6.97,
-    "w": 0.65,
+    "x": 0.8,
+    "y": 6.83,
+    "w": 9,
     "h": 0.3,
-    "size": 12
-  },
-  {
-    "slide": 59,
-    "text": "Fichier CSV",
-    "x": 0.79,
-    "y": 2.25,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 59,
-    "text": "Une ligne représente",
-    "x": 4.601219512195122,
-    "y": 2.25,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 59,
-    "text": "Point à garder",
-    "x": 8.412439024390245,
-    "y": 2.25,
-    "w": 4.117560975609757,
-    "h": 0.63,
-    "size": 19
-  },
-  {
-    "slide": 59,
-    "text": "dim_product.csv",
-    "x": 0.79,
-    "y": 2.98,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "Un produit",
-    "x": 4.601219512195122,
-    "y": 2.98,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "product_key unique",
-    "x": 8.412439024390245,
-    "y": 2.98,
-    "w": 4.117560975609757,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "dim_shop.csv",
-    "x": 0.79,
-    "y": 3.71,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "Une version de boutique",
-    "x": 4.601219512195122,
-    "y": 3.71,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "Anciennes versions incluses",
-    "x": 8.412439024390245,
-    "y": 3.71,
-    "w": 4.117560975609757,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "dim_date.csv",
-    "x": 0.79,
-    "y": 4.44,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "Un jour",
-    "x": 4.601219512195122,
-    "y": 4.44,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "date_key unique",
-    "x": 8.412439024390245,
-    "y": 4.44,
-    "w": 4.117560975609757,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "fact_sales.csv",
-    "x": 0.79,
-    "y": 5.17,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "Une vente",
-    "x": 4.601219512195122,
-    "y": 5.17,
-    "w": 3.531219512195122,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "Clés + mesures",
-    "x": 8.412439024390245,
-    "y": 5.17,
-    "w": 4.117560975609757,
-    "h": 0.63,
-    "size": 20
-  },
-  {
-    "slide": 59,
-    "text": "python3 executer.py export → outputs/powerbi/<delivery_id>/ · 4 CSV + manifest.json, même livraison.",
-    "x": 0.85,
-    "y": 6.22,
-    "w": 11.62,
-    "h": 0.6,
-    "size": 18
+    "size": 15
   },
   {
     "slide": 60,
@@ -6724,7 +6544,7 @@
   },
   {
     "slide": 60,
-    "text": "Passer du monde Python au poste Power BI",
+    "text": "Votre séance 4 · 180 minutes",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -6752,87 +6572,186 @@
   {
     "slide": 60,
     "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
+    "x": 0.77,
+    "y": 2.2,
+    "w": 0.48,
+    "h": 0.48,
     "size": 18
   },
   {
     "slide": 60,
-    "text": "Windows + WSL2",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "0–35",
+    "x": 1.5,
+    "y": 2.19,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 60,
-    "text": "Depuis le dossier export complet :\nexplorer.exe .\nCopier le paquet vers Windows.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
+    "text": "Exporter et transférer le paquet",
+    "x": 3.78,
+    "y": 2.21,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "15 T / 20 P",
+    "x": 10.1,
+    "y": 2.21,
+    "w": 2.15,
+    "h": 0.44,
     "size": 20
   },
   {
     "slide": 60,
     "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
+    "x": 0.77,
+    "y": 2.95,
+    "w": 0.48,
+    "h": 0.48,
     "size": 18
   },
   {
     "slide": 60,
-    "text": "Ubuntu",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "35–85",
+    "x": 1.5,
+    "y": 2.94,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 60,
-    "text": "Transférer le même paquet\nau vrai poste Windows\ndu groupe ou de la salle.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
+    "text": "Importer, typer, relier dans Power BI",
+    "x": 3.78,
+    "y": 2.96,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "15 T / 35 P",
+    "x": 10.1,
+    "y": 2.96,
+    "w": 2.15,
+    "h": 0.44,
     "size": 20
   },
   {
     "slide": 60,
     "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
+    "x": 0.77,
+    "y": 3.7,
+    "w": 0.48,
+    "h": 0.48,
     "size": 18
   },
   {
     "slide": 60,
-    "text": "Dossier stable",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "text": "85–95",
+    "x": 1.5,
+    "y": 3.69,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 60,
-    "text": "Garder les quatre CSV ensemble\net contrôler manifest.json\navant l’import.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
+    "text": "Pause",
+    "x": 3.78,
+    "y": 3.71,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "10 min",
+    "x": 10.1,
+    "y": 3.71,
+    "w": 2.15,
+    "h": 0.44,
     "size": 20
   },
   {
     "slide": 60,
-    "text": "Power BI Desktop ouvre les fichiers Windows. Le dossier source de l’ETL n’est pas le rapport.",
+    "text": "4",
+    "x": 0.77,
+    "y": 4.45,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
+  },
+  {
+    "slide": 60,
+    "text": "95–140",
+    "x": 1.5,
+    "y": 4.44,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "Mesure, graphique et filtre",
+    "x": 3.78,
+    "y": 4.46,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "15 T / 30 P",
+    "x": 10.1,
+    "y": 4.46,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 60,
+    "text": "5",
+    "x": 0.77,
+    "y": 5.2,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
+  },
+  {
+    "slide": 60,
+    "text": "140–180",
+    "x": 1.5,
+    "y": 5.19,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "Skill local et revue",
+    "x": 3.78,
+    "y": 5.21,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 60,
+    "text": "15 T / 25 P",
+    "x": 10.1,
+    "y": 5.21,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 60,
+    "text": "Le premier rapport Power BI est construit aujourd’hui, avant le défi de S5.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -6859,7 +6778,7 @@
   },
   {
     "slide": 61,
-    "text": "Dans Power BI : importer puis vérifier les types",
+    "text": "Exporter quatre tables complètes",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -6886,115 +6805,142 @@
   },
   {
     "slide": 61,
-    "text": "Colonnes",
+    "text": "Fichier CSV",
     "x": 0.79,
     "y": 2.25,
-    "w": 4.372903225806451,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 19
   },
   {
     "slide": 61,
-    "text": "Type à choisir",
-    "x": 5.442903225806451,
+    "text": "Une ligne représente",
+    "x": 4.601219512195122,
     "y": 2.25,
-    "w": 2.6926881720430105,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 19
   },
   {
     "slide": 61,
-    "text": "Pourquoi ?",
-    "x": 8.415591397849463,
+    "text": "Point à garder",
+    "x": 8.412439024390245,
     "y": 2.25,
-    "w": 4.114408602150537,
+    "w": 4.117560975609757,
     "h": 0.63,
     "size": 19
   },
   {
     "slide": 61,
-    "text": "Clés, quantité, millimes",
+    "text": "dim_product.csv",
     "x": 0.79,
     "y": 2.98,
-    "w": 4.372903225806451,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Nombre entier",
-    "x": 5.442903225806451,
+    "text": "Un produit",
+    "x": 4.601219512195122,
     "y": 2.98,
-    "w": 2.6926881720430105,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Garder valeurs exactes et liens",
-    "x": 8.415591397849463,
+    "text": "product_key unique",
+    "x": 8.412439024390245,
     "y": 2.98,
-    "w": 4.114408602150537,
+    "w": 4.117560975609757,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "full_date, valid_from, valid_to",
+    "text": "dim_shop.csv",
     "x": 0.79,
     "y": 3.71,
-    "w": 4.372903225806451,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Date",
-    "x": 5.442903225806451,
+    "text": "Une version de boutique",
+    "x": 4.601219512195122,
     "y": 3.71,
-    "w": 2.6926881720430105,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Lire les jours et les bornes",
-    "x": 8.415591397849463,
+    "text": "Anciennes versions incluses",
+    "x": 8.412439024390245,
     "y": 3.71,
-    "w": 4.114408602150537,
+    "w": 4.117560975609757,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Codes, noms, zone",
+    "text": "dim_date.csv",
     "x": 0.79,
     "y": 4.44,
-    "w": 4.372903225806451,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Texte",
-    "x": 5.442903225806451,
+    "text": "Un jour",
+    "x": 4.601219512195122,
     "y": 4.44,
-    "w": 2.6926881720430105,
+    "w": 3.531219512195122,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Ne pas calculer avec un code",
-    "x": 8.415591397849463,
+    "text": "date_key unique",
+    "x": 8.412439024390245,
     "y": 4.44,
-    "w": 4.114408602150537,
+    "w": 4.117560975609757,
     "h": 0.63,
     "size": 20
   },
   {
     "slide": 61,
-    "text": "Obtenir les données → Texte/CSV · séparateur virgule · UTF-8. valid_to vide = valeur null.",
+    "text": "fact_sales.csv",
+    "x": 0.79,
+    "y": 5.17,
+    "w": 3.531219512195122,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 61,
+    "text": "Une vente",
+    "x": 4.601219512195122,
+    "y": 5.17,
+    "w": 3.531219512195122,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 61,
+    "text": "Clés + mesures",
+    "x": 8.412439024390245,
+    "y": 5.17,
+    "w": 4.117560975609757,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 61,
+    "text": "python3 executer.py export → outputs/powerbi/<delivery_id>/ · 4 CSV + manifest.json, même livraison.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7021,7 +6967,7 @@
   },
   {
     "slide": 62,
-    "text": "Créer trois relations actives 1 → plusieurs",
+    "text": "Passer du monde Python au poste Power BI",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7048,115 +6994,88 @@
   },
   {
     "slide": 62,
-    "text": "fact_sales",
-    "x": 4.87,
-    "y": 2.45,
-    "w": 3.61,
-    "h": 0.45,
-    "size": 26
-  },
-  {
-    "slide": 62,
-    "text": "sale_id · date_key\nproduct_key · shop_key\nquantity · unit_price_millimes\namount_millimes",
-    "x": 4.87,
-    "y": 3.05,
-    "w": 3.61,
-    "h": 1.5,
-    "size": 18
-  },
-  {
-    "slide": 62,
-    "text": "dim_product",
-    "x": 0.8500000000000001,
-    "y": 2.44,
-    "w": 2.75,
-    "h": 0.42,
-    "size": 22
-  },
-  {
-    "slide": 62,
-    "text": "product_key\nproduct_id\nproduct_name",
-    "x": 0.8500000000000001,
-    "y": 3.11,
-    "w": 2.75,
-    "h": 1.9699999999999998,
-    "size": 20
-  },
-  {
-    "slide": 62,
-    "text": "dim_shop",
-    "x": 9.7,
-    "y": 2.44,
-    "w": 2.75,
-    "h": 0.42,
-    "size": 22
-  },
-  {
-    "slide": 62,
-    "text": "shop_key\nshop_id\nshop_name",
-    "x": 9.7,
-    "y": 3.11,
-    "w": 2.75,
-    "h": 1.9699999999999998,
-    "size": 20
-  },
-  {
-    "slide": 62,
-    "text": "dim_date",
-    "x": 4.75,
-    "y": 5.18,
-    "w": 3.85,
-    "h": 0.42,
-    "size": 22
-  },
-  {
-    "slide": 62,
-    "text": "date_key · full_date",
-    "x": 4.75,
-    "y": 5.619999999999999,
-    "w": 3.85,
-    "h": 0.3,
-    "size": 20
-  },
-  {
-    "slide": 62,
     "text": "1",
-    "x": 3.87,
-    "y": 3.23,
-    "w": 0.3,
-    "h": 0.3,
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 62,
-    "text": "N",
-    "x": 4.27,
-    "y": 3.23,
-    "w": 0.3,
-    "h": 0.3,
+    "text": "Windows + WSL2",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 62,
+    "text": "Depuis le dossier export complet :\nexplorer.exe .\nCopier le paquet vers Windows.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 62,
+    "text": "2",
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 62,
-    "text": "N",
-    "x": 8.81,
-    "y": 3.23,
-    "w": 0.3,
-    "h": 0.3,
+    "text": "Ubuntu",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 62,
+    "text": "Transférer le même paquet\nau vrai poste Windows\ndu groupe ou de la salle.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 62,
+    "text": "3",
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 62,
-    "text": "1",
-    "x": 9.13,
-    "y": 3.23,
-    "w": 0.3,
-    "h": 0.3,
-    "size": 18
+    "text": "Dossier stable",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 62,
-    "text": "dim_shop.shop_key → fact_sales.shop_key. Filtrage simple de la dimension vers le fait ; jamais shop_id.",
+    "text": "Garder les quatre CSV ensemble\net contrôler manifest.json\navant l’import.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 62,
+    "text": "Power BI Desktop ouvre les fichiers Windows. Le dossier source de l’ETL n’est pas le rapport.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7183,7 +7102,7 @@
   },
   {
     "slide": 63,
-    "text": "À vous · 35 min sur Windows",
+    "text": "Dans Power BI : importer puis vérifier les types",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7210,79 +7129,115 @@
   },
   {
     "slide": 63,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
-  },
-  {
-    "slide": 63,
-    "text": "Construire le modèle depuis les quatre fichiers.",
-    "x": 2.27,
+    "text": "Colonnes",
+    "x": 0.79,
     "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
+    "w": 4.372903225806451,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 63,
-    "text": "1",
-    "x": 0.82,
-    "y": 3.7,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "Type à choisir",
+    "x": 5.442903225806451,
+    "y": 2.25,
+    "w": 2.6926881720430105,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 63,
-    "text": "Ouvrir Power BI Desktop ; importer les quatre CSV de la même livraison.",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Pourquoi ?",
+    "x": 8.415591397849463,
+    "y": 2.25,
+    "w": 4.114408602150537,
+    "h": 0.63,
+    "size": 19
   },
   {
     "slide": 63,
-    "text": "2",
-    "x": 0.82,
-    "y": 4.48,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "Clés, quantité, millimes",
+    "x": 0.79,
+    "y": 2.98,
+    "w": 4.372903225806451,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 63,
-    "text": "Vérifier les types et créer les trois relations 1:* simples.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Nombre entier",
+    "x": 5.442903225806451,
+    "y": 2.98,
+    "w": 2.6926881720430105,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 63,
-    "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "Garder valeurs exactes et liens",
+    "x": 8.415591397849463,
+    "y": 2.98,
+    "w": 4.114408602150537,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 63,
-    "text": "Montrer la vue Modèle et expliquer le côté 1 et le côté plusieurs.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "full_date, valid_from, valid_to",
+    "x": 0.79,
+    "y": 3.71,
+    "w": 4.372903225806451,
+    "h": 0.63,
+    "size": 20
   },
   {
     "slide": 63,
-    "text": "Guide pas à pas : powerbi/README.md. Le modèle de secours se trouve dans le même dossier.",
+    "text": "Date",
+    "x": 5.442903225806451,
+    "y": 3.71,
+    "w": 2.6926881720430105,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 63,
+    "text": "Lire les jours et les bornes",
+    "x": 8.415591397849463,
+    "y": 3.71,
+    "w": 4.114408602150537,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 63,
+    "text": "Codes, noms, zone",
+    "x": 0.79,
+    "y": 4.44,
+    "w": 4.372903225806451,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 63,
+    "text": "Texte",
+    "x": 5.442903225806451,
+    "y": 4.44,
+    "w": 2.6926881720430105,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 63,
+    "text": "Ne pas calculer avec un code",
+    "x": 8.415591397849463,
+    "y": 4.44,
+    "w": 4.114408602150537,
+    "h": 0.63,
+    "size": 20
+  },
+  {
+    "slide": 63,
+    "text": "Obtenir les données → Texte/CSV · séparateur virgule · UTF-8. valid_to vide = valeur null.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7291,48 +7246,165 @@
   },
   {
     "slide": 64,
-    "text": "10",
-    "x": 0.85,
-    "y": 1.3,
-    "w": 2.2,
-    "h": 2.2,
-    "size": 64
+    "text": "D",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
   },
   {
     "slide": 64,
-    "text": "MINUTES",
-    "x": 1,
-    "y": 3.67,
-    "w": 1.9,
-    "h": 0.4,
+    "text": "S4 · MONTRER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 64,
+    "text": "Créer trois relations actives 1 → plusieurs",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
+  },
+  {
+    "slide": 64,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 64,
+    "text": "64",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
+    "h": 0.3,
+    "size": 12
+  },
+  {
+    "slide": 64,
+    "text": "fact_sales",
+    "x": 4.87,
+    "y": 2.45,
+    "w": 3.61,
+    "h": 0.45,
+    "size": 26
+  },
+  {
+    "slide": 64,
+    "text": "sale_id · date_key\nproduct_key · shop_key\nquantity · unit_price_millimes\namount_millimes",
+    "x": 4.87,
+    "y": 3.05,
+    "w": 3.61,
+    "h": 1.5,
+    "size": 18
+  },
+  {
+    "slide": 64,
+    "text": "dim_product",
+    "x": 0.8500000000000001,
+    "y": 2.44,
+    "w": 2.75,
+    "h": 0.42,
     "size": 22
   },
   {
     "slide": 64,
-    "text": "Pause · 10 minutes",
-    "x": 3.6,
-    "y": 1.65,
-    "w": 8.2,
-    "h": 0.85,
-    "size": 42
+    "text": "product_key\nproduct_id\nproduct_name",
+    "x": 0.8500000000000001,
+    "y": 3.11,
+    "w": 2.75,
+    "h": 1.9699999999999998,
+    "size": 20
   },
   {
     "slide": 64,
-    "text": "Enregistrez le rapport Power BI.\nReprenez à la mesure du montant vendu.",
-    "x": 3.6,
-    "y": 3,
-    "w": 8.25,
-    "h": 1.7,
-    "size": 28
+    "text": "dim_shop",
+    "x": 9.7,
+    "y": 2.44,
+    "w": 2.75,
+    "h": 0.42,
+    "size": 22
   },
   {
     "slide": 64,
-    "text": "S4 · MONTRER · prochaine étape sauvegardée",
+    "text": "shop_key\nshop_id\nshop_name",
+    "x": 9.7,
+    "y": 3.11,
+    "w": 2.75,
+    "h": 1.9699999999999998,
+    "size": 20
+  },
+  {
+    "slide": 64,
+    "text": "dim_date",
+    "x": 4.75,
+    "y": 5.18,
+    "w": 3.85,
+    "h": 0.42,
+    "size": 22
+  },
+  {
+    "slide": 64,
+    "text": "date_key · full_date",
+    "x": 4.75,
+    "y": 5.619999999999999,
+    "w": 3.85,
+    "h": 0.3,
+    "size": 20
+  },
+  {
+    "slide": 64,
+    "text": "1",
+    "x": 3.87,
+    "y": 3.23,
+    "w": 0.3,
+    "h": 0.3,
+    "size": 18
+  },
+  {
+    "slide": 64,
+    "text": "N",
+    "x": 4.27,
+    "y": 3.23,
+    "w": 0.3,
+    "h": 0.3,
+    "size": 18
+  },
+  {
+    "slide": 64,
+    "text": "N",
+    "x": 8.81,
+    "y": 3.23,
+    "w": 0.3,
+    "h": 0.3,
+    "size": 18
+  },
+  {
+    "slide": 64,
+    "text": "1",
+    "x": 9.13,
+    "y": 3.23,
+    "w": 0.3,
+    "h": 0.3,
+    "size": 18
+  },
+  {
+    "slide": 64,
+    "text": "dim_shop.shop_key → fact_sales.shop_key. Filtrage simple de la dimension vers le fait ; jamais shop_id.",
     "x": 0.85,
-    "y": 6.8,
-    "w": 11.5,
-    "h": 0.35,
-    "size": 16
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
   },
   {
     "slide": 65,
@@ -7354,7 +7426,7 @@
   },
   {
     "slide": 65,
-    "text": "Une mesure pour afficher le montant en TND",
+    "text": "À vous · 35 min sur Windows",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7381,70 +7453,79 @@
   },
   {
     "slide": 65,
-    "text": "CA TND =\nDIVIDE(\n  SUM(fact_sales[amount_millimes]),\n  1000\n)",
-    "x": 0.93,
-    "y": 2.45,
-    "w": 7.59,
-    "h": 3.18,
-    "size": 20
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 65,
+    "text": "Construire le modèle depuis les quatre fichiers.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
   },
   {
     "slide": 65,
     "text": "1",
-    "x": 9.08,
-    "y": 2.32,
+    "x": 0.82,
+    "y": 3.7,
     "w": 0.47,
     "h": 0.47,
-    "size": 16
+    "size": 17
   },
   {
     "slide": 65,
-    "text": "SUM additionne les montants entiers.",
-    "x": 9.68,
-    "y": 2.27,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
+    "text": "Ouvrir Power BI Desktop ; importer les quatre CSV de la même livraison.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
     "slide": 65,
     "text": "2",
-    "x": 9.08,
-    "y": 3.46,
+    "x": 0.82,
+    "y": 4.48,
     "w": 0.47,
     "h": 0.47,
-    "size": 16
+    "size": 17
   },
   {
     "slide": 65,
-    "text": "DIVIDE convertit les millimes en TND.",
-    "x": 9.68,
-    "y": 3.41,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
+    "text": "Vérifier les types et créer les trois relations 1:* simples.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
     "slide": 65,
     "text": "3",
-    "x": 9.08,
-    "y": 4.6,
+    "x": 0.82,
+    "y": 5.260000000000001,
     "w": 0.47,
     "h": 0.47,
-    "size": 16
+    "size": 17
   },
   {
     "slide": 65,
-    "text": "Afficher sans unité abrégée, avec 3 décimales.",
-    "x": 9.68,
-    "y": 4.55,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
+    "text": "Montrer la vue Modèle et expliquer le côté 1 et le côté plusieurs.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
     "slide": 65,
-    "text": "La mesure utilise amount_millimes ; additionner les prix unitaires ne donne pas les ventes.",
+    "text": "Guide pas à pas : powerbi/README.md. Le modèle de secours se trouve dans le même dossier.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7453,111 +7534,48 @@
   },
   {
     "slide": 66,
-    "text": "D",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
-    "size": 16
-  },
-  {
-    "slide": 66,
-    "text": "S4 · MONTRER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
-  },
-  {
-    "slide": 66,
-    "text": "Retrouver les mêmes chiffres dans le rapport",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
-  },
-  {
-    "slide": 66,
-    "text": "Youssef Douma · Leaders University",
-    "x": 0.65,
-    "y": 7.04,
-    "w": 10,
-    "h": 0.19,
-    "size": 10
-  },
-  {
-    "slide": 66,
-    "text": "66",
-    "x": 12,
-    "y": 6.97,
-    "w": 0.65,
-    "h": 0.3,
-    "size": 12
-  },
-  {
-    "slide": 66,
-    "text": "14",
-    "x": 0.89,
-    "y": 2.72,
-    "w": 3.3,
-    "h": 0.98,
-    "size": 48
-  },
-  {
-    "slide": 66,
-    "text": "Ventes élémentaires\nNombre de lignes de vente",
-    "x": 0.89,
-    "y": 4.11,
-    "w": 3.3,
-    "h": 1,
-    "size": 23
-  },
-  {
-    "slide": 66,
-    "text": "35",
-    "x": 5.010000000000001,
-    "y": 2.72,
-    "w": 3.3,
-    "h": 0.98,
-    "size": 48
-  },
-  {
-    "slide": 66,
-    "text": "Unités vendues\nSUM(quantity)",
-    "x": 5.010000000000001,
-    "y": 4.11,
-    "w": 3.3,
-    "h": 1,
-    "size": 23
-  },
-  {
-    "slide": 66,
-    "text": "115,500",
-    "x": 9.13,
-    "y": 2.72,
-    "w": 3.3,
-    "h": 0.98,
-    "size": 48
-  },
-  {
-    "slide": 66,
-    "text": "Montant en TND\nCA TND",
-    "x": 9.13,
-    "y": 4.11,
-    "w": 3.3,
-    "h": 1,
-    "size": 23
-  },
-  {
-    "slide": 66,
-    "text": "Selon la langue du poste, 115.500 et 115,500 représentent ici le même montant : 115 TND et 500 millimes.",
+    "text": "10",
     "x": 0.85,
-    "y": 6.22,
-    "w": 11.62,
-    "h": 0.6,
-    "size": 18
+    "y": 1.3,
+    "w": 2.2,
+    "h": 2.2,
+    "size": 64
+  },
+  {
+    "slide": 66,
+    "text": "MINUTES",
+    "x": 1,
+    "y": 3.67,
+    "w": 1.9,
+    "h": 0.4,
+    "size": 22
+  },
+  {
+    "slide": 66,
+    "text": "Pause · 10 minutes",
+    "x": 3.6,
+    "y": 1.65,
+    "w": 8.2,
+    "h": 0.85,
+    "size": 42
+  },
+  {
+    "slide": 66,
+    "text": "Enregistrez le rapport Power BI.\nReprenez à la mesure du montant vendu.",
+    "x": 3.6,
+    "y": 3,
+    "w": 8.25,
+    "h": 1.7,
+    "size": 28
+  },
+  {
+    "slide": 66,
+    "text": "S4 · MONTRER · prochaine étape sauvegardée",
+    "x": 0.85,
+    "y": 6.8,
+    "w": 11.5,
+    "h": 0.35,
+    "size": 16
   },
   {
     "slide": 67,
@@ -7579,7 +7597,7 @@
   },
   {
     "slide": 67,
-    "text": "Le graphique doit garder la zone historique",
+    "text": "Une mesure pour afficher le montant en TND",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7606,34 +7624,70 @@
   },
   {
     "slide": 67,
-    "text": "Ventes du 5 au 8 janvier 2026 · zone valable à la date de vente",
-    "x": 0.85,
-    "y": 1.93,
-    "w": 11.7,
-    "h": 0.4,
+    "text": "CA TND =\nDIVIDE(\n  SUM(fact_sales[amount_millimes]),\n  1000\n)",
+    "x": 0.93,
+    "y": 2.45,
+    "w": 7.59,
+    "h": 3.18,
     "size": 20
   },
   {
     "slide": 67,
-    "text": "72,000\nTND",
-    "x": 9.64,
-    "y": 2.93,
-    "w": 2.72,
+    "text": "1",
+    "x": 9.08,
+    "y": 2.32,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 16
+  },
+  {
+    "slide": 67,
+    "text": "SUM additionne les montants entiers.",
+    "x": 9.68,
+    "y": 2.27,
+    "w": 2.98,
     "h": 1.04,
-    "size": 30
+    "size": 19
   },
   {
     "slide": 67,
-    "text": "Grand Tunis : Tunis\n+ Nabeul dès le 8.",
-    "x": 9.64,
-    "y": 4.19,
-    "w": 2.72,
-    "h": 1.13,
-    "size": 21
+    "text": "2",
+    "x": 9.08,
+    "y": 3.46,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 16
   },
   {
     "slide": 67,
-    "text": "Cap Bon : 43,500 TND. Grand Tunis : 67,500 + 4,500 = 72,000 TND. Total : 115,500 TND.",
+    "text": "DIVIDE convertit les millimes en TND.",
+    "x": 9.68,
+    "y": 3.41,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
+  },
+  {
+    "slide": 67,
+    "text": "3",
+    "x": 9.08,
+    "y": 4.6,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 16
+  },
+  {
+    "slide": 67,
+    "text": "Afficher sans unité abrégée, avec 3 décimales.",
+    "x": 9.68,
+    "y": 4.55,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
+  },
+  {
+    "slide": 67,
+    "text": "La mesure utilise amount_millimes ; additionner les prix unitaires ne donne pas les ventes.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7660,7 +7714,7 @@
   },
   {
     "slide": 68,
-    "text": "À vous · 30 min",
+    "text": "Retrouver les mêmes chiffres dans le rapport",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7687,79 +7741,61 @@
   },
   {
     "slide": 68,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
+    "text": "14",
+    "x": 0.89,
+    "y": 2.72,
+    "w": 3.3,
+    "h": 0.98,
+    "size": 48
   },
   {
     "slide": 68,
-    "text": "Créer le graphique, filtrer, puis actualiser.",
-    "x": 2.27,
-    "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
+    "text": "Ventes élémentaires\nNombre de lignes de vente",
+    "x": 0.89,
+    "y": 4.11,
+    "w": 3.3,
+    "h": 1,
+    "size": 23
   },
   {
     "slide": 68,
-    "text": "1",
-    "x": 0.82,
-    "y": 3.7,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "35",
+    "x": 5.010000000000001,
+    "y": 2.72,
+    "w": 3.3,
+    "h": 0.98,
+    "size": 48
   },
   {
     "slide": 68,
-    "text": "Carte CA TND + barres par dim_shop[commercial_zone].",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Unités vendues\nSUM(quantity)",
+    "x": 5.010000000000001,
+    "y": 4.11,
+    "w": 3.3,
+    "h": 1,
+    "size": 23
   },
   {
     "slide": 68,
-    "text": "2",
-    "x": 0.82,
-    "y": 4.48,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "text": "115,500",
+    "x": 9.13,
+    "y": 2.72,
+    "w": 3.3,
+    "h": 0.98,
+    "size": 48
   },
   {
     "slide": 68,
-    "text": "Filtrer une zone, expliquer le montant, puis retirer le filtre.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Montant en TND\nCA TND",
+    "x": 9.13,
+    "y": 4.11,
+    "w": 3.3,
+    "h": 1,
+    "size": 23
   },
   {
     "slide": 68,
-    "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
-  },
-  {
-    "slide": 68,
-    "text": "Copier un export complet dans le dossier Windows, puis Actualiser.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
-  },
-  {
-    "slide": 68,
-    "text": "Une modification SQLite ne met pas les CSV à jour : refaire l’export avant l’actualisation.",
+    "text": "Selon la langue du poste, 115.500 et 115,500 représentent ici le même montant : 115 TND et 500 millimes.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7786,7 +7822,7 @@
   },
   {
     "slide": 69,
-    "text": "Un Skill : une recette de revue réutilisable",
+    "text": "Le graphique doit garder la zone historique",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7813,70 +7849,34 @@
   },
   {
     "slide": 69,
-    "text": "---\nname: revoir-bi\ndescription: Vérifier le rapport Atlas.\n---\nComparer les totaux SQL et Power BI.\nVérifier les relations avec shop_key.\nCiter un écart avec sa preuve.",
-    "x": 0.93,
-    "y": 2.45,
-    "w": 7.59,
-    "h": 3.18,
-    "size": 18
+    "text": "Ventes du 5 au 8 janvier 2026 · zone valable à la date de vente",
+    "x": 0.85,
+    "y": 1.93,
+    "w": 11.7,
+    "h": 0.4,
+    "size": 20
   },
   {
     "slide": 69,
-    "text": "1",
-    "x": 9.08,
-    "y": 2.32,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 16
-  },
-  {
-    "slide": 69,
-    "text": "Créer le dossier du Skill\npuis son fichier SKILL.md.",
-    "x": 9.68,
-    "y": 2.27,
-    "w": 2.98,
+    "text": "72,000\nTND",
+    "x": 9.64,
+    "y": 2.93,
+    "w": 2.72,
     "h": 1.04,
-    "size": 19
+    "size": 30
   },
   {
     "slide": 69,
-    "text": "2",
-    "x": 9.08,
-    "y": 3.46,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 16
+    "text": "Grand Tunis : Tunis\n+ Nabeul dès le 8.",
+    "x": 9.64,
+    "y": 4.19,
+    "w": 2.72,
+    "h": 1.13,
+    "size": 21
   },
   {
     "slide": 69,
-    "text": "Changer une règle utile de l’amorce.",
-    "x": 9.68,
-    "y": 3.41,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
-  },
-  {
-    "slide": 69,
-    "text": "3",
-    "x": 9.08,
-    "y": 4.6,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 16
-  },
-  {
-    "slide": 69,
-    "text": "Utiliser le Skill puis observer son effet.",
-    "x": 9.68,
-    "y": 4.55,
-    "w": 2.98,
-    "h": 1.04,
-    "size": 19
-  },
-  {
-    "slide": 69,
-    "text": "Chemin : .agents/skills/revoir-bi/SKILL.md. Si non découvert, demander la lecture du fichier et le noter.",
+    "text": "Cap Bon : 43,500 TND. Grand Tunis : 67,500 + 4,500 = 72,000 TND. Total : 115,500 TND.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -7885,21 +7885,30 @@
   },
   {
     "slide": 70,
-    "text": "S4 · MONTRER",
+    "text": "D",
     "x": 0.65,
-    "y": 0.1,
-    "w": 11.7,
-    "h": 0.2,
-    "size": 10
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
   },
   {
     "slide": 70,
-    "text": "Si disponibles et quota suffisant : au plus 2 sous-agents en lecture seule. Sinon, 2 passes successives.",
-    "x": 0.85,
-    "y": 6.4,
-    "w": 11.62,
-    "h": 0.46,
-    "size": 16
+    "text": "S4 · MONTRER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 70,
+    "text": "À vous · 30 min",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
   },
   {
     "slide": 70,
@@ -7918,6 +7927,87 @@
     "w": 0.65,
     "h": 0.3,
     "size": 12
+  },
+  {
+    "slide": 70,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 70,
+    "text": "Créer le graphique, filtrer, puis actualiser.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
+  },
+  {
+    "slide": 70,
+    "text": "1",
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 70,
+    "text": "Carte CA TND + barres par dim_shop[commercial_zone].",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 70,
+    "text": "2",
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 70,
+    "text": "Filtrer une zone, expliquer le montant, puis retirer le filtre.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 70,
+    "text": "3",
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 70,
+    "text": "Copier un export complet dans le dossier Windows, puis Actualiser.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 70,
+    "text": "Une modification SQLite ne met pas les CSV à jour : refaire l’export avant l’actualisation.",
+    "x": 0.85,
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
   },
   {
     "slide": 71,
@@ -7939,7 +8029,7 @@
   },
   {
     "slide": 71,
-    "text": "À vous · revue → correction → deuxième revue",
+    "text": "Un Skill : une recette de revue réutilisable",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -7966,79 +8056,70 @@
   },
   {
     "slide": 71,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
-  },
-  {
-    "slide": 71,
-    "text": "Utiliser votre Skill sur deux questions précises.",
-    "x": 2.27,
-    "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
+    "text": "---\nname: revoir-bi\ndescription: Vérifier le rapport Atlas.\n---\nComparer les totaux SQL et Power BI.\nVérifier les relations avec shop_key.\nCiter un écart avec sa preuve.",
+    "x": 0.93,
+    "y": 2.45,
+    "w": 7.59,
+    "h": 3.18,
+    "size": 18
   },
   {
     "slide": 71,
     "text": "1",
-    "x": 0.82,
-    "y": 3.7,
+    "x": 9.08,
+    "y": 2.32,
     "w": 0.47,
     "h": 0.47,
-    "size": 17
+    "size": 16
   },
   {
     "slide": 71,
-    "text": "Données : rejets, doublons, unités et totaux ; histoire : dates et relations.",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "À la racine du cours, créer le dossier du Skill.",
+    "x": 9.68,
+    "y": 2.27,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
   },
   {
     "slide": 71,
     "text": "2",
-    "x": 0.82,
-    "y": 4.48,
+    "x": 9.08,
+    "y": 3.46,
     "w": 0.47,
     "h": 0.47,
-    "size": 17
+    "size": 16
   },
   {
     "slide": 71,
-    "text": "Rassembler les constats ; un seul auteur corrige le défaut établi.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Changer une règle utile de l’amorce.",
+    "x": 9.68,
+    "y": 3.41,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
   },
   {
     "slide": 71,
     "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
+    "x": 9.08,
+    "y": 4.6,
     "w": 0.47,
     "h": 0.47,
-    "size": 17
+    "size": 16
   },
   {
     "slide": 71,
-    "text": "Relancer le contrôle et refaire la revue du résultat corrigé.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "Utiliser le Skill puis observer son effet.",
+    "x": 9.68,
+    "y": 4.55,
+    "w": 2.98,
+    "h": 1.04,
+    "size": 19
   },
   {
     "slide": 71,
-    "text": "Une conversation qui joue deux rôles n’est pas deux sous-agents. Chaque agent utilise du quota.",
+    "text": "À la racine : .agents/skills/revoir-bi/SKILL.md. Si non découvert, demander sa lecture et le noter.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -8047,30 +8128,21 @@
   },
   {
     "slide": 72,
-    "text": "D",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
-    "size": 16
-  },
-  {
-    "slide": 72,
     "text": "S4 · MONTRER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "x": 0.65,
+    "y": 0.1,
+    "w": 11.7,
+    "h": 0.2,
+    "size": 10
   },
   {
     "slide": 72,
-    "text": "À ce stade, je sais…",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
+    "text": "Si disponibles et quota suffisant : au plus 2 sous-agents en lecture seule. Sinon, 2 passes successives.",
+    "x": 0.85,
+    "y": 6.4,
+    "w": 11.62,
+    "h": 0.46,
+    "size": 16
   },
   {
     "slide": 72,
@@ -8091,89 +8163,125 @@
     "size": 12
   },
   {
-    "slide": 72,
+    "slide": 73,
+    "text": "D",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
+  },
+  {
+    "slide": 73,
+    "text": "S4 · MONTRER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 73,
+    "text": "À vous · revue → correction → deuxième revue",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
+  },
+  {
+    "slide": 73,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 73,
+    "text": "73",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
+    "h": 0.3,
+    "size": 12
+  },
+  {
+    "slide": 73,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 73,
+    "text": "Utiliser votre Skill sur deux questions précises.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
+  },
+  {
+    "slide": 73,
     "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
-    "slide": 72,
-    "text": "Je montre",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "slide": 73,
+    "text": "Données : rejets, doublons, unités et totaux ; histoire : dates et relations.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
-    "slide": 72,
-    "text": "Trois relations actives,\nune carte et un graphique.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 72,
+    "slide": 73,
     "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
-    "slide": 72,
-    "text": "Je compare",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "slide": 73,
+    "text": "Rassembler les constats ; un seul auteur corrige le défaut établi.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
-    "slide": 72,
-    "text": "SQL et Power BI donnent\nles mêmes chiffres.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 72,
+    "slide": 73,
     "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
-    "slide": 72,
-    "text": "Je révise",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "slide": 73,
+    "text": "Relancer le contrôle et refaire la revue du résultat corrigé.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
-    "slide": 72,
-    "text": "Le Skill guide la revue ;\nla correction est recontrôlée.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 72,
-    "text": "Sortie S4 : rapport Power BI enregistré, preuve de filtre/actualisation et revue traçable.",
+    "slide": 73,
+    "text": "Une conversation qui joue deux rôles n’est pas deux sous-agents. Chaque agent utilise du quota.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -8181,62 +8289,8 @@
     "size": 18
   },
   {
-    "slide": 73,
-    "text": "E · S5 · LIVRER",
-    "x": 0.75,
-    "y": 0.68,
-    "w": 9.22,
-    "h": 0.44,
-    "size": 16
-  },
-  {
-    "slide": 73,
-    "text": "S5 · Je livre\net je défends les chiffres",
-    "x": 0.75,
-    "y": 1.66,
-    "w": 9.4,
-    "h": 2.19,
-    "size": 43
-  },
-  {
-    "slide": 73,
-    "text": "Atlas vous confie un défaut connu à réparer · groupe de 3 au maximum.",
-    "x": 0.78,
-    "y": 4.15,
-    "w": 8.9,
-    "h": 0.92,
-    "size": 25
-  },
-  {
-    "slide": 73,
-    "text": "3 h",
-    "x": 0.78,
-    "y": 5.59,
-    "w": 2.5,
-    "h": 0.69,
-    "size": 40
-  },
-  {
-    "slide": 73,
-    "text": "Une petite victoire · des preuves visibles",
-    "x": 3.45,
-    "y": 5.72,
-    "w": 7.9,
-    "h": 0.45,
-    "size": 23
-  },
-  {
-    "slide": 73,
-    "text": "Youssef Douma · Leaders University",
-    "x": 0.8,
-    "y": 6.83,
-    "w": 9,
-    "h": 0.3,
-    "size": 15
-  },
-  {
     "slide": 74,
-    "text": "E",
+    "text": "D",
     "x": 0.65,
     "y": 0.29,
     "w": 0.42,
@@ -8245,7 +8299,7 @@
   },
   {
     "slide": 74,
-    "text": "S5 · LIVRER",
+    "text": "S4 · MONTRER",
     "x": 1.23,
     "y": 0.34,
     "w": 11.3,
@@ -8254,7 +8308,7 @@
   },
   {
     "slide": 74,
-    "text": "Votre séance 5 · 180 minutes",
+    "text": "À ce stade, je sais…",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -8282,186 +8336,87 @@
   {
     "slide": 74,
     "text": "1",
-    "x": 0.77,
-    "y": 2.2,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 74,
-    "text": "0–30",
-    "x": 1.5,
-    "y": 2.19,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "text": "Je montre",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 74,
-    "text": "Commande finale + plan et rôles",
-    "x": 3.78,
-    "y": 2.21,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "15 T / 15 P",
-    "x": 10.1,
-    "y": 2.21,
-    "w": 2.15,
-    "h": 0.44,
+    "text": "Trois relations actives,\nune carte et un graphique.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
     "slide": 74,
     "text": "2",
-    "x": 0.77,
-    "y": 2.95,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 74,
-    "text": "30–95",
-    "x": 1.5,
-    "y": 2.94,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "text": "Je compare",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 74,
-    "text": "Reproduire, réparer, revoir, recontrôler",
-    "x": 3.78,
-    "y": 2.96,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "65 P",
-    "x": 10.1,
-    "y": 2.96,
-    "w": 2.15,
-    "h": 0.44,
+    "text": "SQL et Power BI donnent\nles mêmes chiffres.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
     "slide": 74,
     "text": "3",
-    "x": 0.77,
-    "y": 3.7,
-    "w": 0.48,
-    "h": 0.48,
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
     "size": 18
   },
   {
     "slide": 74,
-    "text": "95–105",
-    "x": 1.5,
-    "y": 3.69,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
+    "text": "Je révise",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
     "slide": 74,
-    "text": "Pause",
-    "x": 3.78,
-    "y": 3.71,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "10 min",
-    "x": 10.1,
-    "y": 3.71,
-    "w": 2.15,
-    "h": 0.44,
+    "text": "Le Skill guide la revue ;\nla correction est recontrôlée.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
     "size": 20
   },
   {
     "slide": 74,
-    "text": "4",
-    "x": 0.77,
-    "y": 4.45,
-    "w": 0.48,
-    "h": 0.48,
-    "size": 18
-  },
-  {
-    "slide": 74,
-    "text": "105–160",
-    "x": 1.5,
-    "y": 4.44,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "Actualiser et défendre le rapport",
-    "x": 3.78,
-    "y": 4.46,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "55 P",
-    "x": 10.1,
-    "y": 4.46,
-    "w": 2.15,
-    "h": 0.44,
-    "size": 20
-  },
-  {
-    "slide": 74,
-    "text": "5",
-    "x": 0.77,
-    "y": 5.2,
-    "w": 0.48,
-    "h": 0.48,
-    "size": 18
-  },
-  {
-    "slide": 74,
-    "text": "160–180",
-    "x": 1.5,
-    "y": 5.19,
-    "w": 1.95,
-    "h": 0.48,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "Dernier passage et remise",
-    "x": 3.78,
-    "y": 5.21,
-    "w": 6.2,
-    "h": 0.44,
-    "size": 21
-  },
-  {
-    "slide": 74,
-    "text": "20 P",
-    "x": 10.1,
-    "y": 5.21,
-    "w": 2.15,
-    "h": 0.44,
-    "size": 20
-  },
-  {
-    "slide": 74,
-    "text": "Le défi prolonge Atlas. Il réutilise un cas déjà rencontré et le rapport réalisé en S4.",
+    "text": "Sortie S4 : rapport Power BI enregistré, preuve de filtre/actualisation et revue traçable.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -8470,138 +8425,57 @@
   },
   {
     "slide": 75,
-    "text": "E",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
+    "text": "E · S5 · LIVRER",
+    "x": 0.75,
+    "y": 0.68,
+    "w": 9.22,
+    "h": 0.44,
     "size": 16
   },
   {
     "slide": 75,
-    "text": "S5 · LIVRER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "text": "S5 · Je livre\net je défends les chiffres",
+    "x": 0.75,
+    "y": 1.66,
+    "w": 9.4,
+    "h": 2.19,
+    "size": 43
   },
   {
     "slide": 75,
-    "text": "Un défaut court, une réparation prouvée",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
+    "text": "Atlas vous confie un défaut connu à réparer · groupe de 3 au maximum.",
+    "x": 0.78,
+    "y": 4.15,
+    "w": 8.9,
+    "h": 0.92,
+    "size": 25
+  },
+  {
+    "slide": 75,
+    "text": "3 h",
+    "x": 0.78,
+    "y": 5.59,
+    "w": 2.5,
+    "h": 0.69,
+    "size": 40
+  },
+  {
+    "slide": 75,
+    "text": "Une petite victoire · des preuves visibles",
+    "x": 3.45,
+    "y": 5.72,
+    "w": 7.9,
+    "h": 0.45,
+    "size": 23
   },
   {
     "slide": 75,
     "text": "Youssef Douma · Leaders University",
-    "x": 0.65,
-    "y": 7.04,
-    "w": 10,
-    "h": 0.19,
-    "size": 10
-  },
-  {
-    "slide": 75,
-    "text": "75",
-    "x": 12,
-    "y": 6.97,
-    "w": 0.65,
+    "x": 0.8,
+    "y": 6.83,
+    "w": 9,
     "h": 0.3,
-    "size": 12
-  },
-  {
-    "slide": 75,
-    "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
-  },
-  {
-    "slide": 75,
-    "text": "Données",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
-  },
-  {
-    "slide": 75,
-    "text": "Retrouver la source\net expliquer l’écart.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 75,
-    "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
-  },
-  {
-    "slide": 75,
-    "text": "Modèle et histoire",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
-  },
-  {
-    "slide": 75,
-    "text": "Vérifier les clés\net la frontière du 8 janvier.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 75,
-    "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
-  },
-  {
-    "slide": 75,
-    "text": "Rapport et preuves",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
-  },
-  {
-    "slide": 75,
-    "text": "Actualiser Power BI\net comparer à SQL.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 75,
-    "text": "À trois : un rôle chacun. À deux ou seul : regrouper les rôles ; chacun explique sa contribution.",
-    "x": 0.85,
-    "y": 6.22,
-    "w": 11.62,
-    "h": 0.6,
-    "size": 18
+    "size": 15
   },
   {
     "slide": 76,
@@ -8623,7 +8497,7 @@
   },
   {
     "slide": 76,
-    "text": "À vous · 65 min",
+    "text": "Votre séance 5 · 180 minutes",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -8650,79 +8524,187 @@
   },
   {
     "slide": 76,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
-  },
-  {
-    "slide": 76,
-    "text": "Rendre le défaut reproductible avant de le corriger.",
-    "x": 2.27,
-    "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
-  },
-  {
-    "slide": 76,
     "text": "1",
-    "x": 0.82,
-    "y": 3.7,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "x": 0.77,
+    "y": 2.2,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
   },
   {
     "slide": 76,
-    "text": "Écrire le symptôme, le résultat attendu et un plan court.",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "0–30",
+    "x": 1.5,
+    "y": 2.19,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "Commande finale + plan et rôles",
+    "x": 3.78,
+    "y": 2.21,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "15 T / 15 P",
+    "x": 10.1,
+    "y": 2.21,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
   },
   {
     "slide": 76,
     "text": "2",
-    "x": 0.82,
-    "y": 4.48,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "x": 0.77,
+    "y": 2.95,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
   },
   {
     "slide": 76,
-    "text": "Réparer seulement le défaut fourni, puis lancer le contrôle utile.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "30–95",
+    "x": 1.5,
+    "y": 2.94,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "Reproduire, réparer, revoir, recontrôler",
+    "x": 3.78,
+    "y": 2.96,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "65 P",
+    "x": 10.1,
+    "y": 2.96,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
   },
   {
     "slide": 76,
     "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "x": 0.77,
+    "y": 3.7,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
   },
   {
     "slide": 76,
-    "text": "Faire une revue indépendante, corriger et refaire la revue.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "text": "95–105",
+    "x": 1.5,
+    "y": 3.69,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
   },
   {
     "slide": 76,
-    "text": "Conserver : prompt, fichiers modifiés, commande réelle, résultat et limite éventuelle.",
+    "text": "Pause",
+    "x": 3.78,
+    "y": 3.71,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "10 min",
+    "x": 10.1,
+    "y": 3.71,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 76,
+    "text": "4",
+    "x": 0.77,
+    "y": 4.45,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
+  },
+  {
+    "slide": 76,
+    "text": "105–160",
+    "x": 1.5,
+    "y": 4.44,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "Actualiser et défendre le rapport",
+    "x": 3.78,
+    "y": 4.46,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "55 P",
+    "x": 10.1,
+    "y": 4.46,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 76,
+    "text": "5",
+    "x": 0.77,
+    "y": 5.2,
+    "w": 0.48,
+    "h": 0.48,
+    "size": 18
+  },
+  {
+    "slide": 76,
+    "text": "160–180",
+    "x": 1.5,
+    "y": 5.19,
+    "w": 1.95,
+    "h": 0.48,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "Dernier passage et remise",
+    "x": 3.78,
+    "y": 5.21,
+    "w": 6.2,
+    "h": 0.44,
+    "size": 21
+  },
+  {
+    "slide": 76,
+    "text": "20 P",
+    "x": 10.1,
+    "y": 5.21,
+    "w": 2.15,
+    "h": 0.44,
+    "size": 20
+  },
+  {
+    "slide": 76,
+    "text": "Le défi prolonge Atlas. Il réutilise un cas déjà rencontré et le rapport réalisé en S4.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -8731,66 +8713,165 @@
   },
   {
     "slide": 77,
-    "text": "10",
+    "text": "E",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
+  },
+  {
+    "slide": 77,
+    "text": "S5 · LIVRER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 77,
+    "text": "Un défaut court, une réparation prouvée",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
+  },
+  {
+    "slide": 77,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 77,
+    "text": "77",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
+    "h": 0.3,
+    "size": 12
+  },
+  {
+    "slide": 77,
+    "text": "1",
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
+  },
+  {
+    "slide": 77,
+    "text": "Données",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 77,
+    "text": "Retrouver la source\net expliquer l’écart.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 77,
+    "text": "2",
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
+  },
+  {
+    "slide": 77,
+    "text": "Modèle et histoire",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 77,
+    "text": "Vérifier les clés\net la frontière du 8 janvier.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 77,
+    "text": "3",
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
+  },
+  {
+    "slide": 77,
+    "text": "Rapport et preuves",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
+  },
+  {
+    "slide": 77,
+    "text": "Actualiser Power BI\net comparer à SQL.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 77,
+    "text": "À trois : un rôle chacun. À deux ou seul : regrouper les rôles ; chacun explique sa contribution.",
     "x": 0.85,
-    "y": 1.3,
-    "w": 2.2,
-    "h": 2.2,
-    "size": 64
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
   },
   {
-    "slide": 77,
-    "text": "MINUTES",
-    "x": 1,
-    "y": 3.67,
-    "w": 1.9,
-    "h": 0.4,
-    "size": 22
-  },
-  {
-    "slide": 77,
-    "text": "Pause · 10 minutes",
-    "x": 3.6,
-    "y": 1.65,
-    "w": 8.2,
-    "h": 0.85,
-    "size": 42
-  },
-  {
-    "slide": 77,
-    "text": "Sauvez le dernier état fonctionnel.\nReprenez avec un export complet et le rapport Power BI.",
-    "x": 3.6,
-    "y": 3,
-    "w": 8.25,
-    "h": 1.7,
-    "size": 28
-  },
-  {
-    "slide": 77,
-    "text": "S5 · LIVRER · prochaine étape sauvegardée",
-    "x": 0.85,
-    "y": 6.8,
-    "w": 11.5,
-    "h": 0.35,
+    "slide": 78,
+    "text": "E",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
     "size": 16
   },
   {
     "slide": 78,
     "text": "S5 · LIVRER",
-    "x": 0.65,
-    "y": 0.1,
-    "w": 11.7,
-    "h": 0.2,
-    "size": 10
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
   },
   {
     "slide": 78,
-    "text": "14 ventes · 35 unités · 115,500 TND · Cap Bon 43,500 · Grand Tunis 72,000.",
-    "x": 0.85,
-    "y": 6.4,
-    "w": 11.62,
-    "h": 0.46,
-    "size": 16
+    "text": "À vous · 65 min",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
   },
   {
     "slide": 78,
@@ -8811,134 +8892,80 @@
     "size": 12
   },
   {
-    "slide": 79,
-    "text": "E",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
-    "size": 16
+    "slide": 78,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
   },
   {
-    "slide": 79,
-    "text": "S5 · LIVRER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "slide": 78,
+    "text": "Rendre le défaut reproductible avant de le corriger.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
   },
   {
-    "slide": 79,
-    "text": "La direction demande : « pourquoi y croire ? »",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
-  },
-  {
-    "slide": 79,
-    "text": "Youssef Douma · Leaders University",
-    "x": 0.65,
-    "y": 7.04,
-    "w": 10,
-    "h": 0.19,
-    "size": 10
-  },
-  {
-    "slide": 79,
-    "text": "79",
-    "x": 12,
-    "y": 6.97,
-    "w": 0.65,
-    "h": 0.3,
-    "size": 12
-  },
-  {
-    "slide": 79,
+    "slide": 78,
     "text": "1",
-    "x": 0.87,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
-    "slide": 79,
-    "text": "Montrer le chemin",
-    "x": 0.87,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "slide": 78,
+    "text": "Écrire le symptôme, le résultat attendu et un plan court.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
-    "slide": 79,
-    "text": "Ligne source → nettoyage\n→ clé → SQL → Power BI.",
-    "x": 0.87,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 79,
+    "slide": 78,
     "text": "2",
-    "x": 4.976666666666667,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
-    "slide": 79,
-    "text": "Montrer le changement",
-    "x": 4.976666666666667,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "slide": 78,
+    "text": "Réparer seulement le défaut fourni, puis lancer le contrôle utile.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
-    "slide": 79,
-    "text": "Vente NBE du 7 : Cap Bon.\nVente NBE du 8 : Grand Tunis.",
-    "x": 4.976666666666667,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 79,
+    "slide": 78,
     "text": "3",
-    "x": 9.083333333333334,
-    "y": 2.4200000000000004,
-    "w": 0.52,
-    "h": 0.52,
-    "size": 18
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
   },
   {
-    "slide": 79,
-    "text": "Montrer sa part",
-    "x": 9.083333333333334,
-    "y": 3.12,
-    "w": 3.3666666666666667,
-    "h": 0.7,
-    "size": 24
+    "slide": 78,
+    "text": "Faire une revue indépendante, corriger et refaire la revue.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
   },
   {
-    "slide": 79,
-    "text": "Ce que j’ai changé,\nce que j’ai exécuté,\nce qui reste limité.",
-    "x": 9.083333333333334,
-    "y": 3.9400000000000004,
-    "w": 3.3666666666666667,
-    "h": 1.7999999999999998,
-    "size": 20
-  },
-  {
-    "slide": 79,
-    "text": "Utilisez les preuves de votre travail. L’explication peut aussi être écrite.",
+    "slide": 78,
+    "text": "Conserver : prompt, fichiers modifiés, commande réelle, résultat et limite éventuelle.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
@@ -8946,31 +8973,67 @@
     "size": 18
   },
   {
-    "slide": 80,
-    "text": "E",
-    "x": 0.65,
-    "y": 0.29,
-    "w": 0.42,
-    "h": 0.42,
+    "slide": 79,
+    "text": "10",
+    "x": 0.85,
+    "y": 1.3,
+    "w": 2.2,
+    "h": 2.2,
+    "size": 64
+  },
+  {
+    "slide": 79,
+    "text": "MINUTES",
+    "x": 1,
+    "y": 3.67,
+    "w": 1.9,
+    "h": 0.4,
+    "size": 22
+  },
+  {
+    "slide": 79,
+    "text": "Pause · 10 minutes",
+    "x": 3.6,
+    "y": 1.65,
+    "w": 8.2,
+    "h": 0.85,
+    "size": 42
+  },
+  {
+    "slide": 79,
+    "text": "Sauvez le dernier état fonctionnel.\nReprenez avec un export complet et le rapport Power BI.",
+    "x": 3.6,
+    "y": 3,
+    "w": 8.25,
+    "h": 1.7,
+    "size": 28
+  },
+  {
+    "slide": 79,
+    "text": "S5 · LIVRER · prochaine étape sauvegardée",
+    "x": 0.85,
+    "y": 6.8,
+    "w": 11.5,
+    "h": 0.35,
     "size": 16
   },
   {
     "slide": 80,
     "text": "S5 · LIVRER",
-    "x": 1.23,
-    "y": 0.34,
-    "w": 11.3,
-    "h": 0.28,
-    "size": 12
+    "x": 0.65,
+    "y": 0.1,
+    "w": 11.7,
+    "h": 0.2,
+    "size": 10
   },
   {
     "slide": 80,
-    "text": "Dernier passage · 20 min",
-    "x": 0.65,
-    "y": 0.94,
-    "w": 12,
-    "h": 1.08,
-    "size": 34
+    "text": "14 ventes · 35 unités · 115,500 TND · Cap Bon 43,500 · Grand Tunis 72,000.",
+    "x": 0.85,
+    "y": 6.4,
+    "w": 11.62,
+    "h": 0.46,
+    "size": 16
   },
   {
     "slide": 80,
@@ -8991,166 +9054,139 @@
     "size": 12
   },
   {
-    "slide": 80,
-    "text": "À VOUS",
-    "x": 0.78,
-    "y": 2.23,
-    "w": 1.16,
-    "h": 1.16,
-    "size": 14
+    "slide": 81,
+    "text": "E",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
   },
   {
-    "slide": 80,
-    "text": "Remettre un dossier que l’on peut reprendre.",
-    "x": 2.27,
-    "y": 2.25,
-    "w": 9.92,
-    "h": 1.15,
-    "size": 28
+    "slide": 81,
+    "text": "S5 · LIVRER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
   },
   {
-    "slide": 80,
+    "slide": 81,
+    "text": "La direction demande : « pourquoi y croire ? »",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
+  },
+  {
+    "slide": 81,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 81,
+    "text": "81",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
+    "h": 0.3,
+    "size": 12
+  },
+  {
+    "slide": 81,
     "text": "1",
-    "x": 0.82,
-    "y": 3.7,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "x": 0.87,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
   },
   {
-    "slide": 80,
-    "text": "Relancer depuis le jalon documenté et comparer aux valeurs finales.",
-    "x": 1.55,
-    "y": 3.68,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "slide": 81,
+    "text": "Montrer le chemin",
+    "x": 0.87,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
-    "slide": 80,
+    "slide": 81,
+    "text": "Ligne source → nettoyage\n→ clé → SQL → Power BI.",
+    "x": 0.87,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 81,
     "text": "2",
-    "x": 0.82,
-    "y": 4.48,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "x": 4.976666666666667,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
   },
   {
-    "slide": 80,
-    "text": "Garder code, entrepôt/reconstruction, 4 CSV, manifeste et fichier Power BI.",
-    "x": 1.55,
-    "y": 4.460000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "slide": 81,
+    "text": "Montrer le changement",
+    "x": 4.976666666666667,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
-    "slide": 80,
+    "slide": 81,
+    "text": "Vente NBE du 7 : Cap Bon.\nVente NBE du 8 : Grand Tunis.",
+    "x": 4.976666666666667,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 81,
     "text": "3",
-    "x": 0.82,
-    "y": 5.260000000000001,
-    "w": 0.47,
-    "h": 0.47,
-    "size": 17
+    "x": 9.083333333333334,
+    "y": 2.4200000000000004,
+    "w": 0.52,
+    "h": 0.52,
+    "size": 18
   },
   {
-    "slide": 80,
-    "text": "Terminer SUIVI.md : contribution, preuve, limite et prochaine action.",
-    "x": 1.55,
-    "y": 5.240000000000001,
-    "w": 10.81,
-    "h": 0.65,
-    "size": 22
+    "slide": 81,
+    "text": "Montrer sa part",
+    "x": 9.083333333333334,
+    "y": 3.12,
+    "w": 3.3666666666666667,
+    "h": 0.7,
+    "size": 24
   },
   {
-    "slide": 80,
-    "text": "Référence du défi : 04_defi_atlas.pdf. Aucun résultat annoncé sans contrôle réellement exécuté.",
+    "slide": 81,
+    "text": "Ce que j’ai changé,\nce que j’ai exécuté,\nce qui reste limité.",
+    "x": 9.083333333333334,
+    "y": 3.9400000000000004,
+    "w": 3.3666666666666667,
+    "h": 1.7999999999999998,
+    "size": 20
+  },
+  {
+    "slide": 81,
+    "text": "Utilisez les preuves de votre travail. L’explication peut aussi être écrite.",
     "x": 0.85,
     "y": 6.22,
     "w": 11.62,
     "h": 0.6,
     "size": 18
-  },
-  {
-    "slide": 81,
-    "text": "S5 · DU FICHIER À LA DÉCISION",
-    "x": 0.75,
-    "y": 0.68,
-    "w": 9.22,
-    "h": 0.44,
-    "size": 16
-  },
-  {
-    "slide": 81,
-    "text": "Vous savez maintenant\nconstruire et expliquer une chaîne BI",
-    "x": 0.75,
-    "y": 1.58,
-    "w": 9.3,
-    "h": 1.55,
-    "size": 44
-  },
-  {
-    "slide": 81,
-    "text": "1",
-    "x": 0.8,
-    "y": 3.62,
-    "w": 0.43,
-    "h": 0.43,
-    "size": 16
-  },
-  {
-    "slide": 81,
-    "text": "Guider Codex avec une petite tâche et un contexte utile.",
-    "x": 1.5,
-    "y": 3.56,
-    "w": 10.8,
-    "h": 0.55,
-    "size": 24
-  },
-  {
-    "slide": 81,
-    "text": "2",
-    "x": 0.8,
-    "y": 4.34,
-    "w": 0.43,
-    "h": 0.43,
-    "size": 16
-  },
-  {
-    "slide": 81,
-    "text": "Lire CSV/SQL, nettoyer et préserver l’histoire des ventes.",
-    "x": 1.5,
-    "y": 4.28,
-    "w": 10.8,
-    "h": 0.55,
-    "size": 24
-  },
-  {
-    "slide": 81,
-    "text": "3",
-    "x": 0.8,
-    "y": 5.0600000000000005,
-    "w": 0.43,
-    "h": 0.43,
-    "size": 16
-  },
-  {
-    "slide": 81,
-    "text": "Relier Power BI aux tables et défendre les chiffres.",
-    "x": 1.5,
-    "y": 5,
-    "w": 10.8,
-    "h": 0.55,
-    "size": 24
-  },
-  {
-    "slide": 81,
-    "text": "Prochaine étape : réutiliser la démarche sur des données dont vous comprenez le sens.",
-    "x": 0.8,
-    "y": 6.7,
-    "w": 11.8,
-    "h": 0.5,
-    "size": 20
   },
   {
     "slide": 82,
@@ -9172,7 +9208,7 @@
   },
   {
     "slide": 82,
-    "text": "Pour retrouver les repères officiels",
+    "text": "Dernier passage · 20 min",
     "x": 0.65,
     "y": 0.94,
     "w": 12,
@@ -9199,6 +9235,213 @@
   },
   {
     "slide": 82,
+    "text": "À VOUS",
+    "x": 0.78,
+    "y": 2.23,
+    "w": 1.16,
+    "h": 1.16,
+    "size": 14
+  },
+  {
+    "slide": 82,
+    "text": "Remettre un dossier que l’on peut reprendre.",
+    "x": 2.27,
+    "y": 2.25,
+    "w": 9.92,
+    "h": 1.15,
+    "size": 28
+  },
+  {
+    "slide": 82,
+    "text": "1",
+    "x": 0.82,
+    "y": 3.7,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 82,
+    "text": "Relancer depuis le jalon documenté et comparer aux valeurs finales.",
+    "x": 1.55,
+    "y": 3.68,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 82,
+    "text": "2",
+    "x": 0.82,
+    "y": 4.48,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 82,
+    "text": "Garder code, entrepôt/reconstruction, 4 CSV, manifeste et fichier Power BI.",
+    "x": 1.55,
+    "y": 4.460000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 82,
+    "text": "3",
+    "x": 0.82,
+    "y": 5.260000000000001,
+    "w": 0.47,
+    "h": 0.47,
+    "size": 17
+  },
+  {
+    "slide": 82,
+    "text": "Terminer SUIVI.md : contribution, preuve, limite et prochaine action.",
+    "x": 1.55,
+    "y": 5.240000000000001,
+    "w": 10.81,
+    "h": 0.65,
+    "size": 22
+  },
+  {
+    "slide": 82,
+    "text": "Référence du défi : 04_defi_atlas.pdf. Aucun résultat annoncé sans contrôle réellement exécuté.",
+    "x": 0.85,
+    "y": 6.22,
+    "w": 11.62,
+    "h": 0.6,
+    "size": 18
+  },
+  {
+    "slide": 83,
+    "text": "S5 · DU FICHIER À LA DÉCISION",
+    "x": 0.75,
+    "y": 0.68,
+    "w": 9.22,
+    "h": 0.44,
+    "size": 16
+  },
+  {
+    "slide": 83,
+    "text": "Vous savez maintenant\nconstruire et expliquer une chaîne BI",
+    "x": 0.75,
+    "y": 1.58,
+    "w": 9.3,
+    "h": 1.55,
+    "size": 44
+  },
+  {
+    "slide": 83,
+    "text": "1",
+    "x": 0.8,
+    "y": 3.62,
+    "w": 0.43,
+    "h": 0.43,
+    "size": 16
+  },
+  {
+    "slide": 83,
+    "text": "Guider Codex avec une petite tâche et un contexte utile.",
+    "x": 1.5,
+    "y": 3.56,
+    "w": 10.8,
+    "h": 0.55,
+    "size": 24
+  },
+  {
+    "slide": 83,
+    "text": "2",
+    "x": 0.8,
+    "y": 4.34,
+    "w": 0.43,
+    "h": 0.43,
+    "size": 16
+  },
+  {
+    "slide": 83,
+    "text": "Lire CSV/SQL, nettoyer et préserver l’histoire des ventes.",
+    "x": 1.5,
+    "y": 4.28,
+    "w": 10.8,
+    "h": 0.55,
+    "size": 24
+  },
+  {
+    "slide": 83,
+    "text": "3",
+    "x": 0.8,
+    "y": 5.0600000000000005,
+    "w": 0.43,
+    "h": 0.43,
+    "size": 16
+  },
+  {
+    "slide": 83,
+    "text": "Relier Power BI aux tables et défendre les chiffres.",
+    "x": 1.5,
+    "y": 5,
+    "w": 10.8,
+    "h": 0.55,
+    "size": 24
+  },
+  {
+    "slide": 83,
+    "text": "Prochaine étape : réutiliser la démarche sur des données dont vous comprenez le sens.",
+    "x": 0.8,
+    "y": 6.7,
+    "w": 11.8,
+    "h": 0.5,
+    "size": 20
+  },
+  {
+    "slide": 84,
+    "text": "E",
+    "x": 0.65,
+    "y": 0.29,
+    "w": 0.42,
+    "h": 0.42,
+    "size": 16
+  },
+  {
+    "slide": 84,
+    "text": "S5 · LIVRER",
+    "x": 1.23,
+    "y": 0.34,
+    "w": 11.3,
+    "h": 0.28,
+    "size": 12
+  },
+  {
+    "slide": 84,
+    "text": "Pour retrouver les repères officiels",
+    "x": 0.65,
+    "y": 0.94,
+    "w": 12,
+    "h": 1.08,
+    "size": 34
+  },
+  {
+    "slide": 84,
+    "text": "Youssef Douma · Leaders University",
+    "x": 0.65,
+    "y": 7.04,
+    "w": 10,
+    "h": 0.19,
+    "size": 10
+  },
+  {
+    "slide": 84,
+    "text": "84",
+    "x": 12,
+    "y": 6.97,
+    "w": 0.65,
+    "h": 0.3,
+    "size": 12
+  },
+  {
+    "slide": 84,
     "text": "1",
     "x": 0.87,
     "y": 2.5,
@@ -9207,7 +9450,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "CODEX",
     "x": 0.87,
     "y": 3.3,
@@ -9216,7 +9459,7 @@
     "size": 21
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Application",
     "x": 0.87,
     "y": 4,
@@ -9225,7 +9468,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Offre Free",
     "x": 0.87,
     "y": 4.5600000000000005,
@@ -9234,7 +9477,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Modèles et effort",
     "x": 0.87,
     "y": 5.12,
@@ -9243,7 +9486,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "2",
     "x": 4.99,
     "y": 2.5,
@@ -9252,7 +9495,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "POSTE ET PROJET",
     "x": 4.99,
     "y": 3.3,
@@ -9261,7 +9504,7 @@
     "size": 21
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Windows + WSL2",
     "x": 4.99,
     "y": 4,
@@ -9270,7 +9513,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Application Ubuntu",
     "x": 4.99,
     "y": 4.5600000000000005,
@@ -9279,7 +9522,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "AGENTS.md",
     "x": 4.99,
     "y": 5.12,
@@ -9288,7 +9531,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "3",
     "x": 9.110000000000001,
     "y": 2.5,
@@ -9297,7 +9540,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "MÉTHODES",
     "x": 9.110000000000001,
     "y": 3.3,
@@ -9306,7 +9549,7 @@
     "size": 21
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Skills locaux",
     "x": 9.110000000000001,
     "y": 4,
@@ -9315,7 +9558,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Sous-agents",
     "x": 9.110000000000001,
     "y": 4.5600000000000005,
@@ -9324,7 +9567,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "Power BI : powerbi/README.md",
     "x": 9.110000000000001,
     "y": 5.12,
@@ -9333,7 +9576,7 @@
     "size": 18
   },
   {
-    "slide": 82,
+    "slide": 84,
     "text": "État documentaire : 27/10/2026. Vérifier l’accès et les options du compte réel ; les liens sont cliquables.",
     "x": 0.85,
     "y": 6.22,

@@ -304,7 +304,7 @@
       "section": "A",
       "layout": "workspace",
       "title": "Reconnaître les trois endroits où travailler",
-      "note": "Le dossier courant indique où une commande cherche les fichiers. Enregistrer avant d’exécuter.",
+      "note": "Codex ouvre ~/cours-bi ; le terminal entre dans atelier/ avec cd atelier. Enregistrer avant d’exécuter.",
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-16"
     },
@@ -322,13 +322,13 @@
       "section": "A",
       "layout": "code",
       "title": "Premier prompt : lire avant de modifier",
-      "code": "Lis AGENTS.md et data/ventes_initiales.csv.\nExplique ce que décrit une ligne.\nPropose un plan de trois étapes.\nNe modifie aucun fichier.",
+      "code": "Lis AGENTS.md à la racine du cours.\nLis atelier/data/ventes_initiales.csv.\nExplique ce que décrit une ligne.\nPropose un plan de trois étapes.\nNe modifie aucun fichier.",
       "items": [
         "Vérifier le dossier et les chemins.",
         "Lire le plan : est-il petit et clair ?",
         "Reformuler une étape avec vos mots."
       ],
-      "note": "Envoyer depuis la copie de travail atelier/. Si le fichier manque, vérifier le dossier courant.",
+      "note": "Codex reste ouvert sur ~/cours-bi. AGENTS.md est à la racine ; les données sont dans atelier/data/.",
       "fontSize": 20,
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-18"
@@ -339,11 +339,11 @@
       "title": "AGENTS.md : garder les règles du projet",
       "code": "Explique en français simple.\nTravaille une mission à la fois.\nNe change pas les sources.\nGarde les montants en millimes entiers.\nMontre la commande et son résultat.\nNe cache pas un écart.",
       "items": [
-        "Compléter l’amorce fournie.",
+        "Lire AGENTS.md fourni à la racine.",
         "Ajouter une règle utile au groupe.",
-        "Demander à Codex de citer la règle."
+        "Faire relire la règle par Codex."
       ],
-      "note": "AGENTS.md donne des consignes durables au dossier ; vos demandes précisent la tâche du moment.",
+      "note": "Modifier ~/cours-bi/AGENTS.md en gardant les règles fournies. Ne créez pas un second fichier dans atelier/.",
       "fontSize": 20,
       "notes": "Source : https://learn.chatgpt.com/docs/agent-configuration/agents-md, consultée le 27/10/2026. Nouvelle session pour contrôler la lecture effective des règles.",
       "id": "v6-19"
@@ -354,11 +354,11 @@
       "title": "À vous · 30 min",
       "question": "Donner une petite mission, puis améliorer le prompt.",
       "steps": [
-        "Compléter AGENTS.md sans demander de code complet.",
+        "À la racine du cours, lire AGENTS.md fourni et ajouter une règle.",
         "Demander le plan en trois étapes, sans modifier les ventes.",
         "Repérer une phrase imprécise et la remplacer."
       ],
-      "note": "Preuve : votre règle ajoutée + votre prompt avant/après + le plan retenu.",
+      "note": "Preuve : règle ajoutée dans ~/cours-bi/AGENTS.md + prompt avant/après + plan retenu.",
       "number": "À VOUS",
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-20"
@@ -626,10 +626,25 @@
         "FROM : choisir la table source.",
         "? : paramètre fourni = 2026-01-08."
       ],
-      "note": "Conserver la requête et son résultat : 3 lignes de ventes + 1 événement de changement de zone.",
+      "note": "Cette requête lit 3 ventes : S012, S013 et S014. Conserver le SQL, le paramètre et le résultat.",
       "fontSize": 20,
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-37"
+    },
+    {
+      "id": "v6-source-shop-changes",
+      "section": "B",
+      "layout": "code",
+      "title": "Lire aussi le changement de zone",
+      "code": "SELECT shop_id, effective_date,\n       commercial_zone\nFROM source_shop_changes\nWHERE batch_id = ?\nORDER BY effective_date, shop_id",
+      "items": [
+        "Même paramètre :\n2026-01-08.",
+        "Une ligne : NBE change de zone.",
+        "Conserver aussi ce résultat SQL."
+      ],
+      "fontSize": 20,
+      "note": "Cette deuxième requête lit 1 événement : NBE → Grand Tunis, effectif le 8 janvier 2026.",
+      "notes": "Requête du contrat Atlas V6 : extraction distincte de source_shop_changes, paramètre de lot 2026-01-08. La requête source_sales ne renvoie que les ventes. Le comptage 3 ventes + 1 changement provient de deux SELECT réellement exécutés."
     },
     {
       "section": "B",
@@ -655,8 +670,8 @@
       "title": "À vous · lire et ranger les cartes",
       "question": "Prouver l’extraction, puis expliquer l’étoile.",
       "steps": [
-        "Exécuter la requête fournie avec le bon paramètre de lot.",
-        "Montrer S013, S014 et S012 dans le résultat SQL.",
+        "Exécuter les deux requêtes avec le bon paramètre de lot.",
+        "Montrer les trois ventes et le changement de zone de NBE.",
         "Classer quantité, nom produit, zone et date autour de la vente."
       ],
       "note": "Source SQL réellement lue ; les données originales restent intactes.",
@@ -706,19 +721,19 @@
           "15 T / 25 P"
         ],
         [
-          "40–80",
-          "Ajouter et rejouer le lot SQL",
-          "15 T / 25 P"
+          "40–95",
+          "Deux versions et recherche temporelle",
+          "20 T / 35 P"
         ],
         [
-          "80–90",
+          "95–105",
           "Pause",
           "10 min"
         ],
         [
-          "90–145",
-          "Deux versions pour une boutique",
-          "20 T / 35 P"
+          "105–145",
+          "Ajouter et rejouer le lot SQL",
+          "15 T / 25 P"
         ],
         [
           "145–180",
@@ -726,7 +741,7 @@
           "10 T / 25 P"
         ]
       ],
-      "note": "La transaction et l’historisation générale sont fournies ; vous adaptez et vérifiez une petite partie.",
+      "note": "Ordre des jalons : initial 04 → recherche temporelle 05 → incrément et rejeu 06.",
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-43"
     },
@@ -765,55 +780,6 @@
       "note": "Ces commandes sont lancées dans le terminal Ubuntu/WSL. Lire toute erreur avant de continuer.",
       "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
       "id": "v6-45"
-    },
-    {
-      "section": "C",
-      "layout": "diagram",
-      "title": "Un ajout n’est pas un second chargement complet",
-      "asset": "docs/images/diagrams/v6-ajout-rejeu.png",
-      "caption": "Le même lot peut revenir : sale_id aide à reconnaître les ventes connues.",
-      "note": "S013 + S014 nouvelles ; S012 identique déjà connue. Le rejeu ne change plus les chiffres.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-46"
-    },
-    {
-      "section": "C",
-      "layout": "increment",
-      "title": "Trois lignes reçues, deux ventes ajoutées",
-      "note": "Le prix de S014 est 6,000 TND par classeur : 2 × 6,000 = 12,000 TND.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-47"
-    },
-    {
-      "section": "C",
-      "layout": "replay",
-      "title": "La preuve du rejeu : le résultat reste stable",
-      "note": "12 + 2 = 14 ventes · 32 + 3 = 35 unités · 99,000 + 16,500 = 115,500 TND.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-48"
-    },
-    {
-      "section": "C",
-      "layout": "exercise",
-      "title": "À vous · 25 min",
-      "question": "Exécuter le lot du 8 janvier, puis le rejouer.",
-      "steps": [
-        "Lancer python3 executer.py increment.",
-        "Contrôler les chiffres puis relancer exactement le même lot.",
-        "Comparer faits, unités, montant et clés avant/après le rejeu."
-      ],
-      "note": "Preuve : même résultat final à deux passages. Une erreur de contrôle n’autorise pas à changer l’attendu.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-49"
-    },
-    {
-      "section": "C",
-      "layout": "pause",
-      "title": "Pause · 10 minutes",
-      "subtitle": "Notez les chiffres du rejeu.\nReprenez à la boutique Nabeul.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-50"
     },
     {
       "section": "C",
@@ -877,6 +843,70 @@
     },
     {
       "section": "C",
+      "layout": "exercise",
+      "title": "À vous · recherche temporelle · 35 min",
+      "question": "Compléter la recherche avant de lancer l’incrément.",
+      "steps": [
+        "Dans incremental.py, compléter trouver_shop_key avec l’ossature fournie.",
+        "Lancer python3 verifier.py 05 sur le petit cas de deux versions fourni.",
+        "Prédire puis expliquer la clé du 7 janvier et celle du 8 janvier."
+      ],
+      "note": "Le contrôle 05 utilise un cas isolé. Le lot réel sera appliqué seulement après ce contrôle réussi.",
+      "number": "À VOUS",
+      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
+      "id": "v6-55"
+    },
+    {
+      "section": "C",
+      "layout": "pause",
+      "title": "Pause · 10 minutes",
+      "subtitle": "Conservez le contrôle 05 et votre explication de la frontière.\nReprenez au lot du 8 janvier.",
+      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
+      "id": "v6-50"
+    },
+    {
+      "section": "C",
+      "layout": "diagram",
+      "title": "Un ajout n’est pas un second chargement complet",
+      "asset": "docs/images/diagrams/v6-ajout-rejeu.png",
+      "caption": "Le même lot peut revenir : sale_id aide à reconnaître les ventes connues.",
+      "note": "S013 + S014 nouvelles ; S012 identique déjà connue. Le rejeu ne change plus les chiffres.",
+      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
+      "id": "v6-46"
+    },
+    {
+      "section": "C",
+      "layout": "increment",
+      "title": "Trois lignes reçues, deux ventes ajoutées",
+      "note": "Le prix de S014 est 6,000 TND par classeur : 2 × 6,000 = 12,000 TND.",
+      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
+      "id": "v6-47"
+    },
+    {
+      "section": "C",
+      "layout": "replay",
+      "title": "La preuve du rejeu : le résultat reste stable",
+      "note": "12 + 2 = 14 ventes · 32 + 3 = 35 unités · 99,000 + 16,500 = 115,500 TND.",
+      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
+      "id": "v6-48"
+    },
+    {
+      "section": "C",
+      "layout": "exercise",
+      "title": "À vous · 25 min",
+      "question": "Exécuter le lot du 8 janvier, puis le rejouer.",
+      "steps": [
+        "Lancer python3 executer.py increment, puis python3 executer.py rapport.",
+        "Rejouer le lot, relire le rapport et comparer les chiffres et les clés.",
+        "Exécuter python3 verifier.py 06 ; distinguer ce contrôle isolé et vos sorties."
+      ],
+      "note": "Le contrôle 06 vérifie un cas isolé ; gardez aussi les sorties de votre entrepôt dans atelier/outputs/.",
+      "number": "À VOUS",
+      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
+      "id": "v6-49"
+    },
+    {
+      "section": "C",
       "layout": "transaction",
       "title": "Si un conflit apparaît, garder un état cohérent",
       "note": "Le mécanisme est fourni. Vous expliquez ce qu’il protège et vous contrôlez le résultat.",
@@ -884,19 +914,19 @@
       "id": "v6-54"
     },
     {
+      "id": "v6-final-history-review",
       "section": "C",
       "layout": "exercise",
-      "title": "À vous · frontière et revue ciblée",
-      "question": "Prédire la carte du 7 janvier, puis celle du 8.",
-      "steps": [
-        "Compléter la recherche temporelle ou son contrôle ciblé.",
-        "Vérifier qu’une ancienne vente garde sa clé après le changement.",
-        "Sur une copie, tester une clé absente ; lire le refus et faire relire."
-      ],
-      "note": "Corriger le point établi, relancer le contrôle, puis demander une deuxième revue de ce point.",
+      "title": "À vous · contrôler et revoir · 25 min",
+      "question": "Prouver la stabilité des clés et faire relire.",
       "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-55"
+      "steps": [
+        "Vérifier que les anciennes ventes gardent leur shop_key après le changement.",
+        "Sur une copie de test, essayer une clé absente et expliquer le refus.",
+        "Demander une revue ciblée, corriger, retester et refaire la revue."
+      ],
+      "note": "Ne supprimez pas un contrôle pour obtenir un succès. Gardez le dernier état fonctionnel.",
+      "notes": "Dernier créneau pratique de S3 : 25 min. La recherche temporelle est achevée avant l’incrément ; les clés initiales peuvent maintenant être comparées avec les clés après lot et rejeu. Un seul auteur corrige ; test utile puis deuxième revue."
     },
     {
       "section": "C",
@@ -1169,11 +1199,11 @@
       "title": "Un Skill : une recette de revue réutilisable",
       "code": "---\nname: revoir-bi\ndescription: Vérifier le rapport Atlas.\n---\nComparer les totaux SQL et Power BI.\nVérifier les relations avec shop_key.\nCiter un écart avec sa preuve.",
       "items": [
-        "Créer le dossier du Skill\npuis son fichier SKILL.md.",
+        "À la racine du cours, créer le dossier du Skill.",
         "Changer une règle utile de l’amorce.",
         "Utiliser le Skill puis observer son effet."
       ],
-      "note": "Chemin : .agents/skills/revoir-bi/SKILL.md. Si non découvert, demander la lecture du fichier et le noter.",
+      "note": "À la racine : .agents/skills/revoir-bi/SKILL.md. Si non découvert, demander sa lecture et le noter.",
       "fontSize": 18,
       "notes": "Sources officielles au 27/10/2026 : https://learn.chatgpt.com/docs/build-skills. Disponibilité et découverte à vérifier sur le vrai compte Free. Un Skill ne crée ni outil ni garantie de justesse.",
       "id": "v6-69"

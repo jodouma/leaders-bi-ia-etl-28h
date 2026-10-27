@@ -2,7 +2,7 @@
 
 [Retour au cours](../../README.md)
 
-82 diapositives françaises au format 16:9. Le parcours suit cinq séances de 180 minutes : prendre en main Codex, fiabiliser les ventes, charger et garder l’histoire, construire le rapport Power BI, puis réparer et défendre la livraison. Les pauses et les temps de pratique font partie de la navigation.
+84 diapositives françaises au format 16:9. Le parcours suit cinq séances de 180 minutes : prendre en main Codex, fiabiliser les ventes, charger et garder l’histoire, construire le rapport Power BI, puis réparer et défendre la livraison. Les pauses et les temps de pratique font partie de la navigation.
 
 Les fichiers courants sont `presentation/Atlas_CODEX_BI_15h.pptx` et `presentation/Atlas_CODEX_BI_15h.pdf`. Le PDF est une conversion du même PPTX. Les titres, consignes, tableaux, chiffres, graphique par zone et modèle en étoile sont éditables dans PowerPoint. Les schémas du kit visuel sont insérés en PNG ; leurs sources vectorielles et leur générateur restent dans `authoring/visuals/` et `docs/images/diagrams/`.
 
@@ -39,6 +39,8 @@ La route Windows distingue l’application hôte, l’agent Ubuntu/WSL2 et Power
 
 ## Vérification de cette édition
 
-Le PPTX a été construit depuis `slides.json`, validé avec le vérificateur OOXML de la compétence PPTX et converti en PDF par LibreOffice sur macOS. Les 82 pages ont été rendues, relues en planches et contrôlées pour les calculs, unités, consignes et temps. Les schémas ont été agrandis après le premier rendu ; la conversion TND et les libellés trop longs ont été corrigés. Le graphique natif totalise 43,500 + 72,000 = 115,500 TND. La fonction de normalisation et le SELECT extraits du PDF ont été exécutés : codes NBE/TUN attendus, entrées None/0/False refusées, et trois ventes SQL attendues. Aucun bloc de texte extrait ne dépasse les limites d’une page ; les liens de sources et de navigation sont présents dans le PDF. Les sources officielles sont conservées en notes et sur la page de références.
+Le PPTX a été construit depuis `slides.json`, validé avec le vérificateur OOXML de la compétence PPTX et converti en PDF par LibreOffice sur macOS. Les 84 pages ont été rendues, relues en planches et contrôlées pour les calculs, unités, consignes et temps. Les schémas ont été agrandis après le premier rendu ; la conversion TND et les libellés trop longs ont été corrigés. Le graphique natif totalise 43,500 + 72,000 = 115,500 TND. La fonction de normalisation et les deux SELECT extraits du PDF ont été exécutés : codes NBE/TUN attendus, entrées None/0/False refusées, et trois ventes SQL plus un changement de zone attendus. Aucun bloc de texte extrait ne dépasse les limites d’une page ; les liens de sources et de navigation sont présents dans le PDF. Les sources officielles sont conservées en notes et sur la page de références.
+
+La revue a aussi corrigé l’ordre de S3 : chargement initial 04, recherche temporelle 05 sur un cas isolé, puis incrément/rejeu 06. Les deux extractions SQL ont des diapositives distinctes et correspondent chacune à leur résultat. Le travail Codex garde `AGENTS.md` et les Skills à la racine du cours ; le terminal exécute les scripts dans `atelier/`. Les pages modifiées ont été rendues et relues après correction.
 
 Ces contrôles d’édition ne constituent pas un essai d’installation Windows/Ubuntu, un test d’accès Free étudiant, une manipulation Power BI sur Windows ou un pilote humain chronométré. Les horaires restent des estimations de conception. Les preuves de manipulation réelle se conservent séparément dans le journal de travail.
