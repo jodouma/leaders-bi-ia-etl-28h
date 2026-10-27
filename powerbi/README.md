@@ -6,7 +6,7 @@ Power BI Desktop est une application Windows gratuite pour créer et enregistrer
 
 ## 1. Préparer un dossier Windows stable
 
-Après l'export Python de la séance 4, trouvez le dossier `outputs/powerbi/<delivery_id>/` indiqué par la commande. Il doit contenir `dim_product.csv`, `dim_shop.csv`, `dim_date.csv`, `fact_sales.csv` et `manifest.json`. Prenez les quatre CSV d'une **même livraison complète**.
+Le parcours principal utilise l'export **final**, après l'incrément : 14 ventes, 35 unités, 115 500 millimes. Après l'export Python de la séance 4, trouvez le dossier `outputs/powerbi/<delivery_id>/` indiqué par la commande et notez son chemin exact pour pouvoir le retrouver. Il doit contenir `dim_product.csv`, `dim_shop.csv`, `dim_date.csv`, `fact_sales.csv` et `manifest.json`. Prenez les quatre CSV d'une **même livraison complète**. Dans `manifest.json`, contrôlez `files["fact_sales.csv"].rows = 14`, `sums.quantity = 35` et `sums.amount_millimes = 115500`.
 
 Dans le terminal Ubuntu WSL, placez-vous dans ce dossier puis tapez :
 
@@ -61,23 +61,52 @@ Nombre de ventes = COUNTROWS(fact_sales)
 
 Une mesure se recalcule quand on filtre le rapport. On additionne les millimes entiers puis on divise par 1 000 : `115500 / 1000 = 115,500 TND`. Si Desktop utilise les séparateurs DAX locaux, la virgule entre les arguments de `DIVIDE` devient un point-virgule.
 
-Dans la vue **Rapport**, ajoutez trois **Cartes**, une mesure par carte. Pour le CA, choisissez trois décimales et des **unités d'affichage : Aucune**. Mettez « CA · TND » dans le titre. Ajoutez un **graphique à barres groupées** : axe des catégories = `dim_shop[commercial_zone]`, valeur = `[CA TND]`. Ajoutez un **Tableau** : `shop_name`, `commercial_zone`, `valid_from` et `[CA TND]`. Les champs descriptifs viennent des dimensions.
+Pour quitter la vue Modèle, cliquez sur l'icône **Rapport** dans la barre de gauche (petit graphique). Vous arrivez sur le canevas de la page. Cliquez dans une zone vide du canevas pour créer un nouveau visuel.
+
+Dans le volet **Visualisations**, onglet **Générer un visuel / Build visual**, choisissez **Carte**. Une carte vide apparaît. Dans le volet **Données**, développez `fact_sales`, puis faites glisser la **mesure** `CA TND` vers le champ **Valeurs** de la carte. Avec la carte sélectionnée, ouvrez **Mettre en forme le visuel** ; sous **Visuel → Valeurs de légende / Callout values → Valeurs**, réglez les **unités d'affichage sur Aucune** et les **décimales sur 3**. Les libellés peuvent varier selon la version ou la langue. Donnez-lui le titre « CA · TND ». Après ce réglage et sans filtre, vérifiez 115,500 TND.
+
+Cliquez à nouveau dans une zone vide, choisissez une nouvelle **Carte**, puis déposez `Quantité vendue` dans **Valeurs** ; recommencez pour `Nombre de ventes`. Vous devez obtenir trois cartes distinctes : 115,500 TND, 35 unités, 14 ventes.
+
+Cliquez dans une zone vide avant chaque nouveau visuel. Ajoutez un **graphique à barres groupées** : `dim_shop[commercial_zone]` dans l'axe des catégories, `[CA TND]` dans les valeurs. Ajoutez ensuite un **Tableau** et déposez `shop_name`, `commercial_zone`, `valid_from` et `[CA TND]` dans ses colonnes. Les champs descriptifs viennent des dimensions. Si vous changez seulement le type du visuel déjà sélectionné, utilisez **Ctrl+Z**, puis cliquez sur le canevas vide avant de recommencer.
 
 ## 5. Prouver le résultat et l'actualisation
 
-| Contrôle sans filtre | Export initial | Export après incrément |
-|---|---:|---:|
-| Nombre de ventes | 12 | 14 |
-| Quantité vendue | 32 | 35 |
-| CA en TND | 99,000 | 115,500 |
+Le dossier final importé en début de TP donne les contrôles suivants, sans filtre :
+
+| Contrôle | Export final |
+|---|---:|
+| Nombre de ventes | 14 |
+| Quantité vendue | 35 |
+| CA en TND | 115,500 |
 
 Après l'incrément, le CA historique doit être **Cap Bon : 43,500 TND** et **Grand Tunis : 72,000 TND**. Dans le tableau, Nabeul garde 43,500 TND sur sa version du 5 janvier et porte 4,500 TND sur sa version du 8 janvier ; Tunis porte 67,500 TND. Selon la langue, Desktop peut afficher un point décimal. La valeur est identique.
 
 Cliquez sur Cap Bon : le CA filtré devient 43,500. Cliquez à nouveau pour retirer la sélection et retrouvez 115,500. Expliquez à votre binôme pourquoi le changement de zone n'a pas déplacé les anciennes ventes de Nabeul.
 
-Pour prouver l'actualisation, commencez avec l'export initial. Exécutez ensuite l'incrément et un nouvel export Python, copiez les **quatre** nouveaux CSV ensemble dans le même dossier Windows (en remplaçant les anciens), puis cliquez **Accueil → Actualiser** dans Desktop. Vérifiez le passage 12→14, 32→35, 99,000→115,500. Modifier SQLite sans refaire export et copie laisse Desktop lire les anciens CSV.
+Cliquez **Accueil → Actualiser** dans Desktop. Si les CSV n'ont pas changé, les valeurs restent **14 ventes, 35 unités et 115,500 TND** : c'est le résultat attendu. Ce contrôle vérifie la relecture de la source finale ; il ne démontre pas une variation de données. Modifier SQLite sans refaire l'export et la copie laisse Desktop lire les anciens CSV. Le bonus suivant permet d'observer une variation contrôlée.
 
 Enregistrez votre rapport sous `Atlas_mon_nom.pbix`, fermez-le puis rouvrez-le. Conservez deux captures authentiques : le modèle avec ses trois relations lisibles, et le rapport final sans filtre. À ce stade, je sais importer quatre tables, choisir leurs types, construire une étoile, créer une mesure et expliquer un résultat filtré.
+
+## Bonus facultatif : observer le passage de 12 à 14 ventes
+
+Le parcours principal est terminé. Ce bonus utilise une copie de référence séparée et une copie du rapport. Gardez le chemin du **dossier de livraison final** noté à l'étape 1 : il permettra de restaurer les quatre CSV finaux. Votre dossier de travail étudiant reste disponible.
+
+1. Dans Desktop, utilisez **Fichier → Enregistrer sous** pour créer `Atlas_test_actualisation.pbix`. Faites le test dans cette copie du rapport.
+2. Dans Ubuntu, ouvrez un terminal à la **racine du cours** (le dossier contenant `outils/`, `projet/` et `solutions/`). Créez un dossier neuf puis chargez et exportez seulement l'état initial :
+
+   ```bash
+   python3 outils/jalon.py 07 atelier-initial
+   cd atelier-initial
+   python3 executer.py initial
+   python3 executer.py export
+   ```
+
+   Si `atelier-initial` existe déjà, la commande refuse de l'écraser : choisissez un autre nom neuf et adaptez le `cd`. **Ne lancez pas `increment` dans cette copie.** La commande `export` affiche le chemin exact de sa livraison ; utilisez ce chemin, sans inventer l'identifiant du dossier. Dans son `manifest.json`, vérifiez **12** lignes pour `fact_sales.csv`, quantité **32**, montant **99000** millimes.
+3. Depuis le dossier de cette livraison initiale, tapez `explorer.exe .` sous WSL, ou transférez le paquet vers Windows sous Ubuntu natif. Copiez ses **quatre CSV ensemble** et son manifeste dans le **même dossier Windows de source** qu'à l'étape 1, en remplaçant uniquement ces fichiers. Les chemins source des requêtes restent identiques.
+4. Dans `Atlas_test_actualisation.pbix`, cliquez **Accueil → Actualiser** et attendez la fin. Sans filtre, observez **12 ventes, 32 unités et 99,000 TND**. Le changement est attendu parce que le contenu des CSV a changé.
+5. Retrouvez le **dossier final d'origine**, dans votre atelier étudiant, grâce au chemin noté à l'étape 1. Copiez de nouveau ses **quatre CSV ensemble** et son manifeste dans ce même dossier Windows. Cliquez **Actualiser** dans le rapport de test : les cartes doivent revenir à **14 ventes, 35 unités et 115,500 TND**. Vérifiez aussi les zones : Cap Bon 43,500 TND et Grand Tunis 72,000 TND.
+
+Conservez, si vous le souhaitez, les captures avant/après de ce rapport de test, puis rouvrez votre rapport principal. Cette procédure constitue un exercice à réaliser sous Windows ; la réussite du chargement Python ne prouve pas à elle seule l'actualisation dans Desktop.
 
 ## Si je suis bloqué
 
@@ -93,4 +122,4 @@ Le parcours ci-dessus commence depuis un rapport vide. Si vous avez besoin d'une
 
 Ce projet contient les requêtes, le modèle, les mesures et une page modifiable. Les données ne sont pas incluses dans un cache : **la première actualisation charge réellement les CSV**. Si Desktop demande de confirmer un accès local aux fichiers, contrôlez le chemin. Aucun compte en ligne n'est nécessaire pour ce rapport local. Reprenez ensuite les étapes 3 à 5 et expliquez ce que chaque relation et mesure fait.
 
-Sources techniques : [Desktop](https://learn.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop), [CSV](https://learn.microsoft.com/power-query/connectors/text-csv), [étoile et historique](https://learn.microsoft.com/power-bi/guidance/star-schema), [projets PBIP](https://learn.microsoft.com/power-bi/developer/projects/projects-overview). La validation des fichiers sources du kit est distincte d'une exécution réelle dans Desktop Windows ; elle ne mesure pas le temps de réalisation d'un débutant.
+Sources techniques : [Desktop](https://learn.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop), [CSV](https://learn.microsoft.com/power-query/connectors/text-csv), [étoile et historique](https://learn.microsoft.com/power-bi/guidance/star-schema), [projets PBIP](https://learn.microsoft.com/power-bi/developer/projects/projects-overview), [vue Rapport](https://learn.microsoft.com/power-bi/create-reports/desktop-report-view), [créer une carte](https://learn.microsoft.com/power-bi/visuals/power-bi-visualization-card). La validation des fichiers sources du kit est distincte d'une exécution réelle dans Desktop Windows ; elle ne mesure pas le temps de réalisation d'un débutant.
