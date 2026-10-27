@@ -1,76 +1,76 @@
-# Construire une solution BI avec l’IA — Atlas Papeterie
+# IA, Codex et BI — votre première mission chez Atlas
 
-**28 h · Licence BI · grands débutants · français · Windows et Ubuntu · 70 % pratique.**
+**15 h · 5 séances de 3 h · Licence BI · grands débutants · français.**
 
-À partir des ventes fictives de deux papeteries, vous construisez un projet utile : **fichiers CSV → ETL → entrepôt SQLite en étoile → rapport de ventes**. L’IA aide à écrire de petites fonctions ; vous définissez les règles, exécutez le code et vérifiez les résultats.
+Vous venez de rejoindre **Atlas Papeterie**, une entreprise fictive. Votre responsable vous confie ses ventes : « Dites-moi combien nous vendons, où, et si je peux faire confiance aux chiffres. » Vous construisez la réponse avec **Codex**, puis vous la prouvez dans **Power BI**.
 
-## Commencer ici
+**CSV + base SQL → nettoyage Python → entrepôt en étoile → Power BI.**
 
-1. **[Télécharger le cours en ZIP](https://github.com/jodouma/leaders-bi-ia-etl-28h/archive/refs/heads/main.zip)**, ou choisir **Code → Download ZIP** en haut du dépôt. Extraire tout dans un nouveau dossier, puis renommer le dossier contenant ce README en `atlas-bi-ia-28h`. Aucun compte GitHub ni commande Git n’est nécessaire.
-2. **Ouvrir [01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf)** dans le dossier extrait. Suivre la route de son poste : Windows **ou** Ubuntu. Installer les outils et vérifier leur fonctionnement avant de commencer les exercices.
-3. **Ouvrir [02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf)** et commencer la mission 01. Modifier les fichiers dans **`projet/`**, en gardant le reste du cours autour de ce dossier.
+## Commencer
 
-Les fonctions de départ sont volontairement incomplètes. Le message « mission à construire » est attendu avant de les réaliser. **La construction de l’environnement Docker doit, elle, réussir** : une erreur d’installation est à résoudre avec le guide 01.
+1. **[Télécharger le ZIP](https://github.com/jodouma/leaders-bi-ia-etl-28h/archive/refs/heads/main.zip)** — bouton **Code → Download ZIP**. Extraire tout ; aucun compte GitHub n’est nécessaire.
+2. Ouvrir **[01_demarrer_windows_ubuntu.pdf](pdf/01_demarrer_windows_ubuntu.pdf)**. Choisir Windows avec WSL2, ou Ubuntu pris en charge.
+3. Ouvrir **[02_cours_atlas_ia.pdf](pdf/02_cours_atlas_ia.pdf)**. Créer votre dossier `atelier/` avec le jalon 01, puis commencer la séance 1.
 
-**[Voir le parcours A → E en images](docs/DEMARRER_EN_IMAGES.md)** : captures commentées, rôle de Docker, éditeur/terminal/navigateur et exemple de demande IA.
+**[Le parcours en images](docs/DEMARRER_EN_IMAGES.md)** explique les outils, les dossiers et les étapes.
 
-## Comment avancer
+## Cinq séances, un projet
 
-Pour chaque mission : **lire la consigne → demander une fonction à l’IA → enregistrer → exécuter → contrôler → expliquer le résultat**. Les [prompts prêts à copier](prompts/README.md) accompagnent le cours. Conserver une première tentative avant de consulter un corrigé.
-
-Le parcours comprend **sept missions guidées sur 21 h**, puis **7 h de défi Campus Box**, en groupes de trois maximum. Le livret 03 sert pendant les missions ; le livret 05 apporte des indices après un essai ; le défi 04 commence après les sept missions.
-
-| Quand l’ouvrir | Support |
-|---|---|
-| Avant toute manipulation | [01 — Installer son atelier sous Windows ou Ubuntu](pdf/01_demarrer_windows_ubuntu.pdf) |
-| Pendant les sept missions | [02 — Construire sa BI avec l’IA](pdf/02_cours_atlas_ia.pdf) |
-| Pour un mot, un prompt ou un problème | [03 — Prompts, repères et dépannage](pdf/03_prompts_reperes_depannage.pdf) |
-| Après les sept missions | [04 — Défi Campus Box](pdf/04_defi_campus_box.pdf) |
-| Après une première tentative, si besoin | [05 — Indices et corrigés](pdf/05_indices_et_corriges.pdf) |
-| En complément du cours | Présentation : [PowerPoint modifiable](presentation/Atlas_BI_IA_28h.pptx) · [PDF](presentation/Atlas_BI_IA_28h.pdf) |
-| Pour évaluer le parcours depuis zéro | [Fiche de test du cours](TESTER_LE_COURS.md) |
-
-Les temps sont des estimations pédagogiques : **8 h 24 de théorie et 19 h 36 de pratique**, installation et dépannage compris ; pauses à organiser dans le volume de présence.
-
-## Se repérer dans les dossiers
-
-| Dossier | Ce qu’on y fait |
-|---|---|
-| `projet/` | Modifier et exécuter les fichiers des missions |
-| `projet/data/` | Lire les CSV d’origine ; conserver ces fichiers intacts |
-| `projet/outputs/` | Retrouver les fichiers produits au fil des missions : CSV, base et rapport |
-| [prompts/](prompts/README.md) | Copier la demande correspondant à la mission en cours |
-| [defi/](defi/student_challenge.md) | Découvrir le nouveau cas après le parcours guidé |
-| `solutions/atlas/` | Consulter la référence après une tentative ; garder son propre travail dans `projet/` |
-
-**Où saisir les commandes ?** Modifier les fichiers dans `projet/` dans tous les cas, mais choisir le bon dossier pour le terminal :
-
-| Route choisie dans le guide 01 | Terminal | Dossier depuis lequel lancer les commandes |
+| Séance | Votre mission | Preuve obtenue |
 |---|---|---|
-| Docker sous Windows | PowerShell Windows | Racine du cours, où se trouve `compose.yaml` |
-| Docker sous Ubuntu | Terminal Ubuntu, avec les commandes `sudo docker compose` du guide | Même racine du cours, après le réglage `.env` expliqué dans le guide |
-| Python natif, sans Docker | Thonny ou terminal indiqué dans le guide | `projet/` pour les commandes Python ; dans Thonny, ouvrir le fichier de cette mission |
+| 1 | Prendre son poste, découvrir Codex et la BI | Un atelier qui fonctionne et un résultat expliqué |
+| 2 | Lire les CSV et une vraie base SQL ; nettoyer | Des ventes propres, des rejets compris |
+| 3 | Charger l’entrepôt, ajouter un lot, garder l’historique | Un rejeu sans doublon et les anciennes zones conservées |
+| 4 | Construire le tableau de bord et une méthode de revue | Quatre tables reliées dans Power BI ; une revue vérifiable |
+| 5 | Réparer et livrer, en groupe de trois maximum | Une démonstration, des contrôles et une décision métier |
 
-Sous Windows, WSL 2 sert au fonctionnement de Docker ; **les commandes Windows du cours se saisissent dans PowerShell**. Le [rappel d’environnement](docs/setup/README.md) complète le guide d’installation.
+Le temps prévu comprend **255 min de théorie, 595 min de pratique et 50 min de pauses** : 70 % de pratique sur le temps de travail. Les durées sont des estimations pédagogiques.
 
-## Vérifier son résultat et trouver de l’aide
+## Les supports, dans l’ordre
 
-Le cours indique la commande de contrôle de chaque mission. Le vérificateur lit votre travail ; il ne termine pas les fonctions à votre place. En cas de blocage : consulter le livret 03, puis les indices du livret 05 si nécessaire. La reprise par jalon se fait dans **un nouveau dossier**, comme expliqué dans le cours.
+| Besoin | Ouvrir |
+|---|---|
+| Installer et se repérer | [01 — Démarrer sous Windows ou Ubuntu](pdf/01_demarrer_windows_ubuntu.pdf) |
+| Construire le projet | [02 — Cours et missions Atlas](pdf/02_cours_atlas_ia.pdf) |
+| Comprendre un mot, préparer une demande, se débloquer | [03 — Prompts, repères et dépannage](pdf/03_prompts_reperes_depannage.pdf) |
+| Réaliser la mission en groupe | [04 — Défi Atlas](pdf/04_defi_atlas.pdf) |
+| Après une première tentative | [05 — Indices et corrigés](pdf/05_indices_et_corriges.pdf) |
+| Suivre la présentation | [PowerPoint modifiable](presentation/Atlas_CODEX_BI_15h.pptx) · [PDF](presentation/Atlas_CODEX_BI_15h.pdf) |
 
-À la fin, le rapport décrit **14 ventes élémentaires, 35 articles et 115.500 TND**. Le rejeu conserve ces totaux. Une ligne valide représente un produit vendu dans une boutique à une date ; les montants sont calculés et stockés en millimes entiers. Le chiffre d’affaires ne mesure ni le stock ni le bénéfice.
+Les [demandes prêtes à adapter](prompts/README.md) accompagnent les missions. On avance par petites étapes : **prévoir → demander → exécuter → contrôler → expliquer → faire relire → corriger**.
 
-Le lien [rapport local](http://localhost:8000/rapport_atlas.html) fonctionne après création du rapport et démarrage du serveur, selon votre route d’installation. Pour tester la clarté du parcours ou signaler un blocage, suivre la [fiche de test](TESTER_LE_COURS.md).
+## Où travailler ?
 
-## IA et outils
+| Élément | Rôle |
+|---|---|
+| `atelier/` | Votre copie de travail, créée avec `outils/jalon.py` ; les commandes Python se lancent ici |
+| `projet/` | Le point de départ fourni ; certaines fonctions restent à construire |
+| `atelier/data/` | Les sources fictives CSV et SQLite ; les conserver intactes |
+| `atelier/outputs/` | La base, le rapport et les quatre CSV produits |
+| `powerbi/` | Le guide du tableau de bord et le projet de reprise facultatif |
+| `.agents/skills/` | Deux méthodes locales : expliquer une notion et relire la BI |
+| `solutions/` | Les références à consulter après votre essai |
 
-Le socle utilise un chat web gratuit disponible sur votre compte et des programmes locaux. **Aucune clé API ni abonnement payant n’est nécessaire au parcours principal.** Les demandes courtes limitent les échanges ; aucun quota fournisseur n’est garanti.
+**Windows :** Codex s’ouvre dans une fenêtre Windows ; son agent et Python travaillent dans **Ubuntu WSL2**. Les commandes `python3` du cours se saisissent dans le terminal Ubuntu. **Power BI Desktop s’utilise sur Windows**, avec une copie des CSV exportés.
 
-Codex CLI et Claude Code sont des options pour les comptes qui disposent déjà de l’accès nécessaire. Claude Free n’inclut pas Claude Code ; l’accès gratuit à un autre produit ne prouve pas celui du CLI. Le guide 01 explique les options et le repli vers le chat web.
+**Ubuntu :** Codex et Python travaillent directement dans Ubuntu. Pour la partie Power BI Desktop, transférer les CSV sur le poste Windows d’un binôme ou de la salle. Le guide 01 détaille ce passage.
 
-Python et SQLite sont libres. Docker Engine fournit la route open source sous Ubuntu. Docker Desktop est gratuit pour l’éducation selon ses [conditions](https://docs.docker.com/subscription-billing/desktop-license/), avec des composants propriétaires. ChatGPT et Claude sont des services propriétaires à offre gratuite.
+## Codex gratuit : travailler avec méthode
 
-## Sources et maintenance
+L’offre Free annonce **GPT-6 Luna, vitesse Standard, dans l’application de bureau**, sous réserve du déploiement. Vérifier l’accès sur votre compte avant la séance. Le cours ne demande **ni abonnement, ni clé API** ; le CLI n’est pas un prérequis. [Source OpenAI](https://learn.chatgpt.com/docs/pricing).
 
-Les exercices utilisent uniquement la bibliothèque standard de Python. Les dépendances pour reconstruire les documents concernent l’édition des supports. Consulter le [guide de maintenance](authoring/README.md) pour les sources PDF, la présentation et les contrôles du dépôt.
+Choisir **Luna** et commencer avec **High si ce réglage est proposé**. *Standard* désigne la vitesse ; l’effort de réflexion est un réglage différent. Le cours fait comparer les options réellement visibles, sans imposer de modèle payant. [Modèles et efforts](https://learn.chatgpt.com/docs/models).
+
+Une séance de 3 h alterne de courtes demandes à Codex, des manipulations et des vérifications locales. **Trois heures de cours ne garantissent pas trois heures d’appels IA.** Consulter l’usage affiché ; si la limite est atteinte, poursuivre les activités locales et les jalons fournis. La revue avec deux sous-agents reste un essai borné si la fonction est disponible ; deux contrôles successifs permettent aussi d’apprendre la méthode.
+
+## Ce que vous devez pouvoir prouver
+
+Le projet final contient **14 ventes, 35 articles et 115.500 TND**. Une seconde exécution du même lot conserve ces valeurs. Nabeul change de **zone commerciale** le 8 janvier : les ventes anciennes restent rattachées à l’ancienne version de la boutique. Le total historique est **43.500 TND pour Cap Bon** et **72.000 TND pour Grand Tunis**.
+
+Les scripts de vérification aident à trouver les erreurs ; vous devez aussi expliquer les résultats. En cas de blocage, conserver le message exact, consulter le livret 03, puis les indices du livret 05. Une reprise par jalon se fait dans un nouveau dossier, sans écraser votre travail.
+
+Pour essayer le cours depuis zéro : **[TESTER_LE_COURS.md](TESTER_LE_COURS.md)**. Pour reconstruire les documents : [guide d’édition](authoring/README.md).
+
+Python et SQLite sont libres. Codex et Power BI Desktop sont des logiciels propriétaires utilisables gratuitement dans le cadre décrit ; le cours ne demande aucun service payant.
 
 Youssef Douma · Leaders University · édition du 27 octobre 2026
