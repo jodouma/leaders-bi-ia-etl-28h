@@ -266,6 +266,10 @@ def execute_shell(root, block, printed, temporary):
         return {"coverage": "manual route/path template; not executed", "label": label}
     if "explorer.exe" in printed:
         return {"coverage": "Windows/WSL GUI transfer; requires manual execution"}
+    if re.search(r"(?m)^cd [\"\']?(~|/|\$HOME|<)", printed):
+        if os.name != "nt":
+            run(["/bin/sh", "-n", "-c", printed], temporary)
+        return {"coverage": "learner home/absolute path navigation; syntax only, not executed"}
     # Installers, account login and edited path templates are checked as
     # printed text only; the receipt must not claim they ran on this host.
     lines = [line for line in printed.splitlines() if line.strip() and not line.lstrip().startswith("#")]
