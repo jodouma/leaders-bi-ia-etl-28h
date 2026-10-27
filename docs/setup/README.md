@@ -1,47 +1,45 @@
-# Préparer l’atelier Atlas
+# Préparer Atlas BI avec Codex
 
-[Retour au parcours du cours](../../README.md)
+[Retour au cours](../../README.md) · [Guide de démarrage complet](../../pdf/01_demarrer_windows_ubuntu.pdf)
 
-Le parcours complet, avec les commandes à copier et les fenêtres à ouvrir, est dans [01_demarrer_windows_ubuntu.pdf](../../pdf/01_demarrer_windows_ubuntu.pdf).
+Le guide 01 accompagne les manipulations depuis zéro : dossiers, ZIP, terminal, installation, connexion et première demande. Le cours dure **15 h, en cinq séances de 3 h**. Les installations sont préparées avec le professeur au début du parcours ; aucun travail d’installation caché à faire seul n’est requis.
 
-- Windows : Windows 11 encore maintenu, WSL 2 pour Docker et Docker Desktop ouvert. Saisir les commandes du cours dans **PowerShell Windows normal**, après les réglages du guide ; WSL n’est pas le terminal de travail de cette route.
-- Ubuntu : Ubuntu 24.04 LTS → dépôt APT officiel Docker → Engine et plugin Compose → Terminal avec `sudo docker …`.
-- Sans virtualisation : Thonny/Python natifs, mêmes fichiers `projet/`, aucun paquet pip.
-- IA : navigateur et aides locales pour le socle ; Codex CLI et Claude Code restent facultatifs, sur le PC hôte et seulement avec un accès éligible.
+- **Windows** : application de bureau sur Windows, agent et terminal dans **Ubuntu WSL2**. Dans les paramètres de l’application, le choix de l’agent et celui du terminal sont distincts ; le changement d’agent demande un redémarrage. Le dossier du cours reste dans `~/cours-bi`, dans Linux.
+- **Ubuntu natif** : application Linux officielle en preview, Ubuntu **24.04 ou 26.04 LTS** et paquet `.deb` adapté au processeur. Python s’exécute dans ce même Ubuntu.
+- **Codex gratuit** : compte personnel Free, disponibilité réelle et usage à contrôler avant la mission. Luna Standard est annoncé sous déploiement. Standard désigne la vitesse ; High est l’effort de départ conseillé pour Luna si le compte affiche ce réglage. N’inventez pas une option absente.
+- **Power BI** : un vrai poste Windows avec Power BI Desktop ouvert doit être prêt avant la séance 4. Depuis Ubuntu natif, prévoyez le transfert du dossier d’export sur ce poste.
 
-À la racine extraite du cours, `compose.yaml` et `projet/` doivent être visibles ensemble. Les commandes ci-dessous concernent **Windows / PowerShell**, après installation. Pour Ubuntu, suivre d’abord la section Ubuntu plus bas :
+Après extraction du ZIP, la racine `~/cours-bi` contient notamment `README.md`, `AGENTS.md`, `projet/` et `outils/`. `projet/` est le modèle fourni. Ouvrez cette racine dans Codex. Le guide explique la copie dans Linux pour WSL ; ne travaillez pas dans le ZIP.
 
-```powershell
-docker compose build
-docker compose run --rm atelier python --version
-docker compose run --rm atelier python calcul.py
-docker compose run --rm atelier python verifier.py 01
-```
-
-Le build et la vérification de version doivent réussir. Le fichier de départ reste à compléter pendant les missions : `calcul.py` et son contrôle demandent ensuite de construire la fonction. Ce message attendu ne signifie pas que l’installation a échoué. Après les missions, **toujours sous Windows / PowerShell** :
-
-```powershell
-docker compose run --rm atelier python executer.py
-docker compose up -d
-```
-
-Ouvrez `http://localhost:8000/rapport_atlas.html` dans le navigateur. Le serveur peut démarrer avant la création du rapport : ce fichier renvoie alors 404. Pour arrêter : `docker compose down`. Vos fichiers restent dans `projet/`.
-
-## Ubuntu — avant les commandes Docker
-
-Suivre l’installation du guide 01, puis créer une fois `.env` à la racine, sans écraser un fichier existant :
+Dans le **Terminal Ubuntu**, vérifiez Python puis créez la copie de travail :
 
 ```bash
-test -e .env || printf 'LOCAL_UID=%s\nLOCAL_GID=%s\n' \
-  "$(id -u)" "$(id -g)" > .env
+cd ~/cours-bi
+python3 --version
+python3 -c "import csv, sqlite3, decimal; print('OK Python')"
+python3 outils/jalon.py 01 atelier
+cd atelier
+python3 calcul.py
+python3 verifier.py 01
 ```
 
-Après ce réglage, utiliser les mêmes commandes Docker avec **`sudo docker compose`**, y compris pour `build`, `run`, `up -d` et `down`. Les saisir depuis la racine du cours.
+Les deux premiers contrôles doivent afficher une version Python 3 puis `OK Python`. La création du jalon annonce `Jalon 01 créé`. `calcul.py` doit afficher `2 × 4500 = 9000 millimes = 9.000 TND` ; le contrôle doit afficher `OK 01`. Si `atelier` existe déjà, conservez votre travail avant toute reprise. Ne modifiez pas les vérificateurs ou les données pour masquer une erreur.
 
-Ce fichier ne doit contenir que les identifiants numériques du compte pour la propriété des fichiers. Aucun secret ni clé IA. Si `.env` existe déjà, vérifiez ses valeurs avec le professeur.
+`atelier/` contient votre copie de travail, dont `data/` et `outputs/`. Python utilise sa bibliothèque standard : aucun paquet pip n’est requis. Si `python3` manque, le guide décrit l’installation Ubuntu avec `apt` et le nouveau contrôle.
 
-Le premier build télécharge l’image Python officielle : il demande Internet. Après construction, conservez cette image pour les exercices hors ligne. Le conteneur emploie Python 3.13 et sa bibliothèque standard ; il ne contient aucun agent IA, aucune authentification et aucun installateur de projet téléchargé automatiquement. Le dossier du cours est monté sous `/workspace`, avec `/workspace/projet` comme dossier de travail. Le serveur publie uniquement `127.0.0.1:8000` sur votre poste.
+Votre première demande dans **Codex / New chat**, projet `cours-bi` :
 
-Docker Desktop est propriétaire, avec un usage éducatif gratuit sous ses [conditions](https://docs.docker.com/subscription-billing/desktop-license/). [Docker Engine](https://docs.docker.com/engine/) offre la route libre sur Ubuntu. L’accès à un chat gratuit ne prouve pas l’accès à son agent CLI : Claude Free n’inclut pas Claude Code ; l’accès universel Free à Codex CLI n’est pas établi par les sources consultées.
+```text
+Je débute. Lis uniquement README.md et AGENTS.md,
+puis liste les fichiers du dossier atelier.
+Explique en français où sera mon travail en 5 phrases.
+Ne modifie aucun fichier et ne lance aucune installation.
+```
 
-Les [sources officielles et leur correspondance avec les pages du guide](sources.json) ont été vérifiées le 27 octobre 2026. Les recherches documentaires et contrôles de syntaxe ne constituent pas une installation réalisée sur un PC Windows ou Ubuntu. Aucun compte gratuit ni quota n’est présenté comme testé.
+Comparez la réponse aux fichiers réels avant de demander un changement. Pour les missions suivantes : une tâche limitée, des fichiers précis, lecture du changement, exécution locale, puis explication de ce que vous avez observé.
+
+Si Codex est indisponible ou si le quota est épuisé, gardez votre essai et notez l’heure de reprise affichée. Continuez avec les consignes, les indices du PDF 03, les scripts et les contrôles locaux ; reprenez Codex après le rétablissement de l’usage. Un jalon fourni peut aider à reprendre avec le professeur. Aucune quantité de messages ni durée d’inférence gratuite n’est garantie. Aucun achat ni clé API n’est demandé.
+
+Après les missions de chargement, les commandes `python3 executer.py initial`, `increment` puis `export` produisent la livraison attendue. Depuis le dossier d’export réussi, `explorer.exe .` ouvre ses fichiers dans Windows avec WSL. Copiez **le dossier entier**, avec les quatre CSV et `manifest.json`, dans un dossier local Windows ; Power BI utilise cette copie. Depuis Ubuntu natif, transférez le même dossier sur le poste Windows prévu.
+
+Les [sources officielles](sources.json) ont été vérifiées le **27 octobre 2026**. Cette recherche ne constitue pas une installation Windows/Ubuntu ni un test de compte Free. Les schémas décrivent le fonctionnement et ne prétendent pas montrer l’interface réelle de votre poste.
