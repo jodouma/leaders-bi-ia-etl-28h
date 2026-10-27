@@ -1,127 +1,83 @@
 {
   "title": "Prompts, repères et dépannage",
-  "subtitle": "Atlas · une aide à ouvrir au bon moment",
-  "author": "Youssef Douma · Leaders University",
+  "cover_title": "Prompts, repères et dépannage",
+  "subtitle": "Codex · Python · SQL · Power BI · une aide au moment utile",
+  "author": "Youssef Douma",
   "pages": [
     {
-      "title": "Trouver une aide au bon moment",
-      "kicker": "AIDE / UN DOCUMENT PAR BESOIN",
+      "title": "Le bon document au bon moment",
+      "kicker": "AIDE / UNE ROUTE COURTE",
       "blocks": [
         {
           "type": "table",
           "headers": [
-            "Document",
-            "Quand l’utiliser · repères A à E"
+            "Fichier",
+            "Quand l’ouvrir"
           ],
           "rows": [
             [
               "01_demarrer_windows_ubuntu.pdf",
-              "B · Préparer son poste : installer, ouvrir le dossier et choisir Docker ou le mode natif."
+              "Créer son poste Windows/WSL2 ou Ubuntu et ouvrir Codex."
             ],
             [
               "02_cours_atlas_ia.pdf",
-              "A → C → D · Comprendre le projet, construire les fonctions puis contrôler le rapport."
+              "Suivre les cinq séances dans l’ordre."
             ],
             [
               "03_prompts_reperes_depannage.pdf",
-              "C et D · Copier une demande, lire une instruction et diagnostiquer une erreur."
+              "Formuler une petite mission et comprendre un écart."
             ],
             [
-              "04_defi_campus_box.pdf",
-              "E · Réaliser le défi : adapter le contrat aux statuts et canaux."
+              "04_defi_atlas.pdf",
+              "Réaliser le défi Atlas de S5."
             ],
             [
               "05_indices_et_corriges.pdf",
-              "Après une tentative · Ouvrir l’indice utile, puis comparer au corrigé si nécessaire."
+              "Après une tentative ; lire un indice avant la fonction complète."
             ]
           ],
           "widths": [
-            1.65,
-            2.35
+            1.8,
+            2.2
           ]
         },
         {
           "type": "text",
-          "text": "Vous travaillez dans projet/. Le dossier solutions/atlas/ contient une référence séparée, pas votre point de départ. Le dossier outils/ fournit la reprise par jalon. Les fichiers CSV originaux restent dans projet/data/ ; les résultats sont produits dans projet/outputs/."
+          "text": "Dossier de travail : atelier/. Source CSV et source SQL : atelier/data/. Résultats : atelier/outputs/. La référence solutions/atlas/ reste séparée. Les jalons créent une copie neuve ; ils ne remplacent pas silencieusement votre travail et ne préchargent pas la base."
         },
         {
           "type": "callout",
-          "label": "Le premier geste utile",
-          "text": "Pour demander de l’aide, notez mission, fichier, commande, attendu et obtenu. « Ça ne marche pas » ne dit pas quelle expérience reproduire. Un petit cas avec une sortie réelle permet une correction ciblée."
+          "label": "Pour demander de l’aide",
+          "text": "Notez séance et jalon, fichier, commande, attendu et obtenu. Joignez le message exact et une petite ligne d’exemple. Ne transmettez ni identifiant de compte ni données personnelles. Tous les exemples Atlas sont fictifs."
         }
       ]
     },
     {
-      "title": "L’IA web constitue le parcours de base",
-      "kicker": "C–D / ASSISTANCE / ACCÈS ET CONTEXTE",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Utiliser ChatGPT ou Claude dans le navigateur avec un compte personnel disponible. Le cours peut être suivi sans API, sans abonnement et sans outil agent. Les offres et limites peuvent varier : le nombre de demandes conseillé ici est une méthode de travail, pas une garantie du fournisseur. Le chat du navigateur ne lit pas automatiquement votre dossier : joindre seulement la fonction ou l’extrait utile."
-        },
-        {
-          "type": "diagram",
-          "nodes": [
-            "Petit contrat",
-            "Réponse de code",
-            "Enregistrement",
-            "Contrôle local"
-          ]
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Une demande vise une fonction ou un fichier court, avec entrée, sortie et exemple.",
-            "Deux à quatre demandes ciblées par jalon sont une cible de sobriété : génération, correction si nécessaire, explication courte.",
-            "Copier uniquement les colonnes utiles, quelques lignes fictives, le message d’erreur et la fonction concernée.",
-            "Ne pas transmettre de mot de passe, clé, compte d’un pair ou données personnelles."
-          ]
-        },
-        {
-          "type": "callout",
-          "label": "CLI facultative après vérification d’accès",
-          "text": "Le livre 01 propose éventuellement une CLI sur le poste hôte. Une offre de chat gratuite ne prouve pas un droit à Claude Code ou à une CLI Codex. Vérifier l’éligibilité de votre compte avant toute installation et rester sur le web si elle n’est pas établie."
-        },
-        {
-          "type": "text",
-          "text": "Si une limite apparaît, poursuivre les calculs, la lecture de code, les variations sur papier, les contrôles disponibles et les indices. Changer de compte pour contourner une limite n’est pas une étape du cours."
-        }
-      ]
-    },
-    {
-      "title": "Une demande qui laisse le contrôle au programmeur",
-      "kicker": "C–D / PROMPTS / SIX INFORMATIONS UTILES",
+      "title": "Un prompt court, une réussite observable",
+      "kicker": "PROMPTS / QUATRE ÉLÉMENTS",
       "blocks": [
         {
           "type": "table",
           "headers": [
-            "À préciser",
-            "Exemple Atlas"
+            "Élément",
+            "Exemple"
           ],
           "rows": [
             [
-              "But",
-              "Calculer le total du panier, pas tout le système BI."
+              "Objectif",
+              "Normaliser une ligne de vente."
             ],
             [
-              "Interface",
-              "calculer_total(ventes) -> int, nom inchangé."
+              "Contexte utile",
+              "nettoyage.py, fonction normaliser_vente, helpers fournis."
             ],
             [
-              "Entrée",
-              "Liste de dictionnaires quantity / unit_price_millimes."
+              "Limite",
+              "Changer seulement cette fonction ; préserver data/."
             ],
             [
-              "Sortie",
-              "Millimes entiers ; pas de input() ni effet de fichier."
-            ],
-            [
-              "Exemple",
-              "2×4500 + 3×1500 = 13500 ; liste vide = 0."
-            ],
-            [
-              "Périmètre",
-              "Remplacer seulement la fonction TODO ; garder le reste."
+              "Preuve",
+              "Lancer verifier.py 02 et expliquer une variation."
             ]
           ],
           "widths": [
@@ -130,691 +86,567 @@
           ]
         },
         {
+          "type": "code",
+          "label": "Prompt · exemple à adapter",
+          "text": "Lis AGENTS.md et nettoyage.py.\nComplète seulement normaliser_vente(ligne).\nConserve ses clés et les helpers fournis.\nPrévois le cas quantity=\"0\" avant de lancer.\nExécute python3 verifier.py 02.\nExplique une ligne et cite le résultat réel.",
+          "language": "text"
+        },
+        {
           "type": "text",
-          "text": "Un exemple n’est pas une constante à recopier dans la fonction. Le vérificateur utilise d’autres valeurs. Après réception, lire les opérations et vérifier que les arguments reçus sont réellement utilisés."
+          "text": "Un exemple guide la compréhension ; ce n’est pas une constante à coller dans la fonction. La fonction doit traiter les arguments reçus. Demandez à voir ce qui a changé, le résultat exécuté et ce qui n’a pas été vérifié."
         },
         {
           "type": "callout",
-          "label": "Pour corriger",
-          "text": "« Mission 01, calcul.py. Attendu 13500, obtenu 6000. Voici ma fonction et les deux ventes. Explique l’opération manquante, puis corrige seulement cette fonction sans changer ses arguments. »"
-        },
-        {
-          "type": "text",
-          "text": "Ne fournissez pas tout l’historique de votre discussion. Si le contexte devient confus, créer ETAT_PROJET.md avec objectif, fichiers, dernier contrôle, erreur exacte et prochaine action. Cette note permet de reprendre proprement ailleurs."
+          "label": "Ma variation",
+          "text": "Reformulez la même mission pour une revue sans écriture. Quel verbe et quelle limite changent ? Si vous ne voulez qu’un plan, dites « ne modifie rien » puis choisissez explicitement la petite action suivante."
         }
       ]
     },
     {
-      "title": "Lire une fonction sans tout connaître de Python",
-      "kicker": "C–D / REPÈRES / def, ARGUMENT, return",
+      "title": "Demander une correction qui traite la cause",
+      "kicker": "PROMPTS / ATTENDU, OBTENU, RÈGLE",
       "blocks": [
         {
           "type": "code",
-          "text": "def doubler(nombre):\n    # Le bloc appartient à la fonction.\n    resultat = nombre * 2\n    return resultat\n\nprint(doubler(4))",
-          "label": "Python · exemple autonome",
-          "source": "docs/exemples/05_fonction.py"
+          "label": "Prompt · exemple de symptôme, à utiliser seulement si observé",
+          "text": "Jalon 05, incremental.py.\nUne vente NBE du 8 janvier doit être Grand Tunis.\nLe contrôle observe la version Cap Bon.\nLis trouver_shop_key et SQL_VERSION.\nExplique l’écart puis corrige cette fonction seule.\nNe change pas les données ni le vérificateur.\nRelance le contrôle 05 puis montre la différence.",
+          "language": "text"
         },
         {
           "type": "text",
-          "text": "def annonce la fonction ; nombre est le nom local de son entrée. Lors de doubler(4), nombre vaut 4. L’indentation de quatre espaces indique les instructions à exécuter dans la fonction. return rend la valeur à celui qui l’a appelée ; ici print écrit ensuite 8 à l’écran."
+          "text": "N’affirmez pas avoir observé cet échec si votre programme ne l’a pas produit. Copiez votre message réel. Une correction qui change le résultat attendu ou supprime le test ne démontre pas que la règle est satisfaite."
         },
         {
           "type": "table",
           "headers": [
-            "Signe",
-            "Lecture"
+            "Avant",
+            "Après"
           ],
           "rows": [
             [
-              "=",
-              "Affecter une valeur à un nom : total = 0."
+              "Mon hypothèse",
+              "La cause établie par une ligne ou un essai."
             ],
             [
-              "==",
-              "Comparer deux valeurs : quantité == 0."
+              "Ma prédiction",
+              "Le résultat du contrôle exécuté."
             ],
             [
-              "[\"quantity\"]",
-              "Lire la valeur liée à une clé de dictionnaire."
+              "Le fichier modifié",
+              "La petite différence réellement conservée."
             ],
             [
-              "#",
-              "Commentaire pour le lecteur ; il n’est pas exécuté."
+              "Première revue",
+              "Deuxième lecture de la correction."
             ]
           ],
           "widths": [
+            2,
+            2
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Si deux essais échouent",
+          "text": "Revenez au plus petit cas avec un camarade : une boutique, une date, une règle. Lisez le code concerné. Une troisième demande globale peut ajouter du bruit ; une question précise aide à localiser la cause."
+        }
+      ]
+    },
+    {
+      "title": "Mes commandes, leur dossier et leur résultat",
+      "kicker": "REPÈRES / LE TERMINAL EST UBUNTU OU WSL",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Depuis",
+            "Commande",
+            "Ce qu’elle fait"
+          ],
+          "rows": [
+            [
+              "Dossier téléchargé",
+              "python3 outils/jalon.py 01 atelier",
+              "Créer un nouveau départ."
+            ],
+            [
+              "atelier/",
+              "python3 verifier.py 02",
+              "Contrôler le nettoyage."
+            ],
+            [
+              "atelier/",
+              "python3 verifier.py 03",
+              "Contrôler le SELECT source."
+            ],
+            [
+              "atelier/",
+              "python3 executer.py initial",
+              "Nettoyer et charger l’initial."
+            ],
+            [
+              "atelier/",
+              "python3 executer.py increment",
+              "Extraire SQL et ajouter le lot."
+            ],
+            [
+              "atelier/",
+              "python3 executer.py rapport",
+              "Écrire rapport.json et rapport_atlas.html."
+            ],
+            [
+              "atelier/",
+              "python3 executer.py export",
+              "Produire quatre CSV et le manifeste."
+            ],
+            [
+              "atelier/",
+              "python3 verifier.py tout",
+              "Contrôler l’ensemble."
+            ]
+          ],
+          "widths": [
+            0.8,
+            1.9,
+            1.3
+          ]
+        },
+        {
+          "type": "text",
+          "text": "verifier.py accepte les numéros 01 à 07. Un jalon complété au numéro N possède les petites fonctions résolues jusqu’à N, sans résultats déjà chargés. Pour reprendre, choisissez un nouveau nom de dossier, puis relancez les actions nécessaires dans l’ordre."
+        },
+        {
+          "type": "callout",
+          "label": "Lecture des messages",
+          "text": "FileNotFoundError : fichier ou chemin absent. NotImplementedError : une amorce reste à compléter. AssertionError : une comparaison a échoué ; lire l’attendu et l’observé. Ne relancez pas tout sans comprendre le premier écart."
+        }
+      ]
+    },
+    {
+      "title": "Lire les fichiers de preuve sans les confondre",
+      "kicker": "REPÈRES / LES ARTEFACTS D’ATLAS",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Fichier dans outputs/",
+            "Question à laquelle il répond"
+          ],
+          "rows": [
+            [
+              "qualite_initial.json",
+              "Quel sort a reçu chaque catégorie de lignes initiales ?"
+            ],
+            [
+              "extraction_sql.json",
+              "Quel fichier source, quelle requête et quel paramètre ont été lus ?"
+            ],
+            [
+              "chargement_initial.json",
+              "Qu’a chargé l’action initiale ?"
+            ],
+            [
+              "chargement_increment.json",
+              "Qu’a ajouté le dernier lot, qu’a-t-il déjà reconnu ?"
+            ],
+            [
+              "rapport.json",
+              "Quels totaux le contrôle local retrouve-t-il ?"
+            ],
+            [
+              "atlas.sqlite",
+              "Où sont les tables de l’entrepôt ?"
+            ],
+            [
+              "powerbi/<delivery_id>/manifest.json",
+              "Quels fichiers appartiennent à cette livraison ?"
+            ]
+          ],
+          "widths": [
+            1.8,
+            2.2
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Un reçu concerne une action précise et peut être remplacé au prochain lancement. Avant le rejeu, copiez les valeurs utiles dans SUIVI.md. Gardez commande et date avec le résultat. Ne présentez pas une sortie ancienne comme celle de la dernière correction."
+        },
+        {
+          "type": "callout",
+          "label": "Auto-contrôle",
+          "text": "Montrez le fichier qui prouve la lecture source SQL. Puis montrez celui qui prouve le total construit. Ce ne sont pas la même question. Une empreinte identifie le contenu lu ; elle ne certifie pas la vérité métier de la source."
+        }
+      ]
+    },
+    {
+      "title": "Lire les mots du code juste assez pour agir",
+      "kicker": "REPÈRES / PETIT VOCABULAIRE PYTHON ET SQL",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Mot ou signe",
+            "Sens dans Atlas"
+          ],
+          "rows": [
+            [
+              "def / return",
+              "Définir une recette / renvoyer sa sortie."
+            ],
+            [
+              "ligne[\"quantity\"]",
+              "Lire la valeur de quantity dans un dictionnaire."
+            ],
+            [
+              "strip().upper()",
+              "Enlever les espaces au bord puis mettre en majuscules."
+            ],
+            [
+              "int / Decimal",
+              "Entier / nombre décimal exact lu depuis un texte."
+            ],
+            [
+              "SELECT / FROM / WHERE",
+              "Choisir colonnes / table / condition."
+            ],
+            [
+              "? et paramètres",
+              "Transmettre la valeur séparément à la requête."
+            ],
+            [
+              "NULL",
+              "Valeur absente ; valid_to NULL signifie une fin ouverte."
+            ],
+            [
+              "BEGIN / COMMIT / ROLLBACK",
+              "Commencer / valider / annuler un ensemble de modifications."
+            ]
+          ],
+          "widths": [
+            1.3,
+            2.7
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Un sens avant une syntaxe",
+          "text": "Lisibilité : donnez un nom à ce que vous cherchez. Exactitude : utilisez la date de vente, pas la date du lancement. Cohérence : une valeur de montant reste en millimes dans la base."
+        },
+        {
+          "type": "text",
+          "text": "Le cours vous demande trois petites modifications. Il ne demande pas de mémoriser toute la syntaxe. Quand vous utilisez une aide, sachez dire quelle entrée arrive, quelle sortie repart et quelle règle est contrôlée."
+        }
+      ]
+    },
+    {
+      "title": "Repères de données à garder près de moi",
+      "kicker": "REPÈRES / ATTENDU ET UNITÉS",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Étape",
+            "Ventes",
+            "Articles",
+            "Montant en millimes"
+          ],
+          "rows": [
+            [
+              "Initial",
+              "12",
+              "32",
+              "99 000"
+            ],
+            [
+              "Après lot SQL",
+              "14",
+              "35",
+              "115 500"
+            ],
+            [
+              "Même lot rejoué",
+              "14",
+              "35",
+              "115 500"
+            ]
+          ],
+          "widths": [
+            1.4,
+            0.8,
+            0.8,
+            1
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Zone à la date de vente",
+            "Millimes",
+            "TND"
+          ],
+          "rows": [
+            [
+              "Cap Bon",
+              "43 500",
+              "43,500"
+            ],
+            [
+              "Grand Tunis",
+              "72 000",
+              "72,000"
+            ],
+            [
+              "Total",
+              "115 500",
+              "115,500"
+            ]
+          ],
+          "widths": [
+            2,
             1,
-            3
+            1
           ]
         },
         {
           "type": "text",
-          "text": "Créer docs/exemples/05_fonction.py puis choisir votre route, depuis la racine :"
-        },
-        {
-          "type": "code",
-          "text": "docker compose run --rm atelier python ../docs/exemples/05_fonction.py",
-          "label": "PowerShell Windows · racine du cours",
-          "language": "shell"
-        },
-        {
-          "type": "code",
-          "text": "sudo docker compose run --rm atelier python ../docs/exemples/05_fonction.py",
-          "label": "Terminal Ubuntu · racine du cours",
-          "language": "shell"
-        },
-        {
-          "type": "text",
-          "text": "En natif depuis projet/ : Windows, & $pyAtelier ../docs/exemples/05_fonction.py ; Ubuntu, python3 ../docs/exemples/05_fonction.py."
+          "text": "Boutiques distinctes : 2. Versions finales : 3. NBE/Cap Bon est valable du 5 janvier inclus au 8 janvier exclu ; NBE/Grand Tunis à partir du 8 inclus. TUN reste Grand Tunis. Les anciennes clés des faits ne changent pas lors du lot."
         },
         {
           "type": "callout",
-          "label": "À ce stade, je sais…",
-          "text": "montrer l’entrée, le bloc exécuté et la sortie d’une fonction ; expliquer la différence entre afficher une valeur et la renvoyer."
+          "label": "L’erreur fréquente",
+          "text": "Une jointure sur shop_id confond la boutique et sa version. Utilisez shop_key dans les relations du modèle. Une somme globale juste peut cacher des zones mal affectées : vérifiez aussi le découpage."
+        },
+        {
+          "type": "callout",
+          "label": "Question de compréhension",
+          "text": "Pourquoi une vente reçue aujourd’hui mais datée du 7 janvier doit-elle retrouver Cap Bon ? Répondez avec « date de vente », « version » et « fin exclue »."
         }
       ]
     },
     {
-      "title": "Lire une boucle et une décision",
-      "kicker": "C–D / REPÈRES / for, if, else",
-      "blocks": [
-        {
-          "type": "code",
-          "text": "quantites = [2, 0, 3]\ntotal = 0\nfor quantite in quantites:\n    if quantite > 0:\n        total = total + quantite\n    else:\n        print(\"Quantité ignorée :\", quantite)\nprint(\"Total :\", total)",
-          "label": "Python · exemple autonome",
-          "source": "docs/exemples/06_boucle.py"
-        },
-        {
-          "type": "text",
-          "text": "for passe sur les éléments d’une liste. if choisit un bloc si la condition est vraie ; else décrit l’autre cas. Cet exemple affiche la quantité ignorée 0 puis le total 5. Il illustre le contrôle de flux ; le vrai nettoyage doit en plus conserver la ligne rejetée avec son motif."
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Prédire le résultat avec [2, 1, 3] avant d’exécuter : total 6, aucune quantité ignorée.",
-            "Observer les deux niveaux d’indentation : boucle puis décision.",
-            "Repérer que print du total est hors de la boucle, donc n’apparaît qu’une fois."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Un import rend des outils disponibles, par exemple import csv. Un try / except sépare une tentative d’une erreur attendue. Un except qui ignore n’importe quelle erreur peut masquer un défaut : conserver le message utile et éviter les refus silencieux."
-        },
-        {
-          "type": "callout",
-          "label": "À ce stade, je sais…",
-          "text": "suivre une petite boucle à la main et dire pourquoi une ligne entre dans une branche plutôt qu’une autre."
-        }
-      ]
-    },
-    {
-      "title": "Les chemins : de quel dossier parle-t-on ?",
-      "kicker": "C–D / REPÈRES / FICHIER, DOSSIER ET TERMINAL",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Écriture",
-            "Sens"
-          ],
-          "rows": [
-            [
-              "projet/calcul.py",
-              "Depuis la racine du cours, entrer dans projet puis ouvrir calcul.py."
-            ],
-            [
-              "Path(__file__).resolve().parent",
-              "Le dossier du fichier Python enregistré, même si le terminal part d’ailleurs."
-            ],
-            [
-              "ROOT / \"data\" / \"produits.csv\"",
-              "Construire un chemin avec pathlib sans dépendre des barres Windows ou Linux."
-            ],
-            [
-              "outputs/atlas.sqlite",
-              "Base produite par les missions 04 à 06."
-            ],
-            [
-              "outputs/rapport_atlas.html",
-              "Page produite depuis la base par la mission 07."
-            ]
-          ],
-          "widths": [
-            1.65,
-            2.35
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Docker : ouvrir à la racine, où se trouve compose.yaml. PowerShell utilise docker compose ; Ubuntu utilise sudo docker compose dans les blocs du cours. Python travaille dans /workspace/projet. En natif, placer le terminal dans projet/."
-        },
-        {
-          "type": "callout",
-          "label": "Vérifier le dossier au lieu de deviner",
-          "text": "Sous PowerShell, Get-Location affiche le dossier courant et Get-ChildItem ses fichiers. Sous Ubuntu, utiliser pwd puis ls. Si compose.yaml manque, vous n’êtes pas au niveau prévu pour docker compose."
-        },
-        {
-          "type": "text",
-          "text": "Un nom de fichier est exact : ventes_ajout.csv et ventes-ajout.csv ne sont pas le même nom. Un chemin avec espaces se met entre guillemets dans le terminal. Ne pas coller un chemin personnel à l’intérieur des fonctions du projet."
-        },
-        {
-          "type": "callout",
-          "label": "Windows natif · nouvelle fenêtre PowerShell",
-          "text": "Réinitialiser $pyAtelier dans chaque nouvelle fenêtre avec le chemin sys.executable fourni par Thonny, comme dans le guide 01 « Secours Windows ». Utiliser ensuite & $pyAtelier pour lancer Python. Sous Ubuntu natif, utiliser python3."
-        }
-      ]
-    },
-    {
-      "title": "Les interfaces que les fichiers partagent",
-      "kicker": "C–D / REPÈRES / PETIT CONTRAT DU CODE",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Fonction",
-            "Entrée → sortie"
-          ],
-          "rows": [
-            [
-              "calculer_total(ventes)",
-              "Liste chiffrée → int en millimes."
-            ],
-            [
-              "lire_csv(chemin)",
-              "Chemin → liste de dict de textes."
-            ],
-            [
-              "nettoyer(lignes, produits, boutiques)",
-              "Lignes + 2 catalogues dict → (retenues, rejets, doublons)."
-            ],
-            [
-              "creer_modele(chemin_base)",
-              "Chemin → création non destructive des tables ; retour None."
-            ],
-            [
-              "charger(ventes, produits, boutiques, chemin_base)",
-              "Retenues + catalogues + base → dict inserted/existing."
-            ],
-            [
-              "ajouter(chemin_source, chemin_base, chemin_data)",
-              "Chemins → dict raw/accepted/rejected/duplicates/inserted/existing."
-            ],
-            [
-              "generer(chemin_base, chemin_html)",
-              "Base → HTML + dict des indicateurs."
-            ]
-          ],
-          "widths": [
-            1.7,
-            2.3
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Les catalogues sont des dictionnaires : produits[\"P01\"] vaut \"Carnet\" ; boutiques[\"NBE\"] vaut \"Nabeul\". lecture.catalogues() et lecture.ecrire_csv() sont fournis ; les fonctions principales les réutilisent. Conserver les imports, helpers, main() et bloc de lancement des fichiers."
-        },
-        {
-          "type": "callout",
-          "label": "Formes attendues",
-          "text": "Retenues et doublons : six champs source + unit_price_millimes + amount_millimes. quantity et les deux montants sont entiers. Rejets : six champs reçus + motif texte. Un renommage comme reason ferait perdre la raison au fichier CSV fourni."
-        }
-      ]
-    },
-    {
-      "title": "Le dictionnaire du rapport",
-      "kicker": "C–D / REPÈRES / UNE SORTIE RÉUTILISABLE",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Clé de generer()",
-            "Valeur attendue"
-          ],
-          "rows": [
-            [
-              "facts",
-              "Entier : nombre de faits."
-            ],
-            [
-              "quantity",
-              "Entier : nombre d’articles."
-            ],
-            [
-              "amount_millimes",
-              "Entier : montant calculé depuis la base."
-            ],
-            [
-              "period_start / period_end",
-              "Textes de dates ISO correspondant au min et max chargés."
-            ],
-            [
-              "shops / products",
-              "Deux listes de dictionnaires id, name, quantity, amount_millimes."
-            ]
-          ],
-          "widths": [
-            1.45,
-            2.55
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le dictionnaire permet au programme d’assemblage et au vérificateur de réutiliser les chiffres. Le HTML est une autre présentation des mêmes mesures. Si ces sorties se contredisent, examiner ce qui a été recalculé ou écrit en dur."
-        },
-        {
-          "type": "code",
-          "text": "def afficher_tnd(millimes):\n    dinars = millimes // 1000\n    reste = millimes % 1000\n    return f\"{dinars}.{reste:03d}\"\n\nprint(afficher_tnd(115500))",
-          "label": "Python · illustration autonome du formatage",
-          "source": "docs/exemples/07_affichage.py"
-        },
-        {
-          "type": "text",
-          "text": "Sortie : 115.500. // donne les dinars entiers ; % donne les millimes restants ; :03d affiche trois chiffres. Le helper formater_tnd() est déjà fourni dans rapport.py : ne le réécrivez pas pendant la construction de generer()."
-        }
-      ]
-    },
-    {
-      "title": "Exécuter une requête sur ma vraie base",
-      "kicker": "C–D / SQL / OBSERVER SANS MODIFIER",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Après la mission 05, créer docs/exemples/08_sql.py avec ce programme. Les chemins se fondent sur le script. Il ouvre la base existante en lecture seule et affiche les trois mesures globales. Avant l’ajout, attendre (12, 32, 99000) ; après ajout, (14, 35, 115500)."
-        },
-        {
-          "type": "code",
-          "text": "from contextlib import closing\nimport sqlite3\nfrom pathlib import Path\nracine = Path(__file__).resolve().parents[2]\nbase = racine / \"projet\" / \"outputs\" / \"atlas.sqlite\"\nuri = base.as_uri() + \"?mode=ro\"\nwith closing(sqlite3.connect(uri, uri=True)) as connexion:\n    resultat = connexion.execute(\n        \"SELECT COUNT(*), SUM(quantity), \"\n        \"SUM(amount_millimes) FROM fact_sales\"\n    ).fetchone()\nprint(resultat)",
-          "label": "Python · à exécuter après le chargement",
-          "source": "docs/exemples/08_sql.py"
-        },
-        {
-          "type": "text",
-          "text": "Depuis la racine du cours :"
-        },
-        {
-          "type": "code",
-          "text": "docker compose run --rm atelier python ../docs/exemples/08_sql.py",
-          "label": "PowerShell Windows · racine du cours",
-          "language": "shell"
-        },
-        {
-          "type": "code",
-          "text": "sudo docker compose run --rm atelier python ../docs/exemples/08_sql.py",
-          "label": "Terminal Ubuntu · racine du cours",
-          "language": "shell"
-        },
-        {
-          "type": "text",
-          "text": "En natif depuis projet/ : Windows, & $pyAtelier ../docs/exemples/08_sql.py ; Ubuntu, python3 ../docs/exemples/08_sql.py."
-        },
-        {
-          "type": "callout",
-          "label": "Varier une seule question",
-          "text": "Remplacer uniquement la requête par le SQL de docs/sql/boutiques.sql, en la plaçant entre trois guillemets si elle est sur plusieurs lignes. Remplacer fetchone() par fetchall() pour lire tous les groupes. Prédire les deux boutiques avant d’exécuter."
-        }
-      ]
-    },
-    {
-      "title": "Demande 01 · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la définition de calculer_total(ventes), en Python standard. Je remplacerai uniquement le bloc def/TODO de projet/calcul.py et conserverai main() et le bas du fichier. Fonction calculer_total(ventes) : ventes est une liste de dictionnaires contenant quantity et unit_price_millimes, deux entiers positifs. Renvoyer un entier égal à la somme quantity × unit_price_millimes, sans input(), sans afficher à la place du retour, sans lire ni écrire de fichier. Une liste vide renvoie 0. Exemple : 2 × 4500 et 3 × 1500 donne 13500 ; avec 3 carnets le total est 18000. Conserver exactement le nom et les arguments. Ajouter deux commentaires utiles, sans dépendance externe."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Exemple de demande rédigée, pas une réponse de compte IA. Joindre seulement la fonction utile ; garder les imports et main() fournis."
-        },
-        {
-          "type": "section",
-          "text": "Un fichier à compléter, puis un contrôle local"
-        },
-        {
-          "type": "code",
-          "label": "Départ · extrait exact de projet/calcul.py",
-          "language": "python-starter",
-          "source": "projet/calcul.py",
-          "text": "def calculer_total(ventes):\n    # TODO — mission 01 : construire cette fonction avec aide de l’IA, puis vérifier.\n    raise NotImplementedError(\"Compléter calcul.py : calculer_total.\")"
-        },
-        {
-          "type": "figure",
-          "path": "../docs/images/diagrams/trois-espaces.png",
-          "height": 225,
-          "caption": "Schéma conceptuel, pas une capture d’interface. Saisir les commandes exactes de votre route ; enregistrer avant d’exécuter."
-        },
-        {
-          "type": "text",
-          "text": "Après intégration : enregistrer, lancer le module puis son contrôle. Le cours montre une sortie réellement observée dans « Faire travailler le code enregistré ». Suivi possible : « Pourquoi renvoyer un entier plutôt qu’afficher ? Réponds en trois phrases, sans écrire la fonction. »"
-        }
-      ]
-    },
-    {
-      "title": "Demande 02 · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la fonction lire_csv(chemin) -> liste de dictionnaires de textes. Les imports csv et Path et les chemins sont déjà fournis dans lecture.py ; conserver ROOT fondé sur __file__, catalogues(), ecrire_csv() et main(). Utilise csv.DictReader, séparateur virgule, UTF-8 avec prise en charge du BOM, newline=\"\". Conserve toutes les lignes et colonnes ; ne nettoie, ne convertis et ne filtre rien. Le chemin est fourni par l’appelant. Un fichier absent doit produire une erreur claire. Aucun lancement de traitement à l’import. Le lot initial Atlas a 16 lignes hors en-tête. Explique en trois phrases pourquoi les valeurs restent str."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après réception"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Demande 03 · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la définition de nettoyer(lignes, produits, boutiques), en Python standard ; conserver les imports, constantes et main() fournis. Cette fonction renvoyant (retenues, rejets, doublons), trois listes. lignes : dictionnaires des six colonnes Atlas ; catalogues : dictionnaires identifiant vers libellé. Enlève les espaces, normalise les codes en majuscules. Vérifie identifiant présent, date ISO réelle exacte, codes connus, quantité entière positive, prix Decimal fini positif représentant un nombre entier de millimes. Les retenues gardent les six champs source normalisés ; quantity est entier, unit_price_tnd est un texte à trois décimales ; ajouter unit_price_millimes et amount_millimes entiers. Les rejets gardent les six champs source et une clé motif non vide ; les doublons ont les huit mêmes champs que les retenues. Garder les répétitions identiques à part. Même sale_id et contenu normalisé différent : lever ValueError explicite. Aucun traitement au moment de l’import. Le bilan initial doit être 12 retenues, 3 rejets, 1 doublon ; somme quantity 32 et somme amount_millimes 99000. Ne code pas ces résultats en dur."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après réception"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Demande 04 · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la définition de creer_modele(chemin_base), bibliothèque standard. Les imports sqlite3 et Path et connecter() sont déjà fournis et restent intacts. La fonction qui crée le dossier parent si besoin et quatre tables si absentes, sans supprimer une base existante. dim_product(product_key INTEGER PRIMARY KEY, product_id TEXT UNIQUE NOT NULL, product_name TEXT NOT NULL) ; dim_shop(shop_key INTEGER PRIMARY KEY, shop_id TEXT UNIQUE NOT NULL, shop_name TEXT NOT NULL) ; dim_date(date_key INTEGER PRIMARY KEY, full_date TEXT UNIQUE NOT NULL, year INTEGER, month INTEGER, day INTEGER) ; fact_sales(sale_id TEXT PRIMARY KEY, date_key INTEGER NOT NULL REFERENCES dim_date(date_key), product_key INTEGER NOT NULL REFERENCES dim_product(product_key), shop_key INTEGER NOT NULL REFERENCES dim_shop(shop_key), quantity INTEGER CHECK(quantity>0), unit_price_millimes INTEGER CHECK(unit_price_millimes>0), amount_millimes INTEGER CHECK(amount_millimes=quantity*unit_price_millimes)). Active PRAGMA foreign_keys=ON sur la connexion. Fermer proprement. Aucun INSERT et aucun traitement à l’import."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après réception"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Demande 05 · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la définition de charger(ventes, produits, boutiques, chemin_base) ; conserver les imports, connecter(), total_base(), lire_ventes_nettoyees() et main() fournis. La fonction renvoyant {\"inserted\": nombre, \"existing\": nombre}. ventes : retenues normalisées de nettoyer ; produits et boutiques : dictionnaires identifiant vers nom. La base a déjà été créée à la mission 04 ; si elle manque, lever FileNotFoundError. Utiliser connecter() fourni. Créer puis retrouver les dimensions par leurs codes ; date_key est AAAAMMJJ. Insérer les faits avec quantity, unit_price_millimes et amount_millimes. Active foreign_keys sur ta propre connexion. Un sale_id absent est inséré ; s’il existe avec date, produit, boutique, quantité et prix égaux, compter existing. S’il existe avec un contenu différent, lever ValueError et annuler toutes les écritures de ce lot. Une seule transaction de chargement ; pas de suppression, pas de INSERT OR REPLACE qui masque un conflit. Fermer proprement, aucun traitement à l’import. Base initiale : 12 faits, 32 articles, 99000 millimes ; second chargement identique : 0 insertion."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après réception"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Demande 06 · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la fonction ajouter(chemin_source, chemin_base, chemin_data), sans remplacer les imports ni main() fournis. Utiliser catalogues(chemin_data) et ecrire_csv() de lecture déjà importés. Utilise lire_csv de lecture, nettoyer de nettoyage et charger de chargement. Lis les catalogues du dossier chemin_data et transforme-les en dictionnaires identifiant vers nom. Le chemin_source désigne le lot à traiter ; aucun chemin personnel en dur. Nettoyer le lot, charger les retenues et renvoyer exactement un dictionnaire de six clés : raw, accepted, rejected, duplicates, inserted, existing, toutes entières. Écrire rejets_ajout.csv et doublons_ajout.csv à côté de la base avec ecrire_csv(), CHAMPS_SOURCE + [\"motif\"] et CHAMPS_VENTES déjà fournis. Réutiliser les règles existantes, ne pas créer une seconde version du validateur. Propager un conflit avec un message utile ; ne pas supprimer la base. Aucun traitement à l’import. Lot d’ajout : 3 reçues, 3 retenues, 0 rejet, 0 doublon interne, puis 2 inserted et 1 existing ; son rejeu : 0 inserted, 3 existing."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après réception"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Demande 07a · à copier",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Écris seulement la définition de generer(chemin_base, chemin_html) ; conserver les imports, SQL_BOUTIQUES, SQL_PRODUITS, connecter(), formater_tnd(), lignes_table() et main() fournis. La fonction qui interroge les quatre tables Atlas avec sqlite3, écrit un HTML autonome UTF-8 et renvoie exactement les clés facts, quantity, amount_millimes, period_start, period_end, shops, products. Les deux dernières sont des listes de dictionnaires id/name/quantity/amount_millimes ; les périodes sont des textes ISO. facts, quantity et amount_millimes sont entiers. Créer le dossier de sortie si besoin. Calculer depuis la base le nombre de faits, la quantité, le montant en millimes, les dates min/max et les montants par boutique et produit avec leurs libellés. Utiliser SUM, COUNT et JOIN avec les clés ; ne pas inscrire 115500 en dur. Afficher les TND avec trois décimales, tableaux lisibles, titre, période, unité, source et limites : ventes observées, sans stock/coût/marge/prévision. Échapper les libellés HTML, sans CDN, image distante, JavaScript externe ou accès réseau. Aucun traitement à l’import."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après réception"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Lire l’entrée, la sortie et les opérations essentielles.",
-            "Remplacer seulement la fonction annoncée ; garder les autres blocs fournis.",
-            "Enregistrer puis lancer le module et son contrôle dans le même dossier de travail.",
-            "Comparer la sortie réelle à votre prédiction ; expliquer une différence avant la demande suivante."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Demande 07b · expliquer un assemblage",
-      "kicker": "C–D / DEMANDES / À COPIER AU JALON CONCERNÉ",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Voici les appels de executer() déjà fourni. Explique en cinq phrases maximum leur ordre et la raison du deuxième appel à ajouter. Ne modifie aucun fichier et ne propose aucun nouveau helper. Je contrôlerai moi-même 14 faits, 35 articles et 115500 millimes après relance."
-        },
-        {
-          "type": "callout",
-          "label": "Avant d’envoyer",
-          "text": "Joindre seulement le contrat et, si utile, l’emplacement TODO concerné avec ses imports. Aucun secret, aucune conversation complète, aucune copie du dépôt entier."
-        },
-        {
-          "type": "section",
-          "text": "Après l’explication"
-        },
-        {
-          "type": "bullets",
-          "items": [
-            "Comparer les phrases à l’ordre réel des appels de executer().",
-            "Expliquer à un pair pourquoi ajouter est appelé deux fois.",
-            "Conserver executer.py fourni sans le réécrire.",
-            "Lancer executer.py puis verifier.py 07 et lire les bilans réels."
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Le cours principal donne l’ordre et les valeurs de référence. Ces demandes sont des outils ; une réponse peut être différente de la référence et néanmoins correcte si elle respecte les mêmes comportements."
-        }
-      ]
-    },
-    {
-      "title": "Mon script affiche une erreur",
-      "kicker": "C–D / DÉPANNAGE / LIRE LA DERNIÈRE LIGNE",
+      "title": "Dépanner sans changer le contrat",
+      "kicker": "AIDE / PARTIR DU PREMIER ÉCART",
       "blocks": [
         {
           "type": "table",
           "headers": [
             "Symptôme",
-            "Action utile"
+            "Premier contrôle utile"
           ],
           "rows": [
             [
-              "Le terminal attend après >>>",
-              "Vous êtes dans la console Python ; sortir avec exit(), puis saisir la commande au terminal système."
+              "Le fichier modifié ne change rien",
+              "Ai-je enregistré ? Codex et terminal sont-ils dans le même atelier ?"
             ],
             [
-              "Le fichier se termine par .txt",
-              "Afficher les extensions Windows puis enregistrer le vrai nom .py."
+              "Python ne trouve pas le script",
+              "pwd ; voir le nom exact et le dossier."
             ],
             [
-              "SyntaxError",
-              "Enlever les marques ``` et contrôler guillemets/deux-points à la ligne indiquée."
+              "La source SQL manque",
+              "Voir data/source_operationnelle.sqlite ; ne pas inventer un CSV de secours."
             ],
             [
-              "IndentationError",
-              "Observer les espaces du bloc def / for / if ; ne pas mélanger les niveaux."
+              "Le lot donne 15 faits",
+              "S012 a-t-elle été comptée deux fois ? Relire identité et reçu."
             ],
             [
-              "ModuleNotFoundError local",
-              "Vérifier les noms des fichiers et le dossier projet ; ne pas installer sur internet un module du cours."
+              "Le total change au rejeu",
+              "Comparer valeurs et identifiants ; rechercher une insertion répétée."
             ],
             [
-              "NotImplementedError",
-              "La fonction du jalon contient encore son TODO."
+              "Une vente du 8 a deux versions",
+              "Relire la borne finale exclue et le nombre de résultats."
             ],
             [
-              "Sortie absente",
-              "Exécuter le module avant verifier.py ; le vérificateur ne crée pas vos résultats à votre place."
+              "La base a une erreur de clé",
+              "Vérifier dimensions chargées, clé technique et FK actives."
             ]
           ],
           "widths": [
-            1.15,
-            2.85
+            1.6,
+            2.4
           ]
         },
         {
           "type": "callout",
-          "label": "Demander une correction limitée",
-          "text": "Copier le dernier message exact, la fonction concernée et une entrée minimale. Donner attendu et obtenu. Demander une seule cause, une correction locale et le test à relancer."
+          "label": "Une expérience de réparation",
+          "text": "Choisissez une seule hypothèse. Écrivez le résultat attendu si elle est vraie. Exécutez un contrôle court. Si l’observation la contredit, gardez cette information : c’est du progrès."
+        },
+        {
+          "type": "text",
+          "text": "Les données d’origine et le vérificateur ne se modifient pas pour faire disparaître une erreur. Utilisez une copie pour les expériences qui changent une base ; gardez votre atelier principal explicable."
         }
       ]
     },
     {
-      "title": "La commande, la sortie et le sens",
-      "kicker": "C–D / DÉPANNAGE / TROIS NIVEAUX À SÉPARER",
+      "title": "Power BI : retrouver un écart de chiffre",
+      "kicker": "AIDE / WINDOWS ET LES QUATRE CSV",
       "blocks": [
         {
           "type": "table",
           "headers": [
-            "Ce qui réussit",
-            "Ce qui reste à contrôler"
+            "Symptôme",
+            "Où regarder"
           ],
           "rows": [
             [
-              "Docker lance Python",
-              "Le bon script a-t-il été enregistré ?"
+              "Le total paraît 1 000 fois trop grand",
+              "Mesure CA TND et unité amount_millimes."
             ],
             [
-              "Le script termine",
-              "Les comptes et sommes correspondent-ils aux données ?"
+              "Le total est juste, les zones fausses",
+              "Relation dim_shop.shop_key vers fact_sales.shop_key."
             ],
             [
-              "Le total est correct",
-              "Chaque ligne a-t-elle une issue et les clés sont-elles cohérentes ?"
+              "Le montant semble incomplet",
+              "Segments, filtres de page, sélection du graphique."
             ],
             [
-              "Le HTML est visible",
-              "Est-il à jour, issu de la base et honnête sur les limites ?"
+              "Plusieurs-à-plusieurs proposé",
+              "Colonne de relation ; la clé de dimension doit être unique."
             ],
             [
-              "Le rejeu ne plante pas",
-              "L’état de la base est-il réellement inchangé ?"
+              "Actualiser ne change rien",
+              "Chemins source et dossier Windows réellement remplacé."
+            ],
+            [
+              "Erreurs sur valid_to",
+              "Vide = null ; type Date pour les dates présentes."
+            ],
+            [
+              "Desktop indisponible sur Ubuntu",
+              "Transférer le paquet vers le vrai poste Windows prévu."
             ]
           ],
           "widths": [
-            1.25,
-            2.75
+            1.6,
+            2.4
           ]
         },
         {
-          "type": "text",
-          "text": "Pour les missions 03 à 07, l’ordre normal est : enregistrer la fonction → exécuter le module → lire les sorties → exécuter verifier.py NN. Les vérifications temporaires servent à éprouver vos fonctions ; les fichiers de votre projet servent à vérifier votre exécution réelle."
+          "type": "code",
+          "label": "DAX · mesure fournie",
+          "text": "CA TND =\nDIVIDE(SUM(fact_sales[amount_millimes]), 1000)",
+          "language": "dax"
         },
         {
           "type": "callout",
-          "label": "À ce stade, je sais…",
-          "text": "décrire un blocage de manière reproductible, conserver les preuves utiles et demander une correction qui ne change pas tout le projet."
+          "label": "État à sauvegarder",
+          "text": "Le .pbix, la livraison CSV/manifeste, le dossier Windows utilisé et deux captures : relations, puis chiffres/filtre. Distinguez procédure lue et manipulation réellement réalisée."
         },
         {
           "type": "text",
-          "text": "Références primaires des outils employés : https://docs.python.org/3/library/csv.html ; https://docs.python.org/3/library/decimal.html ; https://docs.python.org/3/library/sqlite3.html ; https://www.sqlite.org/lang_select.html. Les références d’installation et d’accès aux assistants sont rassemblées dans le livre 01."
+          "text": "N’utilisez pas une capture de l’auteur comme preuve de votre modèle. Dans votre journal, donnez les valeurs observées et le poste utilisé. Si la route Windows n’a pas été faite, l’étape Power BI reste à valider."
+        }
+      ]
+    },
+    {
+      "title": "Gérer une petite réserve d’usage",
+      "kicker": "AIDE / CONTEXTE, QUOTA, REPRISE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "La documentation Free annonce Luna Standard sous déploiement. High est le point de départ conseillé pour Luna si le choix existe. Gardez un réglage réellement proposé ; aucune option n’est créée par le texte du prompt. Pour une tâche familière très courte, un effort inférieur disponible peut se comparer par un essai, sans promesse d’économie fixe."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Situation",
+            "Geste utile"
+          ],
+          "rows": [
+            [
+              "Historique long",
+              "Garder SUIVI.md, les règles et le dernier écart ; reprendre une petite mission."
+            ],
+            [
+              "Sortie trop longue",
+              "Demander un résumé des résultats et les lignes concernées."
+            ],
+            [
+              "Quota bas",
+              "Éviter les lectures sans but et les agents supplémentaires."
+            ],
+            [
+              "Quota atteint",
+              "Noter le reset affiché ; continuer les vérifications locales prévues."
+            ],
+            [
+              "Indicateur absent",
+              "Écrire « non affiché », sans l’inventer."
+            ]
+          ],
+          "widths": [
+            1.2,
+            2.8
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Mon relevé avant / après",
+          "text": "Date ; client ; modèle ; effort ; contexte si affiché ; quota si affiché ; réinitialisation ; petite tâche ; résultat. Une fenêtre de quota n’est pas une mesure universelle de tokens. Une compaction ne recharge pas la limite."
+        },
+        {
+          "type": "text",
+          "text": "Le CLI n’est pas requis. Dans l’application, utilisez uniquement les commandes ou boutons présents. Sources : https://learn.chatgpt.com/docs/pricing et https://learn.chatgpt.com/docs/models."
+        }
+      ]
+    },
+    {
+      "title": "Réutiliser mon Skill et relire honnêtement",
+      "kicker": "AIDE / DEUX MÉTHODES COURTES",
+      "blocks": [
+        {
+          "type": "code",
+          "label": "Prompt · lecture explicite du Skill local",
+          "text": "Lis .agents/skills/ma-revue-bi/SKILL.md.\nApplique cette méthode en lecture seule\nà la recherche de version de boutique.\nVérifie la date du 7 puis celle du 8 janvier.\nCite fichiers et preuves, ou ce qui manque.\nNe modifie aucun fichier.",
+          "language": "text"
+        },
+        {
+          "type": "text",
+          "text": "Si votre client découvre votre Skill et propose son invocation, utilisez $ma-revue-bi. Sinon, lisez explicitement son fichier et notez la différence. Une règle ajoutée à ce Skill doit se retrouver dans la revue pour prouver que la méthode a été suivie."
+        },
+        {
+          "type": "callout",
+          "label": "Deux lecteurs conditionnels",
+          "text": "Si la fonction et le quota le permettent : deux sous-agents maximum en lecture seule, données et modèle. Sinon deux passes successives séparées ou une lecture par un camarade. Notez la route réellement utilisée."
+        },
+        {
+          "type": "text",
+          "text": "Un seul auteur rassemble les observations et corrige. Chaque défaut établi comporte une règle, un exemple, un fichier et une proposition. Après correction : test ciblé puis deuxième revue. Ne confondez pas deux intitulés dans une réponse avec deux travaux indépendants."
+        },
+        {
+          "type": "callout",
+          "label": "Avant de fermer",
+          "text": "Quelle correction ai-je gardée ? Quel contrôle l’a éprouvée ? Qui a relu après ? Quelle limite reste ouverte ? Quatre phrases précises rendent la reprise plus facile."
+        }
+      ]
+    },
+    {
+      "title": "Mon auto-contrôle avant de livrer",
+      "kicker": "AIDE / UNE EXPLICATION SANS CODE SOUS LES YEUX",
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            "Je distingue source et entrepôt, CSV et table SQL.",
+            "Je raconte le sort d’une ligne initiale et la différence entre vente et article.",
+            "Je calcule millimes → TND et je montre les valeurs observées.",
+            "Je retrouve la version NBE le 7 puis le 8 janvier.",
+            "Je montre que le même lot n’ajoute aucune vente au rejeu.",
+            "Je peux ouvrir les quatre CSV et les trois relations Power BI.",
+            "Je montre une demande Codex, un résultat exécuté et une revue après correction."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Un test simple avec un camarade",
+          "text": "Il choisit un point de la liste. Vous le montrez dans le projet et l’expliquez en une minute. Il pose une question « pourquoi ? ». Si la réponse reste vague, revenez à un petit exemple et notez ce qu’il faut revoir."
+        },
+        {
+          "type": "text",
+          "text": "Le prochain livre décrit une panne courte sur le même projet Atlas. Les indices restent autorisés ; ce qui compte est d’indiquer l’aide utilisée et d’expliquer votre contribution réelle."
         }
       ]
     }
