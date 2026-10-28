@@ -3081,6 +3081,11 @@
        "installation seulement"
       ],
       [
+       "`rejets`",
+       "Séance 2",
+       "`python -m solen initial` puis `verifier --etape rejets` : seuls les rejets du CSV de faits sont jugés."
+      ],
+      [
        "`initial` / `increment`",
        "si une étape résiste",
        "`solen initial`, puis `solen increment`, et le vérificateur de l'étape"

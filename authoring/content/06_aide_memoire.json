@@ -1,691 +1,691 @@
 {
-  "title": "Aide-mémoire Git · Codex · BI",
-  "cover_title": "Aide-mémoire Git · Codex · BI",
-  "subtitle": "Le cycle Git, les gestes GitHub, les habitudes Codex, le vocabulaire BI et les contrôles · à garder ouvert pendant les séances",
-  "author": "Youssef Douma · Leaders University",
-  "subject_label": "Solen BI 22 h · Livret 06 · Aide-mémoire",
-  "header_label": "SOLEN  /  IA, CODEX ET BI",
-  "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
-  "cover": {
-    "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
-    "case": "SOLEN DIGITAL · CLIENT FICTIF MAISON ZITOUNA",
-    "flow": "Branche  →  demande  →  contrôle  →  diff  →  PR  →  revue  →  fusion",
-    "stats": [
+ "title": "Aide-mémoire Git · Codex · BI",
+ "cover_title": "Aide-mémoire Git · Codex · BI",
+ "subtitle": "Le cycle Git, les gestes GitHub, les habitudes Codex, le vocabulaire BI et les contrôles · à garder ouvert pendant les séances",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Livret 06 · Aide-mémoire",
+ "header_label": "SOLEN  /  IA, CODEX ET BI",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF MAISON ZITOUNA",
+  "flow": "Branche  →  demande  →  contrôle  →  diff  →  PR  →  revue  →  fusion",
+  "stats": [
+   [
+    "15",
+    "GESTES DU CYCLE GIT"
+   ],
+   [
+    "6",
+    "MOTS CODEX À DISTINGUER"
+   ],
+   [
+    "5",
+    "PREUVES DE SÉANCE"
+   ]
+  ],
+  "label": "06 / AIDE-MÉMOIRE"
+ },
+ "pages": [
+  {
+   "id": "git-cycle",
+   "title": "Git · le cycle, dans l'ordre",
+   "kicker": "06 / AIDE-MÉMOIRE · GIT",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "A = auteur, B = relecteur. `<…>` = à remplacer, chevrons compris. Terminal Ubuntu, dans `~/solen-bi`, venv actif. Les rôles alternent à chaque PR ; chaque PR ajoute au journal **état, décision, preuve, prochain objectif**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "# · qui",
+      "Commande ou geste",
+      "Pourquoi"
+     ],
+     "rows": [
       [
-        "15",
-        "GESTES DU CYCLE GIT"
+       "1 · A",
+       "`cd ~/solen-bi` puis `source .venv/bin/activate`",
+       "bon dossier, bon Python"
       ],
       [
-        "6",
-        "MOTS CODEX À DISTINGUER"
+       "2 · A",
+       "`git switch main` puis `git pull`",
+       "partir du dernier `main`"
       ],
       [
-        "5",
-        "PREUVES DE SÉANCE"
+       "3 · A",
+       "`git switch -c <branche>` (ex. `rejets-motifs`)",
+       "travailler à l'écart de `main`"
+      ],
+      [
+       "4 · A",
+       "demande à Codex (p. 5), avec une prévision",
+       "un petit objectif à la fois"
+      ],
+      [
+       "5 · A",
+       "lancer les contrôles (p. 8)",
+       "une preuve, pas une promesse"
+      ],
+      [
+       "6 · A",
+       "`git status` puis `git diff`",
+       "voir chaque ligne changée"
+      ],
+      [
+       "7 · A",
+       "`git add <fichier>` puis `git commit -m \"<message>\"`",
+       "une photo nommée"
+      ],
+      [
+       "8 · A",
+       "`git push -u origin <branche>` (ensuite : `git push`)",
+       "envoyer la branche"
       ]
-    ],
-    "label": "06 / AIDE-MÉMOIRE"
-  },
-  "pages": [
-    {
-      "id": "git-cycle",
-      "title": "Git · le cycle, dans l'ordre",
-      "kicker": "06 / AIDE-MÉMOIRE · GIT",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "A = auteur, B = relecteur. `<…>` = à remplacer, chevrons compris. Terminal Ubuntu, dans `~/solen-bi`, venv actif. Les rôles alternent à chaque PR ; chaque PR ajoute au journal **état, décision, preuve, prochain objectif**."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "# · qui",
-            "Commande ou geste",
-            "Pourquoi"
-          ],
-          "rows": [
-            [
-              "1 · A",
-              "`cd ~/solen-bi` puis `source .venv/bin/activate`",
-              "bon dossier, bon Python"
-            ],
-            [
-              "2 · A",
-              "`git switch main` puis `git pull`",
-              "partir du dernier `main`"
-            ],
-            [
-              "3 · A",
-              "`git switch -c <branche>` (ex. `rejets-motifs`)",
-              "travailler à l'écart de `main`"
-            ],
-            [
-              "4 · A",
-              "demande à Codex (p. 5), avec une prévision",
-              "un petit objectif à la fois"
-            ],
-            [
-              "5 · A",
-              "lancer les contrôles (p. 8)",
-              "une preuve, pas une promesse"
-            ],
-            [
-              "6 · A",
-              "`git status` puis `git diff`",
-              "voir chaque ligne changée"
-            ],
-            [
-              "7 · A",
-              "`git add <fichier>` puis `git commit -m \"<message>\"`",
-              "une photo nommée"
-            ],
-            [
-              "8 · A",
-              "`git push -u origin <branche>` (ensuite : `git push`)",
-              "envoyer la branche"
-            ]
-          ],
-          "widths": [
-            0.75,
-            3.75,
-            1.9
-          ]
-        },
-        {
-          "type": "table",
-          "headers": [
-            "# · qui",
-            "Commande ou geste",
-            "Pourquoi"
-          ],
-          "rows": [
-            [
-              "9 · A",
-              "**Compare & pull request** → **Create pull request**",
-              "demander une revue"
-            ],
-            [
-              "10 · B",
-              "`git fetch` puis `git switch <branche>`",
-              "récupérer la branche"
-            ],
-            [
-              "11 · B",
-              "contrôles + `$revoir-bi` (lecture seule) + sa lecture",
-              "vérifier sans modifier"
-            ],
-            [
-              "12 · B",
-              "**Files changed → Review changes → Approve / Request changes**",
-              "une revue écrite"
-            ],
-            [
-              "13 · A",
-              "corrections, même branche : `git commit`, `git push`",
-              "la PR se met à jour"
-            ],
-            [
-              "14 · B",
-              "CI verte + approbation → **Merge pull request → Confirm merge**",
-              "entrer dans `main`"
-            ],
-            [
-              "15 · A+B",
-              "`git switch main && git pull` · `git branch -d <branche>`",
-              "réaligner les copies"
-            ]
-          ],
-          "widths": [
-            0.75,
-            3.75,
-            1.9
-          ]
-        }
-      ]
+     ],
+     "widths": [
+      0.75,
+      3.75,
+      1.9
+     ]
     },
     {
-      "id": "git-reparer",
-      "title": "Git · lire avant d'agir, réparer sans casser",
-      "kicker": "06 / AIDE-MÉMOIRE · GIT",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Commande",
-            "Ce qu'elle montre"
-          ],
-          "rows": [
-            [
-              "`pwd`",
-              "le dossier courant (attendu : `/home/<vous>/solen-bi`)"
-            ],
-            [
-              "`git status`",
-              "branche, fichiers modifiés ou nouveaux, ce qui est prêt à commiter"
-            ],
-            [
-              "`git diff` · `git diff --staged`",
-              "lignes changées (`+` ajoutée, `-` retirée) · ce qui partira au commit"
-            ],
-            [
-              "`git log --oneline -5`",
-              "les 5 derniers commits"
-            ],
-            [
-              "`git branch`",
-              "branches locales ; `*` = branche courante"
-            ]
-          ],
-          "widths": [
-            1.8,
-            4.2
-          ]
-        },
-        {
-          "type": "callout",
-          "label": "Interdits",
-          "text": "`git push --force`, `git reset --hard`, supprimer `.git`. Doute : `git status`, `git log --oneline -5`, on montre."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Symptôme",
-            "Réparer"
-          ],
-          "rows": [
-            [
-              "`fatal: not a git repository`",
-              "`cd ~/solen-bi`"
-            ],
-            [
-              "commit fait sur `main`",
-              "`git switch -c <branche>`, push, PR ; après fusion : `git switch main && git pull`"
-            ],
-            [
-              "`Your local changes … would be overwritten`",
-              "commit sur la bonne branche, ou `git stash` / `git stash pop`"
-            ],
-            [
-              "push refusé, `protected branch`",
-              "normal : branche + PR"
-            ],
-            [
-              "push refusé, `fetch first`",
-              "`git pull` sur la branche (fusion simple), contrôles, `git push`"
-            ],
-            [
-              "PR `out-of-date`",
-              "sur la branche : `git fetch`, `git merge origin/main`, contrôles, push"
-            ],
-            [
-              "`Need to specify how to reconcile…`",
-              "`git config --global pull.rebase false`, puis `git pull`"
-            ],
-            [
-              "check rouge sur la PR",
-              "**Details**, lire la fin, relancer chez soi, corriger le code"
-            ],
-            [
-              "`CONFLICT`",
-              "lire les deux versions, décider à deux, retirer `<<<<<<<` `=======` `>>>>>>>`, contrôles, `git add`, `git commit` ; annuler : `git merge --abort`"
-            ]
-          ],
-          "widths": [
-            2.1,
-            3.9
-          ]
-        }
+     "type": "table",
+     "headers": [
+      "# · qui",
+      "Commande ou geste",
+      "Pourquoi"
+     ],
+     "rows": [
+      [
+       "9 · A",
+       "**Compare & pull request** → **Create pull request**",
+       "demander une revue"
+      ],
+      [
+       "10 · B",
+       "`git fetch` puis `git switch <branche>`",
+       "récupérer la branche"
+      ],
+      [
+       "11 · B",
+       "contrôles + `$revoir-bi` (lecture seule) + sa lecture",
+       "vérifier sans modifier"
+      ],
+      [
+       "12 · B",
+       "**Files changed → Review changes → Approve / Request changes**",
+       "une revue écrite"
+      ],
+      [
+       "13 · A",
+       "corrections, même branche : `git commit`, `git push`",
+       "la PR se met à jour"
+      ],
+      [
+       "14 · B",
+       "CI verte + approbation → **Merge pull request → Confirm merge**",
+       "entrer dans `main`"
+      ],
+      [
+       "15 · A+B",
+       "`git switch main && git pull` · `git branch -d <branche>`",
+       "réaligner les copies"
       ]
-    },
-    {
-      "id": "github",
-      "title": "Gestes GitHub",
-      "kicker": "06 / AIDE-MÉMOIRE · GITHUB",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Geste",
-            "Où cliquer",
-            "À retenir"
-          ],
-          "rows": [
-            [
-              "Créer le dépôt (A)",
-              "**+ → New repository**",
-              "public, sans README"
-            ],
-            [
-              "Inviter (A)",
-              "**Settings → Collaborators → Add people**",
-              "B accepte l'invitation"
-            ],
-            [
-              "Protéger `main` (A)",
-              "**Settings → Branches → Add classic branch protection rule** : `main`",
-              "PR requise, 1 approbation, **Do not allow bypassing the above settings**"
-            ],
-            [
-              "Ouvrir une PR",
-              "**Compare & pull request**, **Reviewers**, **Create pull request**",
-              "titre court ; description quoi / pourquoi / preuve / à relire"
-            ],
-            [
-              "Relire",
-              "**Files changed** → **+** sur une ligne → **Review changes**",
-              "citer un fichier et une ligne ; ce qui est vérifié, ce qui manque. « OK » seul n'est pas une revue."
-            ],
-            [
-              "Décider",
-              "**Approve** ou **Request changes** → **Submit review**",
-              "l'auteur ne peut pas approuver sa propre PR"
-            ],
-            [
-              "Lire la CI",
-              "onglet **Checks** ou **Details** sur la croix rouge",
-              "la CI rejoue les contrôles sur une machine Linux neuve ; vert avant de fusionner"
-            ],
-            [
-              "Fusionner",
-              "**Merge pull request → Confirm merge**",
-              "jamais sa propre PR sans approbation"
-            ],
-            [
-              "Répondre à une revue",
-              "sous chaque commentaire",
-              "« corrigé dans `<commit>` » ou « non retenu parce que… » avec la preuve"
-            ]
-          ],
-          "widths": [
-            1.3,
-            2.4,
-            2.6
-          ]
-        },
-        {
-          "type": "code",
-          "label": "Description de PR · modèle proposé par $preparer-pr",
-          "text": "Titre : Rejeter les lignes à quantité invalide\n## Ce qui change\n- solen/nettoyage.py : motif quantite_invalide\n## Preuve\n- python -m controles.verifier --etape initial → <résultat réel>\n## À relire en priorité\n- <fichier:ligne> — <pourquoi>\n## Non vérifié\n- <ce qui n'a pas été contrôlé>"
-        },
-        {
-          "type": "callout",
-          "label": "Secrets",
-          "text": "Aucun mot de passe, jeton ou clé dans un fichier, un commit, une URL ou une demande à Codex. Connexion : `gh auth login` (navigateur) ; `gh auth status` pour vérifier."
-        }
-      ]
-    },
-    {
-      "id": "codex",
-      "title": "Habitudes Codex",
-      "kicker": "06 / AIDE-MÉMOIRE · CODEX",
-      "blocks": [
-        {
-          "type": "table",
-          "headers": [
-            "Une bonne demande",
-            "Exemple Solen"
-          ],
-          "rows": [
-            [
-              "**Un petit objectif** observable",
-              "« compter les lignes du CSV de ventes du lot 1 »"
-            ],
-            [
-              "**Les fichiers** concernés, et ceux à ne pas toucher",
-              "code dans `solen/` ; jamais `tronc-commun/`, `reference/`, `controles/`"
-            ],
-            [
-              "**Le contrôle attendu** et **votre prévision**",
-              "« `--etape initial` doit afficher `fact_vente : 1960 lignes` »"
-            ],
-            [
-              "**Plan d'abord** si plus d'un fichier",
-              "« Propose ton plan en 3 étapes, attends mon accord » (ou `/plan`)"
-            ]
-          ],
-          "widths": [
-            2.4,
-            3.6
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Puis : **lire le diff** (onglet de revue Ctrl + Maj + G, ou `git diff`), **relancer soi-même** les contrôles, **écrire une note courte** au journal. Une commande annoncée par Codex n'est pas une preuve tant que vous ne l'avez pas lancée. Un contrôle **déterministe** donne toujours le même résultat : un compte, une somme en millimes, des rejets par motif."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Mot",
-            "Sens",
-            "Geste"
-          ],
-          "rows": [
-            [
-              "**Modèle**",
-              "GPT-6 Luna, annoncé pour Free (application de bureau, selon le déploiement)",
-              "sélecteur de modèle, Ctrl + Maj + M"
-            ],
-            [
-              "**Effort**",
-              "combien Codex réfléchit : Light, Medium, High, Extra High (sous Advanced)",
-              "High pour commencer ; Light pour une question courte ; Extra High si un débogage reste bloqué"
-            ],
-            [
-              "**Vitesse**",
-              "« Standard » : vitesse de service, pas un effort",
-              "rien à régler"
-            ],
-            [
-              "**Token**",
-              "morceau de texte ; demandes, fichiers lus et réponses se comptent en tokens",
-              "peu de fichiers à la fois"
-            ],
-            [
-              "**Contexte**",
-              "ce que Codex garde en tête dans cette conversation",
-              "conversation trop longue : note d'état (prompt 16) + conversation neuve"
-            ],
-            [
-              "**Quota**",
-              "allocation d'usage sur une période ; elle varie ; aucune durée promise",
-              "`/status` avant une grosse demande ; limite : commit, noter l'heure de reprise, continuer sans Codex"
-            ]
-          ],
-          "widths": [
-            1,
-            2.6,
-            2.6
-          ]
-        }
-      ]
-    },
-    {
-      "id": "codex-2",
-      "title": "Revue, fichiers guides, travail sans Codex",
-      "kicker": "06 / AIDE-MÉMOIRE · CODEX",
-      "blocks": [
-        {
-          "type": "section",
-          "text": "Revue : lecture seule → constater → corriger → recontrôler"
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Étape",
-            "Ce que vous faites"
-          ],
-          "rows": [
-            [
-              "1. Lire",
-              "« Utilise $revoir-bi. Branche : `<branche>`. Lecture seule. Au plus 3 défauts établis : fichier, ligne, exemple observable. » (prompt 11)"
-            ],
-            [
-              "2. Choisir",
-              "Vous décidez quels constats traiter ; une demande de correction par constat (prompt 12)."
-            ],
-            [
-              "3. Recontrôler",
-              "Relancer **tous** les contrôles, relire le diff de la correction, tester un cas limite (vente NBE du 2026-07-14 et du 2026-07-15)."
-            ],
-            [
-              "4. Écrire",
-              "Votre revue GitHub dit ce que **vous** avez reproduit. « Aucun défaut établi » n'est pas « tout est juste »."
-            ]
-          ],
-          "widths": [
-            1.1,
-            4.9
-          ]
-        },
-        {
-          "type": "section",
-          "text": "Les fichiers qui guident Codex"
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Fichier",
-            "Rôle"
-          ],
-          "rows": [
-            [
-              "`AGENTS.md`",
-              "règles du dépôt, lues par Codex avant tout travail. Vérifier : « Quelles instructions as-tu lues ? »"
-            ],
-            [
-              "`.agents/skills/<nom>/SKILL.md`",
-              "une méthode réutilisable (`name` + `description`) : `$expliquer-bi`, `$revoir-bi`, `$preparer-pr`. Non reconnu : « Lis .agents/skills/<nom>/SKILL.md et applique sa méthode. »"
-            ],
-            [
-              "Sous-agents (travailleurs parallèles)",
-              "facultatifs, seulement si vous les demandez ; surtout pour de la lecture ; ils consomment plus de tokens. Sans eux : deux conversations successives."
-            ]
-          ],
-          "widths": [
-            1.8,
-            4.2
-          ]
-        },
-        {
-          "type": "section",
-          "text": "Codex ne fait jamais à votre place"
-        },
-        {
-          "type": "text",
-          "text": "`git commit`, `git push`, ouvrir ou fusionner une PR, écrire votre revue, modifier les sources, les références ou `controles/`. Si une réponse le propose : refusez et reformulez."
-        },
-        {
-          "type": "callout",
-          "label": "Codex indisponible ou quota atteint",
-          "text": "Continuez : Git, revue du binôme, lecture du diff, calcul à la main sur l'échantillon, interprétation, préparation de la prochaine demande. Point de reprise : `modele-binome/` du dépôt du cours + votre `notes/JOURNAL.md`. Jamais de code à la main, jamais d'achat : attendez le reset affiché."
-        }
-      ]
-    },
-    {
-      "id": "bi",
-      "title": "Vocabulaire BI · Solen Commerce 360",
-      "kicker": "06 / AIDE-MÉMOIRE · BI",
-      "blocks": [
-        {
-          "type": "text",
-          "text": "Maison Zitouna (fictif), boutiques **TUN**, **NBE**, **SFX**. Montants en **millimes entiers** (1 TND = 1 000 millimes), affichés en TND à 3 décimales. Chiffres : `tronc-commun/reference/`."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Mot",
-            "Définition courte",
-            "Exemple Solen"
-          ],
-          "rows": [
-            [
-              "**ETL**",
-              "extraire, transformer, charger",
-              "`ventes.csv` → nettoyage → `outputs/entrepot.sqlite`"
-            ],
-            [
-              "**Grain**",
-              "ce que représente une ligne de fait",
-              "une ligne de ticket : `E-001-1`, 2 × P01 à 18,500 TND = 37 000 millimes"
-            ],
-            [
-              "**Fait**",
-              "événement mesuré, avec montants",
-              "`fact_vente`, `fact_retour`"
-            ],
-            [
-              "**Dimension**",
-              "ce qui décrit le fait",
-              "`dim_boutique` (zone), `dim_produit`, `dim_date`"
-            ],
-            [
-              "**Clé métier**",
-              "identifiant réel, en texte",
-              "`boutique_id = \"NBE\"`"
-            ],
-            [
-              "**Clé technique**",
-              "entier créé par l'entrepôt",
-              "`boutique_key` : une par version de NBE"
-            ],
-            [
-              "**Étoile**",
-              "faits au centre, reliés aux dimensions par les `*_key`",
-              "`fact_vente` → `dim_date`, `dim_produit`, `dim_boutique`"
-            ],
-            [
-              "**Rejet**",
-              "ligne écartée + motif, dans `rejets.csv`",
-              "`E-006-1` en double (2 puis 4 savons) → `id_conflit` ; lot 1 : 26 rejets"
-            ]
-          ],
-          "widths": [
-            1.2,
-            2.1,
-            3.0
-          ]
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Mot",
-            "Définition courte",
-            "Exemple Solen (lot 1)"
-          ],
-          "rows": [
-            [
-              "**Ventes brutes**",
-              "Σ quantité × prix du ticket",
-              "78 067,830 TND"
-            ],
-            [
-              "**Ventes nettes**",
-              "ventes brutes − retours",
-              "78 067,830 − 3 758,330 = 74 309,500 TND"
-            ],
-            [
-              "**Marge sur coût d'achat**",
-              "ventes nettes − coût d'achat des unités nettes (jamais « bénéfice »)",
-              "74 309,500 − 45 317,800 = 28 991,700 TND"
-            ],
-            [
-              "**Taux de retour**",
-              "retours / ventes brutes",
-              "3 758,330 / 78 067,830 = 4,81 %"
-            ],
-            [
-              "**SCD2**",
-              "historique par versions datées",
-              "NBE passe de Cap Bon à Nord-Est le 2026-07-15 : vente de juin → Cap Bon, d'août → Nord-Est"
-            ],
-            [
-              "**Incrément**",
-              "charger seulement le nouveau lot",
-              "lot 2 : `fact_vente` passe de 1 960 à 2 345 lignes"
-            ],
-            [
-              "**Rejeu**",
-              "relancer le même lot sans doublon",
-              "2e `increment` : `fact_vente` reste à 2 345"
-            ]
-          ],
-          "widths": [
-            1.2,
-            2.1,
-            3.0
-          ]
-        }
-      ]
-    },
-    {
-      "id": "controles",
-      "title": "Contrôles et preuves de séance",
-      "kicker": "06 / AIDE-MÉMOIRE · VÉRIFIER",
-      "blocks": [
-        {
-          "type": "code",
-          "label": "Terminal · dans ~/solen-bi, venv actif",
-          "text": "source .venv/bin/activate        # à chaque nouveau terminal\npython -m solen sources          # S2 : lire les sources, sans rien charger\npython -m solen initial          # puis increment, export, app\npython -m controles.verifier --mission $(cat mission.txt) --etape initial\n      # étapes : rejets|initial|increment|rejeu|export|app|tout\n      # ÉCHEC — <contrôle> : attendu X, observé Y → corriger le code\npytest controles                 # tests fournis\npytest -q                        # tous les tests, y compris les vôtres"
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Étape du vérificateur",
-            "Ce qu'elle compare",
-            "Lancer avant"
-          ],
-          "rows": [
-            [
-              "`rejets`",
-              "S2 : rejets du CSV de faits du lot 1, par motif",
-              "`python -m solen initial`"
-            ],
-            [
-              "`initial`",
-              "tables, lignes, clés, rejets par motif, indicateurs après le lot 1",
-              "`python -m solen initial`"
-            ],
-            [
-              "`increment`",
-              "mêmes contrôles après le lot 2 + versions SCD2 aux dates frontières",
-              "`initial` puis `increment`"
-            ],
-            [
-              "`rejeu`",
-              "un deuxième `increment` ne change rien",
-              "`increment` une deuxième fois"
-            ],
-            [
-              "`export` · `app`",
-              "CSV + `manifest.json` cohérents avec l'entrepôt · `index.html` autonome",
-              "`python -m solen export` · `app`"
-            ],
-            [
-              "`tout`",
-              "détecte le lot chargé et contrôle tout ce qui existe ; même ordre pour `ETAPE_CI` (CI)",
-              "l'ensemble"
-            ]
-          ],
-          "widths": [
-            1.3,
-            3.2,
-            1.8
-          ]
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Séance",
-            "La preuve visible en fin de séance"
-          ],
-          "rows": [
-            [
-              "S1",
-              "Dépôt créé, partenaire invité ; PR n°1 `journal-binome` (A), PR n°2 `cadrage-binome` (B) ; échantillon à la main."
-            ],
-            [
-              "S2",
-              "`--etape rejets` vert ; une PR relue par l'autre ; une correction."
-            ],
-            [
-              "S3",
-              "Entrepôt à 5 tables ; totaux = référence ; mission du catalogue choisie."
-            ],
-            [
-              "S4",
-              "Lot 2, historique, rejeu, CI verte, conflit ; `livraison/tronc-commun/` ; 1re PR de mission."
-            ],
-            [
-              "S5",
-              "Mission jusqu'à l'app ; Power BI du tronc commun actualisé ; répétition croisée."
-            ]
-          ],
-          "widths": [
-            0.75,
-            5.25
-          ]
-        }
-      ]
+     ],
+     "widths": [
+      0.75,
+      3.75,
+      1.9
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "git-reparer",
+   "title": "Git · lire avant d'agir, réparer sans casser",
+   "kicker": "06 / AIDE-MÉMOIRE · GIT",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Commande",
+      "Ce qu'elle montre"
+     ],
+     "rows": [
+      [
+       "`pwd`",
+       "le dossier courant (attendu : `/home/<vous>/solen-bi`)"
+      ],
+      [
+       "`git status`",
+       "branche, fichiers modifiés ou nouveaux, ce qui est prêt à commiter"
+      ],
+      [
+       "`git diff` · `git diff --staged`",
+       "lignes changées (`+` ajoutée, `-` retirée) · ce qui partira au commit"
+      ],
+      [
+       "`git log --oneline -5`",
+       "les 5 derniers commits"
+      ],
+      [
+       "`git branch`",
+       "branches locales ; `*` = branche courante"
+      ]
+     ],
+     "widths": [
+      1.8,
+      4.2
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Interdits",
+     "text": "`git push --force`, `git reset --hard`, supprimer `.git`. Doute : `git status`, `git log --oneline -5`, on montre."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Symptôme",
+      "Réparer"
+     ],
+     "rows": [
+      [
+       "`fatal: not a git repository`",
+       "`cd ~/solen-bi`"
+      ],
+      [
+       "commit fait sur `main`",
+       "`git switch -c <branche>`, push, PR ; après fusion : `git switch main && git pull`"
+      ],
+      [
+       "`Your local changes … would be overwritten`",
+       "commit sur la bonne branche, ou `git stash` / `git stash pop`"
+      ],
+      [
+       "push refusé, `protected branch`",
+       "normal : branche + PR"
+      ],
+      [
+       "push refusé, `fetch first`",
+       "`git pull` sur la branche (fusion simple), contrôles, `git push`"
+      ],
+      [
+       "PR `out-of-date`",
+       "sur la branche : `git fetch`, `git merge origin/main`, contrôles, push"
+      ],
+      [
+       "`Need to specify how to reconcile…`",
+       "`git config --global pull.rebase false`, puis `git pull`"
+      ],
+      [
+       "check rouge sur la PR",
+       "**Details**, lire la fin, relancer chez soi, corriger le code"
+      ],
+      [
+       "`CONFLICT`",
+       "lire les deux versions, décider à deux, retirer `<<<<<<<` `=======` `>>>>>>>`, contrôles, `git add`, `git commit` ; annuler : `git merge --abort`"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3.9
+     ]
+    }
+   ]
+  },
+  {
+   "id": "github",
+   "title": "Gestes GitHub",
+   "kicker": "06 / AIDE-MÉMOIRE · GITHUB",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Geste",
+      "Où cliquer",
+      "À retenir"
+     ],
+     "rows": [
+      [
+       "Créer le dépôt (A)",
+       "**+ → New repository**",
+       "public, sans README"
+      ],
+      [
+       "Inviter (A)",
+       "**Settings → Collaborators → Add people**",
+       "B accepte l'invitation"
+      ],
+      [
+       "Protéger `main` (A)",
+       "**Settings → Branches → Add classic branch protection rule** : `main`",
+       "PR requise, 1 approbation, **Do not allow bypassing the above settings**"
+      ],
+      [
+       "Ouvrir une PR",
+       "**Compare & pull request**, **Reviewers**, **Create pull request**",
+       "titre court ; description quoi / pourquoi / preuve / à relire"
+      ],
+      [
+       "Relire",
+       "**Files changed** → **+** sur une ligne → **Review changes**",
+       "citer un fichier et une ligne ; ce qui est vérifié, ce qui manque. « OK » seul n'est pas une revue."
+      ],
+      [
+       "Décider",
+       "**Approve** ou **Request changes** → **Submit review**",
+       "l'auteur ne peut pas approuver sa propre PR"
+      ],
+      [
+       "Lire la CI",
+       "onglet **Checks** ou **Details** sur la croix rouge",
+       "la CI rejoue les contrôles sur une machine Linux neuve ; vert avant de fusionner"
+      ],
+      [
+       "Fusionner",
+       "**Merge pull request → Confirm merge**",
+       "jamais sa propre PR sans approbation"
+      ],
+      [
+       "Répondre à une revue",
+       "sous chaque commentaire",
+       "« corrigé dans `<commit>` » ou « non retenu parce que… » avec la preuve"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Description de PR · modèle proposé par $preparer-pr",
+     "text": "Titre : Rejeter les lignes à quantité invalide\n## Ce qui change\n- solen/nettoyage.py : motif quantite_invalide\n## Preuve\n- python -m controles.verifier --etape initial → <résultat réel>\n## À relire en priorité\n- <fichier:ligne> — <pourquoi>\n## Non vérifié\n- <ce qui n'a pas été contrôlé>"
+    },
+    {
+     "type": "callout",
+     "label": "Secrets",
+     "text": "Aucun mot de passe, jeton ou clé dans un fichier, un commit, une URL ou une demande à Codex. Connexion : `gh auth login` (navigateur) ; `gh auth status` pour vérifier."
+    }
+   ]
+  },
+  {
+   "id": "codex",
+   "title": "Habitudes Codex",
+   "kicker": "06 / AIDE-MÉMOIRE · CODEX",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Une bonne demande",
+      "Exemple Solen"
+     ],
+     "rows": [
+      [
+       "**Un petit objectif** observable",
+       "« compter les lignes du CSV de ventes du lot 1 »"
+      ],
+      [
+       "**Les fichiers** concernés, et ceux à ne pas toucher",
+       "code dans `solen/` ; jamais `tronc-commun/`, `reference/`, `controles/`"
+      ],
+      [
+       "**Le contrôle attendu** et **votre prévision**",
+       "« `--etape initial` doit afficher `fact_vente : 1960 lignes` »"
+      ],
+      [
+       "**Plan d'abord** si plus d'un fichier",
+       "« Propose ton plan en 3 étapes, attends mon accord » (ou `/plan`)"
+      ]
+     ],
+     "widths": [
+      2.4,
+      3.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis : **lire le diff** (onglet de revue Ctrl + Maj + G, ou `git diff`), **relancer soi-même** les contrôles, **écrire une note courte** au journal. Une commande annoncée par Codex n'est pas une preuve tant que vous ne l'avez pas lancée. Un contrôle **déterministe** donne toujours le même résultat : un compte, une somme en millimes, des rejets par motif."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "Sens",
+      "Geste"
+     ],
+     "rows": [
+      [
+       "**Modèle**",
+       "GPT-6 Luna, annoncé pour Free (application de bureau, selon le déploiement)",
+       "sélecteur de modèle, Ctrl + Maj + M"
+      ],
+      [
+       "**Effort**",
+       "combien Codex réfléchit : Light, Medium, High, Extra High (sous Advanced)",
+       "High pour commencer ; Light pour une question courte ; Extra High si un débogage reste bloqué"
+      ],
+      [
+       "**Vitesse**",
+       "« Standard » : vitesse de service, pas un effort",
+       "rien à régler"
+      ],
+      [
+       "**Token**",
+       "morceau de texte ; demandes, fichiers lus et réponses se comptent en tokens",
+       "peu de fichiers à la fois"
+      ],
+      [
+       "**Contexte**",
+       "ce que Codex garde en tête dans cette conversation",
+       "conversation trop longue : note d'état (prompt 16) + conversation neuve"
+      ],
+      [
+       "**Quota**",
+       "allocation d'usage sur une période ; elle varie ; aucune durée promise",
+       "`/status` avant une grosse demande ; limite : commit, noter l'heure de reprise, continuer sans Codex"
+      ]
+     ],
+     "widths": [
+      1,
+      2.6,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "id": "codex-2",
+   "title": "Revue, fichiers guides, travail sans Codex",
+   "kicker": "06 / AIDE-MÉMOIRE · CODEX",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "Revue : lecture seule → constater → corriger → recontrôler"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Étape",
+      "Ce que vous faites"
+     ],
+     "rows": [
+      [
+       "1. Lire",
+       "« Utilise $revoir-bi. Branche : `<branche>`. Lecture seule. Au plus 3 défauts établis : fichier, ligne, exemple observable. » (prompt 11)"
+      ],
+      [
+       "2. Choisir",
+       "Vous décidez quels constats traiter ; une demande de correction par constat (prompt 12)."
+      ],
+      [
+       "3. Recontrôler",
+       "Relancer **tous** les contrôles, relire le diff de la correction, tester un cas limite (vente NBE du 2026-07-14 et du 2026-07-15)."
+      ],
+      [
+       "4. Écrire",
+       "Votre revue GitHub dit ce que **vous** avez reproduit. « Aucun défaut établi » n'est pas « tout est juste »."
+      ]
+     ],
+     "widths": [
+      1.1,
+      4.9
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les fichiers qui guident Codex"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Rôle"
+     ],
+     "rows": [
+      [
+       "`AGENTS.md`",
+       "règles du dépôt, lues par Codex avant tout travail. Vérifier : « Quelles instructions as-tu lues ? »"
+      ],
+      [
+       "`.agents/skills/<nom>/SKILL.md`",
+       "une méthode réutilisable (`name` + `description`) : `$expliquer-bi`, `$revoir-bi`, `$preparer-pr`. Non reconnu : « Lis .agents/skills/<nom>/SKILL.md et applique sa méthode. »"
+      ],
+      [
+       "Sous-agents (travailleurs parallèles)",
+       "facultatifs, seulement si vous les demandez ; surtout pour de la lecture ; ils consomment plus de tokens. Sans eux : deux conversations successives."
+      ]
+     ],
+     "widths": [
+      1.8,
+      4.2
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Codex ne fait jamais à votre place"
+    },
+    {
+     "type": "text",
+     "text": "`git commit`, `git push`, ouvrir ou fusionner une PR, écrire votre revue, modifier les sources, les références ou `controles/`. Si une réponse le propose : refusez et reformulez."
+    },
+    {
+     "type": "callout",
+     "label": "Codex indisponible ou quota atteint",
+     "text": "Continuez : Git, revue du binôme, lecture du diff, calcul à la main sur l'échantillon, interprétation, préparation de la prochaine demande. Point de reprise : `modele-binome/` du dépôt du cours + votre `notes/JOURNAL.md`. Jamais de code à la main, jamais d'achat : attendez le reset affiché."
+    }
+   ]
+  },
+  {
+   "id": "bi",
+   "title": "Vocabulaire BI · Solen Commerce 360",
+   "kicker": "06 / AIDE-MÉMOIRE · BI",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Maison Zitouna (fictif), boutiques **TUN**, **NBE**, **SFX**. Montants en **millimes entiers** (1 TND = 1 000 millimes), affichés en TND à 3 décimales. Chiffres : `tronc-commun/reference/`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "Définition courte",
+      "Exemple Solen"
+     ],
+     "rows": [
+      [
+       "**ETL**",
+       "extraire, transformer, charger",
+       "`ventes.csv` → nettoyage → `outputs/entrepot.sqlite`"
+      ],
+      [
+       "**Grain**",
+       "ce que représente une ligne de fait",
+       "une ligne de ticket : `E-001-1`, 2 × P01 à 18,500 TND = 37 000 millimes"
+      ],
+      [
+       "**Fait**",
+       "événement mesuré, avec montants",
+       "`fact_vente`, `fact_retour`"
+      ],
+      [
+       "**Dimension**",
+       "ce qui décrit le fait",
+       "`dim_boutique` (zone), `dim_produit`, `dim_date`"
+      ],
+      [
+       "**Clé métier**",
+       "identifiant réel, en texte",
+       "`boutique_id = \"NBE\"`"
+      ],
+      [
+       "**Clé technique**",
+       "entier créé par l'entrepôt",
+       "`boutique_key` : une par version de NBE"
+      ],
+      [
+       "**Étoile**",
+       "faits au centre, reliés aux dimensions par les `*_key`",
+       "`fact_vente` → `dim_date`, `dim_produit`, `dim_boutique`"
+      ],
+      [
+       "**Rejet**",
+       "ligne écartée + motif, dans `rejets.csv`",
+       "`E-006-1` en double (2 puis 4 savons) → `id_conflit` ; lot 1 : 26 rejets"
+      ]
+     ],
+     "widths": [
+      1.2,
+      2.1,
+      3.0
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "Définition courte",
+      "Exemple Solen (lot 1)"
+     ],
+     "rows": [
+      [
+       "**Ventes brutes**",
+       "Σ quantité × prix du ticket",
+       "78 067,830 TND"
+      ],
+      [
+       "**Ventes nettes**",
+       "ventes brutes − retours",
+       "78 067,830 − 3 758,330 = 74 309,500 TND"
+      ],
+      [
+       "**Marge sur coût d'achat**",
+       "ventes nettes − coût d'achat des unités nettes (jamais « bénéfice »)",
+       "74 309,500 − 45 317,800 = 28 991,700 TND"
+      ],
+      [
+       "**Taux de retour**",
+       "retours / ventes brutes",
+       "3 758,330 / 78 067,830 = 4,81 %"
+      ],
+      [
+       "**SCD2**",
+       "historique par versions datées",
+       "NBE passe de Cap Bon à Nord-Est le 2026-07-15 : vente de juin → Cap Bon, d'août → Nord-Est"
+      ],
+      [
+       "**Incrément**",
+       "charger seulement le nouveau lot",
+       "lot 2 : `fact_vente` passe de 1 960 à 2 345 lignes"
+      ],
+      [
+       "**Rejeu**",
+       "relancer le même lot sans doublon",
+       "2e `increment` : `fact_vente` reste à 2 345"
+      ]
+     ],
+     "widths": [
+      1.2,
+      2.1,
+      3.0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "controles",
+   "title": "Contrôles et preuves de séance",
+   "kicker": "06 / AIDE-MÉMOIRE · VÉRIFIER",
+   "blocks": [
+    {
+     "type": "code",
+     "label": "Terminal · dans ~/solen-bi, venv actif",
+     "text": "source .venv/bin/activate        # à chaque nouveau terminal\npython -m solen sources          # S2 : lire les sources, sans rien charger\npython -m solen initial          # puis increment, export, app\npython -m controles.verifier --mission $(cat mission.txt) --etape initial\npytest controles                 # tests fournis\npytest -q                        # tous les tests, y compris les vôtres"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Étape du vérificateur",
+      "Ce qu'elle compare",
+      "Lancer avant"
+     ],
+     "rows": [
+      [
+       "`rejets`",
+       "S2 : rejets du CSV de faits du lot 1, par motif",
+       "`python -m solen initial`"
+      ],
+      [
+       "`initial`",
+       "tables, lignes, clés, rejets par motif, indicateurs après le lot 1",
+       "`python -m solen initial`"
+      ],
+      [
+       "`increment`",
+       "mêmes contrôles après le lot 2 + versions SCD2 aux dates frontières",
+       "`initial` puis `increment`"
+      ],
+      [
+       "`rejeu`",
+       "un deuxième `increment` ne change rien",
+       "`--etape increment` (empreinte) → `increment` → `--etape rejeu`"
+      ],
+      [
+       "`export` · `app`",
+       "CSV + `manifest.json` cohérents avec l'entrepôt · `index.html` autonome",
+       "`python -m solen export` · `app`"
+      ],
+      [
+       "`tout`",
+       "détecte le lot chargé et contrôle tout ce qui existe ; même ordre pour `ETAPE_CI` (CI)",
+       "l'ensemble"
+      ]
+     ],
+     "widths": [
+      1.3,
+      3.2,
+      1.8
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Séance",
+      "La preuve visible en fin de séance"
+     ],
+     "rows": [
+      [
+       "S1",
+       "Dépôt créé, partenaire invité ; PR n°1 `journal-binome` (A), PR n°2 `cadrage-binome` (B) ; échantillon à la main."
+      ],
+      [
+       "S2",
+       "`--etape rejets` vert ; une PR relue par l'autre ; une correction."
+      ],
+      [
+       "S3",
+       "Entrepôt à 5 tables ; totaux = référence ; mission du catalogue choisie."
+      ],
+      [
+       "S4",
+       "Lot 2, historique, rejeu, CI verte, conflit ; `livraison/tronc-commun/` ; 1re PR de mission."
+      ],
+      [
+       "S5",
+       "Mission jusqu'à l'app ; Power BI du tronc commun actualisé ; répétition croisée."
+      ]
+     ],
+     "widths": [
+      0.75,
+      5.25
+     ]
+    }
+   ]
+  }
+ ]
 }

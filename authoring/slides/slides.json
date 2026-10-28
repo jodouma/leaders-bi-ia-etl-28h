@@ -103,7 +103,7 @@
         }
       ],
       "note": "Durées estimées, à confirmer par un essai réel.",
-      "notes": "Contrat §1 et §3, décisions V7 D1–D2 : séance de 240 min = 2 pauses de 10 min + 220 min actives, dont au moins 70 % de pratique (S1 58/162, S2 et S3 66/154, S4 50/170, S5 35/185 ; total 275 min d'explications / 825 de pratique). Travail personnel ≈ 8 h : 2 h de séance 0 avant S1 (installation, comptes, lecture du livret 00), 4 h de mission du catalogue, 2 h de finition, recommandation et préparation orale. Ce sont des estimations de conception, pas des mesures.",
+      "notes": "Contrat §1 et §3, décisions V7 D1–D2 : séance de 240 min = 2 pauses de 10 min + 220 min actives, dont au moins 70 % de pratique (S1 58/162, S2 et S3 66/154, S4 50/170, S5 50/170 ; total 290 min d'explications / 810 de pratique). Travail personnel ≈ 8 h : 2 h de séance 0 avant S1 (installation, comptes, lecture du livret 00), 4 h de mission du catalogue, 2 h de finition, recommandation et préparation orale. Ce sont des estimations de conception, pas des mesures.",
       "id": "v7-06"
     },
     {
@@ -1762,9 +1762,9 @@
         "Rapport Power BI actualisé (tronc commun)",
         "Démo de 6 min devant un autre binôme"
       ],
-      "notes": "Décision V7 D2 : 10/90 mission du catalogue (initial → increment → rejeu → export → app, PR et revue croisée) + pause 10 + 15/55 Power BI Desktop sur le tronc commun (import, relations, mesures, filtre, actualisation) + pause 10 + 10/20 lire les visuels et contrôler un chiffre + 20 répétition croisée (6 min de démo devant un autre binôme). Somme : 35 min d'explications, 185 de pratique. La recommandation s'écrit en travail personnel (livret 05 §4). Un seul poste Windows pour deux : alterner. Power BI bloqué plus de 20 min : appeler le professeur, noter le message.",
+      "notes": "Décision V7 D2 : 15/85 mission du catalogue (initial → increment → rejeu → export → app, PR et revue croisée) + pause 10 + 20/50 Power BI Desktop sur le tronc commun depuis livraison/ (import, relations, mesures, filtre, actualisation) + pause 10 + 15/15 lire les visuels et contrôler un chiffre + 20 répétition croisée (6 min de démo devant un autre binôme). Somme : 50 min d'explications, 170 de pratique. La recommandation s'écrit en travail personnel (livret 05 §4). Un seul poste Windows pour deux : alterner. Power BI bloqué plus de 20 min : appeler le professeur, noter le message.",
       "id": "v7-61",
-      "split": "35 min d'explications · 185 min de pratique · 2 pauses"
+      "split": "50 min d'explications · 170 min de pratique · 2 pauses"
     },
     {
       "section": "F",
