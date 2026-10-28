@@ -4,7 +4,7 @@
 
 Suivre les livrets comme un binôme débutant, sans préparer les réponses. Conserver la première tentative avant de consulter une quelconque aide. Noter l'édition, le système, le compte et les étapes réellement essayées.
 
-1. **Poste neuf.** Télécharger le ZIP ou cloner le cours dans `~/cours-bi` (tant que cette édition n'est pas fusionnée dans `main`, ajouter `--branch edition-solen-22h` à `git clone`, ou utiliser le ZIP étudiant fourni). Suivre `pdf/01_demarrer.pdf` : Windows avec WSL2 Ubuntu, ou Ubuntu pris en charge. Noter où se trouvent les fichiers et dans quel terminal se tapent les commandes.
+1. **Poste neuf.** Télécharger le ZIP ou cloner le cours dans `~/cours-bi`. Suivre `pdf/01_demarrer.pdf` : Windows avec WSL2 Ubuntu, ou Ubuntu pris en charge. Noter où se trouvent les fichiers et dans quel terminal se tapent les commandes.
 2. **Codex avec un compte Free.** Vérifier l'accès effectif, le modèle, les efforts et l'usage affichés ; aucun identifiant ni secret dans les notes. Un essai avec un autre abonnement ne prouve pas l'accès Free.
 3. **Deux comptes, deux copies.** A crée le dépôt public du binôme à partir de `modele-binome/`, invite B ; chacun clone dans `~/solen-bi`. Réaliser le premier cycle : branche, commit, push, PR, revue de l'autre, merge, pull des deux côtés.
 4. **Tronc commun.** Suivre `pdf/02_tronc_commun.pdf` séance par séance. Calculer l'échantillon à la main avant toute demande à Codex. Conserver les demandes et les diffs. Les contrôles `python -m controles.verifier --mission tronc-commun --etape rejets|initial|increment|rejeu|export|app|tout` doivent devenir verts dans l'ordre ; relever chaque ÉCHEC avec son message exact.
