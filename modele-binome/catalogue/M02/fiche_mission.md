@@ -39,7 +39,7 @@ Tous les montants sont stockés en **millimes entiers** (1 TND = 1 000 millimes)
 ## Les données
 
 - `lot1` (2026-01-01 → 2026-06-30) : chargement initial, janvier → juin 2026
-- `lot2` (2026-07-01 → 2026-08-31) : incrément juillet → août 2026 (fichier en cp1252) ; recopie les 29-30 juin ; VSO change de famille le 2026-07-15
+- `lot2` (2026-07-01 → 2026-08-31) : incrément juillet → août 2026 (fichier en cp1252) ; recopie les commandes des 29 et 30 juin ; VSO change de famille le 2026-07-15
 
 Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir `echantillon/attendu.md`).
 
@@ -68,7 +68,7 @@ Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir 
 
 ```bash
 python -m controles.verifier --mission M02 --etape tout
-python -m pytest
+pytest controles
 ```
 
 Les valeurs attendues sont dans `reference/attendu_lot1.json` et `reference/attendu_lot2.json`. Elles ont été calculées par le générateur depuis la vérité, pas par une solution.

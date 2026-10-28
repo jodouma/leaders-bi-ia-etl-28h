@@ -18,17 +18,17 @@ Reproductible : deux exécutions donnent les mêmes octets (graine fixe, classeu
 
 | Mission | Script (+ `textes_missionNN.py`) | Graine | Taille | CSV de faits lot1 / lot2 (lignes) | Faits après lot2 | Rejets lot1 / lot2 | Nombre clé (après lot2) |
 |---|---|---|---|---|---|---|---|
-| 00 tronc commun — Maison Zitouna | `mission00_commerce360.py` | 260001 | ≈ 626 Ko | `ventes.csv` 1998 / 413 | `fact_vente` 2345 · `fact_retour` 99 | 26 / 10 | Ventes nettes : 91 444,460 TND |
-| M01 — Carthage Market | `mission01_carthage_market.py` | 260101 | ≈ 731 Ko | `ventes.csv` 2184 / 449 | `fact_vente` 2570 · `fact_retour` 80 | 24 / 10 | Ventes nettes : 21 880,226 TND |
+| 00 tronc commun — Maison Zitouna | `mission00_commerce360.py` | 260001 | ≈ 627 Ko | `ventes.csv` 1998 / 413 | `fact_vente` 2345 · `fact_retour` 99 | 26 / 10 | Ventes nettes : 91 444,460 TND |
+| M01 — Carthage Market | `mission01_carthage_market.py` | 260101 | ≈ 732 Ko | `ventes.csv` 2184 / 449 | `fact_vente` 2570 · `fact_retour` 80 | 24 / 10 | Ventes nettes : 21 880,226 TND |
 | M02 — Souk Express | `mission02_souk_express.py` | 260202 | ≈ 651 Ko | `commandes.csv` 2085 / 488 | `fact_commande` 2510 · `fact_remboursement` 159 | 25 / 10 | CA net : 248 286,934 TND |
-| M03 — Medina Distribution | `mission03_medina_distribution.py` | 260003 | ≈ 800 Ko | `factures.csv` 2087 / 428 | `fact_facture` 2458 · `fact_avoir` 126 | 24 / 10 | Marge commerciale : 39 074,380 TND |
-| M04 — Colis Rapide | `mission04_colis_rapide.py` | 260004 | ≈ 1025 Ko | `colis.csv` 2116 / 444 | `fact_colis` 2497 | 29 / 11 | Ponctualité : 83,82 % |
-| M05 — Académie Nour | `mission05_academie_nour.py` | 260005 | ≈ 790 Ko | `presences.csv` 1958 / 456 | `fact_presence` 2353 · `fact_paiement` 455 | 26 / 10 | Taux d'assiduité : 82,53 % |
-| M06 — Dar Azur | `mission06_dar_azur.py` | 260006 | ≈ 911 Ko | `sejours.csv` 1938 / 494 | `fact_sejour` 2360 · `fact_annulation` 135 | 29 / 13 | Taux d'occupation : 44,48 % |
-| M07 — FibreNet | `mission07_fibrenet.py` | 260007 | ≈ 793 Ko | `facturation.csv` 1722 / 600 | `fact_facture` 2270 · `fact_abonnement_mois` 2270 | 25 / 13 | MRR (revenu mensuel récurrent) : 23 158,100 TND (août) |
-| M08 — TechniServ | `mission08_techniserv.py` | 260008 | ≈ 1050 Ko | `interventions.csv` 1593 / 491 | `fact_intervention` 2030 · `fact_revenu_contrat` 78 | 26 / 10 | Marge de service : 104 125,500 TND |
-| M09 — Scène Libre | `mission09_scene_libre.py` | 260009 | ≈ 694 Ko | `billets.csv` 2380 / 441 | `fact_billet` 2757 · `fact_remboursement` 268 | 25 / 10 | Recettes nettes : 109 866,930 TND |
-| M10 — Pixel Studio | `mission10_pixel_studio.py` | 261010 | ≈ 747 Ko | `temps.csv` 2015 / 426 | `fact_temps` 2384 · `fact_facture` 86 | 24 / 11 | Marge de contribution : 132 912,525 TND |
+| M03 — Medina Distribution | `mission03_medina_distribution.py` | 260003 | ≈ 801 Ko | `factures.csv` 2087 / 428 | `fact_facture` 2458 · `fact_avoir` 126 | 24 / 10 | Marge commerciale : 39 074,380 TND |
+| M04 — Colis Rapide | `mission04_colis_rapide.py` | 260004 | ≈ 1026 Ko | `colis.csv` 2116 / 444 | `fact_colis` 2497 | 29 / 11 | Ponctualité : 83,82 % |
+| M05 — Académie Nour | `mission05_academie_nour.py` | 260005 | ≈ 791 Ko | `presences.csv` 1958 / 456 | `fact_presence` 2353 · `fact_paiement` 455 | 26 / 10 | Taux d'assiduité : 82,53 % |
+| M06 — Dar Azur | `mission06_dar_azur.py` | 260006 | ≈ 913 Ko | `sejours.csv` 1938 / 494 | `fact_sejour` 2360 · `fact_annulation` 135 | 29 / 13 | Taux d'occupation : 44,48 % |
+| M07 — FibreNet | `mission07_fibrenet.py` | 260007 | ≈ 794 Ko | `facturation.csv` 1722 / 600 | `fact_facture` 2270 · `fact_abonnement_mois` 2270 | 25 / 10 | MRR (revenu mensuel récurrent) : 23 158,100 TND (août) |
+| M08 — TechniServ | `mission08_techniserv.py` | 260008 | ≈ 1052 Ko | `interventions.csv` 1593 / 491 | `fact_intervention` 2030 · `fact_revenu_contrat` 78 | 26 / 10 | Marge de service : 104 125,500 TND |
+| M09 — Scène Libre | `mission09_scene_libre.py` | 260009 | ≈ 695 Ko | `billets.csv` 2380 / 441 | `fact_billet` 2757 · `fact_remboursement` 268 | 25 / 10 | Recettes nettes : 109 866,930 TND |
+| M10 — Pixel Studio | `mission10_pixel_studio.py` | 261010 | ≈ 748 Ko | `temps.csv` 2015 / 426 | `fact_temps` 2384 · `fact_facture` 86 | 24 / 11 | Marge de contribution : 132 912,525 TND |
 
 Versions utilisées pour la génération de référence : Python 3.13.17 · pandas 3.1.0 · openpyxl 3.1.5 · matplotlib 3.11.2 · pytest 9.2.0. Le code n'utilise que la bibliothèque standard + openpyxl + matplotlib.
 
@@ -62,7 +62,7 @@ Un script `missionNN_<nom>.py` de 150 à 250 lignes, plus ses textes :
 
 Ce que le cadre écrit seul (ne pas le recoder dans un script de mission) :
 
-- **Documents** : `MissionSpec.regle_a_clarifier` (`question`, `options`, `decision`, `consequence` facultatif), `variantes` (3), `ecrans_app` (3 écrans) + `parcours_app` (démonstration conseillée), `question_decision` (décision attendue, fiche et cahier), `sections_cahier` (sections propres à la mission, numérotées à partir du § 13), `regle_mois` (phrase du § 9), `scd2.precisions` (puces du § 7), `scd2.libelle_attribut`, `complement_reference` (texte ajouté à `reference/README.md`). Un texte peut être une fonction `attendus → texte` quand il cite des valeurs de référence.
+- **Documents** : `MissionSpec.regle_a_clarifier` (`question`, `options`, `decision`, `consequence` facultatif), `variantes` (3), `ecrans_app` (3 écrans) + `parcours_app` (démonstration conseillée), `question_decision` (décision attendue, fiche et cahier), `sections_cahier` (sections propres à la mission, numérotées à partir du § 13), `regle_mois` (phrase du § 9), `scd2.precisions` (puces du § 7), `scd2.libelle_attribut`, `complement_reference` (texte ajouté à `reference/README.md`). `sommes_export_reference=True` écrit aussi les sommes attendues du manifest (`attendu_*.json` → `sommes_export`, contrôlées par le vérificateur ; utilisé par M08). Le cahier écrit une seule fois la règle commune de l'ordre des contrôles (« déjà chargé » testé après la validité ; rejets comptés par lot) et `pytest controles` partout. Un texte peut être une fonction `attendus → texte` quand il cite des valeurs de référence.
 - **Unités d'indicateur** : `millimes`, `ratio`, `nombre`, `jours`, `heures`, `centiemes_heure` (documents : « 2,41 jours », « 20,18 h » ; le vérificateur compare `ratio`/`jours`/`heures` avec la tolérance du contrat).
 - **Anomalies** : `Doses.quantites_invalides` remplace la liste par défaut quand « 1.5 » est une valeur valable (poids, heures). M04, M05 et M10 gardent leur passage local (même résultat octet pour octet, l'ordre d'affectation diffère).
 - **Graphiques** : `empile` et `barres` (légende sous le graphique, axe sans « () » pour un comptage ; `barres` accepte `top`, `horizontal`, étiquettes inclinées au-delà de 8 valeurs), `rejets`, et `fonction` (`dessiner(spec, con, attendus, base)`) pour un graphique vraiment propre à la mission, listé dans `reference/README.md` comme les autres.

@@ -525,6 +525,7 @@ class MissionSpec:
     regle_mois: str = "(faits et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**."
     sections_cahier: list[tuple[str, str | Callable[[dict], str]]] = field(default_factory=list)  # § 13 et suivants
     complement_reference: Callable[[dict], str] | None = None  # texte ajouté à reference/README.md
+    sommes_export_reference: bool = False      # écrit aussi les sommes d'export attendues (attendu_*.json + README)
 
     @property
     def dossier(self) -> Path:
@@ -934,7 +935,7 @@ Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir 
 
 ```bash
 python -m controles.verifier --mission {spec.code} --etape tout
-python -m pytest
+pytest controles
 ```
 
 Les valeurs attendues sont dans `reference/attendu_lot1.json` et `reference/attendu_lot2.json`. Elles ont été calculées par le générateur depuis la vérité, pas par une solution.
@@ -997,6 +998,8 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 
 {ordre}
 
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
+
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `{csv_faits}`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
 ## 5. Règles métier
@@ -1040,20 +1043,24 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission {spec.code} --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission {spec.code} --etape initial     # après le lot 1
 python -m controles.verifier --mission {spec.code} --etape increment   # après le lot 2
 python -m controles.verifier --mission {spec.code} --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission {spec.code} --etape export
 python -m controles.verifier --mission {spec.code} --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-{q['question']} — **Décision :** {q['decision']}
+**Question :** {q['question']}
 
-Options étudiées :
+**Options étudiées :**
 
-{q['options']}{consequence}
+{q['options']}
+
+**Décision de la direction :** {q['decision']}{consequence}
 {suite}"""
 
 
@@ -1095,6 +1102,12 @@ def doc_reference_readme(spec: MissionSpec, attendus: dict[str, dict], visuels: 
                        [[v["cle_metier"], v["attribut"], v["valid_from"], v["valid_to"] or "(courante)"]
                         for v in dern["scd2"]["versions"]])
     vis = "\n".join(f"- `visuels/{v}.png` · `visuels/{v}.svg`" for v in visuels)
+    t_som = ""
+    if "sommes_export" in dern:
+        t_som = "\n## Sommes attendues dans `export/manifest.json`\n\n" + md_tableau(
+            ["Table", "Colonne"] + [f"après {l}" for l in attendus],
+            [[f"`{t}`", f"`{col}`"] + [a["sommes_export"][t][col] for a in attendus.values()]
+             for t, cols in dern["sommes_export"].items() for col in cols]) + "\n"
     return f"""# Référence — Mission {spec.numero} ({spec.entreprise})
 
 Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la vérité terrain, sans passer par un ETL. C'est l'oracle de `controles/verifier.py`. Montants en millimes dans les JSON ; ici affichés en TND.
@@ -1114,7 +1127,7 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 ## Historique ({spec.scd2.table}) après le dernier lot
 
 {t_scd}
-
+{t_som}
 ## Fichiers
 
 - `attendu_lot1.json` : état attendu après `initial`.
@@ -1174,6 +1187,9 @@ def produire_reference(spec: MissionSpec, lots: list[LotResultat]) -> dict[str, 
         }
         if lr.increment is not None:
             a["increment"] = lr.increment
+        if spec.sommes_export_reference:          # sommes du manifest attendues, depuis la vérité
+            a["sommes_export"] = {t: {col: con.execute(f"SELECT COALESCE(SUM({col}), 0) FROM {t}").fetchone()[0]
+                                      for col in cols} for t, cols in spec.export_sommes.items()}
         attendus[lr.lot.nom] = a
     dernier = spec.lots[-1].nom
     attendus[dernier]["rejeu"] = {

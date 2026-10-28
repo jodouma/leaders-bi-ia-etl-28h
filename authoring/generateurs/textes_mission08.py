@@ -158,9 +158,9 @@ SPEC_TEXTES = dict(
         "équipement absent de `equipements.json` (ou sans version de contrat à la date d'intervention) → `cle_inconnue` ;",
         "heures non entières ou ≤ 0 → `quantite_invalide` ;",
         "`intervention_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.",
-        "Consommations (`consommation`, numero_ligne = `consommation.id`) : intervention déjà chargée par un lot "
-        "précédent → ignorée ; intervention ni acceptée dans ce lot ni déjà chargée → `cle_inconnue` ; pièce absente "
-        "du catalogue → `cle_inconnue`.",
+        "Consommations (`consommation`, numero_ligne = `consommation.id`) : pièce absente du catalogue → "
+        "`cle_inconnue` ; intervention ni acceptée dans ce lot ni déjà chargée → `cle_inconnue` ; consommation d'une "
+        "intervention déjà chargée par un lot précédent → ignorée.",
     ],
     regles_metier=[
         "`delai_heures` = (date + heure d'intervention) − (date + heure de demande), en heures entières, pour TOUTES les "
@@ -231,5 +231,6 @@ SPEC_TEXTES = dict(
     ],
     debut_calendrier=date(2026, 1, 1),
     sources_rejets={"interventions": "interventions.csv", "consommations": "operations.sqlite"},
+    sommes_export_reference=True,              # ex. somme attendue de fact_intervention.delai_heures dans le manifest
     regle_mois="(interventions et revenus de contrat réunis). Un mouvement est rangé dans le mois **de sa propre date**.",
 )

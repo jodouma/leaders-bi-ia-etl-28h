@@ -7,7 +7,6 @@ sources/lot1/, sources/lot2/, reference/} et la vérité privée dans solutions/
 """
 from __future__ import annotations
 
-import json
 from datetime import date, datetime, timedelta
 
 from common import (ChampsCSV, Doses, Feuille, Lot, LotResultat, Table, Colonne, MissionSpec, table_dim_date,
@@ -233,22 +232,22 @@ def comptes_remboursements(rr: list[dict]) -> dict:
 
 
 # --------------------------------------------------------------------------- échantillon (≤ 12 lignes)
-PROGRAMME_ECH = [("E01", "Avant-première : Le Silence des oliviers", "Théâtre", "JAS", date(2026, 3, 14), 0, 0, 1),
-                 ("E02", "Concert d'essai : Rythmes du Sahel", "Concert", "KAS", date(2026, 3, 28), 0, 0, 1)]
-CAP_ECH = {"E01": 10, "E02": 8}
+PROGRAMME_ECH = [("EV01", "Avant-première : Le Silence des oliviers", "Théâtre", "JAS", date(2026, 3, 14), 0, 0, 1),
+                 ("EV02", "Concert d'essai : Rythmes du Sahel", "Concert", "KAS", date(2026, 3, 28), 0, 0, 1)]
+CAP_ECH = {"EV01": 10, "EV02": 8}
 ECHANTILLON = [  # (valeurs texte, décision)
-    (["S-001", "E01", "WEB", "2026-03-02", "CAT1", "1", "40.000"], None),
-    (["S-002", "E01", " web ", "02/03/2026", "CAT2", "1", "25,000"], None),
-    (["S-003", "E01", "GUI", "3 mars 2026", "cat2", "1", "20"], None),
-    (["S-004", "E02", "REV", "2026-03-05", "VIP", "1", "80,000"], None),
-    (["S-004", "E02", "REV", "2026-03-05", "VIP", "1", "80,000"], "doublon_exact"),
-    (["S-005", "E02", "PAR", "2026-03-06", "CAT1", "1", "50,0"], None),
-    (["S-006", "E02", "WEB", "2026-03-06", "CAT1", "1", "50.000"], "id_conflit"),
-    (["S-006", "E02", "WEB", "2026-03-06", "CAT1", "2", "50.000"], "id_conflit"),
-    (["", "E01", "WEB", "2026-03-07", "CAT1", "1", "40.000"], "id_manquant"),
-    (["S-007", "E09", "WEB", "2026-03-07", "CAT1", "1", "40.000"], "cle_inconnue"),
-    (["S-008", "E01", "GUI", "2026-03-08", "CAT2", "0", "25.000"], "quantite_invalide"),
-    (["S-009", "E02", "Rev", "2026-03-09", "CAT2", "1", "35"], None),
+    (["S-001", "EV01", "WEB", "2026-03-02", "CAT1", "1", "40.000"], None),
+    (["S-002", "EV01", " web ", "02/03/2026", "CAT2", "1", "25,000"], None),
+    (["S-003", "EV01", "GUI", "3 mars 2026", "cat2", "1", "20"], None),
+    (["S-004", "EV02", "REV", "2026-03-05", "VIP", "1", "80,000"], None),
+    (["S-004", "EV02", "REV", "2026-03-05", "VIP", "1", "80,000"], "doublon_exact"),
+    (["S-005", "EV02", "PAR", "2026-03-06", "CAT1", "1", "50,0"], None),
+    (["S-006", "EV02", "WEB", "2026-03-06", "CAT1", "1", "50.000"], "id_conflit"),
+    (["S-006", "EV02", "WEB", "2026-03-06", "CAT1", "2", "50.000"], "id_conflit"),
+    (["", "EV01", "WEB", "2026-03-07", "CAT1", "1", "40.000"], "id_manquant"),
+    (["S-007", "EV99", "WEB", "2026-03-07", "CAT1", "1", "40.000"], "cle_inconnue"),
+    (["S-008", "EV01", "GUI", "2026-03-08", "CAT2", "0", "25.000"], "quantite_invalide"),
+    (["S-009", "EV02", "Rev", "2026-03-09", "CAT2", "1", "35"], None),
 ]
 REMB_ECH = [(1, "RB-0001", "S-005", "2026-03-10 10:15:00", 50.0, "REPORT", "REMBOURSE"),
             (2, "RB-0002", "S-001", "2026-03-11 16:40:00", 0.0, "REPORT", "CONSERVE"),
@@ -262,7 +261,7 @@ def lire_date_ech(t: str) -> date:
 
 def produire_echantillon(spec, dossier) -> dict:
     ecrire_csv(dossier / "billets.csv", ENTETE, [dict(zip(ENTETE, v)) for v, _ in ECHANTILLON])
-    ecrire_programme(dossier / "evenements.xlsx", 1, PROGRAMME_ECH, CAP_ECH.get, {"E01": "programmé", "E02": "reporté"},
+    ecrire_programme(dossier / "evenements.xlsx", 1, PROGRAMME_ECH, CAP_ECH.get, {"EV01": "programmé", "EV02": "reporté"},
                      "Scène Libre — échantillon de programme (mars 2026)")
     ecrire_canaux(dossier / "canaux.json", False, "2026-03-31")
     cles = ("id", "numero", "billet_id", "date_operation", "montant_rembourse", "code_motif", "statut")
@@ -280,7 +279,7 @@ def produire_echantillon(spec, dossier) -> dict:
         a["pm"], a["frais"] = pm[ck], frais(a["prix"], pm[ck])
         fb.append({"billet_id": a["billet_id"], "date_key": date_key(a["date"]), "evenement_key": ek[a["ev"]],
                    "canal_key": ck, "categorie": a["cat"], "prix_millimes": a["prix"], "frais_millimes": a["frais"]})
-    fr = [{"remboursement_id": "RB-0001", "billet_id": "S-005", "date_key": 20260310, "evenement_key": ek["E02"],
+    fr = [{"remboursement_id": "RB-0001", "billet_id": "S-005", "date_key": 20260310, "evenement_key": ek["EV02"],
            "canal_key": cle_version(vs, "canal_id", "canal_key", "PAR", date(2026, 3, 10)), "motif": "REPORT",
            "montant_millimes": 50000}]
     tables = {"dim_evenement": de, "dim_canal": vs, "fact_billet": fb, "fact_remboursement": fr}
@@ -325,7 +324,7 @@ Une virgule ou un point sépare les décimales : `50,0` = `50.000` = 50 000 mill
 
 ## 3. Remboursements (`remboursements.sqlite`, table `remboursement`)
 
-- `RB-0001` : billet `S-005` (E02 reporté), statut `REMBOURSE` → **50,000 TND remboursés, 1 billet remboursé**.
+- `RB-0001` : billet `S-005` (EV02 reporté), statut `REMBOURSE` → **50,000 TND remboursés, 1 billet remboursé**.
 - `RB-0002` : statut `CONSERVE` (le client garde son billet pour la nouvelle date) → ignoré : un report n'est pas un remboursement.
 - `RB-0003` : le billet `S-099` n'existe pas → rejet `cle_inconnue` (source `remboursements.sqlite`).
 - `RB-0004` : statut `REFUSE` → ignoré (ce n'est pas un rejet).
@@ -335,7 +334,7 @@ Les frais du billet `S-005` restent dus au canal PAR : ils ne sont pas rembours�
 ## 4. Billets nets, taux de remplissage, recettes nettes
 
 - Billets nets = vendus − remboursés = {i['billets_vendus']} − {i['billets_rembourses']} = **{i['billets_nets']}**.
-- Taux de remplissage = billets nets / capacité = {i['billets_nets']} / 18 = **{pct_fr(i['taux_remplissage'])}** ; par événement : E01 = {ev['E01']['billets_nets']} / 10 = **{pct_fr(ev['E01']['taux_remplissage'])}**, E02 = {ev['E02']['billets_nets']} / 8 = **{pct_fr(ev['E02']['taux_remplissage'])}**.
+- Taux de remplissage = billets nets / capacité = {i['billets_nets']} / 18 = **{pct_fr(i['taux_remplissage'])}** ; par événement : EV01 = {ev['EV01']['billets_nets']} / 10 = **{pct_fr(ev['EV01']['taux_remplissage'])}**, EV02 = {ev['EV02']['billets_nets']} / 8 = **{pct_fr(ev['EV02']['taux_remplissage'])}**.
 - Recettes nettes = recettes − remboursements − frais = {tnd_fr(i['recettes_billets_millimes'])} − {tnd_fr(i['remboursements_millimes'])} − {tnd_fr(i['frais_distribution_millimes'])} = **{tnd_fr(i['recettes_nettes_millimes'])}**.
 
 ## 5. Ce que doit contenir l'entrepôt de l'échantillon
@@ -345,18 +344,6 @@ Les frais du billet `S-005` restent dus au canal PAR : ils ne sont pas rembours�
 
 
 # --------------------------------------------------------------------------- programme principal
-def scd2_attributs_texte(spec) -> None:
-    """Versions SCD2 écrites en texte dans attendu_*.json (les frontières restent entières). Depuis la consolidation,
-    verifier.scd2 compare l'attribut en texte des deux côtés : ce passage n'est plus nécessaire, il est gardé pour
-    que la référence publiée reste identique octet pour octet."""
-    for lot in spec.lots:
-        f = spec.dossier / "reference" / f"attendu_{lot.nom}.json"
-        a = json.loads(f.read_text(encoding="utf-8"))
-        for v in a["scd2"]["versions"]:
-            v["attribut"] = str(v["attribut"])
-        ecrire_json(f, a)
-
-
 def parcours_demo(attendus: dict) -> str:
     """Démonstration conseillée après le lot 2, chiffrée depuis la référence (MissionSpec.parcours_app)."""
     a = attendus["lot2"]
@@ -375,7 +362,7 @@ def a_savoir(_attendus: dict) -> str:
 
 - La vue d'analyse ajoute **une ligne « capacité » par événement** (canal `(capacité)`) : c'est elle qui donne le dénominateur du taux de remplissage. Par canal, ce taux est vide (`null`) : la capacité d'une salle ne dépend d'aucun canal.
 - L'axe `par_mois` = mois de la **date de l'événement** (date du spectacle après report), pas de la vente.
-- Dans `scd2.versions`, `attribut` (frais en pour mille) est écrit en texte (`"90"`) ; dans `scd2.frontieres`, il reste un entier (`90`). Le vérificateur compare l'attribut en texte des deux côtés. La colonne `frais_pour_mille` de l'entrepôt est bien un INTEGER.
+- Dans `scd2.versions` comme dans `scd2.frontieres`, `attribut` (frais en pour mille) est un entier (`90`), comme la colonne `frais_pour_mille` (INTEGER) de l'entrepôt. Le vérificateur compare l'attribut en texte des deux côtés.
 - Événements annulés : `EV05` (le 2026-04-10, lot 1) et `EV12` (le 2026-07-18, lot 2) ; tous leurs billets sont remboursés. `EV08` est reporté au 2026-07-11 : seules les demandes `REMBOURSE` comptent.
 """
 
@@ -432,7 +419,6 @@ def main() -> None:
         assert c.compteurs["lignes_acceptees_nouvelles"] == (len(b1) if n == 1 else len(b2))
 
     attendus = produire_reference(spec, lots)
-    scd2_attributs_texte(spec)
     # double contrôle Python pur (sans SQL) : billets nets, recettes nettes, le cas de la règle à clarifier
     t = lots[-1].tables_verite
     pm_vente = {b["billet_id"]: (CHANGEMENT[1] if b["canal"] == CHANGEMENT[0] and b["date_vente"] >= CHANGEMENT[2]

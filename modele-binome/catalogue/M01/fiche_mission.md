@@ -67,7 +67,7 @@ Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir 
 
 ```bash
 python -m controles.verifier --mission M01 --etape tout
-python -m pytest
+pytest controles
 ```
 
 Les valeurs attendues sont dans `reference/attendu_lot1.json` et `reference/attendu_lot2.json`. Elles ont été calculées par le générateur depuis la vérité, pas par une solution.

@@ -1,7 +1,7 @@
 """Textes et règles de la mission M05 (Académie Nour). Séparés du code de génération pour la relecture."""
 from datetime import date
 
-from common import MOTIFS_STANDARD, SCD2, ColonneSource, Indicateur, Source
+from common import MOTIFS_STANDARD, SCD2, ColonneSource, Indicateur, Source, tnd_fr
 
 # Une ligne par « mouvement » : présence (date de la séance), session (date de début), paiement / remboursement
 # (date du mouvement). Toutes les colonnes chiffrées sont additives : les ratios sont des rapports de sommes.
@@ -166,8 +166,8 @@ SPEC_TEXTES = dict(
         "`operations.sqlite` → `cle_inconnue` ;",
         "`present` différent de `0` ou `1` → `quantite_invalide` ;",
         "`presence_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.",
-        "Paiements puis remboursements : `ANNULE` ignoré → numéro déjà chargé = ignoré → `numero_inscription` absent "
-        "de la table `inscription` = `cle_inconnue` (source `operations.sqlite`, numero_ligne = `id` de la ligne).",
+        "Paiements puis remboursements : `ANNULE` ignoré → `numero_inscription` absent de la table `inscription` = "
+        "`cle_inconnue` (source `operations.sqlite`, numero_ligne = `id` de la ligne) → numéro déjà chargé = ignoré.",
     ],
     regles_metier=[
         "Une ligne de présence prend la version de la session valable à la **date de la séance**.",
@@ -239,7 +239,21 @@ SPEC_TEXTES = dict(
                       "Une session **atteint ses objectifs** si : taux de remplissage ≥ 70 %, taux d'assiduité ≥ 80 % et "
                       "encaissements nets ≥ 95 % de l'encaissement attendu (inscrits × prix). Les valeurs par session "
                       "sont dans l'agrégat `par_session` de `reference/attendu_lot2.json`. La recommandation à la "
-                      "direction nomme les sessions qui n'atteignent pas un objectif, dit lequel, et propose une action.")],
+                      "direction nomme les sessions qui n'atteignent pas un objectif, dit lequel, et propose une action."),
+                     ("Ce que le lot 2 ajoute au passé (paiements de juin, sessions d'été)", lambda a: (
+                      "Le `operations.sqlite` du lot 1 est un export **par session** : il ne contient que les inscriptions "
+                      "et les mouvements des 20 sessions de janvier à juin. Les 5 sessions d'été (début en juillet-août) "
+                      "ouvrent leurs inscriptions en juin et leurs participants **paient en juin**, mais ces paiements ne "
+                      "sont exportés qu'avec le lot 2, qui contient toutes les inscriptions et tout mouvement du "
+                      "2026-06-01 au 2026-08-31. C'est un fait **arrivé en retard** : il est rangé dans le mois de SA "
+                      "date (juin), pas dans le mois du chargement. Le mois de juin change donc après l'incrément : "
+                      f"encaissements nets de juin {tnd_fr(a['lot1']['agregats']['par_mois']['2026-06']['encaissements_nets_millimes'])} "
+                      f"après le lot 1, {tnd_fr(a['lot2']['agregats']['par_mois']['2026-06']['encaissements_nets_millimes'])} après le lot 2. "
+                      "Ce n'est pas une erreur : vérifiez-le dans `par_mois` des deux fichiers `attendu_*.json`.\n\n"
+                      f"`dim_session` gagne {a['lot2']['increment']['versions_scd2_ajoutees']} versions au lot 2 : "
+                      f"{a['lot2']['increment']['sessions_ajoutees']} sessions d'été nouvelles (une première version "
+                      "chacune) + **une seule** nouvelle version historique, SES-2619 qui passe de Sousse à Sfax le "
+                      "2026-07-15 (le seul changement SCD2 de la mission)."))],
     parcours_app="Pendant la démonstration : choisir une période et un centre dans les filtres, lire un indicateur et "
                  "son unité, puis montrer sur l'écran 2 que les présences et paiements de SES-2619 avant le 2026-07-15 "
                  "restent à « Sousse » et que le remboursement du 2026-07-20 est à « Sfax ».",

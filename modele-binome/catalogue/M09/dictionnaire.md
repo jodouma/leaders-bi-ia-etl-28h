@@ -55,7 +55,7 @@ Base opérationnelle du service client : tables `remboursement`, `motif`, `param
 | `remboursement.billet_id` | texte | `billet_id` du billet concerné. | `B100234` |
 | `remboursement.date_operation` | texte | Date et heure de la décision. | `2026-04-12 10:15:00` |
 | `remboursement.montant_rembourse` | réel | Montant rendu en TND (0 si rien n'est rendu). | `35.0` |
-| `remboursement.code_motif` | texte | `ANNULATION`, `REPORT` ou `CONVENANCE` → `motif`. | `REPORT` |
+| `remboursement.code_motif` | texte | `ANNULATION`, `REPORT` ou `CONVENANCE` (convenance personnelle : toujours `REFUSE`, donc ignorée) → `motif`. | `REPORT` |
 | `remboursement.statut` | texte | `REMBOURSE` (argent rendu), `CONSERVE` (billet gardé pour la nouvelle date) ou `REFUSE`. | `CONSERVE` |
 | `remboursement.traite_par` | texte | Agent du service client. | `agent-2` |
 

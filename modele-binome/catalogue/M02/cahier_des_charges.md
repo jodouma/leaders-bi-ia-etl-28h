@@ -24,7 +24,7 @@ Les sources sont **lues, jamais modifiées**.
 | Doublon exact | la même ligne deux fois | garder une seule occurrence (pas un rejet) |
 | Doublon d'identifiant | `C150037-9` deux fois avec des quantités différentes | rejeter **les deux** lignes, motif `id_conflit` |
 | Identifiant manquant | `ligne_id` vide ou blanc | rejet `id_manquant` |
-| Clé inconnue | produit `X15`, canal `TIK`, remboursement vers `C109999-1` | rejet `cle_inconnue` |
+| Clé inconnue | produit `X15` (sources) ou `X99` (échantillon), canal `TIK`, remboursement vers `C109999-1` | rejet `cle_inconnue` |
 | Format décimal | `32.500`, `32,500`, `32.5`, `32,5`, `1 240,000` | point ou virgule = décimales ; espace = milliers ; convertir en millimes entiers |
 | Remise vide | `remise` vide, `0`, `0.000` | remise = 0 millime (ce n'est pas un rejet) |
 | Format date | `2026-03-04`, `04/03/2026`, `4 mars 2026` | convertir en ISO `AAAA-MM-JJ` ; `JJ/MM/AAAA` = le jour d'abord |
@@ -32,7 +32,7 @@ Les sources sont **lues, jamais modifiées**.
 | Quantité invalide | `-2`, `0`, `1.5`, `2,5` | rejet `quantite_invalide` |
 | Encodage | lot2 : `Gabès` écrit en Windows-1252 | lire `lot1/commandes.csv` en UTF-8 et `lot2/commandes.csv` en `cp1252` (sinon erreur `UnicodeDecodeError`) |
 | Remboursement non payé | `statut` = `EN_COURS` ou `REFUSE` | ignorer (ce n'est pas un rejet) |
-| Ligne déjà chargée | lot2 recopie les commandes du 30 juin | ignorer : la clé métier existe déjà |
+| Ligne déjà chargée | lot2 recopie les commandes des 29 et 30 juin | ignorer : la clé métier existe déjà |
 
 ## 4. Motifs de rejet
 
@@ -52,6 +52,8 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 5. quantité non entière ou ≤ 0 → `quantite_invalide` ;
 6. `ligne_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
 7. Remboursements : statut autre que `REMBOURSE` ignoré → `ref_ligne_commande` absente de `fact_commande` = `cle_inconnue` (numero_ligne = `remboursement.id`) → `numero_remboursement` déjà chargé = ignoré.
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `commandes.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -178,21 +180,25 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M02 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M02 --etape initial     # après le lot 1
 python -m controles.verifier --mission M02 --etape increment   # après le lot 2
 python -m controles.verifier --mission M02 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M02 --etape export
 python -m controles.verifier --mission M02 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-Une cliente a commandé le 30 juin sur la vitrine sociale (VSO, alors « réseaux sociaux ») et a été remboursée le 20 juillet (VSO est alors « marketplace »). Dans quelle famille compte ce remboursement ? — **Décision :** B. Chaque mouvement (ligne de commande ou remboursement) est rattaché à la version du canal valable à SA date et compté dans SON mois. Le remboursement du 20 juillet compte donc en « marketplace », en juillet. C'est la même règle que pour les commandes, et c'est ce que vérifie `controles/verifier.py`.
+**Question :** Une cliente a commandé le 30 juin sur la vitrine sociale (VSO, alors « réseaux sociaux ») et a été remboursée le 20 juillet (VSO est alors « marketplace »). Dans quelle famille compte ce remboursement ?
 
-Options étudiées :
+**Options étudiées :**
 
 - A : famille valable à la date de la **commande** (« réseaux sociaux ») : il faut relier le remboursement à la version de la commande.
 - B : famille valable à la date du **remboursement** (« marketplace ») : chaque mouvement suit sa propre date.
+
+**Décision de la direction :** B. Chaque mouvement (ligne de commande ou remboursement) est rattaché à la version du canal valable à SA date et compté dans SON mois. Le remboursement du 20 juillet compte donc en « marketplace », en juillet. C'est la même règle que pour les commandes, et c'est ce que vérifie `controles/verifier.py`.
 
 ## 13. Trois variantes (évolutions possibles)
 

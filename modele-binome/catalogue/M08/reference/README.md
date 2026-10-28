@@ -91,6 +91,17 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 | EQ-047 | CT-10 | 2025-05-01 | (courante) |
 | EQ-048 | CT-10 | 2025-05-01 | (courante) |
 
+## Sommes attendues dans `export/manifest.json`
+
+| Table | Colonne | après lot1 | après lot2 |
+|---|---|---|---|
+| `fact_intervention` | `heures` | 4387 | 5757 |
+| `fact_intervention` | `delai_heures` | 262845 | 322104 |
+| `fact_intervention` | `cout_main_oeuvre_millimes` | 235522500 | 305267500 |
+| `fact_intervention` | `cout_pieces_millimes` | 221769600 | 298407000 |
+| `fact_revenu_contrat` | `revenu_millimes` | 529000000 | 707800000 |
+| `dim_contrat` | `revenu_mensuel_millimes` | 89400000 | 89400000 |
+
 ## Fichiers
 
 - `attendu_lot1.json` : état attendu après `initial`.

@@ -44,7 +44,7 @@
   },
   "agregats": {
     "par_evenement": {
-      "E01": {
+      "EV01": {
         "billets_vendus": 3,
         "billets_rembourses": 0,
         "billets_nets": 3,
@@ -54,7 +54,7 @@
         "frais_distribution_millimes": 2925,
         "recettes_nettes_millimes": 82075
       },
-      "E02": {
+      "EV02": {
         "billets_vendus": 3,
         "billets_rembourses": 1,
         "billets_nets": 2,

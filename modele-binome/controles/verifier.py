@@ -536,8 +536,12 @@ class Verificateur:
                     except (KeyError, ValueError):
                         s_csv = None
                     s_man = ((tables_man.get(t) or {}).get("sommes") or {}).get(c)
-                    if s_csv == s_db == s_man:
-                        self.r.ok(f"export {t}.{c} : somme {s_db} (CSV = entrepôt = manifest)")
+                    ref = ((self.attendus[lot].get("sommes_export") or {}).get(t) or {}).get(c) if lot else None
+                    if ref is not None and s_db != ref:
+                        self.r.echec(f"export {t}.{c} : attendu {ref} (référence), observé {s_db}")
+                    elif s_csv == s_db == s_man:
+                        self.r.ok(f"export {t}.{c} : somme {s_db} (CSV = entrepôt = manifest"
+                                  + (" = référence)" if ref is not None else ")"))
                     else:
                         self.r.echec(f"export {t}.{c} : attendu {s_db} (entrepôt), observé CSV {s_csv} et "
                                      f"manifest {s_man}")

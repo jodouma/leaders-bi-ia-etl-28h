@@ -457,25 +457,25 @@
     "versions": [
       {
         "cle_metier": "GUI",
-        "attribut": "0",
+        "attribut": 0,
         "valid_from": "2025-09-01",
         "valid_to": null
       },
       {
         "cle_metier": "PAR",
-        "attribut": "60",
+        "attribut": 60,
         "valid_from": "2025-11-15",
         "valid_to": null
       },
       {
         "cle_metier": "REV",
-        "attribut": "90",
+        "attribut": 90,
         "valid_from": "2025-09-01",
         "valid_to": null
       },
       {
         "cle_metier": "WEB",
-        "attribut": "45",
+        "attribut": 45,
         "valid_from": "2025-09-01",
         "valid_to": null
       }

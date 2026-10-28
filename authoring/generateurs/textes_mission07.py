@@ -91,7 +91,8 @@ SPEC_TEXTES = dict(
             ColonneSource("abonnement.statut", "texte", "`ACTIF`, `RESILIE` ou `ANNULE` (jamais installé).", "RESILIE"),
             ColonneSource("abonnement.code_motif", "texte ou NULL", "Motif de résiliation → `motif_resiliation`.", "DEM"),
         ], ["abonnements annulés avant installation", "abonnements vers un compte inconnu",
-            "abonnements résiliés en 2025 (aucun mois en 2026)", "lot2 : la base complète, résiliations de l'été comprises"]),
+            "abonnements résiliés en 2025 (aucun mois en 2026)", "lot2 : la base complète, résiliations de l'été comprises ; les abonnements vers un compte inconnu "
+            "signalés au lot 1 ont été supprimés de la base entre les deux exports (un rejet n'est compté qu'une fois)"]),
     ],
     indicateurs=[
         Indicateur("actifs_fin_mois", "Abonnés actifs fin de mois", "nombre",

@@ -49,7 +49,9 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 4. équipement absent de `equipements.json` (ou sans version de contrat à la date d'intervention) → `cle_inconnue` ;
 5. heures non entières ou ≤ 0 → `quantite_invalide` ;
 6. `intervention_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
-7. Consommations (`consommation`, numero_ligne = `consommation.id`) : intervention déjà chargée par un lot précédent → ignorée ; intervention ni acceptée dans ce lot ni déjà chargée → `cle_inconnue` ; pièce absente du catalogue → `cle_inconnue`.
+7. Consommations (`consommation`, numero_ligne = `consommation.id`) : pièce absente du catalogue → `cle_inconnue` ; intervention ni acceptée dans ce lot ni déjà chargée → `cle_inconnue` ; consommation d'une intervention déjà chargée par un lot précédent → ignorée.
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `interventions.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -182,23 +184,27 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M08 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M08 --etape initial     # après le lot 1
 python -m controles.verifier --mission M08 --etape increment   # après le lot 2
 python -m controles.verifier --mission M08 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M08 --etape export
 python -m controles.verifier --mission M08 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-(1) EQ-017 tombe en panne le 14 juillet à 19 h (contrat CT-03) ; le technicien intervient le 15 juillet à 9 h, jour où EQ-017 passe sur CT-09. Quel contrat paie cette intervention ? (2) Une visite préventive est planifiée trois semaines à l'avance : quel est son « délai » ? — **Décision :** (1) B : chaque intervention est rattachée à la version de l'équipement valable à sa DATE D'INTERVENTION (la date du fait, `date_key`) ; c'est ce jour-là que le travail et les pièces sont consommés. (2) B : `delai_heures` est stocké pour toutes les interventions, mais le délai moyen ne compte que les correctives (la « demande » d'un préventif est une date de planification, pas une panne).
+**Question :** (1) EQ-017 tombe en panne le 14 juillet à 19 h (contrat CT-03) ; le technicien intervient le 15 juillet à 9 h, jour où EQ-017 passe sur CT-09. Quel contrat paie cette intervention ? (2) Une visite préventive est planifiée trois semaines à l'avance : quel est son « délai » ?
 
-Options étudiées :
+**Options étudiées :**
 
 - (1) A : contrat valable à la date de la demande (CT-03).
 - (1) B : contrat valable à la date d'intervention (CT-09).
 - (2) A : délai = intervention − planification, compté dans le délai moyen.
 - (2) B : délai calculé et stocké, mais le préventif est exclu du délai moyen.
+
+**Décision de la direction :** (1) B : chaque intervention est rattachée à la version de l'équipement valable à sa DATE D'INTERVENTION (la date du fait, `date_key`) ; c'est ce jour-là que le travail et les pièces sont consommés. (2) B : `delai_heures` est stocké pour toutes les interventions, mais le délai moyen ne compte que les correctives (la « demande » d'un préventif est une date de planification, pas une panne).
 
 ## 13. Trois variantes (évolutions possibles)
 

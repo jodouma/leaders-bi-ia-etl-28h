@@ -1277,5 +1277,19 @@
         "attribut": "CT-01"
       }
     ]
+  },
+  "sommes_export": {
+    "fact_intervention": {
+      "heures": 4387,
+      "delai_heures": 262845,
+      "cout_main_oeuvre_millimes": 235522500,
+      "cout_pieces_millimes": 221769600
+    },
+    "fact_revenu_contrat": {
+      "revenu_millimes": 529000000
+    },
+    "dim_contrat": {
+      "revenu_mensuel_millimes": 89400000
+    }
   }
 }

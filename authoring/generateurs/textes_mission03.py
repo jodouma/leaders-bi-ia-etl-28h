@@ -150,8 +150,8 @@ SPEC_TEXTES = dict(
         "client ou produit absent des référentiels → `cle_inconnue` ;",
         "quantité non entière ou ≤ 0 → `quantite_invalide` ;",
         "`ligne_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.",
-        "Avoirs : statut ≠ `EMIS` ignoré → `numero_avoir` déjà chargé = ignoré → `ref_ligne_facture` absente de "
-        "`fact_facture` = `cle_inconnue` (numero_ligne = `avoir.id`).",
+        "Avoirs : statut ≠ `EMIS` ignoré → `ref_ligne_facture` absente de `fact_facture` = `cle_inconnue` "
+        "(numero_ligne = `avoir.id`) → `numero_avoir` déjà chargé = ignoré.",
     ],
     regles_metier=[
         "Montant facturé d'une ligne = quantité × prix **négocié** de la ligne (souvent inférieur au prix tarif).",

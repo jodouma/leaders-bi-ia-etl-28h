@@ -52,6 +52,8 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 6. `ligne_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
 7. Retours : `ANNULE` ignoré → `ref_ligne_ticket` absente de `fact_vente` = `cle_inconnue` (numero_ligne = `retour.id`) → `numero_retour` déjà chargé = ignoré.
 
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
+
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `ventes.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
 ## 5. Règles métier
@@ -179,21 +181,25 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M01 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M01 --etape initial     # après le lot 1
 python -m controles.verifier --mission M01 --etape increment   # après le lot 2
 python -m controles.verifier --mission M01 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M01 --etape export
 python -m controles.verifier --mission M01 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-Une ligne vendue en promotion (code `RAMADAN26`, remise de 10 %) : la marge se calcule-t-elle sur le prix payé (après remise) ou sur le prix du catalogue, la remise étant suivie à part comme une dépense de promotion ? — **Décision :** A. Les ventes brutes sont le montant réellement payé (remise déduite), donc la marge sur coût d'achat tient compte de la remise. L'indicateur « Remises » reste calculé à part pour montrer combien les promotions ont coûté. Un retour rembourse le prix payé, remise comprise.
+**Question :** Une ligne vendue en promotion (code `RAMADAN26`, remise de 10 %) : la marge se calcule-t-elle sur le prix payé (après remise) ou sur le prix du catalogue, la remise étant suivie à part comme une dépense de promotion ?
 
-Options étudiées :
+**Options étudiées :**
 
 - A : remise déduite **avant** la marge. Ventes brutes = quantité × prix − remise ; la remise baisse les ventes et la marge.
 - B : remise déduite **après** la marge. Ventes brutes au prix catalogue ; la marge ignore la remise ; un indicateur « remises » est suivi à part.
+
+**Décision de la direction :** A. Les ventes brutes sont le montant réellement payé (remise déduite), donc la marge sur coût d'achat tient compte de la remise. L'indicateur « Remises » reste calculé à part pour montrer combien les promotions ont coûté. Un retour rembourse le prix payé, remise comprise.
 
 ## 13. Trois variantes (évolutions possibles)
 

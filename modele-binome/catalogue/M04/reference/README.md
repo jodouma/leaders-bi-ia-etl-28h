@@ -59,3 +59,12 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 - `visuels/revenu_cout_marge_par_tranche.png` · `visuels/revenu_cout_marge_par_tranche.svg`
 - `visuels/retard_moyen_par_agence.png` · `visuels/retard_moyen_par_agence.svg`
 - `visuels/rejets_par_motif.png` · `visuels/rejets_par_motif.svg`
+
+## Facturation : lignes ignorées (ce ne sont pas des rejets)
+
+| Lignes de `facturation.sqlite` | lot1 | lot2 |
+|---|---|---|
+| Factures `ANNULEE` ignorées | 46 | 7 |
+| Pénalités `ANNULEE` ignorées | 28 | 11 |
+| Factures de colis déjà chargés (recopiées au lot 2) | 0 | 14 |
+| Pénalités `APPLIQUEE` de colis déjà chargés (recopiées au lot 2) | 0 | 2 |

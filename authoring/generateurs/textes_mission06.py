@@ -69,13 +69,14 @@ SPEC_TEXTES = dict(
                    ColonneSource("provenance", "texte", "Pays du client (avec accents).", "Algérie"),
                ], ["formats de prix et de dates mélangés", "doublons", "identifiants vides ou en conflit",
                    "codes inconnus", "nuitées invalides", "lot2 : encodage cp1252",
-                   "lot2 : recopie les séjours de juin partis en juillet"]),
+                   "lot2 : recopie les séjours arrivés le 30 juin"]),
         Source("chambres.xlsx", "excel", "Feuille `Chambres` (en-têtes à la ligne 3) + feuille `Types`.", [
-            ColonneSource("Établissement", "texte", "Code établissement (une cellule mal saisie).", " dsb"),
-            ColonneSource("Nom", "texte", "Nom de l'établissement.", "Dar Azur Tozeur"),
-            ColonneSource("Ville", "texte", "Ville.", "Tozeur"),
-            ColonneSource("Type de chambre", "texte", "Code du type (feuille Types).", "FAM"),
-            ColonneSource("Nombre de chambres", "nombre ou texte", "Chambres de ce type dans l'établissement.", "6"),
+            ColonneSource("Établissement", "texte", "Code établissement (une cellule mal saisie : ` dsb` = DSB, "
+                          "Sidi Bou Saïd).", " dsb"),
+            ColonneSource("Nom", "texte", "Nom de l'établissement.", "Dar Azur Sidi Bou Saïd"),
+            ColonneSource("Ville", "texte", "Ville.", "Sidi Bou Saïd"),
+            ColonneSource("Type de chambre", "texte", "Code du type (feuille Types).", "TWN"),
+            ColonneSource("Nombre de chambres", "nombre ou texte", "Chambres de ce type dans l'établissement.", "2"),
             ColonneSource("Prix affiché (TND / nuit)", "nombre ou texte", "Prix public indicatif (non utilisé).", "180,000"),
             ColonneSource("Code type / Libellé type", "texte", "Feuille Types.", "FAM / Familiale"),
         ], ["titre au-dessus du tableau", "nombres stockés comme texte",
@@ -153,7 +154,7 @@ SPEC_TEXTES = dict(
         ("Encodage", "`lot2/sejours.csv` en cp1252 (`Algérie`, `Côte d'Ivoire`)",
          "lot1 en UTF-8 ; lot2 en `cp1252` (essayer UTF-8, sinon cp1252)"),
         ("Annulation retirée", "`statut = 'RETIREE'`", "ignorer (ce n'est pas un rejet) : le séjour reste vendu"),
-        ("Ligne déjà chargée", "lot2 recopie les séjours arrivés en juin et partis en juillet",
+        ("Ligne déjà chargée", "lot2 recopie les séjours arrivés le 30 juin (certains partent en juillet)",
          "ignorer : la clé métier existe déjà"),
     ],
     motifs=dict(MOTIFS_STANDARD, cle_inconnue="code absent des référentiels (établissement, type de chambre de "
@@ -229,4 +230,12 @@ SPEC_TEXTES = dict(
     ],
     debut_calendrier=date(2026, 1, 1),
     sources_rejets={"sejours": "sejours.csv", "annulations": "operations.sqlite"},
+    parcours_app="Démonstration conseillée : (1) Vue direction sur toute la période, puis filtre établissement « DTZ » "
+                 "(Tozeur, forte saison en hiver) contre « DAH » (Hammamet, forte saison en été) ; (2) Détail par canal, "
+                 "OTA : deux versions (18 % jusqu'au 2026-07-14, 15 % ensuite) et les séjours réservés le 10 juillet pour "
+                 "une arrivée après le 15 juillet comptés à 15 % (date d'arrivée) ; (3) Qualité des données : rejets par "
+                 "motif et par lot, séjours du 30 juin recopiés et ignorés au lot 2, ligne « lot2 (rejeu) » à 0 ajout.",
+    regle_mois="(séjours, annulations et une ligne de capacité par établissement et par jour). Un séjour **et son "
+               "annulation** sont rangés dans le mois de la **date d'arrivée** du séjour (§ 5), jamais dans le mois du "
+               "départ ni de l'annulation ; la capacité est rangée dans le mois de chaque nuit.",
 )

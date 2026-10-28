@@ -1314,6 +1314,20 @@
     "versions_scd2_ajoutees": 1,
     "dim_date_ajoutees": 62
   },
+  "sommes_export": {
+    "fact_intervention": {
+      "heures": 5757,
+      "delai_heures": 322104,
+      "cout_main_oeuvre_millimes": 305267500,
+      "cout_pieces_millimes": 298407000
+    },
+    "fact_revenu_contrat": {
+      "revenu_millimes": 707800000
+    },
+    "dim_contrat": {
+      "revenu_mensuel_millimes": 89400000
+    }
+  },
   "rejeu": {
     "etape": "rejeu",
     "lignes_ajoutees": 0,

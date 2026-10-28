@@ -85,7 +85,7 @@ SPEC_TEXTES = dict(
             ColonneSource("remboursement.billet_id", "texte", "`billet_id` du billet concerné.", "B100234"),
             ColonneSource("remboursement.date_operation", "texte", "Date et heure de la décision.", "2026-04-12 10:15:00"),
             ColonneSource("remboursement.montant_rembourse", "réel", "Montant rendu en TND (0 si rien n'est rendu).", "35.0"),
-            ColonneSource("remboursement.code_motif", "texte", "`ANNULATION`, `REPORT` ou `CONVENANCE` → `motif`.", "REPORT"),
+            ColonneSource("remboursement.code_motif", "texte", "`ANNULATION`, `REPORT` ou `CONVENANCE` (convenance personnelle : toujours `REFUSE`, donc ignorée) → `motif`.", "REPORT"),
             ColonneSource("remboursement.statut", "texte",
                           "`REMBOURSE` (argent rendu), `CONSERVE` (billet gardé pour la nouvelle date) ou `REFUSE`.",
                           "CONSERVE"),

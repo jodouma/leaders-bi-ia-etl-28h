@@ -392,15 +392,34 @@ DATA = json.loads(DATA_PATH.read_text(encoding='utf-8')) if DATA_PATH.exists() e
 PLACEHOLDERS = []
 
 
+def _compteurs_reference():
+    """Compteurs de chargement lus dans les fichiers de référence du tronc commun (oracle du générateur)."""
+    ref = ROOT / 'modele-binome/tronc-commun/reference'
+    try:
+        l1 = json.loads((ref / 'attendu_lot1.json').read_text(encoding='utf-8'))
+        l2 = json.loads((ref / 'attendu_lot2.json').read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return {}
+    n1, n2 = l1['nettoyage']['ventes.csv'], l2['nettoyage']['ventes.csv']
+    return {'lot1': {'lues': l1['sources']['ventes.csv']['lignes'], 'inserees': n1['lignes_acceptees_nouvelles'],
+                     'rejets': l1['rejets']['total'], 'faits': l1['tables']['fact_vente']},
+            'lot2': {'lues': l2['sources']['ventes.csv']['lignes'], 'nouvelles': l2['increment']['fact_vente_ajoutees'],
+                     'deja_connues': n2['deja_charges'], 'rejets': l2['rejets']['total'], 'faits': l2['tables']['fact_vente']},
+            'rejeu': {'lues': l2['sources']['ventes.csv']['lignes'], 'inserees': l2['rejeu']['lignes_ajoutees'], 'faits': l2['tables']['fact_vente']}}
+
+
+COMPTEURS = _compteurs_reference()
+
+
 def counter(*path, default='n'):
-    """Valeur numérique depuis v7-data.json (clé chargements.<lot>.<compteur>), sinon « n »."""
-    node = DATA
-    for p in ('chargements',) + path:
+    """Valeur numérique depuis les fichiers de référence (clé <lot>.<compteur>), sinon « n »."""
+    node = COMPTEURS
+    for p in path:
         node = node.get(p) if isinstance(node, dict) else None
     if isinstance(node, bool) or not isinstance(node, int):
         PLACEHOLDERS.append('.'.join(path)) if default == 'n' else None
         return default
-    return f'{node:,}'.replace(',', ' ')
+    return f'{node:,}'.replace(',', '\u202f')
 
 
 ASSETS = []
@@ -707,7 +726,7 @@ for i, (t, lot, lines, tot, stl) in enumerate(cards):
         c.arrow((x + bw + 8, 405), (x + bw + gp - 8, 405), width=5)
 c.text(800, 700, 'faits après lot2 = faits après lot1 + nouvelles insérées', 29, NAVY, 'bold', 'middle')
 c.text(800, 750, 'faits après rejeu = faits après lot2', 29, NAVY, 'bold', 'middle')
-src = 'Compteurs : authoring/generateurs/v7-data.json' if DATA else 'n = valeur réelle à relever après exécution (aucun chiffre inventé).'
+src = 'Compteurs : modele-binome/tronc-commun/reference/attendu_lot1.json et attendu_lot2.json' if COMPTEURS else 'n = valeur réelle à relever après exécution (aucun chiffre inventé).'
 note(c, 815, src, 26)
 note(c, 865, 'Clé métier du fait unique (ligne_id) : relancer un lot ne crée jamais de doublon.', 26)
 save(c)

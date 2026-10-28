@@ -27,11 +27,11 @@ Feuille `Chambres` (en-têtes à la ligne 3) + feuille `Types`.
 
 | Colonne | Type | Description | Exemple |
 |---|---|---|---|
-| `Établissement` | texte | Code établissement (une cellule mal saisie). | ` dsb` |
-| `Nom` | texte | Nom de l'établissement. | `Dar Azur Tozeur` |
-| `Ville` | texte | Ville. | `Tozeur` |
-| `Type de chambre` | texte | Code du type (feuille Types). | `FAM` |
-| `Nombre de chambres` | nombre ou texte | Chambres de ce type dans l'établissement. | `6` |
+| `Établissement` | texte | Code établissement (une cellule mal saisie : ` dsb` = DSB, Sidi Bou Saïd). | ` dsb` |
+| `Nom` | texte | Nom de l'établissement. | `Dar Azur Sidi Bou Saïd` |
+| `Ville` | texte | Ville. | `Sidi Bou Saïd` |
+| `Type de chambre` | texte | Code du type (feuille Types). | `TWN` |
+| `Nombre de chambres` | nombre ou texte | Chambres de ce type dans l'établissement. | `2` |
 | `Prix affiché (TND / nuit)` | nombre ou texte | Prix public indicatif (non utilisé). | `180,000` |
 | `Code type / Libellé type` | texte | Feuille Types. | `FAM / Familiale` |
 

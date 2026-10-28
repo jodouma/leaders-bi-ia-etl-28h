@@ -51,7 +51,9 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 4. collaborateur ou projet absent des référentiels → `cle_inconnue` ;
 5. heures illisibles, nulles ou négatives → `quantite_invalide` ;
 6. `temps_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
-7. Factures : `ANNULEE` ignorée → `facture_id` déjà chargé = ignoré → `code_projet` inconnu = `cle_inconnue` (numero_ligne = `facture.id`). Avoirs (après les factures) : `avoir_id` déjà chargé = ignoré → `facture_id` absent de `fact_facture` = `cle_inconnue` (numero_ligne = `avoir.id`).
+7. Factures : `ANNULEE` ignorée → `code_projet` inconnu = `cle_inconnue` (numero_ligne = `facture.id`) → `facture_id` déjà chargé = ignoré. Avoirs (après les factures) : `facture_id` absent de `fact_facture` = `cle_inconnue` (numero_ligne = `avoir.id`) → `avoir_id` déjà chargé = ignoré.
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `temps.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -179,23 +181,27 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M10 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M10 --etape initial     # après le lot 1
 python -m controles.verifier --mission M10 --etape increment   # après le lot 2
 python -m controles.verifier --mission M10 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M10 --etape export
 python -m controles.verifier --mission M10 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-(1) Les heures saisies sur PX07 avant le 15 juillet, et la facture de régie de juillet datée du 31 juillet : quel chef de projet ? (2) Les heures passées sur le projet interne INT01 (non facturable) comptent-elles dans le coût de charge ? — **Décision :** (1) B : chaque heure, facture ou avoir prend la version de PX07 valable à SA date : les heures jusqu'au 14 juillet restent à Hela Mansour, la facture du 31 juillet (qui couvre tout juillet) va à Nour Jebali. (2) A : les heures de INT01 comptent dans le coût de charge global ; INT01 apparaît comme un projet de type `interne` avec un facturé net nul.
+**Question :** (1) Les heures saisies sur PX07 avant le 15 juillet, et la facture de régie de juillet datée du 31 juillet : quel chef de projet ? (2) Les heures passées sur le projet interne INT01 (non facturable) comptent-elles dans le coût de charge ?
 
-Options étudiées :
+**Options étudiées :**
 
 - (1) A : le chef courant pour tout le projet (on réécrit l'historique).
 - (1) B : le chef valable le jour de la ligne de temps (ou de la facture).
 - (2) A : oui, toute heure saisie coûte, facturable ou non.
 - (2) B : non, on n'analyse que les projets clients.
+
+**Décision de la direction :** (1) B : chaque heure, facture ou avoir prend la version de PX07 valable à SA date : les heures jusqu'au 14 juillet restent à Hela Mansour, la facture du 31 juillet (qui couvre tout juillet) va à Nour Jebali. (2) A : les heures de INT01 comptent dans le coût de charge global ; INT01 apparaît comme un projet de type `interne` avec un facturé net nul.
 
 ## 13. Trois variantes (évolutions possibles)
 
@@ -208,3 +214,5 @@ Options étudiées :
 1. **Vue direction** — factures, avoirs, facturé net, coût de charge et marge de contribution ; coût de charge par mois et par type de projet (barres empilées).
 2. **Détail par projet** — chaque projet avec ses versions : PX07 chez Hela Mansour jusqu'au 2026-07-14, puis Nour Jebali ; les projets à marge négative se repèrent ici.
 3. **Qualité des données** — lignes lues, gardées, rejetées par motif et par lot.
+
+Démonstration conseillée : (1) Vue direction sans filtre, puis filtre type de projet « interne » : du coût de charge sans aucune facture (marge négative) ; (2) Détail par projet, PX07 : deux versions (Hela Mansour jusqu'au 2026-07-14, Nour Jebali ensuite) et les heures de juillet réparties entre les deux chefs selon leur date ; (3) Qualité des données : rejets par motif et par lot (dont les heures invalides), lignes déjà chargées au lot 2, ligne « lot2 (rejeu) » à 0 ajout.

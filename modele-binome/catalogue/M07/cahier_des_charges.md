@@ -15,7 +15,7 @@ Les sources sont **lues, jamais modifiées**.
 | `facturation.csv` | csv | Factures mensuelles exportées de la facturation (UTF-8, séparateur `;`). | formats de montants et de dates mélangés ; doublons ; identifiants vides ou en conflit ; comptes, offres ou abonnements inconnus ; nb_mois invalide ; lot2 : recopie des factures depuis le 10 juin |
 | `comptes.xlsx` | excel | Feuille `Comptes` (titre au-dessus, en-têtes à la ligne 3). | titre au-dessus du tableau ; type de compte en casse variable ; lot2 : nouveaux comptes |
 | `offres.json` | json | Catalogue des offres avec l'historique de gamme et de prix. | prix tantôt nombre, tantôt texte à virgule ; lot2 : une deuxième version pour FN-F300 au 2026-07-15 |
-| `abonnements.sqlite` | sqlite | Base opérationnelle : tables `abonnement`, `motif_resiliation`, `parametre`. | abonnements annulés avant installation ; abonnements vers un compte inconnu ; abonnements résiliés en 2025 (aucun mois en 2026) ; lot2 : la base complète, résiliations de l'été comprises |
+| `abonnements.sqlite` | sqlite | Base opérationnelle : tables `abonnement`, `motif_resiliation`, `parametre`. | abonnements annulés avant installation ; abonnements vers un compte inconnu ; abonnements résiliés en 2025 (aucun mois en 2026) ; lot2 : la base complète, résiliations de l'été comprises ; les abonnements vers un compte inconnu signalés au lot 1 ont été supprimés de la base entre les deux exports (un rejet n'est compté qu'une fois) |
 
 ## 3. Règles de nettoyage
 
@@ -51,6 +51,8 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 5. `nb_mois` non entier ou ≤ 0 → `quantite_invalide` ;
 6. `facture_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
 7. Abonnements (lus **avant** les factures) : `ANNULE` ignoré → `num_compte` absent de `dim_compte` = `cle_inconnue` (numero_ligne = `abonnement.id`) → ligne-mois déjà chargée = ignorée.
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `facturation.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -178,22 +180,26 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M07 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M07 --etape initial     # après le lot 1
 python -m controles.verifier --mission M07 --etape increment   # après le lot 2
 python -m controles.verifier --mission M07 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M07 --etape export
 python -m controles.verifier --mission M07 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-Un abonnement résilié le 31 mars (dernier jour du mois) est-il encore actif « fin mars » ? Et le MRR de juillet d'un abonné Fibre 300 se calcule-t-il à 89,900 TND (prix à la souscription ou à la facture du 1er juillet) ou à 99,900 TND (prix valable le 31 juillet) ? — **Décision :** B. `date_fin` = dernier jour de service ; actif fin de mois ⇔ `date_fin` vide ou **après** le dernier jour du mois. Le MRR d'un mois utilise la version de l'offre valable le dernier jour de ce mois : Fibre 300 compte 99,900 TND dans le MRR de juillet alors que sa facture de juillet (émise le 1er) vaut 89,900 TND.
+**Question :** Un abonnement résilié le 31 mars (dernier jour du mois) est-il encore actif « fin mars » ? Et le MRR de juillet d'un abonné Fibre 300 se calcule-t-il à 89,900 TND (prix à la souscription ou à la facture du 1er juillet) ou à 99,900 TND (prix valable le 31 juillet) ?
 
-Options étudiées :
+**Options étudiées :**
 
 - A : actif fin mars (il est servi le 31) ; MRR au prix de la souscription.
 - B : départ de mars, plus actif fin mars ; MRR au prix de la version valable le dernier jour du mois.
 - C : actif fin mars, départ compté en avril ; MRR au prix de la dernière facture.
+
+**Décision de la direction :** B. `date_fin` = dernier jour de service ; actif fin de mois ⇔ `date_fin` vide ou **après** le dernier jour du mois. Le MRR d'un mois utilise la version de l'offre valable le dernier jour de ce mois : Fibre 300 compte 99,900 TND dans le MRR de juillet alors que sa facture de juillet (émise le 1er) vaut 89,900 TND.
 
 ## 13. Dérivation de `fact_abonnement_mois` (le cœur de la mission)
 

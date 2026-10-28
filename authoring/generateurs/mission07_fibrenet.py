@@ -13,7 +13,7 @@ from common import (ChampsCSV, Doses, Feuille, Lot, LotResultat, Table, Colonne,
                     rng_mission, jours, date_key, cle_version, construire_csv, ecrire_csv, ecrire_excel, ecrire_json,
                     ecrire_sqlite, preparer_dossier, produire_reference, calculer_attendu_echantillon,
                     ecrire_verite_privee, exporter_v7_data, format_montant, tnd_fr, pct_fr, md_tableau, taille_dossier,
-                    TAILLE_MAX_MISSION)
+                    TAILLE_MAX_MISSION, entrepot_verite)
 from textes_mission07 import SPEC_TEXTES, DERIVATION
 
 GRAINE = 260007
@@ -374,6 +374,22 @@ def section_derivation() -> str:
 Un abonnement résilié avant 2026 n'a aucune ligne. Relancer un lot recalcule les mêmes lignes : celles dont la clé existe sont ignorées, le passé ne change pas."""
 
 
+def stock_par_gamme(spec, lr) -> str:
+    """Fin juin → début juillet par gamme : le total se conserve ; FN-F300 change de gamme (version du dernier jour)."""
+    con = entrepot_verite(spec, lr.tables_verite, lr.lot.fin)
+    rows = con.execute("SELECT o.gamme, SUM(CASE WHEN a.date_key = 20260630 THEN a.actif_fin ELSE 0 END), "
+                       "SUM(CASE WHEN a.date_key = 20260731 THEN a.actif_debut ELSE 0 END) FROM fact_abonnement_mois a "
+                       "JOIN dim_offre o ON o.offre_key = a.offre_key GROUP BY o.gamme ORDER BY o.gamme").fetchall()
+    f300 = con.execute("SELECT SUM(a.actif_debut) FROM fact_abonnement_mois a JOIN dim_offre o ON o.offre_key = a.offre_key "
+                       "WHERE o.offre_id = 'FN-F300' AND a.date_key = 20260731").fetchone()[0]
+    con.close()
+    tab = md_tableau(["Gamme", "Actifs fin juin", "Actifs début juillet"], [list(r) for r in rows]
+                     + [["**total**", sum(r[1] for r in rows), sum(r[2] for r in rows)]])
+    return (f"\n## Fin juin → début juillet, par gamme\n\nLe total se conserve. Par gamme, les {f300} abonnés de "
+            f"FN-F300 passent de « confort » à « pro » : la ligne de juillet prend la version de l'offre valable le "
+            f"dernier jour de juillet (règle du § 13), ce n'est ni un départ ni un nouvel abonnement.\n\n{tab}\n")
+
+
 def lecture_mois_par_mois(attendus: dict) -> str:
     return ("\n## Lecture mois par mois (après le dernier lot)\n\nLes abonnés et le MRR sont des stocks de fin de "
             "mois. Les totaux « Indicateurs » ci-dessus additionnent les mois (abonnés-mois, MRR cumulé) : pour "
@@ -384,8 +400,7 @@ def lecture_mois_par_mois(attendus: dict) -> str:
 def main() -> None:
     spec = MissionSpec(**SPEC_TEXTES, lots=[LOT1, LOT2], graine=GRAINE, tables=TABLES,
                        sections_cahier=[("Dérivation de `fact_abonnement_mois` (le cœur de la mission)",
-                                         section_derivation())],
-                       complement_reference=lecture_mois_par_mois)
+                                         section_derivation())])
     dossier = preparer_dossier(spec)
     rng = rng_mission(GRAINE)
     comptes = generer_comptes(rng)
@@ -402,7 +417,10 @@ def main() -> None:
     for lot, b, avec, facts in ((LOT1, b1, False, f1), (LOT2, b2, True, f1 + f2)):
         d = dossier / "sources" / lot.nom
         cpt = [c for c in comptes if c["depuis"] <= lot.fin]
-        inst = instantane(abos, lot.fin)
+        # entre les deux exports, le service client a supprimé les abonnements orphelins signalés au lot 1 :
+        # un rejet n'est compté que dans le lot qui l'a apporté (pas de rejet cumulé au lot 2)
+        retenus = [a for a in abos if not (avec and a["statut"] == "ORPHELIN" and a["debut"] <= LOT1.fin)]
+        inst = instantane(retenus, lot.fin)
         ecrire_csv(d / "facturation.csv", ENTETE, [l.valeurs for l in b.lignes])
         ecrire_comptes(d / "comptes.xlsx", cpt, lot.fin.isoformat())
         ecrire_offres(d / "offres.json", avec, lot.fin.isoformat())
@@ -410,7 +428,7 @@ def main() -> None:
         val = [a for a in valides if a["debut"] <= lot.fin]
         t = tables_verite(cpt, [dict(a, fin=a["fin"] if a["fin"] and a["fin"] <= lot.fin else None) for a in val],
                           facts, mois_entre(LOT1.debut, lot.fin), avec)
-        n_orph = sum(a["statut"] == "ORPHELIN" for a in abos if a["debut"] <= lot.fin)
+        n_orph = sum(a["statut"] == "ORPHELIN" for a in retenus if a["debut"] <= lot.fin)
         nb_mois_lot = sum(1 for r in t["fact_abonnement_mois"] if r["date_key"] >= date_key(lot.debut))
         lots.append(LotResultat(
             lot=lot,
@@ -434,6 +452,8 @@ def main() -> None:
         assert b.compteurs["lignes_acceptees_nouvelles"] == len(facts) - (0 if lot is LOT1 else len(f1))
         assert len(t["fact_facture"]) == len(t["fact_abonnement_mois"])   # une facture par abonnement-mois
 
+    gammes = stock_par_gamme(spec, lots[-1])
+    spec.complement_reference = lambda a: lecture_mois_par_mois(a) + gammes
     attendus = produire_reference(spec, lots)
     # double contrôle Python pur (sans SQL) : fin août, depuis les seules dates des abonnements
     fin = LOT2.fin

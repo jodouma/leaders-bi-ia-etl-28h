@@ -51,7 +51,7 @@ MOTIFS = [("TAI", "Taille ou modèle inadapté"), ("DEF", "Article défectueux")
           ("RET", "Livraison en retard"), ("NRC", "Colis non reçu")]
 LOT1 = Lot("lot1", "initial", date(2026, 1, 1), date(2026, 6, 30), "chargement initial, janvier → juin 2026")
 LOT2 = Lot("lot2", "increment", date(2026, 7, 1), date(2026, 8, 31),
-           "incrément juillet → août 2026 (fichier en cp1252) ; recopie les 29-30 juin ; VSO change de famille le 2026-07-15")
+           "incrément juillet → août 2026 (fichier en cp1252) ; recopie les commandes des 29 et 30 juin ; VSO change de famille le 2026-07-15")
 CHEVAUCHEMENT_CSV = date(2026, 6, 29)      # le lot 2 recopie les commandes depuis ce jour
 CHEVAUCHEMENT_SQL = date(2026, 6, 20)      # la base du lot 2 recopie les remboursements depuis cette date
 DEBUT_EN_COURS = date(2026, 8, 26)         # demandes des derniers jours : pas encore payées

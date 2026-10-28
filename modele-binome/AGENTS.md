@@ -30,7 +30,9 @@ lancent les contrôles, expliquent et décident. Réponds en français simple et
 ## Règles de données
 
 - Point d'entrée : `python -m solen initial|increment|export|app`, qui lit
-  `mission.txt`. `initial` recrée l'entrepôt depuis zéro avec `lot1` ; `increment`
+  `mission.txt`. Une commande de lecture `python -m solen sources` (nom, nombre
+  de lignes, colonnes et 3 premières lignes de chaque source) est demandée en
+  séance 2 et peut rester. `initial` recrée l'entrepôt depuis zéro avec `lot1` ; `increment`
   ajoute `lot2` ; relancer `increment` n'ajoute aucune ligne (rejeu) ; `export`
   écrit `outputs/export/<table>.csv` et `outputs/export/manifest.json` (comptes,
   sommes) ; `app` écrit `outputs/app/index.html` autonome, sans serveur.

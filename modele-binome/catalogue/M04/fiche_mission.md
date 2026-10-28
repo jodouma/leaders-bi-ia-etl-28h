@@ -51,7 +51,10 @@ Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir 
 - (1) A : à l'heure (date_livraison ≤ date_promise). B : en retard (il fallait livrer avant).
 - (2) A : version de l'agence valable à la date d'**expédition** (Nord). B : version valable à la date de **livraison** (Centre-Sahel).
 
-**Décision de la direction pour cette mission :** (1) A : un colis livré le jour promis est **à l'heure** ; son retard vaut 0 jour. (2) B : le colis est rattaché à la version de l'agence valable à sa **date de livraison**, qui est la date du fait (dim_date) ; il compte donc dans Centre-Sahel et dans le mois de juillet.
+**Décision de la direction pour cette mission :** deux décisions distinctes.
+
+- Question (1) → **option A** : un colis livré le jour promis est **à l'heure** ; son retard vaut 0 jour.
+- Question (2) → **option B** : le colis est rattaché à la version de l'agence valable à sa **date de livraison**, qui est la date du fait (dim_date) ; il compte donc dans Centre-Sahel et dans le mois de juillet.
 
 ## Les trois écrans de l'application
 
@@ -69,7 +72,7 @@ Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir 
 
 ```bash
 python -m controles.verifier --mission M04 --etape tout
-python -m pytest
+pytest controles
 ```
 
 Les valeurs attendues sont dans `reference/attendu_lot1.json` et `reference/attendu_lot2.json`. Elles ont été calculées par le générateur depuis la vérité, pas par une solution.

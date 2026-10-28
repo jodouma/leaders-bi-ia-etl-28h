@@ -703,7 +703,7 @@
       [
        "Abonnements lus · `ANNULE` · compte inconnu",
        "345 · 3 · 3",
-       "366 · 4 · 4",
+       "363 · 4 · 1",
        "ignorer · `cle_inconnue`"
       ],
       [
@@ -824,7 +824,7 @@
       ],
       [
        "Rejets du lot 2",
-       "`cle_inconnue` 7 (3 factures + 4 abonnements) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 13"
+       "`cle_inconnue` 4 (3 factures + 1 abonnement) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 10"
       ],
       [
        "**Fin juillet** · **fin août**",

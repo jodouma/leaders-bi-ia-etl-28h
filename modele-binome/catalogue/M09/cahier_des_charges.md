@@ -52,6 +52,8 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 6. `billet_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
 7. Remboursements : seules les lignes `REMBOURSE` comptent (`CONSERVE` et `REFUSE` ignorées) → `billet_id` absent de `fact_billet` = `cle_inconnue` (numero_ligne = `remboursement.id`) → `numero` déjà chargé = ignoré.
 
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
+
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `billets.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
 ## 5. Règles métier
@@ -179,24 +181,28 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M09 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M09 --etape initial     # après le lot 1
 python -m controles.verifier --mission M09 --etape increment   # après le lot 2
 python -m controles.verifier --mission M09 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M09 --etape export
 python -m controles.verifier --mission M09 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-1) Un billet REV vendu le 10 juillet (frais 9 %) est remboursé le 20 juillet, après le passage à 11 %. Quels frais garde-t-on ? 2) Un spectacle reporté : une demande « report » compte-t-elle comme un remboursement ? — **Décision :** 1A et 2B. Les frais sont dus au canal le jour de la vente : ils restent au taux de la version valable à la date de vente et ne sont ni remboursés ni recalculés. Un report n'est pas un remboursement : seules les lignes `REMBOURSE` (argent rendu) réduisent les billets nets et les recettes, quel que soit le motif (`ANNULATION` ou `REPORT`).
+**Question :** 1) Un billet REV vendu le 10 juillet (frais 9 %) est remboursé le 20 juillet, après le passage à 11 %. Quels frais garde-t-on ? 2) Un spectacle reporté : une demande « report » compte-t-elle comme un remboursement ?
 
-Options étudiées :
+**Options étudiées :**
 
 - 1A : frais de la version valable à la date de **vente** (9 %), jamais recalculés.
 - 1B : frais recalculés à la date du remboursement (11 %).
 - 1C : frais annulés quand le billet est remboursé.
 - 2A : toute demande de motif `REPORT` est un remboursement.
 - 2B : seul le statut `REMBOURSE` compte ; `CONSERVE` (billet gardé pour la nouvelle date) n'est pas un remboursement.
+
+**Décision de la direction :** 1A et 2B. Les frais sont dus au canal le jour de la vente : ils restent au taux de la version valable à la date de vente et ne sont ni remboursés ni recalculés. Un report n'est pas un remboursement : seules les lignes `REMBOURSE` (argent rendu) réduisent les billets nets et les recettes, quel que soit le motif (`ANNULATION` ou `REPORT`).
 
 ## 13. Trois variantes (évolutions possibles)
 

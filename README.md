@@ -16,7 +16,7 @@ Règle d'or : **aucune ligne de code à la main.** Codex écrit Python, SQL, DAX
 
 Pour récupérer le cours : bouton **Code → Download ZIP**, ou `git clone https://github.com/jodouma/leaders-bi-ia-etl-28h.git ~/cours-bi` dans le terminal Ubuntu. Le nom historique du dépôt (`28h`) ne correspond pas à la durée de cette édition ; la durée fait foi dans les livrets.
 
-[Le parcours en images](docs/DEMARRER_EN_IMAGES.md) · [Présentation PowerPoint modifiable](presentation/Solen_CODEX_BI_22h.pptx) · [Présentation PDF](presentation/Solen_CODEX_BI_22h.pdf)
+[Le parcours en images](docs/DEMARRER_EN_IMAGES.md) · [Matrice compétence → mission → action → preuve](docs/MATRICE_COMPETENCES.md) · [Présentation PowerPoint modifiable](presentation/Solen_CODEX_BI_22h.pptx) · [Présentation PDF](presentation/Solen_CODEX_BI_22h.pdf)
 
 ## Cinq séances, une mission, une soutenance
 

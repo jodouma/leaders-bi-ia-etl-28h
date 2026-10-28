@@ -51,7 +51,9 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 4. agence, service ou zone de destination absent des référentiels → `cle_inconnue` ;
 5. poids illisible, ≤ 0 ou > 30 kg → `quantite_invalide` ;
 6. `colis_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
-7. Facturation : factures `ANNULEE` et pénalités `ANNULEE` ignorées → `colis_id` ni dans `fact_colis` ni parmi les colis acceptés du lot = `cle_inconnue` (numero_ligne = `id` de la table `facture` ou `penalite`) → colis déjà chargé = ignoré.
+7. Facturation : factures `ANNULEE` et pénalités `ANNULEE` ignorées → `colis_id` ni dans `fact_colis` ni parmi les colis acceptés du lot = `cle_inconnue` (numero_ligne = `id` de la table `facture` ou `penalite`) → facture ou pénalité d'un colis déjà chargé = ignorée (lot 2 : voir `nettoyage.facturation.sqlite` de la référence).
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `colis.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -188,21 +190,28 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M04 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M04 --etape initial     # après le lot 1
 python -m controles.verifier --mission M04 --etape increment   # après le lot 2
 python -m controles.verifier --mission M04 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M04 --etape export
 python -m controles.verifier --mission M04 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-Deux cas posent problème. (1) Un colis livré **le jour même** de la date promise est-il à l'heure ? (2) Un colis de l'agence de Nabeul expédié le 13 juillet (zone Nord) et livré le 16 juillet (zone Centre-Sahel) : dans quelle zone le compter ? — **Décision :** (1) A : un colis livré le jour promis est **à l'heure** ; son retard vaut 0 jour. (2) B : le colis est rattaché à la version de l'agence valable à sa **date de livraison**, qui est la date du fait (dim_date) ; il compte donc dans Centre-Sahel et dans le mois de juillet.
+**Question :** Deux cas posent problème. (1) Un colis livré **le jour même** de la date promise est-il à l'heure ? (2) Un colis de l'agence de Nabeul expédié le 13 juillet (zone Nord) et livré le 16 juillet (zone Centre-Sahel) : dans quelle zone le compter ?
 
-Options étudiées :
+**Options étudiées :**
 
 - (1) A : à l'heure (date_livraison ≤ date_promise). B : en retard (il fallait livrer avant).
 - (2) A : version de l'agence valable à la date d'**expédition** (Nord). B : version valable à la date de **livraison** (Centre-Sahel).
+
+**Décision de la direction :** deux décisions distinctes.
+
+- Question (1) → **option A** : un colis livré le jour promis est **à l'heure** ; son retard vaut 0 jour.
+- Question (2) → **option B** : le colis est rattaché à la version de l'agence valable à sa **date de livraison**, qui est la date du fait (dim_date) ; il compte donc dans Centre-Sahel et dans le mois de juillet.
 
 Exemple : le colis de Nabeul expédié le 2026-07-13 et livré le 2026-07-16 (date promise 2026-07-16) est **à l'heure** et compte dans la zone **Centre-Sahel**, mois 2026-07.
 

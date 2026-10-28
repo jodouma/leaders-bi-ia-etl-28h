@@ -59,5 +59,5 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 
 - La vue d'analyse ajoute **une ligne « capacité » par événement** (canal `(capacité)`) : c'est elle qui donne le dénominateur du taux de remplissage. Par canal, ce taux est vide (`null`) : la capacité d'une salle ne dépend d'aucun canal.
 - L'axe `par_mois` = mois de la **date de l'événement** (date du spectacle après report), pas de la vente.
-- Dans `scd2.versions`, `attribut` (frais en pour mille) est écrit en texte (`"90"`) ; dans `scd2.frontieres`, il reste un entier (`90`). Le vérificateur compare l'attribut en texte des deux côtés. La colonne `frais_pour_mille` de l'entrepôt est bien un INTEGER.
+- Dans `scd2.versions` comme dans `scd2.frontieres`, `attribut` (frais en pour mille) est un entier (`90`), comme la colonne `frais_pour_mille` (INTEGER) de l'entrepôt. Le vérificateur compare l'attribut en texte des deux côtés.
 - Événements annulés : `EV05` (le 2026-04-10, lot 1) et `EV12` (le 2026-07-18, lot 2) ; tous leurs billets sont remboursés. `EV08` est reporté au 2026-07-11 : seules les demandes `REMBOURSE` comptent.

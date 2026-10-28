@@ -50,7 +50,9 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 4. session absente de `sessions.json`, ou participant sans inscription `CONFIRMEE` à cette session dans `operations.sqlite` → `cle_inconnue` ;
 5. `present` différent de `0` ou `1` → `quantite_invalide` ;
 6. `presence_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
-7. Paiements puis remboursements : `ANNULE` ignoré → numéro déjà chargé = ignoré → `numero_inscription` absent de la table `inscription` = `cle_inconnue` (source `operations.sqlite`, numero_ligne = `id` de la ligne).
+7. Paiements puis remboursements : `ANNULE` ignoré → `numero_inscription` absent de la table `inscription` = `cle_inconnue` (source `operations.sqlite`, numero_ligne = `id` de la ligne) → numéro déjà chargé = ignoré.
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `presences.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -180,23 +182,27 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M05 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M05 --etape initial     # après le lot 1
 python -m controles.verifier --mission M05 --etape increment   # après le lot 2
 python -m controles.verifier --mission M05 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M05 --etape export
 python -m controles.verifier --mission M05 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-(1) Un participant a payé mais n'est jamais venu (présent = 0 à toutes les séances) : compte-t-il dans les inscrits ? (2) Un participant de SES-2619 est remboursé le 20 juillet, après le changement de centre : le remboursement compte-t-il à Sousse (centre de son inscription) ou à Sfax (centre le jour du remboursement) ? — **Décision :** (1) A : il compte dans les inscrits et dans le dénominateur de l'assiduité ; son paiement compte dans les encaissements. (2) B : chaque présence, paiement ou remboursement est rattaché à la version de la session valable à SA date et compté dans SON mois ; le remboursement du 20 juillet compte donc à Sfax.
+**Question :** (1) Un participant a payé mais n'est jamais venu (présent = 0 à toutes les séances) : compte-t-il dans les inscrits ? (2) Un participant de SES-2619 est remboursé le 20 juillet, après le changement de centre : le remboursement compte-t-il à Sousse (centre de son inscription) ou à Sfax (centre le jour du remboursement) ?
 
-Options étudiées :
+**Options étudiées :**
 
 - (1) A : oui, il occupe une place et il a payé ; ses absences font baisser l'assiduité.
 - (1) B : non, on ne compte que les participants venus au moins une fois (le remplissage baisse, l'assiduité monte).
 - (2) A : version de la session à la date de l'inscription (Sousse).
 - (2) B : version valable à la date du remboursement (Sfax), comme chaque mouvement.
+
+**Décision de la direction :** (1) A : il compte dans les inscrits et dans le dénominateur de l'assiduité ; son paiement compte dans les encaissements. (2) B : chaque présence, paiement ou remboursement est rattaché à la version de la session valable à SA date et compté dans SON mois ; le remboursement du 20 juillet compte donc à Sfax.
 
 Conséquence dans l'entrepôt : le participant jamais venu garde ses lignes `present = 0` dans `fact_presence` ; le remboursement du 2026-07-20 de SES-2619 pointe vers la version « Sfax » de `dim_session`.
 
@@ -204,13 +210,19 @@ Conséquence dans l'entrepôt : le participant jamais venu garde ses lignes `pre
 
 Une session **atteint ses objectifs** si : taux de remplissage ≥ 70 %, taux d'assiduité ≥ 80 % et encaissements nets ≥ 95 % de l'encaissement attendu (inscrits × prix). Les valeurs par session sont dans l'agrégat `par_session` de `reference/attendu_lot2.json`. La recommandation à la direction nomme les sessions qui n'atteignent pas un objectif, dit lequel, et propose une action.
 
-## 14. Trois variantes (évolutions possibles)
+## 14. Ce que le lot 2 ajoute au passé (paiements de juin, sessions d'été)
+
+Le `operations.sqlite` du lot 1 est un export **par session** : il ne contient que les inscriptions et les mouvements des 20 sessions de janvier à juin. Les 5 sessions d'été (début en juillet-août) ouvrent leurs inscriptions en juin et leurs participants **paient en juin**, mais ces paiements ne sont exportés qu'avec le lot 2, qui contient toutes les inscriptions et tout mouvement du 2026-06-01 au 2026-08-31. C'est un fait **arrivé en retard** : il est rangé dans le mois de SA date (juin), pas dans le mois du chargement. Le mois de juin change donc après l'incrément : encaissements nets de juin 950,000 TND après le lot 1, 11 740,000 TND après le lot 2. Ce n'est pas une erreur : vérifiez-le dans `par_mois` des deux fichiers `attendu_*.json`.
+
+`dim_session` gagne 6 versions au lot 2 : 5 sessions d'été nouvelles (une première version chacune) + **une seule** nouvelle version historique, SES-2619 qui passe de Sousse à Sfax le 2026-07-15 (le seul changement SCD2 de la mission).
+
+## 15. Trois variantes (évolutions possibles)
 
 1. Nouvel indicateur : taux d'abandon = inscrits absents aux deux dernières séances de leur session / inscrits.
 2. Nouvelle règle : une présence datée d'un jour qui n'est pas une séance de la session (hors rythme du planning) est rejetée avec un nouveau motif `seance_inconnue`.
 3. Changement historique : la session SES-2622 est rattachée à Tunis à partir du 2026-07-20 (deuxième session historisée dans `dim_session`).
 
-## 15. Parcours de démonstration de l'application (3 écrans)
+## 16. Parcours de démonstration de l'application (3 écrans)
 
 1. **Vue direction** — inscrits, assiduité, remplissage, encaissements nets et taux d'encaissement, puis les encaissements nets par mois et par centre (barres empilées).
 2. **Détail par session** — chaque session avec ses versions : SES-2619 à Sousse jusqu'au 2026-07-14, puis à Sfax.

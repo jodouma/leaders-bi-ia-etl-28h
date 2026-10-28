@@ -12,7 +12,7 @@ Les sources sont **lues, jamais modifiées**.
 
 | Fichier | Type | Contenu | Pièges connus |
 |---|---|---|---|
-| `sejours.csv` | csv | Séjours exportés du logiciel de réception (séparateur `;`). `lot1` en UTF-8, **`lot2` en Windows-1252 (cp1252)**. | formats de prix et de dates mélangés ; doublons ; identifiants vides ou en conflit ; codes inconnus ; nuitées invalides ; lot2 : encodage cp1252 ; lot2 : recopie les séjours de juin partis en juillet |
+| `sejours.csv` | csv | Séjours exportés du logiciel de réception (séparateur `;`). `lot1` en UTF-8, **`lot2` en Windows-1252 (cp1252)**. | formats de prix et de dates mélangés ; doublons ; identifiants vides ou en conflit ; codes inconnus ; nuitées invalides ; lot2 : encodage cp1252 ; lot2 : recopie les séjours arrivés le 30 juin |
 | `chambres.xlsx` | excel | Feuille `Chambres` (en-têtes à la ligne 3) + feuille `Types`. | titre au-dessus du tableau ; nombres stockés comme texte ; capacité d'un établissement = somme de ses lignes |
 | `canaux.json` | json | Contrats des canaux de vente avec l'historique du taux de commission. | un taux écrit `10.0` ; lot2 : une deuxième version pour OTA (15 % au 2026-07-15) |
 | `operations.sqlite` | sqlite | Base opérationnelle : tables `annulation`, `motif_annulation`, `paiement`, `parametre`. | annulations retirées ; annulations vers un séjour inconnu ; lot2 : recopie des annulations depuis le 20 juin |
@@ -31,7 +31,7 @@ Les sources sont **lues, jamais modifiées**.
 | Nuitées invalides | `-2`, `0`, `1.5`, `2,5` | rejet `quantite_invalide` |
 | Encodage | `lot2/sejours.csv` en cp1252 (`Algérie`, `Côte d'Ivoire`) | lot1 en UTF-8 ; lot2 en `cp1252` (essayer UTF-8, sinon cp1252) |
 | Annulation retirée | `statut = 'RETIREE'` | ignorer (ce n'est pas un rejet) : le séjour reste vendu |
-| Ligne déjà chargée | lot2 recopie les séjours arrivés en juin et partis en juillet | ignorer : la clé métier existe déjà |
+| Ligne déjà chargée | lot2 recopie les séjours arrivés le 30 juin (certains partent en juillet) | ignorer : la clé métier existe déjà |
 
 ## 4. Motifs de rejet
 
@@ -51,6 +51,8 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 5. nuitées non entières ou ≤ 0 → `quantite_invalide` ;
 6. `sejour_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
 7. Annulations : `RETIREE` ignorée → `ref_sejour` absente de `fact_sejour` = `cle_inconnue` (numero_ligne = `annulation.id`) → `numero_annulation` déjà chargé = ignorée.
+
+Règle commune à toutes les missions (c'est ce que compte le vérificateur) : les rejets sont comptés **par lot et par motif** ; une ligne dont la clé métier est déjà dans l'entrepôt est ignorée et **n'est jamais un rejet**. Le test « déjà chargé » vient donc **après** les contrôles de validité, pour le CSV comme pour la base SQLite (statut ignoré → référence inconnue = `cle_inconnue` → déjà chargé = ignoré). L'ordre ne change aucun compte : une ligne déjà chargée a forcément passé ces contrôles au lot précédent.
 
 `outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `sejours.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
@@ -170,7 +172,7 @@ Le canal OTA (agence en ligne) passe d'une commission de 18 % à 15 % le 2026-07
 | Commissions des canaux | TND (stocké en millimes) | somme de montant × taux de commission (version valable à la date d'arrivée) / 100 |
 | Séjours acceptés | nombre | nombre de lignes de fact_sejour |
 
-Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (faits et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
+Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (séjours, annulations et une ligne de capacité par établissement et par jour). Un séjour **et son annulation** sont rangés dans le mois de la **date d'arrivée** du séjour (§ 5), jamais dans le mois du départ ni de l'annulation ; la capacité est rangée dans le mois de chaque nuit.
 
 ## 10. Sorties
 
@@ -181,22 +183,26 @@ Le calcul de référence est fait sur la vue « mouvements » de `reference/cont
 ## 11. Contrôles
 
 ```bash
+python -m controles.verifier --mission M06 --etape rejets      # après le nettoyage du lot 1 (rejets.csv seul)
 python -m controles.verifier --mission M06 --etape initial     # après le lot 1
 python -m controles.verifier --mission M06 --etape increment   # après le lot 2
 python -m controles.verifier --mission M06 --etape rejeu       # après avoir relancé le lot 2
 python -m controles.verifier --mission M06 --etape export
 python -m controles.verifier --mission M06 --etape tout
+pytest controles
 ```
 
 ## 12. Règle à clarifier
 
-Un client arrive le 30 juin et repart le 3 juillet (3 nuitées) : le séjour compte-t-il en juin, en juillet, ou nuit par nuit ? Et une réservation faite le 10 juillet sur l'agence en ligne pour une arrivée le 20 juillet : commission à 18 % (taux du jour de la réservation) ou 15 % (taux du jour d'arrivée) ? — **Décision :** A. La date d'arrivée est la date du fait : nuitées, montant, commission (version du canal valable ce jour-là) et annulations éventuelles sont rangés dans le mois d'arrivée. Simple, stable et identique pour tous les établissements.
+**Question :** Un client arrive le 30 juin et repart le 3 juillet (3 nuitées) : le séjour compte-t-il en juin, en juillet, ou nuit par nuit ? Et une réservation faite le 10 juillet sur l'agence en ligne pour une arrivée le 20 juillet : commission à 18 % (taux du jour de la réservation) ou 15 % (taux du jour d'arrivée) ?
 
-Options étudiées :
+**Options étudiées :**
 
 - A : tout au mois d'arrivée ; commission au taux valable à la date d'arrivée.
 - B : nuit par nuit (2 nuits en juin, 1 en juillet) ; il faut découper le montant.
 - C : commission au taux valable à la date de réservation.
+
+**Décision de la direction :** A. La date d'arrivée est la date du fait : nuitées, montant, commission (version du canal valable ce jour-là) et annulations éventuelles sont rangés dans le mois d'arrivée. Simple, stable et identique pour tous les établissements.
 
 ## 13. Trois variantes (évolutions possibles)
 
@@ -209,3 +215,5 @@ Options étudiées :
 1. **Vue direction** — nuitées vendues, taux d'occupation, revenu net d'annulations et RevPAR, puis le revenu net par mois et par établissement (barres empilées) ; filtres période et établissement.
 2. **Détail par canal** — chaque canal avec ses versions : OTA à 18 % jusqu'au 2026-07-14, puis 15 % ; nuitées, revenu net et commissions par version.
 3. **Qualité des données** — lignes lues, gardées, rejetées par motif et par lot ; annulations retirées ; séjours déjà chargés ignorés au lot 2.
+
+Démonstration conseillée : (1) Vue direction sur toute la période, puis filtre établissement « DTZ » (Tozeur, forte saison en hiver) contre « DAH » (Hammamet, forte saison en été) ; (2) Détail par canal, OTA : deux versions (18 % jusqu'au 2026-07-14, 15 % ensuite) et les séjours réservés le 10 juillet pour une arrivée après le 15 juillet comptés à 15 % (date d'arrivée) ; (3) Qualité des données : rejets par motif et par lot, séjours du 30 juin recopiés et ignorés au lot 2, ligne « lot2 (rejeu) » à 0 ajout.

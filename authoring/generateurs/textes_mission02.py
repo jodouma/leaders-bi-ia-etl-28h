@@ -118,7 +118,7 @@ SPEC_TEXTES = dict(
         ("Doublon d'identifiant", "`C150037-9` deux fois avec des quantités différentes",
          "rejeter **les deux** lignes, motif `id_conflit`"),
         ("Identifiant manquant", "`ligne_id` vide ou blanc", "rejet `id_manquant`"),
-        ("Clé inconnue", "produit `X15`, canal `TIK`, remboursement vers `C109999-1`", "rejet `cle_inconnue`"),
+        ("Clé inconnue", "produit `X15` (sources) ou `X99` (échantillon), canal `TIK`, remboursement vers `C109999-1`", "rejet `cle_inconnue`"),
         ("Format décimal", "`32.500`, `32,500`, `32.5`, `32,5`, `1 240,000`",
          "point ou virgule = décimales ; espace = milliers ; convertir en millimes entiers"),
         ("Remise vide", "`remise` vide, `0`, `0.000`", "remise = 0 millime (ce n'est pas un rejet)"),
@@ -129,7 +129,7 @@ SPEC_TEXTES = dict(
         ("Encodage", "lot2 : `Gabès` écrit en Windows-1252",
          "lire `lot1/commandes.csv` en UTF-8 et `lot2/commandes.csv` en `cp1252` (sinon erreur `UnicodeDecodeError`)"),
         ("Remboursement non payé", "`statut` = `EN_COURS` ou `REFUSE`", "ignorer (ce n'est pas un rejet)"),
-        ("Ligne déjà chargée", "lot2 recopie les commandes du 30 juin", "ignorer : la clé métier existe déjà"),
+        ("Ligne déjà chargée", "lot2 recopie les commandes des 29 et 30 juin", "ignorer : la clé métier existe déjà"),
     ],
     motifs=dict(MOTIFS_STANDARD),
     ordre_controles=[

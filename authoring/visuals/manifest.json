@@ -26,23 +26,12 @@
   "load_counters": {
     "data_file": "authoring/generateurs/v7-data.json",
     "present": true,
-    "sha256": "e29f567efb89435ce9feec024fefa23a311d85c42250fcbd62081c8c50baf425",
-    "placeholders_n": [
-      "lot1.faits",
-      "lot1.inserees",
-      "lot1.lues",
-      "lot1.rejets",
-      "lot2.deja_connues",
-      "lot2.faits",
-      "lot2.lues",
-      "lot2.nouvelles",
-      "rejeu.faits",
-      "rejeu.lues"
-    ]
+    "sha256": "cd0f2f6403de1dcdd922068a26651433efdc9d57884639b64abccc01c9218b5e",
+    "placeholders_n": []
   },
   "contact_sheet": {
     "png": "docs/images/diagrams/v7-contact-sheet.png",
-    "sha256": "e8dede246bdc662bdf707596c6df29485af9e77011fdbac90acd1870c1e0db8e"
+    "sha256": "0b8dedd0424a3b381b9436c8cd4d740f981257077a8d44df92249860c7667feb"
   },
   "license": "Schémas originaux ; aucune interface simulée, aucune capture, aucun logo tiers. Polices SIL OFL 1.1, glyphes en contours dans les SVG.",
   "assets": [
@@ -252,8 +241,8 @@
       ],
       "text_min_px": 26,
       "sha256": {
-        "svg": "a20d7f0ccacac112eea9b5f04fd8e7655ecc3bc9a2f7bea11ea9778f89121c45",
-        "png": "12f7540610246f296053cf9e9850f6ab5c7dea04c39dc61d3b9827b2eb1c8e7f"
+        "svg": "9ebb2130e2602dfd149eea239b2dd1c9d40a575eaa4a8dd8949c99940aaf1e8c",
+        "png": "50b622d18d962ca05cb6663f8451cdca64f4429264c79987d0d247647ec3f29a"
       }
     },
     {

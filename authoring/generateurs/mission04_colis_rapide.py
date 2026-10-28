@@ -386,9 +386,22 @@ Base `facturation.sqlite` : la facture `FA-E03` de `CR-E03` est `ANNULEE` (elle 
 """
 
 
+# --------------------------------------------------------------------------- compléments de la référence
+def facturation_ignoree(attendus: dict) -> str:
+    """Lignes de facturation.sqlite ignorées (pas des rejets), par lot : annulées et déjà chargées au lot 2."""
+    cles = [("factures_annulees_exclues", "Factures `ANNULEE` ignorées"),
+            ("penalites_annulees_exclues", "Pénalités `ANNULEE` ignorées"),
+            ("factures_deja_chargees", "Factures de colis déjà chargés (recopiées au lot 2)"),
+            ("penalites_deja_chargees", "Pénalités `APPLIQUEE` de colis déjà chargés (recopiées au lot 2)")]
+    return ("\n## Facturation : lignes ignorées (ce ne sont pas des rejets)\n\n"
+            + md_tableau(["Lignes de `facturation.sqlite`"] + list(attendus),
+                         [[lib] + [a["nettoyage"]["facturation.sqlite"].get(k, 0) for a in attendus.values()]
+                          for k, lib in cles]) + "\n")
+
+
 # --------------------------------------------------------------------------- programme principal
 def main(argv: list[str]) -> None:
-    spec = MissionSpec(**SPEC_TEXTES, lots=[LOT1, LOT2], graine=GRAINE, tables=TABLES)
+    spec = MissionSpec(complement_reference=facturation_ignoree, **SPEC_TEXTES, lots=[LOT1, LOT2], graine=GRAINE, tables=TABLES)
     dossier = preparer_dossier(spec)
     rng = rng_mission(GRAINE)
     colis1 = generer_colis(rng, LOT1, 2080, 100001)
@@ -450,6 +463,8 @@ def main(argv: list[str]) -> None:
                            "penalites_annulees_exclues": sum(p["statut"] == "ANNULEE" for p in pp),
                            "factures_deja_chargees": sum(f["statut"] != "ANNULEE" and f["colis_id"] in ids_rejoues
                                                          for f in ff) if avec else 0,
+                           "penalites_deja_chargees": sum(p["statut"] == "APPLIQUEE" and p["colis_id"] in ids_rejoues
+                                                          for p in pp) if avec else 0,
                            "factures_acceptees_nouvelles": sum(f["statut"] != "ANNULEE" and f["colis_id"] in nouveaux
                                                                for f in ff),
                            "penalites_appliquees_nouvelles": sum(p["statut"] == "APPLIQUEE" and p["colis_id"] in nouveaux

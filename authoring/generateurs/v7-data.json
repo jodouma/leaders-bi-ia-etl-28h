@@ -4869,6 +4869,7 @@
               "factures_annulees_exclues": 46,
               "penalites_annulees_exclues": 28,
               "factures_deja_chargees": 0,
+              "penalites_deja_chargees": 0,
               "factures_acceptees_nouvelles": 2080,
               "penalites_appliquees_nouvelles": 251
             }
@@ -5301,6 +5302,7 @@
               "factures_annulees_exclues": 7,
               "penalites_annulees_exclues": 11,
               "factures_deja_chargees": 14,
+              "penalites_deja_chargees": 2,
               "factures_acceptees_nouvelles": 417,
               "penalites_appliquees_nouvelles": 60
             }
@@ -9269,12 +9271,12 @@
             "fact_abonnement_mois": 2270
           },
           "rejets": {
-            "cle_inconnue": 7,
+            "cle_inconnue": 4,
             "id_conflit": 2,
             "id_manquant": 2,
             "quantite_invalide": 2
           },
-          "rejets_total": 13,
+          "rejets_total": 10,
           "nettoyage": {
             "facturation.csv": {
               "lignes_acceptees_nouvelles": 582,
@@ -12708,7 +12710,7 @@
         },
         "agregats": {
           "par_evenement": {
-            "E01": {
+            "EV01": {
               "billets_vendus": 3,
               "billets_rembourses": 0,
               "billets_nets": 3,
@@ -12718,7 +12720,7 @@
               "frais_distribution_millimes": 2925,
               "recettes_nettes_millimes": 82075
             },
-            "E02": {
+            "EV02": {
               "billets_vendus": 3,
               "billets_rembourses": 1,
               "billets_nets": 2,

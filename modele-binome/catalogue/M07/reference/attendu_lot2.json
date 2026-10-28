@@ -27,8 +27,8 @@
       "versions": 6
     },
     "abonnements.sqlite": {
-      "abonnement": 366,
-      "actif": 291,
+      "abonnement": 363,
+      "actif": 288,
       "resilie": 71,
       "annule": 4,
       "motif_resiliation": 5
@@ -51,9 +51,9 @@
     }
   },
   "rejets": {
-    "total": 13,
+    "total": 10,
     "par_motif": {
-      "cle_inconnue": 7,
+      "cle_inconnue": 4,
       "id_conflit": 2,
       "id_manquant": 2,
       "quantite_invalide": 2
@@ -66,7 +66,7 @@
         "quantite_invalide": 2
       },
       "abonnements.sqlite": {
-        "cle_inconnue": 4
+        "cle_inconnue": 1
       }
     }
   },

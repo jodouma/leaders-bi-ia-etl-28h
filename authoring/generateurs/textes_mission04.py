@@ -144,8 +144,8 @@ SPEC_TEXTES = dict(
         "poids illisible, ≤ 0 ou > 30 kg → `quantite_invalide` ;",
         "`colis_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.",
         "Facturation : factures `ANNULEE` et pénalités `ANNULEE` ignorées → `colis_id` ni dans `fact_colis` ni parmi les "
-        "colis acceptés du lot = `cle_inconnue` (numero_ligne = `id` de la table `facture` ou `penalite`) → colis déjà "
-        "chargé = ignoré.",
+        "colis acceptés du lot = `cle_inconnue` (numero_ligne = `id` de la table `facture` ou `penalite`) → facture ou "
+        "pénalité d'un colis déjà chargé = ignorée (lot 2 : voir `nettoyage.facturation.sqlite` de la référence).",
     ],
     regles_metier=[
         "Date du fait = **date de livraison** (`date_key` de `fact_colis`) : un colis compte dans le mois où il est livré.",
@@ -170,9 +170,12 @@ SPEC_TEXTES = dict(
         "options": ("- (1) A : à l'heure (date_livraison ≤ date_promise). B : en retard (il fallait livrer avant).\n"
                     "- (2) A : version de l'agence valable à la date d'**expédition** (Nord). "
                     "B : version valable à la date de **livraison** (Centre-Sahel)."),
-        "decision": ("(1) A : un colis livré le jour promis est **à l'heure** ; son retard vaut 0 jour. "
-                     "(2) B : le colis est rattaché à la version de l'agence valable à sa **date de livraison**, qui est "
-                     "la date du fait (dim_date) ; il compte donc dans Centre-Sahel et dans le mois de juillet."),
+        "decision": ("deux décisions distinctes.\n\n"
+                     "- Question (1) → **option A** : un colis livré le jour promis est **à l'heure** ; son retard vaut "
+                     "0 jour.\n"
+                     "- Question (2) → **option B** : le colis est rattaché à la version de l'agence valable à sa "
+                     "**date de livraison**, qui est la date du fait (dim_date) ; il compte donc dans Centre-Sahel et "
+                     "dans le mois de juillet."),
     },
     variantes=[
         "Nouvel indicateur : taux de pénalité = pénalités / montant facturé, par agence et par service.",

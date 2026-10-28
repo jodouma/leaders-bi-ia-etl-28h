@@ -1470,7 +1470,7 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "head -3 outputs/rejets.csv\ngrep -c \"id_conflit\" outputs/rejets.csv\ngrep -c \"id_manquant\" outputs/rejets.csv\ngrep -c \"cle_inconnue\" outputs/rejets.csv\ngrep -c \"quantite_invalide\" outputs/rejets.csv\ngrep -A 7 '\"par_source\"' tronc-commun/reference/attendu_lot1.json"
+     "text": "head -3 outputs/rejets.csv\npython -m controles.verifier --mission tronc-commun --etape rejets"
     },
     {
      "type": "code",
@@ -1627,7 +1627,7 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "git fetch\ngit switch lecture-nettoyage\nsource .venv/bin/activate\npython -m solen initial\ngrep -c \"id_conflit\" outputs/rejets.csv"
+     "text": "git fetch\ngit switch lecture-nettoyage\nsource .venv/bin/activate\npython -m solen initial\npython -m controles.verifier --mission tronc-commun --etape rejets"
     },
     {
      "type": "text",
@@ -1692,7 +1692,7 @@
     {
      "type": "callout",
      "label": "L'entrée du journal de cette PR, exemple",
-     "text": "**État actuel** : sources du lot 1 lues ; `ventes.csv` nettoyé. **Décision** : doublon exact ignoré avant tout autre test. **Preuve** : `python -m solen initial` → 1960 gardées, rejets 6 / 6 / 5 / 7 = `attendu_lot1.json`. **Prochain objectif** : lire les retours en SQL et charger l'étoile ; preuve : `--etape initial` OK."
+     "text": "**État actuel** : sources du lot 1 lues ; `ventes.csv` nettoyé. **Décision** : doublon exact ignoré avant tout autre test. **Preuve** : `python -m solen initial` puis `--etape rejets` → 0 ÉCHEC : 1960 gardées, rejets 6 / 6 / 5 / 7 = `attendu_lot1.json`. **Prochain objectif** : lire les retours en SQL et charger l'étoile ; preuve : `--etape initial` OK."
     }
    ]
   },
@@ -1714,7 +1714,7 @@
       ],
       [
        "Rejets `ventes.csv` lot 1 : 6 / 6 / 5 / 7 ; 14 doublons ; 1960 gardées",
-       "`outputs/rejets.csv` + `grep -c`"
+       "`outputs/rejets.csv` + `--etape rejets`"
       ],
       [
        "Ventes brutes des lignes gardées : 78 067,830 TND",

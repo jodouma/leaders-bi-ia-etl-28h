@@ -146,9 +146,9 @@ SPEC_TEXTES = dict(
         "collaborateur ou projet absent des référentiels → `cle_inconnue` ;",
         "heures illisibles, nulles ou négatives → `quantite_invalide` ;",
         "`temps_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.",
-        "Factures : `ANNULEE` ignorée → `facture_id` déjà chargé = ignoré → `code_projet` inconnu = `cle_inconnue` "
-        "(numero_ligne = `facture.id`). Avoirs (après les factures) : `avoir_id` déjà chargé = ignoré → "
-        "`facture_id` absent de `fact_facture` = `cle_inconnue` (numero_ligne = `avoir.id`).",
+        "Factures : `ANNULEE` ignorée → `code_projet` inconnu = `cle_inconnue` (numero_ligne = `facture.id`) → "
+        "`facture_id` déjà chargé = ignoré. Avoirs (après les factures) : `facture_id` absent de `fact_facture` = "
+        "`cle_inconnue` (numero_ligne = `avoir.id`) → `avoir_id` déjà chargé = ignoré.",
     ],
     regles_metier=[
         "Heures : stockées en **centièmes d'heure entiers** dans `heures_centiemes` (7,5 h → 750 ; 1,25 h → 125). "
@@ -214,4 +214,9 @@ SPEC_TEXTES = dict(
     ],
     debut_calendrier=date(2026, 1, 1),
     sources_rejets={"temps": "temps.csv", "documents": "facturation.sqlite"},
+    parcours_app="Démonstration conseillée : (1) Vue direction sans filtre, puis filtre type de projet « interne » : du "
+                 "coût de charge sans aucune facture (marge négative) ; (2) Détail par projet, PX07 : deux versions "
+                 "(Hela Mansour jusqu'au 2026-07-14, Nour Jebali ensuite) et les heures de juillet réparties entre les "
+                 "deux chefs selon leur date ; (3) Qualité des données : rejets par motif et par lot (dont les heures "
+                 "invalides), lignes déjà chargées au lot 2, ligne « lot2 (rejeu) » à 0 ajout.",
 )

@@ -60,3 +60,17 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 - `visuels/marge_commerciale_par_produit.png` · `visuels/marge_commerciale_par_produit.svg`
 - `visuels/taux_avoir_par_client.png` · `visuels/taux_avoir_par_client.svg`
 - `visuels/rejets_par_motif.png` · `visuels/rejets_par_motif.svg`
+
+## Cas de démonstration : produit `PR03` × client `CL05`
+
+Valeurs à retrouver dans l'application avec les filtres Produit = `PR03` et Client = `CL05` (toute la période) : la marge commerciale est négative.
+
+| Indicateur | PR03 × CL05 (après lot2) | code |
+|---|---|---|
+| Montant facturé | 8 515,920 TND | `montant_facture_millimes` |
+| Avoirs | 193,440 TND | `avoirs_millimes` |
+| Ventes nettes | 8 322,480 TND | `ventes_nettes_millimes` |
+| Coût d'achat des unités nettes | 10 192,000 TND | `cout_achat_net_millimes` |
+| Marge commerciale | -1 869,520 TND | `marge_commerciale_millimes` |
+| Taux d'avoir | 2,27 % | `taux_avoir` |
+| Cartons nets | 520 | `unites_nettes` |

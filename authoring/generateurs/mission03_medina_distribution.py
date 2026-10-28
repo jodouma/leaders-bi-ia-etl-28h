@@ -13,7 +13,8 @@ from common import (ChampsCSV, Doses, Feuille, Lot, LotResultat, Table, Colonne,
                     table_dim_date, rng_mission, jours, date_key, cle_version, construire_csv, ecrire_csv,
                     ecrire_excel, ecrire_json, ecrire_sqlite, preparer_dossier, produire_reference,
                     calculer_attendu_echantillon, exporter_v7_data, ecrire_verite_privee, format_montant,
-                    tnd_fr, pct_fr, md_tableau, taille_dossier, TAILLE_MAX_MISSION)
+                    tnd_fr, pct_fr, md_tableau, taille_dossier, TAILLE_MAX_MISSION, entrepot_verite,
+                    indicateur_dict, _ind_valeur)
 from textes_mission03 import SPEC_TEXTES
 
 GRAINE = 260003
@@ -362,6 +363,22 @@ Remarque : la ligne `FE-002-1` (huile végétale vendue 17,200 TND à l'Hypermar
 """
 
 
+# --------------------------------------------------------------------------- cas de démonstration (référence)
+def cas_demo(spec, lr, produit: str = "PR03", client: str = "CL05"):
+    """Indicateurs du croisement produit × client demandé par la démonstration (depuis la vérité, après le lot 2)."""
+    inds = [indicateur_dict(i) for i in spec.indicateurs]
+    con = entrepot_verite(spec, lr.tables_verite, lr.lot.fin)
+    ligne = con.execute(f"WITH mouvements AS ({spec.vue_analyse}) SELECT "
+                        + ", ".join(f"{i['sql']} AS {i['code']}" for i in inds)
+                        + " FROM mouvements WHERE produit_id = ? AND client_id = ?", (produit, client)).fetchone()
+    con.close()
+    table = md_tableau(["Indicateur", f"{produit} × {client} (après lot2)", "code"],
+                       [[i["libelle"], _ind_valeur(i, v), f"`{i['code']}`"] for i, v in zip(inds, ligne)])
+    return lambda _attendus: (f"\n## Cas de démonstration : produit `{produit}` × client `{client}`\n\n"
+                              f"Valeurs à retrouver dans l'application avec les filtres Produit = `{produit}` et Client = "
+                              f"`{client}` (toute la période) : la marge commerciale est négative.\n\n{table}\n")
+
+
 # --------------------------------------------------------------------------- programme principal
 def main() -> None:
     spec = MissionSpec(**SPEC_TEXTES, lots=[LOT1, LOT2], graine=GRAINE, tables=TABLES)
@@ -420,6 +437,7 @@ def main() -> None:
                 "versions_scd2_ajoutees": 1, "dim_date_ajoutees": len(jours(LOT2.debut, LOT2.fin))}))
         assert b.compteurs["lignes_acceptees_nouvelles"] == len(lignes_cumul) - (0 if lot is LOT1 else len(lignes1))
 
+    spec.complement_reference = cas_demo(spec, lots[-1])
     attendus = produire_reference(spec, lots)
     # double contrôle Python pur (sans SQL) des nombres clés
     t = lots[-1].tables_verite

@@ -52,6 +52,7 @@
       "factures_annulees_exclues": 46,
       "penalites_annulees_exclues": 28,
       "factures_deja_chargees": 0,
+      "penalites_deja_chargees": 0,
       "factures_acceptees_nouvelles": 2080,
       "penalites_appliquees_nouvelles": 251
     }
