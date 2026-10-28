@@ -30,6 +30,16 @@
       "signe_de_reussite": "la PR existe, sa branche source et sa cible sont nommées, l'onglet Checks compte les contrôles",
       "date": "2026-10-28",
       "limite": "capture de la PR du dépôt du cours, pas d'un dépôt binôme ; thème sombre ; résolution 800 px ; l'auteur n'est pas connecté donc aucun bouton de revue n'apparaît"
+    },
+    {
+      "fichier": "github-checks-verts.png",
+      "sujet": "Onglet Checks d'une vraie pull request (PR #2 du dépôt du cours) : coche verte, 6 contrôles réussis, workflow « Vérifier le cours Solen BI 22 h »",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, non connecté à GitHub (thème sombre par défaut)",
+      "etape": "Livret 01 · Cycle 4 · checks, merge, retour à main",
+      "zone_a_regarder": "la coche verte devant le nom du commit, la liste des workflows à gauche, le compteur « Checks 6 »",
+      "signe_de_reussite": "tous les contrôles sont verts ; aucun ÉCHEC",
+      "date": "2026-10-28",
+      "limite": "capture de la PR du dépôt du cours (CI du cours), pas de la CI « Contrôles Solen » d'un dépôt binôme ; thème sombre ; 800 px"
     }
   ]
 }
