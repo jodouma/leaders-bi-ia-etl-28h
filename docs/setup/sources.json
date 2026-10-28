@@ -1,48 +1,31 @@
 {
-  "title": "Sources officielles · démarrer Atlas BI avec Codex · V6 15 h",
-  "verified_on": "2026-10-27",
-  "verification_scope": "Documentation officielle ; aucun essai d’installation Windows/Ubuntu ou de compte Free individuel. Instructions de cours et chemins atelier alignés au contrat runtime V6.",
-  "source_count": 12,
+  "title": "Sources officielles · Démarrer (livret 01) et aide-mémoire · Solen BI 22 h · V7",
+  "verified_on": "2026-10-28",
+  "verification_scope": "Pages officielles lues en ligne le 2026-10-28 (citations en anglais, telles que publiées). Aucune installation Windows/WSL ou Ubuntu, aucun compte Codex Free, aucun quota ni parcours GitHub à deux comptes n’a été exécuté pour ce catalogue. Les libellés d’interface non publiés par la doc (questions de gh auth login, case README, onglet de revue de l’app) sont signalés comme pouvant varier.",
+  "source_count": 38,
   "sources": [
-    {
-      "id": "desktop",
-      "publisher": "OpenAI",
-      "title": "ChatGPT desktop app",
-      "url": "https://learn.chatgpt.com/docs/app",
-      "supports": [
-        "Connexion au compte, choix Codex / New chat, ouverture d’un dossier local"
-      ],
-      "verified_on": "2026-10-27"
-    },
-    {
-      "id": "windows",
-      "publisher": "OpenAI",
-      "title": "Desktop app for Windows",
-      "url": "https://learn.chatgpt.com/docs/app/windows",
-      "supports": [
-        "Téléchargement Windows, réglage agent WSL, redémarrage, terminal indépendant, ouverture Ctrl+O et chemin WSL"
-      ],
-      "verified_on": "2026-10-27"
-    },
-    {
-      "id": "linux",
-      "publisher": "OpenAI",
-      "title": "Desktop app for Linux",
-      "url": "https://learn.chatgpt.com/docs/linux/linux-app",
-      "supports": [
-        "Preview Ubuntu 24.04/26.04 LTS ; x64/ARM64 ; .deb via apt ; menu ou chatgpt"
-      ],
-      "verified_on": "2026-10-27"
-    },
     {
       "id": "pricing",
       "publisher": "OpenAI",
       "title": "Pricing",
       "url": "https://learn.chatgpt.com/docs/pricing",
       "supports": [
-        "Free annonce Luna Standard au bureau sous déploiement ; limites variables ; aucun quota horaire garanti"
+        "Free : Luna Standard dans l’application de bureau, sous déploiement",
+        "CLI, IDE, web listés à partir de Plus → CLI facultatif dans le cours",
+        "Usage variable, tableau de bord, limites hebdomadaires possibles ; aucun quota promis"
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "Free: “Explore Codex capabilities on quick coding tasks.”",
+        "Free: “GPT-6 Luna at Standard speed in the desktop app, subject to rollout”",
+        "Plus: “Codex on the web, in the CLI, in the IDE extension, and on iOS”",
+        "“The number of messages you can send depends on the model used, size and complexity of your tasks”",
+        "“You can find your current limits in the usage dashboard.” (https://chatgpt.com/codex/settings/usage)",
+        "“If you want to see your remaining limits during an active Codex CLI session, you can use /status.”",
+        "“Local messages and cloud chats share your plan’s usage allowance. Weekly limits may also apply.”",
+        "“Tasks that look similar can consume different amounts of your allowance.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La page ne liste pour Free que l’application de bureau ; aucune limite chiffrée pour Free."
     },
     {
       "id": "models",
@@ -50,59 +33,263 @@
       "title": "Models",
       "url": "https://learn.chatgpt.com/docs/models",
       "supports": [
-        "Effort distinct de la vitesse ; High conseillé au départ pour Luna si disponible dans le client"
+        "Efforts Light / Medium / High / Extra High dans l’app (Low dans le CLI)",
+        "High conseillé pour démarrer avec Luna",
+        "Luna pour Free/Go quand disponible",
+        "Effort, modèle et vitesse choisis sous Advanced ; préréglage « Luna High »"
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "“Light in the ChatGPT desktop app, ChatGPT Work on the web, and IDE extension, or Low in the CLI, suits quick, well-scoped tasks.”",
+        "“Medium balances speed and depth for tasks that need more planning.”",
+        "“High and Extra High suit difficult work with multiple steps, sources, or tradeoffs.”",
+        "“Start with High for Luna or Light for Astra.”",
+        "“On Free and Go plans, choose GPT-6 Luna (gpt-6-luna) in the desktop app when available.”",
+        "“Reasoning effort guides how much work the model puts into thinking through your request.”",
+        "Power presets: “Luna High, GPT-6 Sol Light …”",
+        "“available options and defaults vary by plan, client, workspace settings, and rollout.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La page ne nomme pas « Standard » comme palier de vitesse ; le terme vient de la page pricing."
     },
     {
-      "id": "microsoft-wsl-install",
+      "id": "chatgpt-windows",
+      "publisher": "OpenAI",
+      "title": "Desktop app for Windows",
+      "url": "https://learn.chatgpt.com/docs/app/windows",
+      "supports": [
+        "Installation Store / winget",
+        "Settings → Agent environment → WSL, redémarrage",
+        "Integrated terminal shell : PowerShell, Command Prompt, Git Bash, WSL",
+        "Add new project / Ctrl+O puis \\\\wsl$\\",
+        "Git natif Windows utile à certaines fonctions"
+      ],
+      "quotes": [
+        "winget install --id 9PLM9XGG6VKS -s msstore",
+        "“open Settings, switch the agent from Windows native to WSL, and restart the app.”",
+        "Agent environment: “Choose where the agent runs on Windows.”",
+        "“The change doesn’t take effect until you restart.”",
+        "Integrated terminal shell: “Choose which shell opens in the integrated terminal.” Options: PowerShell, Command Prompt, Git Bash, WSL",
+        "“click Add new project or press Ctrl+O, then type \\\\wsl$\\ into the File Explorer window.”",
+        "“From there, choose your Linux distribution and the folder you want to open.”",
+        "“If you don’t have Git installed natively on Windows, the app can’t use some features.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Pour l’agent Windows natif, la page conseille de stocker les projets côté Windows (/mnt/<drive>/...). Le cours utilise l’agent WSL, pour lequel la page WSL et Microsoft recommandent le système de fichiers Linux."
+    },
+    {
+      "id": "chatgpt-wsl",
+      "publisher": "OpenAI",
+      "title": "WSL",
+      "url": "https://learn.chatgpt.com/docs/windows/wsl",
+      "supports": [
+        "Dépôts sous /home dans Linux",
+        "Accès Windows par \\\\wsl$"
+      ],
+      "quotes": [
+        "“To install WSL, open PowerShell as an administrator, then run wsl --install”",
+        "“Keep your repositories under your Linux home directory”",
+        "“keep your repository under /home/... (not C:\\) for best performance.”",
+        "“If the Windows app or project picker does not show your WSL repository, type \\\\wsl$ into the file picker or Explorer”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La page est écrite autour de VS Code + extension WSL ; on n’en retient que l’emplacement des fichiers."
+    },
+    {
+      "id": "linux",
+      "publisher": "OpenAI",
+      "title": "Desktop app for Linux",
+      "url": "https://learn.chatgpt.com/docs/linux/linux-app",
+      "supports": [
+        "Preview Ubuntu 24.04/26.04 LTS",
+        "x64 et ARM64, .deb via apt",
+        "Lancement : menu ou chatgpt"
+      ],
+      "quotes": [
+        "“The ChatGPT desktop app for Linux is available in preview.”",
+        "Supported: “Ubuntu 24.04 LTS and 26.04 LTS.”",
+        "“Each supported distribution has packages for x64 and ARM64 processors.”",
+        "cd ~/Downloads ; sudo apt install ./chatgpt_amd64.deb (ARM64 : chatgpt_arm64.deb)",
+        "“Open ChatGPT from your applications menu, or run chatgpt in a terminal.”",
+        "“Sign in with your ChatGPT account”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "app-commands",
+      "publisher": "OpenAI",
+      "title": "Desktop app keyboard shortcuts",
+      "url": "https://learn.chatgpt.com/docs/app/commands",
+      "supports": [
+        "Raccourcis Windows : réglages, dossier, sélecteur de modèle, onglet de revue, terminal"
+      ],
+      "quotes": [
+        "“Open settings”: Ctrl + ,",
+        "“Open folder (Codex and Work only)”: Ctrl + O",
+        "“Open model picker”: Ctrl + Shift + M",
+        "“Open review tab (Codex only)”: Ctrl + Shift + G",
+        "“Toggle terminal (Codex only)”: Ctrl + `",
+        "“Switch to Chat, Work, or Codex (In the order shown)”: Alt + 1 / Alt + 2 / Alt + 3",
+        "“Quit the app”: Ctrl + Q"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "slash-commands",
+      "publisher": "OpenAI",
+      "title": "Slash commands",
+      "url": "https://learn.chatgpt.com/codex/reference/slash-commands",
+      "supports": [
+        "/status, /usage, /model, /review, /plan dans l’application de bureau"
+      ],
+      "quotes": [
+        "/status: “Show the chat ID, context usage, and rate limits.”",
+        "/usage: “Open usage and billing settings, when available with ChatGPT sign-in.”",
+        "/model: “Choose the model for the current chat.”",
+        "/review: “Start code review mode to review uncommitted changes or compare against a base branch.”",
+        "/plan: “Toggle plan mode for multi-step planning.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "URL atteinte par le lien « Slash commands » de la page des raccourcis ; l’URL /docs/codex/reference/slash-commands renvoie 404."
+    },
+    {
+      "id": "codex-cli",
+      "publisher": "OpenAI",
+      "title": "Codex CLI",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "supports": [
+        "Annexe facultative : installeur, Sign in with ChatGPT"
+      ],
+      "quotes": [
+        "curl -fsSL https://chatgpt.com/codex/install.sh | sh",
+        "“Install the Codex CLI with the standalone installer for macOS and Linux.”",
+        "“The first time you run Codex, choose Sign in with ChatGPT or another available sign-in method.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Aucune exigence de plan sur cette page ; la page pricing ne cite le CLI qu’à partir de Plus. Non confirmé sur Free."
+    },
+    {
+      "id": "build-skills",
+      "publisher": "OpenAI",
+      "title": "Build skills",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "supports": [
+        ".agents/skills/<nom>/SKILL.md avec name et description ; invocation explicite ou implicite"
+      ],
+      "quotes": [
+        "Codex scans .agents/skills in every directory from your current working directory up to the repository root.",
+        "“The SKILL.md file must include name and description.”",
+        "“Explicit invocation: Include the skill directly in your prompt.”",
+        "“Implicit invocation: ChatGPT or Codex can choose a skill when your task matches the skill description.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "agents-md",
+      "publisher": "OpenAI",
+      "title": "AGENTS.md",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "supports": [
+        "AGENTS.md lu avant tout travail, de la racine vers le dossier courant, 32 Kio"
+      ],
+      "quotes": [
+        "“Codex reads AGENTS.md files before doing any work.”",
+        "“Starting at the project root (typically the Git root), Codex walks down to your current working directory.”",
+        "“Files closer to your current directory override earlier guidance because they appear later in the combined prompt.”",
+        "“project_doc_max_bytes (32 KiB by default)”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "subagents",
+      "publisher": "OpenAI",
+      "title": "Subagents",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+      "supports": [
+        "Travailleurs parallèles : facultatifs, sur demande explicite, plus de tokens"
+      ],
+      "quotes": [
+        "“A delegated agent that Codex starts to handle a specific task.”",
+        "“At most intelligence levels, ask for subagents or parallel agent work directly.”",
+        "“subagent workflows consume more tokens than comparable single-agent runs.”",
+        "“Subagent activity appears in the ChatGPT desktop app, Codex CLI, and the IDE extension.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Disponibilité réelle sur un compte Free non vérifiée."
+    },
+    {
+      "id": "wsl-install",
       "publisher": "Microsoft",
       "title": "Install WSL",
       "url": "https://learn.microsoft.com/en-us/windows/wsl/install",
       "supports": [
-        "PowerShell administrateur, wsl --install, redémarrage, contrôle version2"
+        "Prérequis Windows, PowerShell administrateur, wsl --install, Ubuntu par défaut, contrôle de version, dépannages"
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "“You must be running Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11”",
+        "“Open PowerShell in administrator mode by right-clicking and selecting ‘Run as administrator’, enter the wsl --install command, then restart your machine.”",
+        "“By default, the installed Linux distribution will be Ubuntu.”",
+        "“If you run wsl --install and see the WSL help text, please try running wsl --list --online … and run wsl --install -d <DistroName>”",
+        "“If the install process hangs at 0.0%, run wsl --install --web-download -d <DistroName>”",
+        "“New Linux installations, installed using the wsl --install command, will be set to WSL 2 by default.”",
+        "wsl -l -v ; wsl --set-version <Distro> <1|2>"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "ms.date 2025-06-09, updated_at 2026-06-02."
     },
     {
-      "id": "microsoft-wsl-environment",
+      "id": "wsl-environment",
       "publisher": "Microsoft",
-      "title": "Set up WSL environment",
+      "title": "Set up a WSL development environment",
       "url": "https://learn.microsoft.com/en-us/windows/wsl/setup/environment",
       "supports": [
-        "Premier compte Linux, mot de passe invisible, indépendant du compte Windows"
+        "Utilisateur Linux, mot de passe invisible, sudo, mise à jour apt, mot de passe oublié, stockage"
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "“You will be asked to create a User Name and Password for your Linux distribution.”",
+        "“whilst entering the Password, nothing will appear on screen. This is called blind typing.”",
+        "“This account will be considered the Linux administrator, with the ability to run sudo”",
+        "sudo apt update && sudo apt upgrade",
+        "“Windows does not automatically update or upgrade your Linux distribution(s).”",
+        "Forgotten password: wsl -u root, then passwd <username>, then exit",
+        "“To open your WSL project in Windows File Explorer, enter: explorer.exe .”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "ms.date 2026-04-16."
     },
     {
-      "id": "microsoft-wsl-files",
+      "id": "wsl-filesystems",
       "publisher": "Microsoft",
       "title": "Working across file systems",
       "url": "https://learn.microsoft.com/en-us/windows/wsl/filesystems",
       "supports": [
-        "Projet dans /home pour outils Linux ; explorer.exe . ; accès aux fichiers WSL"
+        "Fichiers dans le système WSL pour les outils Linux ; \\\\wsl$ ; explorer.exe ."
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "“For the fastest performance speed, store your files in the WSL file system if you are working in a Linux command line (Ubuntu, OpenSUSE, etc).”",
+        "“Use the Linux file system root directory: /home/<user name>/Project”",
+        "“To view all of your available Linux distributions and their root file systems in Windows File explorer, in the address bar enter: \\\\wsl$”"
+      ],
+      "verified_on": "2026-10-28"
     },
     {
-      "id": "ubuntu-python",
-      "publisher": "Canonical / Ubuntu",
-      "title": "Set up Python",
-      "url": "https://ubuntu.com/developers/docs/howto/python-setup/",
+      "id": "wsl-git",
+      "publisher": "Microsoft",
+      "title": "Get started using Git on WSL",
+      "url": "https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git",
       "supports": [
-        "python3 fourni par Ubuntu ; installation depuis apt ; bibliothèque standard"
+        "Git dans Ubuntu, git config, 2FA, route de secours Git Credential Manager via Git for Windows"
       ],
-      "verified_on": "2026-10-27"
-    },
-    {
-      "id": "github-zip",
-      "publisher": "GitHub",
-      "title": "Downloading source code archives",
-      "url": "https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives",
-      "supports": [
-        "Code → Download ZIP ; archive instantanée sans historique Git"
+      "quotes": [
+        "sudo apt-get install git",
+        "git config --global user.name \"Your Name\"",
+        "git config --global user.email \"youremail@domain.com\"",
+        "“We recommend that you secure your account with two-factor authentication (2FA).”",
+        "“It is recommended to install the latest Git for Windows in order to share credentials & settings between WSL and the Windows host. Git Credential Manager is included with Git for Windows”",
+        "git --version; git credential-manager --version",
+        "Warning: “There is currently an issue with using keyring in the GitHub CLI” (cli/cli#8954)"
       ],
-      "verified_on": "2026-10-27"
+      "verified_on": "2026-10-28",
+      "note": "Avertissement keyring : gh peut, sous WSL, signaler un stockage du jeton hors trousseau ; à observer au prévol."
     },
     {
       "id": "powerbi-desktop",
@@ -110,99 +297,358 @@
       "title": "Download Power BI Desktop",
       "url": "https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop",
       "supports": [
-        "Desktop gratuit ; installation Store ou .exe ; édition Desktop courante distincte Report Server"
+        "Gratuit, Microsoft Store conseillé, pas d’admin, prérequis Windows"
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "“Download Power BI Desktop for free”",
+        "Store: “Automatic updates” ; “Admin privilege isn’t required”",
+        "Minimum: “Windows 10 or Windows Server 2016 or later.” ; “Memory (RAM): At least 2 GB available, 4 GB or more recommended.” ; “Display: At least 1440x900 or 1600x900 (16:9) required.”",
+        "Display scaling > 100 %: “you won’t see some dialogs”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La page ne dit pas littéralement « Windows uniquement » ; elle ne liste que des prérequis Windows. ms.date 2026-10-09."
     },
     {
-      "id": "powerbi-requirements",
-      "publisher": "Microsoft",
-      "title": "Power BI Desktop system requirements",
-      "url": "https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop#minimum-requirements",
+      "id": "ubuntu-python",
+      "publisher": "Canonical",
+      "title": "How to set up a development environment for Python on Ubuntu",
+      "url": "https://ubuntu.com/developers/docs/howto/python-setup/",
       "supports": [
-        "Desktop Windows ; poste Windows réel pour les élèves Ubuntu"
+        "Python et venv par apt ; travailler en environnement virtuel"
       ],
-      "verified_on": "2026-10-27"
+      "quotes": [
+        "sudo apt install -y python3-full",
+        "sudo apt install -y python3-pip python3-pip-whl",
+        "“use virtual environments for development and testing.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La page conseille python3-full (qui inclut venv) ; le livret installe python3 python3-venv python3-pip, paquets standard Ubuntu. Le message externally-managed-environment n’est pas cité par cette page."
+    },
+    {
+      "id": "ubuntu-python-versions",
+      "publisher": "Canonical / Launchpad",
+      "title": "python3-defaults",
+      "url": "https://launchpad.net/ubuntu/+source/python3-defaults",
+      "supports": [
+        "Python 3.12 sur 24.04, 3.14 sur 26.04"
+      ],
+      "quotes": [
+        "Ubuntu 26.04: 3.14.3-0ubuntu2 (release)",
+        "Ubuntu 24.04: 3.12.3-0ubuntu2.1 (security, updates)"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "python-venv",
+      "publisher": "Python Software Foundation",
+      "title": "venv — Creation of virtual environments",
+      "url": "https://docs.python.org/3/library/venv.html",
+      "supports": [
+        "Créer, activer, quitter un venv"
+      ],
+      "quotes": [
+        "python -m venv /path/to/new/virtual/environment",
+        "POSIX bash/zsh: source <venv>/bin/activate",
+        "“You can deactivate a virtual environment by typing deactivate in your shell.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "git-linux",
+      "publisher": "Git",
+      "title": "Download for Linux and Unix",
+      "url": "https://git-scm.com/install/linux",
+      "supports": [
+        "Installation de Git sur Debian/Ubuntu"
+      ],
+      "quotes": [
+        "“For the latest stable version for your release of Debian/Ubuntu” : # apt-get install git"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "https://git-scm.com/download/linux redirige ici."
+    },
+    {
+      "id": "github-plans",
+      "publisher": "GitHub",
+      "title": "GitHub’s plans",
+      "url": "https://docs.github.com/en/get-started/learning-about-github/githubs-plans",
+      "supports": [
+        "Free : dépôts publics complets ; protection de branche et revue requise ajoutées aux privés par Pro"
+      ],
+      "quotes": [
+        "“With GitHub Free for personal accounts, you can work with unlimited collaborators on unlimited public repositories with a full feature set”",
+        "… “on unlimited private repositories with a limited feature set.”",
+        "GitHub Pro, “Advanced tools and insights in private repositories”: “Required pull request reviewers”, “Protected branches”, “Code owners”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La restriction « public seulement sur Free » se déduit de la liste Pro (« in private repositories ») ; aucune phrase ne la formule directement."
+    },
+    {
+      "id": "github-actions-billing",
+      "publisher": "GitHub",
+      "title": "GitHub Actions billing",
+      "url": "https://docs.github.com/en/billing/concepts/product-billing/github-actions",
+      "supports": [
+        "Runners standard gratuits sur dépôts publics"
+      ],
+      "quotes": [
+        "“The use of standard GitHub-hosted runners is free:” … “In public repositories”",
+        "GitHub Free: included compute “expressed as a monetary amount, not a fixed number of minutes”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "La page des plans mentionne encore « 2,000 minutes per month » ; la page de facturation parle d’un montant inclus. Sans effet pour un dépôt public."
+    },
+    {
+      "id": "github-signup",
+      "publisher": "GitHub",
+      "title": "Creating an account on GitHub",
+      "url": "https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github",
+      "supports": [
+        "Création du compte, vérification e-mail"
+      ],
+      "quotes": [
+        "“Navigate to https://github.com/signup”",
+        "“Follow the prompts to create your personal account.”",
+        "“During sign up, you’ll be asked to verify your email address.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-commit-email",
+      "publisher": "GitHub",
+      "title": "Setting your commit email address",
+      "url": "https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address",
+      "supports": [
+        "Adresse noreply, Keep my email addresses private, git config user.email"
+      ],
+      "quotes": [
+        "Settings → Access → “Emails” ; option “Keep my email addresses private”",
+        "git config --global user.email \"YOUR_EMAIL\""
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-credentials",
+      "publisher": "GitHub",
+      "title": "Caching your GitHub credentials in Git",
+      "url": "https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git",
+      "supports": [
+        "GitHub CLI ou GCM pour HTTPS ; réponses de gh auth login"
+      ],
+      "quotes": [
+        "“If you’re cloning GitHub repositories using HTTPS, we recommend you use GitHub CLI or Git Credential Manager (GCM)”",
+        "“In the command line, enter gh auth login, then follow the prompts.”",
+        "“When prompted for your preferred protocol for Git operations, select HTTPS.”",
+        "“When asked if you would like to authenticate to Git with your GitHub credentials, enter Y.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Route principale choisie : GitHub CLI (même procédure WSL et Ubuntu natif). GCM en secours via Git for Windows sous WSL."
+    },
+    {
+      "id": "gh-install",
+      "publisher": "GitHub CLI",
+      "title": "Installing gh on Linux and BSD",
+      "url": "https://github.com/cli/cli/blob/trunk/docs/install_linux.md",
+      "supports": [
+        "Dépôt apt officiel (clé + sources) ; paquet communautaire Ubuntu déconseillé"
+      ],
+      "quotes": [
+        "Official Debian/Ubuntu: keyring https://cli.github.com/packages/githubcli-archive-keyring.gpg in /etc/apt/keyrings ; deb [arch=$(dpkg --print-architecture) signed-by=…] https://cli.github.com/packages stable main ; sudo apt update ; sudo apt install gh -y",
+        "Community packages: maintainers do not maintain them; community 2.45.x / 2.46.x releases are broken due to deprecated GitHub APIs."
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Le livret reprend les mêmes étapes découpées en lignes < 80 caractères (wget -qO- … | sudo tee au lieu d’un fichier temporaire)."
+    },
+    {
+      "id": "gh-auth-login",
+      "publisher": "GitHub CLI",
+      "title": "gh auth login",
+      "url": "https://cli.github.com/manual/gh_auth_login",
+      "supports": [
+        "Connexion par navigateur, jeton stocké par gh"
+      ],
+      "quotes": [
+        "“The default authentication mode is a web-based browser flow.”",
+        "“After completion, an authentication token will be stored securely in the system credential store.”",
+        "-w, --web: “Open a browser to authenticate.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "gh-setup-git",
+      "publisher": "GitHub CLI",
+      "title": "gh auth setup-git",
+      "url": "https://cli.github.com/manual/gh_auth_setup-git",
+      "supports": [
+        "gh comme assistant d’identification de Git"
+      ],
+      "quotes": [
+        "“This command configures git to use GitHub CLI as a credential helper.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-device-flow",
+      "publisher": "GitHub",
+      "title": "Authorizing OAuth apps — device flow",
+      "url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow",
+      "supports": [
+        "Code à usage unique saisi sur github.com/login/device"
+      ],
+      "quotes": [
+        "“The app prompts the user to enter a user verification code at https://github.com/login/device.”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Libellés exacts des questions de gh auth login non publiés mot pour mot ; le livret prévient qu’ils peuvent varier."
+    },
+    {
+      "id": "github-new-repo",
+      "publisher": "GitHub",
+      "title": "Creating a new repository",
+      "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository",
+      "supports": [
+        "+ → New repository, Owner, Repository name, visibilité, Create repository"
+      ],
+      "quotes": [
+        "plus icon “Create something new” → New repository",
+        "Owner dropdown ; “Repository name” ; public/private ; Create repository"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Libellés exacts de la visibilité et de la case README non donnés par la page."
+    },
+    {
+      "id": "github-invite",
+      "publisher": "GitHub",
+      "title": "Inviting collaborators to a personal repository",
+      "url": "https://docs.github.com/en/account-and-profile/how-tos/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository",
+      "supports": [
+        "Settings → Access → Collaborators → Add people"
+      ],
+      "quotes": [
+        "Settings (or “More” dropdown) → Access → “Collaborators” → “Add people” → “Add NAME to REPOSITORY”",
+        "“Once they accept your invitation, they will have collaborator access to your repository.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-clone",
+      "publisher": "GitHub",
+      "title": "Cloning a repository",
+      "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository",
+      "supports": [
+        "Bouton Code → HTTPS → copier ; git clone"
+      ],
+      "quotes": [
+        "“Above the list of files, click Code.”",
+        "under “HTTPS”, click the copy icon",
+        "git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-branch-rule",
+      "publisher": "GitHub",
+      "title": "Managing a branch protection rule",
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule",
+      "supports": [
+        "Settings → Branches → Add classic branch protection rule, 1 approbation, pas de contournement"
+      ],
+      "quotes": [
+        "Settings → “Code and automation” → “Branches” → “Add classic branch protection rule”",
+        "“Branch name pattern”",
+        "“Require a pull request before merging”",
+        "“Require approvals”",
+        "“Required number of approvals before merging”",
+        "“Require status checks to pass before merging”",
+        "“Do not allow bypassing the above settings”",
+        "“Create”",
+        "“Dismiss stale pull request approvals when new commits are pushed”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-protected-branches",
+      "publisher": "GitHub",
+      "title": "About protected branches",
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
+      "supports": [
+        "Revues approuvantes requises avant fusion"
+      ],
+      "quotes": [
+        "Required reviews: “a specific number of approving reviews” before merging into a protected branch",
+        "“You can enable branch restrictions in public repositories owned by a GitHub Free organization”"
+      ],
+      "verified_on": "2026-10-28",
+      "note": "Pas d’encadré de disponibilité sur cette page ; voir github-plans."
+    },
+    {
+      "id": "github-create-pr",
+      "publisher": "GitHub",
+      "title": "Creating a pull request",
+      "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request",
+      "supports": [
+        "Compare & pull request, base/compare, Create pull request"
+      ],
+      "quotes": [
+        "Banner “Compare & pull request”",
+        "base branch / compare branch dropdowns",
+        "“Type a title and description for your pull request.”",
+        "Button: “Create Pull Request”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-review",
+      "publisher": "GitHub",
+      "title": "Reviewing proposed changes in a pull request",
+      "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request",
+      "supports": [
+        "Files changed → Review changes → Comment / Approve / Request changes → Submit review"
+      ],
+      "quotes": [
+        "“Files changed”",
+        "“Review changes”",
+        "“Comment”",
+        "“Approve”",
+        "“Request changes”",
+        "“Submit review”",
+        "“Pull request authors cannot approve their own pull requests.”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-merge",
+      "publisher": "GitHub",
+      "title": "Merging a pull request",
+      "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request",
+      "supports": [
+        "Merge pull request → Confirm merge ; suppression de branche"
+      ],
+      "quotes": [
+        "“Merge pull request”",
+        "“Confirm merge”",
+        "“Squash and merge”",
+        "“Rebase and merge”",
+        "optional link to “delete the branch”"
+      ],
+      "verified_on": "2026-10-28"
+    },
+    {
+      "id": "github-conflicts",
+      "publisher": "GitHub",
+      "title": "Resolving a merge conflict on GitHub",
+      "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github",
+      "supports": [
+        "Resolve conflicts, marqueurs, Mark as resolved, Commit merge"
+      ],
+      "quotes": [
+        "“Resolve conflicts”",
+        "markers <<<<<<< ======= >>>>>>>",
+        "“Mark as resolved”",
+        "“Commit merge”",
+        "“If Resolve conflicts is deactivated, resolve the conflict using another Git client or the command line.”"
+      ],
+      "verified_on": "2026-10-28"
     }
-  ],
-  "page_map": {
-    "route": [
-      "desktop",
-      "windows",
-      "linux",
-      "pricing",
-      "powerbi-desktop"
-    ],
-    "vocabulaire": [],
-    "dossiers": [
-      "github-zip"
-    ],
-    "windows-wsl": [
-      "microsoft-wsl-install",
-      "microsoft-wsl-environment"
-    ],
-    "windows-app": [
-      "windows",
-      "desktop",
-      "pricing",
-      "models"
-    ],
-    "windows-reglages": [
-      "windows",
-      "microsoft-wsl-files"
-    ],
-    "windows-copie": [
-      "microsoft-wsl-files",
-      "windows",
-      "github-zip"
-    ],
-    "ubuntu-app": [
-      "linux",
-      "desktop",
-      "pricing"
-    ],
-    "ubuntu-copie": [
-      "github-zip",
-      "desktop"
-    ],
-    "python": [
-      "ubuntu-python"
-    ],
-    "premier-prompt": [
-      "desktop",
-      "models",
-      "windows"
-    ],
-    "executer": [],
-    "usage": [
-      "pricing",
-      "models"
-    ],
-    "powerbi": [
-      "powerbi-desktop",
-      "powerbi-requirements"
-    ],
-    "transferer": [
-      "microsoft-wsl-files"
-    ],
-    "depannage": [
-      "microsoft-wsl-install",
-      "microsoft-wsl-environment",
-      "windows",
-      "pricing"
-    ],
-    "recap": [
-      "desktop",
-      "windows",
-      "linux",
-      "pricing",
-      "models"
-    ]
-  },
-  "evidence_limits": [
-    "Codex desktop Free conditionnel au déploiement et au compte ; CLI Free non établi et absent du parcours.",
-    "Pas de durée de quota promise ; reprise locale et indices quand usage épuisé.",
-    "Menus Windows établis par documentation ; libellé de sélection dossier Linux à confirmer sur installation réelle.",
-    "Diagrammes pédagogiques, aucune interface reconstituée ou capture prétendue."
   ]
 }

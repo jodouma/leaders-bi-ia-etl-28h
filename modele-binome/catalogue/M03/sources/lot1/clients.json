@@ -1,0 +1,116 @@
+{
+  "source": "Fichier clients Medina Distribution",
+  "extrait_le": "2026-06-30",
+  "clients": [
+    {
+      "code": "CL01",
+      "raison_sociale": "Épicerie Ben Ammar",
+      "region": "Tunis",
+      "historique": [
+        {
+          "segment": "épicerie",
+          "valide_depuis": "2022-03-01"
+        }
+      ]
+    },
+    {
+      "code": "CL02",
+      "raison_sociale": "Restaurant Le Golfe",
+      "region": "Sahel",
+      "historique": [
+        {
+          "segment": "restaurant",
+          "valide_depuis": "2023-06-15"
+        }
+      ]
+    },
+    {
+      "code": "CL03",
+      "raison_sociale": "Hôtel Les Dunes",
+      "region": "Sahel",
+      "historique": [
+        {
+          "segment": "hôtel",
+          "valide_depuis": "2021-11-02"
+        }
+      ]
+    },
+    {
+      "code": "CL04",
+      "raison_sociale": "Supérette El Amel",
+      "region": "Cap Bon",
+      "historique": [
+        {
+          "segment": "épicerie",
+          "valide_depuis": "2023-02-01"
+        }
+      ]
+    },
+    {
+      "code": "CL05",
+      "raison_sociale": "Hypermarché Zahra",
+      "region": "Tunis",
+      "historique": [
+        {
+          "segment": "Grande Surface",
+          "valide_depuis": "2020-09-14"
+        }
+      ]
+    },
+    {
+      "code": "CL06",
+      "raison_sociale": "Restaurant Dar Jasmin",
+      "region": "Tunis",
+      "historique": [
+        {
+          "segment": "restaurant",
+          "valide_depuis": "2024-01-08"
+        }
+      ]
+    },
+    {
+      "code": "CL07",
+      "raison_sociale": "Épicerie Fine Kerkennah",
+      "region": "Sfax",
+      "historique": [
+        {
+          "segment": "Épicerie ",
+          "valide_depuis": "2022-05-20"
+        }
+      ]
+    },
+    {
+      "code": "CL08",
+      "raison_sociale": "Hôtel Rivage Bleu",
+      "region": "Cap Bon",
+      "historique": [
+        {
+          "segment": "hôtel",
+          "valide_depuis": "2021-04-12"
+        }
+      ]
+    },
+    {
+      "code": "CL09",
+      "raison_sociale": "Marché Plus Sfax",
+      "region": "Sfax",
+      "historique": [
+        {
+          "segment": "grande surface",
+          "valide_depuis": "2022-10-03"
+        }
+      ]
+    },
+    {
+      "code": "CL10",
+      "raison_sociale": "Café-Restaurant Nour",
+      "region": "Sahel",
+      "historique": [
+        {
+          "segment": "restaurant",
+          "valide_depuis": "2024-03-18"
+        }
+      ]
+    }
+  ]
+}

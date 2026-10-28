@@ -1,0 +1,13 @@
+intervention_id;equipement;date_demande;heure_demande;date_intervention;heure_intervention;technicien;heures;type_intervention
+I-001;EQ-001;2026-03-02;08:00;2026-03-02;14:00;T01;2;correctif
+I-002;EQ-004;02/03/2026;09:00;03/03/2026;11:00;T04;3;correctif
+I-003; eq-011 ;2026-02-20;08:00;4 mars 2026;08:00;T07;2;Préventif
+I-004;EQ-001;2026-03-05;10:00;2026-03-05;13:00;T02;1;correctif
+I-004;EQ-001;2026-03-05;10:00;2026-03-05;13:00;T02;1;correctif
+I-005;EQ-004;2026-02-27;08:00;2026-03-06;09:00; t05;2;préventif
+I-006;EQ-001;2026-03-09;08:00;2026-03-09;10:00;T01;2;correctif
+I-006;EQ-001;2026-03-09;08:00;2026-03-09;10:00;T01;3;correctif
+;EQ-004;2026-03-10;08:00;2026-03-10;15:00;T05;2;correctif
+I-007;EQ-099;2026-03-10;09:00;2026-03-11;09:00;T03;1;correctif
+I-008;EQ-011;2026-03-11;10:00;2026-03-11;16:00;T08;1,5;correctif
+I-009;EQ-011;2026-03-09;16:00;10/03/2026;10:00;T08;4;correctif

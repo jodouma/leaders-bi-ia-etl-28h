@@ -1,0 +1,94 @@
+{
+  "source": "Référentiel des magasins Carthage Market",
+  "extrait_le": "2026-08-31",
+  "magasins": [
+    {
+      "code": "LAC",
+      "nom": "Carthage Market Les Berges du Lac",
+      "ville": "Tunis",
+      "type": "propre",
+      "historique": [
+        {
+          "region": "Grand Tunis",
+          "valide_depuis": "2017-09-04"
+        }
+      ]
+    },
+    {
+      "code": "ARI",
+      "nom": "Carthage Market Ariana",
+      "ville": "Ariana",
+      "type": "franchisé",
+      "historique": [
+        {
+          "region": "Grand Tunis",
+          "valide_depuis": "2020-02-17"
+        }
+      ]
+    },
+    {
+      "code": "BIZ",
+      "nom": "Carthage Market Bizerte",
+      "ville": "Bizerte",
+      "type": "franchisé",
+      "historique": [
+        {
+          "region": "Nord",
+          "valide_depuis": "2021-06-07"
+        }
+      ]
+    },
+    {
+      "code": "HAM",
+      "nom": "Carthage Market Hammamet",
+      "ville": "Hammamet",
+      "type": " Franchisé",
+      "historique": [
+        {
+          "region": "Cap Bon",
+          "valide_depuis": "2022-04-11"
+        },
+        {
+          "region": "Sahel",
+          "valide_depuis": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "code": "SOU",
+      "nom": "Carthage Market Sousse",
+      "ville": "Sousse",
+      "type": "Propre ",
+      "historique": [
+        {
+          "region": "Sahel",
+          "valide_depuis": "2018-11-05"
+        }
+      ]
+    },
+    {
+      "code": "SFX",
+      "nom": "Carthage Market Sfax",
+      "ville": "Sfax",
+      "type": "propre",
+      "historique": [
+        {
+          "region": "Sud",
+          "valide_depuis": "2019-05-13"
+        }
+      ]
+    },
+    {
+      "code": "GAB",
+      "nom": "Carthage Market Gabès",
+      "ville": "Gabès",
+      "type": "FRANCHISÉ",
+      "historique": [
+        {
+          "region": "Sud",
+          "valide_depuis": "2023-03-20"
+        }
+      ]
+    }
+  ]
+}

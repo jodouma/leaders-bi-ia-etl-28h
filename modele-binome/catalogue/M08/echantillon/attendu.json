@@ -1,0 +1,240 @@
+{
+  "mission": "M08",
+  "echantillon": true,
+  "lignes_csv": 12,
+  "doublons_exacts": 1,
+  "lignes_gardees": 6,
+  "consommations_lues": 7,
+  "consommations_acceptees": 5,
+  "rejets": {
+    "total": 7,
+    "par_motif": {
+      "cle_inconnue": 3,
+      "id_conflit": 2,
+      "id_manquant": 1,
+      "quantite_invalide": 1
+    },
+    "par_source": {
+      "interventions.csv": {
+        "cle_inconnue": 1,
+        "id_conflit": 2,
+        "id_manquant": 1,
+        "quantite_invalide": 1
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 2
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 31,
+    "dim_contrat": 3,
+    "dim_equipement": 4,
+    "fact_intervention": 6,
+    "fact_revenu_contrat": 3
+  },
+  "indicateurs": {
+    "interventions": 6,
+    "interventions_correctives": 4,
+    "delai_total_correctif_heures": 53,
+    "delai_moyen_heures": 13.25,
+    "heures_facturees": 14,
+    "cout_main_oeuvre_millimes": 777500,
+    "cout_pieces_millimes": 676500,
+    "cout_intervention_millimes": 1454000,
+    "revenu_contrat_millimes": 2650500,
+    "marge_service_millimes": 1196500
+  },
+  "agregats": {
+    "par_mois": {
+      "2026-03": {
+        "interventions": 6,
+        "interventions_correctives": 4,
+        "delai_total_correctif_heures": 53,
+        "delai_moyen_heures": 13.25,
+        "heures_facturees": 14,
+        "cout_main_oeuvre_millimes": 777500,
+        "cout_pieces_millimes": 676500,
+        "cout_intervention_millimes": 1454000,
+        "revenu_contrat_millimes": 2650500,
+        "marge_service_millimes": 1196500
+      }
+    },
+    "par_contrat": {
+      "CT-01": {
+        "interventions": 4,
+        "interventions_correctives": 3,
+        "delai_total_correctif_heures": 35,
+        "delai_moyen_heures": 11.666667,
+        "heures_facturees": 8,
+        "cout_main_oeuvre_millimes": 447500,
+        "cout_pieces_millimes": 215000,
+        "cout_intervention_millimes": 662500,
+        "revenu_contrat_millimes": 1200000,
+        "marge_service_millimes": 537500
+      },
+      "CT-02": {
+        "interventions": 2,
+        "interventions_correctives": 1,
+        "delai_total_correctif_heures": 18,
+        "delai_moyen_heures": 18.0,
+        "heures_facturees": 6,
+        "cout_main_oeuvre_millimes": 330000,
+        "cout_pieces_millimes": 461500,
+        "cout_intervention_millimes": 791500,
+        "revenu_contrat_millimes": 850500,
+        "marge_service_millimes": 59000
+      },
+      "CT-03": {
+        "interventions": 0,
+        "interventions_correctives": 0,
+        "delai_total_correctif_heures": 0,
+        "delai_moyen_heures": null,
+        "heures_facturees": 0,
+        "cout_main_oeuvre_millimes": 0,
+        "cout_pieces_millimes": 0,
+        "cout_intervention_millimes": 0,
+        "revenu_contrat_millimes": 600000,
+        "marge_service_millimes": 600000
+      }
+    },
+    "par_categorie": {
+      "(revenu contrat)": {
+        "interventions": 0,
+        "interventions_correctives": 0,
+        "delai_total_correctif_heures": 0,
+        "delai_moyen_heures": null,
+        "heures_facturees": 0,
+        "cout_main_oeuvre_millimes": 0,
+        "cout_pieces_millimes": 0,
+        "cout_intervention_millimes": 0,
+        "revenu_contrat_millimes": 2650500,
+        "marge_service_millimes": 2650500
+      },
+      "Ascenseur": {
+        "interventions": 2,
+        "interventions_correctives": 1,
+        "delai_total_correctif_heures": 26,
+        "delai_moyen_heures": 26.0,
+        "heures_facturees": 5,
+        "cout_main_oeuvre_millimes": 312500,
+        "cout_pieces_millimes": 145000,
+        "cout_intervention_millimes": 457500,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -457500
+      },
+      "Climatisation": {
+        "interventions": 2,
+        "interventions_correctives": 2,
+        "delai_total_correctif_heures": 9,
+        "delai_moyen_heures": 4.5,
+        "heures_facturees": 3,
+        "cout_main_oeuvre_millimes": 135000,
+        "cout_pieces_millimes": 70000,
+        "cout_intervention_millimes": 205000,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -205000
+      },
+      "Groupe électrogène": {
+        "interventions": 2,
+        "interventions_correctives": 1,
+        "delai_total_correctif_heures": 18,
+        "delai_moyen_heures": 18.0,
+        "heures_facturees": 6,
+        "cout_main_oeuvre_millimes": 330000,
+        "cout_pieces_millimes": 461500,
+        "cout_intervention_millimes": 791500,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -791500
+      }
+    },
+    "par_equipement": {
+      "(revenu contrat)": {
+        "interventions": 0,
+        "interventions_correctives": 0,
+        "delai_total_correctif_heures": 0,
+        "delai_moyen_heures": null,
+        "heures_facturees": 0,
+        "cout_main_oeuvre_millimes": 0,
+        "cout_pieces_millimes": 0,
+        "cout_intervention_millimes": 0,
+        "revenu_contrat_millimes": 2650500,
+        "marge_service_millimes": 2650500
+      },
+      "EQ-001": {
+        "interventions": 2,
+        "interventions_correctives": 2,
+        "delai_total_correctif_heures": 9,
+        "delai_moyen_heures": 4.5,
+        "heures_facturees": 3,
+        "cout_main_oeuvre_millimes": 135000,
+        "cout_pieces_millimes": 70000,
+        "cout_intervention_millimes": 205000,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -205000
+      },
+      "EQ-004": {
+        "interventions": 2,
+        "interventions_correctives": 1,
+        "delai_total_correctif_heures": 26,
+        "delai_moyen_heures": 26.0,
+        "heures_facturees": 5,
+        "cout_main_oeuvre_millimes": 312500,
+        "cout_pieces_millimes": 145000,
+        "cout_intervention_millimes": 457500,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -457500
+      },
+      "EQ-011": {
+        "interventions": 2,
+        "interventions_correctives": 1,
+        "delai_total_correctif_heures": 18,
+        "delai_moyen_heures": 18.0,
+        "heures_facturees": 6,
+        "cout_main_oeuvre_millimes": 330000,
+        "cout_pieces_millimes": 461500,
+        "cout_intervention_millimes": 791500,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -791500
+      }
+    },
+    "par_type": {
+      "(revenu contrat)": {
+        "interventions": 0,
+        "interventions_correctives": 0,
+        "delai_total_correctif_heures": 0,
+        "delai_moyen_heures": null,
+        "heures_facturees": 0,
+        "cout_main_oeuvre_millimes": 0,
+        "cout_pieces_millimes": 0,
+        "cout_intervention_millimes": 0,
+        "revenu_contrat_millimes": 2650500,
+        "marge_service_millimes": 2650500
+      },
+      "correctif": {
+        "interventions": 4,
+        "interventions_correctives": 4,
+        "delai_total_correctif_heures": 53,
+        "delai_moyen_heures": 13.25,
+        "heures_facturees": 10,
+        "cout_main_oeuvre_millimes": 542500,
+        "cout_pieces_millimes": 525000,
+        "cout_intervention_millimes": 1067500,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -1067500
+      },
+      "préventif": {
+        "interventions": 2,
+        "interventions_correctives": 0,
+        "delai_total_correctif_heures": 0,
+        "delai_moyen_heures": null,
+        "heures_facturees": 4,
+        "cout_main_oeuvre_millimes": 235000,
+        "cout_pieces_millimes": 151500,
+        "cout_intervention_millimes": 386500,
+        "revenu_contrat_millimes": 0,
+        "marge_service_millimes": -386500
+      }
+    }
+  }
+}

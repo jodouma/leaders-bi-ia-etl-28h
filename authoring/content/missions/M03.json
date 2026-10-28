@@ -1,0 +1,1146 @@
+{
+ "title": "Mission 03 · Medina Distribution : guide de mission",
+ "cover_title": "Mission 03 · Distribution B2B\nMedina Distribution",
+ "subtitle": "Guide de mission du catalogue · montant facturé, avoirs, ventes nettes, marge commerciale, taux d’avoir · une ligne de facture par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M03 · Medina Distribution",
+ "output_filename": "missions/M03_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M03 · MEDINA DISTRIBUTION",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Medina Distribution (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF MEDINA DISTRIBUTION",
+  "flow": "Factures, coûts, clients, avoirs  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "10",
+    "CLIENTS PROFESSIONNELS"
+   ],
+   [
+    "2 458",
+    "LIGNES DE FACTURE APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M03 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M03/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Solution de référence passée au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 03**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un grossiste fictif, **Medina Distribution**, qui facture des clients professionnels. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : « Avant l’étape A » (page 9), en fin de séance 4."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Prix négocié, avoirs émis, brouillons et annulés",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Passer à M03, charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "13"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "14"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "15"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M03/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M03/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M03/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Medina Distribution** achète des cartons (semoule, pâtes, huile, conserves, boissons, laitages, entretien) et les revend à **dix clients professionnels** : épiceries, restaurants, hôtels, grandes surfaces. Chaque client a un **prix négocié**, souvent sous le prix tarif. Un produit abîmé ou une erreur de prix donne un **avoir**, une facture négative."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Notre chiffre d’affaires progresse, mais la marge ne suit pas. Je veux savoir quels clients et quels produits font baisser notre rentabilité commerciale. Par client, par segment, par produit et par mois : le montant facturé, les avoirs, les ventes nettes, le coût d’achat des unités nettes, la marge commerciale et le taux d’avoir. Dites-moi aussi quelles lignes vous avez écartées, et pourquoi.\nÀ partir du 15 juillet, la Supérette El Amel (CL04) passe du segment « épicerie » au segment « grande surface ». Ses factures du premier semestre doivent rester dans « épicerie ».\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Revoir un prix négocié ?** La marge commerciale par client et par produit, y compris quand elle est négative.",
+      "**Traiter la cause des avoirs ?** Le taux d’avoir par client et par famille, avec ses montants.",
+      "**Quels segments servir en priorité ?** Ventes nettes et marge par segment, mois par mois."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "10 clients, 14 produits, 6 familles ; janvier → août 2026",
+       "commandes non facturées, toute date après le 31 août"
+      ],
+      [
+       "avoirs `EMIS`, de type `RETOUR` ou `REMISE`",
+       "avoirs `ANNULE` et `BROUILLON` (ignorés)"
+      ],
+      [
+       "coût d’achat du fichier des coûts, fixe sur 2026",
+       "transport, entrepôt, salaires : la marge commerciale n’est pas un bénéfice"
+      ],
+      [
+       "le segment historisé (CL04 au 2026-07-15)",
+       "la région du client, non historisée"
+      ],
+      [
+       "prix négocié et prix tarif",
+       "le commercial et le motif de l’avoir : dans les sources, non chargés"
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.7
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **une ligne de facture**, clé `ligne_id` (ex. `F26-01234-3`). La quantité compte des **cartons**. Montants en **millimes entiers**, affichés en TND à 3 décimales. Formules exactes du cahier (§ 9)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "Montant facturé",
+       "TND",
+       "somme de quantité × prix unitaire **négocié** des lignes de facture acceptées"
+      ],
+      [
+       "Avoirs",
+       "TND",
+       "somme des montants des avoirs `EMIS` acceptés (`RETOUR` et `REMISE`)"
+      ],
+      [
+       "**Ventes nettes**",
+       "TND",
+       "montant facturé − avoirs"
+      ],
+      [
+       "Coût d’achat des unités nettes",
+       "TND",
+       "(cartons facturés − cartons repris par avoir `RETOUR`) × coût d’achat unitaire, produit par produit"
+      ],
+      [
+       "**Marge commerciale**",
+       "TND",
+       "ventes nettes − coût d’achat des unités nettes"
+      ],
+      [
+       "**Taux d’avoir**",
+       "%",
+       "avoirs ÷ montant facturé, en montant"
+      ],
+      [
+       "Cartons nets",
+       "nombre",
+       "cartons facturés − cartons repris"
+      ]
+     ],
+     "widths": [
+      1.6,
+      0.6,
+      3.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Un avoir `REMISE` baisse les ventes nettes sans reprendre de carton : il ne change pas le coût d’achat. Le taux d’avoir est un **rapport** : montrez ses deux montants. Un avoir compte dans le mois **de sa propre date**, mais avec la version du client de sa facture d’origine (règle à clarifier)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key` (AAAAMMJJ)"
+      ],
+      [
+       "`dim_produit`",
+       "un article : famille, coût d’achat, prix tarif",
+       "`produit_key` · `produit_id`"
+      ],
+      [
+       "`dim_client` (SCD2)",
+       "une **version** de client : segment, région, `valid_from`, `valid_to`",
+       "`client_key` · `client_id`"
+      ],
+      [
+       "`fact_facture`",
+       "une ligne de facture acceptée, avec `facture_id`",
+       "`ligne_id`"
+      ],
+      [
+       "`fact_avoir`",
+       "un avoir `EMIS` accepté, avec `type_avoir` et `date_facture_key`",
+       "`avoir_id`"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.7,
+      1.5
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_client`, attribut `segment`. La Supérette El Amel (**CL04**) passe d’« épicerie » à « grande surface » le **2026-07-15**, inclus ; l’information arrive avec `lot2/clients.json`. `dim_client` passe de 10 à 11 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "client_id",
+      "segment",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "CL04",
+       "épicerie",
+       "2023-02-01",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "CL04",
+       "grande surface",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.4,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Une facture de CL04 du 14 juillet compte en « épicerie » ; du 15 juillet, en « grande surface ». **Particularité** : un avoir recopie le `client_key` de sa ligne de facture ; c’est `fact_avoir.date_facture_key` qui choisit la version, pas la date de l’avoir."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M03 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de CL04 aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles` (tests fournis), `pytest -q` (avec les vôtres) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `factures.csv`, le fichier des coûts, les 10 clients et 4 avoirs. Calculez **sur papier**, à deux, avant toute demande à Codex. La correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "ligne_id",
+      "Lu dans le fichier (prix négocié)",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "FE-001-1",
+       "2026-03-02 · CL01 · PR01 · qté 4 · prix 14.070",
+       ""
+      ],
+      [
+       "3",
+       "FE-001-2",
+       "02/03/2026 · CL01 · PR09 · qté 10 · prix 7,860",
+       ""
+      ],
+      [
+       "4",
+       "FE-002-1",
+       "3 mars 2026 · « cl05 » · PR03 · qté 20 · prix 17.2",
+       ""
+      ],
+      [
+       "5",
+       "FE-002-2",
+       "2026-03-03 · CL05 · PR07 · qté 40 · prix 3,315",
+       ""
+      ],
+      [
+       "6",
+       "FE-002-2",
+       "2026-03-03 · CL05 · PR07 · qté 40 · prix 3,315",
+       ""
+      ],
+      [
+       "7",
+       "FE-003-1",
+       "2026-03-04 · « Cl02 » · PR10 · qté 6 · prix 8.450",
+       ""
+      ],
+      [
+       "8",
+       "FE-004-1",
+       "2026-03-05 · CL08 · PR06 · qté 3 · prix 56,160",
+       ""
+      ],
+      [
+       "9",
+       "FE-005-1",
+       "2026-03-06 · CL06 · PR13 · qté 5 · prix 21.430",
+       ""
+      ],
+      [
+       "10",
+       "FE-005-1",
+       "2026-03-06 · CL06 · PR13 · qté 6 · prix 21.430",
+       ""
+      ],
+      [
+       "11",
+       "(vide)",
+       "2026-03-07 · CL01 · PR02 · qté 2 · prix 17.460",
+       ""
+      ],
+      [
+       "12",
+       "FE-007-1",
+       "2026-03-09 · CL99 · PR01 · qté 1 · prix 14.500",
+       ""
+      ],
+      [
+       "13",
+       "FE-008-1",
+       "2026-03-09 · CL07 · PR12 · qté 0 · prix 25.870",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.85,
+      3.4,
+      0.9
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? **2.** Montant facturé, et coût d’achat des cartons facturés (coûts : PR01 11,900 · PR09 6,900 · PR03 19,600 · PR07 2,700 · PR10 6,700 · PR06 45,000).",
+      "**3.** Avoirs : `AV-0001` `RETOUR` de 2 plateaux de `FE-003-1` (`EMIS`, 16,900 TND) ; `AV-0002` `REMISE` sur `FE-002-1` (`EMIS`, 17,200 TND, 0 carton) ; `AV-0003` `ANNULE` ; `AV-0004` vise `FE-099-1`.",
+      "**4.** Ventes nettes, coût d’achat des unités nettes, marge commerciale, taux d’avoir."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardées : ……  Rejets : ……  Facturé : …… TND  Avoirs : …… TND\nVentes nettes : …… TND  Coût net : …… TND  Marge : …… TND  Taux d’avoir : …… %"
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact de la ligne 5, **ignorée**. Lignes 9 et 10 : même `ligne_id`, quantités différentes → **les deux** en `id_conflit`. Ligne 11 : `id_manquant`. Ligne 12 : client `CL99` inconnu → `cle_inconnue`. Ligne 13 : quantité 0 → `quantite_invalide`. Bilan : 12 lues, 1 doublon, 5 rejets, **6 gardées**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "ligne_id",
+      "Client",
+      "Produit",
+      "Facturé",
+      "Coût d’achat"
+     ],
+     "rows": [
+      [
+       "FE-001-1",
+       "CL01",
+       "PR01",
+       "4 × 14,070 = 56,280",
+       "4 × 11,900 = 47,600"
+      ],
+      [
+       "FE-001-2",
+       "CL01",
+       "PR09",
+       "10 × 7,860 = 78,600",
+       "10 × 6,900 = 69,000"
+      ],
+      [
+       "FE-002-1",
+       "CL05",
+       "PR03",
+       "20 × 17,200 = 344,000",
+       "20 × 19,600 = 392,000"
+      ],
+      [
+       "FE-002-2",
+       "CL05",
+       "PR07",
+       "40 × 3,315 = 132,600",
+       "40 × 2,700 = 108,000"
+      ],
+      [
+       "FE-003-1",
+       "CL02",
+       "PR10",
+       "6 × 8,450 = 50,700",
+       "6 × 6,700 = 40,200"
+      ],
+      [
+       "FE-004-1",
+       "CL08",
+       "PR06",
+       "3 × 56,160 = 168,480",
+       "3 × 45,000 = 135,000"
+      ],
+      [
+       "**Total**",
+       "",
+       "",
+       "**830,660 TND**",
+       "791,800 TND"
+      ]
+     ],
+     "widths": [
+      0.95,
+      0.65,
+      0.7,
+      1.6,
+      1.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Avoirs** : `AV-0001` (16,900) et `AV-0002` (17,200) sont gardés, soit **34,100 TND** ; `AV-0003` est ignoré ; `AV-0004` est rejeté en `cle_inconnue` (source `avoirs.sqlite`). Total : **6 rejets**. Remarquez `FE-002-1` : l’huile est vendue 17,200 TND, **sous** son coût de 19,600 TND (prix d’appel négocié)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Ventes nettes",
+       "830,660 − 34,100",
+       "**796,560 TND**"
+      ],
+      [
+       "Coût d’achat des unités nettes",
+       "791,800 − 2 plateaux repris × 6,700 (la `REMISE` ne reprend rien)",
+       "778,400 TND"
+      ],
+      [
+       "Marge commerciale",
+       "796,560 − 778,400",
+       "**18,160 TND**"
+      ],
+      [
+       "Taux d’avoir",
+       "34,100 ÷ 830,660",
+       "**4,11 %**"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3,
+      1
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Cherchez **la** ligne qui diffère. Pièges : prix tarif utilisé au lieu du prix négocié ; coût retiré aussi pour la `REMISE` ; `17.2` lu 17,002 ; avoir `ANNULE` compté. Entrepôt attendu : `fact_facture` 6, `fact_avoir` 2, `dim_produit` 14, `dim_client` 10, `dim_date` 31."
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**, toutes en UTF-8 (`Sélima`, `Supérette`). Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`factures.csv`",
+       "lignes de facture, séparateur `;`, prix **négocié**",
+       "trois formats de date ; prix `18.280`, `18,28`, `1 240,000` ; codes « ` cl05 ` », `Pr03`"
+      ],
+      [
+       "`couts.xlsx`",
+       "feuille `Articles`, **en-têtes ligne 3**, + feuille `Familles`",
+       "nombres en texte (`19,600`) ; code « ` pr07` » ; famille en code (`EPI`)"
+      ],
+      [
+       "`clients.json`",
+       "clients, région et historique des segments",
+       "segment `Grande Surface`, `Épicerie ` : strip + minuscules ; lot 2 : 2e version de CL04"
+      ],
+      [
+       "`avoirs.sqlite`",
+       "tables `avoir`, `motif_avoir`, `parametre`",
+       "statuts `ANNULE` et `BROUILLON` ; type `RETOUR` ou `REMISE`"
+      ]
+     ],
+     "widths": [
+      1.25,
+      2,
+      2.6
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `factures.csv`",
+       "2 087",
+       "428",
+       "—"
+      ],
+      [
+       "Doublons exacts · déjà chargées (30 juin)",
+       "12 · 0",
+       "4 · 10",
+       "ignorer"
+      ],
+      [
+       "Rejets de `factures.csv`",
+       "22",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Lignes de facture acceptées",
+       "2 053",
+       "405",
+       "`fact_facture`"
+      ],
+      [
+       "Avoirs lus · `EMIS` · non émis",
+       "108 · 102 · 6",
+       "32 · 29 · 3",
+       "ignorer les non émis"
+      ],
+      [
+       "Déjà chargés · vers une ligne inconnue",
+       "0 · 2",
+       "2 · 1",
+       "ignorer · `cle_inconnue`"
+      ],
+      [
+       "Avoirs acceptés",
+       "100",
+       "26",
+       "`fact_avoir`"
+      ]
+     ],
+     "widths": [
+      2.4,
+      0.8,
+      0.8,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer ou rejeter ?",
+     "text": "**Ignorer** (rien dans `rejets.csv`) : doublon exact, avoir `ANNULE` ou `BROUILLON` (4 + 2 au lot 1, 2 + 1 au lot 2), ligne déjà chargée. **Rejeter** avec `lot`, `source`, `numero_ligne`, `motif`. Le segment non normalisé crée de faux segments : l’application afficherait « Grande Surface » et « grande surface » côte à côte."
+    }
+   ]
+  },
+  {
+   "title": "Avant l’étape A · passer à M03",
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉTAPES A → B → C",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR : votre dépôt passe du tronc commun à M03. On garde le code du tronc commun et on le **généralise**. Détail et raisons : livret 04, « Passer à votre mission »."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · sauvegarder, vider, changer de mission",
+     "text": "git switch main && git pull\ngit switch -c mission-M03\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*                 # .gitkeep (fichier caché) reste\necho \"M03\" > mission.txt"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · généraliser le tronc commun (première étape)",
+     "text": "Mission M03 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M03/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets\nde factures.csv au lot 1. Lance python -m solen initial, puis --mission M03\n--etape rejets et pytest controles ; recopie les sorties. Dis quels tests\nde tests/ lisent mission.txt et adapte-les. Ni commit ni push."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`livraison/` est versionné, `outputs/` ne l’est pas** : `livraison/tronc-commun/` garde la preuve du tronc commun (et sert à Power BI en séance 5) ; `outputs/` appartient à la mission courante, `python -m solen initial` le reconstruit pour M03.",
+      "**Ordre des contrôles**, un cran vert par PR : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`. Dans la même PR, `ETAPE_CI` revient à `aucune`, puis avance avec vous.",
+      "**Faux ÉCHEC ?** Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` : videz `outputs/`, relancez `initial`, reprenez l’ordre."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_facture` et le signe de la marge de PR03."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M03 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite\navec catalogue/M03/sources/lot1 : dim_date, dim_produit, dim_client,\npuis fact_facture et fact_avoir, dans une transaction. Clés *_key\nentières, *_id texte, millimes entiers ; dim_client a valid_from et\nvalid_to (NULL = courante), segment en minuscules. Seuls les avoirs\nEMIS ; un avoir recopie client_key et date_facture_key de sa facture.\nLance initial puis --mission M03 --etape initial. J'attends <...>."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M03 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_produit` 14 · `dim_client` 10 · `fact_facture` 2 053 · `fact_avoir` 100"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 8 (6 factures + 2 avoirs) · `id_conflit` 6 · `id_manquant` 4 · `quantite_invalide` 6 · total 24"
+      ],
+      [
+       "Montant facturé · avoirs",
+       "245 596,350 · 2 665,590 TND"
+      ],
+      [
+       "**Ventes nettes · marge commerciale**",
+       "**242 930,760 · 32 591,060 TND**"
+      ],
+      [
+       "Taux d’avoir",
+       "1,09 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Prix tarif au lieu du prix négocié** : le montant facturé grimpe et l’huile PR03 paraît rentable. Le prix du fait vient de `prix_unitaire_negocie` ; le prix tarif ne sert qu’à la variante 1.",
+      "**Avoir `REMISE` traité comme un retour** : on retire un coût d’achat pour des cartons jamais repris. Seul un `RETOUR` baisse le coût ; une `REMISE` a `quantite` = 0."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, recopie des factures du 30 juin et des avoirs depuis le 20 juin, et apporte la 2e version de CL04. **Prévoyez** : (1) lignes de `dim_client` ; (2) segment d’une facture CL04 du 14 puis du 15 juillet ; (3) segment d’un avoir du 20 juillet sur une facture du 30 juin."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M03. Ajoute python -m solen increment (lot2 de M03).\nSCD2 sur dim_client.segment : fermer « épicerie » de CL04 (valid_to\n2026-07-15, exclu), ouvrir « grande surface » (valid_from 2026-07-15).\nUne facture prend la version valable à SA date. Un avoir recopie le\nclient_key de sa ligne de facture (version de la date de facture) et\ngarde date_key = date de l'avoir. Rejeu : clé déjà chargée ignorée.\nLance initial, increment, --etape increment, increment (2e fois),\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M03 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M03 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_client` **11** · `fact_facture` 2 458 (+405) · `fact_avoir` 126 (+26)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 4 (3 + 1 avoir) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 10"
+      ],
+      [
+       "Montant facturé · avoirs",
+       "292 453,560 · 3 446,680 TND"
+      ],
+      [
+       "**Ventes nettes · marge commerciale**",
+       "**289 006,880 · 39 074,380 TND**"
+      ],
+      [
+       "Taux d’avoir",
+       "1,18 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**L’avoir rattaché à la version du jour de l’avoir** (comme au tronc commun) : les avoirs de CL04 émis après le 15 juillet sur des factures d’avant passent en « grande surface ». Le contrôle SCD2 sur `date_facture_key` échoue.",
+      "**Les avoirs recopiés comptés deux fois** : le lot 2 répète les avoirs depuis le 20 juin. `numero_avoir` déjà chargé = ignoré, au premier `increment` comme au rejeu."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Medina Distribution."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M03 --etape export\npython -m solen app\npython -m controles.verifier --mission M03 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 458 lignes de `fact_facture` et une somme de `montant_facture_millimes` de 292 453 560 ; 126 lignes de `fact_avoir` pour 3 446 680. Erreur fréquente : `date_facture_key` oubliée dans `fact_avoir.csv`, ce qui empêche de prouver la règle A."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M03. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par client, Qualité des\ndonnées ; filtres période, client, segment, produit ; ventes nettes\npar mois et par segment en barres SVG, lues dans l'entrepôt."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** (trois dimensions × deux faits), par `client_key`, jamais par `client_id` (CL04 a deux lignes). `fact_avoir[date_facture_key]` reste sans relation active. Demandez à Codex les mesures de la mission (formules du cahier) dans `powerbi/mesures_M03.dax` ; sans poste Windows, la démo se fait dans l’application : Montant facturé TND, Avoirs TND, Ventes nettes TND, Marge commerciale TND, Taux d’avoir. Après le lot 2 et **Actualiser** : 289 006,880 TND de ventes nettes, 39 074,380 TND de marge, 1,18 %. Erreur fréquente : relier `dim_date` à `fact_avoir[date_facture_key]` ; les avoirs changent alors de mois et le graphique mensuel ne colle plus à la référence."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M03/reference/visuels/marge_commerciale_par_produit.png",
+     "caption": "Graphique de référence après le lot 2 : marge commerciale par produit, en TND. Deux produits sont sous zéro : l’huile PR03 et le sucre PR04.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "La question posée à la direction",
+     "text": "Le **20 juillet**, Medina Distribution émet un avoir pour une ligne facturée le **30 juin** à CL04. Depuis le 15 juillet, CL04 est en « grande surface ». L’avoir compte-t-il dans le segment de la facture (« épicerie ») ou dans celui du jour de l’avoir ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Mesurable ?"
+     ],
+     "rows": [
+      [
+       "**A · segment de la facture d’origine** (décidée)",
+       "l’avoir suit la version du client de sa facture ; il reste dans le mois de **sa** date",
+       "c’est la référence"
+      ],
+      [
+       "B · segment du jour de l’avoir",
+       "chaque mouvement suit sa propre date, comme les retours du tronc commun",
+       "non calculé par la référence"
+      ]
+     ],
+     "widths": [
+      1.8,
+      2.6,
+      1.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Décision : A.** Un avoir corrige une vente : la rentabilité d’un segment doit compter **ses propres** corrections. Attention : le tronc commun avait fait l’autre choix (B) pour les retours. Sur l’échantillon, les deux options donnent le même chiffre (tout est en mars)."
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Une correction suit ce qu’elle corrige** : la facture du 30 juin a été vendue au prix « épicerie » ; son erreur appartient à « épicerie ».",
+      "**Sinon, deux segments faussés** : avec B, « épicerie » garderait une vente trop chère et « grande surface » porterait un avoir qui n’est pas à lui.",
+      "**Dire le coût** : il faut stocker `date_facture_key` dans `fact_avoir`. L’écart A/B n’est pas fourni par la référence ; mesurez-le par une requête **en lecture seule**. Notez la décision dans `notes/JOURNAL.md`."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Taux de remise négociée** = 1 − facturé ÷ (quantité × prix tarif)",
+       "un test sur l’échantillon : 1 − 830,660 ÷ 969,800 = 14,35 % (calcul de ce guide, à refaire) ; aucune valeur dans la référence"
+      ],
+      [
+       "**2. Avoir à plus de 30 jours refusé** : motif `avoir_hors_delai`",
+       "un test sur un petit jeu dans `tests/` : 30 jours accepté, 31 rejeté avec le nouveau motif"
+      ],
+      [
+       "**3. Coût de PR03 + 8 % au 2026-08-01**",
+       "un test : une facture PR03 du 31 juillet au coût 19,600, du 1er août à 21,168 TND"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Méthode : prompt 18, puis 03, 09 et 13. La référence reste verte ; chaque variante se prouve par **son** test, sources intactes."
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "les six indicateurs ; ventes nettes par mois et par segment ; filtres Produit = PR03, puis Client = CL05",
+       "« Cette huile est vendue sous son coût d’achat. »"
+      ],
+      [
+       "**2. Détail par client**",
+       "CL04 : « épicerie » jusqu’au 2026-07-15 exclu, puis « grande surface » ; l’avoir du 20 juillet compté en « épicerie », en juillet",
+       "« L’avoir suit le segment de sa facture. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "lignes lues, doublons, déjà chargées, rejets par motif ; un rejet `cle_inconnue` retrouvé dans `rejets.csv`",
+       "« 34 lignes écartées, chacune avec son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Produit = PR03. **Prévoyez** : la marge est-elle positive ?",
+      "**Application** : ventes nettes **26 796,340 TND**, marge commerciale **−2 564,460 TND** (lot 1 : −2 159,070). **Référence** : `attendu_lot2.json`, `agregats → par_produit → PR03 → marge_commerciale_millimes` = −2 564 460.",
+      "**Lecture** : la marge est négative parce que des prix d’appel sont négociés sous le coût. Le croisement PR03 × CL05 n’est pas dans la référence : prouvez-le par une requête SQL en lecture seule."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M03/reference/visuels/ventes_nettes_par_mois_et_segment.png",
+     "caption": "Graphique de référence après le lot 2 : ventes nettes par mois et par segment, en TND. Dès le 15 juillet, les factures de CL04 passent en « grande surface ».",
+     "height": 225
+    }
+   ]
+  },
+  {
+   "kicker": "M03 · MEDINA DISTRIBUTION · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Medina Distribution, le grain « ligne de facture » et le périmètre ;",
+      "…calculer l’échantillon à la main : 830,660 TND facturés, 34,100 TND d’avoirs, 18,160 TND de marge commerciale, 4,11 % de taux d’avoir ;",
+      "…distinguer un avoir `RETOUR` d’un avoir `REMISE`, et dire pourquoi un avoir est ignoré ou rejeté ;",
+      "…charger, compléter et rejouer avec `--mission M03`, et montrer que CL04 reste en « épicerie » avant le 2026-07-15 ;",
+      "…donner chaque indicateur avec son unité et le dénominateur du taux d’avoir ;",
+      "…défendre la décision A, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Ventes nettes",
+       "242 930,760 TND",
+       "289 006,880 TND"
+      ],
+      [
+       "Marge commerciale",
+       "32 591,060 TND",
+       "39 074,380 TND"
+      ],
+      [
+       "Taux d’avoir",
+       "1,09 %",
+       "1,18 %"
+      ],
+      [
+       "`fact_facture` · rejets",
+       "2 053 · 24",
+       "2 458 · 10 de plus"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** avant d’écrire : la marge ÷ ventes nettes par client (agrégats `par_client`), les produits à marge négative, la famille au taux d’avoir le plus haut. Proposez **une** action chiffrée. La marge commerciale ne compte ni transport, ni entrepôt, ni salaires."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M03/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; Medina Distribution et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni dans la CI GitHub.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; Power BI suit le livret 05, non rejoué pour cette mission."
+     ]
+    }
+   ]
+  }
+ ]
+}

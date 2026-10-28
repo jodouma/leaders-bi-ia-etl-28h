@@ -1,0 +1,45 @@
+{
+  "note": "Registre de provenance des captures réelles. Aucune interface n'est fabriquée. Chaque entrée indique l'environnement réel de la capture ; une capture macOS n'est pas une capture Windows/WSL.",
+  "captures": [
+    {
+      "fichier": "app-vue-direction.png",
+      "sujet": "Application locale de référence (outputs/app/index.html), écran Vue direction, après lot1 + lot2",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local",
+      "etape": "Livret 05 §1 et livret 02 S4-M7 (premier regard sur l'app) · python -m solen app",
+      "zone_a_regarder": "les cinq indicateurs et le graphique empilé par zone ; Nord-Est apparaît à partir de 2026-07",
+      "signe_de_reussite": "Ventes nettes 91 444,460 TND, marge 35 606,860 TND, taux de retour 4,60 % = valeurs de référence",
+      "date": "2026-10-28",
+      "limite": "capture de la solution de référence privée, pas d'une production étudiante ; résolution 800 px"
+    },
+    {
+      "fichier": "app-qualite.png",
+      "sujet": "Application locale de référence, écran Qualité des données (rejets par motif et par lot)",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local",
+      "etape": "Livret 05 §1 (écran Qualité) · livret 02 S2 (rejets par motif)",
+      "zone_a_regarder": "les quatre motifs et les deux lots empilés",
+      "signe_de_reussite": "lot1 : 8 / 6 / 5 / 7 ; lot2 : 4 / 2 / 2 / 2 = reference/README.md",
+      "date": "2026-10-28",
+      "limite": "même limite que ci-dessus"
+    },
+    {
+      "fichier": "github-pull-request.png",
+      "sujet": "Page d'une vraie pull request sur GitHub (PR #2 du dépôt du cours, branche edition-solen-22h → main)",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, non connecté à GitHub (thème sombre par défaut)",
+      "etape": "Livret 01 · Cycle 2 · ouvrir la pull request",
+      "zone_a_regarder": "bandeau « Open … wants to merge … into main from … », onglets Conversation / Commits / Checks / Files changed, zone Reviewers à droite",
+      "signe_de_reussite": "la PR existe, sa branche source et sa cible sont nommées, l'onglet Checks compte les contrôles",
+      "date": "2026-10-28",
+      "limite": "capture de la PR du dépôt du cours, pas d'un dépôt binôme ; thème sombre ; résolution 800 px ; l'auteur n'est pas connecté donc aucun bouton de revue n'apparaît"
+    },
+    {
+      "fichier": "github-checks-verts.png",
+      "sujet": "Onglet Checks d'une vraie pull request (PR #2 du dépôt du cours) : coche verte, 6 contrôles réussis, workflow « Vérifier le cours Solen BI 22 h »",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, non connecté à GitHub (thème sombre par défaut)",
+      "etape": "Livret 01 · Cycle 4 · checks, merge, retour à main",
+      "zone_a_regarder": "la coche verte devant le nom du commit, la liste des workflows à gauche, le compteur « Checks 6 »",
+      "signe_de_reussite": "tous les contrôles sont verts ; aucun ÉCHEC",
+      "date": "2026-10-28",
+      "limite": "capture de la PR du dépôt du cours (CI du cours), pas de la CI « Contrôles Solen » d'un dépôt binôme ; thème sombre ; 800 px"
+    }
+  ]
+}

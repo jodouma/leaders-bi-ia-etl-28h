@@ -1,0 +1,144 @@
+{
+  "mission": "tronc-commun",
+  "echantillon": true,
+  "lignes_csv": 12,
+  "doublons_exacts": 1,
+  "lignes_gardees": 6,
+  "retours_annules_exclus": 1,
+  "rejets": {
+    "total": 6,
+    "par_motif": {
+      "cle_inconnue": 2,
+      "id_conflit": 2,
+      "id_manquant": 1,
+      "quantite_invalide": 1
+    },
+    "par_source": {
+      "ventes.csv": {
+        "cle_inconnue": 1,
+        "id_conflit": 2,
+        "id_manquant": 1,
+        "quantite_invalide": 1
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 31,
+    "dim_produit": 8,
+    "dim_boutique": 3,
+    "fact_vente": 6,
+    "fact_retour": 1
+  },
+  "indicateurs": {
+    "ventes_brutes_millimes": 127350,
+    "retours_millimes": 14500,
+    "ventes_nettes_millimes": 112850,
+    "cout_achat_net_millimes": 67250,
+    "marge_cout_achat_millimes": 45600,
+    "taux_retour": 0.113859,
+    "unites_nettes": 9
+  },
+  "agregats": {
+    "par_zone": {
+      "Cap Bon": {
+        "ventes_brutes_millimes": 14500,
+        "retours_millimes": 0,
+        "ventes_nettes_millimes": 14500,
+        "cout_achat_net_millimes": 8750,
+        "marge_cout_achat_millimes": 5750,
+        "taux_retour": 0.0,
+        "unites_nettes": 1
+      },
+      "Grand Tunis": {
+        "ventes_brutes_millimes": 65350,
+        "retours_millimes": 0,
+        "ventes_nettes_millimes": 65350,
+        "cout_achat_net_millimes": 38550,
+        "marge_cout_achat_millimes": 26800,
+        "taux_retour": 0.0,
+        "unites_nettes": 6
+      },
+      "Sud": {
+        "ventes_brutes_millimes": 47500,
+        "retours_millimes": 14500,
+        "ventes_nettes_millimes": 33000,
+        "cout_achat_net_millimes": 19950,
+        "marge_cout_achat_millimes": 13050,
+        "taux_retour": 0.305263,
+        "unites_nettes": 2
+      }
+    },
+    "par_boutique": {
+      "NBE": {
+        "ventes_brutes_millimes": 14500,
+        "retours_millimes": 0,
+        "ventes_nettes_millimes": 14500,
+        "cout_achat_net_millimes": 8750,
+        "marge_cout_achat_millimes": 5750,
+        "taux_retour": 0.0,
+        "unites_nettes": 1
+      },
+      "SFX": {
+        "ventes_brutes_millimes": 47500,
+        "retours_millimes": 14500,
+        "ventes_nettes_millimes": 33000,
+        "cout_achat_net_millimes": 19950,
+        "marge_cout_achat_millimes": 13050,
+        "taux_retour": 0.305263,
+        "unites_nettes": 2
+      },
+      "TUN": {
+        "ventes_brutes_millimes": 65350,
+        "retours_millimes": 0,
+        "ventes_nettes_millimes": 65350,
+        "cout_achat_net_millimes": 38550,
+        "marge_cout_achat_millimes": 26800,
+        "taux_retour": 0.0,
+        "unites_nettes": 6
+      }
+    },
+    "par_mois": {
+      "2026-03": {
+        "ventes_brutes_millimes": 127350,
+        "retours_millimes": 14500,
+        "ventes_nettes_millimes": 112850,
+        "cout_achat_net_millimes": 67250,
+        "marge_cout_achat_millimes": 45600,
+        "taux_retour": 0.113859,
+        "unites_nettes": 9
+      }
+    },
+    "par_famille": {
+      "Cosmétique": {
+        "ventes_brutes_millimes": 11700,
+        "retours_millimes": 0,
+        "ventes_nettes_millimes": 11700,
+        "cout_achat_net_millimes": 4950,
+        "marge_cout_achat_millimes": 6750,
+        "taux_retour": 0.0,
+        "unites_nettes": 3
+      },
+      "Dattes": {
+        "ventes_brutes_millimes": 43500,
+        "retours_millimes": 14500,
+        "ventes_nettes_millimes": 29000,
+        "cout_achat_net_millimes": 17500,
+        "marge_cout_achat_millimes": 11500,
+        "taux_retour": 0.333333,
+        "unites_nettes": 2
+      },
+      "Huiles": {
+        "ventes_brutes_millimes": 72150,
+        "retours_millimes": 0,
+        "ventes_nettes_millimes": 72150,
+        "cout_achat_net_millimes": 44800,
+        "marge_cout_achat_millimes": 27350,
+        "taux_retour": 0.0,
+        "unites_nettes": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,529 @@
+{
+  "mission": "M06",
+  "entreprise": "Dar Azur",
+  "lot": "lot1",
+  "etape": "initial",
+  "periode": {
+    "debut": "2026-01-01",
+    "fin": "2026-06-30"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "sejours.csv": {
+      "lignes": 1938,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "chambres.xlsx": {
+      "feuilles": [
+        "Chambres",
+        "Types"
+      ],
+      "lignes_chambres": 15,
+      "etablissements": 4,
+      "chambres": 64,
+      "ligne_entete_chambres": 3
+    },
+    "canaux.json": {
+      "canaux": 4,
+      "versions": 4
+    },
+    "operations.sqlite": {
+      "annulation": 112,
+      "confirmees": 109,
+      "retirees": 3,
+      "paiement": 1896,
+      "motif_annulation": 5
+    }
+  },
+  "nettoyage": {
+    "sejours.csv": {
+      "lignes_acceptees_nouvelles": 1896,
+      "doublons_exacts": 15,
+      "deja_charges": 0,
+      "formats_montants": 574,
+      "formats_dates": 495,
+      "casse_espaces": 206
+    },
+    "operations.sqlite": {
+      "annulations_retirees_ignorees": 3,
+      "deja_chargees": 0,
+      "annulations_acceptees_nouvelles": 107,
+      "paiements_non_charges": 1896
+    }
+  },
+  "rejets": {
+    "total": 29,
+    "par_motif": {
+      "cle_inconnue": 9,
+      "id_conflit": 8,
+      "id_manquant": 6,
+      "quantite_invalide": 6
+    },
+    "par_source": {
+      "sejours.csv": {
+        "cle_inconnue": 7,
+        "id_conflit": 8,
+        "id_manquant": 6,
+        "quantite_invalide": 6
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 2
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 181,
+    "dim_etablissement": 4,
+    "dim_canal": 4,
+    "fact_sejour": 1896,
+    "fact_annulation": 107
+  },
+  "indicateurs": {
+    "nuitees_vendues": 4456,
+    "chambres_disponibles": 11584,
+    "taux_occupation": 0.384669,
+    "montant_sejours_millimes": 992422000,
+    "remboursements_millimes": 42874000,
+    "revenu_net_millimes": 949548000,
+    "revpar_millimes": 81971,
+    "commissions_millimes": 130569230,
+    "sejours": 1896
+  },
+  "agregats": {
+    "par_etablissement": {
+      "DAH": {
+        "nuitees_vendues": 1414,
+        "chambres_disponibles": 3982,
+        "taux_occupation": 0.355098,
+        "montant_sejours_millimes": 297861500,
+        "remboursements_millimes": 11676750,
+        "revenu_net_millimes": 286184750,
+        "revpar_millimes": 71870,
+        "commissions_millimes": 40041665,
+        "sejours": 596
+      },
+      "DDJ": {
+        "nuitees_vendues": 1162,
+        "chambres_disponibles": 3258,
+        "taux_occupation": 0.356661,
+        "montant_sejours_millimes": 275158500,
+        "remboursements_millimes": 12505000,
+        "revenu_net_millimes": 262653500,
+        "revpar_millimes": 80618,
+        "commissions_millimes": 35003720,
+        "sejours": 496
+      },
+      "DSB": {
+        "nuitees_vendues": 683,
+        "chambres_disponibles": 1810,
+        "taux_occupation": 0.377348,
+        "montant_sejours_millimes": 189956500,
+        "remboursements_millimes": 9831500,
+        "revenu_net_millimes": 180125000,
+        "revpar_millimes": 99517,
+        "commissions_millimes": 20745280,
+        "sejours": 298
+      },
+      "DTZ": {
+        "nuitees_vendues": 1197,
+        "chambres_disponibles": 2534,
+        "taux_occupation": 0.472376,
+        "montant_sejours_millimes": 229445500,
+        "remboursements_millimes": 8860750,
+        "revenu_net_millimes": 220584750,
+        "revpar_millimes": 87050,
+        "commissions_millimes": 34778565,
+        "sejours": 506
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "nuitees_vendues": 637,
+        "chambres_disponibles": 1984,
+        "taux_occupation": 0.321069,
+        "montant_sejours_millimes": 121822500,
+        "remboursements_millimes": 4879500,
+        "revenu_net_millimes": 116943000,
+        "revpar_millimes": 58943,
+        "commissions_millimes": 16661325,
+        "sejours": 260
+      },
+      "2026-02": {
+        "nuitees_vendues": 586,
+        "chambres_disponibles": 1792,
+        "taux_occupation": 0.327009,
+        "montant_sejours_millimes": 112761500,
+        "remboursements_millimes": 3508750,
+        "revenu_net_millimes": 109252750,
+        "revpar_millimes": 60967,
+        "commissions_millimes": 15787060,
+        "sejours": 250
+      },
+      "2026-03": {
+        "nuitees_vendues": 775,
+        "chambres_disponibles": 1984,
+        "taux_occupation": 0.390625,
+        "montant_sejours_millimes": 164381000,
+        "remboursements_millimes": 5817000,
+        "revenu_net_millimes": 158564000,
+        "revpar_millimes": 79921,
+        "commissions_millimes": 22276390,
+        "sejours": 319
+      },
+      "2026-04": {
+        "nuitees_vendues": 790,
+        "chambres_disponibles": 1920,
+        "taux_occupation": 0.411458,
+        "montant_sejours_millimes": 172771500,
+        "remboursements_millimes": 7858250,
+        "revenu_net_millimes": 164913250,
+        "revpar_millimes": 85892,
+        "commissions_millimes": 24117400,
+        "sejours": 332
+      },
+      "2026-05": {
+        "nuitees_vendues": 779,
+        "chambres_disponibles": 1984,
+        "taux_occupation": 0.392641,
+        "montant_sejours_millimes": 200895500,
+        "remboursements_millimes": 8817500,
+        "revenu_net_millimes": 192078000,
+        "revpar_millimes": 96814,
+        "commissions_millimes": 24632315,
+        "sejours": 354
+      },
+      "2026-06": {
+        "nuitees_vendues": 889,
+        "chambres_disponibles": 1920,
+        "taux_occupation": 0.463021,
+        "montant_sejours_millimes": 219790000,
+        "remboursements_millimes": 11993000,
+        "revenu_net_millimes": 207797000,
+        "revpar_millimes": 108228,
+        "commissions_millimes": 27094740,
+        "sejours": 381
+      }
+    },
+    "par_etablissement_mois": {
+      "DAH 2026-01": {
+        "nuitees_vendues": 143,
+        "chambres_disponibles": 682,
+        "taux_occupation": 0.209677,
+        "montant_sejours_millimes": 24510500,
+        "remboursements_millimes": 0,
+        "revenu_net_millimes": 24510500,
+        "revpar_millimes": 35939,
+        "commissions_millimes": 2926240,
+        "sejours": 55
+      },
+      "DAH 2026-02": {
+        "nuitees_vendues": 141,
+        "chambres_disponibles": 616,
+        "taux_occupation": 0.228896,
+        "montant_sejours_millimes": 24362500,
+        "remboursements_millimes": 297000,
+        "revenu_net_millimes": 24065500,
+        "revpar_millimes": 39067,
+        "commissions_millimes": 3289845,
+        "sejours": 59
+      },
+      "DAH 2026-03": {
+        "nuitees_vendues": 224,
+        "chambres_disponibles": 682,
+        "taux_occupation": 0.328446,
+        "montant_sejours_millimes": 43388500,
+        "remboursements_millimes": 719750,
+        "revenu_net_millimes": 42668750,
+        "revpar_millimes": 62564,
+        "commissions_millimes": 5425620,
+        "sejours": 87
+      },
+      "DAH 2026-04": {
+        "nuitees_vendues": 257,
+        "chambres_disponibles": 660,
+        "taux_occupation": 0.389394,
+        "montant_sejours_millimes": 54456500,
+        "remboursements_millimes": 2314000,
+        "revenu_net_millimes": 52142500,
+        "revpar_millimes": 79004,
+        "commissions_millimes": 8790890,
+        "sejours": 106
+      },
+      "DAH 2026-05": {
+        "nuitees_vendues": 276,
+        "chambres_disponibles": 682,
+        "taux_occupation": 0.404692,
+        "montant_sejours_millimes": 65574000,
+        "remboursements_millimes": 4066000,
+        "revenu_net_millimes": 61508000,
+        "revpar_millimes": 90188,
+        "commissions_millimes": 7733095,
+        "sejours": 131
+      },
+      "DAH 2026-06": {
+        "nuitees_vendues": 373,
+        "chambres_disponibles": 660,
+        "taux_occupation": 0.565152,
+        "montant_sejours_millimes": 85569500,
+        "remboursements_millimes": 4280000,
+        "revenu_net_millimes": 81289500,
+        "revpar_millimes": 123166,
+        "commissions_millimes": 11875975,
+        "sejours": 158
+      },
+      "DDJ 2026-01": {
+        "nuitees_vendues": 138,
+        "chambres_disponibles": 558,
+        "taux_occupation": 0.247312,
+        "montant_sejours_millimes": 28358000,
+        "remboursements_millimes": 1077750,
+        "revenu_net_millimes": 27280250,
+        "revpar_millimes": 48889,
+        "commissions_millimes": 3916035,
+        "sejours": 54
+      },
+      "DDJ 2026-02": {
+        "nuitees_vendues": 122,
+        "chambres_disponibles": 504,
+        "taux_occupation": 0.242063,
+        "montant_sejours_millimes": 24949500,
+        "remboursements_millimes": 307000,
+        "revenu_net_millimes": 24642500,
+        "revpar_millimes": 48894,
+        "commissions_millimes": 3085565,
+        "sejours": 48
+      },
+      "DDJ 2026-03": {
+        "nuitees_vendues": 174,
+        "chambres_disponibles": 558,
+        "taux_occupation": 0.311828,
+        "montant_sejours_millimes": 38123000,
+        "remboursements_millimes": 538750,
+        "revenu_net_millimes": 37584250,
+        "revpar_millimes": 67355,
+        "commissions_millimes": 5510505,
+        "sejours": 71
+      },
+      "DDJ 2026-04": {
+        "nuitees_vendues": 196,
+        "chambres_disponibles": 540,
+        "taux_occupation": 0.362963,
+        "montant_sejours_millimes": 47447000,
+        "remboursements_millimes": 4019500,
+        "revenu_net_millimes": 43427500,
+        "revpar_millimes": 80421,
+        "commissions_millimes": 5530765,
+        "sejours": 86
+      },
+      "DDJ 2026-05": {
+        "nuitees_vendues": 227,
+        "chambres_disponibles": 558,
+        "taux_occupation": 0.40681,
+        "montant_sejours_millimes": 59315500,
+        "remboursements_millimes": 2141500,
+        "revenu_net_millimes": 57174000,
+        "revpar_millimes": 102462,
+        "commissions_millimes": 7642850,
+        "sejours": 107
+      },
+      "DDJ 2026-06": {
+        "nuitees_vendues": 305,
+        "chambres_disponibles": 540,
+        "taux_occupation": 0.564815,
+        "montant_sejours_millimes": 76965500,
+        "remboursements_millimes": 4420500,
+        "revenu_net_millimes": 72545000,
+        "revpar_millimes": 134343,
+        "commissions_millimes": 9318000,
+        "sejours": 130
+      },
+      "DSB 2026-01": {
+        "nuitees_vendues": 79,
+        "chambres_disponibles": 310,
+        "taux_occupation": 0.254839,
+        "montant_sejours_millimes": 20597000,
+        "remboursements_millimes": 1643250,
+        "revenu_net_millimes": 18953750,
+        "revpar_millimes": 61141,
+        "commissions_millimes": 2229470,
+        "sejours": 40
+      },
+      "DSB 2026-02": {
+        "nuitees_vendues": 77,
+        "chambres_disponibles": 280,
+        "taux_occupation": 0.275,
+        "montant_sejours_millimes": 21383500,
+        "remboursements_millimes": 750500,
+        "revenu_net_millimes": 20633000,
+        "revpar_millimes": 73689,
+        "commissions_millimes": 2429525,
+        "sejours": 36
+      },
+      "DSB 2026-03": {
+        "nuitees_vendues": 118,
+        "chambres_disponibles": 310,
+        "taux_occupation": 0.380645,
+        "montant_sejours_millimes": 30711000,
+        "remboursements_millimes": 2271000,
+        "revenu_net_millimes": 28440000,
+        "revpar_millimes": 91742,
+        "commissions_millimes": 3535555,
+        "sejours": 50
+      },
+      "DSB 2026-04": {
+        "nuitees_vendues": 126,
+        "chambres_disponibles": 300,
+        "taux_occupation": 0.42,
+        "montant_sejours_millimes": 32310000,
+        "remboursements_millimes": 305250,
+        "revenu_net_millimes": 32004750,
+        "revpar_millimes": 106683,
+        "commissions_millimes": 3548360,
+        "sejours": 53
+      },
+      "DSB 2026-05": {
+        "nuitees_vendues": 141,
+        "chambres_disponibles": 310,
+        "taux_occupation": 0.454839,
+        "montant_sejours_millimes": 42835500,
+        "remboursements_millimes": 1742500,
+        "revenu_net_millimes": 41093000,
+        "revpar_millimes": 132558,
+        "commissions_millimes": 5067305,
+        "sejours": 60
+      },
+      "DSB 2026-06": {
+        "nuitees_vendues": 142,
+        "chambres_disponibles": 300,
+        "taux_occupation": 0.473333,
+        "montant_sejours_millimes": 42119500,
+        "remboursements_millimes": 3119000,
+        "revenu_net_millimes": 39000500,
+        "revpar_millimes": 130002,
+        "commissions_millimes": 3935065,
+        "sejours": 59
+      },
+      "DTZ 2026-01": {
+        "nuitees_vendues": 277,
+        "chambres_disponibles": 434,
+        "taux_occupation": 0.638249,
+        "montant_sejours_millimes": 48357000,
+        "remboursements_millimes": 2158500,
+        "revenu_net_millimes": 46198500,
+        "revpar_millimes": 106448,
+        "commissions_millimes": 7589580,
+        "sejours": 111
+      },
+      "DTZ 2026-02": {
+        "nuitees_vendues": 246,
+        "chambres_disponibles": 392,
+        "taux_occupation": 0.627551,
+        "montant_sejours_millimes": 42066000,
+        "remboursements_millimes": 2154250,
+        "revenu_net_millimes": 39911750,
+        "revpar_millimes": 101816,
+        "commissions_millimes": 6982125,
+        "sejours": 107
+      },
+      "DTZ 2026-03": {
+        "nuitees_vendues": 259,
+        "chambres_disponibles": 434,
+        "taux_occupation": 0.596774,
+        "montant_sejours_millimes": 52158500,
+        "remboursements_millimes": 2287500,
+        "revenu_net_millimes": 49871000,
+        "revpar_millimes": 114910,
+        "commissions_millimes": 7804710,
+        "sejours": 111
+      },
+      "DTZ 2026-04": {
+        "nuitees_vendues": 211,
+        "chambres_disponibles": 420,
+        "taux_occupation": 0.502381,
+        "montant_sejours_millimes": 38558000,
+        "remboursements_millimes": 1219500,
+        "revenu_net_millimes": 37338500,
+        "revpar_millimes": 88901,
+        "commissions_millimes": 6247385,
+        "sejours": 87
+      },
+      "DTZ 2026-05": {
+        "nuitees_vendues": 135,
+        "chambres_disponibles": 434,
+        "taux_occupation": 0.31106,
+        "montant_sejours_millimes": 33170500,
+        "remboursements_millimes": 867500,
+        "revenu_net_millimes": 32303000,
+        "revpar_millimes": 74431,
+        "commissions_millimes": 4189065,
+        "sejours": 56
+      },
+      "DTZ 2026-06": {
+        "nuitees_vendues": 69,
+        "chambres_disponibles": 420,
+        "taux_occupation": 0.164286,
+        "montant_sejours_millimes": 15135500,
+        "remboursements_millimes": 173500,
+        "revenu_net_millimes": 14962000,
+        "revpar_millimes": 35624,
+        "commissions_millimes": 1965700,
+        "sejours": 34
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_canal",
+    "cle_metier": "canal_id",
+    "attribut": "CAST(taux_commission_pct AS TEXT)",
+    "versions": [
+      {
+        "cle_metier": "DIR",
+        "attribut": "0",
+        "valid_from": "2025-01-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "ENT",
+        "attribut": "10",
+        "valid_from": "2025-01-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "OTA",
+        "attribut": "18",
+        "valid_from": "2025-01-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "TOP",
+        "attribut": "25",
+        "valid_from": "2025-01-01",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "OTA",
+        "date": "2026-06-30",
+        "attribut": "18"
+      },
+      {
+        "cle_metier": "OTA",
+        "date": "2026-07-14",
+        "attribut": "18"
+      },
+      {
+        "cle_metier": "OTA",
+        "date": "2026-07-15",
+        "attribut": "18"
+      },
+      {
+        "cle_metier": "DIR",
+        "date": "2026-07-15",
+        "attribut": "0"
+      }
+    ]
+  }
+}

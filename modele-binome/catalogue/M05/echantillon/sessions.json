@@ -1,0 +1,24 @@
+{
+  "source": "Planning des sessions — Académie Nour",
+  "extrait_le": "2026-03-31",
+  "centres": [
+    "Tunis",
+    "Sousse",
+    "Sfax"
+  ],
+  "sessions": [
+    {
+      "code": "SES-2690",
+      "formation": "F06",
+      "formateur": "Mme Nadia Ayari",
+      "date_debut": "2026-03-02",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-02-01"
+        }
+      ]
+    }
+  ]
+}

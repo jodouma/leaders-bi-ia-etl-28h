@@ -1,0 +1,256 @@
+{
+  "mission": "M03",
+  "echantillon": true,
+  "lignes_csv": 12,
+  "doublons_exacts": 1,
+  "lignes_gardees": 6,
+  "avoirs_non_emis_exclus": 1,
+  "rejets": {
+    "total": 6,
+    "par_motif": {
+      "cle_inconnue": 2,
+      "id_conflit": 2,
+      "id_manquant": 1,
+      "quantite_invalide": 1
+    },
+    "par_source": {
+      "factures.csv": {
+        "cle_inconnue": 1,
+        "id_conflit": 2,
+        "id_manquant": 1,
+        "quantite_invalide": 1
+      },
+      "avoirs.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 31,
+    "dim_produit": 14,
+    "dim_client": 10,
+    "fact_facture": 6,
+    "fact_avoir": 2
+  },
+  "indicateurs": {
+    "montant_facture_millimes": 830660,
+    "avoirs_millimes": 34100,
+    "ventes_nettes_millimes": 796560,
+    "cout_achat_net_millimes": 778400,
+    "marge_commerciale_millimes": 18160,
+    "taux_avoir": 0.041052,
+    "unites_nettes": 81
+  },
+  "agregats": {
+    "par_segment": {
+      "grande surface": {
+        "montant_facture_millimes": 476600,
+        "avoirs_millimes": 17200,
+        "ventes_nettes_millimes": 459400,
+        "cout_achat_net_millimes": 500000,
+        "marge_commerciale_millimes": -40600,
+        "taux_avoir": 0.036089,
+        "unites_nettes": 60
+      },
+      "hôtel": {
+        "montant_facture_millimes": 168480,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 168480,
+        "cout_achat_net_millimes": 135000,
+        "marge_commerciale_millimes": 33480,
+        "taux_avoir": 0.0,
+        "unites_nettes": 3
+      },
+      "restaurant": {
+        "montant_facture_millimes": 50700,
+        "avoirs_millimes": 16900,
+        "ventes_nettes_millimes": 33800,
+        "cout_achat_net_millimes": 26800,
+        "marge_commerciale_millimes": 7000,
+        "taux_avoir": 0.333333,
+        "unites_nettes": 4
+      },
+      "épicerie": {
+        "montant_facture_millimes": 134880,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 134880,
+        "cout_achat_net_millimes": 116600,
+        "marge_commerciale_millimes": 18280,
+        "taux_avoir": 0.0,
+        "unites_nettes": 14
+      }
+    },
+    "par_client": {
+      "CL01": {
+        "montant_facture_millimes": 134880,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 134880,
+        "cout_achat_net_millimes": 116600,
+        "marge_commerciale_millimes": 18280,
+        "taux_avoir": 0.0,
+        "unites_nettes": 14
+      },
+      "CL02": {
+        "montant_facture_millimes": 50700,
+        "avoirs_millimes": 16900,
+        "ventes_nettes_millimes": 33800,
+        "cout_achat_net_millimes": 26800,
+        "marge_commerciale_millimes": 7000,
+        "taux_avoir": 0.333333,
+        "unites_nettes": 4
+      },
+      "CL05": {
+        "montant_facture_millimes": 476600,
+        "avoirs_millimes": 17200,
+        "ventes_nettes_millimes": 459400,
+        "cout_achat_net_millimes": 500000,
+        "marge_commerciale_millimes": -40600,
+        "taux_avoir": 0.036089,
+        "unites_nettes": 60
+      },
+      "CL08": {
+        "montant_facture_millimes": 168480,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 168480,
+        "cout_achat_net_millimes": 135000,
+        "marge_commerciale_millimes": 33480,
+        "taux_avoir": 0.0,
+        "unites_nettes": 3
+      }
+    },
+    "par_region": {
+      "Cap Bon": {
+        "montant_facture_millimes": 168480,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 168480,
+        "cout_achat_net_millimes": 135000,
+        "marge_commerciale_millimes": 33480,
+        "taux_avoir": 0.0,
+        "unites_nettes": 3
+      },
+      "Sahel": {
+        "montant_facture_millimes": 50700,
+        "avoirs_millimes": 16900,
+        "ventes_nettes_millimes": 33800,
+        "cout_achat_net_millimes": 26800,
+        "marge_commerciale_millimes": 7000,
+        "taux_avoir": 0.333333,
+        "unites_nettes": 4
+      },
+      "Tunis": {
+        "montant_facture_millimes": 611480,
+        "avoirs_millimes": 17200,
+        "ventes_nettes_millimes": 594280,
+        "cout_achat_net_millimes": 616600,
+        "marge_commerciale_millimes": -22320,
+        "taux_avoir": 0.028128,
+        "unites_nettes": 74
+      }
+    },
+    "par_mois": {
+      "2026-03": {
+        "montant_facture_millimes": 830660,
+        "avoirs_millimes": 34100,
+        "ventes_nettes_millimes": 796560,
+        "cout_achat_net_millimes": 778400,
+        "marge_commerciale_millimes": 18160,
+        "taux_avoir": 0.041052,
+        "unites_nettes": 81
+      }
+    },
+    "par_famille": {
+      "Boissons": {
+        "montant_facture_millimes": 132600,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 132600,
+        "cout_achat_net_millimes": 108000,
+        "marge_commerciale_millimes": 24600,
+        "taux_avoir": 0.0,
+        "unites_nettes": 40
+      },
+      "Conserves": {
+        "montant_facture_millimes": 168480,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 168480,
+        "cout_achat_net_millimes": 135000,
+        "marge_commerciale_millimes": 33480,
+        "taux_avoir": 0.0,
+        "unites_nettes": 3
+      },
+      "Produits laitiers": {
+        "montant_facture_millimes": 129300,
+        "avoirs_millimes": 16900,
+        "ventes_nettes_millimes": 112400,
+        "cout_achat_net_millimes": 95800,
+        "marge_commerciale_millimes": 16600,
+        "taux_avoir": 0.130704,
+        "unites_nettes": 14
+      },
+      "Épicerie sèche": {
+        "montant_facture_millimes": 400280,
+        "avoirs_millimes": 17200,
+        "ventes_nettes_millimes": 383080,
+        "cout_achat_net_millimes": 439600,
+        "marge_commerciale_millimes": -56520,
+        "taux_avoir": 0.04297,
+        "unites_nettes": 24
+      }
+    },
+    "par_produit": {
+      "PR01": {
+        "montant_facture_millimes": 56280,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 56280,
+        "cout_achat_net_millimes": 47600,
+        "marge_commerciale_millimes": 8680,
+        "taux_avoir": 0.0,
+        "unites_nettes": 4
+      },
+      "PR03": {
+        "montant_facture_millimes": 344000,
+        "avoirs_millimes": 17200,
+        "ventes_nettes_millimes": 326800,
+        "cout_achat_net_millimes": 392000,
+        "marge_commerciale_millimes": -65200,
+        "taux_avoir": 0.05,
+        "unites_nettes": 20
+      },
+      "PR06": {
+        "montant_facture_millimes": 168480,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 168480,
+        "cout_achat_net_millimes": 135000,
+        "marge_commerciale_millimes": 33480,
+        "taux_avoir": 0.0,
+        "unites_nettes": 3
+      },
+      "PR07": {
+        "montant_facture_millimes": 132600,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 132600,
+        "cout_achat_net_millimes": 108000,
+        "marge_commerciale_millimes": 24600,
+        "taux_avoir": 0.0,
+        "unites_nettes": 40
+      },
+      "PR09": {
+        "montant_facture_millimes": 78600,
+        "avoirs_millimes": 0,
+        "ventes_nettes_millimes": 78600,
+        "cout_achat_net_millimes": 69000,
+        "marge_commerciale_millimes": 9600,
+        "taux_avoir": 0.0,
+        "unites_nettes": 10
+      },
+      "PR10": {
+        "montant_facture_millimes": 50700,
+        "avoirs_millimes": 16900,
+        "ventes_nettes_millimes": 33800,
+        "cout_achat_net_millimes": 26800,
+        "marge_commerciale_millimes": 7000,
+        "taux_avoir": 0.333333,
+        "unites_nettes": 4
+      }
+    }
+  }
+}

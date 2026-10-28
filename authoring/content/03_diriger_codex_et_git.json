@@ -1,0 +1,2021 @@
+{
+  "title": "Diriger Codex et travailler à deux",
+  "cover_title": "Diriger Codex et travailler à deux",
+  "subtitle": "Prompts, modèle et effort, revue, Git au quotidien, dépannage · le livret à ouvrir à chaque demande et à chaque pull request",
+  "author": "Youssef Douma · Leaders University",
+  "subject_label": "Solen BI 22 h · Livret 03 · Diriger Codex et Git",
+  "header_label": "SOLEN  /  IA, CODEX ET BI",
+  "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+  "cover": {
+    "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+    "case": "SOLEN DIGITAL · CLIENT FICTIF MAISON ZITOUNA",
+    "flow": "Demande  →  diff  →  contrôle  →  revue à deux  →  fusion",
+    "stats": [
+      [
+        "18",
+        "PROMPTS PRÊTS À ADAPTER"
+      ],
+      [
+        "8",
+        "HABITUDES DE TRAVAIL"
+      ],
+      [
+        "0",
+        "LIGNE DE CODE À LA MAIN"
+      ]
+    ],
+    "label": "03 / DIRIGER CODEX ET GIT"
+  },
+  "pages": [
+    {
+      "id": "sommaire",
+      "title": "Sommaire : à ouvrir à chaque demande et à chaque PR",
+      "kicker": "03 / DIRIGER CODEX · SOMMAIRE",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Partie",
+            "Ce que vous y trouvez",
+            "Page"
+          ],
+          "rows": [
+            [
+              "1. Codex propose, vous décidez",
+              "Qui fait quoi ; ce que Codex ne fait jamais.",
+              "3"
+            ],
+            [
+              "2. Modèle, effort, vitesse, tokens, contexte, quota",
+              "Six mots ; quel effort pour quelle tâche.",
+              "4"
+            ],
+            [
+              "3. Les huit habitudes",
+              "De la demande précise à la revue.",
+              "6"
+            ],
+            [
+              "4. Les prompts prêts à adapter",
+              "Les 18 fiches, par moment (ci-dessous).",
+              "9"
+            ],
+            [
+              "5. Lire un diff et un fichier Python",
+              "Fonction, module, exception, classe ; où regarder.",
+              "27"
+            ],
+            [
+              "6. La revue à deux",
+              "$revoir-bi, puis votre revue écrite sur GitHub.",
+              "29"
+            ],
+            [
+              "7. Git au quotidien",
+              "Le cycle en liste de contrôle ; le dépannage.",
+              "30"
+            ],
+            [
+              "8. Codex indisponible ou quota atteint",
+              "Ce qui continue sans IA ; le point de reprise.",
+              "33"
+            ],
+            [
+              "9. Erreurs Python et contrôles rouges",
+              "Les messages fréquents et quoi demander.",
+              "34"
+            ],
+            [
+              "À ce stade, je sais…",
+              "Auto-contrôle de fin de livret.",
+              "36"
+            ]
+          ],
+          "widths": [
+            2.4,
+            3.2,
+            0.6
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Moment",
+            "Les 18 prompts (page), rangés par moment et non par numéro"
+          ],
+          "rows": [
+            [
+              "Cadrer et planifier (S1 → S5)",
+              "01 Cadrer les indicateurs (9) · 02 Plan court (10)"
+            ],
+            [
+              "Construire (S2 → S5)",
+              "03 Réaliser une petite étape (11) · 04 Lire CSV, Excel, JSON (12) · 05 Nettoyer et rejeter (13) · 06 SQL paramétré (14) · 07 Charger l'étoile (15) · 08 Incrément, SCD2, rejeu (16) · 09 Tests et CI (17)"
+            ],
+            [
+              "Revue et PR (chaque PR)",
+              "11 Revue en lecture seule (18) · 12 Corriger après revue (19) · 13 Préparer la PR (20)"
+            ],
+            [
+              "Quand ça bloque",
+              "10 Comprendre une erreur (21) · 15 Résoudre un conflit (22)"
+            ],
+            [
+              "Expliquer et reprendre",
+              "14 Ligne source → graphique (23) · 16 Note d'état et reprise (24)"
+            ],
+            [
+              "Aller plus loin (facultatif, mission)",
+              "17 Skill local (25) · 18 Variation métier (26)"
+            ]
+          ],
+          "widths": [
+            1.6,
+            4.6
+          ]
+        }
+      ]
+    },
+    {
+      "id": "roles",
+      "title": "1. Codex propose, vous décidez",
+      "kicker": "03 / DIRIGER CODEX · LES RÔLES",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Codex lit votre dépôt, propose du code, lance une commande et montre ce qu'il a changé. Il se trompe parfois avec assurance : le cours rend ses erreurs **visibles** (diff lu, contrôle relancé, revue par une autre personne)."
+        },
+        {
+          "type": "figure",
+          "path": "../../docs/images/diagrams/v7-codex-controle.png",
+          "height": 165,
+          "caption": "Codex propose dans une branche ; l'auteur contrôle ; le binôme relit (Codex en lecture seule, puis revue humaine) ; l'équipe livre après CI verte et approbation."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Qui",
+            "Son rôle",
+            "Ce qu'il ne fait jamais"
+          ],
+          "rows": [
+            [
+              "Codex",
+              "Écrit Python, SQL, DAX, tests, YAML dans `solen/`, `tests/`, `powerbi/`, `.github/` ; lance une commande, recopie la sortie, explique.",
+              "Modifier sources, `reference/`, `controles/` ; commiter, pousser, ouvrir ou fusionner une PR."
+            ],
+            [
+              "Vous, l'auteur",
+              "Rédigez la demande, prévoyez une valeur, relancez les contrôles, lisez le diff, décidez, faites Git.",
+              "Taper du code ; croire un « ça marche » sans sortie réelle."
+            ],
+            [
+              "Votre binôme",
+              "Récupère la branche, relance les contrôles, fait relire Codex en lecture seule, écrit sa revue GitHub.",
+              "Approuver sans rien reproduire."
+            ],
+            [
+              "Vérificateur et CI",
+              "Comparent vos sorties à la référence, chez vous puis sur une machine Linux neuve.",
+              "Lire votre code."
+            ]
+          ],
+          "widths": [
+            1.1,
+            2.8,
+            2.1
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Trois règles qui ne changent jamais",
+          "text": "1. Vous ne tapez jamais de code. 2. Une valeur n'est vraie que lorsque **vous** avez relancé la commande qui la montre : « 26 rejets » annoncé par Codex reste une promesse tant que vous n'avez pas lu la ligne du vérificateur. 3. Git et GitHub sont vos gestes."
+        },
+        {
+          "type": "text",
+          "text": "Repères : `<…>` = à remplacer, chevrons compris. Terminal Ubuntu, dossier `~/solen-bi`, venv actif. Exemples : **Solen Commerce 360** (Maison Zitouna, boutiques TUN, NBE, SFX)."
+        }
+      ]
+    },
+    {
+      "id": "six-mots",
+      "title": "2. Six mots différents",
+      "kicker": "03 / DIRIGER CODEX · MODÈLE, EFFORT, VITESSE, TOKENS, CONTEXTE, QUOTA",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Les confondre mène à de mauvaises décisions. Seul ce qu'affiche un **compte Free** compte ici."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Mot",
+            "Ce que c'est",
+            "Où le voir · le bon geste"
+          ],
+          "rows": [
+            [
+              "Modèle",
+              "Annoncé pour Free : **GPT-6 Luna**, selon le déploiement.",
+              "Sélecteur de modèle (Ctrl + Maj + M) · choisir Luna."
+            ],
+            [
+              "Effort",
+              "Combien il réfléchit : **Light, Medium, High, Extra High**.",
+              "Sous **Advanced** (« Luna High » possible) · commencer **High**."
+            ],
+            [
+              "Vitesse",
+              "« Standard » : une vitesse de service, pas un effort.",
+              "Libellé de l'offre Free · rien à régler."
+            ],
+            [
+              "Tokens",
+              "Morceaux de texte : demande, fichiers lus, réponse.",
+              "Dans l'usage consommé · peu de fichiers, une petite étape."
+            ],
+            [
+              "Contexte",
+              "Ce que la conversation contient ; trop plein, Codex oublie.",
+              "`/status` · note d'état (prompt 16), conversation neuve."
+            ],
+            [
+              "Quota",
+              "Allocation d'usage sur une période, variable.",
+              "`/status`, tableau d'usage · limite : section 8."
+            ]
+          ],
+          "widths": [
+            0.8,
+            2.6,
+            2.8
+          ]
+        },
+        {
+          "type": "figure",
+          "path": "../../docs/images/diagrams/v7-tokens-contexte.png",
+          "height": 230,
+          "caption": "Tokens, contexte, effort et quota : quatre angles sur une même demande."
+        },
+        {
+          "type": "callout",
+          "label": "Ce qu'on ne vous promet pas",
+          "text": "Ni nombre de tokens, ni « 4 h de Codex ». Monter l'effort ne vide pas un contexte surchargé, et une conversation neuve ne rend pas de quota. Lisez l'usage affiché ; notez-le au journal."
+        }
+      ]
+    },
+    {
+      "id": "effort-tache",
+      "title": "Quel effort pour quelle tâche ?",
+      "kicker": "03 / DIRIGER CODEX · LA FICHE TÂCHE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "La **fiche tâche** : tâche → modèle accessible → effort accessible → raison → preuve attendue. Sur Free, seul l'effort varie ; un effort plus haut ne dispense jamais de la preuve."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Tâche (exemple Solen)",
+            "Modèle",
+            "Effort",
+            "Raison",
+            "Preuve attendue"
+          ],
+          "rows": [
+            [
+              "**Comprendre** le grain de `fact_vente`",
+              "Luna",
+              "High",
+              "Relier fichiers et notions",
+              "Vous l'expliquez sans l'écran"
+            ],
+            [
+              "**Planifier** `outputs/rejets.csv`",
+              "Luna",
+              "High",
+              "Découper avant d'écrire",
+              "3 à 5 étapes, un contrôle chacune"
+            ],
+            [
+              "**Petite fonction** : `18,500` → 18500",
+              "Luna",
+              "Medium ou High",
+              "Petit, bien délimité",
+              "Diff lu + test vert"
+            ],
+            [
+              "**Intégrer** `python -m solen initial`",
+              "Luna",
+              "High",
+              "Plusieurs modules",
+              "`--etape initial` OK"
+            ],
+            [
+              "**Déboguer** « attendu 1960, observé 1974 »",
+              "Luna",
+              "High → Extra High si bloqué",
+              "La cause, pas le symptôme",
+              "Erreur reproduite puis disparue"
+            ],
+            [
+              "**Revoir** avec `$revoir-bi`",
+              "Luna",
+              "High",
+              "Trouver ce qui manque",
+              "Constats fichier:ligne"
+            ],
+            [
+              "**Question courte** : « valid_to ? »",
+              "Luna",
+              "Light",
+              "Rien à relier",
+              "Vous reformulez"
+            ]
+          ],
+          "widths": [
+            2.1,
+            0.85,
+            1.2,
+            1.45,
+            1.7
+          ]
+        },
+        {
+          "type": "figure",
+          "path": "../../docs/images/diagrams/v7-tache-modele-effort.png",
+          "height": 236,
+          "caption": "La même fiche en image : un seul modèle annoncé pour Free ; on commence High."
+        }
+      ]
+    },
+    {
+      "id": "habitudes-1",
+      "title": "3. Les huit habitudes",
+      "kicker": "03 / DIRIGER CODEX · HABITUDES 1 À 3",
+      "blocks": [
+        {
+          "type": "section",
+          "text": "1 · Être précis"
+        },
+        {
+          "type": "text",
+          "text": "Un objectif observable (un fichier, un compte, un total), les fichiers concernés et ceux à ne pas toucher, la commande de contrôle et la valeur que **vous** prévoyez."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Demande floue",
+            "Demande précise (exemple Solen)"
+          ],
+          "rows": [
+            [
+              "« Fais le nettoyage des ventes. »",
+              "« Dans `solen/`, rejette les lignes de `ventes.csv` à quantité ≤ 0 ou non entière, motif `quantite_invalide`, dans `outputs/rejets.csv`. Sources et `controles/` intacts. Sur l'échantillon je prévois 1 rejet de ce motif (`E-009-1`, quantité -1). Recopie la sortie réelle. »"
+            ]
+          ],
+          "widths": [
+            1,
+            2.4
+          ]
+        },
+        {
+          "type": "section",
+          "text": "2 · Demander un plan court"
+        },
+        {
+          "type": "text",
+          "text": "Plus d'un fichier touché : 3 à 5 étapes, une preuve chacune, puis vous choisissez **une** étape. Exemple : `lecture-sources` (comptes des 4 sources = les vôtres) → `formats-millimes` (`18,5` → 18500) → `rejets-motifs` (rejets par motif = votre calcul sur l'échantillon). Une branche et une PR par étape."
+        },
+        {
+          "type": "section",
+          "text": "3 · Lire le diff, préférer les contrôles déterministes"
+        },
+        {
+          "type": "text",
+          "text": "Le diff (`git diff`, ou l'onglet de revue de l'app, Ctrl + Maj + G) montre chaque ligne ajoutée (`+`) ou retirée (`-`). Un contrôle **déterministe** donne le même résultat pour les mêmes fichiers : un compte, une somme en millimes, des rejets par motif. Exemple : après le lot 1, `OK — fact_vente : 1960 lignes`. Un diff qui touche `controles/` se refuse, même si tout est vert."
+        },
+        {
+          "type": "figure",
+          "path": "../../docs/images/diagrams/v7-indicateur-controle.png",
+          "height": 205,
+          "caption": "Un total peut sembler plausible et être faux : un doublon compté deux fois gonfle les ventes nettes. Le contrôle qui tranche : autant de ligne_id distincts acceptés que de lignes dans fact_vente."
+        }
+      ]
+    },
+    {
+      "id": "habitudes-2",
+      "title": "Les huit habitudes · 4 à 6",
+      "kicker": "03 / DIRIGER CODEX · HABITUDES 4 À 6",
+      "blocks": [
+        {
+          "type": "section",
+          "text": "4 · Écrire une note courte : état, décision, preuve, prochain objectif"
+        },
+        {
+          "type": "text",
+          "text": "Une entrée de `notes/JOURNAL.md` par PR. Écrivez ce que vous avez **vu**, pas ce que Codex a promis. La note sert aussi à reprendre dans une conversation neuve (prompt 16)."
+        },
+        {
+          "type": "code",
+          "label": "notes/JOURNAL.md · exemple d'entrée",
+          "text": "## 2026-11-18 — PR #6 — Charger l'étoile du lot 1\nAuteur : Ines · Relecteur : Rayan · Mission : tronc-commun\n- État actuel : `python -m solen initial` recrée l'entrepôt (5 tables).\n- Décision : refus de relier les faits par boutique_id (proposé par Codex) ;\n  on relie par boutique_key.\n- Preuve : verifier --etape initial → 0 ÉCHEC ; fact_vente : 1960 lignes.\n- Prochain objectif : lot 2, une boutique change de zone (SCD2)."
+        },
+        {
+          "type": "section",
+          "text": "5 · Distinguer tokens, contexte, effort et quota"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce que vous observez",
+            "Le vrai problème",
+            "Le bon geste"
+          ],
+          "rows": [
+            [
+              "Après trois étapes dans la même conversation, Codex oublie les millimes.",
+              "Contexte surchargé.",
+              "Note d'état, conversation neuve, AGENTS.md relu."
+            ],
+            [
+              "La réponse sur la SCD2 mélange `valid_from` et `valid_to`.",
+              "Tâche difficile, effort trop bas ?",
+              "Vérifier l'effort (High) ; redemander avec un cas daté."
+            ],
+            [
+              "Message de limite atteinte, heure de reprise affichée.",
+              "Quota.",
+              "Une conversation neuve n'y change rien : section 8."
+            ],
+            [
+              "Codex lit tout `tronc-commun/` pour une question de prix.",
+              "Trop de tokens.",
+              "Nommer le seul fichier utile : `catalogue.xlsx`."
+            ]
+          ],
+          "widths": [
+            2.3,
+            1.4,
+            2.2
+          ]
+        },
+        {
+          "type": "section",
+          "text": "6 · Revue lecture seule → constater → corriger → recontrôler"
+        },
+        {
+          "type": "text",
+          "text": "La revue ne modifie rien : elle **constate** au plus trois défauts avec preuve. Vous choisissez ce qui est corrigé, une demande par défaut, puis vous relancez **tous** les contrôles et testez un **cas limite**, la valeur juste à la frontière d'une règle."
+        },
+        {
+          "type": "callout",
+          "label": "Exemple Solen · cas limite SCD2",
+          "text": "NBE passe de « Cap Bon » à « Nord-Est » le 2026-07-15 (`valid_from` inclus, `valid_to` exclu). Vente NBE du **2026-07-14** → Cap Bon ; du **2026-07-15** → Nord-Est. Si celle du 15 tombe en Cap Bon, `valid_to` est traité comme inclus : défaut établi."
+        }
+      ]
+    },
+    {
+      "id": "habitudes-3",
+      "title": "Les huit habitudes · 7 et 8",
+      "kicker": "03 / DIRIGER CODEX · HABITUDES 7 ET 8",
+      "blocks": [
+        {
+          "type": "section",
+          "text": "7 · Utiliser les Skills locaux et AGENTS.md"
+        },
+        {
+          "type": "text",
+          "text": "`AGENTS.md`, à la racine du dépôt binôme, contient les règles que Codex lit **avant tout travail** : code seulement dans `solen/`, jamais de modification des sources, des références ni de `controles/`, millimes entiers, SQL paramétré, ni commit ni push. Les **Skills** sont des méthodes rangées dans `.agents/skills/<nom>/SKILL.md` (en-tête `name` et `description`) ; nommez-les avec `$`."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Skill fourni",
+            "Quand",
+            "Ce qu'il garantit"
+          ],
+          "rows": [
+            [
+              "`$expliquer-bi`",
+              "Comprendre une notion ou un fichier",
+              "Exemple chiffré à la main d'abord ; rien n'est modifié ; une question finale."
+            ],
+            [
+              "`$revoir-bi`",
+              "Avant votre revue GitHub",
+              "Lecture seule ; au plus 3 défauts établis ; contrôles non réalisés séparés."
+            ],
+            [
+              "`$preparer-pr`",
+              "Avant `git add` / `commit` / `push`",
+              "Liste OK / À corriger / Non vérifié ; titre et description proposés."
+            ]
+          ],
+          "widths": [
+            1.2,
+            1.8,
+            3
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Exemple Solen",
+          "text": "Demandez « Quelles instructions as-tu lues ? » : la réponse doit citer `AGENTS.md`. Si Codex propose de « mettre à jour `attendu_lot1.json` pour que le contrôle passe », il contredit AGENTS.md : refusez, redemandez une correction dans `solen/`. Si `$revoir-bi` n'est pas reconnu : « Lis .agents/skills/revoir-bi/SKILL.md et applique sa méthode. »"
+        },
+        {
+          "type": "section",
+          "text": "8 · Workers parallèles : facultatifs"
+        },
+        {
+          "type": "text",
+          "text": "Les sous-agents (« subagents ») sont des agents que Codex lance en parallèle pour une partie de la tâche. Ils servent surtout au travail de **lecture** (relire sous deux angles, explorer des fichiers) et **consomment plus de tokens** qu'un agent seul. Ils ne démarrent que si vous les demandez ; leur disponibilité sur Free n'est pas garantie."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Avec sous-agents (si proposés)",
+            "Sans sous-agents (méthode de base du cours)"
+          ],
+          "rows": [
+            [
+              "« Fais deux lectures indépendantes, l'une sur les données et les rejets, l'autre sur le modèle et l'historique, puis fusionne sans doublon. » Un seul auteur corrige ensuite.",
+              "Deux conversations successives avec `$revoir-bi`, une par angle. Résultat comparable, en général moins d'usage (rien n'est mesuré)."
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Les huit habitudes en une ligne",
+          "text": "Précis · plan court · diff lu et contrôle déterministe · note courte · six mots distincts · revue → correction → recontrôle + cas limite · AGENTS.md et Skills · parallèle seulement si utile."
+        }
+      ]
+    },
+    {
+      "id": "prompt-01",
+      "title": "4. Les prompts prêts à adapter",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CADRER ET PLANIFIER",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Les fiches sont aussi dans `prompts/` du dépôt du cours, à copier. À utiliser dans **votre dépôt binôme**."
+        },
+        {
+          "type": "diagram",
+          "nodes": [
+            "Prévoir : notez la valeur attendue avant d'envoyer",
+            "Adapter : remplacez chaque <…> ; une seule petite étape",
+            "Contrôler : relancez la commande ; comparez à votre prévision",
+            "Lire le diff, l'expliquer au binôme, décider"
+          ]
+        },
+        {
+          "type": "section",
+          "text": "01 · Cadrer les indicateurs avec la direction"
+        },
+        {
+          "type": "text",
+          "text": "**Quand** : séance 1, après le mail de la direction (« les ventes montent, mais où passe la marge ? »), et au début de chaque mission du catalogue. Aucun code n'est écrit à cette étape. Tronc commun : `<dossier echantillon>` = `tronc-commun/echantillon`."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "ouvrez l'échantillon de la mission (`echantillon/`) et calculez **à la main**, sur papier, les ventes brutes en TND. Notez votre résultat."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 01 · à adapter : remplacez chaque <…>",
+          "text": "Lis mission.txt, le cahier des charges et le dictionnaire de la mission\n<mission>, ainsi que les fichiers de <dossier echantillon>.\nNe modifie aucun fichier et n'écris pas de code.\nPour chaque indicateur demandé par la direction, donne en tableau :\nnom, définition en une phrase, formule, unité (millimes, TND, %, quantité),\ngrain du fait utilisé, et le calcul sur l'échantillon ligne par ligne.\nMon calcul à la main des ventes brutes donne <ma valeur> TND : compare et\nexplique l'écart s'il y en a un.\nListe ensuite au plus 3 questions ambiguës à poser à la direction (ex. un\nretour sans ticket compte-t-il ?), avec la conséquence de chaque réponse sur\nun chiffre."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Chaque indicateur a une **unité** et une formule identique au cahier des charges (« marge sur coût d'achat », jamais « bénéfice »).\n• Le calcul sur l'échantillon est détaillé ligne par ligne et retombe sur `attendu.md`.\n• Les questions sont de vraies ambiguïtés métier, pas des questions techniques.\n• Notez vos décisions de cadrage dans `notes/JOURNAL.md` (rubrique Décision).",
+              "• Accepter la valeur de Codex sans avoir fait son propre calcul : vous ne saurez pas l'expliquer à l'oral.\n• Mélanger millimes et TND dans le même tableau (12500 « TND » au lieu de 12,500 TND)."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-02",
+      "title": "02 · Demander un plan court avant de coder",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CADRER ET PLANIFIER",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : avant toute étape qui touchera plus d'un fichier (lecture des sources, nettoyage, chargement, incrément, app…). Le plan devient la liste de vos prochaines branches."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "écrivez en une phrase le **résultat observable** que vous voulez à la fin (un fichier, un compte, un total)."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 02 · à adapter : remplacez chaque <…>",
+          "text": "Objectif : <résultat observable, ex. « outputs/rejets.csv existe et compte les\nrejets par motif »>.\nMission : lis mission.txt et les fichiers utiles de la mission. Ne modifie\nrien pour l'instant.\nPropose un plan de 3 à 5 petites étapes. Pour chaque étape :\n- le fichier de solen/ créé ou modifié ;\n- la sortie observable ;\n- la commande de contrôle à lancer et le résultat attendu ;\n- un nom de branche court.\nSignale ce qui est hors de mon objectif et ce que tu ne sais pas encore.\nAttends mon choix de l'étape à réaliser."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Chaque étape est assez petite pour une PR relue en moins de 15 minutes.\n• Chaque étape a une preuve exécutable (`python -m controles.verifier …`, un compte, `pytest`), pas « vérifier que ça marche ».\n• Aucun fichier hors de `solen/`, `tests/`, `.github/`, `powerbi/` n'est prévu.",
+              "• Dire « oui, fais tout » : Codex écrit alors un gros diff que personne ne lit. Choisissez **une** étape.\n• Garder un plan dont une étape modifie `controles/` ou une source : refusez-la."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-03",
+      "title": "03 · Réaliser une petite étape",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : sur une branche neuve, pour l'étape choisie dans le plan (prompt 02). En séance 5, même fiche pour l'application locale de votre mission, objectif « `python -m solen app` écrit `outputs/app/index.html`, autonome, filtres, indicateurs, graphique SVG » (demande complète : livret 05, partie 1)."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "`git switch -c <branche>`. Écrivez la valeur que vous attendez (ex. « 1 960 lignes acceptées », le lot 1 du tronc commun), ou au moins son ordre de grandeur."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 03 · à adapter : remplacez chaque <…>",
+          "text": "Réalise seulement l'étape <n> du plan : <rappel de l'étape en une phrase>.\nÉcris le code uniquement dans solen/. Ne touche ni aux sources, ni aux\nréférences, ni à controles/.\nGarde les montants en millimes entiers.\nEnsuite :\n1. lance <commande de contrôle> et recopie la sortie réelle ;\n2. résume le diff en 3 à 6 lignes : fichiers, fonctions, rôle de chacune ;\n3. indique les 3 lignes que je dois lire en priorité, avec leur numéro ;\n4. je prévois <ma valeur> : dis si le résultat obtenu est égal, et sinon\n   pourquoi.\nNe fais ni commit ni push."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• La sortie de contrôle est **recopiée**, pas résumée par « ça passe ». Relancez la commande vous-même dans votre terminal.\n• `git diff` ne montre que les fichiers annoncés. Lisez les 3 lignes indiquées et expliquez-les à votre binôme.\n• Les montants sont des `int` (pas de `float` stocké dans l'entrepôt).",
+              "• Enchaîner trois étapes dans la même conversation sans commit entre elles : le diff devient illisible. Une étape = un commit, au plus une PR.\n• Croire que la commande « a été lancée » parce que Codex l'a écrite : vérifiez qu'il montre une vraie sortie, ou lancez-la."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-04",
+      "title": "04 · Lire les sources CSV, Excel et JSON",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : séance 2, premier contact avec les sources de `lot1/`. Tronc commun : `<lot1>` = `tronc-commun/sources/lot1` ; comptez avec `wc -l tronc-commun/sources/lot1/ventes.csv` (l'en-tête est compté)."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "dans le terminal, `wc -l <dossier>/lot1/*.csv`. Combien de lignes de données attendez-vous (en-tête exclu) ? Affichez le JSON sans le modifier : `less <dossier>/lot1/boutiques.json` (flèches pour défiler, `q` pour sortir). Combien de boutiques ? Notez vos deux nombres."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 04 · à adapter : remplacez chaque <…>",
+          "text": "Lis mission.txt. Crée dans solen/ un module de lecture des sources de <lot1>\n(le CSV de faits, le classeur Excel, le JSON) avec pandas, sans nettoyer\nencore.\nLis chaque fichier avec son vrai encodage et le bon séparateur ; ne modifie\npas les fichiers sources.\nAjoute la commande python -m solen sources, qui affiche pour chaque\nsource : nom du fichier, nombre de lignes, noms des colonnes et\n3 premières lignes. Lance-la et recopie la sortie.\nJ'attends <n lignes CSV> lignes dans le CSV et <n boutiques> boutiques :\ncompare.\nExplique en 4 lignes la différence entre un DataFrame et le fichier d'origine,\net une exception qui peut arriver à la lecture (fichier absent, encodage)."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Les comptes affichés sont égaux aux vôtres (sinon : en-tête ? ligne vide ? encodage ?).\n• Les accents s'affichent correctement (pas de `Ã©`).\n• Aucune ligne n'est déjà supprimée ou corrigée : la lecture ne nettoie pas.",
+              "• Laisser pandas convertir les montants en nombres décimaux dès la lecture : `12,500` devient faux. Mieux vaut lire en texte puis normaliser au nettoyage.\n• Lire l'Excel sans préciser la feuille alors que le classeur en a plusieurs."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-05",
+      "title": "05 · Nettoyer et rejeter avec un motif",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : séance 2, après la lecture (prompt 04). Épisode « premier résultat rassurant… faux ». Tronc commun : comparez avec `tronc-commun/echantillon/attendu.md` **après** votre propre calcul. Dans une commande, `$(cat mission.txt)` est remplacé par le terminal par le contenu de `mission.txt` (ex. `tronc-commun`). En séance 2, `--etape rejets` ne juge que les rejets du CSV de faits."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "dans l'échantillon, repérez à la main chaque ligne qui doit être gardée, normalisée ou rejetée, et son motif. Écrivez vos comptes (acceptées / rejetées par motif)."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 05 · à adapter : remplacez chaque <…>",
+          "text": "Applique les règles de nettoyage du cahier des charges de <mission> aux faits\nde <lot1>, dans solen/ seulement. Sources intactes.\n- doublon exact : garder une occurrence ;\n- même identifiant avec contenu différent : rejeter les deux, motif\n  id_conflit ;\n- identifiant vide : id_manquant ; produit ou boutique inconnus :\n  cle_inconnue ;\n- quantité ≤ 0 ou non entière : quantite_invalide ;\n- montants en millimes entiers (12,500 / 12.5 / 12 500 → 12500), dates en\n  YYYY-MM-DD, codes en strip + majuscules.\nÉcris outputs/rejets.csv avec la ligne d'origine et une colonne motif.\nTeste d'abord sur l'échantillon : j'attends <mes comptes>. Puis sur lot1 :\nlance python -m solen initial, puis python -m controles.verifier\n--mission $(cat mission.txt) --etape rejets.\nMontre la fonction qui décide du motif et explique l'ordre des règles."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Vos comptes sur l'échantillon sont retrouvés exactement ; sinon, faites-vous expliquer **la** ligne qui diffère.\n• `outputs/rejets.csv` a une colonne `motif` et ne contient que les motifs prévus.\n• L'ordre des règles est justifié (un doublon exact n'est pas un `id_conflit`).",
+              "• Supprimer les lignes fautives sans les écrire dans `rejets.csv` : la direction ne peut plus vérifier ce qui a été écarté.\n• Convertir `12,500` en `12.5` puis multiplier en flottant : `12.5 * 1000` peut donner `12499.999…`. Exigez un calcul en entiers."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-06",
+      "title": "06 · Interroger la base opérationnelle en SQL paramétré",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : séance 3, pour lire les retours (ou remboursements, avoirs…) dans la base SQLite opérationnelle de la mission. Tronc commun : `<retours>` = la table `retour` ; la base = `tronc-commun/sources/lot1/operations.sqlite`."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "choisissez un mois (ex. `2026-03`). Combien de retours pensez-vous y trouver : aucun, une dizaine, une centaine ? Notez-le."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 06 · à adapter : remplacez chaque <…>",
+          "text": "Dans solen/, ajoute une fonction qui lit les <retours> de la base SQLite\n<chemin de la base dans lot1> avec le module sqlite3, en lecture seule.\nLa requête SQL doit être paramétrée avec ? (jamais de f-string ni de\nconcaténation) et accepter une date de début et une date de fin.\nLance-la pour le mois <AAAA-MM> et affiche : nombre de lignes, somme des\nmontants en millimes.\nMontre la requête SQL et explique chaque clause (SELECT, FROM, WHERE, ORDER\nBY).\nExplique en 3 lignes pourquoi un paramètre ? protège mieux qu'une chaîne\nconstruite.\nPuis dis si une même requête avec « fin » exclue ou incluse change le résultat\nsur ce mois."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• La requête contient des `?` et la fonction passe un tuple de paramètres.\n• La base est ouverte en lecture seule (rien n'est écrit dans la source).\n• Comparez le compte à votre estimation et refaites la requête pour un autre mois.",
+              "• Comparer des dates texte de formats différents (`04/03/2026` contre `2026-03-04`) : la comparaison SQL devient fausse. Vérifiez le format stocké.\n• Oublier si la borne de fin est incluse ou exclue : un retour du dernier jour disparaît ou compte deux fois d'un mois à l'autre."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-07",
+      "title": "07 · Charger l'entrepôt en étoile (lot 1)",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : séance 3, quand lecture, nettoyage et SQL fonctionnent. Tronc commun : remplacez `<mission>`, `<lot1>` et vos deux prévisions `<n>` ; les noms de tables sont déjà les bons."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "dessinez l'étoile sur papier (faits au centre, dimensions autour, clés sur les flèches). Prévoyez le nombre de lignes de `dim_boutique` et de `fact_vente` après le lot 1."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 07 · à adapter : remplacez chaque <…>",
+          "text": "Lis le cahier des charges de <mission>. Dans solen/, crée une classe Entrepot\nqui gère outputs/entrepot.sqlite, et la commande python -m solen initial.\ninitial recrée l'entrepôt depuis zéro avec <lot1> : d'abord les dimensions\n(<dim_date, dim_produit, dim_boutique>), puis les faits\n(<fact_vente, fact_retour>), avec des clés techniques *_key entières, des clés\nmétier *_id texte, des montants en millimes entiers, et une transaction pour\nque tout ou rien soit écrit.\nLa dimension SCD2 <dim_boutique> reçoit valid_from et valid_to (NULL =\ncourante).\nLance python -m solen initial puis python -m controles.verifier --mission\n$(cat mission.txt) --etape initial et recopie les sorties. J'attends <n>\nboutiques et <n> lignes de faits : compare.\nExplique le grain de chaque table de faits en une phrase."
+        },
+        {
+          "type": "text",
+          "text": "`sqlite3` en ligne de commande demande le paquet du même nom (`sudo apt install -y sqlite3`). Sinon, demandez à Codex de lancer la requête **en lecture seule** et de recopier la sortie."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Ordre de chargement : dimensions avant faits ; aucune clé de fait sans dimension.\n• `sqlite3 outputs/entrepot.sqlite \"SELECT COUNT(*) FROM fact_vente;\"` donne le même compte que la réponse et que la référence.\n• Le vérificateur est réellement **OK** sur `initial` ; sinon, lisez la première ligne d'échec (prompt 10).",
+              "• Relier les faits par `boutique_id` : dès qu'une boutique aura deux versions, les ventes seront comptées deux fois.\n• Lancer `initial` deux fois et voir les faits doubler : `initial` doit **recréer** l'entrepôt, pas ajouter."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-08",
+      "title": "08 · Incrément, historique SCD2 et rejeu",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : séance 4, épisode « changement de besoin » : le lot 2 arrive, une boutique change de zone commerciale au 2026-07-15. Tronc commun : `<lot2>` = `tronc-commun/sources/lot2` ; repérez dans son `boutiques.json` la boutique qui change de zone."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "prévoyez trois valeurs et notez-les : (1) nombre de lignes de `dim_boutique` après le lot 2 ; (2) la zone d'une vente de cette boutique datée du 2026-07-14, puis du 2026-07-15 ; (3) le nombre de lignes de `fact_vente` après avoir lancé `increment` **deux fois**."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 08 · à adapter : remplacez chaque <…>",
+          "text": "Ajoute la commande python -m solen increment qui charge <lot2> dans l'entrepôt\nexistant.\nRègles :\n- SCD2 sur <dim_boutique> : quand la zone change, fermer l'ancienne version\n  (valid_to = date du changement, exclue) et créer une nouvelle version\n  (valid_from = même date, incluse, valid_to NULL) ;\n- un fait est rattaché à la version valable à SA date ; ne jamais modifier les\n  faits anciens ;\n- rejeu : relancer le même lot n'ajoute aucune ligne (clé métier unique,\n  insertion idempotente).\nLance dans cet ordre : initial, increment, --etape increment, increment\n(2e fois), --etape rejeu ; recopie les sorties. Montre la requête qui\nchoisit la version de boutique pour une date.\nMes prévisions : <1>, <2>, <3>. Compare chacune avec le résultat réel."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• La version choisie utilise `valid_from <= date AND (valid_to IS NULL OR date < valid_to)`.\n• Les comptes avant et après le deuxième `increment` sont **identiques**.\n• Une vente ancienne de la boutique reste dans l'ancienne zone (contrôle à la main avec `sqlite3`).",
+              "• Mettre à jour la zone dans la ligne existante (`UPDATE … SET zone`) : tout l'historique bascule dans la nouvelle zone, le passé est réécrit.\n• Prendre `valid_to` inclus : la vente du jour du changement est rattachée à deux versions, ou à la mauvaise."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-09",
+      "title": "09 · Tests automatiques et CI",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · CONSTRUIRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : séance 4, quand `initial`, `increment` et `export` existent. Objectif : une CI verte sur GitHub à chaque PR. Valeur actuelle de `ETAPE_CI` : dans `.github/workflows/controles.yml` (au départ `aucune`, puis `rejets`, `initial`, `increment`, `rejeu`, `export`, `tout`)."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "choisissez une règle (ex. « une quantité de -2 est rejetée »). Prévoyez : si Codex casse cette règle dans le code, quel test doit devenir rouge ?"
+        },
+        {
+          "type": "code",
+          "label": "Prompt 09 · à adapter : remplacez chaque <…>",
+          "text": "Dans tests/ (pas dans controles/), écris 3 à 5 tests pytest courts pour nos\nrègles :\n<règle 1>, <règle 2>, le rejeu, et la version SCD2 à la date frontière <date>.\nChaque test a un nom en français qui dit la règle, et utilise un petit jeu de\ndonnées construit dans le test (pas les sources complètes).\nLance pytest controles puis pytest -q et recopie les sorties.\nPuis, sans le garder, montre-moi quel test échouerait si on supprimait la\nrègle <règle 1>, et pourquoi.\nEnsuite mets à jour .github/workflows/controles.yml : passe ETAPE_CI de\n<valeur actuelle> à <nouvelle valeur>, et explique en 5 lignes ce que la CI va\nexécuter. Ne fais ni commit ni push."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• `pytest -q` passe en local avant de pousser.\n• Le diff de `controles.yml` ne change que ce que vous avez demandé ; aucun secret, aucune clé d'IA, aucun service externe n'y apparaît.\n• Après le push, onglet **Actions** de la PR : la CI s'exécute ; ouvrez une étape et lisez sa sortie.",
+              "• Écrire des tests qui recopient le résultat du code (`assert total == total`) : ils ne peuvent jamais échouer. Un bon test part d'un exemple calculé à la main.\n• Passer `ETAPE_CI` à `tout` alors que l'export n'existe pas encore : la CI est rouge pour une raison attendue, et l'équipe s'habitue à ignorer le rouge."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-11",
+      "title": "11 · Revue Codex en lecture seule",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · REVUE ET PULL REQUEST",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : le relecteur, après `git fetch` puis `git switch <branche>`, avant sa propre revue écrite sur GitHub. En séance 4, sur la branche qui contient le défaut planté."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "relancez les contrôles de l'étape. Lisez le diff vous-même 5 minutes et notez **un** point qui vous paraît douteux."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 11 · à adapter : remplacez chaque <…>",
+          "text": "Utilise $revoir-bi. Branche : <branche>. Mission : lis mission.txt.\nRelis en lecture seule le diff de cette branche par rapport à main : ne\nmodifie rien, ne lance aucun chargement ni export.\nAngle de la revue : <données et rejets | totaux | modèle et clés | SCD2 |\nrejeu>.\nRapporte au plus 3 défauts établis (fichier:ligne, règle violée, exemple\nobservable, correction proposée), puis les contrôles non réalisés.\nJ'ai moi-même un doute sur : <mon point>. Dis s'il est fondé, avec une preuve."
+        },
+        {
+          "type": "text",
+          "text": "Sous-agents : si votre client en propose et que vous le demandez, ajoutez « Fais deux lectures indépendantes, l'une sur les données, l'autre sur le modèle et l'historique, puis fusionne sans doublon. » Sinon, deux conversations successives, une par angle. `$revoir-bi` non reconnu : « Lis .agents/skills/revoir-bi/SKILL.md et applique sa méthode. »"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Chaque défaut a un **exemple observable** (une valeur, une ligne, un compte) que vous pouvez reproduire.\n• Les « contrôles non réalisés » sont séparés des défauts.\n• `git status` est inchangé après la revue : rien n'a été modifié.",
+              "• Coller la conclusion de Codex comme revue GitHub : votre revue écrite doit dire ce que **vous** avez vérifié et reproduit.\n• Prendre « aucun défaut établi » pour « tout est juste » : ce n'est que le résultat d'une lecture sous un angle."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-12",
+      "title": "12 · Corriger après revue, puis faire relire",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · REVUE ET PULL REQUEST",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : l'auteur, quand la PR a reçu « Request changes » ou des constats de revue."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "pour chaque constat, prévoyez : défaut réel ou faux constat ? Quelle valeur changera après correction ?"
+        },
+        {
+          "type": "code",
+          "label": "Prompt 12 · corriger (auteur)",
+          "text": "Voici les constats de revue reçus sur ma PR <n> :\n<coller les constats>\nPour chacun, vérifie d'abord contre le code actuel : établi, non établi, ou\nnon vérifiable, avec une preuve observable.\nCorrige seulement les défauts établis, dans solen/ (ou tests/), sans toucher\naux sources, aux références ni à controles/.\nLance <contrôles de l'étape>, pytest controles et pytest -q ; recopie.\nExplique pour chaque constat rejeté pourquoi, en une phrase.\nJe prévois que <valeur> passera de <avant> à <après> : compare.\nNe fais ni commit ni push."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 12 · deuxième revue, nouvelle conversation (ou relecteur)",
+          "text": "Utilise $revoir-bi sur la version corrigée de la branche <branche>, en lecture\nseule.\nPour chaque constat initial : corrigé avec preuve, encore présent, ou non\nvérifié.\nCherche aussi une erreur introduite par la correction. Ne modifie rien."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Une correction = un défaut ; le diff ne contient pas de « nettoyage » non demandé.\n• Le contrôle qui échouait passe maintenant, et les autres restent verts.\n• Répondez à chaque commentaire GitHub (« corrigé dans <commit> » ou « non retenu parce que… ») avant de redemander une revue.",
+              "• Corriger en modifiant le contrôle ou la valeur attendue : c'est interdit, et le relecteur le verra dans le diff.\n• Pousser la correction sans relancer **tous** les contrôles : une correction en casse souvent une autre (ex. le rejeu)."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-13",
+      "title": "13 · Préparer la pull request",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · REVUE ET PULL REQUEST",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : l'auteur, quand l'étape est terminée et avant `git add` / `git commit` / `git push`."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "écrivez, sans aide, la phrase « Cette PR permet de … » et la commande qui le prouve."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 13 · préparer",
+          "text": "Utilise $preparer-pr pour la branche <branche>.\nÉtape à contrôler : <rejets|initial|increment|rejeu|export|app|tout>.\nRelecteur : <prénom et compte GitHub du partenaire>.\nMa phrase : « Cette PR permet de <…> », preuve : <commande>.\nFais la liste de contrôle, puis propose un titre et une description en\nfrançais.\nNe commite pas, ne pousse pas, n'ouvre pas la PR."
+        },
+        {
+          "type": "code",
+          "label": "Terminal · vous-même, après la liste de contrôle",
+          "text": "git status\ngit add <fichiers listés>\ngit commit -m \"<titre proposé>\"\ngit push -u origin <branche>"
+        },
+        {
+          "type": "text",
+          "text": "Sur GitHub : **Compare & pull request**, collez la description, désignez le relecteur dans **Reviewers**, puis **Create pull request**. `$preparer-pr` non reconnu : « Lis .agents/skills/preparer-pr/SKILL.md et applique sa méthode. »"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Toutes les lignes de la liste sont OK, ou vous savez pourquoi l'une ne l'est pas.\n• Aucun fichier `outputs/`, `.venv/` ou secret dans `git status` avant `git add`.\n• L'entrée de `notes/JOURNAL.md` contient une preuve réelle (commande + résultat).",
+              "• `git add .` sans relire `git status` : un fichier inattendu part dans la PR.\n• Ouvrir la PR depuis `main` : il n'y a rien à comparer, ou pire, on a commité sur `main` directement."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-10",
+      "title": "10 · Comprendre une erreur avant de la corriger",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · QUAND ÇA BLOQUE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : une commande échoue (Python, vérificateur, pytest, Git, CI)."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "recopiez le message **exact**, en entier, depuis le terminal ou depuis l'étape de la CI. Lisez la dernière ligne : quelle est votre hypothèse ?"
+        },
+        {
+          "type": "code",
+          "label": "Prompt 10 · à adapter : remplacez chaque <…>",
+          "text": "J'ai lancé : <commande exacte>\nDepuis le dossier : <résultat de pwd>\nJ'attendais : <résultat attendu>\nJ'ai obtenu ce message exact :\n<coller le message complet, sans le raccourcir>\nMon hypothèse : <une phrase>.\nAvant de modifier quoi que ce soit : explique ce que dit la dernière ligne,\nquel fichier et quelle ligne sont en cause, et si mon hypothèse est juste.\nPropose ensuite la plus petite correction, dans solen/ seulement, et la\ncommande qui prouvera qu'elle marche. Attends mon accord avant de modifier."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Le diagnostic cite un fichier et une ligne présents dans **votre** message.\n• La correction proposée ne touche ni `controles/`, ni les sources, ni les références.\n• Après correction, relancez exactement la même commande : même dossier, même venv.",
+              "• Résumer l'erreur (« ça marche pas ») au lieu de la coller : Codex devine, et corrige autre chose.\n• Oublier d'activer le venv (`source .venv/bin/activate`) : `ModuleNotFoundError` ne vient alors pas du code."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-15",
+      "title": "15 · Résoudre un conflit Git",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · QUAND ÇA BLOQUE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : `git pull` ou un **Merge** affiche `CONFLICT`. En séance 4, le conflit est provoqué volontairement : A et B modifient la même ligne de `notes/JOURNAL.md` dans deux branches."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "tapez `git status`. Quels fichiers sont « both modified » ? Ouvrez-en un et repérez `<<<<<<<`, `=======`, `>>>>>>>`. Qu'est-ce que chacun des deux blocs voulait dire ?"
+        },
+        {
+          "type": "code",
+          "label": "Prompt 15 · à adapter : remplacez chaque <…>",
+          "text": "J'ai un conflit Git. Voici la sortie exacte de git status :\n<coller>\nExplique en mots simples ce qui s'est passé (quelles deux versions se\nrencontrent).\nPour chaque fichier en conflit, montre les deux blocs et dis ce que chacun\nvoulait garder.\nPropose une résolution qui garde l'intention des deux, sans perdre de contrôle\nni de règle.\nNe modifie un fichier qu'après mon accord, et seulement les fichiers en\nconflit.\nNe lance ni git add, ni git commit, ni git push : je les fais moi-même.\nAprès résolution, indique les contrôles à relancer."
+        },
+        {
+          "type": "text",
+          "text": "Puis, vous-même : relire le fichier (plus aucun marqueur), relancer les contrôles, `git add <fichier>`, `git commit` (message proposé par Git), `git push`."
+        },
+        {
+          "type": "code",
+          "label": "Ce que montre un conflit dans notes/JOURNAL.md : en haut votre version, en bas l'autre",
+          "text": "<<<<<<< HEAD\n- Prochain objectif : charger le lot 2 (SCD2 sur dim_boutique).\n=======\n- Prochain objectif : écrire les tests du rejeu.\n>>>>>>> tests-rejeu"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• La résolution proposée contient les deux intentions, ou explique clairement pourquoi l'une est abandonnée — c'est **votre** décision, pas celle de Codex.\n• `grep -n \"<<<<<<<\\|>>>>>>>\" <fichier>` ne trouve plus rien.\n• Les contrôles passent après la résolution, pas seulement avant.",
+              "• Garder « ma version » d'un clic sans lire l'autre : le travail du binôme disparaît.\n• Laisser un marqueur `=======` dans un fichier Python : le code ne s'exécute plus."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-14",
+      "title": "14 · Expliquer un résultat (ligne source → graphique)",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · EXPLIQUER ET REPRENDRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : quand un chiffre vous surprend, et pour préparer la soutenance (suivre une ligne de la source jusqu'au graphique, expliquer un rejet, une version historique, un indicateur et son unité)."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "choisissez une ligne précise d'une source (son identifiant) et prévoyez où elle finit : rejetée ? dans quel fait, quelle zone, quel mois ?"
+        },
+        {
+          "type": "code",
+          "label": "Prompt 14 · à adapter : remplacez chaque <…>",
+          "text": "Utilise $expliquer-bi. Ne modifie rien.\nSuis la ligne <identifiant> de <fichier source> à travers notre pipeline :\nlecture, nettoyage (gardée, normalisée ou rejetée et pourquoi), clé de date,\nde produit, de boutique (quelle version SCD2 et pourquoi), ligne de fait,\nexport CSV, et contribution à l'indicateur <indicateur> dans le graphique\n<graphique>.\nDonne chaque valeur avec son unité, et le fichier:ligne du code qui la\nproduit.\nMa prévision : <où elle finit>. Dis si j'ai raison.\nTermine par une question pour vérifier que j'ai compris."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• Chaque étape cite une valeur que vous pouvez retrouver (dans la source, `rejets.csv`, `sqlite3`, le CSV exporté, Power BI).\n• Retrouvez vous-même au moins une de ces valeurs ; répondez à la question finale **sans** relire la réponse.",
+              "• Choisir une ligne « facile » : prenez aussi une ligne rejetée et une ligne de la boutique qui change de zone, ce sont les questions de soutenance.\n• Réciter l'explication de Codex : reformulez avec vos mots et votre exemple."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-16",
+      "title": "16 · Faire une note d'état et reprendre",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · EXPLIQUER ET REPRENDRE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : en fin de séance, quand la conversation devient longue, ou quand le partenaire reprend la main. Le **contexte** est ce que la conversation contient ; le **quota** est la limite d'usage du compte. Une conversation neuve ne remet pas le quota à zéro, mais elle évite que Codex oublie les règles."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "sans regarder, écrivez la dernière commande réussie et la prochaine petite étape. Vous comparerez avec la note."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 16 · fin de séance",
+          "text": "Rédige une note d'état de 8 lignes maximum, que je copierai moi-même. Ne\nmodifie aucun fichier.\nContenu : mission (mission.txt), branche actuelle, ce qui fonctionne,\ncommandes réellement exécutées et leur résultat, défaut encore ouvert,\nprochaine petite étape et sa preuve de réussite.\nSépare clairement : réalisé / à faire / non vérifié. Aucun identifiant de\ncompte."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 16 · reprise, dans une nouvelle conversation",
+          "text": "Je reprends le dépôt binôme. Lis AGENTS.md, mission.txt et notes/JOURNAL.md.\nVoici ma note d'état :\n<coller la note>\nVérifie les fichiers cités et l'état Git (branche, fichiers modifiés) ;\nne suppose pas qu'une commande a été exécutée.\nPropose la prochaine petite action et sa preuve. Ne modifie rien pour\nl'instant."
+        },
+        {
+          "type": "text",
+          "text": "Vérifiez une ligne de la note contre le terminal ou un fichier, puis reportez l'essentiel dans `notes/JOURNAL.md` si une PR est concernée."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• La note distingue ce qui a été **exécuté** de ce qui a été **proposé**.\n• À la reprise, Codex constate l'état réel (branche, `git status`) au lieu de répéter la note.\n• Relevez ce qui est affiché : modèle, effort, indication de contexte ou d'usage (« non affiché » sinon). Ne demandez pas à Codex de deviner son quota.",
+              "• Recoller toute l'ancienne conversation : on retrouve le même contexte surchargé.\n• Quota atteint, abandonner la séance : continuez les actions locales (lire le diff, relancer un contrôle, calculer à la main, préparer la prochaine demande) et attendez le reset affiché, sans achat."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-17",
+      "title": "17 · Créer et essayer un Skill local",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · ALLER PLUS LOIN",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : extension **facultative** (fin de séance 4 si le temps le permet, ou travail personnel), après avoir utilisé `$revoir-bi` au moins une fois. Un **Skill** est une méthode réutilisable rangée dans `.agents/skills/<nom>/SKILL.md`, avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "lisez `.agents/skills/revoir-bi/SKILL.md`. Choisissez **une** règle que vous voudriez toujours voir vérifiée sur votre mission (ex. « contrôler une vente la veille et le jour du changement SCD2 »). Prévoyez comment la réponse changera avec cette règle."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 17 · créer le Skill",
+          "text": "Crée .agents/skills/<ma-revue-mission>/SKILL.md, en partant de\n.agents/skills/revoir-bi/SKILL.md.\nEn-tête : name: <ma-revue-mission>, et une description d'une phrase qui dit\nquand l'utiliser.\nGarde la lecture seule et la limite de 3 défauts établis.\nAjoute cette règle précise : <ma règle>.\nNe modifie pas les Skills fournis. Montre le fichier complet."
+        },
+        {
+          "type": "code",
+          "label": "Prompt 17 · l'essayer, dans une nouvelle conversation",
+          "text": "Utilise $<ma-revue-mission> pour relire <angle> sur la branche <branche>.\nLecture seule."
+        },
+        {
+          "type": "text",
+          "text": "Skill non proposé : redémarrez l'application et rouvrez le dossier du dépôt ; sinon « Lis .agents/skills/<ma-revue-mission>/SKILL.md et applique sa méthode. » Notez la route qui a marché : la seconde prouve qu'on réutilise une méthode écrite, pas que le Skill est découvert automatiquement."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• La réponse applique **votre** règle de façon visible (ex. les deux dates sont contrôlées et la version retenue est expliquée).\n• Le Skill est versionné : il passe par une branche et une PR comme le reste.",
+              "• Une règle vague (« vérifie bien tout ») : elle ne change rien à la réponse. Une bonne règle est observable.\n• Croire qu'un Skill remplace les contrôles : comparez toujours avec `python -m controles.verifier`."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prompt-18",
+      "title": "18 · Réaliser une variation métier (mission du catalogue)",
+      "kicker": "03 / DIRIGER CODEX · PROMPTS · ALLER PLUS LOIN",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**Quand** : sur votre mission du catalogue (`mission.txt` = `Mxx`), quand la direction fictive demande une **variante** de la fiche mission (nouvel indicateur, nouvelle règle, nouvelle source ou changement historique). Bon entraînement pour la question « résoudre une variation avec Codex et la contrôler »."
+        },
+        {
+          "type": "callout",
+          "label": "Prévoir avant d'envoyer",
+          "text": "lisez la variante dans `catalogue/<Mxx>/fiche_mission.md`. Prévoyez : quelles tables changent ? Quel indicateur bouge, dans quel sens, et environ de combien sur l'échantillon ?"
+        },
+        {
+          "type": "code",
+          "label": "Prompt 18 · à adapter : remplacez chaque <…>",
+          "text": "Mission <Mxx> : lis mission.txt, la fiche mission, le cahier des charges et le\ndictionnaire.\nLa direction demande la variante <n> : <recopier la variante>.\nNe modifie rien. Donne :\n1. la règle métier exacte et ce qui reste ambigu (question à poser à la\n   direction) ;\n2. l'impact : fichiers de solen/, tables, colonnes, indicateurs, exports, DAX,\n   app ;\n3. le calcul à la main sur l'échantillon, avant / après la variante ;\n4. un plan de 2 à 4 petites étapes, chacune avec sa preuve ;\n5. le test pytest qui prouvera la nouvelle règle.\nMa prévision : <tables touchées, sens et ordre de grandeur>. Compare."
+        },
+        {
+          "type": "text",
+          "text": "Ensuite : prompt **03** pour chaque étape du plan, sur une branche dédiée, puis **09** pour le test et **13** pour la PR."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ce qu'il faut vérifier dans la réponse",
+            "Pièges"
+          ],
+          "rows": [
+            [
+              "• L'ambiguïté est tranchée par **vous** (et notée dans `notes/JOURNAL.md`, rubrique Décision), pas par Codex.\n• Les contrôles de référence de la mission restent verts : une variante ajoute, elle ne casse pas l'existant.\n• Le nouveau chiffre est vérifié à la main sur l'échantillon.",
+              "• Coder la variante avant d'avoir mesuré son impact : on oublie l'export, le DAX ou l'app, et le rapport contredit l'entrepôt.\n• Modifier la valeur de référence pour qu'elle colle au nouveau calcul : la référence décrit la mission de base ; la variante se prouve par **son** test."
+            ]
+          ],
+          "widths": [
+            1.15,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lire-diff",
+      "title": "5. Lire un diff et un fichier Python sans savoir coder",
+      "kicker": "03 / DIRIGER CODEX · LIRE LE CODE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Vous n'écrivez pas de code, mais vous devez savoir **où regarder** et expliquer à l'oral une ligne importante. Quatre formes suffisent pour se repérer dans ce que Codex produit."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Forme",
+            "À quoi elle ressemble",
+            "Ce qu'elle veut dire"
+          ],
+          "rows": [
+            [
+              "Module",
+              "Un fichier `solen/conversions.py` ; ailleurs : `from .conversions import texte_vers_millimes`",
+              "Un fichier Python qui regroupe des fonctions d'un même sujet. `import` = « j'utilise ce qui est défini là-bas »."
+            ],
+            [
+              "Fonction",
+              "`def texte_vers_millimes(texte) -> int:` puis un bloc décalé à droite, et `return …`",
+              "Une petite machine nommée : elle reçoit `texte`, renvoie un entier (`-> int`). Le texte entre `\"\"\"` dit ce qu'elle fait."
+            ],
+            [
+              "Exception",
+              "`raise RejetLigne(\"quantite_invalide\", …)` ; ailleurs `try:` … `except RejetLigne as e:`",
+              "`raise` signale un problème et interrompt le calcul ; `except` l'attrape pour faire autre chose (écrire la ligne dans `rejets.csv`)."
+            ],
+            [
+              "Classe",
+              "`class Entrepot:` puis des fonctions `def charger_faits(self, lignes):`",
+              "Un objet qui regroupe des données (chemin, connexion) et des actions sur elles ; `self` = l'objet lui-même."
+            ]
+          ],
+          "widths": [
+            0.9,
+            2.6,
+            2.6
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Lire un diff"
+        },
+        {
+          "type": "code",
+          "label": "git diff · exemple",
+          "text": "diff --git a/solen/conversions.py b/solen/conversions.py\n@@ -12,7 +12,8 @@ def texte_vers_quantite(texte) -> int:\n     t = str(texte).strip()\n-    if int(t) < 0:\n+    if not re.fullmatch(r\"\\d+\", t) or int(t) <= 0:\n         raise RejetLigne(\"quantite_invalide\", f\"quantité {texte!r}\")"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "`diff --git a/… b/…` : le fichier modifié (a = avant, b = après).",
+            "`@@ -12,7 +12,8 @@` : autour de la ligne 12 ; la fonction concernée est rappelée à droite.",
+            "`-` ligne retirée, `+` ligne ajoutée ; sans signe : contexte. Ici, une quantité `0` ou `1.5` devient aussi un rejet : prévoyez combien de rejets `quantite_invalide` en plus sur l'échantillon, puis vérifiez."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lire-python",
+      "title": "Où regarder dans un fichier produit par Codex",
+      "kicker": "03 / DIRIGER CODEX · LIRE LE CODE",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Vous cherchez",
+            "Indices dans le code",
+            "Exemple Solen"
+          ],
+          "rows": [
+            [
+              "Où le fichier est **lu**",
+              "`pd.read_csv(`, `pd.read_excel(`, `json.load(`, `sqlite3.connect(` ; `sep=`, `encoding=`, `sheet_name=`, `dtype=str`",
+              "`ventes.csv` : `;`, UTF-8 ; `catalogue.xlsx` : feuille `Catalogue`, en-têtes ligne 3"
+            ],
+            [
+              "Où une ligne est **rejetée**",
+              "`raise RejetLigne(` ; écriture dans `rejets.csv` avec un `motif`",
+              "`E-006-1` deux fois, 2 puis 4 savons → les deux en `id_conflit`"
+            ],
+            [
+              "Où les **millimes** sont calculés",
+              "Une fonction de conversion ; `* 1000` sur un `float` est suspect",
+              "`18,5` = `18.500` = 18500 ; `1 240,000` = 1240000"
+            ],
+            [
+              "Où la **version de boutique** est choisie",
+              "`valid_from <= ?` et `valid_to IS NULL OR ? < valid_to`",
+              "NBE le 2026-07-14 → Cap Bon ; le 2026-07-15 → Nord-Est"
+            ]
+          ],
+          "widths": [
+            1.4,
+            2.4,
+            2.3
+          ]
+        },
+        {
+          "type": "code",
+          "label": "Code produit par Codex · solen/conversions.py (extrait)",
+          "text": "def texte_vers_millimes(texte) -> int:\n    \"\"\"« 18,500 », « 18.5 », « 1 240,000 » → millimes entiers.\"\"\"\n    t = str(texte).strip().replace(\" \", \"\").replace(\",\", \".\")\n    if not re.fullmatch(r\"\\d+(\\.\\d+)?\", t):\n        raise ValueError(f\"montant illisible {texte!r}\")\n    entier, _, dec = t.partition(\".\")\n    return int(entier) * 1000 + int((dec + \"000\")[:3])"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ligne",
+            "Ce qu'elle fait, en mots"
+          ],
+          "rows": [
+            [
+              "1-3",
+              "Reçoit un texte, renvoie un entier ; enlève les espaces (`1 240,000` → `1240,000`), virgule → point."
+            ],
+            [
+              "4-5",
+              "Texte illisible : la fonction s'arrête avec `ValueError`, une erreur interne et **pas** un motif de rejet du cahier ; on lit le message (prompt 10)."
+            ],
+            [
+              "6-7",
+              "Coupe au point (`18` et `5`), complète à trois décimales (`500`) : 18 × 1000 + 500 = 18500. Aucun `float`, donc aucune erreur d'arrondi."
+            ]
+          ],
+          "widths": [
+            0.6,
+            5
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "À vous",
+          "text": "Prévoyez sans exécuter : `\"3,9\"` ? `\"14.5\"` ? `\"12,5 TND\"` ? Puis faites lancer ces trois cas par Codex (`$expliquer-bi`) et comparez. Pourquoi le troisième s'arrête-t-il sur une erreur ?"
+        }
+      ]
+    },
+    {
+      "id": "revue",
+      "title": "6. La revue à deux",
+      "kicker": "03 / DIRIGER CODEX · REVUE",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Une PR n'entre dans `main` qu'après la revue de **l'autre** membre du binôme. L'auteur ne peut pas approuver sa propre PR (GitHub ne le permet pas) et ne la fusionne pas sans approbation. Les rôles alternent à chaque PR."
+        },
+        {
+          "type": "diagram",
+          "nodes": [
+            "Récupérer : git fetch puis git switch <branche>",
+            "Relancer les contrôles ; tester un cas limite",
+            "Codex en lecture seule : $revoir-bi (prompt 11)",
+            "Écrire SA revue : Files changed → Review changes"
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Sur GitHub",
+            "Ce que vous faites"
+          ],
+          "rows": [
+            [
+              "**Files changed**",
+              "Lire chaque fichier modifié ; sur une ligne, **+** pour un commentaire précis (fichier, ligne, exemple)."
+            ],
+            [
+              "**Review changes**",
+              "Résumer : ce que vous avez vérifié (commande + résultat) et ce que vous n'avez pas vérifié."
+            ],
+            [
+              "**Approve** / **Request changes**",
+              "Approve seulement si les contrôles sont verts chez vous **et** dans la CI, et si vous savez expliquer la ligne principale. Sinon Request changes, avec ce qu'il faut corriger. On ne fusionne jamais sur rouge."
+            ],
+            [
+              "**Submit review**",
+              "L'auteur corrige sur la même branche (prompt 12) et répond sous chaque commentaire : « corrigé dans `<commit>` » ou « non retenu parce que… » avec la preuve."
+            ]
+          ],
+          "widths": [
+            1.5,
+            4.5
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Revue faible",
+            "Revue utile"
+          ],
+          "rows": [
+            [
+              "« OK, Codex dit qu'il n'y a aucun défaut. »",
+              "« `solen/historique.py:42` : `valid_to` comparé avec `<=`. Reproduit : une vente NBE du 2026-07-15 tombe en Cap Bon au lieu de Nord-Est ; `--etape increment` : « 1 faits mal rattachés ». Non vérifié : le rejeu. → Request changes. »"
+            ]
+          ],
+          "widths": [
+            1,
+            2.2
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Le « OK » de Codex n'est pas votre jugement",
+          "text": "« Aucun défaut établi par cette lecture » veut dire : rien trouvé sous **cet** angle. Votre revue dit ce que **vous** avez reproduit. Ne collez jamais la réponse de Codex comme revue GitHub ; citez au moins une valeur vue vous-même."
+        }
+      ]
+    },
+    {
+      "id": "git-lieux",
+      "title": "7. Git au quotidien",
+      "kicker": "03 / DIRIGER CODEX · GIT",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Git enregistre l'histoire de vos fichiers sur votre PC ; GitHub héberge la copie partagée. La plupart des erreurs viennent de trois questions oubliées : **où suis-je** (`pwd`), **sur quelle branche** (`git status`, `git branch`), **qu'est-ce qui a changé** (`git diff`, `git log --oneline -5`) ? Lisez avant d'agir."
+        },
+        {
+          "type": "text",
+          "text": "Réglage du livret 01 : `git config --global pull.rebase false`. Si les deux copies ont avancé, `git pull` fait une **fusion simple**."
+        },
+        {
+          "type": "figure",
+          "path": "../../docs/images/diagrams/v7-trois-emplacements.png",
+          "height": 135,
+          "caption": "Trois emplacements : vos deux copies locales et GitHub. commit enregistre localement, push envoie, pull récupère, la PR propose de fusionner une branche dans main."
+        },
+        {
+          "type": "figure",
+          "path": "../../docs/images/diagrams/v7-cycle-pr.png",
+          "height": 210,
+          "caption": "Le cycle complet d'une pull request à deux, de `main` à jour au `pull` des deux copies ; puis les rôles s'inversent."
+        },
+        {
+          "type": "callout",
+          "label": "Deux « workflows », deux choses",
+          "text": "**Workflow de travail Git/GitHub** : la suite de gestes **humains** de ce chapitre : branche → PR → revue → merge. **Workflow GitHub Actions** : le fichier `.github/workflows/controles.yml`, que **GitHub exécute tout seul** sur une machine neuve à chaque PR (onglet **Actions**). Même mot : le premier, vous le faites ; le second, la machine le fait."
+        }
+      ]
+    },
+    {
+      "id": "git-cycle",
+      "title": "Le cycle, en liste de contrôle",
+      "kicker": "03 / DIRIGER CODEX · GIT",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "#",
+            "Qui",
+            "Geste",
+            "Signe de réussite"
+          ],
+          "rows": [
+            [
+              "1",
+              "A",
+              "`cd ~/solen-bi` · `source .venv/bin/activate`",
+              "`(.venv)` dans l'invite"
+            ],
+            [
+              "2",
+              "A",
+              "`git switch main` · `git pull`",
+              "« Already up to date » ou commits reçus"
+            ],
+            [
+              "3",
+              "A",
+              "`git switch -c <branche>` (ex. `rejets-motifs`)",
+              "« Switched to a new branch »"
+            ],
+            [
+              "4",
+              "A",
+              "Demande à Codex : une petite étape, une prévision",
+              "Sortie réelle recopiée"
+            ],
+            [
+              "5",
+              "A",
+              "Contrôles : `python -m controles.verifier …`, `pytest controles`",
+              "Résultat = votre prévision"
+            ],
+            [
+              "6",
+              "A",
+              "`git status` · `git diff` · `$preparer-pr`",
+              "Rien dans `outputs/` ni `.venv/`"
+            ],
+            [
+              "7",
+              "A",
+              "`git add <fichiers>` · `git commit -m \"<message>\"`",
+              "« nothing to commit »"
+            ],
+            [
+              "8",
+              "A",
+              "`git push -u origin <branche>`",
+              "Lien « Create a pull request »"
+            ]
+          ],
+          "widths": [
+            0.35,
+            0.6,
+            3.2,
+            2.1
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "#",
+            "Qui",
+            "Geste",
+            "Signe de réussite"
+          ],
+          "rows": [
+            [
+              "9",
+              "A",
+              "GitHub : **Compare & pull request** → relecteur B → **Create pull request**",
+              "PR ouverte, CI lancée"
+            ],
+            [
+              "10",
+              "B",
+              "`git fetch` · `git switch <branche>`",
+              "`*` sur la branche (`git branch`)"
+            ],
+            [
+              "11",
+              "B",
+              "Contrôles + `$revoir-bi` en lecture seule + sa propre lecture",
+              "`git status` inchangé"
+            ],
+            [
+              "12",
+              "B",
+              "**Files changed → Review changes → Approve / Request changes**",
+              "Revue avec une valeur reproduite"
+            ],
+            [
+              "13",
+              "A",
+              "Corrections sur la même branche : `git commit` · `git push`",
+              "La PR se met à jour"
+            ],
+            [
+              "14",
+              "B",
+              "CI verte + approbation → **Merge pull request → Confirm merge**",
+              "« Merged »"
+            ],
+            [
+              "15",
+              "A et B",
+              "`git switch main && git pull` · `git branch -d <branche>`",
+              "Même `git log --oneline -1`"
+            ]
+          ],
+          "widths": [
+            0.35,
+            0.6,
+            3.2,
+            2.1
+          ]
+        },
+        {
+          "type": "text",
+          "text": "A est l'auteur de cette PR, B le relecteur ; à la PR suivante, les rôles s'inversent."
+        }
+      ]
+    },
+    {
+      "id": "git-erreurs",
+      "title": "Dépanner Git sans rien casser",
+      "kicker": "03 / DIRIGER CODEX · GIT · DÉPANNAGE",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Symptôme",
+            "Cause",
+            "Réparer"
+          ],
+          "rows": [
+            [
+              "`fatal: not a git repository`",
+              "**Mauvais dossier** (`~` ou le dépôt du cours `~/cours-bi`).",
+              "`cd ~/solen-bi`, puis `git status`."
+            ],
+            [
+              "Commit fait sur `main` (« On branch main »).",
+              "**Mauvaise branche** : `git switch -c` oublié.",
+              "`git switch -c <branche>` (le commit suit), push, PR. Après fusion : `git switch main && git pull`."
+            ],
+            [
+              "`Your local changes … would be overwritten by checkout`",
+              "**Changement non commité** avant de changer de branche.",
+              "Commit sur la bonne branche, ou `git stash`, changer de branche, `git stash pop`."
+            ],
+            [
+              "Push refusé : `protected branch`",
+              "Push direct sur `main`, protégée.",
+              "Normal : branche + PR."
+            ],
+            [
+              "Push refusé : `fetch first` / `rejected`",
+              "**Push refusé** : GitHub a des commits que vous n'avez pas.",
+              "`git pull` sur la branche (fusion simple grâce à `pull.rebase false`) ; un éditeur s'ouvre ? enregistrez et fermez. Contrôles, `git push`."
+            ],
+            [
+              "PR « out-of-date »",
+              "**main a avancé** depuis la branche.",
+              "Sur la branche : `git fetch`, `git merge origin/main`, contrôles, `git push`."
+            ],
+            [
+              "Croix rouge sur la PR",
+              "**La CI a échoué.**",
+              "**Details**, lire la fin ; relancer chez soi ; prompt 10 ; corriger le code, jamais les contrôles."
+            ],
+            [
+              "`CONFLICT (content): Merge conflict in …`",
+              "**Conflit** : A et B ont modifié les mêmes lignes.",
+              "Prompt 15 : lire les deux versions, décider à deux, retirer `<<<<<<<` `=======` `>>>>>>>`, contrôles, `git add`, `git commit`. Abandonner : `git merge --abort`."
+            ],
+            [
+              "`Need to specify how to reconcile divergent branches`",
+              "Réglage `pull` absent ou ancien.",
+              "`git config --global pull.rebase false`, puis `git pull`. Rien de forcé."
+            ]
+          ],
+          "widths": [
+            1.9,
+            1.8,
+            2.5
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Interdits",
+          "text": "`git push --force`, `git reset --hard`, supprimer `.git`, fusionner sa propre PR sans approbation. Avant de réparer : `pwd`, `git status`, `git log --oneline -5` ; dans le doute, montrez-les."
+        }
+      ]
+    },
+    {
+      "id": "sans-codex",
+      "title": "8. Quand Codex est indisponible ou le quota atteint",
+      "kicker": "03 / DIRIGER CODEX · SANS CODEX",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Cela arrivera : message de limite atteinte avec une heure de reprise, application indisponible, modèle pas encore visible sur votre compte (déploiement progressif). Votre travail ne s'arrête pas : la moitié du métier se fait sans IA."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Vous continuez…",
+            "Exemple Solen"
+          ],
+          "rows": [
+            [
+              "**Git** : commiter ce qui est contrôlé, pousser, ouvrir la PR",
+              "L'étape `rejets-motifs` passe le contrôle : `git add`, `git commit`, `git push`, PR avec la preuve."
+            ],
+            [
+              "**La revue du binôme** sur GitHub",
+              "Relire sa PR, relancer ses contrôles, écrire une revue précise (section 6)."
+            ],
+            [
+              "**L'interprétation**",
+              "Lire `outputs/export/manifest.json` ou les visuels de `reference/visuels/` ; préparer une phrase pour la direction : quelle boutique, quel mois, quelle marge."
+            ],
+            [
+              "**Lire le diff** et l'expliquer",
+              "`git diff main...` ; repérer où les millimes sont calculés ; l'expliquer à voix haute."
+            ],
+            [
+              "**Calculer à la main**",
+              "Recalculer sur l'échantillon ventes nettes et taux de retour ; comparer à `attendu.md`."
+            ],
+            [
+              "**Préparer la prochaine demande**",
+              "Note d'état (prompt 16) écrite par vous ; prompt suivant adapté, sans `<…>`, avec votre prévision."
+            ]
+          ],
+          "widths": [
+            2,
+            3.6
+          ]
+        },
+        {
+          "type": "section",
+          "text": "Le point de reprise fourni"
+        },
+        {
+          "type": "text",
+          "text": "Perdus, ou un fichier fourni abîmé ? Vous repartez de deux choses : le dossier **`modele-binome/` du dépôt du cours** (sources, références, `controles/`, `AGENTS.md` et Skills d'origine) et votre **`notes/JOURNAL.md`** (dernière preuve réelle, prochain objectif). Un fichier fourni abîmé se remplace par sa copie d'origine, sur une branche, avec une PR relue."
+        },
+        {
+          "type": "callout",
+          "label": "Si votre écran est différent",
+          "text": "Luna absent, effort grisé, Advanced introuvable : notez ce qui s'affiche (date, capture), utilisez ce qui est proposé, prévenez le professeur. Ne payez rien ; pas le compte d'un autre."
+        },
+        {
+          "type": "callout",
+          "label": "Jamais",
+          "text": "Écrire ou corriger du code à la main pour « avancer quand même ». Acheter une offre ou changer de plan. Utiliser le compte Codex d'une autre personne ou coller un jeton. Attendez le reset affiché, notez l'heure dans le journal, prévenez le professeur si le blocage dure."
+        }
+      ]
+    },
+    {
+      "id": "erreurs-python",
+      "title": "9. Erreurs Python et contrôles rouges les plus fréquents",
+      "kicker": "03 / DIRIGER CODEX · ERREURS",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Un message d'erreur Python (« traceback ») se lit **de bas en haut** : la dernière ligne dit quoi, les lignes `File \"…\", line …` au-dessus disent où. Recopiez-le en entier dans le prompt 10."
+        },
+        {
+          "type": "code",
+          "label": "Terminal · un traceback typique",
+          "text": "Traceback (most recent call last):\n  File \"/home/ines/solen-bi/solen/lecture.py\", line 27, in lire_ventes\n    return pd.read_csv(chemin, sep=\";\", dtype=str, encoding=\"utf-8\")\nFileNotFoundError: [Errno 2] No such file or directory:\n'tronc-commun/lot1/ventes.csv'"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Dernière ligne",
+            "Ce que ça veut dire",
+            "Ce qu'on demande à Codex"
+          ],
+          "rows": [
+            [
+              "`FileNotFoundError: … No such file or directory`",
+              "Fichier absent à ce chemin. Vérifiez `pwd` (= `~/solen-bi`) et le vrai chemin : `ls tronc-commun/sources/lot1`.",
+              "Construire le chemin depuis `mission.txt` (`tronc-commun/sources/lot1/ventes.csv`), pas en dur."
+            ],
+            [
+              "`UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9`",
+              "Le fichier n'est pas en UTF-8 : `0xe9` est un « é » en `cp1252` (Windows). Prévu au lot 2 de certaines missions.",
+              "Lire **ce** fichier en `cp1252`, sans modifier la source ; vérifier qu'« espèces » s'affiche bien."
+            ],
+            [
+              "`ValueError: could not convert string to float: '12,500'`",
+              "Conversion directe d'un montant écrit à la française.",
+              "Convertir en millimes entiers avec une fonction testée sur `12,500`, `12.5`, `12 500`."
+            ],
+            [
+              "`sqlite3.IntegrityError: FOREIGN KEY constraint failed`",
+              "Un fait pointe vers une clé de dimension absente : dimensions chargées après les faits, ou clé inconnue non rejetée.",
+              "Charger les dimensions d'abord ; rejeter la ligne en `cle_inconnue` au lieu de l'insérer."
+            ],
+            [
+              "`sqlite3.IntegrityError: UNIQUE constraint failed: fact_vente.ligne_id`",
+              "Une ligne déjà chargée est réinsérée (deuxième `increment`).",
+              "Rendre l'insertion idempotente, sans supprimer de faits existants."
+            ],
+            [
+              "`ModuleNotFoundError: No module named 'pandas'`",
+              "Venv inactif : le code n'y est pour rien.",
+              "Rien : `source .venv/bin/activate`, puis relancer."
+            ]
+          ],
+          "widths": [
+            1.9,
+            2.2,
+            2.1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erreurs-controles",
+      "title": "Lire un contrôle rouge",
+      "kicker": "03 / DIRIGER CODEX · ERREURS",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Le vérificateur ne lit pas votre code : il compare vos sorties (`outputs/`) aux valeurs de référence. Chaque `ÉCHEC` a la même forme : **ce qui est contrôlé : attendu X, observé Y**. L'écart entre X et Y est votre premier indice."
+        },
+        {
+          "type": "code",
+          "label": "Terminal · python -m controles.verifier --mission tronc-commun --etape increment",
+          "text": "INFO — mission tronc-commun · référence … · sorties …/outputs\n== Étape increment : comparaison avec attendu_lot2.json ==\nOK — dim_boutique : 4 lignes\nÉCHEC — fact_retour : attendu 99 lignes, observé 98\nÉCHEC — rejets lot2 : cle_inconnue, attendu 4, observé 8\nÉCHEC — fact_vente : attendu chaque fait relié à la version valable à sa\ndate, observé 1 faits mal rattachés\n\nRésultat : 48 OK, 3 ÉCHEC."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Ligne ÉCHEC",
+            "Hypothèse à vérifier",
+            "Votre prévision après correction"
+          ],
+          "rows": [
+            [
+              "`fact_retour : attendu 99, observé 98`",
+              "Un retour valide du lot 2 a été perdu (rejeté à tort, ou date hors bornes).",
+              "99 lignes, aucun nouveau rejet."
+            ],
+            [
+              "`rejets lot2 : cle_inconnue, attendu 4, observé 8`",
+              "Exactement le double : les rejets du lot 2 ont été écrits deux fois.",
+              "4, même après un deuxième `increment`."
+            ],
+            [
+              "`rejets … : numero_ligne doit être une ligne réelle du fichier`",
+              "Numéro hors du CSV ou en double (en-tête = ligne 1).",
+              "Le vrai numéro de ligne, une fois."
+            ],
+            [
+              "`… observé 1 faits mal rattachés`",
+              "Une vente du 2026-07-15 pointe vers l'ancienne version : `valid_to` traité comme inclus.",
+              "La vente NBE du 15 juillet passe en Nord-Est."
+            ],
+            [
+              "`fact_vente : attendu des entiers …`",
+              "Un montant stocké en `float` (TND) au lieu de millimes entiers.",
+              "0 valeur non entière."
+            ],
+            [
+              "`entrepôt absent : attendu outputs/entrepot.sqlite`",
+              "Chargement non lancé, ou lancé hors de `~/solen-bi`.",
+              "`python -m solen initial`, puis le contrôle."
+            ]
+          ],
+          "widths": [
+            2,
+            2.4,
+            1.8
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Ce qu'on demande à Codex",
+          "text": "Prompt 10 : commande exacte, dossier, prévision et **toute** la sortie ; une ligne ÉCHEC à la fois, la première d’abord. Correction dans `solen/` ; refusez toute modification de `controles/` ou de `attendu_lot2.json`. Puis relancez les étapes acquises et `pytest -q`."
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "title": "À ce stade, je sais…",
+      "kicker": "03 / DIRIGER CODEX · RÉCAPITULATIF",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Je sais…",
+            "Je le prouve en…"
+          ],
+          "rows": [
+            [
+              "…dire qui fait quoi : Codex propose, nous décidons, Git est notre geste",
+              "refusant une proposition qui touche `controles/` ou une source"
+            ],
+            [
+              "…distinguer modèle, effort, vitesse, tokens, contexte et quota",
+              "choisissant l'effort avec la fiche tâche, et en lisant l'usage affiché sans rien promettre"
+            ],
+            [
+              "…appliquer les huit habitudes",
+              "montrant une demande précise, un plan court, une note de journal avec une preuve réelle"
+            ],
+            [
+              "…adapter un prompt et prévoir sa valeur",
+              "écrivant ma prévision avant d'envoyer, puis en la comparant à la sortie relancée"
+            ],
+            [
+              "…lire un diff et situer une fonction, une exception, une classe",
+              "montrant où une ligne est rejetée et où les millimes sont calculés"
+            ],
+            [
+              "…relire la PR de mon binôme",
+              "écrivant une revue GitHub avec une valeur que j'ai reproduite, distincte de l'avis de Codex"
+            ],
+            [
+              "…faire le cycle Git et diagnostiquer une erreur",
+              "réparant un commit sur `main` ou un conflit sans `--force` ni `reset --hard`"
+            ],
+            [
+              "…continuer sans Codex",
+              "faisant Git, revue, calcul à la main et note d'état pendant une limite d'usage"
+            ],
+            [
+              "…lire une erreur Python ou un ÉCHEC",
+              "expliquant « attendu X, observé Y » et la question que je pose à Codex"
+            ]
+          ],
+          "widths": [
+            2.6,
+            3.2
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Auto-contrôle (sans relire le livret)",
+          "text": "1. Conversation longue, Codex oublie les millimes : effort, contexte ou quota ? 2. Que vérifiez-vous dans `git status` avant `git add` ? 3. Codex dit « aucun défaut établi » : pouvez-vous approuver ? 4. `UNIQUE constraint failed: fact_vente.ligne_id` après un deuxième `increment` : quelle règle est violée ? Comparez vos réponses avec votre binôme."
+        },
+        {
+          "type": "text",
+          "text": "Prochaine étape : gardez le livret 06 (aide-mémoire) ouvert pendant les séances, et revenez ici à chaque nouvelle demande et à chaque PR."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Référentiel des canaux de vente Souk Express",
+  "extrait_le": "2026-06-30",
+  "familles_possibles": [
+    "site",
+    "application",
+    "marketplace",
+    "réseaux sociaux"
+  ],
+  "canaux": [
+    {
+      "code": "WEB",
+      "nom": "Site souk-express.tn",
+      "historique": [
+        {
+          "famille": "site",
+          "depuis": "2023-02-01"
+        }
+      ]
+    },
+    {
+      "code": "APP",
+      "nom": "Application mobile Souk Express",
+      "historique": [
+        {
+          "famille": "application",
+          "depuis": "2024-09-15"
+        }
+      ]
+    },
+    {
+      "code": "BZL",
+      "nom": "Marketplace Bazar Lina",
+      "historique": [
+        {
+          "famille": "marketplace",
+          "depuis": "2024-01-10"
+        }
+      ]
+    },
+    {
+      "code": "SHM",
+      "nom": "Marketplace Sahel Market",
+      "historique": [
+        {
+          "famille": "marketplace",
+          "depuis": "2025-03-03"
+        }
+      ]
+    },
+    {
+      "code": "VSO",
+      "nom": "Vitrine sociale Souk Express",
+      "historique": [
+        {
+          "famille": "réseaux sociaux",
+          "depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "code": "GCO",
+      "nom": "Groupe communauté Souk Express",
+      "historique": [
+        {
+          "famille": "réseaux sociaux",
+          "depuis": "2023-06-01"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-"""Rebuild the five student books from their editable JSON sources.
+"""Rebuild the student books (edition Solen BI 22 h) from their editable JSON sources.
 
 Python 3.10+, reportlab and Pillow. No university skill installation needed.
 Run from any folder: python authoring/build_pdfs.py
@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import pathlib
 import re
 from pathlib import Path
 
@@ -25,6 +26,9 @@ ASSETS = HERE / 'assets'
 W, H = 595.276, 841.89
 LEFT, RIGHT, BOTTOM = 45, 550.276, 62
 WIDTH = RIGHT - LEFT
+SOURCE_DIR = HERE  # set per book in build()
+MISSING = []
+EDITION_DATE = '28 octobre 2026'
 NAVY = colors.HexColor('#2B3180')
 DEEP = colors.HexColor('#07152F')
 ORANGE = colors.HexColor('#FF9A3C')
@@ -32,9 +36,13 @@ PALE = colors.HexColor('#F3F5FC')
 INK = colors.HexColor('#1A1F4D')
 MUTED = colors.HexColor('#52607B')
 
-for face, filename in [('Inter', 'Inter-400.ttf'), ('InterBold', 'Inter-700.ttf'),
-                       ('Jakarta', 'PlusJakartaSans-800.ttf')]:
-    pdfmetrics.registerFont(TTFont(face, str(ASSETS / 'fonts' / filename)))
+for face, filename, psname in [('Inter', 'Inter-400.ttf', b'Inter-Regular'), ('InterBold', 'Inter-700.ttf', b'Inter-Bold'),
+                               ('Jakarta', 'PlusJakartaSans-800.ttf', b'PlusJakartaSans-ExtraBold')]:
+    font = TTFont(face, str(ASSETS / 'fonts' / filename))
+    # Les fichiers statiques Inter 400 et 700 portent le même nom PostScript interne (« Inter-Regular ») :
+    # sans nom distinct, ReportLab fusionne les deux faces et le gras disparaît du PDF.
+    font.face.name = psname
+    pdfmetrics.registerFont(font)
 pdfmetrics.registerFontFamily('Inter', normal='Inter', bold='InterBold')
 
 BODY = ParagraphStyle('body', fontName='Inter', fontSize=10.5, leading=14.6,
@@ -49,7 +57,7 @@ WHITE = ParagraphStyle('white', parent=SMALL, textColor=colors.white)
 
 def marked(text):
     """Limited, predictable inline markup, keeping all source text escaped."""
-    text = html.escape(str(text))
+    text = html.escape(str(text)).replace('☐', '[ ]').replace('☑', '[x]')
     text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
     text = re.sub(r'`([^`]+)`', r'<font name="Courier">\1</font>', text)
     def linked(match):
@@ -118,7 +126,13 @@ def measure(block):
         return 52 * len(block['outcomes']) + 10, block
     if kind in ('figure','image'):
         from PIL import Image
-        path = HERE / block['path']
+        path = (SOURCE_DIR / block['path']).resolve()
+        if not path.is_file():
+            MISSING.append(str(block['path']))
+            caption = paragraph('Capture prévue, non encore réalisée : ' + pathlib.Path(block['path']).name
+                                + '. ' + block.get('caption',''), SMALL)
+            ch = caption.wrap(WIDTH, 2000)[1]
+            return 60 + ch + 10, ('placeholder', pathlib.Path(block['path']).name, caption, ch)
         with Image.open(path) as im:
             iw, ih = im.size
         left, top, right, bottom = block.get('crop', (0, 0, iw, ih))
@@ -126,8 +140,11 @@ def measure(block):
             raise ValueError('Invalid figure crop: ' + str(path))
         scale = min(WIDTH / (right-left), block.get('height', 170) / (bottom-top))
         visible_width, visible_height = (right-left)*scale, (bottom-top)*scale
-        caption = paragraph(block.get('caption', ''), SMALL)
-        caption_height = caption.wrap(WIDTH, 2000)[1] if block.get('caption') else 0
+        caption_text = block.get('caption', '')
+        if '/diagrams/' in str(block['path']) and caption_text and not caption_text.lower().startswith('schéma'):
+            caption_text = 'Schéma · ' + caption_text
+        caption = paragraph(caption_text, SMALL)
+        caption_height = caption.wrap(WIDTH, 2000)[1] if caption_text else 0
         layout = (path, iw, ih, left, top, scale, visible_width, visible_height,
                   caption, caption_height)
         return visible_height + (8+caption_height if caption_height else 0) + 10, layout
@@ -193,6 +210,16 @@ def draw_block(c, block, obj, y, height):
                 c.line(x+boxw+2,y-50,x+boxw+12,y-50)
                 c.line(x+boxw+9,y-47,x+boxw+12,y-50)
                 c.line(x+boxw+9,y-53,x+boxw+12,y-50)
+    elif kind in ('figure','image') and obj[0] == 'placeholder':
+        _, name, caption, ch = obj
+        c.setFillColor(PALE)
+        c.setStrokeColor(ORANGE)
+        c.setDash(4,3)
+        c.roundRect(LEFT, y-60, WIDTH, 52, 9, fill=1, stroke=1)
+        c.setDash()
+        c.setFillColor(NAVY); c.setFont('InterBold', 9.5)
+        c.drawCentredString(LEFT+WIDTH/2, y-37, 'CAPTURE À RÉALISER · ' + name)
+        caption.drawOn(c, LEFT, y-68-ch)
     elif kind in ('figure','image'):
         path, iw, ih, left, top, scale, vw, vh, caption, ph = obj
         x = LEFT + (WIDTH-vw)/2
@@ -272,6 +299,7 @@ def draw_block(c, block, obj, y, height):
 
 
 def cover(c, data, label):
+    cv = data.get('cover', {})
     c.setFillColor(DEEP)
     c.rect(0,0,W,H,fill=1,stroke=0)
     c.setFillColor(NAVY)
@@ -279,18 +307,19 @@ def cover(c, data, label):
     c.drawImage(str(ASSETS/'leaders-logo.jpeg'), W-157,H-157,112,112)
     c.setFillColor(ORANGE)
     c.setFont('InterBold',11)
-    c.drawString(LEFT,H-70,'LEADERS UNIVERSITY  /  LICENCE BI')
+    c.drawString(LEFT,H-70,cv.get('brand_line','LEADERS UNIVERSITY  /  LICENCE BI'))
     title = data.get('cover_title', data['title'])
-    style = ParagraphStyle('cover',fontName='Jakarta',fontSize=34,
-                           leading=41,textColor=colors.white)
+    style = ParagraphStyle('cover',fontName='Jakarta',fontSize=32,
+                           leading=39,textColor=colors.white)
     p=paragraph(title,style)
     _,h=p.wrap(WIDTH-40,500)
     p.drawOn(c,LEFT,H-208-h)
-    p=paragraph(data.get('subtitle','Du fichier brut à une décision expliquée.'),
+    p=paragraph(data.get('subtitle',''),
                 ParagraphStyle('sub',parent=BODY,fontSize=13,leading=19,textColor=colors.white))
     _,sh=p.wrap(WIDTH-45,300)
     p.drawOn(c,LEFT,H-230-h-sh)
-    for i,(large,small) in enumerate([('15 h','5 SÉANCES DE 3 H'),('70 %','PRATIQUE HORS PAUSES'),('0','PRÉREQUIS IT')]):
+    stats = cv.get('stats', [['22 h','5 × 4 H + SOUTENANCE 2 H'],['2','ÉTUDIANTS PAR BINÔME'],['0','LIGNE DE CODE À LA MAIN']])
+    for i,(large,small) in enumerate(stats[:3]):
         x=LEFT+i*173
         c.setFillColor(colors.HexColor('#142443'))
         c.roundRect(x,250,158,80,12,fill=1,stroke=0)
@@ -300,24 +329,29 @@ def cover(c, data, label):
         c.setFillColor(colors.white)
         c.setFont('InterBold',8)
         c.drawString(x+14,271,small)
-    c.setFillColor(colors.white)
-    c.setFont('InterBold',13)
-    c.drawString(LEFT,204,'ATLAS PAPETERIE')
-    c.setFont('Inter',11)
-    c.drawString(LEFT,180,'Codex   +   CSV et SQL   →   Entrepôt   →   Power BI')
+    solen = ASSETS/'solen-digital-horizontal.png'
+    if solen.is_file():
+        c.setFillColor(colors.white)
+        c.roundRect(LEFT,188,150,52,8,fill=1,stroke=0)
+        c.drawImage(str(solen), LEFT+8, 194, 134, 40, preserveAspectRatio=True, mask='auto')
+    x0 = LEFT+(165 if solen.is_file() else 0)
+    wcase = ParagraphStyle('cvcase',fontName='InterBold',fontSize=11.5,leading=14,textColor=colors.white)
+    wflow = ParagraphStyle('cvflow',fontName='Inter',fontSize=10,leading=13,textColor=colors.white)
+    pc=paragraph(cv.get('case','SOLEN DIGITAL · MISSION FICTIVE'),wcase); _,hc=pc.wrap(WIDTH-(x0-LEFT),100); pc.drawOn(c,x0,236-hc)
+    pf=paragraph(cv.get('flow','Codex + CSV, Excel, JSON, SQL → Entrepôt → App et Power BI'),wflow); _,hf=pf.wrap(WIDTH-(x0-LEFT),100); pf.drawOn(c,x0,232-hc-hf)
     c.setFillColor(colors.HexColor('#C9D4EE'))
     c.setFont('Inter',10)
-    c.drawString(LEFT,108,label)
-    c.drawString(LEFT,87,data.get('author','Youssef Douma'))
+    c.drawString(LEFT,108,cv.get('label',label))
+    c.drawString(LEFT,87,data.get('author','Youssef Douma · Leaders University'))
     c.setFont('Inter',8.5)
-    c.drawString(LEFT,49,'Édition pédagogique · 27 octobre 2026 · données fictives')
+    c.drawString(LEFT,49,cv.get('footer','Édition pédagogique · '+EDITION_DATE+' · données fictives'))
     c.showPage()
 
 
 def header(c, data, page, num, continued=False):
     c.setFillColor(NAVY)
     c.setFont('InterBold',8.2)
-    c.drawString(LEFT,H-35,'ATLAS  /  IA, CODEX ET BI')
+    c.drawString(LEFT,H-35,data.get('header_label','SOLEN  /  IA, CODEX ET BI'))
     c.setFillColor(MUTED)
     c.setFont('Inter',8)
     c.drawRightString(RIGHT,H-35,'Leaders University')
@@ -331,18 +365,21 @@ def header(c, data, page, num, continued=False):
     p.drawOn(c,LEFT,H-91-h)
     c.setFont('Inter',8)
     c.setFillColor(MUTED)
-    c.drawString(LEFT,35,'Youssef Douma · Licence BI · Atlas Papeterie')
+    c.drawString(LEFT,35,data.get('footer_label','Youssef Douma · Licence BI · Solen Digital (fictif)'))
     c.drawRightString(RIGHT,35,str(num))
     return H-102-h
 
 
 def build(source, output, label):
+    global SOURCE_DIR
+    SOURCE_DIR = source.resolve().parent
+    MISSING.clear()
     data=json.loads(source.read_text(encoding='utf-8'))
     output.parent.mkdir(parents=True,exist_ok=True)
     c=canvas.Canvas(str(output),pagesize=(W,H),pageCompression=1)
     c.setTitle(data['title'])
     c.setAuthor(data.get('author','Youssef Douma'))
-    c.setSubject('Licence BI · Codex, Python, ETL et Power BI · 15 heures')
+    c.setSubject(data.get('subject_label','Licence BI · IA, Codex et BI · Solen · 22 heures'))
     cover(c,data,label)
     num=2
     report=[]
@@ -367,16 +404,29 @@ def build(source, output, label):
         c.showPage();num+=1
     c.save()
     label = str(output.relative_to(ROOT)) if output.is_relative_to(ROOT) else output.name
-    return {'pdf':label,'pages':num-1,
+    return {'pdf':label,'pages':num-1,'missing_figures':sorted(set(MISSING)),
             'sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'layout':report}
 
 
-def main():
-    books=[('content/setup.json','01_demarrer_windows_ubuntu.pdf','01 / INSTALLER SON ATELIER'),
-           ('content/course.json','02_cours_atlas_ia.pdf','02 / CONSTRUIRE SA BI AVEC IA'),
-           ('content/reference.json','03_prompts_reperes_depannage.pdf','03 / PROMPTS, REPÈRES ET AIDE'),
-           ('content/challenge.json','04_defi_atlas.pdf','04 / DÉFI ATLAS'),
-           ('content/solutions.json','05_indices_et_corriges.pdf','05 / INDICES ET CORRIGÉS')]
+BOOKS=[('content/00_lire_moi.json','00_lire_moi.pdf','00 / LIRE-MOI'),
+       ('content/01_demarrer.json','01_demarrer.pdf','01 / DÉMARRER'),
+       ('content/02_tronc_commun.json','02_tronc_commun.pdf','02 / TRONC COMMUN'),
+       ('content/03_diriger_codex_et_git.json','03_diriger_codex_et_git.pdf','03 / DIRIGER CODEX ET GIT'),
+       ('content/04_catalogue_missions.json','04_catalogue_missions.pdf','04 / CATALOGUE DES MISSIONS'),
+       ('content/05_livrer_soutenir.json','05_livrer_soutenir.pdf','05 / LIVRER ET SOUTENIR'),
+       ('content/06_aide_memoire.json','06_aide_memoire.pdf','06 / AIDE-MÉMOIRE')]
+
+
+def main(argv=None):
+    import argparse, glob
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--only',nargs='*',help='noms de JSON à construire (sans dossier)')
+    ap.add_argument('--missions',action='store_true',help='construire aussi content/missions/M*.json vers pdf/missions/')
+    a=ap.parse_args(argv)
+    books=[b for b in BOOKS if (HERE/b[0]).is_file() and (not a.only or Path(b[0]).name in a.only)]
+    if a.missions:
+        for src in sorted((HERE/'content'/'missions').glob('M*.json')):
+            books.append((str(src.relative_to(HERE)),'missions/'+src.stem+'_guide.pdf',src.stem+' / GUIDE DE MISSION'))
     reports=[]
     for src,dest,label in books:
         reports.append(build(HERE/src,ROOT/'pdf'/dest,label))

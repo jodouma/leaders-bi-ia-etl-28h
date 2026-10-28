@@ -1,55 +1,64 @@
-# Préparer Atlas BI avec Codex
+# Démarrer · Solen BI 22 h
 
-[Retour au cours](../../README.md) · [Guide de démarrage complet](../../pdf/01_demarrer_windows_ubuntu.pdf)
+[Retour au cours](../../README.md) · Livret complet : [`pdf/01_demarrer.pdf`](../../pdf/01_demarrer.pdf) · [Aide-mémoire Git · Codex · BI](../../aide-memoire/aide_memoire_git_codex_bi.md)
 
-Le guide 01 accompagne les manipulations depuis zéro : dossiers, ZIP, terminal, installation, connexion et première demande. Le cours dure **15 h, en cinq séances de 3 h**. Les installations sont préparées avec le professeur au début du parcours ; aucun travail d’installation caché à faire seul n’est requis.
+Ce dossier résume l’installation. Le livret 01 détaille chaque étape, les sorties attendues et les erreurs courantes. Comptez 60 à 120 min en début de séance 1 ; c’est une estimation.
 
-- **Windows** : application de bureau sur Windows, agent et terminal dans **Ubuntu WSL2**. Dans les paramètres de l’application, le choix de l’agent et celui du terminal sont distincts ; le changement d’agent demande un redémarrage. Le dossier du cours reste dans `~/cours-bi`, dans Linux.
-- **Ubuntu natif** : application Linux officielle en preview, Ubuntu **24.04 ou 26.04 LTS** et paquet `.deb` adapté au processeur. Python s’exécute dans ce même Ubuntu.
-- **Codex gratuit** : compte personnel Free, disponibilité réelle et usage à contrôler avant la mission. Luna Standard est annoncé sous déploiement. Standard désigne la vitesse ; High est l’effort de départ conseillé pour Luna si le compte affiche ce réglage. N’inventez pas une option absente.
-- **Power BI** : un vrai poste Windows avec Power BI Desktop ouvert doit être prêt avant la séance 4. Depuis Ubuntu natif, prévoyez le transfert du dossier d’export sur ce poste.
+## Ce que chacun prépare
 
-Après extraction du ZIP, la racine `~/cours-bi` contient `README.md`, `AGENTS.md`, `projet/`, `outils/`, `solutions/`, `tests/` et `defi/`. `projet/` est le modèle fourni. Gardez **cette racine** ouverte dans Codex : les consignes `AGENTS.md` et le futur dossier `.agents/skills/` doivent être accessibles. Les modifications des missions se feront dans `atelier/`, créé ensuite. Le guide explique la copie dans Linux pour WSL ; ne travaillez pas dans le ZIP.
+- un compte **ChatGPT Free** (aucun paiement, aucune clé API) ;
+- un compte **GitHub** personnel ;
+- **Windows 10 (version 2004+) ou 11**, ou **Ubuntu 24.04 / 26.04 LTS** ;
+- un accès **Windows** pour Power BI Desktop en séance 5.
 
-Dans le **Terminal Ubuntu**, vérifiez Python :
+Le binôme décide qui est **A** (crée le dépôt GitHub et invite B) et qui est **B**.
+
+## Windows : Ubuntu dans WSL2
+
+Dans **PowerShell (Windows)** ouvert en administrateur, puis redémarrer le PC :
+
+```powershell
+wsl --install
+```
+
+Ouvrir **Ubuntu** depuis le menu Démarrer, créer l’utilisateur Linux, puis dans le **Terminal Ubuntu** :
 
 ```bash
-cd ~/cours-bi
-python3 --version
-python3 -c "import csv, sqlite3, decimal; print('OK Python')"
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y python3 python3-venv python3-pip git
 ```
 
-Si `atelier` n’existe pas encore, créez une seule fois la copie de départ :
+Application ChatGPT pour Windows (Microsoft Store) : **Settings → Agent environment → Windows Subsystem for Linux (WSL)**, **Integrated terminal shell → WSL**, puis quitter et rouvrir l’application. Les projets s’ouvrent avec **Add new project** (Ctrl + O) en tapant `\\wsl$\` puis Ubuntu → home → votre utilisateur.
 
-```bash
-python3 outils/jalon.py 01 atelier
-```
+## Ubuntu natif
 
-Si `atelier` existe déjà, ne relancez pas le jalon 01 : conservez votre essai et reprenez dans ce dossier. Ne supprimez pas votre travail pour recommencer. Puis :
+Mêmes commandes `apt` dans le Terminal. Application Linux (preview) : télécharger le `.deb` officiel, puis `sudo apt install ./chatgpt_amd64.deb` (ou `chatgpt_arm64.deb`) depuis le dossier de téléchargement, et lancer `chatgpt`.
 
-```bash
-cd ~/cours-bi/atelier
-python3 calcul.py
-python3 verifier.py 01
-```
+## Les deux dossiers
 
-Les deux premiers contrôles doivent afficher une version Python 3 puis `OK Python`. La création du jalon annonce `Jalon 01 créé`. `calcul.py` doit afficher `2 × 4500 = 9000 millimes = 9.000 TND` ; le contrôle doit afficher `OK 01`. Ne modifiez pas les vérificateurs ou les données pour masquer une erreur.
+| Dossier | Contenu | Créé par |
+|---|---|---|
+| `~/cours-bi` | ce dépôt de cours (lecture) | `git clone <adresse-du-cours> ~/cours-bi` |
+| `~/solen-bi` | le dépôt GitHub du binôme | `git clone https://github.com/<compteA>/<depot>.git ~/solen-bi` |
 
-`atelier/` contient votre copie de travail, dont `data/` et `outputs/`. Python utilise sa bibliothèque standard : aucun paquet pip n’est requis. Si `python3` manque, le guide décrit l’installation Ubuntu avec `apt` et le nouveau contrôle.
+Remplacez chaque `<mot>` entre chevrons, chevrons compris. Les deux dossiers vivent dans Linux, jamais sous `C:\`.
 
-Votre première demande dans **Codex / New chat**, projet `cours-bi` :
+## Codex Free
 
-```text
-Je débute. Lis uniquement README.md et AGENTS.md,
-puis liste les fichiers du dossier atelier.
-Explique en français où sera mon travail en 5 phrases.
-Ne modifie aucun fichier et ne lance aucune installation.
-```
+Mode **Codex**, modèle **GPT-6 Luna**, effort **High** pour commencer (Ctrl + Maj + M). `/status` affiche le contexte et les limites d’usage. La page officielle des tarifs annonce pour Free « GPT-6 Luna at Standard speed in the desktop app, subject to rollout » : vérifiez ce que **votre** compte affiche. Aucun quota n’est garanti. Le **Codex CLI est facultatif** et non confirmé sur Free.
 
-Comparez la réponse aux fichiers réels avant de demander un changement. Pour les missions suivantes : une tâche limitée, des fichiers précis, lecture du changement, exécution locale, puis explication de ce que vous avez observé.
+## GitHub
 
-Si Codex est indisponible ou si le quota est épuisé, gardez votre essai et notez l’heure de reprise affichée. Continuez avec les consignes, les indices du PDF 03, les scripts et les contrôles locaux ; reprenez Codex après le rétablissement de l’usage. Un jalon fourni peut aider à reprendre avec le professeur. Aucune quantité de messages ni durée d’inférence gratuite n’est garantie. Aucun achat ni clé API n’est demandé.
+1. Chacun : compte GitHub, adresse noreply, `git config --global user.name` / `user.email`.
+2. Chacun : GitHub CLI (dépôt apt officiel, voir livret), puis `gh auth login` (HTTPS, navigateur) et `gh auth setup-git`.
+3. A : dépôt **public** `solen-<nomA>-<nomB>` sans README ; invite B (**Settings → Collaborators → Add people**).
+4. A : clone, copie `~/cours-bi/modele-binome/.`, premier commit, `git push -u origin main`.
+5. A : protège `main` (**Settings → Branches → Add classic branch protection rule** : PR requise, 1 approbation, pas de contournement).
+6. Chacun : `python3 -m venv .venv`, `source .venv/bin/activate`, `python -m pip install -r requirements.txt`.
+7. Le binôme : premier cycle branche → commit → push → PR → revue → merge → `git switch main && git pull`.
 
-Après les missions de chargement, les commandes `python3 executer.py initial`, `increment` puis `export` produisent la livraison attendue. Depuis le dossier d’export réussi, `explorer.exe .` ouvre ses fichiers dans Windows avec WSL. Copiez **le dossier entier**, avec les quatre CSV et `manifest.json`, dans un dossier local Windows ; Power BI utilise cette copie. Depuis Ubuntu natif, transférez le même dossier sur le poste Windows prévu.
+Jamais de `git push --force` ni de `git reset --hard` ; jamais de mot de passe ou de jeton dans le dépôt.
 
-Les [sources officielles](sources.json) ont été vérifiées le **27 octobre 2026**. Cette recherche ne constitue pas une installation Windows/Ubuntu ni un test de compte Free. Les schémas décrivent le fonctionnement et ne prétendent pas montrer l’interface réelle de votre poste.
+## Sources
+
+Les [sources officielles](sources.json) (OpenAI, Microsoft, Ubuntu, Python, Git, GitHub) ont été lues le **28 octobre 2026**, avec les libellés et citations utilisés. Cette lecture n’est ni une installation réelle ni un test de compte Free.

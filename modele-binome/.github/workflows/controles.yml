@@ -1,0 +1,117 @@
+# Intégration continue (CI) du dépôt binôme Solen.
+#
+# À quoi ça sert : à chaque pull request, et à chaque fusion dans main, GitHub
+# prend une machine Linux neuve, installe le projet depuis zéro, reconstruit
+# l'entrepôt et lance les mêmes contrôles que vous lancez sur votre poste.
+# Si c'est vert ici, le résultat ne dépend pas de « ça marche chez moi ».
+#
+# Ce fichier est du code YAML : vous ne l'écrivez pas à la main. Demandez à
+# Codex de le créer ou de le mettre à jour (prompt « tests-et-ci »), puis lisez
+# le diff comme pour le reste. Aucune clé d'IA, aucun secret, aucun service
+# externe : seulement Python et les fichiers du dépôt.
+
+name: Contrôles Solen
+
+# Quand la CI se lance : sur chaque pull request, et quand main change.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# La CI lit le dépôt ; elle n'a le droit de rien modifier.
+permissions:
+  contents: read
+
+env:
+  # Jusqu'où le pipeline est construit. Valeurs possibles, dans l'ordre :
+  #   aucune     → séance 1 : rien n'est encore construit, on vérifie seulement l'installation
+  #   rejets     → séance 2 : le nettoyage du CSV de faits du lot 1 existe. Règle simple : la CI
+  #                lance `python -m solen initial` (même si l'entrepôt n'est pas encore écrit),
+  #                puis contrôle SEULEMENT les rejets de ce CSV dans outputs/rejets.csv
+  #                (`verifier --etape rejets`) ; ceux de la base SQLite viennent avec « initial ».
+  #                Aucune commande `nettoyer` séparée n'est demandée à Codex.
+  #   initial    → le chargement du lot 1 existe (rejets de toutes les sources + entrepôt)
+  #   increment  → le lot 2 s'ajoute
+  #   rejeu      → relancer le lot 2 ne change rien : la CI contrôle l'incrément (ce qui
+  #                enregistre l'empreinte de l'entrepôt), relance le lot 2, puis compare
+  #   export     → les CSV et le manifeste sont produits
+  #   tout       → tout le parcours + les tests pytest (objectif de la séance 4)
+  # Pour avancer, demandez à Codex : « passe ETAPE_CI à <valeur> dans controles.yml ».
+  ETAPE_CI: aucune
+  # Affichage correct des accents dans les journaux de la CI.
+  PYTHONIOENCODING: utf-8
+
+jobs:
+  controles:
+    name: Pipeline et contrôles (${{ github.event_name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # 1. Récupérer une copie du dépôt (la branche de la PR) sur la machine.
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v5
+
+      # 2. Installer Python 3.12, comme une installation neuve.
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      # 3. Installer les bibliothèques listées dans requirements.txt
+      #    (pandas, openpyxl, pytest…). Le paquet solen/ est lu directement depuis la racine.
+      - name: Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # 4. Afficher la mission et l'étape contrôlées, pour lire le journal facilement.
+      - name: Mission et étape
+        run: |
+          echo "Mission : $(cat mission.txt)"
+          echo "Étape CI : $ETAPE_CI"
+          if [ "$ETAPE_CI" = "aucune" ]; then
+            echo "Pipeline pas encore construit : seule l'installation est vérifiée."
+          fi
+
+      # 5. Chargement initial : recrée l'entrepôt depuis zéro avec le lot 1
+      #    (à l'étape « rejets », seul outputs/rejets.csv sera contrôlé ensuite).
+      - name: Chargement initial (lot 1)
+        if: env.ETAPE_CI != 'aucune'
+        run: python -m solen initial
+
+      # 6. Incrément : ajoute le lot 2 (nouvelles lignes, changement SCD2).
+      - name: Incrément (lot 2)
+        if: contains(fromJSON('["increment","rejeu","export","tout"]'), env.ETAPE_CI)
+        run: python -m solen increment
+
+      # 7. Contrôle de l'incrément : compare le lot 2 à la référence et enregistre
+      #    l'empreinte de l'entrepôt (outputs/verification/), que le rejeu comparera.
+      - name: Contrôler l'incrément et enregistrer l'empreinte
+        if: contains(fromJSON('["rejeu","export","tout"]'), env.ETAPE_CI)
+        run: python -m controles.verifier --etape increment
+
+      # 8. Rejeu : on relance exactement le même lot 2, puis on compare à l'empreinte :
+      #    aucune ligne ajoutée, aucune ligne modifiée.
+      - name: Rejeu du lot 2 (ne doit rien changer)
+        if: contains(fromJSON('["rejeu","export","tout"]'), env.ETAPE_CI)
+        run: |
+          python -m solen increment
+          python -m controles.verifier --etape rejeu
+
+      # 9. Export : écrit outputs/export/<table>.csv et manifest.json.
+      - name: Export CSV et manifeste
+        if: contains(fromJSON('["export","tout"]'), env.ETAPE_CI)
+        run: python -m solen export
+
+      # 10. Vérificateur fourni : compare vos sorties aux valeurs de référence
+      #     (la mission est lue dans mission.txt). S'il échoue, corrigez le code,
+      #     jamais le vérificateur ni la référence.
+      - name: Vérifier les résultats
+        if: env.ETAPE_CI != 'aucune'
+        run: python -m controles.verifier --etape "$ETAPE_CI"
+
+      # 11. Tests pytest : ceux fournis dans controles/ et ceux que Codex a écrits.
+      - name: Tests pytest
+        if: env.ETAPE_CI == 'tout'
+        run: pytest -q

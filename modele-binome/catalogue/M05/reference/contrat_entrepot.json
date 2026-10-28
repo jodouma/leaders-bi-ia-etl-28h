@@ -1,0 +1,357 @@
+{
+  "version_contrat": 1,
+  "mission": "M05",
+  "entreprise": "Académie Nour",
+  "grain": "une présence : un participant inscrit × une séance d'une session (présent 0 ou 1)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_formation",
+    "dim_session",
+    "fact_presence",
+    "fact_paiement"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_formation": {
+      "role": "dimension",
+      "cle": "formation_key",
+      "cle_metier": "formation_id",
+      "colonnes": [
+        "formation_key",
+        "formation_id",
+        "intitule",
+        "domaine",
+        "prix_millimes",
+        "capacite",
+        "nb_seances"
+      ],
+      "colonnes_entieres": [
+        "formation_key",
+        "prix_millimes",
+        "capacite",
+        "nb_seances"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_session": {
+      "role": "dimension_scd2",
+      "cle": "session_key",
+      "cle_metier": "session_id",
+      "colonnes": [
+        "session_key",
+        "session_id",
+        "formation_id",
+        "formateur",
+        "date_debut",
+        "centre",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "session_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_presence": {
+      "role": "fait",
+      "cle": "presence_id",
+      "cle_metier": null,
+      "colonnes": [
+        "presence_id",
+        "date_key",
+        "session_key",
+        "formation_key",
+        "participant_id",
+        "present"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "session_key",
+        "formation_key",
+        "present"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "session_key": "dim_session.session_key",
+        "formation_key": "dim_formation.formation_key"
+      }
+    },
+    "fact_paiement": {
+      "role": "fait",
+      "cle": "mouvement_id",
+      "cle_metier": null,
+      "colonnes": [
+        "mouvement_id",
+        "date_key",
+        "session_key",
+        "formation_key",
+        "inscription_id",
+        "type_mouvement",
+        "signe",
+        "montant_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "session_key",
+        "formation_key",
+        "signe",
+        "montant_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "session_key": "dim_session.session_key",
+        "formation_key": "dim_formation.formation_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_presence",
+    "fact_paiement"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_session",
+    "cle": "session_key",
+    "cle_metier": "session_id",
+    "attribut": "centre",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_presence",
+        "colonne": "session_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_paiement",
+        "colonne": "session_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "SES-2619",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "SES-2619",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "SES-2619",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "SES-2613",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, s.session_id, s.centre, fo.formation_id, p.present AS present, 1 AS lignes_presence, 0 AS inscrits, 0 AS capacite, 0 AS attendu_encaisse, 0 AS paye, 0 AS rembourse FROM fact_presence p JOIN dim_date d ON d.date_key = p.date_key JOIN dim_session s ON s.session_key = p.session_key JOIN dim_formation fo ON fo.formation_key = p.formation_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), s.session_id, s.centre, fo.formation_id, 0, 0, COALESCE(i.inscrits, 0), fo.capacite, COALESCE(i.inscrits, 0) * fo.prix_millimes, 0, 0 FROM dim_session s JOIN dim_formation fo ON fo.formation_id = s.formation_id JOIN dim_date d ON d.date_complete = s.date_debut LEFT JOIN (SELECT s2.session_id AS session_id, COUNT(DISTINCT p2.participant_id) AS inscrits FROM fact_presence p2 JOIN dim_session s2 ON s2.session_key = p2.session_key GROUP BY s2.session_id) i ON i.session_id = s.session_id WHERE s.valid_from <= s.date_debut AND (s.valid_to IS NULL OR s.date_debut < s.valid_to) UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), s.session_id, s.centre, fo.formation_id, 0, 0, 0, 0, 0, CASE WHEN m.signe = 1 THEN m.montant_millimes ELSE 0 END, CASE WHEN m.signe = -1 THEN m.montant_millimes ELSE 0 END FROM fact_paiement m JOIN dim_date d ON d.date_key = m.date_key JOIN dim_session s ON s.session_key = m.session_key JOIN dim_formation fo ON fo.formation_key = m.formation_key",
+  "indicateurs": [
+    {
+      "code": "inscrits",
+      "libelle": "Inscrits",
+      "unite": "nombre",
+      "formule": "nombre d'inscriptions distinctes de la session (participants de la feuille d'émargement), compté une fois par session, à la date de début de la session",
+      "sql": "SUM(inscrits)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "taux_assiduite",
+      "libelle": "Taux d'assiduité",
+      "unite": "ratio",
+      "formule": "présences / (inscrits × séances), soit la somme de `present` divisée par le nombre de lignes de présence (chaque inscrit figure à chaque séance tenue)",
+      "sql": "ROUND(1.0 * SUM(present) / NULLIF(SUM(lignes_presence), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "taux_remplissage",
+      "libelle": "Taux de remplissage",
+      "unite": "ratio",
+      "formule": "inscrits / capacité (capacité du catalogue, une fois par session)",
+      "sql": "ROUND(1.0 * SUM(inscrits) / NULLIF(SUM(capacite), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "paiements_millimes",
+      "libelle": "Paiements",
+      "unite": "millimes",
+      "formule": "somme des paiements VALIDE acceptés",
+      "sql": "SUM(paye)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "remboursements_millimes",
+      "libelle": "Remboursements",
+      "unite": "millimes",
+      "formule": "somme des remboursements VALIDE acceptés",
+      "sql": "SUM(rembourse)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "encaissements_nets_millimes",
+      "libelle": "Encaissements nets",
+      "unite": "millimes",
+      "formule": "paiements − remboursements",
+      "sql": "SUM(paye) - SUM(rembourse)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "encaissement_attendu_millimes",
+      "libelle": "Encaissement attendu",
+      "unite": "millimes",
+      "formule": "inscrits × prix par participant du catalogue",
+      "sql": "SUM(attendu_encaisse)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "taux_encaissement",
+      "libelle": "Taux d'encaissement",
+      "unite": "ratio",
+      "formule": "encaissements nets / encaissement attendu",
+      "sql": "ROUND(1.0 * (SUM(paye) - SUM(rembourse)) / NULLIF(SUM(attendu_encaisse), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": false
+    },
+    {
+      "code": "presences",
+      "libelle": "Présences",
+      "unite": "nombre",
+      "formule": "somme de `present` (séances suivies)",
+      "sql": "SUM(present)",
+      "tolerance": 0.0,
+      "principal": false
+    }
+  ],
+  "axes": {
+    "par_session": "session_id",
+    "par_centre": "centre",
+    "par_formation": "formation_id",
+    "par_mois": "mois"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "operations.sqlite",
+      "presences.csv"
+    ],
+    "etape_rejets": {
+      "sources": [
+        "presences.csv"
+      ]
+    }
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_formation",
+      "dim_session",
+      "fact_presence",
+      "fact_paiement"
+    ],
+    "sommes": {
+      "fact_presence": [
+        "present"
+      ],
+      "fact_paiement": [
+        "montant_millimes",
+        "signe"
+      ],
+      "dim_formation": [
+        "prix_millimes",
+        "capacite",
+        "nb_seances"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par session",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

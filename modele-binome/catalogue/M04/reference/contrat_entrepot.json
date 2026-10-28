@@ -1,0 +1,360 @@
+{
+  "version_contrat": 1,
+  "mission": "M04",
+  "entreprise": "Colis Rapide",
+  "grain": "un colis livré",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_agence",
+    "dim_service",
+    "dim_tarif",
+    "fact_colis"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_agence": {
+      "role": "dimension_scd2",
+      "cle": "agence_key",
+      "cle_metier": "agence_id",
+      "colonnes": [
+        "agence_key",
+        "agence_id",
+        "nom",
+        "ville",
+        "zone",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "agence_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "dim_service": {
+      "role": "dimension",
+      "cle": "service_key",
+      "cle_metier": "service_id",
+      "colonnes": [
+        "service_key",
+        "service_id",
+        "libelle",
+        "delai_promis_jours",
+        "coefficient_prix_pct"
+      ],
+      "colonnes_entieres": [
+        "service_key",
+        "delai_promis_jours",
+        "coefficient_prix_pct"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_tarif": {
+      "role": "dimension",
+      "cle": "tarif_key",
+      "cle_metier": "tarif_id",
+      "colonnes": [
+        "tarif_key",
+        "tarif_id",
+        "zone_destination",
+        "tranche",
+        "tranche_libelle",
+        "poids_min_grammes",
+        "poids_max_grammes",
+        "prix_millimes",
+        "cout_transporteur_millimes"
+      ],
+      "colonnes_entieres": [
+        "tarif_key",
+        "poids_min_grammes",
+        "poids_max_grammes",
+        "prix_millimes",
+        "cout_transporteur_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "fact_colis": {
+      "role": "fait",
+      "cle": "colis_id",
+      "cle_metier": null,
+      "colonnes": [
+        "colis_id",
+        "date_key",
+        "agence_key",
+        "service_key",
+        "tarif_key",
+        "date_expedition",
+        "date_promise",
+        "poids_grammes",
+        "retard_jours",
+        "a_l_heure",
+        "montant_facture_millimes",
+        "penalite_millimes",
+        "cout_transporteur_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "agence_key",
+        "service_key",
+        "tarif_key",
+        "poids_grammes",
+        "retard_jours",
+        "a_l_heure",
+        "montant_facture_millimes",
+        "penalite_millimes",
+        "cout_transporteur_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "agence_key": "dim_agence.agence_key",
+        "service_key": "dim_service.service_key",
+        "tarif_key": "dim_tarif.tarif_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_colis"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_agence",
+    "cle": "agence_key",
+    "cle_metier": "agence_id",
+    "attribut": "zone",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_colis",
+        "colonne": "agence_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "NAB",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "NAB",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "NAB",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "TUN",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, d.date_complete AS jour, a.agence_id, a.zone, t.zone_destination, t.tranche, s.service_id, 1 AS nb, f.a_l_heure AS a_l_heure, f.retard_jours AS retard, f.montant_facture_millimes AS facture, f.penalite_millimes AS penalite, f.cout_transporteur_millimes AS cout FROM fact_colis f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_agence a ON a.agence_key = f.agence_key JOIN dim_service s ON s.service_key = f.service_key JOIN dim_tarif t ON t.tarif_key = f.tarif_key",
+  "indicateurs": [
+    {
+      "code": "colis_livres",
+      "libelle": "Colis livrés",
+      "unite": "nombre",
+      "formule": "nombre de colis acceptés dans `fact_colis`",
+      "sql": "SUM(nb)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "colis_a_l_heure",
+      "libelle": "Colis à l'heure",
+      "unite": "nombre",
+      "formule": "colis avec date_livraison ≤ date_promise (livré le jour promis = à l'heure)",
+      "sql": "SUM(a_l_heure)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "ponctualite",
+      "libelle": "Ponctualité",
+      "unite": "ratio",
+      "formule": "colis à l'heure / colis livrés",
+      "sql": "ROUND(1.0 * SUM(a_l_heure) / NULLIF(SUM(nb), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "retard_moyen_jours",
+      "libelle": "Retard moyen",
+      "unite": "jours",
+      "formule": "somme des jours de retard / nombre de colis EN RETARD (les colis à l'heure ne comptent pas) ; jours de retard = date_livraison − date_promise, en jours calendaires",
+      "sql": "ROUND(1.0 * SUM(retard) / NULLIF(SUM(nb) - SUM(a_l_heure), 0), 6)",
+      "tolerance": 0.001,
+      "principal": true
+    },
+    {
+      "code": "montant_facture_millimes",
+      "libelle": "Montant facturé",
+      "unite": "millimes",
+      "formule": "somme des montants des factures EMISE ou PAYEE des colis acceptés",
+      "sql": "SUM(facture)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "penalites_millimes",
+      "libelle": "Pénalités de retard",
+      "unite": "millimes",
+      "formule": "somme des pénalités APPLIQUEE des colis acceptés",
+      "sql": "SUM(penalite)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "revenu_net_millimes",
+      "libelle": "Revenu facturé net de pénalités",
+      "unite": "millimes",
+      "formule": "montant facturé − pénalités de retard",
+      "sql": "SUM(facture) - SUM(penalite)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "cout_transporteur_millimes",
+      "libelle": "Coût transporteur",
+      "unite": "millimes",
+      "formule": "somme du coût transporteur de la grille (zone de destination × tranche de poids) des colis acceptés",
+      "sql": "SUM(cout)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "marge_livraison_millimes",
+      "libelle": "Marge de livraison",
+      "unite": "millimes",
+      "formule": "revenu facturé net de pénalités − coût transporteur (marge partielle : ni salaires, ni loyers, ni carburant des agences ; ce n'est pas un bénéfice)",
+      "sql": "SUM(facture) - SUM(penalite) - SUM(cout)",
+      "tolerance": 0.0,
+      "principal": true
+    }
+  ],
+  "axes": {
+    "par_zone": "zone",
+    "par_agence": "agence_id",
+    "par_mois": "mois",
+    "par_service": "service_id",
+    "par_zone_destination": "zone_destination",
+    "par_tranche": "tranche"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "colis.csv",
+      "facturation.sqlite"
+    ],
+    "etape_rejets": {
+      "sources": [
+        "colis.csv"
+      ]
+    }
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_agence",
+      "dim_service",
+      "dim_tarif",
+      "fact_colis"
+    ],
+    "sommes": {
+      "fact_colis": [
+        "poids_grammes",
+        "retard_jours",
+        "a_l_heure",
+        "montant_facture_millimes",
+        "penalite_millimes",
+        "cout_transporteur_millimes"
+      ],
+      "dim_tarif": [
+        "prix_millimes",
+        "cout_transporteur_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par agence",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "version_contrat": 1,
+  "mission": "M01",
+  "entreprise": "Carthage Market",
+  "grain": "une ligne de ticket de caisse",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_produit",
+    "dim_magasin",
+    "fact_vente",
+    "fact_retour"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_produit": {
+      "role": "dimension",
+      "cle": "produit_key",
+      "cle_metier": "produit_id",
+      "colonnes": [
+        "produit_key",
+        "produit_id",
+        "nom",
+        "famille",
+        "prix_millimes",
+        "cout_achat_millimes"
+      ],
+      "colonnes_entieres": [
+        "produit_key",
+        "prix_millimes",
+        "cout_achat_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_magasin": {
+      "role": "dimension_scd2",
+      "cle": "magasin_key",
+      "cle_metier": "magasin_id",
+      "colonnes": [
+        "magasin_key",
+        "magasin_id",
+        "nom",
+        "type",
+        "region",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "magasin_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_vente": {
+      "role": "fait",
+      "cle": "ligne_id",
+      "cle_metier": null,
+      "colonnes": [
+        "ligne_id",
+        "date_key",
+        "produit_key",
+        "magasin_key",
+        "quantite",
+        "prix_unitaire_millimes",
+        "remise_millimes",
+        "montant_brut_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "produit_key",
+        "magasin_key",
+        "quantite",
+        "prix_unitaire_millimes",
+        "remise_millimes",
+        "montant_brut_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "produit_key": "dim_produit.produit_key",
+        "magasin_key": "dim_magasin.magasin_key"
+      }
+    },
+    "fact_retour": {
+      "role": "fait",
+      "cle": "retour_id",
+      "cle_metier": null,
+      "colonnes": [
+        "retour_id",
+        "date_key",
+        "produit_key",
+        "magasin_key",
+        "quantite",
+        "montant_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "produit_key",
+        "magasin_key",
+        "quantite",
+        "montant_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "produit_key": "dim_produit.produit_key",
+        "magasin_key": "dim_magasin.magasin_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_vente",
+    "fact_retour"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_magasin",
+    "cle": "magasin_key",
+    "cle_metier": "magasin_id",
+    "attribut": "region",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_vente",
+        "colonne": "magasin_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_retour",
+        "colonne": "magasin_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "HAM",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "HAM",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "HAM",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "LAC",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, d.date_complete AS jour, m.magasin_id, m.region, m.type AS type_magasin, p.produit_id, p.famille, f.montant_brut_millimes AS brut, 0 AS retour, f.remise_millimes AS remise, CASE WHEN m.type = 'franchisé' THEN f.montant_brut_millimes ELSE 0 END AS brut_franchise, 0 AS retour_franchise, f.quantite * p.cout_achat_millimes AS cout_vendu, 0 AS cout_retour, f.quantite AS unites_vendues, 0 AS unites_retournees FROM fact_vente f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_magasin m ON m.magasin_key = f.magasin_key JOIN dim_produit p ON p.produit_key = f.produit_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), d.date_complete, m.magasin_id, m.region, m.type, p.produit_id, p.famille, 0, r.montant_millimes, 0, 0, CASE WHEN m.type = 'franchisé' THEN r.montant_millimes ELSE 0 END, 0, r.quantite * p.cout_achat_millimes, 0, r.quantite FROM fact_retour r JOIN dim_date d ON d.date_key = r.date_key JOIN dim_magasin m ON m.magasin_key = r.magasin_key JOIN dim_produit p ON p.produit_key = r.produit_key",
+  "indicateurs": [
+    {
+      "code": "ventes_brutes_millimes",
+      "libelle": "Ventes brutes",
+      "unite": "millimes",
+      "formule": "somme de (quantité × prix unitaire − remise) des lignes de ticket acceptées",
+      "sql": "SUM(brut)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "remises_millimes",
+      "libelle": "Remises",
+      "unite": "millimes",
+      "formule": "somme des remises des lignes de ticket acceptées (déjà déduites des ventes brutes)",
+      "sql": "SUM(remise)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "retours_millimes",
+      "libelle": "Retours",
+      "unite": "millimes",
+      "formule": "somme des montants remboursés des retours VALIDE acceptés",
+      "sql": "SUM(retour)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "ventes_nettes_millimes",
+      "libelle": "Ventes nettes",
+      "unite": "millimes",
+      "formule": "ventes brutes − retours",
+      "sql": "SUM(brut) - SUM(retour)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "cout_achat_net_millimes",
+      "libelle": "Coût d'achat des unités nettes",
+      "unite": "millimes",
+      "formule": "(unités vendues − unités retournées) × coût d'achat unitaire, produit par produit",
+      "sql": "SUM(cout_vendu) - SUM(cout_retour)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "marge_cout_achat_millimes",
+      "libelle": "Marge sur coût d'achat",
+      "unite": "millimes",
+      "formule": "ventes nettes − coût d'achat des unités nettes",
+      "sql": "SUM(brut) - SUM(retour) - SUM(cout_vendu) + SUM(cout_retour)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "part_franchises",
+      "libelle": "Part des franchisés",
+      "unite": "ratio",
+      "formule": "ventes nettes des magasins franchisés / ventes nettes totales",
+      "sql": "ROUND(1.0 * (SUM(brut_franchise) - SUM(retour_franchise)) / NULLIF(SUM(brut) - SUM(retour), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "taux_retour",
+      "libelle": "Taux de retour",
+      "unite": "ratio",
+      "formule": "retours / ventes brutes (en montant)",
+      "sql": "ROUND(1.0 * SUM(retour) / NULLIF(SUM(brut), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "unites_nettes",
+      "libelle": "Unités nettes",
+      "unite": "nombre",
+      "formule": "unités vendues − unités retournées",
+      "sql": "SUM(unites_vendues) - SUM(unites_retournees)",
+      "tolerance": 0.0,
+      "principal": false
+    }
+  ],
+  "axes": {
+    "par_region": "region",
+    "par_magasin": "magasin_id",
+    "par_type": "type_magasin",
+    "par_mois": "mois",
+    "par_famille": "famille",
+    "par_produit": "produit_id"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "operations.sqlite",
+      "ventes.csv"
+    ],
+    "etape_rejets": {
+      "sources": [
+        "ventes.csv"
+      ]
+    }
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_produit",
+      "dim_magasin",
+      "fact_vente",
+      "fact_retour"
+    ],
+    "sommes": {
+      "fact_vente": [
+        "quantite",
+        "remise_millimes",
+        "montant_brut_millimes"
+      ],
+      "fact_retour": [
+        "quantite",
+        "montant_millimes"
+      ],
+      "dim_produit": [
+        "prix_millimes",
+        "cout_achat_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par magasin",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

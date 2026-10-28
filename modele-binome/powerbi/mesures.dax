@@ -1,0 +1,27 @@
+// Mesures du TRONC COMMUN uniquement (Solen Commerce 360).
+// Créer une mesure à la fois : sélectionner fact_vente, Modélisation > Nouvelle mesure,
+// coller UNE formule, valider. Les montants sont stockés en millimes entiers :
+// on additionne d'abord les millimes, puis on divise par 1 000 pour afficher des TND.
+// Si Desktop utilise les séparateurs locaux, la virgule entre arguments devient « ; ».
+// Ce fichier ne change pas quand vous passez à votre mission : pour une mission du
+// catalogue, Codex écrit un autre fichier, powerbi/mesures_<Mxx>.dax, avec les
+// formules de son cahier des charges (étape C du guide de mission).
+
+Ventes brutes TND = DIVIDE(SUM(fact_vente[montant_brut_millimes]), 1000)
+
+Retours TND = DIVIDE(SUM(fact_retour[montant_millimes]), 1000)
+
+Ventes nettes TND = [Ventes brutes TND] - [Retours TND]
+
+// Coût d'achat des unités nettes = (unités vendues - unités retournées) × coût d'achat unitaire.
+// RELATED va chercher le coût dans dim_produit grâce à la relation produit_key.
+Marge sur coût d'achat TND =
+VAR cout_vendu_millimes =
+    SUMX(fact_vente, fact_vente[quantite] * RELATED(dim_produit[cout_achat_millimes]))
+VAR cout_retourne_millimes =
+    SUMX(fact_retour, fact_retour[quantite] * RELATED(dim_produit[cout_achat_millimes]))
+RETURN
+    [Ventes nettes TND] - DIVIDE(cout_vendu_millimes - cout_retourne_millimes, 1000)
+
+// Format conseillé : Pourcentage.
+Taux de retour = DIVIDE([Retours TND], [Ventes brutes TND])

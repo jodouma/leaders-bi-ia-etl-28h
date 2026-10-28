@@ -1,0 +1,530 @@
+{
+  "mission": "M04",
+  "entreprise": "Colis Rapide",
+  "lot": "lot2",
+  "etape": "increment",
+  "periode": {
+    "debut": "2026-07-01",
+    "fin": "2026-08-31"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "colis.csv": {
+      "lignes": 444,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "tarifs.xlsx": {
+      "feuilles": [
+        "Grille",
+        "Tranches",
+        "Zones",
+        "Services"
+      ],
+      "tarifs": 16,
+      "tranches": 4,
+      "zones": 4,
+      "services": 3,
+      "ligne_entete_grille": 3
+    },
+    "agences.json": {
+      "agences": 7,
+      "versions": 8
+    },
+    "facturation.sqlite": {
+      "facture": 439,
+      "penalite": 74,
+      "factures_annulees": 7,
+      "penalites_annulees": 11
+    }
+  },
+  "nettoyage": {
+    "colis.csv": {
+      "lignes_acceptees_nouvelles": 417,
+      "doublons_exacts": 4,
+      "deja_charges": 14,
+      "formats_montants": 130,
+      "formats_dates": 102,
+      "casse_espaces": 46
+    },
+    "facturation.sqlite": {
+      "factures_annulees_exclues": 7,
+      "penalites_annulees_exclues": 11,
+      "factures_deja_chargees": 14,
+      "penalites_deja_chargees": 2,
+      "factures_acceptees_nouvelles": 417,
+      "penalites_appliquees_nouvelles": 60
+    }
+  },
+  "rejets": {
+    "total": 11,
+    "par_motif": {
+      "cle_inconnue": 5,
+      "id_conflit": 2,
+      "id_manquant": 2,
+      "quantite_invalide": 2
+    },
+    "par_source": {
+      "colis.csv": {
+        "cle_inconnue": 3,
+        "id_conflit": 2,
+        "id_manquant": 2,
+        "quantite_invalide": 2
+      },
+      "facturation.sqlite": {
+        "cle_inconnue": 2
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 243,
+    "dim_agence": 8,
+    "dim_service": 3,
+    "dim_tarif": 16,
+    "fact_colis": 2497
+  },
+  "indicateurs": {
+    "colis_livres": 2497,
+    "colis_a_l_heure": 2093,
+    "ponctualite": 0.838206,
+    "retard_moyen_jours": 2.410891,
+    "montant_facture_millimes": 32172580,
+    "penalites_millimes": 1005341,
+    "revenu_net_millimes": 31167239,
+    "cout_transporteur_millimes": 20308300,
+    "marge_livraison_millimes": 10858939
+  },
+  "agregats": {
+    "par_zone": {
+      "Centre-Sahel": {
+        "colis_livres": 411,
+        "colis_a_l_heure": 344,
+        "ponctualite": 0.836983,
+        "retard_moyen_jours": 2.38806,
+        "montant_facture_millimes": 5574480,
+        "penalites_millimes": 182398,
+        "revenu_net_millimes": 5392082,
+        "cout_transporteur_millimes": 3474100,
+        "marge_livraison_millimes": 1917982
+      },
+      "Grand Tunis": {
+        "colis_livres": 1182,
+        "colis_a_l_heure": 1033,
+        "ponctualite": 0.873942,
+        "retard_moyen_jours": 2.583893,
+        "montant_facture_millimes": 14263000,
+        "penalites_millimes": 351393,
+        "revenu_net_millimes": 13911607,
+        "cout_transporteur_millimes": 8819100,
+        "marge_livraison_millimes": 5092507
+      },
+      "Nord": {
+        "colis_livres": 468,
+        "colis_a_l_heure": 397,
+        "ponctualite": 0.848291,
+        "retard_moyen_jours": 2.366197,
+        "montant_facture_millimes": 6151220,
+        "penalites_millimes": 166128,
+        "revenu_net_millimes": 5985092,
+        "cout_transporteur_millimes": 3838800,
+        "marge_livraison_millimes": 2146292
+      },
+      "Sud": {
+        "colis_livres": 436,
+        "colis_a_l_heure": 319,
+        "ponctualite": 0.731651,
+        "retard_moyen_jours": 2.230769,
+        "montant_facture_millimes": 6183880,
+        "penalites_millimes": 305422,
+        "revenu_net_millimes": 5878458,
+        "cout_transporteur_millimes": 4176300,
+        "marge_livraison_millimes": 1702158
+      }
+    },
+    "par_agence": {
+      "ARI": {
+        "colis_livres": 438,
+        "colis_a_l_heure": 386,
+        "ponctualite": 0.881279,
+        "retard_moyen_jours": 2.461538,
+        "montant_facture_millimes": 5245070,
+        "penalites_millimes": 108920,
+        "revenu_net_millimes": 5136150,
+        "cout_transporteur_millimes": 3213800,
+        "marge_livraison_millimes": 1922350
+      },
+      "BIZ": {
+        "colis_livres": 205,
+        "colis_a_l_heure": 174,
+        "ponctualite": 0.84878,
+        "retard_moyen_jours": 2.258065,
+        "montant_facture_millimes": 2725310,
+        "penalites_millimes": 62080,
+        "revenu_net_millimes": 2663230,
+        "cout_transporteur_millimes": 1669700,
+        "marge_livraison_millimes": 993530
+      },
+      "GAB": {
+        "colis_livres": 145,
+        "colis_a_l_heure": 96,
+        "ponctualite": 0.662069,
+        "retard_moyen_jours": 2.122449,
+        "montant_facture_millimes": 2053950,
+        "penalites_millimes": 122423,
+        "revenu_net_millimes": 1931527,
+        "cout_transporteur_millimes": 1397300,
+        "marge_livraison_millimes": 534227
+      },
+      "NAB": {
+        "colis_livres": 294,
+        "colis_a_l_heure": 250,
+        "ponctualite": 0.85034,
+        "retard_moyen_jours": 2.5,
+        "montant_facture_millimes": 3818070,
+        "penalites_millimes": 114483,
+        "revenu_net_millimes": 3703587,
+        "cout_transporteur_millimes": 2416900,
+        "marge_livraison_millimes": 1286687
+      },
+      "SFX": {
+        "colis_livres": 291,
+        "colis_a_l_heure": 223,
+        "ponctualite": 0.766323,
+        "retard_moyen_jours": 2.308824,
+        "montant_facture_millimes": 4129930,
+        "penalites_millimes": 182999,
+        "revenu_net_millimes": 3946931,
+        "cout_transporteur_millimes": 2779000,
+        "marge_livraison_millimes": 1167931
+      },
+      "SOU": {
+        "colis_livres": 380,
+        "colis_a_l_heure": 317,
+        "ponctualite": 0.834211,
+        "retard_moyen_jours": 2.349206,
+        "montant_facture_millimes": 5182320,
+        "penalites_millimes": 171963,
+        "revenu_net_millimes": 5010357,
+        "cout_transporteur_millimes": 3226300,
+        "marge_livraison_millimes": 1784057
+      },
+      "TUN": {
+        "colis_livres": 744,
+        "colis_a_l_heure": 647,
+        "ponctualite": 0.869624,
+        "retard_moyen_jours": 2.649485,
+        "montant_facture_millimes": 9017930,
+        "penalites_millimes": 242473,
+        "revenu_net_millimes": 8775457,
+        "cout_transporteur_millimes": 5605300,
+        "marge_livraison_millimes": 3170157
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "colis_livres": 351,
+        "colis_a_l_heure": 290,
+        "ponctualite": 0.826211,
+        "retard_moyen_jours": 2.540984,
+        "montant_facture_millimes": 4645640,
+        "penalites_millimes": 144671,
+        "revenu_net_millimes": 4500969,
+        "cout_transporteur_millimes": 2970800,
+        "marge_livraison_millimes": 1530169
+      },
+      "2026-02": {
+        "colis_livres": 301,
+        "colis_a_l_heure": 257,
+        "ponctualite": 0.853821,
+        "retard_moyen_jours": 2.681818,
+        "montant_facture_millimes": 3990390,
+        "penalites_millimes": 113795,
+        "revenu_net_millimes": 3876595,
+        "cout_transporteur_millimes": 2495700,
+        "marge_livraison_millimes": 1380895
+      },
+      "2026-03": {
+        "colis_livres": 388,
+        "colis_a_l_heure": 323,
+        "ponctualite": 0.832474,
+        "retard_moyen_jours": 2.292308,
+        "montant_facture_millimes": 4989330,
+        "penalites_millimes": 175833,
+        "revenu_net_millimes": 4813497,
+        "cout_transporteur_millimes": 3178000,
+        "marge_livraison_millimes": 1635497
+      },
+      "2026-04": {
+        "colis_livres": 357,
+        "colis_a_l_heure": 298,
+        "ponctualite": 0.834734,
+        "retard_moyen_jours": 2.423729,
+        "montant_facture_millimes": 4752710,
+        "penalites_millimes": 155012,
+        "revenu_net_millimes": 4597698,
+        "cout_transporteur_millimes": 2917600,
+        "marge_livraison_millimes": 1680098
+      },
+      "2026-05": {
+        "colis_livres": 338,
+        "colis_a_l_heure": 286,
+        "ponctualite": 0.846154,
+        "retard_moyen_jours": 2.519231,
+        "montant_facture_millimes": 4217150,
+        "penalites_millimes": 136103,
+        "revenu_net_millimes": 4081047,
+        "cout_transporteur_millimes": 2657300,
+        "marge_livraison_millimes": 1423747
+      },
+      "2026-06": {
+        "colis_livres": 345,
+        "colis_a_l_heure": 305,
+        "ponctualite": 0.884058,
+        "retard_moyen_jours": 2.55,
+        "montant_facture_millimes": 4382510,
+        "penalites_millimes": 99818,
+        "revenu_net_millimes": 4282692,
+        "cout_transporteur_millimes": 2749600,
+        "marge_livraison_millimes": 1533092
+      },
+      "2026-07": {
+        "colis_livres": 227,
+        "colis_a_l_heure": 184,
+        "ponctualite": 0.810573,
+        "retard_moyen_jours": 1.930233,
+        "montant_facture_millimes": 2796360,
+        "penalites_millimes": 76965,
+        "revenu_net_millimes": 2719395,
+        "cout_transporteur_millimes": 1794100,
+        "marge_livraison_millimes": 925295
+      },
+      "2026-08": {
+        "colis_livres": 190,
+        "colis_a_l_heure": 150,
+        "ponctualite": 0.789474,
+        "retard_moyen_jours": 2.325,
+        "montant_facture_millimes": 2398490,
+        "penalites_millimes": 103144,
+        "revenu_net_millimes": 2295346,
+        "cout_transporteur_millimes": 1545200,
+        "marge_livraison_millimes": 750146
+      }
+    },
+    "par_service": {
+      "ECO": {
+        "colis_livres": 439,
+        "colis_a_l_heure": 385,
+        "ponctualite": 0.876993,
+        "retard_moyen_jours": 2.388889,
+        "montant_facture_millimes": 4463530,
+        "penalites_millimes": 0,
+        "revenu_net_millimes": 4463530,
+        "cout_transporteur_millimes": 3618500,
+        "marge_livraison_millimes": 845030
+      },
+      "EXP": {
+        "colis_livres": 560,
+        "colis_a_l_heure": 429,
+        "ponctualite": 0.766071,
+        "retard_moyen_jours": 2.206107,
+        "montant_facture_millimes": 9989700,
+        "penalites_millimes": 435366,
+        "revenu_net_millimes": 9554334,
+        "cout_transporteur_millimes": 4552900,
+        "marge_livraison_millimes": 5001434
+      },
+      "STD": {
+        "colis_livres": 1498,
+        "colis_a_l_heure": 1279,
+        "ponctualite": 0.853805,
+        "retard_moyen_jours": 2.538813,
+        "montant_facture_millimes": 17719350,
+        "penalites_millimes": 569975,
+        "revenu_net_millimes": 17149375,
+        "cout_transporteur_millimes": 12136900,
+        "marge_livraison_millimes": 5012475
+      }
+    },
+    "par_zone_destination": {
+      "Centre-Sahel": {
+        "colis_livres": 527,
+        "colis_a_l_heure": 437,
+        "ponctualite": 0.829222,
+        "retard_moyen_jours": 2.322222,
+        "montant_facture_millimes": 7005740,
+        "penalites_millimes": 214351,
+        "revenu_net_millimes": 6791389,
+        "cout_transporteur_millimes": 4353500,
+        "marge_livraison_millimes": 2437889
+      },
+      "Grand Tunis": {
+        "colis_livres": 910,
+        "colis_a_l_heure": 767,
+        "ponctualite": 0.842857,
+        "retard_moyen_jours": 2.503497,
+        "montant_facture_millimes": 9819890,
+        "penalites_millimes": 324294,
+        "revenu_net_millimes": 9495596,
+        "cout_transporteur_millimes": 5789900,
+        "marge_livraison_millimes": 3705696
+      },
+      "Nord": {
+        "colis_livres": 547,
+        "colis_a_l_heure": 466,
+        "ponctualite": 0.85192,
+        "retard_moyen_jours": 2.345679,
+        "montant_facture_millimes": 7135550,
+        "penalites_millimes": 200248,
+        "revenu_net_millimes": 6935302,
+        "cout_transporteur_millimes": 4332800,
+        "marge_livraison_millimes": 2602502
+      },
+      "Sud": {
+        "colis_livres": 513,
+        "colis_a_l_heure": 423,
+        "ponctualite": 0.824561,
+        "retard_moyen_jours": 2.411111,
+        "montant_facture_millimes": 8211400,
+        "penalites_millimes": 266448,
+        "revenu_net_millimes": 7944952,
+        "cout_transporteur_millimes": 5832100,
+        "marge_livraison_millimes": 2112852
+      }
+    },
+    "par_tranche": {
+      "T1": {
+        "colis_livres": 838,
+        "colis_a_l_heure": 701,
+        "ponctualite": 0.836516,
+        "retard_moyen_jours": 2.40146,
+        "montant_facture_millimes": 7379500,
+        "penalites_millimes": 231914,
+        "revenu_net_millimes": 7147586,
+        "cout_transporteur_millimes": 4427600,
+        "marge_livraison_millimes": 2719986
+      },
+      "T2": {
+        "colis_livres": 1025,
+        "colis_a_l_heure": 859,
+        "ponctualite": 0.838049,
+        "retard_moyen_jours": 2.475904,
+        "montant_facture_millimes": 12529400,
+        "penalites_millimes": 394639,
+        "revenu_net_millimes": 12134761,
+        "cout_transporteur_millimes": 7729800,
+        "marge_livraison_millimes": 4404961
+      },
+      "T3": {
+        "colis_livres": 426,
+        "colis_a_l_heure": 364,
+        "ponctualite": 0.85446,
+        "retard_moyen_jours": 2.274194,
+        "montant_facture_millimes": 7048890,
+        "penalites_millimes": 168848,
+        "revenu_net_millimes": 6880042,
+        "cout_transporteur_millimes": 4664500,
+        "marge_livraison_millimes": 2215542
+      },
+      "T4": {
+        "colis_livres": 208,
+        "colis_a_l_heure": 169,
+        "ponctualite": 0.8125,
+        "retard_moyen_jours": 2.384615,
+        "montant_facture_millimes": 5214790,
+        "penalites_millimes": 209940,
+        "revenu_net_millimes": 5004850,
+        "cout_transporteur_millimes": 3486400,
+        "marge_livraison_millimes": 1518450
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_agence",
+    "cle_metier": "agence_id",
+    "attribut": "zone",
+    "versions": [
+      {
+        "cle_metier": "ARI",
+        "attribut": "Grand Tunis",
+        "valid_from": "2020-01-06",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "BIZ",
+        "attribut": "Nord",
+        "valid_from": "2021-04-12",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "GAB",
+        "attribut": "Sud",
+        "valid_from": "2023-02-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "NAB",
+        "attribut": "Nord",
+        "valid_from": "2020-09-01",
+        "valid_to": "2026-07-15"
+      },
+      {
+        "cle_metier": "NAB",
+        "attribut": "Centre-Sahel",
+        "valid_from": "2026-07-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SFX",
+        "attribut": "Sud",
+        "valid_from": "2020-05-04",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SOU",
+        "attribut": "Centre-Sahel",
+        "valid_from": "2019-11-18",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "TUN",
+        "attribut": "Grand Tunis",
+        "valid_from": "2019-03-01",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "NAB",
+        "date": "2026-06-30",
+        "attribut": "Nord"
+      },
+      {
+        "cle_metier": "NAB",
+        "date": "2026-07-14",
+        "attribut": "Nord"
+      },
+      {
+        "cle_metier": "NAB",
+        "date": "2026-07-15",
+        "attribut": "Centre-Sahel"
+      },
+      {
+        "cle_metier": "TUN",
+        "date": "2026-07-15",
+        "attribut": "Grand Tunis"
+      }
+    ]
+  },
+  "increment": {
+    "fact_colis_ajoutees": 417,
+    "versions_scd2_ajoutees": 1,
+    "dim_date_ajoutees": 62,
+    "colis_rejoues_ignores": 14
+  },
+  "rejeu": {
+    "etape": "rejeu",
+    "lignes_ajoutees": 0,
+    "regle": "relancer lot2 donne exactement ce fichier : mêmes tables, mêmes rejets, mêmes agrégats"
+  }
+}

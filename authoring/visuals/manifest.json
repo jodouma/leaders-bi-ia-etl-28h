@@ -1,77 +1,68 @@
 {
-  "version": 6,
+  "version": 7,
+  "edition": "Solen BI 22 h",
   "language": "fr",
   "source": "authoring/visuals/generate.py",
-  "data_source": "authoring/visuals/v6-data.json",
-  "data_sha256": "ebca3a9a0f7f73529a99ca14dfaf1821e89f4db79d53b1f3c26368ad6266e7d4",
-  "quantitative_assertions": {
-    "initial": {
-      "raw": 16,
-      "accepted": 12,
-      "duplicate": 1,
-      "rejected": 3,
-      "facts": 12,
-      "quantity": 32,
-      "amount_millimes": 99000,
-      "products": 4,
-      "shop_versions": 2,
-      "dates": 3
-    },
-    "increment": {
-      "extracted_sales": 3,
-      "extracted_changes": 1,
-      "inserted": 2,
-      "existing": 1,
-      "new_shop_versions": 1
-    },
-    "final": {
-      "facts": 14,
-      "quantity": 35,
-      "amount_millimes": 115500,
-      "products": 4,
-      "shop_versions": 3,
-      "dates": 4
-    },
-    "replay": {
-      "inserted": 0,
-      "existing": 3,
-      "new_shop_versions": 0,
-      "facts": 14,
-      "quantity": 35,
-      "amount_millimes": 115500
-    },
-    "zone_amounts_millimes": {
-      "Cap Bon": 43500,
-      "Grand Tunis": 72000
-    },
-    "shop_version_amounts_millimes": {
-      "NBE@2026-01-05": 43500,
-      "NBE@2026-01-08": 4500,
-      "TUN@2026-01-05": 67500
-    }
-  },
-  "provenance": {
-    "source": "V6 frozen implementation contract",
-    "sha256": "daf01b8df5282fbd140a96be5e99a515a6f2319d8d36d2f8c842c580fe1d08e5",
-    "meaning": "Expected values, not evidence of a runtime execution or Power BI installation."
-  },
   "palette": {
     "navy": "#2B3180",
     "deep": "#07152F",
-    "orange": "#FF9A3C"
+    "orange": "#FF9A3C",
+    "pale": "#F3F5FC",
+    "ink": "#1A1F4D",
+    "grey": "#5A6478"
   },
   "fonts": {
     "Inter": "authoring/assets/fonts/Inter-OFL.txt",
     "Plus Jakarta Sans": "authoring/assets/fonts/PlusJakartaSans-OFL.txt"
   },
-  "license": "Original course diagrams; no simulated UI, no third-party screenshots/logos. Fonts SIL OFL 1.1; SVG glyphs are outlined paths.",
+  "checks": {
+    "text_inside_frames": true,
+    "no_text_overlap": true,
+    "no_line_over_text": true,
+    "min_contrast_wcag": 4.5,
+    "min_text_px_viewbox": 26,
+    "png_min_width": 2400
+  },
+  "load_counters": {
+    "data_file": "authoring/generateurs/v7-data.json",
+    "present": true,
+    "sha256": "cd0f2f6403de1dcdd922068a26651433efdc9d57884639b64abccc01c9218b5e",
+    "placeholders_n": []
+  },
+  "contact_sheet": {
+    "png": "docs/images/diagrams/v7-contact-sheet.png",
+    "sha256": "5f6b2b18e4c4bd3a7d0ccbeac1be544023bacd32406e4cb576589744d4dad2c6"
+  },
+  "license": "Schémas originaux ; aucune interface simulée, aucune capture, aucun logo tiers. Polices SIL OFL 1.1, glyphes en contours dans les SVG.",
   "assets": [
     {
-      "id": "v6-pipeline",
-      "title": "Toute la chaîne, un même projet",
-      "description": "Question : quelles ventes sont fiables, et dans quelle zone commerciale ?",
-      "svg": "docs/images/diagrams/v6-pipeline.svg",
-      "png": "docs/images/diagrams/v6-pipeline.png",
+      "id": "v7-direction-decision",
+      "title": "De la question de la direction à la décision",
+      "description": "Chaîne en cinq étapes : la direction pose une question, on la traduit en question métier, on choisit les données, on calcule un indicateur défini, puis la direction décide. Exemple Solen Digital : « les ventes montent, mais où passe la marge ? ».",
+      "alt": "Chaîne en cinq étapes : la direction pose une question, on la traduit en question métier, on choisit les données, on calcule un indicateur défini, puis la direction décide. Exemple Solen Digital : « les ventes montent, mais où passe la marge ? ».",
+      "svg": "docs/images/diagrams/v7-direction-decision.svg",
+      "png": "docs/images/diagrams/v7-direction-decision.png",
+      "viewbox": [
+        1600,
+        820
+      ],
+      "png_pixels": [
+        2400,
+        1230
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "bb8c4687bf838273f96fca73b386f151b8fb1fb44e9122636c1c96cab72ad687",
+        "png": "122f342839b8462d5577811c25934b57b483c952e969e36936a7e4ba2fc4943c"
+      }
+    },
+    {
+      "id": "v7-codex-controle",
+      "title": "Codex propose et les humains décident",
+      "description": "Quatre rôles en chaîne : Codex propose du code dans une branche ; l'étudiant contrôle en lisant le diff et en lançant les contrôles ; le binôme relit avec une revue Codex en lecture seule puis une revue humaine ; l'équipe livre après CI verte et approbation. Un écart renvoie à une demande plus précise.",
+      "alt": "Quatre rôles en chaîne : Codex propose du code dans une branche ; l'étudiant contrôle en lisant le diff et en lançant les contrôles ; le binôme relit avec une revue Codex en lecture seule puis une revue humaine ; l'équipe livre après CI verte et approbation. Un écart renvoie à une demande plus précise.",
+      "svg": "docs/images/diagrams/v7-codex-controle.svg",
+      "png": "docs/images/diagrams/v7-codex-controle.png",
       "viewbox": [
         1600,
         800
@@ -80,15 +71,166 @@
         2400,
         1200
       ],
-      "alt": "Question : quelles ventes sont fiables, et dans quelle zone commerciale ?",
-      "text_min_px": 26
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "2b6bf583f423ec8a489d563c7b7ab3b83bfff33f24f4f9fd2e196d7fe645e248",
+        "png": "d2b0be2fbc8625ed5099bf3ab899650798dc80ab86cc8ca37cf6b3e069cdba7b"
+      }
     },
     {
-      "id": "v6-postes-wsl",
-      "title": "Sur quel système travaille chaque outil ?",
-      "description": "Deux parcours ETL ; le rapport Power BI Desktop se fait sur Windows.",
-      "svg": "docs/images/diagrams/v6-postes-wsl.svg",
-      "png": "docs/images/diagrams/v6-postes-wsl.png",
+      "id": "v7-trois-emplacements",
+      "title": "Trois emplacements pour un même dépôt",
+      "description": "Mon ordinateur et l'ordinateur du binôme ont chacun une copie locale du dépôt ; GitHub héberge le dépôt du binôme. commit enregistre localement, push envoie vers GitHub, pull récupère depuis GitHub, la pull request (PR) propose de fusionner une branche dans main.",
+      "alt": "Mon ordinateur et l'ordinateur du binôme ont chacun une copie locale du dépôt ; GitHub héberge le dépôt du binôme. commit enregistre localement, push envoie vers GitHub, pull récupère depuis GitHub, la pull request (PR) propose de fusionner une branche dans main.",
+      "svg": "docs/images/diagrams/v7-trois-emplacements.svg",
+      "png": "docs/images/diagrams/v7-trois-emplacements.png",
+      "viewbox": [
+        1600,
+        960
+      ],
+      "png_pixels": [
+        2400,
+        1440
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "e5b6ffdb3fdc6431fc8135c30cb71cdf6db48bf13f1c04638a7de80e3534262d",
+        "png": "5de870624023e6b3705816a78149c87aaaa5276decbd6ebffe93b0607b5e6f6a"
+      }
+    },
+    {
+      "id": "v7-cycle-pr",
+      "title": "Le cycle d’une pull request en boucle",
+      "description": "Boucle en quinze étapes : main à jour, branche, demande à Codex, contrôles, lecture du diff, commit, push, PR, revue Codex en lecture seule par le partenaire, revue humaine, correction, CI verte, approbation, merge, pull par les deux. Puis le cycle recommence avec les rôles inversés.",
+      "alt": "Boucle en quinze étapes : main à jour, branche, demande à Codex, contrôles, lecture du diff, commit, push, PR, revue Codex en lecture seule par le partenaire, revue humaine, correction, CI verte, approbation, merge, pull par les deux. Puis le cycle recommence avec les rôles inversés.",
+      "svg": "docs/images/diagrams/v7-cycle-pr.svg",
+      "png": "docs/images/diagrams/v7-cycle-pr.png",
+      "viewbox": [
+        1600,
+        1150
+      ],
+      "png_pixels": [
+        2400,
+        1725
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "c1e3b3005efed83dba6649c6d7df2b015e9ba26172dd253026552a04e4028339",
+        "png": "c377f62cf15955d9c60231933a526de5ebe387164a0b38647472d6807a856edc"
+      }
+    },
+    {
+      "id": "v7-postes-wsl",
+      "title": "Qui fait quoi et sur quel système ?",
+      "description": "Parcours Windows : Windows porte l'application Codex, Power BI Desktop et PowerShell ; Ubuntu dans WSL2 contient le dossier ~/solen-bi, Python, Git et l'agent Codex ; GitHub héberge le dépôt du binôme. Variante Ubuntu natif : tout l'ETL sur Ubuntu, Power BI Desktop sur un poste Windows qui récupère le dépôt.",
+      "alt": "Parcours Windows : Windows porte l'application Codex, Power BI Desktop et PowerShell ; Ubuntu dans WSL2 contient le dossier ~/solen-bi, Python, Git et l'agent Codex ; GitHub héberge le dépôt du binôme. Variante Ubuntu natif : tout l'ETL sur Ubuntu, Power BI Desktop sur un poste Windows qui récupère le dépôt.",
+      "svg": "docs/images/diagrams/v7-postes-wsl.svg",
+      "png": "docs/images/diagrams/v7-postes-wsl.png",
+      "viewbox": [
+        1600,
+        1060
+      ],
+      "png_pixels": [
+        2400,
+        1590
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "739a6c4aa36ae279f030db1c1fcf41becfb8f00cd9cbc3de2ea0d79edf6f3895",
+        "png": "80a0b87b59fc1cb532ed178ef71d1bf28b0ce7302e7ad7dea642dfc3e234ca50"
+      }
+    },
+    {
+      "id": "v7-pipeline",
+      "title": "Des quatre sources au rapport",
+      "description": "Quatre sources (base opérationnelle SQLite des retours, CSV des tickets, Excel du catalogue, JSON des boutiques) alimentent l'ETL : extraire, nettoyer, harmoniser, dédoublonner, charger les dimensions puis les faits. Les rejets vont dans rejets.csv avec un motif. L'entrepôt en étoile alimente la mini-application locale et Power BI Desktop.",
+      "alt": "Quatre sources (base opérationnelle SQLite des retours, CSV des tickets, Excel du catalogue, JSON des boutiques) alimentent l'ETL : extraire, nettoyer, harmoniser, dédoublonner, charger les dimensions puis les faits. Les rejets vont dans rejets.csv avec un motif. L'entrepôt en étoile alimente la mini-application locale et Power BI Desktop.",
+      "svg": "docs/images/diagrams/v7-pipeline.svg",
+      "png": "docs/images/diagrams/v7-pipeline.png",
+      "viewbox": [
+        1600,
+        1020
+      ],
+      "png_pixels": [
+        2400,
+        1530
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "52c7e150065a48ed156e69ecf1774a47a395bf6f41d4e4fbb1fad2231607e128",
+        "png": "a3374d91fb97f42877c7bb7dcd877b35359d8944b30ed9b795ba1e5747063a8f"
+      }
+    },
+    {
+      "id": "v7-etoile",
+      "title": "L’étoile de la mission 00",
+      "description": "Schéma en étoile : dim_date, dim_produit et dim_boutique (SCD2 : boutique_key, boutique_id, zone, valid_from, valid_to) au centre ; fact_vente (ligne_id, date_key, produit_key, boutique_key, quantite, prix_unitaire_millimes, montant_brut_millimes) à gauche ; fact_retour (retour_id, date_key, produit_key, boutique_key, quantite, montant_millimes) à droite. Chaque flèche va d'une dimension (1) vers les faits (plusieurs).",
+      "alt": "Schéma en étoile : dim_date, dim_produit et dim_boutique (SCD2 : boutique_key, boutique_id, zone, valid_from, valid_to) au centre ; fact_vente (ligne_id, date_key, produit_key, boutique_key, quantite, prix_unitaire_millimes, montant_brut_millimes) à gauche ; fact_retour (retour_id, date_key, produit_key, boutique_key, quantite, montant_millimes) à droite. Chaque flèche va d'une dimension (1) vers les faits (plusieurs).",
+      "svg": "docs/images/diagrams/v7-etoile.svg",
+      "png": "docs/images/diagrams/v7-etoile.png",
+      "viewbox": [
+        1600,
+        1140
+      ],
+      "png_pixels": [
+        2400,
+        1710
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "0a65d0107b285a2acb1ccf1df80814aac4b1117aa3e9b7eef353325bcd604994",
+        "png": "4b54519702367d14796854912608071bc899edaee7f914fe2083ea960eb562d2"
+      }
+    },
+    {
+      "id": "v7-cles",
+      "title": "Clé métier et clé technique",
+      "description": "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : 2 pour Cap Bon (du 2021-05-10 au 2026-07-15 exclu), 4 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.",
+      "alt": "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : 2 pour Cap Bon (du 2021-05-10 au 2026-07-15 exclu), 4 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.",
+      "svg": "docs/images/diagrams/v7-cles.svg",
+      "png": "docs/images/diagrams/v7-cles.png",
+      "viewbox": [
+        1600,
+        960
+      ],
+      "png_pixels": [
+        2400,
+        1440
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "3a344b5541709b9b89192daac596de9020ec1a84c714556fa5bf27005411ff1a",
+        "png": "c4cf7d15ae0a42e4f2221e14924d88abff60458221b673d571e67d192004d024"
+      }
+    },
+    {
+      "id": "v7-nettoyage",
+      "title": "Nettoyer sans toucher aux sources",
+      "description": "Avant : six lignes brutes du CSV avec un format décimal 12,500, un doublon exact, un identifiant manquant, un produit inconnu P99, une date 04/03/2026 et une boutique écrite ' tun '. Après : trois lignes acceptées en millimes entiers, dates ISO et codes en majuscules ; le doublon est ignoré ; rejets.csv contient deux lignes avec leur motif (id_manquant, cle_inconnue).",
+      "alt": "Avant : six lignes brutes du CSV avec un format décimal 12,500, un doublon exact, un identifiant manquant, un produit inconnu P99, une date 04/03/2026 et une boutique écrite ' tun '. Après : trois lignes acceptées en millimes entiers, dates ISO et codes en majuscules ; le doublon est ignoré ; rejets.csv contient deux lignes avec leur motif (id_manquant, cle_inconnue).",
+      "svg": "docs/images/diagrams/v7-nettoyage.svg",
+      "png": "docs/images/diagrams/v7-nettoyage.png",
+      "viewbox": [
+        1600,
+        1227
+      ],
+      "png_pixels": [
+        2400,
+        1840
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "94db3b9816f6552ba49a2e48b87ad4c79ff79dddaef26c41e72ae4137551206a",
+        "png": "a24834095b22ce2769665c292906e057a18a5804d2684507d5a15b103439acd4"
+      }
+    },
+    {
+      "id": "v7-chargements",
+      "title": "Charger · compléter · rejouer",
+      "description": "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et des lignes déjà connues, ignorées), puis rejeu du lot 2 : 0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.",
+      "alt": "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et des lignes déjà connues, ignorées), puis rejeu du lot 2 : 0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.",
+      "svg": "docs/images/diagrams/v7-chargements.svg",
+      "png": "docs/images/diagrams/v7-chargements.png",
       "viewbox": [
         1600,
         940
@@ -97,212 +239,137 @@
         2400,
         1410
       ],
-      "alt": "Deux parcours ETL ; le rapport Power BI Desktop se fait sur Windows.",
-      "text_min_px": 26
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "9ebb2130e2602dfd149eea239b2dd1c9d40a575eaa4a8dd8949c99940aaf1e8c",
+        "png": "50b622d18d962ca05cb6663f8451cdca64f4429264c79987d0d247647ec3f29a"
+      }
     },
     {
-      "id": "v6-codex-boucle",
-      "title": "Construire avec Codex, puis vérifier",
-      "description": "Une petite demande ; une modification que vous pouvez lire et expliquer.",
-      "svg": "docs/images/diagrams/v6-codex-boucle.svg",
-      "png": "docs/images/diagrams/v6-codex-boucle.png",
+      "id": "v7-scd2-frise",
+      "title": "NBE change de zone le 2026-07-15",
+      "description": "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2021-05-10, 2026-07-15) ; version 2 (boutique_key 4, Nord-Est) sur [2026-07-15, NULL). Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.",
+      "alt": "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2021-05-10, 2026-07-15) ; version 2 (boutique_key 4, Nord-Est) sur [2026-07-15, NULL). Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.",
+      "svg": "docs/images/diagrams/v7-scd2-frise.svg",
+      "png": "docs/images/diagrams/v7-scd2-frise.png",
       "viewbox": [
         1600,
-        720
+        1050
       ],
       "png_pixels": [
         2400,
+        1575
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "2db6a2824ee43ebabe1ea31fbd24f550b1fa1e219a3c0235e54efb24b5ae81dc",
+        "png": "902424c6e86ee996f014b3cb07fe82b035421d29ac4311a4e8e193014746272f"
+      }
+    },
+    {
+      "id": "v7-indicateur-controle",
+      "title": "Un chiffre plausible n’est pas un chiffre juste",
+      "description": "Deux calculs des ventes nettes : correct, après dédoublonnage ; erreur plausible, avant dédoublonnage, où un doublon compte deux fois et gonfle le total. Le contrôle qui tranche : le nombre de ligne_id distincts parmi les lignes acceptées doit être égal au nombre de lignes de fact_vente.",
+      "alt": "Deux calculs des ventes nettes : correct, après dédoublonnage ; erreur plausible, avant dédoublonnage, où un doublon compte deux fois et gonfle le total. Le contrôle qui tranche : le nombre de ligne_id distincts parmi les lignes acceptées doit être égal au nombre de lignes de fact_vente.",
+      "svg": "docs/images/diagrams/v7-indicateur-controle.svg",
+      "png": "docs/images/diagrams/v7-indicateur-controle.png",
+      "viewbox": [
+        1600,
+        940
+      ],
+      "png_pixels": [
+        2400,
+        1410
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "7b6bbce6f5e2c3f9424c599f6b3a32fd87003e7b46989d2c84a449f15ef25585",
+        "png": "60d556482121d3b538cd9484071098e277bada9fab4bc412663bc079a5ea8864"
+      }
+    },
+    {
+      "id": "v7-tokens-contexte",
+      "title": "Tokens · contexte · effort · quota",
+      "description": "Une demande remplit la fenêtre de contexte avec des tokens (morceaux de texte) ; le modèle GPT-6 Luna réfléchit avec un effort choisi (Light, Medium, High, Extra High ; commencer High) ; chaque tâche consomme une part du quota du compte, à lire dans l'application.",
+      "alt": "Une demande remplit la fenêtre de contexte avec des tokens (morceaux de texte) ; le modèle GPT-6 Luna réfléchit avec un effort choisi (Light, Medium, High, Extra High ; commencer High) ; chaque tâche consomme une part du quota du compte, à lire dans l'application.",
+      "svg": "docs/images/diagrams/v7-tokens-contexte.svg",
+      "png": "docs/images/diagrams/v7-tokens-contexte.png",
+      "viewbox": [
+        1600,
+        1120
+      ],
+      "png_pixels": [
+        2400,
+        1680
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "1ab59176a2802d04249ab4891a80bde7940afb62fa7b243b59f792bf9a1d11cc",
+        "png": "ec1a09f654b3bfb887b73e358bdbb4e485f17e3747629b406ccc28ac849207cb"
+      }
+    },
+    {
+      "id": "v7-tache-modele-effort",
+      "title": "Quel effort pour quelle tâche ?",
+      "description": "Tableau : pour comprendre, planifier, écrire une petite fonction, intégrer, déboguer et revoir, le modèle accessible est GPT-6 Luna, le seul annoncé pour Free. L'effort recommandé part de High ; Medium pour une petite fonction bien délimitée, Extra High si un débogage reste bloqué. Chaque ligne donne la raison et la preuve attendue.",
+      "alt": "Tableau : pour comprendre, planifier, écrire une petite fonction, intégrer, déboguer et revoir, le modèle accessible est GPT-6 Luna, le seul annoncé pour Free. L'effort recommandé part de High ; Medium pour une petite fonction bien délimitée, Extra High si un débogage reste bloqué. Chaque ligne donne la raison et la preuve attendue.",
+      "svg": "docs/images/diagrams/v7-tache-modele-effort.svg",
+      "png": "docs/images/diagrams/v7-tache-modele-effort.png",
+      "viewbox": [
+        1600,
+        1071
+      ],
+      "png_pixels": [
+        2400,
+        1606
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "eaf1431055ce584d9247c952c3ffd6ee16d0a15059948523d95a34379ed568e6",
+        "png": "21ef4298c717d6ab3bc626d720a6a71eb426ebb3907ae1ee4ec5a4cba2fb3f03"
+      }
+    },
+    {
+      "id": "v7-seances",
+      "title": "Cinq séances · une mission · une soutenance",
+      "description": "Cinq séances de 4 h avec les épisodes Solen : S1 demande initiale et cadrage, S2 premier résultat faux, S3 anomalies et étoile, S4 changement de besoin et revue, S5 livraison ; environ 8 h de travail personnel sur la mission du catalogue ; soutenance de 2 h. 22 h en présence, environ 30 h au total.",
+      "alt": "Cinq séances de 4 h avec les épisodes Solen : S1 demande initiale et cadrage, S2 premier résultat faux, S3 anomalies et étoile, S4 changement de besoin et revue, S5 livraison ; environ 8 h de travail personnel sur la mission du catalogue ; soutenance de 2 h. 22 h en présence, environ 30 h au total.",
+      "svg": "docs/images/diagrams/v7-seances.svg",
+      "png": "docs/images/diagrams/v7-seances.png",
+      "viewbox": [
+        1600,
+        1020
+      ],
+      "png_pixels": [
+        2400,
+        1530
+      ],
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "dfff5a7bb5740d99ff8717b7f0ab338ee616b1ee3cf0ca18f7eae8c9212e7b8a",
+        "png": "2bf57a7ddb8ca8a37f9e70ff6013af4cef4db29a96c2ab1b93d9e183deac1478"
+      }
+    },
+    {
+      "id": "v7-soutenance",
+      "title": "Soutenance : 120 minutes à partager",
+      "description": "Créneau de 120 minutes : 10 minutes d'accueil, 100 minutes partagées entre N binômes, 10 minutes de délibération. N = 5 : 20 minutes par binôme (6 démo, 2 × 6 questions individuelles, 2 transition). N = 8 : 12,5 minutes. N ≥ 11 : 100/11 ≈ 9,1 minutes ou moins, impossible sans second créneau ou deux jurys en parallèle.",
+      "alt": "Créneau de 120 minutes : 10 minutes d'accueil, 100 minutes partagées entre N binômes, 10 minutes de délibération. N = 5 : 20 minutes par binôme (6 démo, 2 × 6 questions individuelles, 2 transition). N = 8 : 12,5 minutes. N ≥ 11 : 100/11 ≈ 9,1 minutes ou moins, impossible sans second créneau ou deux jurys en parallèle.",
+      "svg": "docs/images/diagrams/v7-soutenance.svg",
+      "png": "docs/images/diagrams/v7-soutenance.png",
+      "viewbox": [
+        1600,
         1080
       ],
-      "alt": "Une petite demande ; une modification que vous pouvez lire et expliquer.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-dossiers",
-      "title": "Un dossier distribué, puis votre copie de travail",
-      "description": "Dans Ubuntu ou WSL : ~/cours-bi · le jalon 01 crée atelier/.",
-      "svg": "docs/images/diagrams/v6-dossiers.svg",
-      "png": "docs/images/diagrams/v6-dossiers.png",
-      "viewbox": [
-        1600,
-        850
-      ],
       "png_pixels": [
         2400,
-        1275
+        1620
       ],
-      "alt": "Dans Ubuntu ou WSL : ~/cours-bi · le jalon 01 crée atelier/.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-etoile",
-      "title": "L’étoile : décrire chaque vente",
-      "description": "Trois relations actives 1 → plusieurs, de la dimension vers les ventes.",
-      "svg": "docs/images/diagrams/v6-etoile.svg",
-      "png": "docs/images/diagrams/v6-etoile.png",
-      "viewbox": [
-        1600,
-        990
-      ],
-      "png_pixels": [
-        2400,
-        1485
-      ],
-      "alt": "Trois relations actives 1 → plusieurs, de la dimension vers les ventes.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-scd2",
-      "title": "Nabeul change de zone, ses ventes gardent leur histoire",
-      "description": "SCD2 : une nouvelle version de la boutique, sans réécrire les anciennes ventes.",
-      "svg": "docs/images/diagrams/v6-scd2.svg",
-      "png": "docs/images/diagrams/v6-scd2.png",
-      "viewbox": [
-        1600,
-        850
-      ],
-      "png_pixels": [
-        2400,
-        1275
-      ],
-      "alt": "SCD2 : une nouvelle version de la boutique, sans réécrire les anciennes ventes.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-chiffres-zones",
-      "title": "Le CA par zone commerciale historique",
-      "description": "Après le lot du 8 janvier 2026 · axe et valeurs en TND · valeurs attendues du contrat.",
-      "svg": "docs/images/diagrams/v6-chiffres-zones.svg",
-      "png": "docs/images/diagrams/v6-chiffres-zones.png",
-      "viewbox": [
-        1600,
-        900
-      ],
-      "png_pixels": [
-        2400,
-        1350
-      ],
-      "alt": "Après le lot du 8 janvier 2026 · axe et valeurs en TND · valeurs attendues du contrat.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-millimes",
-      "title": "Compter les montants sans perdre de précision",
-      "description": "Une unité claire dans les données ; une conversion lisible dans le rapport.",
-      "svg": "docs/images/diagrams/v6-millimes.svg",
-      "png": "docs/images/diagrams/v6-millimes.png",
-      "viewbox": [
-        1600,
-        690
-      ],
-      "png_pixels": [
-        2400,
-        1035
-      ],
-      "alt": "Une unité claire dans les données ; une conversion lisible dans le rapport.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-contexte-quota",
-      "title": "Contexte et limite d’usage : deux idées différentes",
-      "description": "Lire seulement les indicateurs réellement affichés dans votre client.",
-      "svg": "docs/images/diagrams/v6-contexte-quota.svg",
-      "png": "docs/images/diagrams/v6-contexte-quota.png",
-      "viewbox": [
-        1600,
-        750
-      ],
-      "png_pixels": [
-        2400,
-        1125
-      ],
-      "alt": "Lire seulement les indicateurs réellement affichés dans votre client.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-modele-effort",
-      "title": "Modèle, effort et vitesse : lire les bons choix",
-      "description": "Utiliser les options visibles sur le poste ; ne pas supposer leur disponibilité sur Free.",
-      "svg": "docs/images/diagrams/v6-modele-effort.svg",
-      "png": "docs/images/diagrams/v6-modele-effort.png",
-      "viewbox": [
-        1600,
-        770
-      ],
-      "png_pixels": [
-        2400,
-        1155
-      ],
-      "alt": "Utiliser les options visibles sur le poste ; ne pas supposer leur disponibilité sur Free.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-revue",
-      "title": "Deux revues indépendantes, un seul auteur",
-      "description": "Au plus deux lecteurs sur des cibles distinctes ; personne ne modifie en parallèle.",
-      "svg": "docs/images/diagrams/v6-revue.svg",
-      "png": "docs/images/diagrams/v6-revue.png",
-      "viewbox": [
-        1600,
-        810
-      ],
-      "png_pixels": [
-        2400,
-        1215
-      ],
-      "alt": "Au plus deux lecteurs sur des cibles distinctes ; personne ne modifie en parallèle.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-parcours",
-      "title": "Cinq séances, cinq victoires visibles",
-      "description": "5 × 3 h = 15 h, pauses comprises · un seul projet Atlas Papeterie.",
-      "svg": "docs/images/diagrams/v6-parcours.svg",
-      "png": "docs/images/diagrams/v6-parcours.png",
-      "viewbox": [
-        1600,
-        760
-      ],
-      "png_pixels": [
-        2400,
-        1140
-      ],
-      "alt": "5 × 3 h = 15 h, pauses comprises · un seul projet Atlas Papeterie.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-qualite",
-      "title": "Une ligne lue a une issue explicite",
-      "description": "Lot initial · chiffres attendus du contrat · les sources restent intactes.",
-      "svg": "docs/images/diagrams/v6-qualite.svg",
-      "png": "docs/images/diagrams/v6-qualite.png",
-      "viewbox": [
-        1600,
-        760
-      ],
-      "png_pixels": [
-        2400,
-        1140
-      ],
-      "alt": "Lot initial · chiffres attendus du contrat · les sources restent intactes.",
-      "text_min_px": 26
-    },
-    {
-      "id": "v6-ajout-rejeu",
-      "title": "Ajouter une fois ; rejouer sans doubler les ventes",
-      "description": "Une nouvelle livraison étend la période ; le rejeu conserve les clés et les valeurs.",
-      "svg": "docs/images/diagrams/v6-ajout-rejeu.svg",
-      "png": "docs/images/diagrams/v6-ajout-rejeu.png",
-      "viewbox": [
-        1600,
-        760
-      ],
-      "png_pixels": [
-        2400,
-        1140
-      ],
-      "alt": "Une nouvelle livraison étend la période ; le rejeu conserve les clés et les valeurs.",
-      "text_min_px": 26
+      "text_min_px": 26,
+      "sha256": {
+        "svg": "ba440ae8421d4010c6bc977d428a361c6bf521ec8f351d42cb854e9746504415",
+        "png": "a9756a7a655a31ce0adc49fd1ececa73da0bdc22a90d13c3f6ae778fab4329bf"
+      }
     }
   ]
 }

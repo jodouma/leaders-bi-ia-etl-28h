@@ -1,0 +1,781 @@
+{
+  "mission": "M05",
+  "entreprise": "Académie Nour",
+  "lot": "lot2",
+  "etape": "increment",
+  "periode": {
+    "debut": "2026-07-01",
+    "fin": "2026-08-31"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "presences.csv": {
+      "lignes": 456,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "catalogue.xlsx": {
+      "feuilles": [
+        "Formations"
+      ],
+      "formations": 7,
+      "ligne_entete_catalogue": 3
+    },
+    "sessions.json": {
+      "sessions": 25,
+      "versions": 26
+    },
+    "operations.sqlite": {
+      "participant": 227,
+      "inscription": 318,
+      "inscriptions_annulees": 8,
+      "paiement": 80,
+      "paiements_annules": 1,
+      "remboursement": 5,
+      "remboursements_annules": 1
+    }
+  },
+  "nettoyage": {
+    "presences.csv": {
+      "lignes_acceptees_nouvelles": 430,
+      "doublons_exacts": 4,
+      "deja_charges": 13,
+      "formats_dates": 123,
+      "casse_espaces": 46
+    },
+    "catalogue.xlsx": {
+      "cellules_texte_converties": 5,
+      "codes_normalises": 1
+    },
+    "sessions.json": {
+      "dates_jj_mm_aaaa": 1,
+      "codes_normalises": 1
+    },
+    "operations.sqlite": {
+      "paiements_annules_exclus": 1,
+      "remboursements_annules_exclus": 1,
+      "montants_texte_virgule": 6,
+      "deja_charges": 4,
+      "mouvements_acceptes_nouveaux": 78
+    }
+  },
+  "rejets": {
+    "total": 10,
+    "par_motif": {
+      "cle_inconnue": 4,
+      "id_conflit": 2,
+      "id_manquant": 2,
+      "quantite_invalide": 2
+    },
+    "par_source": {
+      "presences.csv": {
+        "cle_inconnue": 3,
+        "id_conflit": 2,
+        "id_manquant": 2,
+        "quantite_invalide": 2
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 243,
+    "dim_formation": 7,
+    "dim_session": 26,
+    "fact_presence": 2353,
+    "fact_paiement": 455
+  },
+  "indicateurs": {
+    "inscrits": 310,
+    "taux_assiduite": 0.825329,
+    "taux_remplissage": 0.798969,
+    "paiements_millimes": 122105000,
+    "remboursements_millimes": 3858000,
+    "encaissements_nets_millimes": 118247000,
+    "encaissement_attendu_millimes": 121270000,
+    "taux_encaissement": 0.975072,
+    "presences": 1942
+  },
+  "agregats": {
+    "par_session": {
+      "SES-2601": {
+        "inscrits": 15,
+        "taux_assiduite": 0.866667,
+        "taux_remplissage": 0.9375,
+        "paiements_millimes": 4480000,
+        "remboursements_millimes": 280000,
+        "encaissements_nets_millimes": 4200000,
+        "encaissement_attendu_millimes": 4200000,
+        "taux_encaissement": 1.0,
+        "presences": 78
+      },
+      "SES-2602": {
+        "inscrits": 15,
+        "taux_assiduite": 0.84,
+        "taux_remplissage": 0.833333,
+        "paiements_millimes": 5700000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 5700000,
+        "encaissement_attendu_millimes": 5700000,
+        "taux_encaissement": 1.0,
+        "presences": 126
+      },
+      "SES-2603": {
+        "inscrits": 9,
+        "taux_assiduite": 0.822222,
+        "taux_remplissage": 0.45,
+        "paiements_millimes": 3200000,
+        "remboursements_millimes": 320000,
+        "encaissements_nets_millimes": 2880000,
+        "encaissement_attendu_millimes": 2880000,
+        "taux_encaissement": 1.0,
+        "presences": 37
+      },
+      "SES-2604": {
+        "inscrits": 13,
+        "taux_assiduite": 0.884615,
+        "taux_remplissage": 0.928571,
+        "paiements_millimes": 5850000,
+        "remboursements_millimes": 135000,
+        "encaissements_nets_millimes": 5715000,
+        "encaissement_attendu_millimes": 5850000,
+        "taux_encaissement": 0.976923,
+        "presences": 92
+      },
+      "SES-2605": {
+        "inscrits": 11,
+        "taux_assiduite": 0.854545,
+        "taux_remplissage": 0.916667,
+        "paiements_millimes": 7080000,
+        "remboursements_millimes": 590000,
+        "encaissements_nets_millimes": 6490000,
+        "encaissement_attendu_millimes": 6490000,
+        "taux_encaissement": 1.0,
+        "presences": 94
+      },
+      "SES-2606": {
+        "inscrits": 12,
+        "taux_assiduite": 0.861111,
+        "taux_remplissage": 0.75,
+        "paiements_millimes": 3360000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 3360000,
+        "encaissement_attendu_millimes": 3360000,
+        "taux_encaissement": 1.0,
+        "presences": 62
+      },
+      "SES-2607": {
+        "inscrits": 13,
+        "taux_assiduite": 0.711538,
+        "taux_remplissage": 0.866667,
+        "paiements_millimes": 4500000,
+        "remboursements_millimes": 108000,
+        "encaissements_nets_millimes": 4392000,
+        "encaissement_attendu_millimes": 4680000,
+        "taux_encaissement": 0.938462,
+        "presences": 111
+      },
+      "SES-2608": {
+        "inscrits": 9,
+        "taux_assiduite": 0.87037,
+        "taux_remplissage": 0.75,
+        "paiements_millimes": 4680000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 4680000,
+        "encaissement_attendu_millimes": 4680000,
+        "taux_encaissement": 1.0,
+        "presences": 47
+      },
+      "SES-2609": {
+        "inscrits": 12,
+        "taux_assiduite": 0.572917,
+        "taux_remplissage": 0.857143,
+        "paiements_millimes": 5400000,
+        "remboursements_millimes": 135000,
+        "encaissements_nets_millimes": 5265000,
+        "encaissement_attendu_millimes": 5400000,
+        "taux_encaissement": 0.975,
+        "presences": 55
+      },
+      "SES-2610": {
+        "inscrits": 18,
+        "taux_assiduite": 0.844444,
+        "taux_remplissage": 0.9,
+        "paiements_millimes": 6080000,
+        "remboursements_millimes": 320000,
+        "encaissements_nets_millimes": 5760000,
+        "encaissement_attendu_millimes": 5760000,
+        "taux_encaissement": 1.0,
+        "presences": 76
+      },
+      "SES-2611": {
+        "inscrits": 16,
+        "taux_assiduite": 0.8625,
+        "taux_remplissage": 0.888889,
+        "paiements_millimes": 5890000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 5890000,
+        "encaissement_attendu_millimes": 6080000,
+        "taux_encaissement": 0.96875,
+        "presences": 138
+      },
+      "SES-2612": {
+        "inscrits": 9,
+        "taux_assiduite": 0.87037,
+        "taux_remplissage": 0.5625,
+        "paiements_millimes": 2240000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 2240000,
+        "encaissement_attendu_millimes": 2520000,
+        "taux_encaissement": 0.888889,
+        "presences": 47
+      },
+      "SES-2613": {
+        "inscrits": 10,
+        "taux_assiduite": 0.8,
+        "taux_remplissage": 0.833333,
+        "paiements_millimes": 5605000,
+        "remboursements_millimes": 177000,
+        "encaissements_nets_millimes": 5428000,
+        "encaissement_attendu_millimes": 5900000,
+        "taux_encaissement": 0.92,
+        "presences": 80
+      },
+      "SES-2614": {
+        "inscrits": 12,
+        "taux_assiduite": 0.930556,
+        "taux_remplissage": 1.0,
+        "paiements_millimes": 6760000,
+        "remboursements_millimes": 520000,
+        "encaissements_nets_millimes": 6240000,
+        "encaissement_attendu_millimes": 6240000,
+        "taux_encaissement": 1.0,
+        "presences": 67
+      },
+      "SES-2615": {
+        "inscrits": 11,
+        "taux_assiduite": 0.795455,
+        "taux_remplissage": 0.785714,
+        "paiements_millimes": 4500000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 4500000,
+        "encaissement_attendu_millimes": 4950000,
+        "taux_encaissement": 0.909091,
+        "presences": 70
+      },
+      "SES-2616": {
+        "inscrits": 16,
+        "taux_assiduite": 0.7625,
+        "taux_remplissage": 0.8,
+        "paiements_millimes": 4960000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 4960000,
+        "encaissement_attendu_millimes": 5120000,
+        "taux_encaissement": 0.96875,
+        "presences": 61
+      },
+      "SES-2617": {
+        "inscrits": 14,
+        "taux_assiduite": 0.916667,
+        "taux_remplissage": 0.875,
+        "paiements_millimes": 4200000,
+        "remboursements_millimes": 280000,
+        "encaissements_nets_millimes": 3920000,
+        "encaissement_attendu_millimes": 3920000,
+        "taux_encaissement": 1.0,
+        "presences": 77
+      },
+      "SES-2618": {
+        "inscrits": 12,
+        "taux_assiduite": 0.825,
+        "taux_remplissage": 0.666667,
+        "paiements_millimes": 4560000,
+        "remboursements_millimes": 114000,
+        "encaissements_nets_millimes": 4446000,
+        "encaissement_attendu_millimes": 4560000,
+        "taux_encaissement": 0.975,
+        "presences": 99
+      },
+      "SES-2619": {
+        "inscrits": 13,
+        "taux_assiduite": 0.878205,
+        "taux_remplissage": 0.866667,
+        "paiements_millimes": 4680000,
+        "remboursements_millimes": 144000,
+        "encaissements_nets_millimes": 4536000,
+        "encaissement_attendu_millimes": 4680000,
+        "taux_encaissement": 0.969231,
+        "presences": 137
+      },
+      "SES-2620": {
+        "inscrits": 12,
+        "taux_assiduite": 0.891667,
+        "taux_remplissage": 1.0,
+        "paiements_millimes": 7080000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 7080000,
+        "encaissement_attendu_millimes": 7080000,
+        "taux_encaissement": 1.0,
+        "presences": 107
+      },
+      "SES-2621": {
+        "inscrits": 16,
+        "taux_assiduite": 0.7625,
+        "taux_remplissage": 0.8,
+        "paiements_millimes": 5440000,
+        "remboursements_millimes": 320000,
+        "encaissements_nets_millimes": 5120000,
+        "encaissement_attendu_millimes": 5120000,
+        "taux_encaissement": 1.0,
+        "presences": 61
+      },
+      "SES-2622": {
+        "inscrits": 13,
+        "taux_assiduite": 0.807692,
+        "taux_remplissage": 0.8125,
+        "paiements_millimes": 3640000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 3640000,
+        "encaissement_attendu_millimes": 3640000,
+        "taux_encaissement": 1.0,
+        "presences": 63
+      },
+      "SES-2623": {
+        "inscrits": 10,
+        "taux_assiduite": 0.7125,
+        "taux_remplissage": 0.714286,
+        "paiements_millimes": 4500000,
+        "remboursements_millimes": 135000,
+        "encaissements_nets_millimes": 4365000,
+        "encaissement_attendu_millimes": 4500000,
+        "taux_encaissement": 0.97,
+        "presences": 57
+      },
+      "SES-2624": {
+        "inscrits": 11,
+        "taux_assiduite": 0.909091,
+        "taux_remplissage": 0.916667,
+        "paiements_millimes": 5200000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 5200000,
+        "encaissement_attendu_millimes": 5720000,
+        "taux_encaissement": 0.909091,
+        "presences": 60
+      },
+      "SES-2625": {
+        "inscrits": 8,
+        "taux_assiduite": 0.833333,
+        "taux_remplissage": 0.5,
+        "paiements_millimes": 2520000,
+        "remboursements_millimes": 280000,
+        "encaissements_nets_millimes": 2240000,
+        "encaissement_attendu_millimes": 2240000,
+        "taux_encaissement": 1.0,
+        "presences": 40
+      }
+    },
+    "par_centre": {
+      "Sfax": {
+        "inscrits": 68,
+        "taux_assiduite": 0.81146,
+        "taux_remplissage": 0.618182,
+        "paiements_millimes": 26380000,
+        "remboursements_millimes": 993000,
+        "encaissements_nets_millimes": 25387000,
+        "encaissement_attendu_millimes": 26330000,
+        "taux_encaissement": 0.964185,
+        "presences": 439
+      },
+      "Sousse": {
+        "inscrits": 91,
+        "taux_assiduite": 0.797059,
+        "taux_remplissage": 0.81982,
+        "paiements_millimes": 33165000,
+        "remboursements_millimes": 312000,
+        "encaissements_nets_millimes": 32853000,
+        "encaissement_attendu_millimes": 33800000,
+        "taux_encaissement": 0.971982,
+        "presences": 542
+      },
+      "Tunis": {
+        "inscrits": 151,
+        "taux_assiduite": 0.84894,
+        "taux_remplissage": 0.904192,
+        "paiements_millimes": 62560000,
+        "remboursements_millimes": 2553000,
+        "encaissements_nets_millimes": 60007000,
+        "encaissement_attendu_millimes": 61140000,
+        "taux_encaissement": 0.981469,
+        "presences": 961
+      }
+    },
+    "par_formation": {
+      "F01": {
+        "inscrits": 71,
+        "taux_assiduite": 0.861502,
+        "taux_remplissage": 0.739583,
+        "paiements_millimes": 20440000,
+        "remboursements_millimes": 840000,
+        "encaissements_nets_millimes": 19600000,
+        "encaissement_attendu_millimes": 19880000,
+        "taux_encaissement": 0.985915,
+        "presences": 367
+      },
+      "F02": {
+        "inscrits": 46,
+        "taux_assiduite": 0.744565,
+        "taux_remplissage": 0.821429,
+        "paiements_millimes": 20250000,
+        "remboursements_millimes": 405000,
+        "encaissements_nets_millimes": 19845000,
+        "encaissement_attendu_millimes": 20700000,
+        "taux_encaissement": 0.958696,
+        "presences": 274
+      },
+      "F03": {
+        "inscrits": 43,
+        "taux_assiduite": 0.844186,
+        "taux_remplissage": 0.796296,
+        "paiements_millimes": 16150000,
+        "remboursements_millimes": 114000,
+        "encaissements_nets_millimes": 16036000,
+        "encaissement_attendu_millimes": 16340000,
+        "taux_encaissement": 0.981395,
+        "presences": 363
+      },
+      "F04": {
+        "inscrits": 26,
+        "taux_assiduite": 0.794872,
+        "taux_remplissage": 0.866667,
+        "paiements_millimes": 9180000,
+        "remboursements_millimes": 252000,
+        "encaissements_nets_millimes": 8928000,
+        "encaissement_attendu_millimes": 9360000,
+        "taux_encaissement": 0.953846,
+        "presences": 248
+      },
+      "F05": {
+        "inscrits": 32,
+        "taux_assiduite": 0.90625,
+        "taux_remplissage": 0.888889,
+        "paiements_millimes": 16640000,
+        "remboursements_millimes": 520000,
+        "encaissements_nets_millimes": 16120000,
+        "encaissement_attendu_millimes": 16640000,
+        "taux_encaissement": 0.96875,
+        "presences": 174
+      },
+      "F06": {
+        "inscrits": 59,
+        "taux_assiduite": 0.79661,
+        "taux_remplissage": 0.7375,
+        "paiements_millimes": 19680000,
+        "remboursements_millimes": 960000,
+        "encaissements_nets_millimes": 18720000,
+        "encaissement_attendu_millimes": 18880000,
+        "taux_encaissement": 0.991525,
+        "presences": 235
+      },
+      "F07": {
+        "inscrits": 33,
+        "taux_assiduite": 0.851515,
+        "taux_remplissage": 0.916667,
+        "paiements_millimes": 19765000,
+        "remboursements_millimes": 767000,
+        "encaissements_nets_millimes": 18998000,
+        "encaissement_attendu_millimes": 19470000,
+        "taux_encaissement": 0.975758,
+        "presences": 281
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "inscrits": 39,
+        "taux_assiduite": 0.833333,
+        "taux_remplissage": 0.722222,
+        "paiements_millimes": 25710000,
+        "remboursements_millimes": 1190000,
+        "encaissements_nets_millimes": 24520000,
+        "encaissement_attendu_millimes": 12780000,
+        "taux_encaissement": 1.918623,
+        "presences": 115
+      },
+      "2026-02": {
+        "inscrits": 49,
+        "taux_assiduite": 0.851662,
+        "taux_remplissage": 0.859649,
+        "paiements_millimes": 22700000,
+        "remboursements_millimes": 320000,
+        "encaissements_nets_millimes": 22380000,
+        "encaissement_attendu_millimes": 20380000,
+        "taux_encaissement": 1.098135,
+        "presences": 333
+      },
+      "2026-03": {
+        "inscrits": 64,
+        "taux_assiduite": 0.792873,
+        "taux_remplissage": 0.8,
+        "paiements_millimes": 23310000,
+        "remboursements_millimes": 790000,
+        "encaissements_nets_millimes": 22520000,
+        "encaissement_attendu_millimes": 24440000,
+        "taux_encaissement": 0.92144,
+        "presences": 356
+      },
+      "2026-04": {
+        "inscrits": 49,
+        "taux_assiduite": 0.805621,
+        "taux_remplissage": 0.844828,
+        "paiements_millimes": 15050000,
+        "remboursements_millimes": 285000,
+        "encaissements_nets_millimes": 14765000,
+        "encaissement_attendu_millimes": 22210000,
+        "taux_encaissement": 0.664791,
+        "presences": 344
+      },
+      "2026-05": {
+        "inscrits": 51,
+        "taux_assiduite": 0.843844,
+        "taux_remplissage": 0.836066,
+        "paiements_millimes": 13385000,
+        "remboursements_millimes": 394000,
+        "encaissements_nets_millimes": 12991000,
+        "encaissement_attendu_millimes": 20240000,
+        "taux_encaissement": 0.641848,
+        "presences": 281
+      },
+      "2026-06": {
+        "inscrits": 0,
+        "taux_assiduite": 0.902703,
+        "taux_remplissage": null,
+        "paiements_millimes": 12060000,
+        "remboursements_millimes": 320000,
+        "encaissements_nets_millimes": 11740000,
+        "encaissement_attendu_millimes": 0,
+        "taux_encaissement": null,
+        "presences": 167
+      },
+      "2026-07": {
+        "inscrits": 50,
+        "taux_assiduite": 0.801887,
+        "taux_remplissage": 0.806452,
+        "paiements_millimes": 9330000,
+        "remboursements_millimes": 559000,
+        "encaissements_nets_millimes": 8771000,
+        "encaissement_attendu_millimes": 18980000,
+        "taux_encaissement": 0.462118,
+        "presences": 255
+      },
+      "2026-08": {
+        "inscrits": 8,
+        "taux_assiduite": 0.8125,
+        "taux_remplissage": 0.5,
+        "paiements_millimes": 560000,
+        "remboursements_millimes": 0,
+        "encaissements_nets_millimes": 560000,
+        "encaissement_attendu_millimes": 2240000,
+        "taux_encaissement": 0.25,
+        "presences": 91
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_session",
+    "cle_metier": "session_id",
+    "attribut": "centre",
+    "versions": [
+      {
+        "cle_metier": "SES-2601",
+        "attribut": "Tunis",
+        "valid_from": "2026-01-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2602",
+        "attribut": "Sousse",
+        "valid_from": "2026-01-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2603",
+        "attribut": "Sfax",
+        "valid_from": "2026-01-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2604",
+        "attribut": "Tunis",
+        "valid_from": "2026-01-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2605",
+        "attribut": "Tunis",
+        "valid_from": "2026-01-05",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2606",
+        "attribut": "Sousse",
+        "valid_from": "2026-01-12",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2607",
+        "attribut": "Tunis",
+        "valid_from": "2026-01-17",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2608",
+        "attribut": "Sfax",
+        "valid_from": "2026-01-26",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2609",
+        "attribut": "Sousse",
+        "valid_from": "2026-01-27",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2610",
+        "attribut": "Tunis",
+        "valid_from": "2026-01-31",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2611",
+        "attribut": "Tunis",
+        "valid_from": "2026-02-09",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2612",
+        "attribut": "Sfax",
+        "valid_from": "2026-02-17",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2613",
+        "attribut": "Sousse",
+        "valid_from": "2026-03-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2614",
+        "attribut": "Tunis",
+        "valid_from": "2026-03-03",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2615",
+        "attribut": "Sfax",
+        "valid_from": "2026-03-09",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2616",
+        "attribut": "Sousse",
+        "valid_from": "2026-03-14",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2617",
+        "attribut": "Tunis",
+        "valid_from": "2026-03-30",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2618",
+        "attribut": "Sfax",
+        "valid_from": "2026-03-31",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2619",
+        "attribut": "Sousse",
+        "valid_from": "2026-04-21",
+        "valid_to": "2026-07-15"
+      },
+      {
+        "cle_metier": "SES-2619",
+        "attribut": "Sfax",
+        "valid_from": "2026-07-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2620",
+        "attribut": "Tunis",
+        "valid_from": "2026-04-20",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2621",
+        "attribut": "Tunis",
+        "valid_from": "2026-05-30",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2622",
+        "attribut": "Sousse",
+        "valid_from": "2026-06-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2623",
+        "attribut": "Sfax",
+        "valid_from": "2026-06-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2624",
+        "attribut": "Tunis",
+        "valid_from": "2026-06-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SES-2625",
+        "attribut": "Sfax",
+        "valid_from": "2026-06-29",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "SES-2619",
+        "date": "2026-06-30",
+        "attribut": "Sousse"
+      },
+      {
+        "cle_metier": "SES-2619",
+        "date": "2026-07-14",
+        "attribut": "Sousse"
+      },
+      {
+        "cle_metier": "SES-2619",
+        "date": "2026-07-15",
+        "attribut": "Sfax"
+      },
+      {
+        "cle_metier": "SES-2613",
+        "date": "2026-07-15",
+        "attribut": "Sousse"
+      }
+    ]
+  },
+  "increment": {
+    "fact_presence_ajoutees": 430,
+    "fact_paiement_ajoutees": 78,
+    "sessions_ajoutees": 5,
+    "versions_scd2_ajoutees": 6,
+    "dim_date_ajoutees": 62
+  },
+  "rejeu": {
+    "etape": "rejeu",
+    "lignes_ajoutees": 0,
+    "regle": "relancer lot2 donne exactement ce fichier : mêmes tables, mêmes rejets, mêmes agrégats"
+  }
+}

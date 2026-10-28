@@ -1,0 +1,39 @@
+{
+  "source": "Référentiel des boutiques Maison Zitouna",
+  "extrait_le": "2026-06-30",
+  "boutiques": [
+    {
+      "code": "TUN",
+      "nom": "Maison Zitouna Tunis Centre",
+      "ville": "Tunis",
+      "historique": [
+        {
+          "zone": "Grand Tunis",
+          "valide_depuis": "2018-04-02"
+        }
+      ]
+    },
+    {
+      "code": "NBE",
+      "nom": "Maison Zitouna Nabeul",
+      "ville": "Nabeul",
+      "historique": [
+        {
+          "zone": "Cap Bon",
+          "valide_depuis": "2021-05-10"
+        }
+      ]
+    },
+    {
+      "code": "SFX",
+      "nom": "Maison Zitouna Sfax",
+      "ville": "Sfax",
+      "historique": [
+        {
+          "zone": "Sud",
+          "valide_depuis": "2022-09-19"
+        }
+      ]
+    }
+  ]
+}

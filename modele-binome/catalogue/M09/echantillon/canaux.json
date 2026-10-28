@@ -1,0 +1,47 @@
+{
+  "source": "Référentiel des canaux de vente Scène Libre",
+  "extrait_le": "2026-03-31",
+  "unite_frais": "pourcentage du prix payé",
+  "canaux": [
+    {
+      "code": "WEB",
+      "libelle": "billetterie en ligne",
+      "historique": [
+        {
+          "frais_distribution": "4,5 %",
+          "valide_depuis": "2025-09-01"
+        }
+      ]
+    },
+    {
+      "code": "GUI",
+      "libelle": "guichet",
+      "historique": [
+        {
+          "frais_distribution": 0,
+          "valide_depuis": "2025-09-01"
+        }
+      ]
+    },
+    {
+      "code": "REV",
+      "libelle": "revendeur",
+      "historique": [
+        {
+          "frais_distribution": "9 %",
+          "valide_depuis": "2025-09-01"
+        }
+      ]
+    },
+    {
+      "code": "PAR",
+      "libelle": "partenaire",
+      "historique": [
+        {
+          "frais_distribution": 6,
+          "valide_depuis": "2025-11-15"
+        }
+      ]
+    }
+  ]
+}

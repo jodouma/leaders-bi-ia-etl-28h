@@ -1,71 +1,77 @@
-# Du premier dossier au tableau de bord
+# De la demande de la direction au rapport : le parcours en images
 
-[Commencer le cours](../README.md) · [Guide d’installation PDF](../pdf/01_demarrer_windows_ubuntu.pdf)
+[Commencer le cours](../README.md) · [Livret 00 — Lire-moi](../pdf/00_lire_moi.pdf) · [Livret 01 — Démarrer](../pdf/01_demarrer.pdf)
 
 ## A — Comprendre la mission
 
-Vous rejoignez Atlas Papeterie. Les ventes viennent de fichiers et d’une base SQL. Votre mission : produire des chiffres fiables et expliquer une décision.
+Vous rejoignez Solen Digital. Son client Maison Zitouna veut savoir où passe la marge. Chaque étape du cours se justifie par la précédente : une question métier, des données, un indicateur défini précisément, une décision.
 
-![Des sources à Power BI](images/diagrams/v6-pipeline.png)
+![De la question de la direction à la décision](images/diagrams/v7-direction-decision.png)
 
-## B — Installer et choisir le bon environnement
+## B — Qui fait quoi : Codex, vous, votre binôme
 
-Suivre le PDF 01 dans l’ordre. Sous Windows, installer WSL2 et Ubuntu, puis choisir l’agent WSL dans Codex. Codex reste une fenêtre Windows ; Python travaille dans Ubuntu. Power BI Desktop se lance sur Windows.
+Codex écrit le code. Vous lisez le diff et lancez les contrôles. Votre binôme relit. L'équipe livre. Aucun code n'entre dans `main` sans ces trois regards.
 
-![Windows, WSL2 et Ubuntu : qui fait quoi ?](images/diagrams/v6-postes-wsl.png)
+![Codex propose, les humains décident](images/diagrams/v7-codex-controle.png)
 
-Sous Ubuntu pris en charge, utiliser Codex et Python directement. La partie Power BI Desktop se réalise sur le poste Windows d’un binôme ou de la salle.
+Modèle, effort, vitesse, tokens, contexte et quota sont six choses différentes. Le cours n'utilise que les réglages visibles sur un compte Free.
 
-## C — Télécharger et ouvrir le cours
+![Tokens, contexte, effort, quota](images/diagrams/v7-tokens-contexte.png)
 
-Choisir **Code → Download ZIP**, extraire tout, puis suivre le PDF 01 pour placer les fichiers dans `~/cours-bi`. Ouvrir **la racine du cours** dans Codex : elle contient `README.md`, `AGENTS.md`, `projet/` et `outils/`.
+## C — Installer : Windows avec WSL2, ou Ubuntu
 
-![Menu de téléchargement GitHub](images/real/github-telecharger.jpg)
+L'installation se fait **chez vous, avant la séance 1** : c'est la séance 0 (≈ 2 h), avec le livret 01, parties A à C. La séance 1 commence par 30 minutes de vérification des postes ; le dépôt du binôme est ensuite créé à deux, en séance.
 
-*Capture réelle du menu GitHub ; elle illustre le téléchargement, sans prouver une installation Windows ou Ubuntu.*
+Sous Windows, l'application ChatGPT reste une fenêtre Windows ; l'agent Codex, Python et Git travaillent dans Ubuntu WSL2 ; Power BI Desktop reste sur Windows. Sous Ubuntu natif, tout se fait dans Ubuntu sauf Power BI, sur un poste Windows de la salle ou du binôme.
 
-Le guide fait créer `atelier/` une seule fois. Conserver ce dossier d’une séance à l’autre. Les fichiers à modifier sont dans `atelier/` ; les commandes Python se lancent depuis ce dossier.
+![Qui fait quoi et sur quel système](images/diagrams/v7-postes-wsl.png)
 
-![La racine du cours et votre atelier](images/diagrams/v6-dossiers.png)
+## D — Travailler à deux avec Git et GitHub
 
-## D — Faire une petite demande, puis vérifier
+Deux copies locales, une copie partagée sur GitHub. Les fichiers ne se synchronisent pas tout seuls : commit, push, pull, pull request. La première pull request du binôme (A auteur) est celle du livret 01 ; la deuxième, dès la séance 1, a B pour auteur.
 
-Ouvrir les [prompts du cours](../prompts/README.md). Donner un objectif, les fichiers utiles, une limite et une preuve attendue. Exemple :
+![Trois emplacements pour un même dépôt](images/diagrams/v7-trois-emplacements.png)
 
-```text
-Dans atelier/nettoyage.py, complète seulement normaliser_vente.
-Utilise les helpers fournis et garde les montants en millimes entiers.
-Refuse les identifiants absents ou non textuels.
-Lance le contrôle 02 depuis atelier, puis explique le résultat.
-Ne modifie ni les sources ni le vérificateur.
-```
+![Le cycle d'une pull request](images/diagrams/v7-cycle-pr.png)
 
-![Planifier, agir et vérifier avec Codex](images/diagrams/v6-codex-boucle.png)
+Deux choses portent le même nom de « workflow ». Le **workflow de travail** est la suite de vos gestes : branche → pull request → revue → merge. Le **workflow GitHub Actions** est le fichier `.github/workflows/controles.yml`, que GitHub exécute tout seul à chaque pull request sur une machine neuve (onglet Actions).
 
-Choisir Luna et High si proposés. Standard désigne la vitesse. Vérifier l’usage réellement affiché, puis travailler localement entre les demandes.
+## E — Des quatre sources à l'entrepôt
 
-![Contexte, tokens et quota](images/diagrams/v6-contexte-quota.png)
+CSV, Excel, JSON et une base SQLite opérationnelle entrent ; l'ETL écrit par Codex nettoie, harmonise, dédoublonne, charge les dimensions puis les faits ; les rejets vont dans `rejets.csv` avec leur motif.
 
-## E — Garder le passé juste
+![Des quatre sources au rapport](images/diagrams/v7-pipeline.png)
 
-Une vente est un fait ; le produit, la boutique et la date la décrivent. Le 8 janvier, Nabeul change de zone commerciale. Les anciennes ventes gardent leur ancienne version de boutique.
+![Nettoyer sans toucher aux sources](images/diagrams/v7-nettoyage.png)
 
-![L’étoile et les trois relations](images/diagrams/v6-etoile.png)
+![L'étoile de la mission d'entraînement](images/diagrams/v7-etoile.png)
 
-![L’historique avant et après le changement](images/diagrams/v6-scd2.png)
+![Clé métier et clé technique](images/diagrams/v7-cles.png)
 
-## F — Livrer et faire relire
+## F — Mettre à jour sans perdre le passé
 
-Exporter les quatre CSV, puis suivre le [guide Power BI](../powerbi/README.md) : types, relations, mesure, visuels et actualisation. Le rapport HTML local aide à contrôler l’ETL ; le tableau de bord Power BI reste une étape distincte.
+Chargement initial, puis incrément, puis rejeu : le rejeu n'ajoute rien. Nabeul change de zone le 2026-07-15 ; une vente du 14 juillet garde l'ancienne version.
 
-![Capture réelle du rapport HTML local](images/real/rapport-etl-v6.jpg)
+![Charger, compléter, rejouer](images/diagrams/v7-chargements.png)
 
-*Rapport réellement produit et observé sur le poste auteur macOS. Cette capture prouve la vue HTML et les valeurs affichées ; la manipulation Power BI Desktop reste distincte.*
+![NBE change de zone le 2026-07-15](images/diagrams/v7-scd2-frise.png)
 
-![Les montants historiques par zone](images/diagrams/v6-chiffres-zones.png)
+## G — Livrer et prouver
 
-Comparer les résultats aux contrôles, demander une revue en lecture seule, corriger, puis vérifier à nouveau. Deux lecteurs peuvent examiner des points différents si les sous-agents sont disponibles ; un seul auteur modifie les fichiers.
+Un chiffre plausible n'est pas un chiffre juste : seul un contrôle les distingue. L'application locale et Power BI montrent les mêmes indicateurs, avec leurs unités.
 
-![La boucle de revue](images/diagrams/v6-revue.png)
+![Un chiffre plausible n'est pas un chiffre juste](images/diagrams/v7-indicateur-controle.png)
 
-Les schémas sont des explications conceptuelles. Les captures sont identifiées comme telles ; les [sources et limites des images](images/README.md) distinguent illustration et manipulation réelle.
+![Application locale de référence, vue direction](images/captures/app-vue-direction.png)
+
+*Capture réelle de l'application de référence (navigateur intégré, macOS, 28 octobre 2026). Les valeurs affichées sont les valeurs de référence après le lot 2. Le registre de provenance des captures est dans [images/captures/REGISTRE.json](images/captures/REGISTRE.json).*
+
+## H — Le calendrier et la soutenance
+
+Séance 0 chez vous (≈ 2 h), cinq séances de 4 h, puis la soutenance. Votre mission du catalogue, choisie en fin de séance 3, commence en séance : les 50 dernières minutes de la séance 4 servent à passer à votre mission, la première moitié de la séance 5 la mène jusqu'à l'application. Le travail personnel (≈ 8 h) se répartit en 2 h de séance 0, 4 h de mission et 2 h de finition, recommandation et préparation orale.
+
+![Cinq séances, une mission, une soutenance](images/diagrams/v7-seances.png)
+
+![Soutenance : 120 minutes à partager](images/diagrams/v7-soutenance.png)
+
+Les schémas décrivent le fonctionnement et ne prétendent pas montrer l'interface réelle de votre poste. Les sources officielles vérifiées le 28 octobre 2026 sont dans [setup/sources.json](setup/sources.json).

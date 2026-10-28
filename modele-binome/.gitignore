@@ -1,0 +1,18 @@
+# Sorties recréées par le pipeline : on les reconstruit, on ne les versionne pas.
+outputs/*
+!outputs/.gitkeep
+
+# Environnement Python local et caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Secrets : rien de ce genre ne doit entrer dans le dépôt
+.env
+
+# Les rapports Power BI (.pbix) restent versionnés s'ils sont petits (< 10 Mo).

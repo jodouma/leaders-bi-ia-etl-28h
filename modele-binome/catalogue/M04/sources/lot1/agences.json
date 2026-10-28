@@ -1,0 +1,83 @@
+{
+  "source": "Référentiel des agences Colis Rapide",
+  "extrait_le": "2026-06-30",
+  "agences": [
+    {
+      "code": "TUN",
+      "nom": "Colis Rapide Tunis Lac",
+      "ville": "Tunis",
+      "historique": [
+        {
+          "zone": "Grand Tunis",
+          "valide_depuis": "2019-03-01"
+        }
+      ]
+    },
+    {
+      "code": "ARI",
+      "nom": "Colis Rapide Ariana",
+      "ville": "Ariana",
+      "historique": [
+        {
+          "zone": "Grand Tunis",
+          "valide_depuis": "2020-01-06"
+        }
+      ]
+    },
+    {
+      "code": "BIZ",
+      "nom": "Colis Rapide Bizerte",
+      "ville": "Bizerte",
+      "historique": [
+        {
+          "zone": "Nord",
+          "valide_depuis": "2021-04-12"
+        }
+      ]
+    },
+    {
+      "code": "NAB",
+      "nom": "Colis Rapide Nabeul",
+      "ville": "Nabeul",
+      "historique": [
+        {
+          "zone": "Nord",
+          "valide_depuis": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "SOU",
+      "nom": "Colis Rapide Sousse",
+      "ville": "Sousse",
+      "historique": [
+        {
+          "zone": "Centre-Sahel",
+          "valide_depuis": "2019-11-18"
+        }
+      ]
+    },
+    {
+      "code": "SFX",
+      "nom": "Colis Rapide Sfax",
+      "ville": "Sfax",
+      "historique": [
+        {
+          "zone": "Sud",
+          "valide_depuis": "2020-05-04"
+        }
+      ]
+    },
+    {
+      "code": "GAB",
+      "nom": "Colis Rapide Gabès",
+      "ville": "Gabès",
+      "historique": [
+        {
+          "zone": "Sud",
+          "valide_depuis": "01/02/2023"
+        }
+      ]
+    }
+  ]
+}

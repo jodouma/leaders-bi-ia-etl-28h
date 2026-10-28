@@ -1,0 +1,1162 @@
+{
+ "title": "Mission 10 · Pixel Studio : guide de mission",
+ "cover_title": "Mission 10 · Agence numérique\nPixel Studio",
+ "subtitle": "Guide de mission du catalogue · heures, coût de charge, facturé net, marge de contribution · une ligne de temps par fait",
+ "subject_label": "Solen BI 22 h · Guide de mission M10 · Pixel Studio",
+ "header_label": "SOLEN  /  MISSION M10 · PIXEL STUDIO",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Pixel Studio (fictifs)",
+ "cover": {
+  "case": "SOLEN DIGITAL · CLIENT FICTIF PIXEL STUDIO",
+  "flow": "Temps, coûts, projets, factures  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "20",
+    "PROJETS, DONT 1 INTERNE"
+   ],
+   [
+    "2 384",
+    "LIGNES DE TEMPS APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M10 / GUIDE DE MISSION"
+ },
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M10/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md ; variantes et écrans repris de fiche_mission.md (absents du cahier). Solution de référence passée au vérificateur strict sur macOS (application non ouverte dans un navigateur) ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "author": "Youssef Douma · Leaders University",
+ "output_filename": "missions/M10_guide.pdf",
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "pages": [
+  {
+   "kicker": "M10 · PIXEL STUDIO · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 10**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à une agence numérique fictive, **Pixel Studio**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : « Avant l’étape A » (page 9), en fin de séance 4."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Ce qui sera gardé, ignoré ou rejeté",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Passer à M10, charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "13"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "14"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "15"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M10/` : le cahier gagne en cas de doute ; variantes et écrans sont dans la fiche"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M10/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M10/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Pixel Studio** (fictif) réalise des sites, des applications et des campagnes pour une vingtaine de clients. Chaque collaborateur saisit ses heures ; le coût d’une heure dépend de son **profil** (développeur, designer, chef de projet, consultant). Les projets sont au **forfait**, en **régie** ou **internes**. Personne ne sait quels projets consomment du temps sans rapporter assez."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nous travaillons beaucoup, mais je ne sais pas quels projets nous rapportent vraiment. Je veux, par projet, par client, par chef de projet et par mois : les heures, le coût de charge (heures × taux horaire du profil), le facturé net (factures − avoirs) et la marge de contribution. Je sais que ce n’est pas notre bénéfice : les loyers et les frais généraux ne sont pas dedans. Dites-moi aussi quelles lignes vous avez écartées, et pourquoi.\nÀ partir du 15 juillet, le projet « Portail patients » (PX07) passe de Hela Mansour à Nour Jebali. Les heures du premier semestre restent à Hela.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Quels projets revoir ?** La marge de contribution par projet : ceux qui coûtent plus qu’ils ne sont facturés.",
+      "**Forfait ou régie ?** La marge par type de projet, pour choisir comment vendre les prochains.",
+      "**Comment répartir les chefs de projet ?** Heures, facturé et marge par chef de projet, avec l’historique de PX07."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "15 collaborateurs, 20 projets dont un interne ; janvier → août 2026",
+       "loyers, logiciels, frais généraux : la marge de contribution n’est pas un bénéfice"
+      ],
+      [
+       "heures saisies, taux coût du profil, fixe sur 2026",
+       "heures non saisies ; salaire réel de chacun ; un taux qui change (variante 3)"
+      ],
+      [
+       "factures `EMISE` et avoirs, montants HT",
+       "factures `ANNULEE` (ignorées) ; TVA et encaissements"
+      ],
+      [
+       "le chef de projet historisé (PX07 au 2026-07-15)",
+       "le profil indiqué dans le CSV : information, le référentiel gagne"
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.7
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **une ligne de temps** (un collaborateur, un projet, un jour, une tâche, des heures), clé `temps_id`. Heures stockées en **centièmes d’heure entiers** (7,5 h → 750), montants en **millimes entiers**. Les quatre indicateurs de la direction sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "**Heures**",
+       "centièmes d’heure",
+       "somme des heures des lignes de temps acceptées (750 = 7,5 h)"
+      ],
+      [
+       "**Coût de charge**",
+       "TND",
+       "somme de heures × taux horaire coût du profil du collaborateur"
+      ],
+      [
+       "Factures",
+       "TND",
+       "somme des montants HT des factures `EMISE` acceptées"
+      ],
+      [
+       "Avoirs",
+       "TND",
+       "somme des montants HT des avoirs acceptés"
+      ],
+      [
+       "**Facturé net**",
+       "TND",
+       "factures − avoirs (montants HT)"
+      ],
+      [
+       "**Marge de contribution**",
+       "TND",
+       "facturé net − coût de charge ; ce n’est **pas** un bénéfice"
+      ]
+     ],
+     "widths": [
+      1.6,
+      1,
+      2.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "`cout_charge_millimes` = `heures_centiemes` × `taux_horaire_millimes` ÷ 100, un entier exact. Dans `fact_facture`, `montant_ht_millimes` est **toujours positif** ; c’est `signe` (+1 facture, −1 avoir) qui dit s’il ajoute ou retire. Un avoir prend le projet de sa facture d’origine et **sa propre date**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key` (AAAAMMJJ)"
+      ],
+      [
+       "`dim_collaborateur`",
+       "un collaborateur, son profil et son taux coût",
+       "`collaborateur_key` · `collaborateur_id`"
+      ],
+      [
+       "`dim_projet` (SCD2)",
+       "une **version** de projet : client, type, `chef_projet`, `valid_from`, `valid_to`",
+       "`projet_key` · `projet_id`"
+      ],
+      [
+       "`fact_temps`",
+       "une ligne de temps acceptée, heures et coût",
+       "`temps_id`"
+      ],
+      [
+       "`fact_facture`",
+       "une facture `EMISE` ou un avoir",
+       "`document_id`"
+      ]
+     ],
+     "widths": [
+      1.5,
+      2.6,
+      1.6
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_projet`, attribut `chef_projet`. Le projet **PX07** (Portail patients) passe de **Hela Mansour** à **Nour Jebali** le **2026-07-15**, inclus ; l’information arrive avec `lot2/projets.json`. `dim_projet` passe de 20 à 21 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "projet_id",
+      "chef_projet",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "PX07",
+       "Hela Mansour",
+       "2026-01-12",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "PX07",
+       "Nour Jebali",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.3,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Chaque heure, facture ou avoir prend la version de PX07 valable à **sa** date : une heure du 14 juillet compte pour Hela, une facture du 31 juillet pour Nour."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M10 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de PX07 aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles` (tests fournis), `pytest -q` (avec les vôtres) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `temps.csv`, le classeur des coûts, les 20 projets, 3 factures et 2 avoirs. Taux coût : développeur 32,500 TND/h · designer 29,000 · chef de projet 41,000 · consultant 47,500. Calculez **sur papier**, avant Codex ; la correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "temps_id",
+      "Lu dans le fichier",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "E-01",
+       "2026-03-02 · C01 · PX01 · heures 7.5",
+       ""
+      ],
+      [
+       "3",
+       "E-02",
+       "03/03/2026 · C01 · PX01 · heures 7,5",
+       ""
+      ],
+      [
+       "4",
+       "E-03",
+       "4 mars 2026 · C02 · PX02 · heures 3",
+       ""
+      ],
+      [
+       "5",
+       "E-03",
+       "4 mars 2026 · C02 · PX02 · heures 3",
+       ""
+      ],
+      [
+       "6",
+       "E-04",
+       "2026-03-04 · « c03 » · PX01 · heures 1,25",
+       ""
+      ],
+      [
+       "7",
+       "E-05",
+       "2026-03-05 · C04 · INT01 · heures 2",
+       ""
+      ],
+      [
+       "8",
+       "E-06",
+       "2026-03-05 · C02 · PX02 · heures 4",
+       ""
+      ],
+      [
+       "9",
+       "E-06",
+       "2026-03-05 · C02 · PX02 · heures 4,5",
+       ""
+      ],
+      [
+       "10",
+       "(vide)",
+       "2026-03-06 · C01 · PX01 · heures 3",
+       ""
+      ],
+      [
+       "11",
+       "E-07",
+       "2026-03-06 · C99 · PX01 · heures 2",
+       ""
+      ],
+      [
+       "12",
+       "E-08",
+       "2026-03-06 · C01 · PX01 · heures -2",
+       ""
+      ],
+      [
+       "13",
+       "E-09",
+       "2026-03-06 · C01 · « px02 » · heures 6.25",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.75,
+      3.3,
+      1.1
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? Profils du classeur : C01 développeur, C02 designer, C03 chef de projet, C04 consultant.",
+      "**2.** Heures en centièmes et coût de charge de chaque ligne gardée, puis par projet (PX01, PX02, INT01).",
+      "**3.** Documents : `F-001` PX02 900,000 `EMISE` ; `F-002` `ANNULEE` ; `F-003` PX01 1 200,000 `EMISE` ; `AV-001` 150,000 sur `F-003` ; `AV-002` sur `F-099`. Facturé net, puis marge de contribution."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardées : ……  Rejets : ……  Heures : …… centièmes  Coût de charge : …… TND\nFacturé net : …… TND  Marge : …… TND  (INT01 …… · PX01 …… · PX02 ……)"
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 5 : doublon exact, **ignorée**. Lignes 8 et 9 : même `temps_id`, heures différentes → **les deux** en `id_conflit`. Ligne 10 : `id_manquant`. Ligne 11 : collaborateur `C99` inconnu → `cle_inconnue`. Ligne 12 : −2 h → `quantite_invalide`. Bilan : **6 lignes gardées**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "temps_id",
+      "Profil",
+      "Projet",
+      "Heures → centièmes",
+      "Calcul",
+      "Coût"
+     ],
+     "rows": [
+      [
+       "E-01",
+       "développeur",
+       "PX01",
+       "7.5 → 750",
+       "7,5 × 32,500",
+       "243,750"
+      ],
+      [
+       "E-02",
+       "développeur",
+       "PX01",
+       "7,5 → 750",
+       "7,5 × 32,500",
+       "243,750"
+      ],
+      [
+       "E-03",
+       "designer",
+       "PX02",
+       "3 → 300",
+       "3 × 29,000",
+       "87,000"
+      ],
+      [
+       "E-04",
+       "chef de projet",
+       "PX01",
+       "1,25 → 125",
+       "1,25 × 41,000",
+       "51,250"
+      ],
+      [
+       "E-05",
+       "consultant",
+       "INT01",
+       "2 → 200",
+       "2 × 47,500",
+       "95,000"
+      ],
+      [
+       "E-09",
+       "développeur",
+       "PX02",
+       "6.25 → 625",
+       "6,25 × 32,500",
+       "203,125"
+      ],
+      [
+       "**Total**",
+       "",
+       "",
+       "**2 750 (27,5 h)**",
+       "",
+       "**923,875**"
+      ]
+     ],
+     "widths": [
+      0.8,
+      1.1,
+      0.7,
+      1.2,
+      1.1,
+      0.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Documents** : `F-001` et `F-003` gardées (2 100,000) ; `F-002` annulée, ignorée ; `AV-001` gardé, **en moins** sur PX01 (150,000) ; `AV-002` rejeté en `cle_inconnue`. Total : **6 rejets**. Facturé net = **1 950,000 TND**. Montants en TND."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Projet",
+      "Heures",
+      "Coût de charge",
+      "Facturé net",
+      "Marge de contribution"
+     ],
+     "rows": [
+      [
+       "INT01",
+       "2,00 h",
+       "95,000",
+       "0,000",
+       "−95,000"
+      ],
+      [
+       "PX01",
+       "16,25 h",
+       "538,750",
+       "1 200,000 − 150,000 = 1 050,000",
+       "511,250"
+      ],
+      [
+       "PX02",
+       "9,25 h",
+       "290,125",
+       "900,000",
+       "609,875"
+      ],
+      [
+       "**Total**",
+       "27,50 h",
+       "923,875",
+       "1 950,000",
+       "**1 026,125**"
+      ]
+     ],
+     "widths": [
+      0.8,
+      0.8,
+      1.1,
+      2,
+      1.3
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Cherchez **la** ligne qui diffère. Pièges : `1,25` lu 1 h 25, le profil pris dans le CSV, l’avoir ajouté au lieu de retiré, INT01 oublié. Entrepôt attendu : `fact_temps` 6, `fact_facture` 3 (2 factures + 1 avoir), `dim_collaborateur` 15, `dim_projet` 20, `dim_date` 31."
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**. Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`temps.csv`",
+       "UTF-8, séparateur `;` : `temps_id`, `date_travail`, `collaborateur`, `profil`, `projet`, `heures`, `tache`",
+       "heures `7,5`, `7.5`, `7.50`, `8,0` ; trois formats de date ; ` c05 `, `Px07` ; heures `0`, `-7,5`"
+      ],
+      [
+       "`couts.xlsx`",
+       "feuille `Profils`, **en-têtes ligne 3**, + feuille `Collaborateurs`",
+       "taux `41,000` ou `32.5` en texte ; profils `DÉVELOPPEUR` en casse variable"
+      ],
+      [
+       "`projets.json`",
+       "client, type, date de début, historique des chefs (`valide_depuis`)",
+       "type `Régie` en casse variable ; projet interne `INT01` ; lot 2 : 2e version de PX07"
+      ],
+      [
+       "`facturation.sqlite`",
+       "tables `facture`, `avoir`, `parametre`",
+       "factures `ANNULEE` ; facture vers un projet inconnu ; avoir vers une facture inconnue"
+      ]
+     ],
+     "widths": [
+      1.43,
+      2.2,
+      2.17
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `temps.csv`",
+       "2 015",
+       "426",
+       "—"
+      ],
+      [
+       "Doublons exacts",
+       "12",
+       "3",
+       "garder une occurrence"
+      ],
+      [
+       "Déjà chargées (heures du 30 juin)",
+       "0",
+       "10",
+       "ignorer : rejeu"
+      ],
+      [
+       "Rejets de `temps.csv`",
+       "22",
+       "10",
+       "`rejets.csv`"
+      ],
+      [
+       "Lignes de temps acceptées",
+       "1 981",
+       "403",
+       "`fact_temps`"
+      ],
+      [
+       "Factures lues · `ANNULEE` · avoirs lus",
+       "61 · 3 · 7",
+       "31 · 1 · 4",
+       "ignorer les annulées"
+      ],
+      [
+       "Documents inconnus · déjà chargés",
+       "2 · 0",
+       "1 · 10",
+       "`cle_inconnue` · ignorer"
+      ],
+      [
+       "Documents acceptés",
+       "63",
+       "23",
+       "`fact_facture`"
+      ]
+     ],
+     "widths": [
+      2.3,
+      0.9,
+      0.9,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer ou rejeter ?",
+     "text": "**Ignorer** : doublon exact, ligne ou document déjà chargés, facture `ANNULEE`. **Rejeter** : `id_conflit`, `id_manquant`, `cle_inconnue` (collaborateur, projet ou facture d’origine inconnus), `quantite_invalide` (heures nulles, négatives ou illisibles). Les factures se chargent **avant** les avoirs."
+    }
+   ]
+  },
+  {
+   "title": "Avant l’étape A · passer à M10",
+   "kicker": "M10 · PIXEL STUDIO · ÉTAPES A → B → C",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR : votre dépôt passe du tronc commun à M10. On garde le code du tronc commun et on le **généralise**. Détail et raisons : livret 04, « Passer à votre mission »."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · sauvegarder, vider, changer de mission",
+     "text": "git switch main && git pull\ngit switch -c mission-M10\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*                 # .gitkeep (fichier caché) reste\necho \"M10\" > mission.txt"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · généraliser le tronc commun (première étape)",
+     "text": "Mission M10 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M10/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets\nde temps.csv au lot 1. Lance python -m solen initial, puis --mission M10\n--etape rejets et pytest controles ; recopie les sorties. Dis quels tests\nde tests/ lisent mission.txt et adapte-les. Ni commit ni push."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`livraison/` est versionné, `outputs/` ne l’est pas** : `livraison/tronc-commun/` garde la preuve du tronc commun (et sert à Power BI en séance 5) ; `outputs/` appartient à la mission courante, `python -m solen initial` le reconstruit pour M10.",
+      "**Ordre des contrôles**, un cran vert par PR : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`. Dans la même PR, `ETAPE_CI` revient à `aucune`, puis avance avec vous.",
+      "**Faux ÉCHEC ?** Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` : videz `outputs/`, relancez `initial`, reprenez l’ordre."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_temps` et de `fact_facture`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M10 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite\navec catalogue/M10/sources/lot1 : dim_date, dim_collaborateur,\ndim_projet (valid_from, valid_to), puis fact_temps et fact_facture,\ndans une transaction. Heures en centièmes entiers (7,5 -> 750) ; taux\nlu dans le classeur, jamais dans le CSV ; cout = centiemes x taux / 100.\nAvoir : signe -1, montant positif, projet de sa facture d'origine.\nLance initial puis le vérificateur --mission M10 --etape initial et\nrecopie les sorties. J'attends <mes prévisions> : compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M10 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_collaborateur` 15 · `dim_projet` 20 · `fact_temps` 1 981 · `fact_facture` 63"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 8 (6 temps + 2 documents) · `id_conflit` 6 · `id_manquant` 4 · `quantite_invalide` 6 · total 24"
+      ],
+      [
+       "Heures · coût de charge",
+       "1 030 000 centièmes (10 300 h) · 377 400,125 TND"
+      ],
+      [
+       "**Facturé net · marge de contribution**",
+       "**460 847,450 · 83 447,325 TND** (factures 470 453,450 − avoirs 9 606,000)"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Les heures en nombre décimal** : `7.5 × 32,5` en flottant donne parfois 243,749999. Les centièmes entiers et les millimes entiers rendent le coût exact.",
+      "**Un avoir stocké en négatif avec `signe` −1** : moins par moins, l’avoir s’ajoute au facturé net. Le montant reste positif, seul `signe` retire."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, recopie les heures du 30 juin et les documents depuis le 15 juin, et apporte la 2e version de PX07. **Prévoyez** : (1) lignes de `dim_projet` ; (2) chef d’une heure sur PX07 du 14 puis du 15 juillet ; (3) lignes de `fact_facture` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M10. Ajoute python -m solen increment (lot2 de M10).\n- SCD2 sur dim_projet.chef_projet : fermer la version Hela Mansour de\n  PX07 (valid_to 2026-07-15, exclu), ouvrir Nour Jebali (valid_from) ;\n- chaque heure, facture ou avoir prend la version valable à SA date ;\n  ne jamais modifier les faits anciens ;\n- rejeu : temps_id et document_id déjà chargés sont ignorés.\nLance initial, increment, --etape increment, increment (2e fois),\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M10 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M10 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_projet` **21** · `fact_temps` 2 384 (+403) · `fact_facture` 86 (+23)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 4 (3 + 1 document) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 3 · total 11"
+      ],
+      [
+       "Heures · coût de charge",
+       "1 238 150 centièmes (12 381,5 h) · 453 097,875 TND"
+      ],
+      [
+       "**Facturé net · marge de contribution**",
+       "**586 010,400 · 132 912,525 TND**"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Le chef courant pour tout PX07** (`UPDATE chef_projet`) : les heures du premier semestre partent chez Nour Jebali, l’historique de Hela Mansour est réécrit. C’est l’option refusée par la direction.",
+      "**Les 10 documents recopiés depuis le 15 juin chargés deux fois** : le facturé net gonfle sans nouvelle facture. Un `document_id` déjà présent est ignoré."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Pixel Studio."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M10 --etape export\npython -m solen app\npython -m controles.verifier --mission M10 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 384 lignes de `fact_temps`, une somme de `heures_centiemes` de 1 238 150 et de `cout_charge_millimes` de 453 097 875. Pour `fact_facture` (86 lignes), la somme de `montant_ht_millimes` vaut factures **+** avoirs = 607 722 400 : ce n’est pas le facturé net, puisque les montants restent positifs."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M10. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par projet, Qualité des\ndonnées ; filtres période, projet, client, chef de projet, type ;\ncoût de charge par mois et par type en barres SVG empilées."
+    },
+    {
+     "type": "text",
+     "text": "**Application** : erreurs fréquentes, des heures affichées en centièmes (1 238 150 « h ») et un projet interne caché parce que son facturé est nul."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés ; relations 1:* de `dim_date` et `dim_projet` vers les **deux** faits, de `dim_collaborateur` vers `fact_temps`, toujours par `projet_key`. Demandez à Codex les mesures de la mission (formules du cahier) dans `powerbi/mesures_M10.dax` ; sans poste Windows, la démo se fait dans l’application : Heures = centièmes ÷ 100, Coût de charge TND, Facturé net TND = somme de `signe` × montant, Marge de contribution TND. Après le lot 2 et **Actualiser** : 12 381,5 h, 453 097,875 TND, 586 010,400 TND, 132 912,525 TND. Erreur fréquente : un facturé net = `SUM(montant_ht_millimes)`, qui ajoute les avoirs."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M10/reference/visuels/facture_cout_marge_par_type.png",
+     "caption": "Graphique de référence après le lot 2 : facturé net, coût de charge et marge de contribution par type de projet, en TND.",
+     "height": 155
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Les deux questions posées à la direction",
+     "text": "(1) Les heures saisies sur PX07 avant le 15 juillet, et la facture de régie de juillet datée du 31 juillet : quel chef de projet ? (2) Les heures passées sur le projet interne INT01, non facturable, comptent-elles dans le coût de charge ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Échantillon"
+     ],
+     "rows": [
+      [
+       "(1) A · le chef courant pour tout le projet",
+       "on réécrit l’historique de PX07",
+       "— (pas de PX07)"
+      ],
+      [
+       "**(1) B · le chef valable à la date du fait** (décidée)",
+       "heures jusqu’au 14 juillet à Hela, facture du 31 juillet à Nour",
+       "— (pas de PX07)"
+      ],
+      [
+       "**(2) A · toute heure coûte** (décidée)",
+       "INT01 dans le coût, facturé net nul",
+       "**marge 1 026,125**"
+      ],
+      [
+       "(2) B · projets clients seulement",
+       "INT01 exclu",
+       "marge 1 121,125"
+      ]
+     ],
+     "widths": [
+      2.1,
+      2.2,
+      1.2
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Question 1** : un chef répond des heures engagées sous sa responsabilité ; la facture du 31 juillet est émise quand Nour Jebali dirige le projet. Une seule règle pour tous les faits : leur propre date.",
+      "**Question 2** : une heure de formation ou d’avant-vente est payée comme les autres. Après le lot 2, INT01 coûte 21 227,375 TND : l’exclure embellirait la marge d’autant.",
+      "**Noter** les deux décisions dans `notes/JOURNAL.md` (Décision)."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Taux de facturabilité** = heures forfait ou régie ÷ heures totales",
+       "un test sur l’échantillon : 2 550 ÷ 2 750 = 92,73 % ; contre `par_type` du lot 2 : (1 238 150 − 53 500) ÷ 1 238 150 = 95,68 %"
+      ],
+      [
+       "**2. Plus de 12 h sur une ligne** → motif `heures_hors_bornes`",
+       "un test : une ligne à 12,5 h est rejetée avec ce motif ; les autres comptes ne bougent pas"
+      ],
+      [
+       "**3. Taux développeur à 34,000 TND le 2026-08-01** : taux historisé",
+       "un test sur un petit jeu dans `tests/` : une heure du 31 juillet coûte 32,500, du 1er août 34,000"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "factures, avoirs, facturé net, coût de charge, marge ; coût de charge par mois et par type (barres empilées)",
+       "« 132 912,525 TND de marge, avant tout frais général. »"
+      ],
+      [
+       "**2. Détail par projet**",
+       "PX07 : Hela Mansour jusqu’au 2026-07-14, Nour Jebali ensuite ; les marges négatives : PX05, INT01, PX19, PX06",
+       "« Le passé de PX07 reste à Hela. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "lignes lues, gardées, rejetées par motif et par lot : 24 puis 11",
+       "« Chaque ligne écartée a son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.7,
+      1.7
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Chef de projet = Nour Jebali. **Prévoyez** : sa marge monte-t-elle avec le lot 2 ?",
+      "**Application** : marge de contribution **28 555,500 TND** après le lot 2 (−6 236,875 après le lot 1). **Référence** : `attendu_lot2.json`, `agregats → par_chef_projet → Nour Jebali → marge_contribution_millimes` = 28 555 500.",
+      "**Lecture** : la hausse vient pour une part de PX07 depuis le 15 juillet, dont la facture de régie du 31 juillet. Pour séparer les deux chefs sur PX07, demandez une requête SQL en lecture seule par `projet_key`."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M10/reference/visuels/marge_contribution_par_projet.png",
+     "caption": "Graphique de référence après le lot 2 : marge de contribution par projet, en TND. INT01 est négatif par construction.",
+     "height": 225
+    }
+   ]
+  },
+  {
+   "kicker": "M10 · PIXEL STUDIO · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Pixel Studio, le grain « une ligne de temps » et le périmètre ;",
+      "…calculer l’échantillon à la main : 6 lignes gardées, 27,5 h, 923,875 TND de coût, 1 950,000 TND de facturé net, 1 026,125 TND de marge ;",
+      "…dire pourquoi une ligne ou un document est ignoré ou rejeté ;",
+      "…charger, compléter et rejouer avec `--mission M10`, et montrer que les heures de PX07 avant le 2026-07-15 restent à Hela Mansour ;",
+      "…expliquer les centièmes d’heure, le `signe` des avoirs et pourquoi la marge de contribution n’est pas un bénéfice ;",
+      "…défendre les deux décisions, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Heures · coût de charge",
+       "10 300 h · 377 400,125 TND",
+       "12 381,5 h · 453 097,875 TND"
+      ],
+      [
+       "Facturé net",
+       "460 847,450 TND",
+       "586 010,400 TND"
+      ],
+      [
+       "Marge de contribution",
+       "83 447,325 TND",
+       "132 912,525 TND"
+      ],
+      [
+       "Rejets",
+       "24",
+       "11 de plus"
+      ]
+     ],
+     "widths": [
+      1.8,
+      1.6,
+      1.6
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** avant d’écrire : PX05 (−27 325,125 TND), le forfait face à la régie (agrégats `par_type`), le coût du temps interne. La marge de contribution ne compte ni loyers, ni logiciels, ni heures non saisies."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M10/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; Pixel Studio et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni dans la CI GitHub. Son application n’a pas été ouverte dans un navigateur : seules ses données ont été contrôlées.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; Power BI suit le livret 05, non rejoué pour cette mission."
+     ]
+    }
+   ]
+  }
+ ]
+}

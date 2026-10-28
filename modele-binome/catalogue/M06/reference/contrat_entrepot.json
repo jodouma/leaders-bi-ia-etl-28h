@@ -1,0 +1,358 @@
+{
+  "version_contrat": 1,
+  "mission": "M06",
+  "entreprise": "Dar Azur",
+  "grain": "un séjour (une réservation de chambre, de la date d'arrivée à la date de départ)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_etablissement",
+    "dim_canal",
+    "fact_sejour",
+    "fact_annulation"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_etablissement": {
+      "role": "dimension",
+      "cle": "etablissement_key",
+      "cle_metier": "etablissement_id",
+      "colonnes": [
+        "etablissement_key",
+        "etablissement_id",
+        "nom",
+        "ville",
+        "nombre_chambres"
+      ],
+      "colonnes_entieres": [
+        "etablissement_key",
+        "nombre_chambres"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_canal": {
+      "role": "dimension_scd2",
+      "cle": "canal_key",
+      "cle_metier": "canal_id",
+      "colonnes": [
+        "canal_key",
+        "canal_id",
+        "libelle",
+        "taux_commission_pct",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "canal_key",
+        "taux_commission_pct"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_sejour": {
+      "role": "fait",
+      "cle": "sejour_id",
+      "cle_metier": null,
+      "colonnes": [
+        "sejour_id",
+        "date_key",
+        "etablissement_key",
+        "canal_key",
+        "type_chambre",
+        "date_reservation",
+        "date_depart",
+        "nuitees",
+        "montant_millimes",
+        "commission_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "etablissement_key",
+        "canal_key",
+        "nuitees",
+        "montant_millimes",
+        "commission_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "etablissement_key": "dim_etablissement.etablissement_key",
+        "canal_key": "dim_canal.canal_key"
+      }
+    },
+    "fact_annulation": {
+      "role": "fait",
+      "cle": "annulation_id",
+      "cle_metier": null,
+      "colonnes": [
+        "annulation_id",
+        "sejour_id",
+        "date_key",
+        "etablissement_key",
+        "canal_key",
+        "date_annulation",
+        "nuitees",
+        "remboursement_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "etablissement_key",
+        "canal_key",
+        "nuitees",
+        "remboursement_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "sejour_id": "fact_sejour.sejour_id",
+        "date_key": "dim_date.date_key",
+        "etablissement_key": "dim_etablissement.etablissement_key",
+        "canal_key": "dim_canal.canal_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_sejour",
+    "fact_annulation"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_canal",
+    "cle": "canal_key",
+    "cle_metier": "canal_id",
+    "attribut": "CAST(taux_commission_pct AS TEXT)",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_sejour",
+        "colonne": "canal_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_annulation",
+        "colonne": "canal_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "OTA",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "OTA",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "OTA",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "DIR",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, e.etablissement_id, e.etablissement_id || ' ' || printf('%04d-%02d', d.annee, d.mois) AS etab_mois, c.canal_id, c.taux_commission_pct, f.nuitees AS nuitees_vendues, 0 AS nuitees_annulees, f.montant_millimes AS montant, 0 AS remboursement, f.commission_millimes AS commission, 1 AS sejours, 0 AS chambres_nuits FROM fact_sejour f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_etablissement e ON e.etablissement_key = f.etablissement_key JOIN dim_canal c ON c.canal_key = f.canal_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), e.etablissement_id, e.etablissement_id || ' ' || printf('%04d-%02d', d.annee, d.mois), c.canal_id, c.taux_commission_pct, 0, a.nuitees, 0, a.remboursement_millimes, 0, 0, 0 FROM fact_annulation a JOIN dim_date d ON d.date_key = a.date_key JOIN dim_etablissement e ON e.etablissement_key = a.etablissement_key JOIN dim_canal c ON c.canal_key = a.canal_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), e.etablissement_id, e.etablissement_id || ' ' || printf('%04d-%02d', d.annee, d.mois), NULL, NULL, 0, 0, 0, 0, 0, 0, e.nombre_chambres FROM dim_date d CROSS JOIN dim_etablissement e",
+  "indicateurs": [
+    {
+      "code": "nuitees_vendues",
+      "libelle": "Nuitées vendues",
+      "unite": "nombre",
+      "formule": "nuitées des séjours acceptés − nuitées des séjours annulés (annulations CONFIRMEE acceptées)",
+      "sql": "SUM(nuitees_vendues) - SUM(nuitees_annulees)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "chambres_disponibles",
+      "libelle": "Chambres disponibles (chambres × nuits)",
+      "unite": "nombre",
+      "formule": "nombre de chambres de l'établissement × nombre de nuits de la période (jours de dim_date)",
+      "sql": "SUM(chambres_nuits)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "taux_occupation",
+      "libelle": "Taux d'occupation",
+      "unite": "ratio",
+      "formule": "nuitées vendues / (chambres × nuits de la période)",
+      "sql": "ROUND(1.0 * (SUM(nuitees_vendues) - SUM(nuitees_annulees)) / NULLIF(SUM(chambres_nuits), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "montant_sejours_millimes",
+      "libelle": "Montant des séjours",
+      "unite": "millimes",
+      "formule": "somme des prix totaux des séjours acceptés",
+      "sql": "SUM(montant)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "remboursements_millimes",
+      "libelle": "Remboursements",
+      "unite": "millimes",
+      "formule": "somme des montants remboursés des annulations CONFIRMEE acceptées",
+      "sql": "SUM(remboursement)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "revenu_net_millimes",
+      "libelle": "Revenu net d'annulations",
+      "unite": "millimes",
+      "formule": "montant des séjours − remboursements",
+      "sql": "SUM(montant) - SUM(remboursement)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "revpar_millimes",
+      "libelle": "RevPAR",
+      "unite": "millimes",
+      "formule": "revenu net / (chambres × nuits de la période), en TND par chambre disponible, arrondi au millime",
+      "sql": "CAST(ROUND(1.0 * (SUM(montant) - SUM(remboursement)) / NULLIF(SUM(chambres_nuits), 0)) AS INTEGER)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "commissions_millimes",
+      "libelle": "Commissions des canaux",
+      "unite": "millimes",
+      "formule": "somme de montant × taux de commission (version valable à la date d'arrivée) / 100",
+      "sql": "SUM(commission)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "sejours",
+      "libelle": "Séjours acceptés",
+      "unite": "nombre",
+      "formule": "nombre de lignes de fact_sejour",
+      "sql": "SUM(sejours)",
+      "tolerance": 0.0,
+      "principal": false
+    }
+  ],
+  "axes": {
+    "par_etablissement": "etablissement_id",
+    "par_mois": "mois",
+    "par_etablissement_mois": "etab_mois"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "operations.sqlite",
+      "sejours.csv"
+    ],
+    "etape_rejets": {
+      "sources": [
+        "sejours.csv"
+      ]
+    }
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_etablissement",
+      "dim_canal",
+      "fact_sejour",
+      "fact_annulation"
+    ],
+    "sommes": {
+      "fact_sejour": [
+        "nuitees",
+        "montant_millimes",
+        "commission_millimes"
+      ],
+      "fact_annulation": [
+        "nuitees",
+        "remboursement_millimes"
+      ],
+      "dim_etablissement": [
+        "nombre_chambres"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par canal",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

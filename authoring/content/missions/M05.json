@@ -1,0 +1,1113 @@
+{
+ "title": "Mission 05 · Académie Nour : guide de mission",
+ "cover_title": "Mission 05 · Centre de formation\nAcadémie Nour",
+ "subtitle": "Guide de mission du catalogue · inscrits, taux d’assiduité, taux de remplissage, encaissements nets · une présence par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M05 · Académie Nour",
+ "output_filename": "missions/M05_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M05 · ACADÉMIE NOUR",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Académie Nour (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF ACADÉMIE NOUR",
+  "flow": "Émargement, catalogue, sessions, paiements  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "25",
+    "SESSIONS, 3 CENTRES"
+   ],
+   [
+    "310",
+    "INSCRITS APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M05 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M05/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Solution de référence passée au vérificateur strict sur macOS (application contrôlée par script, non ouverte) ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 05**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un centre de formation fictif, l’**Académie Nour**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : « Avant l’étape A » (page 9), en fin de séance 4."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, les objectifs chiffrés",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Ce qui sera gardé, ignoré ou rejeté",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Passer à M05, charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre les deux décisions, choisir une variante",
+       "13"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "14"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "15"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M05/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M05/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M05/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "L’**Académie Nour** (fictive) donne des formations courtes : Excel, Power BI, comptabilité, anglais professionnel, gestion de projet, marketing digital, Python. Chaque formation est donnée en **sessions** : un groupe, un formateur, un centre (Tunis, Sousse ou Sfax), un nombre fixe de séances. Les formateurs remplissent une feuille d’émargement ; inscriptions, paiements et remboursements vivent dans une base de gestion."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nous ouvrons beaucoup de sessions, mais je ne sais pas lesquelles marchent. Je veux, par session, par centre, par formation et par mois : le nombre d’inscrits, le taux d’assiduité, le taux de remplissage et les encaissements nets (paiements moins remboursements). Nos objectifs : remplissage d’au moins 70 %, assiduité d’au moins 80 %, et au moins 95 % de l’encaissement attendu (inscrits × prix). Dites-moi aussi quelles lignes vous avez écartées, et pourquoi.\nÀ partir du 15 juillet, la session d’anglais SES-2619 (mardi soir, à distance) est rattachée au centre de Sfax au lieu de Sousse. Ce qui s’est passé avant reste à Sousse.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Quelles sessions ratent un objectif ?** Remplissage, assiduité ou encaissement, session par session.",
+      "**Quel centre ouvrir ou réduire ?** Les trois taux et les encaissements nets par centre."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "25 sessions, 7 formations, 3 centres ; janvier → août 2026",
+       "sessions qui commencent après le 31 août"
+      ],
+      [
+       "présences, paiements et remboursements `VALIDE`",
+       "mouvements `ANNULE` (ignorés)"
+      ],
+      [
+       "le prix catalogue par participant",
+       "salaires des formateurs, loyers : pas de marge dans cette mission"
+      ],
+      [
+       "le centre historisé (SES-2619 au 2026-07-15)",
+       "motif du remboursement, rythme horaire : présents, non chargés"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **une présence**, c’est-à-dire un participant inscrit × une séance d’une session, avec `present` = 0 ou 1 (clé `presence_id`). Les montants sont en **millimes entiers**. Formules exactes du cahier (§ 9) ; les quatre demandées par la direction sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "**Inscrits**",
+       "nombre",
+       "participants distincts de la feuille d’émargement d’une session, comptés **une fois par session**, à la date de début"
+      ],
+      [
+       "**Taux d’assiduité**",
+       "%",
+       "présences ÷ (inscrits × séances) = somme de `present` ÷ nombre de lignes de présence"
+      ],
+      [
+       "**Taux de remplissage**",
+       "%",
+       "inscrits ÷ capacité du catalogue (une fois par session)"
+      ],
+      [
+       "Paiements · remboursements",
+       "TND",
+       "sommes des mouvements `VALIDE` acceptés"
+      ],
+      [
+       "**Encaissements nets**",
+       "TND",
+       "paiements − remboursements"
+      ],
+      [
+       "Encaissement attendu",
+       "TND",
+       "inscrits × prix par participant du catalogue"
+      ],
+      [
+       "Taux d’encaissement",
+       "%",
+       "encaissements nets ÷ encaissement attendu"
+      ]
+     ],
+     "widths": [
+      1.6,
+      0.6,
+      3.2
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Trois dénominateurs différents",
+     "text": "L’assiduité divise par des **lignes de présence**, le remplissage par des **places**, l’encaissement par de l’**argent attendu**. Aucun taux ne s’additionne ni ne se moyenne d’un mois à l’autre : on refait toujours le rapport des sommes. Une session compte ses inscrits dans le mois et le centre de sa **date de début** ; une présence ou un paiement, à **sa** date."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key`"
+      ],
+      [
+       "`dim_formation`",
+       "une formation : prix, `capacite`, `nb_seances`",
+       "`formation_key` · `formation_id`"
+      ],
+      [
+       "`dim_session` (SCD2)",
+       "une **version** de session : centre, `date_debut`, `valid_from`, `valid_to`",
+       "`session_key` · `session_id`"
+      ],
+      [
+       "`fact_presence`",
+       "un participant à une séance, `present` 0 ou 1",
+       "`presence_id`"
+      ],
+      [
+       "`fact_paiement`",
+       "un paiement (`signe` 1) ou un remboursement (`signe` −1)",
+       "`mouvement_id`"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.5
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_session`, attribut `centre`. **SES-2619** passe de « Sousse » à « Sfax » le **2026-07-15**, inclus (`lot2/sessions.json`). Le lot 2 ajoute aussi cinq nouvelles sessions : `dim_session` passe de 20 à 26 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "session_id",
+      "centre",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "SES-2619",
+       "Sousse",
+       "2026-04-21",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "SES-2619",
+       "Sfax",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.2,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Une présence du 14 juillet est à Sousse, du 15 à Sfax. Un paiement ou un remboursement suit la version valable à la **date du mouvement**. Les 13 inscrits de SES-2619 restent comptés à Sousse : sa date de début est en mai."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M05 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats (par session, centre, formation, mois) après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de SES-2619 aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles`, `pytest -q` (avec vos tests) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `presences.csv` : les deux premières séances de SES-2690 (Marketing digital, Tunis, formation F06 : capacité 20, prix 320,000 TND). Calculez **sur papier**, à deux, avant Codex. La correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "presence_id",
+      "Lu dans le fichier",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "PRS-E01",
+       "SES-2690 · PA-0901 · 2026-03-02 · present 1",
+       ""
+      ],
+      [
+       "3",
+       "PRS-E02",
+       "SES-2690 · PA-0902 · 02/03/2026 · present 1",
+       ""
+      ],
+      [
+       "4",
+       "PRS-E03",
+       "« ses-2690 » · PA-0903 · 2 mars 2026 · present 0",
+       ""
+      ],
+      [
+       "5",
+       "PRS-E04",
+       "SES-2690 · « pa-0901 » · 2026-03-04 · present 1",
+       ""
+      ],
+      [
+       "6",
+       "PRS-E04",
+       "SES-2690 · « pa-0901 » · 2026-03-04 · present 1",
+       ""
+      ],
+      [
+       "7",
+       "PRS-E05",
+       "SES-2690 · PA-0902 · 04/03/2026 · present 0",
+       ""
+      ],
+      [
+       "8",
+       "PRS-E06",
+       "« Ses-2690 » · PA-0903 · 2026-03-04 · present 0",
+       ""
+      ],
+      [
+       "9",
+       "PRS-E07",
+       "SES-2690 · PA-0901 · 2026-03-04 · present 1",
+       ""
+      ],
+      [
+       "10",
+       "PRS-E07",
+       "SES-2690 · PA-0901 · 2026-03-04 · present 0",
+       ""
+      ],
+      [
+       "11",
+       "(vide)",
+       "SES-2690 · PA-0902 · 2026-03-04 · present 1",
+       ""
+      ],
+      [
+       "12",
+       "PRS-E08",
+       "SES-2699 · PA-0901 · 2026-03-04 · present 1",
+       ""
+      ],
+      [
+       "13",
+       "PRS-E09",
+       "SES-2690 · PA-0902 · 2026-03-04 · present 2",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.85,
+      3.4,
+      0.9
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? **2.** Inscrits, taux d’assiduité, taux de remplissage.",
+      "**3.** Argent : `PAI-E1` 320,000 · `PAI-E2` 160,000 (acompte) · `PAI-E3` « 320,000 » en texte · `PAI-E4` 320,000 (PA-0904, inscription annulée) · `PAI-E5` `ANNULE` · `PAI-E6` vers `INS-E9` inconnue · `RMB-E1` 320,000 (remboursement de PA-0904).",
+      "**4.** Encaissements nets, encaissement attendu, taux d’encaissement."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardées : ……  Rejets : ……  Inscrits : ……  Assiduité : …… %  Remplissage : …… %\nEncaissements nets : …… TND  Attendu : …… TND  Taux d’encaissement : …… %"
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact de la ligne 5, **ignorée**. Lignes 9 et 10 : même `presence_id`, `present` différent → **les deux** en `id_conflit`. Ligne 11 : `id_manquant`. Ligne 12 : `SES-2699` absente de `sessions.json` → `cle_inconnue`. Ligne 13 : `present` = 2 → `quantite_invalide`. Bilan : **6 lignes gardées** = 3 participants × 2 séances."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Participant",
+      "2 mars",
+      "4 mars",
+      "Présences"
+     ],
+     "rows": [
+      [
+       "PA-0901",
+       "1",
+       "1",
+       "2"
+      ],
+      [
+       "PA-0902",
+       "1",
+       "0",
+       "1"
+      ],
+      [
+       "PA-0903",
+       "0",
+       "0",
+       "0 (a payé, jamais venu)"
+      ]
+     ],
+     "widths": [
+      1.4,
+      1,
+      1,
+      2
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Inscrits",
+       "participants distincts de la feuille (PA-0904 a annulé : absent)",
+       "**3**"
+      ],
+      [
+       "Taux d’assiduité",
+       "3 présences ÷ (3 inscrits × 2 séances)",
+       "**50,00 %**"
+      ],
+      [
+       "Taux de remplissage",
+       "3 ÷ 20 places",
+       "**15,00 %**"
+      ],
+      [
+       "Paiements",
+       "320,000 + 160,000 + 320,000 + 320,000",
+       "1 120,000 TND"
+      ],
+      [
+       "Encaissements nets",
+       "1 120,000 − 320,000 (`RMB-E1`)",
+       "**800,000 TND**"
+      ],
+      [
+       "Encaissement attendu · taux",
+       "3 × 320,000 = 960,000 ; 800,000 ÷ 960,000",
+       "**83,33 %**"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3,
+      1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "`PAI-E5` est ignoré (annulé, pas un rejet) ; `PAI-E6` est rejeté en `cle_inconnue` (source `operations.sqlite`) : **6 rejets** au total. Le paiement **et** le remboursement de PA-0904 sont chargés : l’argent est entré puis sorti. Le taux d’encaissement reste sous 100 % car PA-0902 n’a payé que l’acompte."
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Pièges : « 320,000 » lu comme trois cent vingt mille TND (la virgule est décimale), PA-0903 retiré des inscrits (ce serait l’option B), le paiement de PA-0904 rejeté. Entrepôt attendu : `fact_presence` 6, `fact_paiement` 5 (4 signes 1, 1 signe −1), `dim_session` 1, `dim_date` 59 jours (février et mars)."
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**. Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`presences.csv`",
+       "émargement, UTF-8, `;` : `presence_id`, `session`, `participant`, `date_seance`, `present`",
+       "trois formats de date ; codes en minuscules ou avec espaces ; `present` = `2`, `-1`, `oui`, `1,5`"
+      ],
+      [
+       "`catalogue.xlsx`",
+       "feuille `Formations`, **en-têtes ligne 3** : prix, capacité, séances",
+       "nombres stockés en texte (`450,000`) ; code « ` f03` »"
+      ],
+      [
+       "`sessions.json`",
+       "planning et historique du centre (`valide_depuis`)",
+       "une `date_debut` en JJ/MM/AAAA ; un code en minuscules ; lot 2 : 2e version de SES-2619"
+      ],
+      [
+       "`operations.sqlite`",
+       "`participant`, `inscription`, `paiement`, `remboursement`",
+       "montants en texte avec virgule ; statuts `ANNULE` ; paiement vers une inscription inconnue"
+      ]
+     ],
+     "widths": [
+      1.38,
+      2,
+      2.47
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `presences.csv`",
+       "1 958",
+       "456",
+       "—"
+      ],
+      [
+       "Doublons exacts · déjà chargées",
+       "12 · 0",
+       "4 · 13",
+       "ignorer"
+      ],
+      [
+       "Rejets de `presences.csv`",
+       "23",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Présences acceptées",
+       "1 923",
+       "430",
+       "`fact_presence`"
+      ],
+      [
+       "Mouvements `ANNULE` · déjà chargés",
+       "2 · 0",
+       "2 · 4",
+       "ignorer"
+      ],
+      [
+       "Mouvements vers une inscription inconnue",
+       "3",
+       "1",
+       "`cle_inconnue`"
+      ],
+      [
+       "Mouvements acceptés",
+       "377",
+       "78",
+       "`fact_paiement`"
+      ]
+     ],
+     "widths": [
+      2.4,
+      0.8,
+      0.8,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer ou rejeter ?",
+     "text": "**Ignorer** : doublon exact, mouvement `ANNULE`, ligne déjà chargée (le lot 2 recopie la séance du 30 juin et les mouvements depuis le 1er juin). **Rejeter** en `cle_inconnue` aussi un participant **sans inscription `CONFIRMEE`** à cette session : la clé « participant » se vérifie dans `operations.sqlite`, pas seulement dans le CSV."
+    }
+   ]
+  },
+  {
+   "title": "Avant l’étape A · passer à M05",
+   "kicker": "M05 · ACADÉMIE NOUR · ÉTAPES A → B → C",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR : votre dépôt passe du tronc commun à M05. On garde le code du tronc commun et on le **généralise**. Détail et raisons : livret 04, « Passer à votre mission »."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · sauvegarder, vider, changer de mission",
+     "text": "git switch main && git pull\ngit switch -c mission-M05\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*                 # .gitkeep (fichier caché) reste\necho \"M05\" > mission.txt"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · généraliser le tronc commun (première étape)",
+     "text": "Mission M05 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M05/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets\nde presences.csv au lot 1. Lance python -m solen initial, puis --mission M05\n--etape rejets et pytest controles ; recopie les sorties. Dis quels tests\nde tests/ lisent mission.txt et adapte-les. Ni commit ni push."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`livraison/` est versionné, `outputs/` ne l’est pas** : `livraison/tronc-commun/` garde la preuve du tronc commun (et sert à Power BI en séance 5) ; `outputs/` appartient à la mission courante, `python -m solen initial` le reconstruit pour M05.",
+      "**Ordre des contrôles**, un cran vert par PR : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`. Dans la même PR, `ETAPE_CI` revient à `aucune`, puis avance avec vous.",
+      "**Faux ÉCHEC ?** Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` : videz `outputs/`, relancez `initial`, reprenez l’ordre."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_presence` et le nombre d’inscrits."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M05 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite avec\ncatalogue/M05/sources/lot1 : dim_date, dim_formation, dim_session, puis\nfact_presence et fact_paiement, dans une transaction. Clés *_key\nentières, *_id texte, millimes entiers ; dim_session a valid_from et\nvalid_to. Un remboursement : signe -1, montant positif. Un participant\nsans inscription CONFIRMEE à la session : cle_inconnue.\nLance initial puis --mission M05 --etape initial et recopie les sorties.\nJ'attends <mes prévisions> : compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M05 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_formation` 7 · `dim_session` 20 · `fact_presence` 1 923 · `fact_paiement` 377"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 9 (6 présences + 3 mouvements) · `id_conflit` 6 · `id_manquant` 5 · `quantite_invalide` 6 · total 26"
+      ],
+      [
+       "**Inscrits · assiduité · remplissage**",
+       "**252 · 83,00 % · 81,29 %**"
+      ],
+      [
+       "**Encaissements nets** (attendu)",
+       "**97 646,000 TND** (100 050,000) · taux 97,60 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**« 225,000 » lu comme un nombre à milliers** : les montants en texte de SQLite ont une virgule **décimale**. 225 000 TND au lieu de 225,000 : les encaissements explosent.",
+      "**Le paiement d’une inscription annulée rejeté** : il est chargé, comme son remboursement. Seul le statut `ANNULE` d’un **mouvement** le fait ignorer."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, cinq sessions, la 2e version de SES-2619 et recopie des lignes déjà chargées. **Prévoyez** : (1) lignes de `dim_session` ; (2) centre d’une présence de SES-2619 le 14 puis le 15 juillet ; (3) lignes de `fact_presence` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M05. Ajoute python -m solen increment (lot2 de M05).\n- SCD2 sur dim_session.centre : fermer la version Sousse de SES-2619\n  (valid_to 2026-07-15, exclu), ouvrir Sfax (valid_from 2026-07-15) ;\n- une présence prend la version valable à la date de la séance, un\n  mouvement celle de SA date ; ne jamais modifier les faits anciens ;\n- rejeu : presence_id ou numéro de mouvement déjà chargé = ignoré.\nLance initial, increment, --etape increment, increment (2e fois),\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M05 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M05 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_session` **26** · `fact_presence` 2 353 (+430) · `fact_paiement` 455 (+78)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 4 (3 + 1 mouvement) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 10"
+      ],
+      [
+       "**Inscrits · assiduité · remplissage**",
+       "**310 · 82,53 % · 79,90 %**"
+      ],
+      [
+       "**Encaissements nets** (attendu)",
+       "**118 247,000 TND** (121 270,000) · taux 97,51 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Inscrits comptés par `session_key`** : SES-2619 a deux versions, ses 13 participants seraient comptés deux fois. On compte par `session_id`, une fois, au centre de la date de début.",
+      "**Les mouvements recopiés depuis le 1er juin rechargés** : 4 mouvements déjà présents gonfleraient les encaissements. Le rejeu se juge sur `mouvement_id`."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour l’Académie Nour."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M05 --etape export\npython -m solen app\npython -m controles.verifier --mission M05 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 353 lignes de `fact_presence` et une somme de `present` de 1 942 (les présences) ; 455 lignes de `fact_paiement` et une somme de `montant_millimes` de 125 963 000 (paiements + remboursements, car le montant est toujours positif). Erreur fréquente : stocker les remboursements en négatif **et** garder `signe` : ils seraient retirés deux fois."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M05. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par session, Qualité des\ndonnées ; filtres période et centre ; encaissements nets par mois et\npar centre en barres SVG ; taux = rapports de sommes, jamais moyennes."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** par `session_key` et `formation_key`. Demandez à Codex les mesures de la mission (formules du cahier) dans `powerbi/mesures_M05.dax` ; sans poste Windows, la démo se fait dans l’application : Inscrits, Taux d’assiduité, Taux de remplissage, Encaissements nets TND (somme de `signe` × `montant_millimes`), Taux d’encaissement. Sans filtre, après le lot 2 : 310 ; 82,53 % ; 79,90 % ; 118 247,000 TND ; 97,51 %. Attention : inscrits et capacité se comptent une fois par session, au mois de sa date de début ; une mesure qui compte les participants de `fact_presence` sous un filtre de mois donnera d’autres valeurs que la référence par mois. Faites expliquer ce choix à Codex et notez la limite."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M05/reference/visuels/assiduite_et_remplissage_par_centre.png",
+     "caption": "Graphique de référence après le lot 2 : taux d’assiduité et de remplissage par centre, en %. Les lignes d’objectif (80 % et 70 %) aident à lire qui est en dessous.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Les deux questions posées à la direction",
+     "text": "(1) Un participant a payé mais n’est jamais venu : compte-t-il dans les inscrits ? (2) Un participant de SES-2619 est remboursé le 20 juillet, après le changement de centre : Sousse (centre de son inscription) ou Sfax (centre ce jour-là) ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Échantillon"
+     ],
+     "rows": [
+      [
+       "**(1) A · il compte** (décidée)",
+       "il occupe une place, il a payé ; ses absences baissent l’assiduité",
+       "3 inscrits · 50,00 % · 15,00 %"
+      ],
+      [
+       "(1) B · seulement les venus",
+       "remplissage plus bas, assiduité plus haute",
+       "2 inscrits · 75,00 % · 10,00 %"
+      ],
+      [
+       "(2) A · centre de l’inscription",
+       "il faut relier le remboursement à une ancienne version",
+       "non calculable sur l’échantillon"
+      ],
+      [
+       "**(2) B · centre à sa date** (décidée)",
+       "chaque mouvement suit sa date, comme les présences",
+       "non calculable sur l’échantillon"
+      ]
+     ],
+     "widths": [
+      1.8,
+      2.5,
+      1.4
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**(1)** La place est perdue pour un autre candidat et l’argent est encaissé : le compter dit la vérité sur la session. L’exclure ferait monter l’assiduité de 50 % à 75 % sur l’échantillon, sans un seul participant de plus en salle.",
+      "**(2)** Une seule règle pour tous les faits : « la version valable à la date du fait ». Les remboursements de SES-2619 valent 144,000 TND dans la référence après le lot 2 (0 après le lot 1) ; avec A, il faudrait les déplacer vers Sousse à la main (raisonnement, non calculé par la référence).",
+      "Notez les deux décisions dans `notes/JOURNAL.md` (Décision). Pour la variante : prompt 18, puis 03, 09 et 13 ; la référence reste verte."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Taux d’abandon** = inscrits absents aux deux dernières séances ÷ inscrits",
+       "un test sur l’échantillon fait à la main : PA-0903 absent les 2 et 4 mars → 1 ÷ 3 = 33,33 % ; pas de valeur dans la référence"
+      ],
+      [
+       "**2. Motif `seance_inconnue`** : une présence datée hors des jours de séance",
+       "un test sur un petit jeu dans `tests/` ; les rejets de la référence restent égaux"
+      ],
+      [
+       "**3. SES-2622 rattachée à Tunis le 2026-07-20**",
+       "un test : Sousse le 19 juillet, Tunis le 20 ; `dim_session` + 1 version"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "inscrits, assiduité, remplissage, encaissements nets, taux d’encaissement ; encaissements nets par mois et par centre ; filtres période et centre",
+       "« 310 inscrits, 82,53 % d’assiduité, 97,51 % de l’attendu encaissé. »"
+      ],
+      [
+       "**2. Détail par session**",
+       "SES-2619 : Sousse jusqu’au 2026-07-14, Sfax ensuite ; le remboursement du 20 juillet est à Sfax",
+       "« Le passé de SES-2619 reste à Sousse. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "lignes lues, gardées, rejetées par motif et par lot : 26 puis 10",
+       "« 36 lignes écartées, chacune avec son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Centre = Sfax. **Prévoyez** : les inscrits de SES-2619 apparaissent-ils à Sfax ?",
+      "**Application** : encaissements nets **25 387,000 TND** après le lot 2 (18 746,000 après le lot 1), 68 inscrits. **Référence** : `attendu_lot2.json`, `agregats → par_centre → Sfax → encaissements_nets_millimes` = 25 387 000.",
+      "**Lecture** : les paiements de juillet-août de SES-2619 comptent à Sfax, mais ses 13 inscrits restent à Sousse (début en mai). C’est voulu : notez-le dans la démonstration."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M05/reference/visuels/encaissements_nets_par_mois_et_centre.png",
+     "caption": "Graphique de référence après le lot 2 : encaissements nets par mois et par centre, en TND. Chaque paiement compte dans le mois de sa date, souvent avant le début de la session.",
+     "height": 225
+    }
+   ]
+  },
+  {
+   "kicker": "M05 · ACADÉMIE NOUR · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de l’Académie Nour, le grain « une présence » et les trois objectifs de la direction ;",
+      "…calculer l’échantillon à la main : 3 inscrits, 50,00 % d’assiduité, 15,00 % de remplissage, 800,000 TND encaissés nets ;",
+      "…dire pourquoi une ligne est ignorée ou rejetée, y compris un participant non inscrit ;",
+      "…charger, compléter et rejouer avec `--mission M05`, et montrer que SES-2619 reste à Sousse avant le 2026-07-15 ;",
+      "…donner le dénominateur de chaque taux et refuser d’en faire une moyenne ;",
+      "…défendre les deux décisions, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Inscrits · présences",
+       "252 · 1 596",
+       "310 · 1 942"
+      ],
+      [
+       "Assiduité · remplissage",
+       "83,00 % · 81,29 %",
+       "82,53 % · 79,90 %"
+      ],
+      [
+       "Encaissements nets",
+       "97 646,000 TND",
+       "118 247,000 TND"
+      ],
+      [
+       "Taux d’encaissement",
+       "97,60 %",
+       "97,51 %"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Le cahier demande de **nommer** les sessions qui ratent un objectif (agrégat `par_session` du lot 2), de dire lequel et de proposer une action. Vérifiez chaque taux avec son dénominateur : une session de 8 places pèse peu."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M05/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; l’Académie Nour et ses personnes sont fictives.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni en CI. Son application n’a pas été ouverte dans un navigateur, seulement contrôlée par script.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; les mesures DAX de cette mission n’ont pas été testées."
+     ]
+    }
+   ]
+  }
+ ]
+}

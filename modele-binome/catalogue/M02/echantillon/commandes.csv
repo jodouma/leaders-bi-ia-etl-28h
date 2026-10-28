@@ -1,0 +1,13 @@
+ligne_id;commande_id;date_commande;canal;produit;quantite;prix_unitaire;remise;ville_livraison
+E-01-1;E-01;2026-03-02;WEB;P01;2;45.000;;Tunis
+E-01-2;E-01;02/03/2026;WEB;P12;1;18,5;;Tunis
+E-02-1;E-02;3 mars 2026; bzl ;P02;1;89,900;9,000;Sfax
+E-03-1;E-03;2026-03-05;VSO;P03;3;15.900;0;Gabès
+E-03-1;E-03;2026-03-05;VSO;P03;3;15.900;0;Gabès
+E-04-1;E-04;2026-03-06;App;P06;2;32,500;6.5;Sousse
+E-05-1;E-05;2026-03-07;SHM;P01;1;40.500;4,050;Bizerte
+E-06-1;E-06;2026-03-07;WEB;P12;1;18.500;;Ariana
+E-06-1;E-06;2026-03-07;WEB;P12;2;18.500;;Ariana
+;E-07;2026-03-08;GCO;P01;1;45.000;;Kébili
+E-08-1;E-08;2026-03-09;WEB;X99;1;9.000;;Tunis
+E-09-1;E-09;2026-03-09;APP;P06;0;32.500;;Sfax

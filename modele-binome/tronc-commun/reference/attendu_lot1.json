@@ -1,0 +1,308 @@
+{
+  "mission": "tronc-commun",
+  "entreprise": "Maison Zitouna",
+  "lot": "lot1",
+  "etape": "initial",
+  "periode": {
+    "debut": "2026-01-01",
+    "fin": "2026-06-30"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "ventes.csv": {
+      "lignes": 1998,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "catalogue.xlsx": {
+      "feuilles": [
+        "Catalogue",
+        "Familles"
+      ],
+      "produits": 8,
+      "familles": 6,
+      "ligne_entete_catalogue": 3
+    },
+    "boutiques.json": {
+      "boutiques": 3,
+      "versions": 3
+    },
+    "operations.sqlite": {
+      "retour": 82,
+      "valides": 78,
+      "annules": 4,
+      "motif_retour": 4
+    }
+  },
+  "nettoyage": {
+    "ventes.csv": {
+      "lignes_acceptees_nouvelles": 1960,
+      "doublons_exacts": 14,
+      "deja_charges": 0,
+      "formats_montants": 597,
+      "formats_dates": 496,
+      "casse_espaces": 208
+    },
+    "operations.sqlite": {
+      "retours_annules_exclus": 4,
+      "deja_charges": 0,
+      "retours_acceptes_nouveaux": 76
+    }
+  },
+  "rejets": {
+    "total": 26,
+    "par_motif": {
+      "cle_inconnue": 8,
+      "id_conflit": 6,
+      "id_manquant": 5,
+      "quantite_invalide": 7
+    },
+    "par_source": {
+      "ventes.csv": {
+        "cle_inconnue": 6,
+        "id_conflit": 6,
+        "id_manquant": 5,
+        "quantite_invalide": 7
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 2
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 181,
+    "dim_produit": 8,
+    "dim_boutique": 3,
+    "fact_vente": 1960,
+    "fact_retour": 76
+  },
+  "indicateurs": {
+    "ventes_brutes_millimes": 78067830,
+    "retours_millimes": 3758330,
+    "ventes_nettes_millimes": 74309500,
+    "cout_achat_net_millimes": 45317800,
+    "marge_cout_achat_millimes": 28991700,
+    "taux_retour": 0.048142,
+    "unites_nettes": 3605
+  },
+  "agregats": {
+    "par_zone": {
+      "Cap Bon": {
+        "ventes_brutes_millimes": 20095540,
+        "retours_millimes": 832760,
+        "ventes_nettes_millimes": 19262780,
+        "cout_achat_net_millimes": 11684900,
+        "marge_cout_achat_millimes": 7577880,
+        "taux_retour": 0.04144,
+        "unites_nettes": 925
+      },
+      "Grand Tunis": {
+        "ventes_brutes_millimes": 35568020,
+        "retours_millimes": 881600,
+        "ventes_nettes_millimes": 34686420,
+        "cout_achat_net_millimes": 21265200,
+        "marge_cout_achat_millimes": 13421220,
+        "taux_retour": 0.024786,
+        "unites_nettes": 1553
+      },
+      "Sud": {
+        "ventes_brutes_millimes": 22404270,
+        "retours_millimes": 2043970,
+        "ventes_nettes_millimes": 20360300,
+        "cout_achat_net_millimes": 12367700,
+        "marge_cout_achat_millimes": 7992600,
+        "taux_retour": 0.091231,
+        "unites_nettes": 1127
+      }
+    },
+    "par_boutique": {
+      "NBE": {
+        "ventes_brutes_millimes": 20095540,
+        "retours_millimes": 832760,
+        "ventes_nettes_millimes": 19262780,
+        "cout_achat_net_millimes": 11684900,
+        "marge_cout_achat_millimes": 7577880,
+        "taux_retour": 0.04144,
+        "unites_nettes": 925
+      },
+      "SFX": {
+        "ventes_brutes_millimes": 22404270,
+        "retours_millimes": 2043970,
+        "ventes_nettes_millimes": 20360300,
+        "cout_achat_net_millimes": 12367700,
+        "marge_cout_achat_millimes": 7992600,
+        "taux_retour": 0.091231,
+        "unites_nettes": 1127
+      },
+      "TUN": {
+        "ventes_brutes_millimes": 35568020,
+        "retours_millimes": 881600,
+        "ventes_nettes_millimes": 34686420,
+        "cout_achat_net_millimes": 21265200,
+        "marge_cout_achat_millimes": 13421220,
+        "taux_retour": 0.024786,
+        "unites_nettes": 1553
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "ventes_brutes_millimes": 12335700,
+        "retours_millimes": 242550,
+        "ventes_nettes_millimes": 12093150,
+        "cout_achat_net_millimes": 7425050,
+        "marge_cout_achat_millimes": 4668100,
+        "taux_retour": 0.019662,
+        "unites_nettes": 522
+      },
+      "2026-02": {
+        "ventes_brutes_millimes": 12823560,
+        "retours_millimes": 558500,
+        "ventes_nettes_millimes": 12265060,
+        "cout_achat_net_millimes": 7472500,
+        "marge_cout_achat_millimes": 4792560,
+        "taux_retour": 0.043553,
+        "unites_nettes": 600
+      },
+      "2026-03": {
+        "ventes_brutes_millimes": 15897140,
+        "retours_millimes": 875310,
+        "ventes_nettes_millimes": 15021830,
+        "cout_achat_net_millimes": 9065250,
+        "marge_cout_achat_millimes": 5956580,
+        "taux_retour": 0.055061,
+        "unites_nettes": 863
+      },
+      "2026-04": {
+        "ventes_brutes_millimes": 15508610,
+        "retours_millimes": 244170,
+        "ventes_nettes_millimes": 15264440,
+        "cout_achat_net_millimes": 9430200,
+        "marge_cout_achat_millimes": 5834240,
+        "taux_retour": 0.015744,
+        "unites_nettes": 531
+      },
+      "2026-05": {
+        "ventes_brutes_millimes": 12460400,
+        "retours_millimes": 402100,
+        "ventes_nettes_millimes": 12058300,
+        "cout_achat_net_millimes": 7385500,
+        "marge_cout_achat_millimes": 4672800,
+        "taux_retour": 0.03227,
+        "unites_nettes": 536
+      },
+      "2026-06": {
+        "ventes_brutes_millimes": 9042420,
+        "retours_millimes": 1435700,
+        "ventes_nettes_millimes": 7606720,
+        "cout_achat_net_millimes": 4539300,
+        "marge_cout_achat_millimes": 3067420,
+        "taux_retour": 0.158774,
+        "unites_nettes": 553
+      }
+    },
+    "par_famille": {
+      "Coffrets cadeaux": {
+        "ventes_brutes_millimes": 22805000,
+        "retours_millimes": 1370000,
+        "ventes_nettes_millimes": 21435000,
+        "cout_achat_net_millimes": 13220000,
+        "marge_cout_achat_millimes": 8215000,
+        "taux_retour": 0.060075,
+        "unites_nettes": 150
+      },
+      "Cosmétique": {
+        "ventes_brutes_millimes": 2136030,
+        "retours_millimes": 15210,
+        "ventes_nettes_millimes": 2120820,
+        "cout_achat_net_millimes": 905850,
+        "marge_cout_achat_millimes": 1214970,
+        "taux_retour": 0.007121,
+        "unites_nettes": 549
+      },
+      "Dattes": {
+        "ventes_brutes_millimes": 10144200,
+        "retours_millimes": 300150,
+        "ventes_nettes_millimes": 9844050,
+        "cout_achat_net_millimes": 5976250,
+        "marge_cout_achat_millimes": 3867800,
+        "taux_retour": 0.029588,
+        "unites_nettes": 683
+      },
+      "Huiles": {
+        "ventes_brutes_millimes": 36910700,
+        "retours_millimes": 1874250,
+        "ventes_nettes_millimes": 35036450,
+        "cout_achat_net_millimes": 21956200,
+        "marge_cout_achat_millimes": 13080250,
+        "taux_retour": 0.050778,
+        "unites_nettes": 1186
+      },
+      "Olives": {
+        "ventes_brutes_millimes": 4223480,
+        "retours_millimes": 169320,
+        "ventes_nettes_millimes": 4054160,
+        "cout_achat_net_millimes": 2343900,
+        "marge_cout_achat_millimes": 1710260,
+        "taux_retour": 0.04009,
+        "unites_nettes": 601
+      },
+      "Épicerie fine": {
+        "ventes_brutes_millimes": 1848420,
+        "retours_millimes": 29400,
+        "ventes_nettes_millimes": 1819020,
+        "cout_achat_net_millimes": 915600,
+        "marge_cout_achat_millimes": 903420,
+        "taux_retour": 0.015905,
+        "unites_nettes": 436
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_boutique",
+    "cle_metier": "boutique_id",
+    "attribut": "zone",
+    "versions": [
+      {
+        "cle_metier": "NBE",
+        "attribut": "Cap Bon",
+        "valid_from": "2021-05-10",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SFX",
+        "attribut": "Sud",
+        "valid_from": "2022-09-19",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "TUN",
+        "attribut": "Grand Tunis",
+        "valid_from": "2018-04-02",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "NBE",
+        "date": "2026-06-30",
+        "attribut": "Cap Bon"
+      },
+      {
+        "cle_metier": "NBE",
+        "date": "2026-07-14",
+        "attribut": "Cap Bon"
+      },
+      {
+        "cle_metier": "NBE",
+        "date": "2026-07-15",
+        "attribut": "Cap Bon"
+      },
+      {
+        "cle_metier": "TUN",
+        "date": "2026-07-15",
+        "attribut": "Grand Tunis"
+      }
+    ]
+  }
+}

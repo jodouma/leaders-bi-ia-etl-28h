@@ -1,0 +1,363 @@
+{
+  "version_contrat": 1,
+  "mission": "M08",
+  "entreprise": "TechniServ",
+  "grain": "une intervention d'un technicien sur un équipement",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_contrat",
+    "dim_equipement",
+    "fact_intervention",
+    "fact_revenu_contrat"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_contrat": {
+      "role": "dimension",
+      "cle": "contrat_key",
+      "cle_metier": "contrat_id",
+      "colonnes": [
+        "contrat_key",
+        "contrat_id",
+        "client",
+        "revenu_mensuel_millimes",
+        "date_debut",
+        "date_fin"
+      ],
+      "colonnes_entieres": [
+        "contrat_key",
+        "revenu_mensuel_millimes"
+      ],
+      "colonnes_nullables": [
+        "date_fin"
+      ],
+      "cles_etrangeres": {}
+    },
+    "dim_equipement": {
+      "role": "dimension_scd2",
+      "cle": "equipement_key",
+      "cle_metier": "equipement_id",
+      "colonnes": [
+        "equipement_key",
+        "equipement_id",
+        "designation",
+        "categorie",
+        "site",
+        "contrat_id",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "equipement_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_intervention": {
+      "role": "fait",
+      "cle": "intervention_id",
+      "cle_metier": null,
+      "colonnes": [
+        "intervention_id",
+        "date_key",
+        "equipement_key",
+        "contrat_key",
+        "technicien",
+        "type_intervention",
+        "demande_le",
+        "intervention_le",
+        "heures",
+        "delai_heures",
+        "cout_main_oeuvre_millimes",
+        "cout_pieces_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "equipement_key",
+        "contrat_key",
+        "heures",
+        "delai_heures",
+        "cout_main_oeuvre_millimes",
+        "cout_pieces_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "equipement_key": "dim_equipement.equipement_key",
+        "contrat_key": "dim_contrat.contrat_key"
+      }
+    },
+    "fact_revenu_contrat": {
+      "role": "fait",
+      "cle": "revenu_id",
+      "cle_metier": null,
+      "colonnes": [
+        "revenu_id",
+        "date_key",
+        "contrat_key",
+        "revenu_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "contrat_key",
+        "revenu_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "contrat_key": "dim_contrat.contrat_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_intervention",
+    "fact_revenu_contrat"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_equipement",
+    "cle": "equipement_key",
+    "cle_metier": "equipement_id",
+    "attribut": "contrat_id",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_intervention",
+        "colonne": "equipement_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "EQ-017",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "EQ-017",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "EQ-017",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "EQ-001",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, c.contrat_id, c.client, e.equipement_id, e.categorie, f.type_intervention, 1 AS intervention, CASE WHEN f.type_intervention = 'correctif' THEN 1 ELSE 0 END AS correctif, CASE WHEN f.type_intervention = 'correctif' THEN f.delai_heures ELSE 0 END AS delai_correctif, f.heures, f.cout_main_oeuvre_millimes AS cout_mo, f.cout_pieces_millimes AS cout_pieces, 0 AS revenu FROM fact_intervention f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_equipement e ON e.equipement_key = f.equipement_key JOIN dim_contrat c ON c.contrat_key = f.contrat_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), c.contrat_id, c.client, '(revenu contrat)', '(revenu contrat)', '(revenu contrat)', 0, 0, 0, 0, 0, 0, r.revenu_millimes FROM fact_revenu_contrat r JOIN dim_date d ON d.date_key = r.date_key JOIN dim_contrat c ON c.contrat_key = r.contrat_key",
+  "indicateurs": [
+    {
+      "code": "interventions",
+      "libelle": "Interventions",
+      "unite": "nombre",
+      "formule": "nombre d'interventions acceptées (préventives + correctives)",
+      "sql": "SUM(intervention)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "interventions_correctives",
+      "libelle": "Interventions correctives",
+      "unite": "nombre",
+      "formule": "nombre d'interventions de type correctif",
+      "sql": "SUM(correctif)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "delai_total_correctif_heures",
+      "libelle": "Délai total des correctifs",
+      "unite": "nombre",
+      "formule": "somme de delai_heures des interventions correctives",
+      "sql": "SUM(delai_correctif)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "delai_moyen_heures",
+      "libelle": "Délai moyen d'intervention",
+      "unite": "heures",
+      "formule": "somme des délais des interventions correctives / nombre d'interventions correctives ; délai = (date + heure d'intervention) − (date + heure de demande), en heures ; le préventif est exclu ; résultat en heures décimales (ex. 20,18 h)",
+      "sql": "ROUND(1.0 * SUM(delai_correctif) / NULLIF(SUM(correctif), 0), 6)",
+      "tolerance": 0.01,
+      "principal": true
+    },
+    {
+      "code": "heures_facturees",
+      "libelle": "Heures facturées",
+      "unite": "nombre",
+      "formule": "somme des heures des interventions",
+      "sql": "SUM(heures)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "cout_main_oeuvre_millimes",
+      "libelle": "Coût de main-d'œuvre",
+      "unite": "millimes",
+      "formule": "heures × taux horaire de la catégorie de l'équipement",
+      "sql": "SUM(cout_mo)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "cout_pieces_millimes",
+      "libelle": "Coût des pièces",
+      "unite": "millimes",
+      "formule": "somme de quantité × prix unitaire des pièces consommées acceptées",
+      "sql": "SUM(cout_pieces)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "cout_intervention_millimes",
+      "libelle": "Coût d'intervention",
+      "unite": "millimes",
+      "formule": "coût des pièces + coût de main-d'œuvre",
+      "sql": "SUM(cout_mo) + SUM(cout_pieces)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "revenu_contrat_millimes",
+      "libelle": "Revenu de contrat",
+      "unite": "millimes",
+      "formule": "somme des forfaits mensuels dus (un par contrat et par mois actif)",
+      "sql": "SUM(revenu)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "marge_service_millimes",
+      "libelle": "Marge de service",
+      "unite": "millimes",
+      "formule": "revenu de contrat − coût d'intervention ; marge PARTIELLE (ni déplacements, ni frais de structure) ; à lire par contrat, par mois ou au total",
+      "sql": "SUM(revenu) - SUM(cout_mo) - SUM(cout_pieces)",
+      "tolerance": 0.0,
+      "principal": true
+    }
+  ],
+  "axes": {
+    "par_mois": "mois",
+    "par_contrat": "contrat_id",
+    "par_categorie": "categorie",
+    "par_equipement": "equipement_id",
+    "par_type": "type_intervention"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "interventions.csv",
+      "operations.sqlite"
+    ],
+    "etape_rejets": {
+      "sources": [
+        "interventions.csv"
+      ]
+    }
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_contrat",
+      "dim_equipement",
+      "fact_intervention",
+      "fact_revenu_contrat"
+    ],
+    "sommes": {
+      "fact_intervention": [
+        "heures",
+        "delai_heures",
+        "cout_main_oeuvre_millimes",
+        "cout_pieces_millimes"
+      ],
+      "fact_revenu_contrat": [
+        "revenu_millimes"
+      ],
+      "dim_contrat": [
+        "revenu_mensuel_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par équipement",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

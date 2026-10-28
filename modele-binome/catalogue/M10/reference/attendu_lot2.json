@@ -1,0 +1,698 @@
+{
+  "mission": "M10",
+  "entreprise": "Pixel Studio",
+  "lot": "lot2",
+  "etape": "increment",
+  "periode": {
+    "debut": "2026-07-01",
+    "fin": "2026-08-31"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "temps.csv": {
+      "lignes": 426,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "couts.xlsx": {
+      "feuilles": [
+        "Profils",
+        "Collaborateurs"
+      ],
+      "profils": 4,
+      "collaborateurs": 15,
+      "ligne_entete_profils": 3
+    },
+    "projets.json": {
+      "projets": 20,
+      "versions": 21
+    },
+    "facturation.sqlite": {
+      "facture": 31,
+      "emises": 30,
+      "annulees": 1,
+      "avoir": 4
+    }
+  },
+  "nettoyage": {
+    "temps.csv": {
+      "lignes_acceptees_nouvelles": 403,
+      "doublons_exacts": 3,
+      "deja_charges": 10,
+      "formats_heures": 130,
+      "formats_dates": 118,
+      "casse_espaces": 38
+    },
+    "facturation.sqlite": {
+      "factures_annulees_exclues": 1,
+      "deja_charges": 10,
+      "documents_acceptes_nouveaux": 23
+    }
+  },
+  "rejets": {
+    "total": 11,
+    "par_motif": {
+      "cle_inconnue": 4,
+      "id_conflit": 2,
+      "id_manquant": 2,
+      "quantite_invalide": 3
+    },
+    "par_source": {
+      "temps.csv": {
+        "cle_inconnue": 3,
+        "id_conflit": 2,
+        "id_manquant": 2,
+        "quantite_invalide": 3
+      },
+      "facturation.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 243,
+    "dim_collaborateur": 15,
+    "dim_projet": 21,
+    "fact_temps": 2384,
+    "fact_facture": 86
+  },
+  "indicateurs": {
+    "heures_centiemes": 1238150,
+    "cout_charge_millimes": 453097875,
+    "factures_millimes": 596866400,
+    "avoirs_millimes": 10856000,
+    "facture_net_millimes": 586010400,
+    "marge_contribution_millimes": 132912525
+  },
+  "agregats": {
+    "par_projet": {
+      "INT01": {
+        "heures_centiemes": 53500,
+        "cout_charge_millimes": 21227375,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -21227375
+      },
+      "PX01": {
+        "heures_centiemes": 57750,
+        "cout_charge_millimes": 19338000,
+        "factures_millimes": 39270000,
+        "avoirs_millimes": 143000,
+        "facture_net_millimes": 39127000,
+        "marge_contribution_millimes": 19789000
+      },
+      "PX02": {
+        "heures_centiemes": 126225,
+        "cout_charge_millimes": 48856000,
+        "factures_millimes": 70800000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 70800000,
+        "marge_contribution_millimes": 21944000
+      },
+      "PX03": {
+        "heures_centiemes": 50800,
+        "cout_charge_millimes": 20957625,
+        "factures_millimes": 35600000,
+        "avoirs_millimes": 1780000,
+        "facture_net_millimes": 33820000,
+        "marge_contribution_millimes": 12862375
+      },
+      "PX04": {
+        "heures_centiemes": 76675,
+        "cout_charge_millimes": 29261125,
+        "factures_millimes": 55206000,
+        "avoirs_millimes": 3401000,
+        "facture_net_millimes": 51805000,
+        "marge_contribution_millimes": 22543875
+      },
+      "PX05": {
+        "heures_centiemes": 292775,
+        "cout_charge_millimes": 97525125,
+        "factures_millimes": 70200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 70200000,
+        "marge_contribution_millimes": -27325125
+      },
+      "PX06": {
+        "heures_centiemes": 77175,
+        "cout_charge_millimes": 24484000,
+        "factures_millimes": 20800000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 20800000,
+        "marge_contribution_millimes": -3684000
+      },
+      "PX07": {
+        "heures_centiemes": 175175,
+        "cout_charge_millimes": 61317875,
+        "factures_millimes": 131381250,
+        "avoirs_millimes": 5079000,
+        "facture_net_millimes": 126302250,
+        "marge_contribution_millimes": 64984375
+      },
+      "PX08": {
+        "heures_centiemes": 49125,
+        "cout_charge_millimes": 20611250,
+        "factures_millimes": 41200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 41200000,
+        "marge_contribution_millimes": 20588750
+      },
+      "PX09": {
+        "heures_centiemes": 28950,
+        "cout_charge_millimes": 10458500,
+        "factures_millimes": 10190400,
+        "avoirs_millimes": 115000,
+        "facture_net_millimes": 10075400,
+        "marge_contribution_millimes": -383100
+      },
+      "PX10": {
+        "heures_centiemes": 11975,
+        "cout_charge_millimes": 4476250,
+        "factures_millimes": 5800000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 5800000,
+        "marge_contribution_millimes": 1323750
+      },
+      "PX11": {
+        "heures_centiemes": 26725,
+        "cout_charge_millimes": 11920875,
+        "factures_millimes": 21380000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 21380000,
+        "marge_contribution_millimes": 9459125
+      },
+      "PX12": {
+        "heures_centiemes": 2950,
+        "cout_charge_millimes": 1209500,
+        "factures_millimes": 1900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 1900000,
+        "marge_contribution_millimes": 690500
+      },
+      "PX13": {
+        "heures_centiemes": 38375,
+        "cout_charge_millimes": 15803875,
+        "factures_millimes": 14200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 14200000,
+        "marge_contribution_millimes": -1603875
+      },
+      "PX14": {
+        "heures_centiemes": 9575,
+        "cout_charge_millimes": 3925750,
+        "factures_millimes": 8138750,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 8138750,
+        "marge_contribution_millimes": 4213000
+      },
+      "PX15": {
+        "heures_centiemes": 80275,
+        "cout_charge_millimes": 30316750,
+        "factures_millimes": 37900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 37900000,
+        "marge_contribution_millimes": 7583250
+      },
+      "PX16": {
+        "heures_centiemes": 21575,
+        "cout_charge_millimes": 8050375,
+        "factures_millimes": 8900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 8900000,
+        "marge_contribution_millimes": 849625
+      },
+      "PX17": {
+        "heures_centiemes": 8000,
+        "cout_charge_millimes": 2920875,
+        "factures_millimes": 7200000,
+        "avoirs_millimes": 338000,
+        "facture_net_millimes": 6862000,
+        "marge_contribution_millimes": 3941125
+      },
+      "PX18": {
+        "heures_centiemes": 10700,
+        "cout_charge_millimes": 4159000,
+        "factures_millimes": 6200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 6200000,
+        "marge_contribution_millimes": 2041000
+      },
+      "PX19": {
+        "heures_centiemes": 39850,
+        "cout_charge_millimes": 16277750,
+        "factures_millimes": 10600000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 10600000,
+        "marge_contribution_millimes": -5677750
+      }
+    },
+    "par_client": {
+      "Agence Voyages Oasis": {
+        "heures_centiemes": 9575,
+        "cout_charge_millimes": 3925750,
+        "factures_millimes": 8138750,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 8138750,
+        "marge_contribution_millimes": 4213000
+      },
+      "Association Mains Solidaires": {
+        "heures_centiemes": 21575,
+        "cout_charge_millimes": 8050375,
+        "factures_millimes": 8900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 8900000,
+        "marge_contribution_millimes": 849625
+      },
+      "Assurances Najma": {
+        "heures_centiemes": 292775,
+        "cout_charge_millimes": 97525125,
+        "factures_millimes": 70200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 70200000,
+        "marge_contribution_millimes": -27325125
+      },
+      "Boulangerie Essalem": {
+        "heures_centiemes": 57750,
+        "cout_charge_millimes": 19338000,
+        "factures_millimes": 39270000,
+        "avoirs_millimes": 143000,
+        "facture_net_millimes": 39127000,
+        "marge_contribution_millimes": 19789000
+      },
+      "Cabinet Ksouri Avocats": {
+        "heures_centiemes": 49125,
+        "cout_charge_millimes": 20611250,
+        "factures_millimes": 41200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 41200000,
+        "marge_contribution_millimes": 20588750
+      },
+      "Café Les Arcades": {
+        "heures_centiemes": 77175,
+        "cout_charge_millimes": 24484000,
+        "factures_millimes": 20800000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 20800000,
+        "marge_contribution_millimes": -3684000
+      },
+      "Clinique Les Jasmins Bleus": {
+        "heures_centiemes": 175175,
+        "cout_charge_millimes": 61317875,
+        "factures_millimes": 131381250,
+        "avoirs_millimes": 5079000,
+        "facture_net_millimes": 126302250,
+        "marge_contribution_millimes": 64984375
+      },
+      "Cuisines Médina Design": {
+        "heures_centiemes": 38375,
+        "cout_charge_millimes": 15803875,
+        "factures_millimes": 14200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 14200000,
+        "marge_contribution_millimes": -1603875
+      },
+      "Festival Lumières du Sud": {
+        "heures_centiemes": 11975,
+        "cout_charge_millimes": 4476250,
+        "factures_millimes": 5800000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 5800000,
+        "marge_contribution_millimes": 1323750
+      },
+      "Galerie Azur Mosaïques": {
+        "heures_centiemes": 39850,
+        "cout_charge_millimes": 16277750,
+        "factures_millimes": 10600000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 10600000,
+        "marge_contribution_millimes": -5677750
+      },
+      "Groupe Atlas Négoce": {
+        "heures_centiemes": 26725,
+        "cout_charge_millimes": 11920875,
+        "factures_millimes": 21380000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 21380000,
+        "marge_contribution_millimes": 9459125
+      },
+      "Hôtel Corniche Bleue": {
+        "heures_centiemes": 126225,
+        "cout_charge_millimes": 48856000,
+        "factures_millimes": 70800000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 70800000,
+        "marge_contribution_millimes": 21944000
+      },
+      "Librairie La Plume d'Or": {
+        "heures_centiemes": 10700,
+        "cout_charge_millimes": 4159000,
+        "factures_millimes": 6200000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 6200000,
+        "marge_contribution_millimes": 2041000
+      },
+      "Marché Frais Express": {
+        "heures_centiemes": 80275,
+        "cout_charge_millimes": 30316750,
+        "factures_millimes": 37900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 37900000,
+        "marge_contribution_millimes": 7583250
+      },
+      "Mutuelle des Enseignants du Cap": {
+        "heures_centiemes": 8000,
+        "cout_charge_millimes": 2920875,
+        "factures_millimes": 7200000,
+        "avoirs_millimes": 338000,
+        "facture_net_millimes": 6862000,
+        "marge_contribution_millimes": 3941125
+      },
+      "Parfumerie Yasmina": {
+        "heures_centiemes": 50800,
+        "cout_charge_millimes": 20957625,
+        "factures_millimes": 35600000,
+        "avoirs_millimes": 1780000,
+        "facture_net_millimes": 33820000,
+        "marge_contribution_millimes": 12862375
+      },
+      "Pixel Studio": {
+        "heures_centiemes": 53500,
+        "cout_charge_millimes": 21227375,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -21227375
+      },
+      "Tapis Bel Ombra": {
+        "heures_centiemes": 76675,
+        "cout_charge_millimes": 29261125,
+        "factures_millimes": 55206000,
+        "avoirs_millimes": 3401000,
+        "facture_net_millimes": 51805000,
+        "marge_contribution_millimes": 22543875
+      },
+      "Transports Sahel Express": {
+        "heures_centiemes": 28950,
+        "cout_charge_millimes": 10458500,
+        "factures_millimes": 10190400,
+        "avoirs_millimes": 115000,
+        "facture_net_millimes": 10075400,
+        "marge_contribution_millimes": -383100
+      },
+      "École Horizon Numérique": {
+        "heures_centiemes": 2950,
+        "cout_charge_millimes": 1209500,
+        "factures_millimes": 1900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 1900000,
+        "marge_contribution_millimes": 690500
+      }
+    },
+    "par_type": {
+      "forfait": {
+        "heures_centiemes": 801800,
+        "cout_charge_millimes": 292727500,
+        "factures_millimes": 324100000,
+        "avoirs_millimes": 1780000,
+        "facture_net_millimes": 322320000,
+        "marge_contribution_millimes": 29592500
+      },
+      "interne": {
+        "heures_centiemes": 53500,
+        "cout_charge_millimes": 21227375,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -21227375
+      },
+      "régie": {
+        "heures_centiemes": 382850,
+        "cout_charge_millimes": 139143000,
+        "factures_millimes": 272766400,
+        "avoirs_millimes": 9076000,
+        "facture_net_millimes": 263690400,
+        "marge_contribution_millimes": 124547400
+      }
+    },
+    "par_chef_projet": {
+      "Bilel Chaouch": {
+        "heures_centiemes": 566900,
+        "cout_charge_millimes": 203630625,
+        "factures_millimes": 202076400,
+        "avoirs_millimes": 3854000,
+        "facture_net_millimes": 198222400,
+        "marge_contribution_millimes": -5408225
+      },
+      "Hela Mansour": {
+        "heures_centiemes": 334400,
+        "cout_charge_millimes": 124329000,
+        "factures_millimes": 241096250,
+        "avoirs_millimes": 7002000,
+        "facture_net_millimes": 234094250,
+        "marge_contribution_millimes": 109765250
+      },
+      "Nour Jebali": {
+        "heures_centiemes": 336850,
+        "cout_charge_millimes": 125138250,
+        "factures_millimes": 153693750,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 153693750,
+        "marge_contribution_millimes": 28555500
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "heures_centiemes": 169075,
+        "cout_charge_millimes": 61207125,
+        "factures_millimes": 86622350,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 86622350,
+        "marge_contribution_millimes": 25415225
+      },
+      "2026-02": {
+        "heures_centiemes": 156950,
+        "cout_charge_millimes": 57708500,
+        "factures_millimes": 85614050,
+        "avoirs_millimes": 2475000,
+        "facture_net_millimes": 83139050,
+        "marge_contribution_millimes": 25430550
+      },
+      "2026-03": {
+        "heures_centiemes": 176450,
+        "cout_charge_millimes": 64628000,
+        "factures_millimes": 73363000,
+        "avoirs_millimes": 1780000,
+        "facture_net_millimes": 71583000,
+        "marge_contribution_millimes": 6955000
+      },
+      "2026-04": {
+        "heures_centiemes": 175650,
+        "cout_charge_millimes": 64873375,
+        "factures_millimes": 69865050,
+        "avoirs_millimes": 2604000,
+        "facture_net_millimes": 67261050,
+        "marge_contribution_millimes": 2387675
+      },
+      "2026-05": {
+        "heures_centiemes": 170750,
+        "cout_charge_millimes": 62747625,
+        "factures_millimes": 76087050,
+        "avoirs_millimes": 918000,
+        "facture_net_millimes": 75169050,
+        "marge_contribution_millimes": 12421425
+      },
+      "2026-06": {
+        "heures_centiemes": 181125,
+        "cout_charge_millimes": 66235500,
+        "factures_millimes": 78901950,
+        "avoirs_millimes": 1829000,
+        "facture_net_millimes": 77072950,
+        "marge_contribution_millimes": 10837450
+      },
+      "2026-07": {
+        "heures_centiemes": 108225,
+        "cout_charge_millimes": 39524875,
+        "factures_millimes": 35988300,
+        "avoirs_millimes": 769000,
+        "facture_net_millimes": 35219300,
+        "marge_contribution_millimes": -4305575
+      },
+      "2026-08": {
+        "heures_centiemes": 99925,
+        "cout_charge_millimes": 36172875,
+        "factures_millimes": 90424650,
+        "avoirs_millimes": 481000,
+        "facture_net_millimes": 89943650,
+        "marge_contribution_millimes": 53770775
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_projet",
+    "cle_metier": "projet_id",
+    "attribut": "chef_projet",
+    "versions": [
+      {
+        "cle_metier": "INT01",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2025-01-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX01",
+        "attribut": "Hela Mansour",
+        "valid_from": "2025-11-03",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX02",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-01-05",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX03",
+        "attribut": "Hela Mansour",
+        "valid_from": "2026-02-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX04",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2025-09-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX05",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2025-12-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX06",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-03-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX07",
+        "attribut": "Hela Mansour",
+        "valid_from": "2026-01-12",
+        "valid_to": "2026-07-15"
+      },
+      {
+        "cle_metier": "PX07",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-07-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX08",
+        "attribut": "Hela Mansour",
+        "valid_from": "2026-01-19",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX09",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2025-06-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX10",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-04-06",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX11",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2026-02-16",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX12",
+        "attribut": "Hela Mansour",
+        "valid_from": "2026-05-04",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX13",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-02-09",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX14",
+        "attribut": "Hela Mansour",
+        "valid_from": "2025-10-06",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX15",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2026-01-26",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX16",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-03-16",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX17",
+        "attribut": "Bilel Chaouch",
+        "valid_from": "2026-04-13",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX18",
+        "attribut": "Hela Mansour",
+        "valid_from": "2026-02-23",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PX19",
+        "attribut": "Nour Jebali",
+        "valid_from": "2026-04-20",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "PX07",
+        "date": "2026-06-30",
+        "attribut": "Hela Mansour"
+      },
+      {
+        "cle_metier": "PX07",
+        "date": "2026-07-14",
+        "attribut": "Hela Mansour"
+      },
+      {
+        "cle_metier": "PX07",
+        "date": "2026-07-15",
+        "attribut": "Nour Jebali"
+      },
+      {
+        "cle_metier": "PX02",
+        "date": "2026-07-15",
+        "attribut": "Nour Jebali"
+      }
+    ]
+  },
+  "increment": {
+    "fact_temps_ajoutees": 403,
+    "fact_facture_ajoutees": 23,
+    "versions_scd2_ajoutees": 1,
+    "dim_date_ajoutees": 62
+  },
+  "rejeu": {
+    "etape": "rejeu",
+    "lignes_ajoutees": 0,
+    "regle": "relancer lot2 donne exactement ce fichier : mêmes tables, mêmes rejets, mêmes agrégats"
+  }
+}

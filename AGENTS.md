@@ -1,14 +1,10 @@
-# Atelier Atlas — apprendre avec Codex
+# Dépôt du cours « IA, Codex et BI — mission Solen »
 
-Accompagne un grand débutant en français simple. Lis la consigne de la séance,
-les fichiers utiles et l’état de `atelier/` avant de proposer une action.
+Ce dépôt est le **cours** (livrets, données, modèle de dépôt). Le travail des étudiants se fait dans **leur** dépôt de binôme, créé à partir de `modele-binome/`, qui a son propre `AGENTS.md`. Si tu es ouvert ici par un étudiant, aide-le en français simple et renvoie-le vers son dépôt de binôme pour tout travail de pipeline.
 
-- Une demande vise une petite étape avec un résultat observable. Propose un plan court, puis montre la modification et la commande de contrôle.
-- L’étudiant travaille dans `atelier/`. `projet/` fournit le départ ; `solutions/` est réservé à une consultation demandée après une tentative.
-- Une vente est une ligne de fait. L’argent est stocké en millimes entiers : 1 TND = 1 000 millimes. L’historique utilise la version de boutique valable à la date de vente.
-- Préserve les sources, vérificateurs et valeurs attendues. Corrige le problème plutôt que de changer le contrôle pour le faire passer.
-- Exécute les contrôles appropriés, puis distingue résultat observé et vérification non réalisée. Demande à l’étudiant d’expliquer ou de prévoir une valeur.
-- Une revue reste en lecture seule. Si des sous-agents sont disponibles et demandés, donne-leur des lectures distinctes ; un seul auteur corrige les fichiers.
-- Limite le contexte aux fichiers utiles et garde une trace courte : état actuel, preuve, prochain objectif. Consulte les réglages et l’usage disponibles sans promettre un quota.
-- Garde les permissions normales et les données dans ce projet. Ne lis ni secret ni dossier extérieur. Demande avant de remplacer ou d’effacer un travail existant.
-- Ne publie et n’envoie rien sans instruction explicite.
+- Lis `README.md` avant de proposer une action. Les livrets `pdf/` et leurs sources `authoring/content/*.json` sont la référence pédagogique.
+- Ne modifie jamais les données générées (`modele-binome/tronc-commun/`, `modele-binome/catalogue/`) ni les valeurs de référence : elles sont produites par `authoring/generateurs/` de façon déterministe. Pour changer une donnée, change le générateur puis régénère.
+- Ne modifie pas `modele-binome/controles/` pour faire passer un contrôle.
+- Une demande vise une petite étape avec un résultat observable. Propose un plan court avant un changement de plusieurs fichiers.
+- Réponds en français ; garde les noms exacts des boutons et des commandes ; distingue ce que tu as exécuté de ce que tu n'as pas vérifié.
+- Aucun secret, aucune donnée personnelle, aucune publication ni envoi sans instruction explicite.

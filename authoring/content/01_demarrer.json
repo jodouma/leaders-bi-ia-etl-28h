@@ -1,0 +1,1804 @@
+{
+ "title": "Démarrer : Windows/WSL ou Ubuntu, Codex Free, Git et GitHub",
+ "cover_title": "Démarrer : Windows/WSL ou Ubuntu, Codex Free, Git et GitHub",
+ "subtitle": "Solen BI · 22 h · votre poste, vos comptes et votre premier cycle Git à deux",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Livret 01 · Démarrer",
+ "output_filename": "01_demarrer.pdf",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · MAISON ZITOUNA (FICTIFS)",
+  "flow": "Poste  →  Codex  →  Git  →  GitHub  →  première PR à deux",
+  "stats": [
+   [
+    "22 h",
+    "5 × 4 H + SOUTENANCE"
+   ],
+   [
+    "2",
+    "PAR BINÔME, 2 COMPTES"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "01 / DÉMARRER"
+ },
+ "header_label": "SOLEN  /  IA, CODEX ET BI",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../docs/setup/sources.json",
+ "verification_scope": "Documentation officielle consultée le 2026-10-28 ; aucune installation Windows/WSL ou Ubuntu, aucun compte Codex Free ni quota réel, aucun parcours GitHub à deux comptes présentés comme testés. Captures référencées : prévues, à produire par l’auteur.",
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "planned_captures": [
+  "codex-app-diff.png",
+  "codex-app-modele-effort.png",
+  "codex-app-reglages.png",
+  "github-checks-verts.png",
+  "github-inviter.png",
+  "github-merge.png",
+  "github-nouveau-depot.png",
+  "github-protection-branche.png",
+  "github-pull-request.png",
+  "github-review-approve.png"
+ ],
+ "pagination_note": "30 pages estimées avec couverture (simulation de build_pdfs.py, figures à leur hauteur déclarée) ; à confirmer au rendu.",
+ "pages": [
+  {
+   "id": "sommaire",
+   "title": "Sommaire et liste de départ",
+   "kicker": "01 / DÉMARRER · SOMMAIRE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce livret vous mène du poste vide au premier cycle Git réussi à deux, en deux temps. **Parties A à C : séance 0, chez vous, avant la séance 1** (≈ 2 h, estimation, pas une mesure). Le professeur envoie ce livret une semaine avant la séance 1 et répond aux blocages par message : copiez la commande et la dernière ligne affichée. **La séance 1 commence par 30 min de vérification** de la liste « Fin de la séance 0 » (page 18) ; les parties D et E se font en séance, à deux. Les cadres « Capture prévue » marquent des écrans pas encore photographiés : le professeur les montre en séance."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Quand · pour qui",
+      "Page"
+     ],
+     "rows": [
+      [
+       "A · Comprendre son poste, lire un terminal, quatre mots",
+       "Chez vous · tous",
+       "3"
+      ],
+      [
+       "B · Installer : route Windows (WSL2)",
+       "Chez vous · Windows",
+       "6"
+      ],
+      [
+       "B · Installer : route Ubuntu natif",
+       "Chez vous · Ubuntu",
+       "10"
+      ],
+      [
+       "C · Codex, compte GitHub, identité Git ; fin de la séance 0",
+       "Chez vous · tous",
+       "12"
+      ],
+      [
+       "D · GitHub à deux : dépôt, invitation, venv, protection",
+       "Séance 1 · le binôme",
+       "19"
+      ],
+      [
+       "E · Premier cycle à deux : la PR n°1",
+       "Séance 1 · le binôme",
+       "25"
+      ],
+      [
+       "Annexes : Power BI Desktop, Codex CLI, récapitulatif",
+       "Tous",
+       "31"
+      ]
+     ],
+     "widths": [
+      2.6,
+      1.6,
+      0.5
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Avant de commencer, chacun coche"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "À préparer",
+      "Détail"
+     ],
+     "rows": [
+      [
+       "☐ Une adresse e-mail personnelle",
+       "Pour GitHub et ChatGPT ; pas d’adresse partagée."
+      ],
+      [
+       "☐ Un compte ChatGPT Free",
+       "Aucun paiement, aucune clé API."
+      ],
+      [
+       "☐ Un poste pris en charge",
+       "Windows 10 version 2004+ ou Windows 11 ; ou Ubuntu 24.04 / 26.04 LTS. Quelques Go libres, un réseau stable."
+      ],
+      [
+       "☐ Un accès Windows en séance 5",
+       "Power BI Desktop ne s’installe pas sur Ubuntu."
+      ],
+      [
+       "☐ Les rôles du binôme",
+       "**A** crée le dépôt GitHub et invite **B**. Ensuite, auteur et relecteur alternent à chaque pull request."
+      ]
+     ],
+     "widths": [
+      1.6,
+      2.6
+     ]
+    }
+   ],
+   "source_ids": [
+    "wsl-install",
+    "linux",
+    "pricing",
+    "powerbi-desktop"
+   ],
+   "printed_page": 2
+  },
+  {
+   "id": "poste",
+   "title": "Mon poste : qui fait quoi",
+   "kicker": "01 / DÉMARRER · A · COMPRENDRE SON POSTE · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Lundi matin, chez Solen Digital, vous recevez un ordinateur et une mission : industrialiser la BI de Maison Zitouna. Avant la première ligne de données, il faut savoir quel outil fait quoi. Six mots suffisent."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Outil",
+      "Ce que c’est",
+      "Exemple concret"
+     ],
+     "rows": [
+      [
+       "Windows",
+       "Le système de votre PC : fenêtres, Explorateur, Microsoft Store.",
+       "Vous installez l’application ChatGPT et Power BI Desktop depuis le Store."
+      ],
+      [
+       "PowerShell",
+       "La ligne de commande de Windows. On tape une commande, Windows répond.",
+       "`wsl --install` installe Ubuntu. On ne s’en sert presque que pour cela."
+      ],
+      [
+       "Ubuntu (dans WSL)",
+       "Un vrai Linux qui tourne dans Windows grâce à WSL2. Il a ses propres dossiers et son terminal.",
+       "Python, Git et le dossier `~/solen-bi` vivent ici, pas sur `C:`."
+      ],
+      [
+       "Application ChatGPT (Codex)",
+       "L’application de bureau où vous parlez à Codex. Codex lit vos fichiers, propose un changement, lance des commandes.",
+       "« Lis README.md et dis-moi ce que fait ce dépôt. Ne modifie rien. »"
+      ],
+      [
+       "GitHub",
+       "Le site qui garde la copie partagée du dépôt du binôme, les pull requests, les revues et la CI.",
+       "A propose un changement, B le relit et l’approuve sur github.com."
+      ],
+      [
+       "Power BI Desktop",
+       "Le logiciel gratuit de Microsoft pour modèles et rapports. Windows uniquement.",
+       "Séance 5 : vous chargez les exports, créez les relations et une mesure DAX."
+      ]
+     ],
+     "widths": [
+      1.1,
+      2.0,
+      2.0
+     ]
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Windows : fenêtres, Store, Power BI",
+      "Ubuntu (WSL) : terminal, Python, Git",
+      "~/solen-bi : votre copie locale",
+      "GitHub : la copie partagée"
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ubuntu natif ?",
+     "text": "Si votre PC est sous Ubuntu 24.04 ou 26.04, il n’y a ni WSL ni PowerShell : tout se passe dans le Terminal Ubuntu. Power BI Desktop exige un poste Windows : prévoyez-en un (salle de cours, binôme) pour la séance 5."
+    }
+   ],
+   "source_ids": [
+    "wsl-install",
+    "powerbi-desktop",
+    "linux"
+   ],
+   "printed_page": 3
+  },
+  {
+   "id": "terminal",
+   "title": "Lire un terminal et les blocs du livret",
+   "kicker": "01 / DÉMARRER · A · COMPRENDRE SON POSTE · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Un terminal est une fenêtre de texte. Vous tapez une **commande**, Entrée, le système affiche une **sortie** puis redonne la main avec l’**invite** (par exemple `amira@pc:~$`). `~` est votre dossier personnel Linux, `/home/<utilisateur-linux>`."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "pwd"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "/home/amira"
+    },
+    {
+     "type": "text",
+     "text": "Chaque bloc sombre dit où l’utiliser : **PowerShell (Windows)**, **Terminal Ubuntu (bash)**, **Demande à Codex** ou **Sortie attendue**. Une sortie se lit et se compare ; elle ne se tape jamais, l’invite non plus."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Repère",
+      "Ce que cela veut dire"
+     ],
+     "rows": [
+      [
+       "`<chevrons>`",
+       "À remplacer en entier, chevrons compris : `<compteA>` devient par exemple `amira-bk`."
+      ],
+      [
+       "`sudo`",
+       "Exécute en administrateur. Ubuntu demande votre mot de passe Linux : il ne s’affiche pas quand vous tapez. C’est normal."
+      ],
+      [
+       "Coller",
+       "Terminal Ubuntu : clic droit, ou Ctrl + Maj + V. Ctrl + C y **interrompt** une commande en cours."
+      ],
+      [
+       "Ligne finie par `\\`",
+       "La commande continue à la ligne suivante : copiez tout le bloc d’un coup."
+      ],
+      [
+       "Erreur",
+       "Lisez la **dernière** ligne d’abord : elle nomme souvent le fichier ou la commande en cause."
+      ]
+     ],
+     "widths": [
+      1.0,
+      3.0
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Deux règles de prudence",
+     "text": "Ne lancez jamais une commande que vous ne comprenez pas, même proposée par Codex : « Explique cette commande ligne par ligne, sans l’exécuter. » Vos mots de passe ne s’écrivent nulle part : ni dans le dépôt, ni dans une demande à Codex."
+    }
+   ],
+   "source_ids": [],
+   "printed_page": 4
+  },
+  {
+   "id": "mots",
+   "title": "Quatre mots avant d’installer : chemin, éditeur, encodage, JSON",
+   "kicker": "01 / DÉMARRER · A · COMPRENDRE SON POSTE · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "Chemin"
+    },
+    {
+     "type": "text",
+     "text": "Un **chemin** dit où est un fichier. `/` est la racine de Linux : un chemin qui commence par `/` est **absolu** (`/home/amira/cours-bi`). `~` abrège votre dossier personnel : `~/cours-bi` = `/home/amira/cours-bi`. Sans `/` au début, le chemin part du dossier courant, celui qu’affiche `pwd` (`tronc-commun/sources/lot1/ventes.csv`). `..` est le dossier parent, `.` le dossier courant. Exemple, une fois le cours cloné : `cd ~/cours-bi/pdf` puis `pwd` affiche `/home/amira/cours-bi/pdf` ; `cd ..` puis `pwd` affiche `/home/amira/cours-bi`."
+    },
+    {
+     "type": "section",
+     "text": "Éditeur"
+    },
+    {
+     "type": "text",
+     "text": "Un **éditeur** ouvre un fichier texte pour le lire ou le modifier. Pour **lire** sans risque : `cat` (tout), `head -5` (5 premières lignes), `less` (page par page, `q` pour quitter). Pour **écrire** un texte (journal, README) : l’éditeur de l’application Codex si votre version en propose un, ou `nano` dans le terminal : `nano notes/JOURNAL.md`, puis **Ctrl + O** et Entrée pour enregistrer, **Ctrl + X** pour quitter. Git ouvre aussi nano pour un message de fusion (réglage de GitHub 1)."
+    },
+    {
+     "type": "section",
+     "text": "Encodage"
+    },
+    {
+     "type": "text",
+     "text": "Un fichier texte est une suite d’**octets** ; l’**encodage** est la table qui dit quel caractère chaque octet représente. Le cours écrit tout en **UTF-8** ; un vieux Windows ou Excel écrit parfois en **cp1252**. Le mot « août » : en UTF-8, « û » prend 2 octets (`C3 BB`) ; en cp1252, un seul (`FB`). Un fichier UTF-8 lu comme du cp1252 affiche `aoÃ»t` ; l’inverse affiche un losange ou un point d’interrogation à la place du « û ». Devant ces signes, le fichier est intact : c’est la lecture qui se trompe de table."
+    },
+    {
+     "type": "section",
+     "text": "JSON"
+    },
+    {
+     "type": "text",
+     "text": "**JSON** range des fiches dans un fichier texte : entre accolades `{ }`, des paires `\"clé\": valeur` ; entre crochets `[ ]`, une liste. Une valeur peut être elle-même une liste de fiches. Extrait de `boutiques.json` du tronc commun :"
+    },
+    {
+     "type": "code",
+     "label": "Fichier tronc-commun/sources/lot1/boutiques.json · extrait",
+     "text": "{\n  \"boutiques\": [\n    { \"code\": \"NBE\",\n      \"nom\": \"Maison Zitouna Nabeul\",\n      \"historique\": [\n        { \"zone\": \"Cap Bon\", \"valide_depuis\": \"2021-05-10\" }\n      ] }\n  ]\n}"
+    },
+    {
+     "type": "text",
+     "text": "Lecture : une liste `boutiques` ; chaque boutique est une fiche (`code`, `nom`…) qui contient une liste `historique` de versions de zone. Au lot 2, NBE aura deux versions."
+    }
+   ]
+  },
+  {
+   "id": "w1",
+   "title": "Windows 1 · Ubuntu, Python et Git",
+   "kicker": "01 / DÉMARRER · B · ROUTE WINDOWS · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "WSL (Windows Subsystem for Linux) fait tourner Ubuntu dans Windows. Prérequis Microsoft : Windows 10 version 2004 ou plus récent, ou Windows 11. Menu Démarrer → **PowerShell** → clic droit → **Exécuter en tant qu’administrateur**, puis :"
+    },
+    {
+     "type": "code",
+     "label": "PowerShell (Windows)",
+     "text": "wsl --install"
+    },
+    {
+     "type": "text",
+     "text": "Attendez la fin et **redémarrez le PC**. Contrôlez ensuite dans un PowerShell normal :"
+    },
+    {
+     "type": "code",
+     "label": "PowerShell (Windows)",
+     "text": "wsl -l -v"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "  NAME      STATE           VERSION\n* Ubuntu    Running         2"
+    },
+    {
+     "type": "callout",
+     "label": "Réussite : Ubuntu en VERSION 2 (STATE peut valoir Stopped)",
+     "text": "Texte d’aide de wsl au lieu d’une installation : `wsl --install -d Ubuntu`. Blocage à 0.0 % : `wsl --install --web-download -d Ubuntu`. VERSION 1 : `wsl --set-version Ubuntu 2`. Message sur la virtualisation : appelez le professeur, ne touchez pas seul au BIOS/UEFI."
+    },
+    {
+     "type": "section",
+     "text": "Premier utilisateur Linux et mise à jour"
+    },
+    {
+     "type": "text",
+     "text": "Ouvrez **Ubuntu** (menu Démarrer). Il demande un nom et un mot de passe **Linux**, sans lien avec Windows : nom en minuscules sans espace (`amira`) ; le mot de passe ne s’affiche pas. Puis mettez Ubuntu à jour :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "sudo apt update && sudo apt upgrade -y"
+    },
+    {
+     "type": "text",
+     "text": "Ligne finale en `E:` : erreur, souvent le réseau, relancez. `Sorry, try again.` : mot de passe mal tapé. Oublié : PowerShell, `wsl -u root`, `passwd <utilisateur-linux>`, `exit`."
+    },
+    {
+     "type": "section",
+     "text": "Python, venv et Git"
+    },
+    {
+     "type": "text",
+     "text": "Python exécute le pipeline écrit par Codex ; **venv** est une boîte à outils Python propre au projet (pandas, pytest…) ; **Git** garde l’historique des fichiers."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "sudo apt install -y python3 python3-venv python3-pip git sqlite3\npython3 --version\ngit --version"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Python 3.12.3\ngit version 2.43.0"
+    },
+    {
+     "type": "text",
+     "text": "Les numéros dépendent de votre Ubuntu : 24.04 fournit Python 3.12, 26.04 Python 3.14. Le cours demande **3.11 ou plus**. Le venv sera créé plus tard, dans le dépôt du binôme."
+    },
+    {
+     "type": "text",
+     "text": "`Unable to locate package` : `sudo apt update` d’abord. `externally-managed-environment` : normal hors venv. `python` introuvable : tapez `python3`."
+    },
+    {
+     "type": "section",
+     "text": "Où vit le projet"
+    },
+    {
+     "type": "text",
+     "text": "Vos deux dossiers vivent **dans Linux** : `~/cours-bi` (le cours) et `~/solen-bi` (le dépôt du binôme), créés plus loin par `git clone`. Microsoft recommande le système de fichiers WSL pour les outils Linux. Évitez `C:\\Users\\...` (`/mnt/c/...`) : lent et source d’erreurs."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Le même dossier vu depuis…",
+      "Chemin"
+     ],
+     "rows": [
+      [
+       "Ubuntu (terminal, agent WSL)",
+       "`~/solen-bi` = `/home/<utilisateur-linux>/solen-bi`"
+      ],
+      [
+       "Windows (Explorateur, sélecteur)",
+       "`\\\\wsl$\\Ubuntu\\home\\<utilisateur-linux>\\solen-bi`"
+      ]
+     ],
+     "widths": [
+      1.5,
+      2.5
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Voir un dossier Linux dans l’Explorateur : `explorer.exe .` (le point = dossier courant). `\\\\wsl$\\` et `\\\\wsl.localhost\\` désignent le même endroit."
+    }
+   ],
+   "source_ids": [
+    "wsl-install",
+    "wsl-environment",
+    "ubuntu-python",
+    "ubuntu-python-versions",
+    "python-venv",
+    "git-linux",
+    "wsl-git",
+    "wsl-filesystems",
+    "chatgpt-wsl"
+   ],
+   "printed_page": 5
+  },
+  {
+   "id": "w5",
+   "title": "Windows 2 · L’application ChatGPT et l’agent WSL",
+   "kicker": "01 / DÉMARRER · B · ROUTE WINDOWS · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Installez l’application de bureau ChatGPT pour Windows depuis le Microsoft Store (lien sur la page officielle « Desktop app for Windows »), ouvrez-la et connectez-vous avec **votre** compte ChatGPT Free. La doc donne aussi une commande :"
+    },
+    {
+     "type": "code",
+     "label": "PowerShell (Windows)",
+     "text": "winget install --id 9PLM9XGG6VKS -s msstore"
+    },
+    {
+     "type": "text",
+     "text": "Par défaut, l’agent Codex travaille côté Windows. Pour qu’il travaille dans Ubuntu, là où sont Python, Git et vos dossiers :"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Ouvrez **Settings** (Ctrl + ,).",
+      "**Agent environment** → choisissez **Windows Subsystem for Linux (WSL)**.",
+      "**Integrated terminal shell** → choisissez **WSL** : le terminal intégré (Ctrl + `) ouvrira Ubuntu.",
+      "**Quittez l’application** (Ctrl + Q) puis rouvrez-la : le changement d’agent ne prend effet qu’après redémarrage."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/codex-app-reglages.png",
+     "caption": "Capture prévue · Windows 11, application ChatGPT, Settings. Zone : Agent environment et Integrated terminal shell. Action : choisir WSL dans les deux. Réussite : après redémarrage, le terminal intégré affiche une invite Ubuntu.",
+     "height": 160
+    },
+    {
+     "type": "callout",
+     "label": "Si l’application signale que Git manque",
+     "text": "La doc Windows indique que sans Git installé côté Windows, l’application ne peut pas utiliser certaines fonctions. Installez alors Git for Windows (git-scm.com) ; il sert aussi de route de secours pour l’authentification."
+    }
+   ],
+   "source_ids": [
+    "chatgpt-windows",
+    "app-commands"
+   ],
+   "printed_page": 7
+  },
+  {
+   "id": "w6",
+   "title": "Windows 3 · Récupérer le cours et l’ouvrir dans Codex",
+   "kicker": "01 / DÉMARRER · B · ROUTE WINDOWS · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le dépôt du cours est public : on le **clone** (copie complète avec historique) sans compte. Adresse : page GitHub du cours, bouton **Code** → **HTTPS** → copier."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git clone https://github.com/jodouma/leaders-bi-ia-etl-28h ~/cours-bi\nls ~/cours-bi"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Cloning into '/home/amira/cours-bi'...\nAGENTS.md  README.md  aide-memoire  docs  modele-binome  pdf  prompts ..."
+    },
+    {
+     "type": "text",
+     "text": "Dans l’application, mode **Codex** : **Add new project** ou Ctrl + O. Dans l’Explorateur qui s’ouvre, tapez `\\\\wsl$\\` dans la barre d’adresse, puis **Ubuntu** → **home** → `<utilisateur-linux>` → **cours-bi**."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Je débute. Lis README.md et AGENTS.md du dossier ouvert.\nExplique en 5 phrases à quoi sert ce dépôt et où sera mon travail.\nNe modifie aucun fichier et ne lance aucune commande."
+    },
+    {
+     "type": "text",
+     "text": "Comparez la réponse aux fichiers réels : Codex doit citer `modele-binome` et `AGENTS.md`. S’il invente un fichier, dites-le-lui : c’est déjà de la revue."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "`\\\\wsl$\\` vide : ouvrez une fenêtre Ubuntu, rafraîchissez. Codex ne trouve pas `python3` ou `git` : l’agent est encore Windows natif, refaites Windows 2. `destination path ... already exists` : le cours est déjà là, `cd ~/cours-bi` puis `git pull`."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…dire si je suis dans PowerShell ou Ubuntu en lisant l’invite ; montrer Ubuntu en VERSION 2, `python3` 3.11+ et `git` ; retrouver `~/cours-bi` depuis `\\\\wsl$\\` ; montrer l’agent et le terminal sur WSL ; obtenir une réponse de Codex sans modification. **Contrôle** : rouvrez l’app, terminal intégré (Ctrl + accent grave), `pwd` doit afficher un chemin `/home/...`."
+    }
+   ],
+   "source_ids": [
+    "chatgpt-windows",
+    "chatgpt-wsl",
+    "github-clone",
+    "app-commands"
+   ],
+   "printed_page": 8
+  },
+  {
+   "id": "u1",
+   "title": "Ubuntu natif 1 · Mise à jour, Python et Git",
+   "kicker": "01 / DÉMARRER · B · ROUTE UBUNTU NATIF · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Sur un PC Ubuntu, tout se passe dans le **Terminal** (Ctrl + Alt + T). Vérifiez d’abord la version : l’application ChatGPT pour Linux (en preview) prend en charge Ubuntu **24.04 LTS** et **26.04 LTS**."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "lsb_release -ds\nuname -m"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Ubuntu 24.04.3 LTS\nx86_64"
+    },
+    {
+     "type": "text",
+     "text": "`x86_64` signifie processeur x64 (paquet `amd64`) ; `aarch64` signifie ARM64 (paquet `arm64`). Mettez à jour, puis installez Python, venv, pip et Git :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install -y python3 python3-venv python3-pip git sqlite3\npython3 --version\ngit --version"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Python 3.12.3\ngit version 2.43.0"
+    },
+    {
+     "type": "text",
+     "text": "Ubuntu 24.04 fournit Python 3.12, Ubuntu 26.04 Python 3.14 : les deux conviennent (3.11+ demandé). Vos dossiers seront `~/cours-bi` et `~/solen-bi`, créés par `git clone`."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "`Unable to locate package` : `sudo apt update` d’abord. `Sorry, try again.` : mot de passe mal tapé (il ne s’affiche pas). `externally-managed-environment` : normal hors venv, n’installez des bibliothèques que dans le venv du projet."
+    }
+   ],
+   "source_ids": [
+    "linux",
+    "ubuntu-python",
+    "ubuntu-python-versions",
+    "git-linux"
+   ],
+   "printed_page": 9
+  },
+  {
+   "id": "u2",
+   "title": "Ubuntu natif 2 · L’application ChatGPT pour Linux",
+   "kicker": "01 / DÉMARRER · B · ROUTE UBUNTU NATIF · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Téléchargez le paquet `.deb` depuis la page officielle « Desktop app for Linux » : `chatgpt_amd64.deb` pour x64, `chatgpt_arm64.deb` pour ARM64. Sur un Ubuntu en français, le dossier de téléchargement s’appelle souvent `~/Téléchargements` (la doc écrit `~/Downloads`)."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "cd ~/Téléchargements\nsudo apt install ./chatgpt_amd64.deb"
+    },
+    {
+     "type": "text",
+     "text": "Le `./` est obligatoire : il dit à apt d’installer **ce fichier**. Lancez l’application depuis le menu, ou :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "chatgpt"
+    },
+    {
+     "type": "text",
+     "text": "Connectez-vous avec votre compte ChatGPT Free. Pas de réglage WSL ici : l’agent travaille directement dans votre Ubuntu."
+    },
+    {
+     "type": "section",
+     "text": "Récupérer le cours et l’ouvrir"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git clone https://github.com/jodouma/leaders-bi-ia-etl-28h ~/cours-bi\nls ~/cours-bi"
+    },
+    {
+     "type": "text",
+     "text": "Adresse : page GitHub du cours, **Code** → **HTTPS** → copier. Dans l’application, mode **Codex** : **Add new project** (ou Ctrl + O) → dossier personnel → **cours-bi**. Posez la demande en lecture seule de la page Windows 3 et comparez la réponse aux fichiers."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "`E: Unsupported file ./chatgpt_amd64.deb` : vous n’êtes pas dans le dossier du téléchargement, ou le nom diffère (`ls` pour le voir). Paquet ARM64 sur PC x64 : reprenez le bon fichier. Ubuntu 22.04 ou plus ancien : non pris en charge par la preview, voyez le professeur."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…donner ma version d’Ubuntu et mon processeur ; afficher `python3` 3.11+ et `git` ; lancer l’application avec `chatgpt` ; ouvrir `~/cours-bi` dans Codex et obtenir une réponse sans modification."
+    }
+   ],
+   "source_ids": [
+    "linux",
+    "github-clone"
+   ],
+   "printed_page": 10
+  },
+  {
+   "id": "c1",
+   "title": "Codex 1 · Compte Free, modèle et effort",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Dans l’application, choisissez le mode **Codex** (Alt + 3 bascule entre Chat, Work et Codex), puis **New chat** dans votre projet. Trois réglages comptent."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Réglage",
+      "Où",
+      "Pour ce cours"
+     ],
+     "rows": [
+      [
+       "Modèle",
+       "Sélecteur de modèle (Ctrl + Maj + M) ou `/model`",
+       "**GPT-6 Luna**, le modèle annoncé pour Free, quand il est disponible."
+      ],
+      [
+       "Effort de raisonnement",
+       "Même sélecteur, préréglage « Luna High » ou **Advanced** : Light, Medium, High, Extra High",
+       "**High** pour commencer (« Start with High for Luna »). Light pour une question simple."
+      ],
+      [
+       "Vitesse",
+       "Standard pour Free",
+       "Standard est une **vitesse**, pas un effort. Ne cherchez pas d’autre option."
+      ]
+     ],
+     "widths": [
+      1.1,
+      1.6,
+      2.0
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/codex-app-modele-effort.png",
+     "caption": "Capture prévue · application ChatGPT (bureau), mode Codex, compte Free. Zone : sélecteur de modèle sous la zone de saisie. Action : choisir GPT-6 Luna puis High. Réussite : le composer affiche Luna et High.",
+     "height": 160
+    },
+    {
+     "type": "section",
+     "text": "Voir son usage"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "`/status` dans le composer : identifiant du chat, **contexte** utilisé et **limites** d’usage.",
+      "`/usage` : ouvre les réglages d’usage, si disponibles avec votre connexion ChatGPT. Tableau de bord web : chatgpt.com/codex/settings/usage.",
+      "Si un réglage de ce livret n’apparaît pas sur **votre** compte, n’en inventez pas un autre : notez ce que vous voyez et montrez-le au professeur."
+     ]
+    }
+   ],
+   "source_ids": [
+    "pricing",
+    "models",
+    "app-commands",
+    "slash-commands"
+   ],
+   "printed_page": 11
+  },
+  {
+   "id": "c2",
+   "title": "Codex 2 · Une demande, un diff, un contrôle",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Vous n’écrivez pas le code : vous écrivez la **demande**, vous lisez le **diff** (les lignes ajoutées en vert, retirées en rouge), vous lancez le **contrôle** et vous décidez. Une bonne demande a trois parties."
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Un petit objectif",
+      "Les fichiers concernés",
+      "Le contrôle attendu",
+      "Lire le diff, puis décider"
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Objectif : dans notes/JOURNAL.md, entrée PR #1, remplace la date,\n<prénom A> et <prénom B> par : 2026-11-02, Amira, Sami.\nFichier : notes/JOURNAL.md seulement.\nContrôle : git diff ne montre que ces 2 lignes.\nPropose d'abord ton plan en 3 étapes, attends mon accord."
+    },
+    {
+     "type": "text",
+     "text": "Vous ferez cette demande pour de vrai au Cycle 1, dans `~/solen-bi`, avec vos prénoms et la date du jour."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "`/plan` active le mode plan : Codex propose les étapes avant d’agir.",
+      "L’onglet de revue (Ctrl + Maj + G) montre les fichiers modifiés et leur diff.",
+      "`/review` lance une revue des changements non commités ou une comparaison avec une branche de base.",
+      "Une commande annoncée par Codex n’est pas une preuve : lancez-la vous-même et lisez la sortie."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/codex-app-diff.png",
+     "caption": "Capture prévue · application ChatGPT (bureau), mode Codex, dépôt du binôme. Zone : onglet de revue. Action : lire les lignes changées dans notes/JOURNAL.md. Réussite : un seul fichier modifié, deux lignes changées.",
+     "height": 160
+    }
+   ],
+   "source_ids": [
+    "app-commands",
+    "slash-commands",
+    "agents-md"
+   ],
+   "printed_page": 12
+  },
+  {
+   "id": "c3",
+   "title": "Compte Free : ce que dit la doc, ce que vous vérifiez",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Documentation OpenAI lue le **28 octobre 2026**. Elle peut changer ; votre écran fait foi pour votre compte. Ce livret ne promet aucun quota."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "La doc dit",
+      "Vous vérifiez vous-même"
+     ],
+     "rows": [
+      [
+       "Free : « GPT-6 Luna at Standard speed in the desktop app, subject to rollout ».",
+       "Luna apparaît-il dans le sélecteur ? « Subject to rollout » : l’accès peut arriver plus tard sur certains comptes."
+      ],
+      [
+       "La page des tarifs ne cite pour Free que l’application de bureau ; le CLI, l’IDE et le web apparaissent à partir de Plus.",
+       "Le cours n’exige que l’application. Le CLI reste une annexe facultative."
+      ],
+      [
+       "Le nombre de messages dépend du modèle, de la taille et de la complexité des tâches ; des limites hebdomadaires peuvent s’appliquer.",
+       "`/status` avant une grosse demande ; notez l’heure de reprise si la limite est atteinte."
+      ],
+      [
+       "Les efforts visibles dans l’app : Light, Medium, High, Extra High.",
+       "Lesquels votre compte affiche. Commencez par High."
+      ]
+     ],
+     "widths": [
+      2.1,
+      1.9
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Tokens, contexte, effort, quota : quatre mots différents"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Token** : un petit morceau de texte. Vos fichiers, la demande et la réponse se comptent en tokens.",
+      "**Contexte** : ce que Codex garde en tête dans ce chat. Un chat trop long se remplit ; ouvrez un nouveau chat avec un résumé court.",
+      "**Effort** : combien Codex réfléchit avant de répondre. Plus d’effort demande souvent plus d’usage par demande ; mais un effort trop faible peut obliger à reprendre la demande plusieurs fois.",
+      "**Quota** : votre allocation d’usage sur une période. Elle varie, elle se consulte, elle ne se devine pas."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Quota atteint ?",
+     "text": "Gardez votre travail (commit sur votre branche), notez l’heure de reprise affichée, continuez ce qui ne demande pas Codex : lire le diff, lancer les contrôles, écrire le journal, préparer la revue. Aucun achat ni clé API n’est demandé."
+    }
+   ],
+   "source_ids": [
+    "pricing",
+    "models",
+    "slash-commands"
+   ],
+   "printed_page": 13
+  },
+  {
+   "id": "g1",
+   "title": "GitHub 1 · Compte et identité Git",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Chacun crée **son** compte sur https://github.com/signup et suit les étapes, dont la vérification de l’adresse e-mail. Le plan gratuit suffit."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Nom d’utilisateur sobre et durable (il apparaît dans l’historique), par exemple `amira-bk`. Envoyez-le à votre binôme, rien d’autre.",
+      "Activez l’authentification à deux facteurs (2FA), recommandée par GitHub et Microsoft.",
+      "**Settings → Emails** → cochez **Keep my email addresses private** et notez l’adresse `…@users.noreply.github.com` affichée."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Se présenter à Git"
+    },
+    {
+     "type": "text",
+     "text": "Chaque commit (une photo datée de vos fichiers, voir partie D) porte un nom et une adresse : réglez-les une fois par poste, avec l’adresse noreply. Trois réglages de plus : la branche par défaut s’appelle `main` ; `git pull` fait une **fusion simple** quand votre copie et GitHub ont avancé chacune de leur côté ; l’éditeur de Git est `nano`."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git config --global user.name \"<Prénom Nom>\"\ngit config --global user.email \"<id+compte>@users.noreply.github.com\"\ngit config --global init.defaultBranch main\ngit config --global pull.rebase false\ngit config --global core.editor nano\ngit config --global --list"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "user.name=Amira Ben Khalifa\nuser.email=12345678+amira-bk@users.noreply.github.com\ninit.defaultbranch=main\npull.rebase=false\ncore.editor=nano"
+    },
+    {
+     "type": "text",
+     "text": "Avec `pull.rebase false`, si votre branche et celle de GitHub ont toutes deux avancé, `git pull` les fusionne et ouvre nano avec un message déjà écrit (« Merge branch… ») : gardez-le, **Ctrl + O**, Entrée, **Ctrl + X**. Si les deux changements touchent les mêmes lignes, Git annonce un conflit : page « Résoudre un conflit »."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…me connecter à github.com, donner mon nom d’utilisateur, et montrer `git config --global --list` avec mon nom et mon adresse noreply."
+    }
+   ],
+   "source_ids": [
+    "github-signup",
+    "github-commit-email",
+    "wsl-git",
+    "git-linux"
+   ],
+   "printed_page": 16
+  },
+  {
+   "id": "g2",
+   "title": "GitHub 2 · Relier Ubuntu à GitHub",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Pour pousser vers GitHub, Git doit prouver qui vous êtes. En HTTPS, GitHub recommande **GitHub CLI** ou **Git Credential Manager**. Route principale du cours : **GitHub CLI** (`gh`), identique sous WSL et Ubuntu natif, installée depuis le dépôt officiel. Copiez **tout** le bloc d’un coup."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "sudo apt install -y wget\nsudo mkdir -p -m 755 /etc/apt/keyrings\nKEY=/etc/apt/keyrings/githubcli-archive-keyring.gpg\nwget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg \\\n  | sudo tee \"$KEY\" > /dev/null\nsudo chmod go+r \"$KEY\"\nARCH=$(dpkg --print-architecture)\nSRC=\"https://cli.github.com/packages stable main\"\necho \"deb [arch=$ARCH signed-by=$KEY] $SRC\" \\\n  | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null\nsudo apt update\nsudo apt install -y gh\ngh --version"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "gh version <numéro> (<date>)"
+    },
+    {
+     "type": "callout",
+     "label": "Pourquoi pas `sudo apt install gh` tout court ?",
+     "text": "Le paquet communautaire d’Ubuntu est signalé comme cassé par les mainteneurs de GitHub CLI (versions 2.45/2.46). Le bloc suit leurs instructions officielles, découpées en lignes courtes."
+    },
+    {
+     "type": "section",
+     "text": "Se connecter avec le navigateur"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "gh auth login"
+    },
+    {
+     "type": "text",
+     "text": "Répondez avec les flèches et Entrée (libellés pouvant varier selon la version) :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Question (en anglais)",
+      "Votre réponse"
+     ],
+     "rows": [
+      [
+       "Where do you use GitHub?",
+       "GitHub.com"
+      ],
+      [
+       "Preferred protocol for Git operations?",
+       "HTTPS"
+      ],
+      [
+       "Authenticate Git with your GitHub credentials?",
+       "Y (oui)"
+      ],
+      [
+       "How would you like to authenticate?",
+       "Login with a web browser"
+      ]
+     ],
+     "widths": [
+      2.4,
+      1.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Le terminal affiche un **code à usage unique**. Ouvrez https://github.com/login/device dans votre navigateur, connectez-vous, tapez le code, autorisez. Sous WSL, si le navigateur ne s’ouvre pas seul, ouvrez l’adresse vous-même. Puis :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "gh auth setup-git\ngh auth status"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "github.com\n  ✓ Logged in to github.com account <votre-compte> (...)\n  - Git operations protocol: https"
+    },
+    {
+     "type": "section",
+     "text": "Route de secours : Git Credential Manager"
+    },
+    {
+     "type": "text",
+     "text": "Si `gh` ne s’installe pas : sous Windows, installez **Git for Windows** (il inclut Git Credential Manager) ; dans Ubuntu WSL, `git credential-manager --version` doit alors répondre, et une fenêtre GitHub s’ouvre au premier `git push`. Sur Ubuntu natif, appelez le professeur."
+    },
+    {
+     "type": "callout",
+     "label": "Jamais de jeton dans le dépôt",
+     "text": "Aucun mot de passe, jeton ou clé dans un fichier, une URL `git remote` ou une demande à Codex. « Password authentication is not supported » : refaites `gh auth login` puis `gh auth setup-git`."
+    }
+   ],
+   "source_ids": [
+    "gh-install",
+    "github-credentials",
+    "gh-auth-login",
+    "gh-setup-git",
+    "github-device-flow",
+    "wsl-git"
+   ],
+   "printed_page": 17
+  },
+  {
+   "id": "seance0",
+   "title": "Fin de la séance 0 · la liste vérifiée en début de séance 1",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "La séance 1 commence par **30 min de vérification des postes** : vous **montrez** chaque ligne au professeur ou à votre binôme. Préparez-la chez vous. Ce qui ne marche pas, signalez-le **avant** la séance, par message, avec la commande et la dernière ligne affichée."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "☐ Je montre…",
+      "Commande ou écran",
+      "Réussite"
+     ],
+     "widths": [
+      1.9,
+      2.0,
+      1.7
+     ],
+     "rows": [
+      [
+       "☐ Ubuntu prêt",
+       "`wsl -l -v` (PowerShell) ; Ubuntu natif : `lsb_release -ds`",
+       "VERSION 2 ; ou 24.04 / 26.04 LTS"
+      ],
+      [
+       "☐ Python, Git et sqlite3",
+       "`python3 --version`, `git --version`, `sqlite3 --version`",
+       "Python 3.11 ou plus ; deux autres numéros"
+      ],
+      [
+       "☐ Le cours cloné",
+       "`ls ~/cours-bi`",
+       "`modele-binome`, `pdf`, `prompts`…"
+      ],
+      [
+       "☐ Codex travaille dans Ubuntu",
+       "terminal intégré de l’application : `pwd`",
+       "`/home/<utilisateur-linux>`"
+      ],
+      [
+       "☐ Compte Free, modèle et effort",
+       "sélecteur de modèle ; `/status`",
+       "Luna et High, ou ce que votre écran propose, noté"
+      ],
+      [
+       "☐ Compte GitHub et identité Git",
+       "`git config --global --list`",
+       "nom, adresse noreply, `pull.rebase=false`"
+      ],
+      [
+       "☐ Git relié à GitHub",
+       "`gh auth status`",
+       "`Logged in to github.com`"
+      ],
+      [
+       "☐ Le binôme se connaît",
+       "message",
+       "A et B ont le nom d’utilisateur GitHub de l’autre"
+      ]
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ensuite, en séance 1, à deux",
+     "text": "Partie D : A crée le dépôt du binôme, invite B et protège `main` ; chacun clone le dépôt et crée son venv. Partie E : la **PR n°1** (`journal-binome`, A auteur, B relecteur). Après la pause, le livret 02 prend le relais avec la PR n°2, dont B sera l’auteur."
+    }
+   ]
+  },
+  {
+   "id": "g0",
+   "title": "Git et GitHub en mots et en images",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Git photographie vos fichiers ; GitHub garde l’album partagé. Chaque concept ci-dessous revient à chaque séance."
+    },
+    {
+     "type": "section",
+     "text": "Dossier local, Git, GitHub"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Dossier local ~/solen-bi : vos fichiers",
+      "Git : l’historique caché dans .git",
+      "GitHub : la copie partagée du binôme"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Commit"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Modifier un fichier",
+      "`git add` : choisir ce qui part",
+      "`git commit -m` : photo + message",
+      "Un point d’historique daté"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Branche"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "main : la version validée",
+      "`git switch -c lecture-csv`",
+      "Travail isolé sur la branche",
+      "main reste intacte pendant ce temps"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Push et pull"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Commit sur mon PC",
+      "`git push` : envoyer à GitHub",
+      "Le binôme : `git pull`",
+      "Les deux copies sont alignées"
+     ]
+    }
+   ],
+   "source_ids": [
+    "github-plans"
+   ],
+   "printed_page": 14
+  },
+  {
+   "id": "g0b",
+   "title": "Pull request, revue, merge, CI",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "Pull request (PR)"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Branche poussée sur GitHub",
+      "Compare & pull request",
+      "Titre + description : quoi, pourquoi, preuve",
+      "La PR attend une revue"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Revue"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "B lit Files changed",
+      "B relance les contrôles chez lui",
+      "Approve ou Request changes",
+      "L’auteur corrige si besoin"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Merge"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "PR approuvée + checks verts",
+      "Merge pull request",
+      "La branche entre dans main",
+      "Les deux : git switch main && git pull"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "CI (intégration continue)"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Chaque PR déclenche controles.yml",
+      "Machine Linux neuve chez GitHub",
+      "Installe et lance les contrôles",
+      "Coche verte ou croix rouge"
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pourquoi tout ce chemin pour deux personnes ?",
+     "text": "Parce que c’est ainsi que travaille une équipe BI : personne ne publie seul un chiffre de marge. La PR garde la trace de la demande, du diff, de la preuve et de la décision. À la soutenance, vous montrerez vos PR et vos revues."
+    }
+   ],
+   "source_ids": [
+    "github-review",
+    "github-merge",
+    "github-actions-billing"
+   ],
+   "printed_page": 15
+  },
+  {
+   "id": "g5",
+   "title": "GitHub 3 · A crée le dépôt et invite B",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**A seulement**, sur github.com : icône **+** en haut à droite (« Create something new ») → **New repository**. **Owner** : le compte de A. **Repository name** : `solen-<nomA>-<nomB>`. Visibilité **Public** (données 100 % synthétiques). **Ni README, ni .gitignore, ni licence** : le modèle les fournit. **Create repository**."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-nouveau-depot.png",
+     "caption": "Capture prévue · navigateur, github.com, New repository. Zone : Owner, Repository name, visibilité. Action : Public, aucune case d’initialisation. Réussite : le dépôt vide affiche son adresse HTTPS.",
+     "height": 130
+    },
+    {
+     "type": "text",
+     "text": "Puis **Settings** (sinon menu **…**) → section **Access** → **Collaborators** → **Add people** → nom d’utilisateur de B → **Add <compteB> to <dépôt>**. **B** accepte l’invitation reçue par e-mail ou notification ; sans cela, B peut lire mais pas pousser."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-inviter.png",
+     "caption": "Capture prévue · navigateur, github.com, Settings → Collaborators. Action : Add people, compte de B. Réussite : B apparaît, invitation en attente.",
+     "height": 130
+    },
+    {
+     "type": "callout",
+     "label": "Erreur courante",
+     "text": "B obtient `Permission to <compteA>/<dépôt>.git denied` ou 403 au push : invitation non acceptée, ou B connecté avec un autre compte (`gh auth status`)."
+    }
+   ],
+   "source_ids": [
+    "github-new-repo",
+    "github-invite"
+   ],
+   "printed_page": 19
+  },
+  {
+   "id": "g7",
+   "title": "GitHub 4 · Cloner et pousser le premier commit",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**A** copie l’adresse HTTPS du dépôt vide, puis dans le terminal Ubuntu :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git clone https://github.com/<compteA>/<depot>.git ~/solen-bi\ncd ~/solen-bi\ncp -r ~/cours-bi/modele-binome/. .\ngit status"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "warning: You appear to have cloned an empty repository.\nUntracked files:  .agents/  .github/  .gitignore  AGENTS.md ..."
+    },
+    {
+     "type": "text",
+     "text": "Le clone vide est normal. `/. .` copie **le contenu** du modèle, fichiers cachés compris, dans le dossier courant. Puis :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git add .\ngit commit -m \"Départ : modèle du dépôt binôme\"\ngit branch -M main\ngit push -u origin main"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": " * [new branch]      main -> main\nbranch 'main' set up to track 'origin/main'."
+    },
+    {
+     "type": "text",
+     "text": "`git branch -M main` garantit le nom de la branche ; `-u` relie la branche locale à GitHub pour les prochains `git push` et `git pull`. **B**, après avoir accepté l’invitation et après ce push, lance la même première ligne `git clone ... ~/solen-bi`."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "`fatal: not a git repository` : `cd ~/solen-bi`. `cp: cannot stat` : le cours n’est pas dans `~/cours-bi` (`ls ~/cours-bi`). `Password authentication is not supported` : refaites GitHub 2."
+    }
+   ],
+   "source_ids": [
+    "github-clone",
+    "wsl-filesystems"
+   ],
+   "printed_page": 20
+  },
+  {
+   "id": "g8",
+   "title": "GitHub 5 · Environnement Python et projet Codex",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Chacun**, dans son `~/solen-bi`, crée le venv du projet et installe les bibliothèques listées par `requirements.txt`. Le dossier `.venv/` est ignoré par Git (`.gitignore`) : il ne part jamais sur GitHub."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "cd ~/solen-bi\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install -r requirements.txt"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "(.venv) amira@pc:~/solen-bi$"
+    },
+    {
+     "type": "text",
+     "text": "Le préfixe `(.venv)` prouve que le venv est actif. À **chaque nouveau terminal** : `cd ~/solen-bi` puis `source .venv/bin/activate`. Pour sortir : `deactivate`."
+    },
+    {
+     "type": "section",
+     "text": "Ouvrir le dépôt dans Codex"
+    },
+    {
+     "type": "text",
+     "text": "Mode **Codex** → **Add new project** (Ctrl + O). Windows : `\\\\wsl$\\` → Ubuntu → home → `<utilisateur-linux>` → **solen-bi**. Ubuntu natif : dossier personnel → **solen-bi**. Modèle Luna, effort High."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Quelles instructions du projet as-tu lues ? Cite le fichier.\nNe modifie rien."
+    },
+    {
+     "type": "text",
+     "text": "Codex doit citer `AGENTS.md`, le fichier de règles du dépôt qu’il lit avant de travailler."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "`ensurepip is not available` : installez `python3-venv` (Windows 1 ou Ubuntu natif 1), puis demandez au professeur avant de recréer le venv. `No such file: requirements.txt` : vous n’êtes pas dans `~/solen-bi`, ou le premier push de A n’est pas encore récupéré (`git pull`)."
+    }
+   ],
+   "source_ids": [
+    "python-venv",
+    "agents-md",
+    "chatgpt-windows"
+   ],
+   "printed_page": 21
+  },
+  {
+   "id": "g9",
+   "title": "GitHub 6 · A protège la branche main",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Objectif : personne, pas même A, ne pousse directement sur `main` ; tout passe par une PR approuvée par l’autre. **Après** le premier push, **A** : **Settings** → « Code and automation » → **Branches** → **Add classic branch protection rule**."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Branch name pattern** : `main`.",
+      "**Require a pull request before merging**, puis **Require approvals** ; **Required number of approvals before merging** : **1**.",
+      "**Do not allow bypassing the above settings** : la règle vaut aussi pour A, propriétaire.",
+      "**Require status checks to pass before merging** : plus tard, après une première CI ; le check s’appelle **Pipeline et contrôles (pull_request)** (le nom contient l’événement qui a lancé la CI).",
+      "**Create**."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-protection-branche.png",
+     "caption": "Capture prévue · navigateur, github.com, Settings → Branches du dépôt public. Action : PR requise, 1 approbation, pas de contournement. Réussite : la règle main apparaît dans la liste.",
+     "height": 150
+    },
+    {
+     "type": "callout",
+     "label": "Pourquoi un dépôt public ?",
+     "text": "Sur GitHub Free, protection de branche et revue obligatoire ne s’appliquent qu’aux dépôts publics (GitHub Pro les ajoute aux privés) ; les runners Linux standard de GitHub Actions y sont gratuits. Dépôt privé : rien n’est imposé, la règle devient une discipline. GitHub rappelle : « Pull request authors cannot approve their own pull requests. » Si GitHub propose un « ruleset », appelez le professeur."
+    }
+   ],
+   "source_ids": [
+    "github-branch-rule",
+    "github-protected-branches",
+    "github-plans",
+    "github-actions-billing",
+    "github-review"
+   ],
+   "printed_page": 22
+  },
+  {
+   "id": "cycle1",
+   "title": "Cycle 1 · Branche, commit, push",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Premier cycle, la **PR n°1** du binôme : A présente le binôme dans `notes/JOURNAL.md` ; B relit. La PR n°2 (livret 02, S1-M5) inversera les rôles. Toujours partir d’un `main` à jour, puis ouvrir une branche au nom court et parlant."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "cd ~/solen-bi\ngit switch main\ngit pull\ngit switch -c journal-binome"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Switched to a new branch 'journal-binome'"
+    },
+    {
+     "type": "text",
+     "text": "Dans Codex, faites la demande de Codex 2 (objectif, fichier, contrôle). Lisez le diff dans l’onglet de revue, puis dans le terminal :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git status\ngit diff"
+    },
+    {
+     "type": "text",
+     "text": "`git status` donne la branche et les fichiers changés ; `git diff` les lignes (`+` ajoutée, `-` retirée). Une ligne inattendue : demandez à Codex de l’expliquer ou de l’annuler **avant** de commiter. Ajoutez les fichiers par leur nom : vous savez exactement ce qui part."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git add notes/JOURNAL.md\ngit commit -m \"Journal : présentation du binôme\"\ngit push -u origin journal-binome"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "remote: Create a pull request for 'journal-binome' on GitHub by visiting:\nremote:   https://github.com/<compteA>/<depot>/pull/new/journal-binome"
+    }
+   ],
+   "source_ids": [
+    "github-create-pr"
+   ],
+   "printed_page": 23
+  },
+  {
+   "id": "cycle2",
+   "title": "Cycle 2 · Ouvrir la pull request",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Sur github.com, la page du dépôt affiche **Compare & pull request** pour la branche poussée. Vérifiez **base: main** ← **compare: journal-binome**."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Titre : ce que la PR change, en une ligne. Exemple : « Journal : présentation du binôme ».",
+      "Description : **quoi** (fichier touché), **pourquoi**, **preuve** (commande lancée et résultat), **à relire en priorité**.",
+      "À droite, **Reviewers** : choisissez le compte de B.",
+      "**Create pull request**."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-pull-request.png",
+     "caption": "Capture prévue · navigateur, github.com, ouverture d’une PR. Zone : base/compare, titre, description, Reviewers. Action : Create pull request. Réussite : la PR porte un numéro (#1) et l’onglet Checks démarre.",
+     "height": 160
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Rédige la description de PR pour la branche journal-binome :\nquoi, pourquoi, preuve, à relire. 6 lignes maximum.\nAppuie-toi sur git diff main. Ne modifie aucun fichier."
+    },
+    {
+     "type": "text",
+     "text": "Relisez et corrigez le texte proposé : c’est **votre** PR. Le dépôt contient aussi la méthode `preparer-pr` (dossier `.agents/skills/`) que Codex peut suivre."
+    }
+   ],
+   "source_ids": [
+    "github-create-pr",
+    "build-skills"
+   ],
+   "printed_page": 24
+  },
+  {
+   "id": "cycle3",
+   "title": "Cycle 3 · B relit et approuve",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**B** récupère la branche de A et la regarde chez lui, sans rien modifier :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "cd ~/solen-bi\ngit fetch\ngit switch journal-binome\ngit log --oneline -3"
+    },
+    {
+     "type": "text",
+     "text": "Revue Codex en **lecture seule**, puis votre propre lecture :"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Revue en lecture seule de la branche journal-binome par rapport à\nmain. Liste au plus 3 remarques : fichier, ligne, risque.\nNe modifie aucun fichier."
+    },
+    {
+     "type": "text",
+     "text": "Sur GitHub, dans la PR : onglet **Files changed** → **Review changes** → écrivez un commentaire → choisissez **Comment**, **Approve** ou **Request changes** → **Submit review**."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-review-approve.png",
+     "caption": "Capture prévue · navigateur, github.com, PR #1 vue par B. Zone : Files changed → Review changes. Action : Approve avec un commentaire. Réussite : la PR affiche « approved » au nom de B.",
+     "height": 160
+    },
+    {
+     "type": "callout",
+     "label": "Une revue utile",
+     "text": "Une revue cite un fichier et une ligne, dit ce qui est vérifié et ce qui manque. « OK » seul n’est pas une revue. Request changes n’est pas un reproche : c’est le travail du relecteur. L’auteur corrige sur **la même branche**, commit, push : la PR se met à jour."
+    }
+   ],
+   "source_ids": [
+    "github-review",
+    "slash-commands"
+   ],
+   "printed_page": 25
+  },
+  {
+   "id": "cycle4",
+   "title": "Cycle 4 · Checks, merge, retour à main",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "En bas de la PR, les checks montrent la CI (`controles.yml`). Coche verte : les contrôles passent sur une machine neuve. En séance 1, la CI vérifie seulement l’installation."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-checks-verts.png",
+     "caption": "Capture prévue · navigateur, github.com, bas de la PR #1. Réussite : « Pipeline et contrôles (pull_request) » en vert, une approbation, bouton de fusion actif.",
+     "height": 120
+    },
+    {
+     "type": "text",
+     "text": "PR approuvée et verte : **Merge pull request** → **Confirm merge**, puis le lien pour supprimer la branche sur GitHub. Jamais de fusion sans revue."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/github-merge.png",
+     "caption": "Capture prévue · navigateur, github.com, PR #1. Action : Merge pull request puis Confirm merge. Réussite : bandeau « Merged », main contient la ligne du journal.",
+     "height": 120
+    },
+    {
+     "type": "text",
+     "text": "**Les deux** remettent leur copie à jour et effacent la branche locale fusionnée (Git refuse si elle ne l’est pas : aucune perte possible) :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git switch main\ngit pull\ngit branch -d journal-binome"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Fast-forward\n notes/JOURNAL.md | 4 ++--\nDeleted branch journal-binome (was 9a8b7c6)."
+    },
+    {
+     "type": "callout",
+     "label": "Deux « workflows » : même mot, deux choses",
+     "text": "**Workflow de travail Git/GitHub** : la suite de **vos** gestes, branche → commit → push → PR → revue → merge → pull ; vous venez de le faire. **Workflow GitHub Actions** : le fichier `.github/workflows/controles.yml`, que GitHub **exécute tout seul** sur une machine neuve à chaque PR ; on le voit dans l’onglet **Actions** et dans les checks. Le premier se fait à la main, le second tourne sans vous."
+    }
+   ],
+   "source_ids": [
+    "github-merge",
+    "github-actions-billing"
+   ],
+   "printed_page": 26
+  },
+  {
+   "id": "erreurs",
+   "title": "Erreurs Git courantes : diagnostiquer sans casser",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Premier réflexe : `git status`. Il dit le dossier, la branche et l’état des fichiers. Interdits dans ce cours : `git push --force`, `git reset --hard`, supprimer `.git`. Ils effacent du travail."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Symptôme",
+      "Cause probable",
+      "Réparer sans casser"
+     ],
+     "rows": [
+      [
+       "`fatal: not a git repository`",
+       "Mauvais dossier.",
+       "`cd ~/solen-bi` puis `git status`."
+      ],
+      [
+       "Commit fait sur main par erreur",
+       "Oubli de `git switch -c`.",
+       "`git switch -c <branche>` garde le commit sur une nouvelle branche ; poussez-la et ouvrez la PR. Après fusion, `git switch main && git pull` réaligne main."
+      ],
+      [
+       "`Your local changes ... would be overwritten`",
+       "Changement non commité avant un `git switch`.",
+       "Commitez-le sur la bonne branche, ou `git stash`, changez de branche, puis `git stash pop`."
+      ],
+      [
+       "Push refusé : `protected branch` (GH006)",
+       "Push direct sur main.",
+       "Normal : créez une branche, poussez-la, ouvrez une PR."
+      ],
+      [
+       "Push refusé : `fetch first` / `non-fast-forward`",
+       "Le binôme a poussé sur la même branche.",
+       "`git pull` sur cette branche (fusion simple ; si nano s’ouvre : Ctrl + O, Entrée, Ctrl + X), relancez les contrôles, puis `git push`. Jamais `--force`."
+      ],
+      [
+       "PR : `This branch is out-of-date`",
+       "main a avancé.",
+       "`git fetch`, puis sur votre branche `git merge origin/main`, contrôles, push."
+      ],
+      [
+       "`git pull` : `Need to specify how to reconcile divergent branches`",
+       "Réglage `pull.rebase` absent sur ce poste.",
+       "`git config --global pull.rebase false` (GitHub 1), puis `git pull` de nouveau."
+      ],
+      [
+       "Check rouge",
+       "Contrôle en échec.",
+       "**Details** → lisez la fin du journal, relancez la même commande chez vous, corrigez le code sur la branche. Jamais les contrôles ni la référence."
+      ],
+      [
+       "`CONFLICT (content)`",
+       "Deux changements sur les mêmes lignes.",
+       "Page suivante. Pour annuler la fusion en cours : `git merge --abort`."
+      ]
+     ],
+     "widths": [
+      1.5,
+      1.2,
+      2.3
+     ]
+    }
+   ],
+   "source_ids": [
+    "github-conflicts",
+    "github-protected-branches"
+   ],
+   "printed_page": 27
+  },
+  {
+   "id": "conflit",
+   "title": "Résoudre un conflit, calmement",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Un conflit n’est pas une panne : Git ne sait pas choisir entre deux versions des mêmes lignes et vous demande de décider. Dans le fichier, il écrit :"
+    },
+    {
+     "type": "code",
+     "label": "Fichier en conflit · extrait",
+     "text": "<<<<<<< HEAD\n- Prochain objectif : compter les lignes des 4 sources.\n=======\n- Prochain objectif : lire le CSV des ventes.\n>>>>>>> origin/main"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Lire les deux versions",
+      "Demander à Codex d’expliquer, sans modifier",
+      "Décider à deux, retirer les marqueurs",
+      "Contrôles, add, commit, push"
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Le fichier notes/JOURNAL.md est en conflit. Explique les deux\nversions et leurs conséquences. Ne modifie rien : nous décidons."
+    },
+    {
+     "type": "text",
+     "text": "Après votre décision (Codex peut appliquer le choix que vous lui dictez), vérifiez qu’aucun `<<<<<<<`, `=======` ou `>>>>>>>` ne reste, puis :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "git add notes/JOURNAL.md\ngit commit -m \"Fusion de main : conflit du journal résolu\"\ngit push"
+    },
+    {
+     "type": "text",
+     "text": "Sur GitHub, si la PR indique un conflit simple, le bouton **Resolve conflicts** ouvre un éditeur : retirez les marqueurs, **Mark as resolved**, puis **Commit merge**. Si le bouton est grisé, résolvez dans le terminal comme ci-dessus."
+    }
+   ],
+   "source_ids": [
+    "github-conflicts"
+   ],
+   "printed_page": 28
+  },
+  {
+   "id": "powerbi",
+   "title": "Annexes · Power BI Desktop et Codex CLI",
+   "kicker": "01 / DÉMARRER · ANNEXES",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Power BI Desktop est gratuit. Microsoft propose deux installations ; prenez le **Microsoft Store** : mises à jour automatiques, pas de droits administrateur nécessaires. Il sert en séance 5 : modèle, relations, mesures DAX, filtres, actualisation."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Microsoft Store → cherchez **Power BI Desktop** → **Installer**.",
+      "Prérequis Microsoft : Windows 10 ou plus récent, au moins 2 Go de RAM disponibles (4 Go conseillés), écran 1440 × 900 ou plus.",
+      "Mise à l’échelle Windows à 100 % (Paramètres → Système → Écran) si certaines fenêtres de Power BI sont coupées.",
+      "Lancez-le une fois : l’écran d’accueil doit s’afficher."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ubuntu natif",
+     "text": "Power BI Desktop ne s’installe que sur Windows. Repérez dès maintenant un poste Windows pour la séance 5 (salle, binôme) ; les exports du pipeline (CSV et manifeste) y seront copiés depuis le dépôt."
+    },
+    {
+     "type": "section",
+     "text": "Codex CLI (facultatif)"
+    },
+    {
+     "type": "callout",
+     "label": "Non requis, non confirmé sur Free",
+     "text": "Le cours se fait entièrement dans l’application. La page des tarifs lue le 28/10/2026 cite le CLI à partir du plan Plus ; rien ne confirme qu’il fonctionne avec un compte Free. N’y passez pas de temps en séance."
+    },
+    {
+     "type": "text",
+     "text": "Pour les curieux, dans Ubuntu (WSL ou natif), l’installeur officiel :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash)",
+     "text": "curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+    },
+    {
+     "type": "text",
+     "text": "Au premier lancement de `codex`, choisissez **Sign in with ChatGPT**. Dans le CLI, `/status` affiche les limites restantes ; l’effort Light de l’application s’y appelle Low."
+    },
+    {
+     "type": "callout",
+     "label": "Si le CLI refuse votre compte",
+     "text": "C’est l’état attendu sur Free : revenez à l’application. Ne payez rien pour ce cours et ne créez pas de clé API."
+    }
+   ],
+   "source_ids": [
+    "powerbi-desktop",
+    "codex-cli",
+    "pricing",
+    "models"
+   ],
+   "printed_page": 29
+  },
+  {
+   "id": "recap",
+   "title": "Récapitulatif : prêt pour la suite de la séance 1",
+   "kicker": "01 / DÉMARRER · ANNEXES",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "À ce stade, je sais…"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "…dire où vivent mes dossiers (`~/cours-bi`, `~/solen-bi`) et les ouvrir dans Codex.",
+      "…régler Codex : Luna, effort High, et lire mon usage avec `/status`.",
+      "…expliquer en mots : dossier local, Git, GitHub, commit, branche, push/pull, PR, revue, merge, CI.",
+      "…faire un cycle complet : branche, demande, diff, commit, push, PR, revue, merge, retour à main.",
+      "…réagir à un push refusé, une branche en retard, un check rouge ou un conflit sans `--force` ni `reset --hard`."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Preuve observable du binôme",
+     "text": "Sur GitHub : un dépôt public `solen-<nomA>-<nomB>`, B collaborateur, main protégée, la PR n°1 (`journal-binome`, A auteur) fusionnée avec une revue écrite de B. Chez chacun : `git status` sur main propre, `(.venv)` actif, `gh auth status` connecté."
+    },
+    {
+     "type": "section",
+     "text": "La suite"
+    },
+    {
+     "type": "text",
+     "text": "Après la pause, ouvrez le livret 02 (tronc commun, mission Solen Commerce 360) : la PR n°2 de la séance (`cadrage-binome`) aura **B** pour auteur et A pour relecteur. Gardez l’aide-mémoire Git · Codex · BI ouvert pendant les séances."
+    },
+    {
+     "type": "section",
+     "text": "D’où viennent les étapes ?"
+    },
+    {
+     "type": "text",
+     "text": "Documentation officielle consultée le 28 octobre 2026 : OpenAI (tarifs, modèles, application Windows et Linux, WSL, CLI, skills, AGENTS.md), Microsoft Learn (WSL, Power BI Desktop), Ubuntu, Python, Git et GitHub Docs. Liste complète : `docs/setup/sources.json`. Ces lectures ne sont pas un essai réel sur votre poste ni sur un compte Free ; les captures sont réalisées séparément et légendées."
+    }
+   ],
+   "source_ids": [],
+   "printed_page": 30
+  }
+ ]
+}

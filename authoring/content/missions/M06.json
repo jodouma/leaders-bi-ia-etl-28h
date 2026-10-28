@@ -1,0 +1,1144 @@
+{
+ "title": "Mission 06 · Dar Azur : guide de mission",
+ "cover_title": "Mission 06 · Hôtellerie\nDar Azur",
+ "subtitle": "Guide de mission du catalogue · nuitées vendues, taux d’occupation, revenu net d’annulations, RevPAR · un séjour par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M06 · Dar Azur",
+ "output_filename": "missions/M06_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M06 · DAR AZUR",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Dar Azur (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF DAR AZUR",
+  "flow": "Séjours, chambres, canaux, annulations  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "64",
+    "CHAMBRES, 4 MAISONS"
+   ],
+   [
+    "44,48 %",
+    "OCCUPATION APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M06 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M06/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Effets des options B et C : calcul de raisonnement. Solution de référence passée au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M06 · DAR AZUR · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 06**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un petit groupe hôtelier fictif, **Dar Azur**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : « Avant l’étape A » (page 9), en fin de séance 4."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Encodage cp1252, ce qui sera gardé, ignoré ou rejeté",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Passer à M06, charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "13"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "14"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "15"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M06/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M06/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M06/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dar Azur** (fictif) exploite quatre maisons d’hôtes, **64 chambres** au total : Hammamet (DAH), Djerba (DDJ), Sidi Bou Saïd (DSB) et Tozeur (DTZ). Les séjours arrivent par quatre canaux : direct, agence en ligne (OTA), tour-opérateur, entreprise ; chacun prend une commission. Le gérant voit des réservations partout, mais ne sait pas si ses chambres sont vraiment remplies ni ce qu’il reste après les annulations."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Je veux savoir quelles maisons remplissent leurs chambres et lesquelles gagnent de l’argent. Par établissement et par mois : les nuitées vendues, le taux d’occupation, le revenu net d’annulations et le RevPAR. Je dois décider où mettre l’effort commercial cet hiver.\nÀ partir du 15 juillet, l’agence en ligne ne nous prend plus 18 % mais 15 % de commission. Les séjours arrivés avant cette date gardent 18 %.\nDites-moi aussi ce que vous avez dû écarter, et pourquoi.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Où mettre l’effort commercial cet hiver ?** L’occupation et le RevPAR de chaque maison, mois par mois.",
+      "**Que coûte chaque canal ?** Les commissions, avant et après la baisse de l’OTA."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "4 maisons, 64 chambres ; arrivées de janvier à août 2026",
+       "arrivées après le 31 août ; tarifs affichés (non utilisés)"
+      ],
+      [
+       "séjours, annulations `CONFIRMEE`, remboursements",
+       "annulations `RETIREE` (ignorées : le séjour reste vendu)"
+      ],
+      [
+       "commissions des canaux (taux historisé)",
+       "salaires, énergie, entretien : le revenu net n’est pas un bénéfice"
+      ],
+      [
+       "date d’arrivée comme date du fait",
+       "table `paiement` : présente, non chargée (variante 3)"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **un séjour**, une chambre de la date d’arrivée à la date de départ (clé `sejour_id`). Nuitées = départ − arrivée. Montants en **millimes entiers**. Formules exactes du cahier (§ 9) ; les quatre demandées par la direction sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "**Nuitées vendues**",
+       "nombre",
+       "nuitées des séjours acceptés − nuitées des séjours annulés (`CONFIRMEE`)"
+      ],
+      [
+       "**Taux d’occupation**",
+       "%",
+       "nuitées vendues ÷ (chambres de l’établissement × nuits de la période dans `dim_date`)"
+      ],
+      [
+       "Montant des séjours · remboursements",
+       "TND",
+       "prix totaux des séjours acceptés · remboursements des annulations acceptées"
+      ],
+      [
+       "**Revenu net d’annulations**",
+       "TND",
+       "montant des séjours − remboursements"
+      ],
+      [
+       "**RevPAR**",
+       "TND",
+       "revenu net ÷ chambres disponibles, par chambre disponible, arrondi au millime"
+      ],
+      [
+       "Commissions des canaux",
+       "TND",
+       "montant × taux du canal valable à la date d’arrivée ÷ 100"
+      ]
+     ],
+     "widths": [
+      1.7,
+      0.6,
+      3.1
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key`"
+      ],
+      [
+       "`dim_etablissement`",
+       "une maison, `nombre_chambres` = somme de ses types",
+       "`etablissement_key` · `etablissement_id`"
+      ],
+      [
+       "`dim_canal` (SCD2)",
+       "une **version** de canal et son taux",
+       "`canal_key` · `canal_id`"
+      ],
+      [
+       "`fact_sejour`",
+       "un séjour accepté, rangé au jour d’**arrivée**",
+       "`sejour_id`"
+      ],
+      [
+       "`fact_annulation`",
+       "une annulation `CONFIRMEE`, au jour d’arrivée",
+       "`annulation_id`"
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.5,
+      1.6
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_canal`, attribut `taux_commission_pct`. Le canal **OTA** (agence en ligne) passe de **18 %** à **15 %** le **2026-07-15**, inclus (`lot2/canaux.json`). `dim_canal` passe de 4 à 5 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "canal_id",
+      "taux_commission_pct",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "OTA",
+       "18",
+       "2025-01-01",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "OTA",
+       "15",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.4,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Un séjour OTA arrivé le 14 juillet paie 18 % ; arrivé le 15, 15 %. La date de **réservation** ne compte pas. Une annulation reprend la même version de canal que son séjour."
+    },
+    {
+     "type": "callout",
+     "label": "Le dénominateur ne vient pas des faits",
+     "text": "Chambres disponibles = 64 × nuits de la période, même sans séjour : 11 584 après le lot 1, 15 552 après le lot 2. Occupation et RevPAR ne s’additionnent pas et ne se moyennent pas : on refait le rapport des sommes pour chaque filtre."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "Le vérificateur compare vos sorties à `reference/attendu_lot*.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M06 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats par établissement et par mois après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions d’OTA aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles`, `pytest -q` (avec vos tests) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `sejours.csv`, l’inventaire (DAH 22, DSB 10, DTZ 14, DDJ 18 chambres), les 4 canaux et 3 annulations. Taux avant le 15 juillet : direct 0 %, entreprise 10 %, OTA 18 %, tour-opérateur 25 %. Calculez **sur papier** ; la correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "sejour_id",
+      "Lu dans le fichier (arrivée · départ · maison · type · canal · nuits · prix)",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "E-01",
+       "2026-03-02 · 2026-03-05 · DAH · DBL · DIR · 3 · 520.500",
+       ""
+      ],
+      [
+       "3",
+       "E-02",
+       "03/03/2026 · 05/03/2026 · DSB · STE · OTA · 2 · 1 007,000",
+       ""
+      ],
+      [
+       "4",
+       "E-03",
+       "6 mars 2026 · 10 mars 2026 · « dtz » · TWN · TOP · 4 · 614",
+       ""
+      ],
+      [
+       "5",
+       "E-04",
+       "2026-03-07 · 2026-03-08 · DDJ · FAM · ENT · 1 · 213,5",
+       ""
+      ],
+      [
+       "6",
+       "E-04",
+       "2026-03-07 · 2026-03-08 · DDJ · FAM · ENT · 1 · 213,5",
+       ""
+      ],
+      [
+       "7",
+       "E-05",
+       "2026-03-12 · 2026-03-15 · DAH · fam · Ota · 3 · 790,500",
+       ""
+      ],
+      [
+       "8",
+       "E-06",
+       "2026-03-14 · 2026-03-16 · DDJ · DBL · DIR · 2 · 390.000",
+       ""
+      ],
+      [
+       "9",
+       "E-06",
+       "2026-03-14 · 2026-03-16 · DDJ · DBL · DIR · 3 · 390.000",
+       ""
+      ],
+      [
+       "10",
+       "(vide)",
+       "2026-03-18 · 2026-03-20 · DAH · TWN · DIR · 2 · 347.000",
+       ""
+      ],
+      [
+       "11",
+       "E-07",
+       "2026-03-19 · 2026-03-21 · DMH · DBL · OTA · 2 · 367.000",
+       ""
+      ],
+      [
+       "12",
+       "E-08",
+       "2026-03-22 · 2026-03-22 · DTZ · DBL · DIR · 0 · 0.000",
+       ""
+      ],
+      [
+       "13",
+       "E-09",
+       "30/03/2026 · 02/04/2026 · DSB · DBL · DIR · 3 · 685,5",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.7,
+      3.6,
+      0.8
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? **2.** Nuitées, montant des séjours, commissions.",
+      "**3.** Annulations : `AN-0001` annule `E-05` (`CONFIRMEE`, 395,250 TND remboursés) ; `AN-0002` est `RETIREE` ; `AN-0003` vise `E-99`.",
+      "**4.** Nuitées vendues, chambres disponibles en mars, taux d’occupation, revenu net, RevPAR. Où comptent les nuits de `E-09` ?"
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardés : ……  Rejets : ……  Nuitées vendues : ……  Chambres disponibles : ……\nOccupation : …… %  Revenu net : …… TND  RevPAR : …… TND  Commissions : …… TND"
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact, **ignorée**. Lignes 8 et 9 : même `sejour_id`, nuitées différentes → **les deux** en `id_conflit`. Ligne 10 : `id_manquant`. Ligne 11 : maison `DMH` inconnue → `cle_inconnue`. Ligne 12 : 0 nuit → `quantite_invalide`. Bilan : **6 séjours gardés**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "sejour_id",
+      "Maison",
+      "Canal (taux)",
+      "Nuits",
+      "Montant",
+      "Commission"
+     ],
+     "rows": [
+      [
+       "E-01",
+       "DAH",
+       "DIR (0 %)",
+       "3",
+       "520,500",
+       "0,000"
+      ],
+      [
+       "E-02",
+       "DSB",
+       "OTA (18 %)",
+       "2",
+       "1 007,000",
+       "181,260"
+      ],
+      [
+       "E-03",
+       "DTZ",
+       "TOP (25 %)",
+       "4",
+       "614,000",
+       "153,500"
+      ],
+      [
+       "E-04",
+       "DDJ",
+       "ENT (10 %)",
+       "1",
+       "213,500",
+       "21,350"
+      ],
+      [
+       "E-05",
+       "DAH",
+       "OTA (18 %)",
+       "3",
+       "790,500",
+       "142,290"
+      ],
+      [
+       "E-09",
+       "DSB",
+       "DIR (0 %)",
+       "3",
+       "685,500",
+       "0,000"
+      ],
+      [
+       "**Total**",
+       "",
+       "",
+       "**16**",
+       "**3 831,000 TND**",
+       "**498,400 TND**"
+      ]
+     ],
+     "widths": [
+      0.8,
+      0.7,
+      1.1,
+      0.6,
+      1.2,
+      1.1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Annulations** : `AN-0001` retire les 3 nuitées de `E-05` et rembourse **395,250 TND** ; `AN-0002` est ignorée (retirée, pas un rejet) ; `AN-0003` est rejetée en `cle_inconnue` (source `operations.sqlite`). Total : **6 rejets**. `E-09` arrive le 30 mars : ses 3 nuits comptent **toutes en mars** (mois d’arrivée)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Nuitées vendues",
+       "16 − 3",
+       "**13**"
+      ],
+      [
+       "Chambres disponibles",
+       "64 chambres × 31 nuits de mars",
+       "1 984"
+      ],
+      [
+       "Taux d’occupation",
+       "13 ÷ 1 984",
+       "**0,655 %**"
+      ],
+      [
+       "Revenu net d’annulations",
+       "3 831,000 − 395,250",
+       "**3 435,750 TND**"
+      ],
+      [
+       "RevPAR",
+       "3 435,750 ÷ 1 984, arrondi au millime",
+       "**1,732 TND**"
+      ]
+     ],
+     "widths": [
+      1.6,
+      2.9,
+      1
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Pièges : `1 007,000` lu 1,007 TND (l’espace sépare les milliers), chambres disponibles comptées sur les seules nuits vendues, `AN-0002` retirée appliquée quand même. L’occupation est minuscule : un mois entier pour 6 séjours, c’est normal. Entrepôt : `fact_sejour` 6, `fact_annulation` 1, `dim_canal` 4, `dim_date` 31."
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Le piège du lot 2 : l’encodage cp1252",
+     "text": "`lot1/sejours.csv` est en UTF-8, **`lot2/sejours.csv` en Windows-1252 (cp1252)**. Lu en UTF-8, il plante avec `UnicodeDecodeError` sur `Algérie` ou `Côte d’Ivoire`. Lu avec `errors=\"ignore\"`, il ne plante pas mais abîme les accents en silence. Règle : essayer UTF-8, sinon cp1252, et dire dans le journal quel encodage a été utilisé."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`sejours.csv`",
+       "séjours, `;` : `sejour_id`, dates de réservation, d’arrivée, de départ, maison, type, canal, `nuitees`, `prix_total`",
+       "trois formats de date ; `1 007,000` ; codes en minuscules ; nuitées `0`, `-2`, `1.5`"
+      ],
+      [
+       "`chambres.xlsx`",
+       "feuille `Chambres`, **en-têtes ligne 3**, une ligne par type + feuille `Types`",
+       "capacité d’une maison = **somme** de ses lignes ; nombres en texte"
+      ],
+      [
+       "`canaux.json`",
+       "taux de commission historisés (`valide_depuis`)",
+       "un taux écrit `10.0` ; lot 2 : 2e version d’OTA"
+      ],
+      [
+       "`operations.sqlite`",
+       "`annulation`, `motif_annulation`, `paiement`",
+       "annulations `RETIREE` ; vers un séjour inconnu"
+      ]
+     ],
+     "widths": [
+      1.38,
+      2.17,
+      2.3
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `sejours.csv`",
+       "1 938",
+       "494",
+       "—"
+      ],
+      [
+       "Doublons exacts · déjà chargés",
+       "15 · 0",
+       "4 · 14",
+       "ignorer"
+      ],
+      [
+       "Rejets de `sejours.csv`",
+       "27",
+       "12",
+       "`rejets.csv`"
+      ],
+      [
+       "Séjours acceptés",
+       "1 896",
+       "464",
+       "`fact_sejour`"
+      ],
+      [
+       "Annulations `RETIREE` · déjà chargées",
+       "3 · 0",
+       "2 · 4",
+       "ignorer"
+      ],
+      [
+       "Annulations vers un séjour inconnu",
+       "2",
+       "1",
+       "`cle_inconnue`"
+      ],
+      [
+       "Annulations acceptées",
+       "107",
+       "28",
+       "`fact_annulation`"
+      ]
+     ],
+     "widths": [
+      2.4,
+      0.8,
+      0.8,
+      1.5
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Une clé de chambre est un **couple** (maison, type) : un type qui existe ailleurs mais pas dans cette maison est une `cle_inconnue`."
+    }
+   ]
+  },
+  {
+   "title": "Avant l’étape A · passer à M06",
+   "kicker": "M06 · DAR AZUR · ÉTAPES A → B → C",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR : votre dépôt passe du tronc commun à M06. On garde le code du tronc commun et on le **généralise**. Détail et raisons : livret 04, « Passer à votre mission »."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · sauvegarder, vider, changer de mission",
+     "text": "git switch main && git pull\ngit switch -c mission-M06\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*                 # .gitkeep (fichier caché) reste\necho \"M06\" > mission.txt"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · généraliser le tronc commun (première étape)",
+     "text": "Mission M06 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M06/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets\nde sejours.csv au lot 1. Lance python -m solen initial, puis --mission M06\n--etape rejets et pytest controles ; recopie les sorties. Dis quels tests\nde tests/ lisent mission.txt et adapte-les. Ni commit ni push."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`livraison/` est versionné, `outputs/` ne l’est pas** : `livraison/tronc-commun/` garde la preuve du tronc commun (et sert à Power BI en séance 5) ; `outputs/` appartient à la mission courante, `python -m solen initial` le reconstruit pour M06.",
+      "**Ordre des contrôles**, un cran vert par PR : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`. Dans la même PR, `ETAPE_CI` revient à `aucune`, puis avance avec vous.",
+      "**Faux ÉCHEC ?** Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` : videz `outputs/`, relancez `initial`, reprenez l’ordre."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_sejour` et le `nombre_chambres` total."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M06 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite avec\ncatalogue/M06/sources/lot1 : dim_date, dim_etablissement, dim_canal,\npuis fact_sejour et fact_annulation, dans une transaction. Clés *_key\nentières, *_id texte, millimes entiers. date_key = jour d'ARRIVÉE ;\nnombre_chambres = somme des lignes de la feuille Chambres ; commission\n= montant × taux du canal à l'arrivée / 100, en entiers.\nLance initial puis --mission M06 --etape initial et recopie les sorties.\nJ'attends <mes prévisions> : compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M06 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_etablissement` 4 · `dim_canal` 4 · `fact_sejour` 1 896 · `fact_annulation` 107"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 9 (7 séjours + 2 annulations) · `id_conflit` 8 · `id_manquant` 6 · `quantite_invalide` 6 · total 29"
+      ],
+      [
+       "**Nuitées vendues · occupation**",
+       "**4 456 · 38,47 %** (11 584 chambres disponibles)"
+      ],
+      [
+       "**Revenu net · RevPAR**",
+       "**949 548,000 TND · 81,971 TND**"
+      ],
+      [
+       "Commissions",
+       "130 569,230 TND"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**La capacité prise sur une seule ligne** de la feuille `Chambres` : DAH aurait 6 chambres au lieu de 22, et son occupation dépasserait 100 %. Additionnez les types.",
+      "**Le séjour daté à la réservation** : `date_key` doit être l’arrivée. Avec la réservation, des séjours tombent en 2025, hors de `dim_date`, et les mois changent."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute les arrivées de juillet-août (fichier en **cp1252**), recopie des séjours déjà chargés et apporte la 2e version d’OTA. **Prévoyez** : (1) lignes de `dim_canal` ; (2) taux d’un séjour OTA arrivé le 14 puis le 15 juillet ; (3) lignes de `fact_sejour` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M06. Ajoute python -m solen increment (lot2 de M06).\nLis lot2/sejours.csv en UTF-8, sinon en cp1252 ; dis lequel a servi.\n- SCD2 sur dim_canal.taux_commission_pct : fermer OTA 18 %\n  (valid_to 2026-07-15, exclu), ouvrir OTA 15 % (valid_from 2026-07-15) ;\n- un séjour prend la version valable à son ARRIVÉE ; une annulation la\n  même que son séjour ; ne jamais recalculer les anciens séjours ;\n- rejeu : sejour_id ou numero_annulation déjà chargé = ignoré.\nLance initial, increment, --etape increment, increment (2e fois),\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M06 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M06 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_canal` **5** · `fact_sejour` 2 360 (+464) · `fact_annulation` 135 (+28)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 4 (3 + 1 annulation) · `id_conflit` 4 · `id_manquant` 2 · `quantite_invalide` 3 · total 13"
+      ],
+      [
+       "**Nuitées vendues · occupation**",
+       "**6 918 · 44,48 %** (15 552 chambres disponibles)"
+      ],
+      [
+       "**Revenu net · RevPAR**",
+       "**1 717 740,500 TND · 110,451 TND** (commissions 225 838,075)"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Lire le lot 2 avec `errors=\"ignore\"`** : aucune erreur, mais `Algrie` dans les données ; les comptes peuvent rester justes, la confiance non. Le message `UnicodeDecodeError` est un indice, pas un ennemi.",
+      "**`UPDATE` du taux d’OTA** : tous les séjours OTA du semestre passent à 15 %, les commissions du lot 1 baissent et le passé ment. Le vérificateur le voit aux dates frontières."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Dar Azur."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M06 --etape export\npython -m solen app\npython -m controles.verifier --mission M06 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 360 lignes de `fact_sejour`, une somme de `montant_millimes` de 1 794 296 500 et de `commission_millimes` de 225 838 075 ; `fact_annulation[remboursement_millimes]` = 76 556 000 ; `dim_etablissement[nombre_chambres]` = 64. Les CSV exportés sont en **UTF-8**, même si la source du lot 2 était en cp1252."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M06. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par canal, Qualité des\ndonnées ; filtres période et établissement ; revenu net par mois et par\nétablissement en barres SVG ; occupation et RevPAR recalculés."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** par `date_key`, `etablissement_key` et `canal_key`. Demandez à Codex les mesures de la mission (formules du cahier) dans `powerbi/mesures_M06.dax` ; sans poste Windows, la démo se fait dans l’application : Nuitées vendues, Chambres disponibles (chambres de `dim_etablissement` × jours de `dim_date`), Taux d’occupation, Revenu net TND, RevPAR TND. Sans filtre, après le lot 2 : 6 918 ; 44,48 % ; 1 717 740,500 TND ; 110,451 TND. Erreurs fréquentes : un RevPAR égal à la **moyenne** des RevPAR mensuels ; des chambres disponibles comptées sur les seuls jours où un séjour arrive."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M06/reference/visuels/revpar_par_mois.png",
+     "caption": "Graphique de référence après le lot 2 : RevPAR par mois, en TND par chambre disponible. Juillet et août montent nettement : c’est la saison.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "La question posée à la direction",
+     "text": "Un client arrive le 30 juin et repart le 3 juillet (3 nuitées) : juin, juillet, ou nuit par nuit ? Et une réservation faite le 10 juillet sur l’OTA pour une arrivée le 20 : commission à 18 % (jour de réservation) ou 15 % (jour d’arrivée) ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Échantillon"
+     ],
+     "rows": [
+      [
+       "**A · tout au mois d’arrivée, taux à l’arrivée** (décidée)",
+       "nuitées, montant, commission et annulations rangés au mois d’arrivée",
+       "mars : 13 nuitées · 0,655 %"
+      ],
+      [
+       "B · nuit par nuit",
+       "2 nuits de `E-09` en mars, 1 en avril ; il faut découper le montant",
+       "mars : 12 nuitées · 0,605 % (notre calcul)"
+      ],
+      [
+       "C · taux à la réservation",
+       "une version de canal par date de réservation",
+       "aucun effet : tout est avant juillet"
+      ]
+     ],
+     "widths": [
+      1.9,
+      2.3,
+      1.5
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Un fait, une date** : avec A, un séjour ne se coupe jamais ; montant, commission et annulation restent ensemble. B oblige à inventer un prix par nuit (685,500 ÷ 3 = 228,500 TND pour `E-09`).",
+      "**La facture de l’OTA** : la commission se paie sur le séjour réalisé, donc au taux valable à l’arrivée.",
+      "**Le prix à payer** : avec A, l’occupation d’un mois compte quelques nuits du mois suivant ; l’écart est faible et se dit à l’oral. Notez la décision dans `notes/JOURNAL.md` (Décision)."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Revenu net après commissions** = revenu net − commissions",
+       "contre la référence (lot 2) : 1 717 740,500 − 225 838,075 = 1 491 902,425 TND, puis par établissement avec `par_etablissement`"
+      ],
+      [
+       "**2. Nuit par nuit** (option B) : grain « nuitée »",
+       "un test sur l’échantillon : mars passe à 12 nuitées ; comparer juin et juillet avec la règle actuelle"
+      ],
+      [
+       "**3. Charger la table `paiement`** : taux d’encaissement = paiements ÷ revenu net",
+       "un test sur un petit jeu ; les contrôles de la référence restent verts"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "nuitées vendues, occupation, revenu net, RevPAR ; revenu net par mois et par établissement ; filtres période et établissement",
+       "« 44,48 % des chambres disponibles ont été vendues. »"
+      ],
+      [
+       "**2. Détail par canal**",
+       "OTA : 18 % jusqu’au 2026-07-14, 15 % ensuite ; nuitées, revenu net et commissions par version",
+       "« Les séjours du printemps gardent leurs 18 %. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "lignes lues, gardées, rejetées par motif et par lot ; annulations retirées ; séjours déjà chargés",
+       "« 42 lignes écartées, et le lot 2 lu en cp1252. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Établissement = DAH (Hammamet). **Prévoyez** : son occupation monte-t-elle avec l’été ?",
+      "**Application** : occupation **47,64 %** et RevPAR **118,235 TND** après le lot 2 (35,51 % et 71,870 après le lot 1). **Référence** : `attendu_lot2.json`, `agregats → par_etablissement → DAH` : `taux_occupation` 0,476431, `revpar_millimes` 118 235.",
+      "**Lecture** : 2 547 nuitées vendues pour 22 chambres × 243 nuits = 5 346. Tozeur fait l’inverse : 47,24 % après le lot 1, 38,18 % après le lot 2."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M06/reference/visuels/occupation_semestre_ete_par_etablissement.png",
+     "caption": "Graphique de référence : taux d’occupation par établissement, de janvier à juin puis de juillet à août, en %. Le même chiffre annuel cache deux saisons opposées.",
+     "height": 225
+    }
+   ]
+  },
+  {
+   "kicker": "M06 · DAR AZUR · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Dar Azur, le grain « un séjour » et la règle du mois d’arrivée ;",
+      "…calculer l’échantillon à la main : 13 nuitées vendues, 1 984 chambres disponibles, 3 435,750 TND de revenu net, RevPAR 1,732 TND ;",
+      "…lire le lot 2 en cp1252 et dire pourquoi une ligne est ignorée ou rejetée ;",
+      "…charger, compléter et rejouer avec `--mission M06`, et montrer qu’OTA garde 18 % avant le 2026-07-15 ;",
+      "…donner le dénominateur de l’occupation et du RevPAR, et refuser d’en faire une moyenne ;",
+      "…défendre la décision A, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Nuitées vendues · chambres disponibles",
+       "4 456 · 11 584",
+       "6 918 · 15 552"
+      ],
+      [
+       "Taux d’occupation",
+       "38,47 %",
+       "44,48 %"
+      ],
+      [
+       "Revenu net d’annulations",
+       "949 548,000 TND",
+       "1 717 740,500 TND"
+      ],
+      [
+       "RevPAR",
+       "81,971 TND",
+       "110,451 TND"
+      ]
+     ],
+     "widths": [
+      2.2,
+      1.4,
+      1.4
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). La direction parle de l’**hiver** : regardez l’occupation de janvier-février par maison, pas seulement l’année. Le revenu net ne retire ni les commissions ni les charges : ce n’est pas un bénéfice."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M06/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Les effets des options B et C sont notre calcul, pas la référence. Dar Azur et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni en CI.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; les mesures DAX de cette mission n’ont pas été testées."
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,4 +1,8 @@
-reportlab>=4.0,<5
-Pillow>=10,<13
+# Outils d'édition (livrets PDF, visuels, générateurs de données). Versions de la construction publiée :
+# voir authoring/generateurs/README.md. Les générateurs n'utilisent ni pandas ni pytest.
+reportlab>=4,<6
+Pillow>=10,<14
 pypdf>=5,<7
 fonttools>=4,<5
+matplotlib>=3.8,<4
+openpyxl>=3.1,<4

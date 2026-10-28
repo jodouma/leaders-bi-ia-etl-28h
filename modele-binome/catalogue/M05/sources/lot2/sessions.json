@@ -1,0 +1,340 @@
+{
+  "source": "Planning des sessions — Académie Nour",
+  "extrait_le": "2026-08-31",
+  "centres": [
+    "Tunis",
+    "Sousse",
+    "Sfax"
+  ],
+  "sessions": [
+    {
+      "code": "SES-2601",
+      "formation": "F01",
+      "formateur": "M. Hatem Ferchichi",
+      "date_debut": "2026-01-19",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "code": "SES-2602",
+      "formation": "F03",
+      "formateur": "M. Anis Kammoun",
+      "date_debut": "2026-01-20",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "code": "SES-2603",
+      "formation": "F06",
+      "formateur": "Mme Nadia Ayari",
+      "date_debut": "2026-01-24",
+      "rythme": "samedi, 9 h – 13 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "code": "SES-2604",
+      "formation": "F02",
+      "formateur": "Mme Rim Zouari",
+      "date_debut": "2026-02-03",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "code": "SES-2605",
+      "formation": "F07",
+      "formateur": "M. Fares Mejri",
+      "date_debut": "09/02/2026",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-01-05"
+        }
+      ]
+    },
+    {
+      "code": "SES-2606",
+      "formation": "F01",
+      "formateur": "M. Hatem Ferchichi",
+      "date_debut": "2026-02-16",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-01-12"
+        }
+      ]
+    },
+    {
+      "code": "SES-2607",
+      "formation": "F04",
+      "formateur": "Mme Olfa Chebbi",
+      "date_debut": "2026-02-21",
+      "rythme": "samedi, 9 h – 13 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-01-17"
+        }
+      ]
+    },
+    {
+      "code": "SES-2608",
+      "formation": "F05",
+      "formateur": "M. Slim Boughanmi",
+      "date_debut": "2026-03-02",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-01-26"
+        }
+      ]
+    },
+    {
+      "code": "SES-2609",
+      "formation": "F02",
+      "formateur": "Mme Rim Zouari",
+      "date_debut": "2026-03-03",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-01-27"
+        }
+      ]
+    },
+    {
+      "code": "SES-2610",
+      "formation": "F06",
+      "formateur": "Mme Nadia Ayari",
+      "date_debut": "2026-03-07",
+      "rythme": "samedi, 9 h – 13 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-01-31"
+        }
+      ]
+    },
+    {
+      "code": " ses-2611",
+      "formation": "F03",
+      "formateur": "M. Anis Kammoun",
+      "date_debut": "2026-03-16",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-02-09"
+        }
+      ]
+    },
+    {
+      "code": "SES-2612",
+      "formation": "F01",
+      "formateur": "M. Hatem Ferchichi",
+      "date_debut": "2026-03-24",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-02-17"
+        }
+      ]
+    },
+    {
+      "code": "SES-2613",
+      "formation": "F07",
+      "formateur": "M. Fares Mejri",
+      "date_debut": "2026-04-06",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-03-02"
+        }
+      ]
+    },
+    {
+      "code": "SES-2614",
+      "formation": "F05",
+      "formateur": "M. Slim Boughanmi",
+      "date_debut": "2026-04-07",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-03-03"
+        }
+      ]
+    },
+    {
+      "code": "SES-2615",
+      "formation": "F02",
+      "formateur": "Mme Rim Zouari",
+      "date_debut": "2026-04-13",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-03-09"
+        }
+      ]
+    },
+    {
+      "code": "SES-2616",
+      "formation": "F06",
+      "formateur": "Mme Nadia Ayari",
+      "date_debut": "2026-04-18",
+      "rythme": "samedi, 9 h – 13 h",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-03-14"
+        }
+      ]
+    },
+    {
+      "code": "SES-2617",
+      "formation": "F01",
+      "formateur": "M. Hatem Ferchichi",
+      "date_debut": "2026-05-04",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-03-30"
+        }
+      ]
+    },
+    {
+      "code": "SES-2618",
+      "formation": "F03",
+      "formateur": "M. Anis Kammoun",
+      "date_debut": "2026-05-05",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-03-31"
+        }
+      ]
+    },
+    {
+      "code": "SES-2619",
+      "formation": "F04",
+      "formateur": "Mme Olfa Chebbi",
+      "date_debut": "2026-05-26",
+      "rythme": "mardi, 18 h – 21 h (à distance)",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-04-21"
+        },
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "code": "SES-2620",
+      "formation": "F07",
+      "formateur": "M. Fares Mejri",
+      "date_debut": "2026-05-25",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-04-20"
+        }
+      ]
+    },
+    {
+      "code": "SES-2621",
+      "formation": "F06",
+      "formateur": "Mme Nadia Ayari",
+      "date_debut": "2026-07-04",
+      "rythme": "samedi, 9 h – 13 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-05-30"
+        }
+      ]
+    },
+    {
+      "code": "SES-2622",
+      "formation": "F01",
+      "formateur": "M. Hatem Ferchichi",
+      "date_debut": "2026-07-06",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sousse",
+          "valide_depuis": "2026-06-01"
+        }
+      ]
+    },
+    {
+      "code": "SES-2623",
+      "formation": "F02",
+      "formateur": "Mme Rim Zouari",
+      "date_debut": "2026-07-07",
+      "rythme": "mardi et jeudi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-06-02"
+        }
+      ]
+    },
+    {
+      "code": "SES-2624",
+      "formation": "F05",
+      "formateur": "M. Slim Boughanmi",
+      "date_debut": "2026-07-20",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Tunis",
+          "valide_depuis": "2026-06-15"
+        }
+      ]
+    },
+    {
+      "code": "SES-2625",
+      "formation": "F01",
+      "formateur": "M. Hatem Ferchichi",
+      "date_debut": "2026-08-03",
+      "rythme": "lundi et mercredi, 18 h – 21 h",
+      "historique": [
+        {
+          "centre": "Sfax",
+          "valide_depuis": "2026-06-29"
+        }
+      ]
+    }
+  ]
+}

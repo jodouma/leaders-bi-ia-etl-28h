@@ -1,8 +1,8 @@
 {
-  "name": "atlas-bi-ia-course-slides",
-  "version": "6.0.0",
+  "name": "solen-bi-22h-course-slides",
+  "version": "7.0.0",
   "private": true,
-  "description": "Présentation pédagogique Atlas · Codex et BI · 15 h",
+  "description": "Présentation pédagogique Solen BI 22 h · IA, Codex et BI · V7",
   "dependencies": {
     "pptxgenjs": "4.0.1"
   }

@@ -1,0 +1,270 @@
+{
+  "source": "Référentiel des projets Pixel Studio",
+  "extrait_le": "2026-08-31",
+  "projets": [
+    {
+      "code": "PX01",
+      "nom": "Site vitrine",
+      "client": "Boulangerie Essalem",
+      "type": "régie",
+      "date_debut": "2025-11-03",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2025-11-03"
+        }
+      ]
+    },
+    {
+      "code": "PX02",
+      "nom": "Application de réservation",
+      "client": "Hôtel Corniche Bleue",
+      "type": "forfait",
+      "date_debut": "2026-01-05",
+      "historique": [
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-01-05"
+        }
+      ]
+    },
+    {
+      "code": "PX03",
+      "nom": "Campagne réseaux sociaux printemps",
+      "client": "Parfumerie Yasmina",
+      "type": "forfait",
+      "date_debut": "2026-02-02",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2026-02-02"
+        }
+      ]
+    },
+    {
+      "code": "PX04",
+      "nom": "Boutique en ligne",
+      "client": "Tapis Bel Ombra",
+      "type": "Régie",
+      "date_debut": "2025-09-15",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2025-09-15"
+        }
+      ]
+    },
+    {
+      "code": "PX05",
+      "nom": "Refonte de l'intranet",
+      "client": "Assurances Najma",
+      "type": "forfait",
+      "date_debut": "2025-12-01",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2025-12-01"
+        }
+      ]
+    },
+    {
+      "code": "PX06",
+      "nom": "Application mobile de fidélité",
+      "client": "Café Les Arcades",
+      "type": "forfait",
+      "date_debut": "2026-03-02",
+      "historique": [
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-03-02"
+        }
+      ]
+    },
+    {
+      "code": "PX07",
+      "nom": "Portail patients",
+      "client": "Clinique Les Jasmins Bleus",
+      "type": "régie",
+      "date_debut": "2026-01-12",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2026-01-12"
+        },
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "code": "PX08",
+      "nom": "Identité visuelle",
+      "client": "Cabinet Ksouri Avocats",
+      "type": "forfait",
+      "date_debut": "2026-01-19",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2026-01-19"
+        }
+      ]
+    },
+    {
+      "code": "PX09",
+      "nom": "Maintenance applicative",
+      "client": "Transports Sahel Express",
+      "type": "régie",
+      "date_debut": "2025-06-02",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2025-06-02"
+        }
+      ]
+    },
+    {
+      "code": "PX10",
+      "nom": "Site événementiel",
+      "client": "Festival Lumières du Sud",
+      "type": "forfait",
+      "date_debut": "2026-04-06",
+      "historique": [
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-04-06"
+        }
+      ]
+    },
+    {
+      "code": "PX11",
+      "nom": "Tableau de bord commercial",
+      "client": "Groupe Atlas Négoce",
+      "type": "régie",
+      "date_debut": "2026-02-16",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2026-02-16"
+        }
+      ]
+    },
+    {
+      "code": "PX12",
+      "nom": "Campagne de recrutement",
+      "client": "École Horizon Numérique",
+      "type": "forfait",
+      "date_debut": "2026-05-04",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2026-05-04"
+        }
+      ]
+    },
+    {
+      "code": "PX13",
+      "nom": "Configurateur de cuisines",
+      "client": "Cuisines Médina Design",
+      "type": " forfait",
+      "date_debut": "2026-02-09",
+      "historique": [
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-02-09"
+        }
+      ]
+    },
+    {
+      "code": "PX14",
+      "nom": "Accompagnement référencement",
+      "client": "Agence Voyages Oasis",
+      "type": "régie",
+      "date_debut": "2025-10-06",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2025-10-06"
+        }
+      ]
+    },
+    {
+      "code": "PX15",
+      "nom": "Application de livraison",
+      "client": "Marché Frais Express",
+      "type": "forfait",
+      "date_debut": "2026-01-26",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2026-01-26"
+        }
+      ]
+    },
+    {
+      "code": "PX16",
+      "nom": "Site institutionnel",
+      "client": "Association Mains Solidaires",
+      "type": "forfait",
+      "date_debut": "2026-03-16",
+      "historique": [
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-03-16"
+        }
+      ]
+    },
+    {
+      "code": "PX17",
+      "nom": "Audit d'accessibilité",
+      "client": "Mutuelle des Enseignants du Cap",
+      "type": "régie",
+      "date_debut": "2026-04-13",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2026-04-13"
+        }
+      ]
+    },
+    {
+      "code": "PX18",
+      "nom": "Newsletter et emailing",
+      "client": "Librairie La Plume d'Or",
+      "type": "forfait",
+      "date_debut": "2026-02-23",
+      "historique": [
+        {
+          "chef_projet": "Hela Mansour",
+          "valide_depuis": "2026-02-23"
+        }
+      ]
+    },
+    {
+      "code": "PX19",
+      "nom": "Prototype réalité augmentée",
+      "client": "Galerie Azur Mosaïques",
+      "type": "forfait",
+      "date_debut": "2026-04-20",
+      "historique": [
+        {
+          "chef_projet": "Nour Jebali",
+          "valide_depuis": "2026-04-20"
+        }
+      ]
+    },
+    {
+      "code": "INT01",
+      "nom": "Temps interne (formation, avant-vente)",
+      "client": "Pixel Studio",
+      "type": "Interne",
+      "date_debut": "2025-01-01",
+      "historique": [
+        {
+          "chef_projet": "Bilel Chaouch",
+          "valide_depuis": "2025-01-01"
+        }
+      ]
+    }
+  ]
+}

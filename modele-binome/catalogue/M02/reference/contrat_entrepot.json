@@ -1,0 +1,342 @@
+{
+  "version_contrat": 1,
+  "mission": "M02",
+  "entreprise": "Souk Express",
+  "grain": "une ligne de commande en ligne",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_produit",
+    "dim_canal",
+    "fact_commande",
+    "fact_remboursement"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_produit": {
+      "role": "dimension",
+      "cle": "produit_key",
+      "cle_metier": "produit_id",
+      "colonnes": [
+        "produit_key",
+        "produit_id",
+        "nom",
+        "categorie",
+        "prix_millimes",
+        "cout_millimes"
+      ],
+      "colonnes_entieres": [
+        "produit_key",
+        "prix_millimes",
+        "cout_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_canal": {
+      "role": "dimension_scd2",
+      "cle": "canal_key",
+      "cle_metier": "canal_id",
+      "colonnes": [
+        "canal_key",
+        "canal_id",
+        "nom",
+        "famille",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "canal_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_commande": {
+      "role": "fait",
+      "cle": "ligne_id",
+      "cle_metier": null,
+      "colonnes": [
+        "ligne_id",
+        "commande_id",
+        "date_key",
+        "produit_key",
+        "canal_key",
+        "quantite",
+        "prix_unitaire_millimes",
+        "montant_brut_millimes",
+        "remise_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "produit_key",
+        "canal_key",
+        "quantite",
+        "prix_unitaire_millimes",
+        "montant_brut_millimes",
+        "remise_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "produit_key": "dim_produit.produit_key",
+        "canal_key": "dim_canal.canal_key"
+      }
+    },
+    "fact_remboursement": {
+      "role": "fait",
+      "cle": "remboursement_id",
+      "cle_metier": null,
+      "colonnes": [
+        "remboursement_id",
+        "ligne_id",
+        "date_key",
+        "produit_key",
+        "canal_key",
+        "quantite",
+        "montant_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "produit_key",
+        "canal_key",
+        "quantite",
+        "montant_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "ligne_id": "fact_commande.ligne_id",
+        "date_key": "dim_date.date_key",
+        "produit_key": "dim_produit.produit_key",
+        "canal_key": "dim_canal.canal_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_commande",
+    "fact_remboursement"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_canal",
+    "cle": "canal_key",
+    "cle_metier": "canal_id",
+    "attribut": "famille",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_commande",
+        "colonne": "canal_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_remboursement",
+        "colonne": "canal_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "VSO",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "VSO",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "VSO",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "WEB",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, d.date_complete AS jour, c.canal_id, c.famille, p.produit_id, p.categorie, f.commande_id, CASE WHEN ROW_NUMBER() OVER (PARTITION BY f.commande_id ORDER BY f.ligne_id) = 1 THEN 1 ELSE 0 END AS nb_commandes, f.montant_brut_millimes AS brut, f.remise_millimes AS remise, 0 AS rembourse, f.quantite AS unites_vendues, 0 AS unites_remboursees FROM fact_commande f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_canal c ON c.canal_key = f.canal_key JOIN dim_produit p ON p.produit_key = f.produit_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), d.date_complete, c.canal_id, c.famille, p.produit_id, p.categorie, NULL, 0, 0, 0, r.montant_millimes, 0, r.quantite FROM fact_remboursement r JOIN dim_date d ON d.date_key = r.date_key JOIN dim_canal c ON c.canal_key = r.canal_key JOIN dim_produit p ON p.produit_key = r.produit_key",
+  "indicateurs": [
+    {
+      "code": "ca_brut_millimes",
+      "libelle": "CA brut",
+      "unite": "millimes",
+      "formule": "somme de quantite × prix_unitaire des lignes de commande acceptées",
+      "sql": "SUM(brut)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "remises_millimes",
+      "libelle": "Remises",
+      "unite": "millimes",
+      "formule": "somme des remises (TND) des lignes de commande acceptées",
+      "sql": "SUM(remise)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "remboursements_millimes",
+      "libelle": "Remboursements",
+      "unite": "millimes",
+      "formule": "somme des montants des remboursements au statut REMBOURSE acceptés",
+      "sql": "SUM(rembourse)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "ca_net_millimes",
+      "libelle": "CA net",
+      "unite": "millimes",
+      "formule": "CA brut − remises − remboursements",
+      "sql": "SUM(brut) - SUM(remise) - SUM(rembourse)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "nb_commandes",
+      "libelle": "Nombre de commandes",
+      "unite": "nombre",
+      "formule": "nombre de `commande_id` distincts parmi les lignes de commande acceptées",
+      "sql": "COUNT(DISTINCT commande_id)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "panier_moyen_net_millimes",
+      "libelle": "Panier moyen net",
+      "unite": "millimes",
+      "formule": "CA net / nombre de commandes distinctes, arrondi au millime",
+      "sql": "ROUND(1.0 * (SUM(brut) - SUM(remise) - SUM(rembourse)) / NULLIF(COUNT(DISTINCT commande_id), 0))",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "unites_nettes",
+      "libelle": "Unités nettes",
+      "unite": "nombre",
+      "formule": "unités commandées − unités remboursées",
+      "sql": "SUM(unites_vendues) - SUM(unites_remboursees)",
+      "tolerance": 0.0,
+      "principal": false
+    }
+  ],
+  "axes": {
+    "par_famille": "famille",
+    "par_canal": "canal_id",
+    "par_mois": "mois",
+    "par_categorie": "categorie"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "commandes.csv",
+      "operations.sqlite"
+    ],
+    "etape_rejets": {
+      "sources": [
+        "commandes.csv"
+      ]
+    }
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_produit",
+      "dim_canal",
+      "fact_commande",
+      "fact_remboursement"
+    ],
+    "sommes": {
+      "fact_commande": [
+        "quantite",
+        "montant_brut_millimes",
+        "remise_millimes"
+      ],
+      "fact_remboursement": [
+        "quantite",
+        "montant_millimes"
+      ],
+      "dim_produit": [
+        "prix_millimes",
+        "cout_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par canal",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}
