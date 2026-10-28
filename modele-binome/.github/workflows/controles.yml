@@ -1,0 +1,100 @@
+# Intégration continue (CI) du dépôt binôme Solen.
+#
+# À quoi ça sert : à chaque pull request, et à chaque fusion dans main, GitHub
+# prend une machine Linux neuve, installe le projet depuis zéro, reconstruit
+# l'entrepôt et lance les mêmes contrôles que vous lancez sur votre poste.
+# Si c'est vert ici, le résultat ne dépend pas de « ça marche chez moi ».
+#
+# Ce fichier est du code YAML : vous ne l'écrivez pas à la main. Demandez à
+# Codex de le créer ou de le mettre à jour (prompt « tests-et-ci »), puis lisez
+# le diff comme pour le reste. Aucune clé d'IA, aucun secret, aucun service
+# externe : seulement Python et les fichiers du dépôt.
+
+name: Contrôles Solen
+
+# Quand la CI se lance : sur chaque pull request, et quand main change.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# La CI lit le dépôt ; elle n'a le droit de rien modifier.
+permissions:
+  contents: read
+
+env:
+  # Jusqu'où le pipeline est construit. Valeurs possibles, dans l'ordre :
+  #   aucune     → séance 1 : rien n'est encore construit, on vérifie seulement l'installation
+  #   initial    → le chargement du lot 1 existe
+  #   increment  → le lot 2 s'ajoute
+  #   rejeu      → relancer le lot 2 n'ajoute rien
+  #   export     → les CSV et le manifeste sont produits
+  #   tout       → tout le parcours + les tests pytest (objectif de la séance 4)
+  # Pour avancer, demandez à Codex : « passe ETAPE_CI à <valeur> dans controles.yml ».
+  ETAPE_CI: aucune
+  # Affichage correct des accents dans les journaux de la CI.
+  PYTHONIOENCODING: utf-8
+
+jobs:
+  controles:
+    name: Pipeline et contrôles (${{ github.event_name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # 1. Récupérer une copie du dépôt (la branche de la PR) sur la machine.
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      # 2. Installer Python 3.12, comme une installation neuve.
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 3. Installer les bibliothèques listées dans requirements.txt
+      #    (pandas, openpyxl, pytest…). Le paquet solen/ est lu directement depuis la racine.
+      - name: Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # 4. Afficher la mission et l'étape contrôlées, pour lire le journal facilement.
+      - name: Mission et étape
+        run: |
+          echo "Mission : $(cat mission.txt)"
+          echo "Étape CI : $ETAPE_CI"
+          if [ "$ETAPE_CI" = "aucune" ]; then
+            echo "Pipeline pas encore construit : seule l'installation est vérifiée."
+          fi
+
+      # 5. Chargement initial : recrée l'entrepôt depuis zéro avec le lot 1.
+      - name: Chargement initial (lot 1)
+        if: env.ETAPE_CI != 'aucune'
+        run: python -m solen initial
+
+      # 6. Incrément : ajoute le lot 2 (nouvelles lignes, changement SCD2).
+      - name: Incrément (lot 2)
+        if: contains(fromJSON('["increment","rejeu","export","tout"]'), env.ETAPE_CI)
+        run: python -m solen increment
+
+      # 7. Rejeu : on relance exactement le même lot 2. Il ne doit rien ajouter.
+      - name: Rejeu du lot 2 (ne doit rien ajouter)
+        if: contains(fromJSON('["rejeu","export","tout"]'), env.ETAPE_CI)
+        run: python -m solen increment
+
+      # 8. Export : écrit outputs/export/<table>.csv et manifest.json.
+      - name: Export CSV et manifeste
+        if: contains(fromJSON('["export","tout"]'), env.ETAPE_CI)
+        run: python -m solen export
+
+      # 9. Vérificateur fourni : compare vos sorties aux valeurs de référence.
+      #    S'il échoue, corrigez le code, jamais le vérificateur ni la référence.
+      - name: Vérifier les résultats
+        if: env.ETAPE_CI != 'aucune'
+        run: python -m controles.verifier --mission "$(cat mission.txt)" --etape "$ETAPE_CI"
+
+      # 10. Tests pytest : ceux fournis dans controles/ et ceux que Codex a écrits.
+      - name: Tests pytest
+        if: env.ETAPE_CI == 'tout'
+        run: pytest -q

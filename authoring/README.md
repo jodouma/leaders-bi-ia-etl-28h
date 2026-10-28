@@ -1,29 +1,40 @@
-# Reconstruire les supports
+# Reconstruire les supports et les données
 
 [Retour au cours](../README.md)
 
-Les étudiants suivent les missions sans installer ces dépendances d’édition.
+Les étudiants n'ont pas besoin de ce dossier. Il contient les sources éditables et les scripts qui reconstruisent tout ce qui est publié.
 
 | Support | Sources | Résultat |
 |---|---|---|
-| Cinq livrets | `content/` et `build_pdfs.py` | `../pdf/` |
-| Présentation éditable et PDF | [Guide des diapositives](slides/README.md) | `../presentation/` |
-| Quatorze schémas | [Sources des visuels](visuals/README.md) | `../docs/images/diagrams/` |
-| Logo et polices | [Provenance](ASSETS.md) | Ressources redistribuées avec licences |
-| Installation | [Références officielles](../docs/setup/sources.json) | Guide 01 |
+| Sept livrets étudiants | `content/0N_*.json` + `build_pdfs.py` | `../pdf/0N_*.pdf` |
+| Dix guides de mission | `content/missions/M0N.json` + `build_pdfs.py --missions` | `../pdf/missions/M0N_guide.pdf` |
+| Données des onze missions et valeurs de référence | `generateurs/mission*.py` + `generateurs/common.py` | `../modele-binome/tronc-commun/`, `../modele-binome/catalogue/M0N/` |
+| Seize schémas | `visuals/generate.py` | `../docs/images/diagrams/v7-*.svg|png` |
+| Présentation éditable et PDF | `slides/` (voir son README) | `../presentation/` |
+| Logos et polices | `assets/` ; provenance dans `ASSETS.md` | redistribués avec leurs licences |
+| Sources officielles | `../docs/setup/sources.json` (vérifiées le 28 octobre 2026) | livret 01 |
 
-Avec Python 3.10 ou ultérieur dans un environnement d’édition séparé, depuis la racine :
+## Environnement d'édition
 
-```text
-python3 -m pip install -r authoring/requirements.txt
-python3 authoring/visuals/generate.py
-python3 authoring/build_pdfs.py
-python3 authoring/check_materials.py
-python3 -m unittest discover -s tests -v
+Python 3.11 ou plus récent, dans un environnement virtuel séparé du poste étudiant :
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r modele-binome/requirements.txt -r authoring/requirements.txt
 ```
 
-Le contrôle compare les panneaux de code imprimés, exécute les exemples avec leurs prérequis, parcourt les sept jalons et vérifie les exports. Inspecter aussi chaque page et chaque diapositive à taille lisible. Les contrôles automatiques ne prouvent ni une installation WSL, ni l’accès d’un compte Free, ni une manipulation Power BI.
+## Commandes
 
-Les [Actions GitHub](https://github.com/jodouma/leaders-bi-ia-etl-28h/actions) consignent les exécutions sur leurs systèmes. L’essai Power BI Desktop reste une expérience manuelle séparée : l’installation dans le runner Windows hébergé a dépassé son délai de neuf minutes. Elle ne valide donc ni l’application ni ses visuels. La vérification interactive doit être faite sur un poste Windows ; le contrôle du code et des PDF est indépendant.
+```bash
+python authoring/generateurs/mission00_commerce360.py      # régénère le tronc commun (déterministe)
+python authoring/generateurs/verifier_reproductibilite.py  # chaque générateur reproduit les fichiers publiés
+python authoring/visuals/generate.py                       # schémas
+python authoring/build_pdfs.py --missions                  # livrets + guides de mission ; rapport de mise en page
+```
 
-Après validation, `python3 authoring/package_course.py` crée `Atlas_CODEX_BI_15h_etudiants.zip` dans `livraison/`, à côté du dépôt. Tester ce ZIP extrait. Le dossier privé `formateur/` reste hors du dépôt et n’est jamais parcouru par le générateur d’archive.
+Les générateurs écrivent les sources (CSV, Excel, JSON, SQLite), l'échantillon calculable à la main, les cahiers des charges et les valeurs de référence `reference/attendu_*.json` **calculées depuis la vérité terrain**, sans passer par un ETL. Le vérificateur étudiant `modele-binome/controles/verifier.py` lit ces références et `reference/contrat_entrepot.json` ; il ne connaît aucune implémentation.
+
+Le rapport `pdf_layout_report.json` liste, par page, la position du bas de page et les figures manquantes. Une figure absente est rendue comme un cadre « capture à réaliser » et signalée ; la CI du cours refuse un livret publié avec une figure manquante.
+
+Les solutions de référence, les lots d'évaluation privés, le guide du jury et les reçus de QA sont conservés hors du dépôt, dans le dossier privé du formateur. `package_course.py` crée le ZIP étudiant à partir d'une liste explicite de dossiers publics et refuse tout fichier privé.

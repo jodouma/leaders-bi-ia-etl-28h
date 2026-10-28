@@ -1,0 +1,623 @@
+{
+  "mission": "M01",
+  "entreprise": "Carthage Market",
+  "lot": "lot2",
+  "etape": "increment",
+  "periode": {
+    "debut": "2026-07-01",
+    "fin": "2026-08-31"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "ventes.csv": {
+      "lignes": 449,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "catalogue.xlsx": {
+      "feuilles": [
+        "Catalogue",
+        "Familles"
+      ],
+      "produits": 12,
+      "familles": 5,
+      "ligne_entete_catalogue": 3
+    },
+    "magasins.json": {
+      "magasins": 7,
+      "versions": 8,
+      "franchises": 4
+    },
+    "operations.sqlite": {
+      "retour": 28,
+      "valides": 26,
+      "annules": 2,
+      "motif_retour": 4
+    }
+  },
+  "nettoyage": {
+    "ventes.csv": {
+      "lignes_acceptees_nouvelles": 420,
+      "doublons_exacts": 4,
+      "deja_charges": 16,
+      "formats_montants": 123,
+      "formats_dates": 93,
+      "casse_espaces": 52
+    },
+    "operations.sqlite": {
+      "retours_annules_exclus": 2,
+      "deja_charges": 4,
+      "retours_acceptes_nouveaux": 21
+    }
+  },
+  "rejets": {
+    "total": 10,
+    "par_motif": {
+      "cle_inconnue": 3,
+      "id_conflit": 2,
+      "id_manquant": 2,
+      "quantite_invalide": 3
+    },
+    "par_source": {
+      "ventes.csv": {
+        "cle_inconnue": 2,
+        "id_conflit": 2,
+        "id_manquant": 2,
+        "quantite_invalide": 3
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 243,
+    "dim_produit": 12,
+    "dim_magasin": 8,
+    "fact_vente": 2570,
+    "fact_retour": 80
+  },
+  "indicateurs": {
+    "ventes_brutes_millimes": 22353670,
+    "remises_millimes": 344040,
+    "retours_millimes": 473444,
+    "ventes_nettes_millimes": 21880226,
+    "cout_achat_net_millimes": 15242310,
+    "marge_cout_achat_millimes": 6637916,
+    "part_franchises": 0.445094,
+    "taux_retour": 0.02118,
+    "unites_nettes": 5983
+  },
+  "agregats": {
+    "par_region": {
+      "Cap Bon": {
+        "ventes_brutes_millimes": 2586880,
+        "remises_millimes": 41900,
+        "retours_millimes": 21587,
+        "ventes_nettes_millimes": 2565293,
+        "cout_achat_net_millimes": 1811010,
+        "marge_cout_achat_millimes": 754283,
+        "part_franchises": 1.0,
+        "taux_retour": 0.008345,
+        "unites_nettes": 720
+      },
+      "Grand Tunis": {
+        "ventes_brutes_millimes": 7845390,
+        "remises_millimes": 144400,
+        "retours_millimes": 199140,
+        "ventes_nettes_millimes": 7646250,
+        "cout_achat_net_millimes": 5346870,
+        "marge_cout_achat_millimes": 2299380,
+        "part_franchises": 0.34301,
+        "taux_retour": 0.025383,
+        "unites_nettes": 2101
+      },
+      "Nord": {
+        "ventes_brutes_millimes": 2476820,
+        "remises_millimes": 39910,
+        "retours_millimes": 55877,
+        "ventes_nettes_millimes": 2420943,
+        "cout_achat_net_millimes": 1682550,
+        "marge_cout_achat_millimes": 738393,
+        "part_franchises": 1.0,
+        "taux_retour": 0.02256,
+        "unites_nettes": 627
+      },
+      "Sahel": {
+        "ventes_brutes_millimes": 4323120,
+        "remises_millimes": 69660,
+        "retours_millimes": 119370,
+        "ventes_nettes_millimes": 4203750,
+        "cout_achat_net_millimes": 2924920,
+        "marge_cout_achat_millimes": 1278830,
+        "part_franchises": 0.088797,
+        "taux_retour": 0.027612,
+        "unites_nettes": 1197
+      },
+      "Sud": {
+        "ventes_brutes_millimes": 5121460,
+        "remises_millimes": 48170,
+        "retours_millimes": 77470,
+        "ventes_nettes_millimes": 5043990,
+        "cout_achat_net_millimes": 3476960,
+        "marge_cout_achat_millimes": 1567030,
+        "part_franchises": 0.348236,
+        "taux_retour": 0.015127,
+        "unites_nettes": 1338
+      }
+    },
+    "par_magasin": {
+      "ARI": {
+        "ventes_brutes_millimes": 2669720,
+        "remises_millimes": 48220,
+        "retours_millimes": 46980,
+        "ventes_nettes_millimes": 2622740,
+        "cout_achat_net_millimes": 1834030,
+        "marge_cout_achat_millimes": 788710,
+        "part_franchises": 1.0,
+        "taux_retour": 0.017597,
+        "unites_nettes": 759
+      },
+      "BIZ": {
+        "ventes_brutes_millimes": 2476820,
+        "remises_millimes": 39910,
+        "retours_millimes": 55877,
+        "ventes_nettes_millimes": 2420943,
+        "cout_achat_net_millimes": 1682550,
+        "marge_cout_achat_millimes": 738393,
+        "part_franchises": 1.0,
+        "taux_retour": 0.02256,
+        "unites_nettes": 627
+      },
+      "GAB": {
+        "ventes_brutes_millimes": 1809180,
+        "remises_millimes": 24070,
+        "retours_millimes": 52680,
+        "ventes_nettes_millimes": 1756500,
+        "cout_achat_net_millimes": 1213510,
+        "marge_cout_achat_millimes": 542990,
+        "part_franchises": 1.0,
+        "taux_retour": 0.029118,
+        "unites_nettes": 459
+      },
+      "HAM": {
+        "ventes_brutes_millimes": 2976940,
+        "remises_millimes": 56910,
+        "retours_millimes": 38367,
+        "ventes_nettes_millimes": 2938573,
+        "cout_achat_net_millimes": 2083050,
+        "marge_cout_achat_millimes": 855523,
+        "part_franchises": 1.0,
+        "taux_retour": 0.012888,
+        "unites_nettes": 839
+      },
+      "LAC": {
+        "ventes_brutes_millimes": 5175670,
+        "remises_millimes": 96180,
+        "retours_millimes": 152160,
+        "ventes_nettes_millimes": 5023510,
+        "cout_achat_net_millimes": 3512840,
+        "marge_cout_achat_millimes": 1510670,
+        "part_franchises": 0.0,
+        "taux_retour": 0.029399,
+        "unites_nettes": 1342
+      },
+      "SFX": {
+        "ventes_brutes_millimes": 3312280,
+        "remises_millimes": 24100,
+        "retours_millimes": 24790,
+        "ventes_nettes_millimes": 3287490,
+        "cout_achat_net_millimes": 2263450,
+        "marge_cout_achat_millimes": 1024040,
+        "part_franchises": 0.0,
+        "taux_retour": 0.007484,
+        "unites_nettes": 879
+      },
+      "SOU": {
+        "ventes_brutes_millimes": 3933060,
+        "remises_millimes": 54650,
+        "retours_millimes": 102590,
+        "ventes_nettes_millimes": 3830470,
+        "cout_achat_net_millimes": 2652880,
+        "marge_cout_achat_millimes": 1177590,
+        "part_franchises": 0.0,
+        "taux_retour": 0.026084,
+        "unites_nettes": 1078
+      }
+    },
+    "par_type": {
+      "franchisé": {
+        "ventes_brutes_millimes": 9932660,
+        "remises_millimes": 169110,
+        "retours_millimes": 193904,
+        "ventes_nettes_millimes": 9738756,
+        "cout_achat_net_millimes": 6813140,
+        "marge_cout_achat_millimes": 2925616,
+        "part_franchises": 1.0,
+        "taux_retour": 0.019522,
+        "unites_nettes": 2684
+      },
+      "propre": {
+        "ventes_brutes_millimes": 12421010,
+        "remises_millimes": 174930,
+        "retours_millimes": 279540,
+        "ventes_nettes_millimes": 12141470,
+        "cout_achat_net_millimes": 8429170,
+        "marge_cout_achat_millimes": 3712300,
+        "part_franchises": 0.0,
+        "taux_retour": 0.022505,
+        "unites_nettes": 3299
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "ventes_brutes_millimes": 2941860,
+        "remises_millimes": 9210,
+        "retours_millimes": 76260,
+        "ventes_nettes_millimes": 2865600,
+        "cout_achat_net_millimes": 1958930,
+        "marge_cout_achat_millimes": 906670,
+        "part_franchises": 0.353026,
+        "taux_retour": 0.025922,
+        "unites_nettes": 763
+      },
+      "2026-02": {
+        "ventes_brutes_millimes": 2921580,
+        "remises_millimes": 60970,
+        "retours_millimes": 13200,
+        "ventes_nettes_millimes": 2908380,
+        "cout_achat_net_millimes": 2034450,
+        "marge_cout_achat_millimes": 873930,
+        "part_franchises": 0.441266,
+        "taux_retour": 0.004518,
+        "unites_nettes": 843
+      },
+      "2026-03": {
+        "ventes_brutes_millimes": 4135440,
+        "remises_millimes": 109230,
+        "retours_millimes": 82630,
+        "ventes_nettes_millimes": 4052810,
+        "cout_achat_net_millimes": 2862960,
+        "marge_cout_achat_millimes": 1189850,
+        "part_franchises": 0.446961,
+        "taux_retour": 0.019981,
+        "unites_nettes": 1192
+      },
+      "2026-04": {
+        "ventes_brutes_millimes": 2619470,
+        "remises_millimes": 8870,
+        "retours_millimes": 74347,
+        "ventes_nettes_millimes": 2545123,
+        "cout_achat_net_millimes": 1743780,
+        "marge_cout_achat_millimes": 801343,
+        "part_franchises": 0.520396,
+        "taux_retour": 0.028382,
+        "unites_nettes": 699
+      },
+      "2026-05": {
+        "ventes_brutes_millimes": 3132270,
+        "remises_millimes": 4600,
+        "retours_millimes": 47580,
+        "ventes_nettes_millimes": 3084690,
+        "cout_achat_net_millimes": 2114110,
+        "marge_cout_achat_millimes": 970580,
+        "part_franchises": 0.457916,
+        "taux_retour": 0.01519,
+        "unites_nettes": 770
+      },
+      "2026-06": {
+        "ventes_brutes_millimes": 3053890,
+        "remises_millimes": 13380,
+        "retours_millimes": 73470,
+        "ventes_nettes_millimes": 2980420,
+        "cout_achat_net_millimes": 2072100,
+        "marge_cout_achat_millimes": 908320,
+        "part_franchises": 0.431788,
+        "taux_retour": 0.024058,
+        "unites_nettes": 771
+      },
+      "2026-07": {
+        "ventes_brutes_millimes": 1965460,
+        "remises_millimes": 78970,
+        "retours_millimes": 66680,
+        "ventes_nettes_millimes": 1898780,
+        "cout_achat_net_millimes": 1351480,
+        "marge_cout_achat_millimes": 547300,
+        "part_franchises": 0.441657,
+        "taux_retour": 0.033926,
+        "unites_nettes": 531
+      },
+      "2026-08": {
+        "ventes_brutes_millimes": 1583700,
+        "remises_millimes": 58810,
+        "retours_millimes": 39277,
+        "ventes_nettes_millimes": 1544423,
+        "cout_achat_net_millimes": 1104500,
+        "marge_cout_achat_millimes": 439923,
+        "part_franchises": 0.498428,
+        "taux_retour": 0.024801,
+        "unites_nettes": 414
+      }
+    },
+    "par_famille": {
+      "Boissons": {
+        "ventes_brutes_millimes": 4434810,
+        "remises_millimes": 78990,
+        "retours_millimes": 37200,
+        "ventes_nettes_millimes": 4397610,
+        "cout_achat_net_millimes": 3022450,
+        "marge_cout_achat_millimes": 1375160,
+        "part_franchises": 0.44991,
+        "taux_retour": 0.008388,
+        "unites_nettes": 1138
+      },
+      "Entretien": {
+        "ventes_brutes_millimes": 3730810,
+        "remises_millimes": 56390,
+        "retours_millimes": 100350,
+        "ventes_nettes_millimes": 3630460,
+        "cout_achat_net_millimes": 2403800,
+        "marge_cout_achat_millimes": 1226660,
+        "part_franchises": 0.452036,
+        "taux_retour": 0.026898,
+        "unites_nettes": 434
+      },
+      "Hygiène": {
+        "ventes_brutes_millimes": 1166200,
+        "remises_millimes": 19600,
+        "retours_millimes": 19600,
+        "ventes_nettes_millimes": 1146600,
+        "cout_achat_net_millimes": 666400,
+        "marge_cout_achat_millimes": 480200,
+        "part_franchises": 0.457692,
+        "taux_retour": 0.016807,
+        "unites_nettes": 119
+      },
+      "Produits laitiers": {
+        "ventes_brutes_millimes": 4205800,
+        "remises_millimes": 50210,
+        "retours_millimes": 164187,
+        "ventes_nettes_millimes": 4041613,
+        "cout_achat_net_millimes": 2804440,
+        "marge_cout_achat_millimes": 1237173,
+        "part_franchises": 0.39855,
+        "taux_retour": 0.039038,
+        "unites_nettes": 1764
+      },
+      "Épicerie": {
+        "ventes_brutes_millimes": 8816050,
+        "remises_millimes": 138850,
+        "retours_millimes": 152107,
+        "ventes_nettes_millimes": 8663943,
+        "cout_achat_net_millimes": 6345220,
+        "marge_cout_achat_millimes": 2318723,
+        "part_franchises": 0.459785,
+        "taux_retour": 0.017253,
+        "unites_nettes": 2528
+      }
+    },
+    "par_produit": {
+      "C101": {
+        "ventes_brutes_millimes": 1070230,
+        "remises_millimes": 16520,
+        "retours_millimes": 25250,
+        "ventes_nettes_millimes": 1044980,
+        "cout_achat_net_millimes": 770280,
+        "marge_cout_achat_millimes": 274700,
+        "part_franchises": 0.479138,
+        "taux_retour": 0.023593,
+        "unites_nettes": 786
+      },
+      "C102": {
+        "ventes_brutes_millimes": 828990,
+        "remises_millimes": 13960,
+        "retours_millimes": 16100,
+        "ventes_nettes_millimes": 812890,
+        "cout_achat_net_millimes": 546440,
+        "marge_cout_achat_millimes": 266450,
+        "part_franchises": 0.459004,
+        "taux_retour": 0.019421,
+        "unites_nettes": 719
+      },
+      "C103": {
+        "ventes_brutes_millimes": 3326100,
+        "remises_millimes": 48700,
+        "retours_millimes": 56937,
+        "ventes_nettes_millimes": 3269163,
+        "cout_achat_net_millimes": 2585200,
+        "marge_cout_achat_millimes": 683963,
+        "part_franchises": 0.471305,
+        "taux_retour": 0.017118,
+        "unites_nettes": 562
+      },
+      "C104": {
+        "ventes_brutes_millimes": 3590730,
+        "remises_millimes": 59670,
+        "retours_millimes": 53820,
+        "ventes_nettes_millimes": 3536910,
+        "cout_achat_net_millimes": 2443300,
+        "marge_cout_achat_millimes": 1093610,
+        "part_franchises": 0.443599,
+        "taux_retour": 0.014989,
+        "unites_nettes": 461
+      },
+      "C105": {
+        "ventes_brutes_millimes": 2647050,
+        "remises_millimes": 45150,
+        "retours_millimes": 33600,
+        "ventes_nettes_millimes": 2613450,
+        "cout_achat_net_millimes": 1835700,
+        "marge_cout_achat_millimes": 777750,
+        "part_franchises": 0.446846,
+        "taux_retour": 0.012693,
+        "unites_nettes": 633
+      },
+      "C106": {
+        "ventes_brutes_millimes": 1787760,
+        "remises_millimes": 33840,
+        "retours_millimes": 3600,
+        "ventes_nettes_millimes": 1784160,
+        "cout_achat_net_millimes": 1186750,
+        "marge_cout_achat_millimes": 597410,
+        "part_franchises": 0.454399,
+        "taux_retour": 0.002014,
+        "unites_nettes": 505
+      },
+      "C107": {
+        "ventes_brutes_millimes": 1444970,
+        "remises_millimes": 21190,
+        "retours_millimes": 44477,
+        "ventes_nettes_millimes": 1400493,
+        "cout_achat_net_millimes": 1106640,
+        "marge_cout_achat_millimes": 293853,
+        "part_franchises": 0.463725,
+        "taux_retour": 0.030781,
+        "unites_nettes": 954
+      },
+      "C108": {
+        "ventes_brutes_millimes": 1311240,
+        "remises_millimes": 18360,
+        "retours_millimes": 65760,
+        "ventes_nettes_millimes": 1245480,
+        "cout_achat_net_millimes": 789000,
+        "marge_cout_achat_millimes": 456480,
+        "part_franchises": 0.373639,
+        "taux_retour": 0.050151,
+        "unites_nettes": 526
+      },
+      "C109": {
+        "ventes_brutes_millimes": 1449590,
+        "remises_millimes": 10660,
+        "retours_millimes": 53950,
+        "ventes_nettes_millimes": 1395640,
+        "cout_achat_net_millimes": 908800,
+        "marge_cout_achat_millimes": 486840,
+        "part_franchises": 0.355378,
+        "taux_retour": 0.037217,
+        "unites_nettes": 284
+      },
+      "C110": {
+        "ventes_brutes_millimes": 1166200,
+        "remises_millimes": 19600,
+        "retours_millimes": 19600,
+        "ventes_nettes_millimes": 1146600,
+        "cout_achat_net_millimes": 666400,
+        "marge_cout_achat_millimes": 480200,
+        "part_franchises": 0.457692,
+        "taux_retour": 0.016807,
+        "unites_nettes": 119
+      },
+      "C111": {
+        "ventes_brutes_millimes": 2501510,
+        "remises_millimes": 35490,
+        "retours_millimes": 62350,
+        "ventes_nettes_millimes": 2439160,
+        "cout_achat_net_millimes": 1702000,
+        "marge_cout_achat_millimes": 737160,
+        "part_franchises": 0.449097,
+        "taux_retour": 0.024925,
+        "unites_nettes": 115
+      },
+      "C112": {
+        "ventes_brutes_millimes": 1229300,
+        "remises_millimes": 20900,
+        "retours_millimes": 38000,
+        "ventes_nettes_millimes": 1191300,
+        "cout_achat_net_millimes": 701800,
+        "marge_cout_achat_millimes": 489500,
+        "part_franchises": 0.458054,
+        "taux_retour": 0.030912,
+        "unites_nettes": 319
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_magasin",
+    "cle_metier": "magasin_id",
+    "attribut": "region",
+    "versions": [
+      {
+        "cle_metier": "ARI",
+        "attribut": "Grand Tunis",
+        "valid_from": "2020-02-17",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "BIZ",
+        "attribut": "Nord",
+        "valid_from": "2021-06-07",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "GAB",
+        "attribut": "Sud",
+        "valid_from": "2023-03-20",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "HAM",
+        "attribut": "Cap Bon",
+        "valid_from": "2022-04-11",
+        "valid_to": "2026-07-15"
+      },
+      {
+        "cle_metier": "HAM",
+        "attribut": "Sahel",
+        "valid_from": "2026-07-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "LAC",
+        "attribut": "Grand Tunis",
+        "valid_from": "2017-09-04",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SFX",
+        "attribut": "Sud",
+        "valid_from": "2019-05-13",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SOU",
+        "attribut": "Sahel",
+        "valid_from": "2018-11-05",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "HAM",
+        "date": "2026-06-30",
+        "attribut": "Cap Bon"
+      },
+      {
+        "cle_metier": "HAM",
+        "date": "2026-07-14",
+        "attribut": "Cap Bon"
+      },
+      {
+        "cle_metier": "HAM",
+        "date": "2026-07-15",
+        "attribut": "Sahel"
+      },
+      {
+        "cle_metier": "LAC",
+        "date": "2026-07-15",
+        "attribut": "Grand Tunis"
+      }
+    ]
+  },
+  "increment": {
+    "fact_vente_ajoutees": 420,
+    "fact_retour_ajoutees": 21,
+    "versions_scd2_ajoutees": 1,
+    "dim_date_ajoutees": 62
+  },
+  "rejeu": {
+    "etape": "rejeu",
+    "lignes_ajoutees": 0,
+    "regle": "relancer lot2 donne exactement ce fichier : mêmes tables, mêmes rejets, mêmes agrégats"
+  }
+}

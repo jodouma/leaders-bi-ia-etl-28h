@@ -1,0 +1,100 @@
+{
+  "title": "Lire-moi : votre première mission chez Solen Digital",
+  "cover_title": "Lire-moi : votre première mission chez Solen Digital",
+  "subtitle": "IA, Codex et BI · 22 h en présence · licence Business Intelligence · le point de départ de tout le parcours",
+  "author": "Youssef Douma · Leaders University",
+  "subject_label": "Solen BI 22 h · Livret 00 · Lire-moi",
+  "header_label": "SOLEN  /  IA, CODEX ET BI",
+  "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+  "cover": {
+    "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+    "case": "SOLEN DIGITAL · CLIENT FICTIF MAISON ZITOUNA",
+    "flow": "Direction  →  question métier  →  données  →  indicateur  →  décision",
+    "stats": [["22 h", "5 × 4 H + SOUTENANCE 2 H"], ["2", "ÉTUDIANTS PAR BINÔME"], ["0", "LIGNE DE CODE À LA MAIN"]],
+    "label": "00 / LIRE-MOI"
+  },
+  "pages": [
+    {
+      "id": "mission",
+      "title": "Lundi matin, vous rejoignez Solen Digital",
+      "kicker": "00 / LIRE-MOI · LA MISSION",
+      "blocks": [
+        {"type": "text", "text": "Solen Digital est une société de services numériques (fictive) qui accompagne des PME. Vous venez d'être recrutés à deux, jeunes diplômés de licence BI. Votre responsable, Karim Jaziri (personnage fictif), vous transmet le mail de la directrice, Lamia Ben Salah (personnage fictif), reçu de son client Maison Zitouna, un petit réseau de boutiques :"},
+        {"type": "callout", "label": "Le mail de la direction", "text": "« Nos ventes montent, mais nous ne savons pas où passe la marge. Nos chiffres viennent de tickets CSV, d'un catalogue Excel, d'une liste de boutiques et d'une base de commandes avec les retours. Nous voulons des ventes fiables, les retours, une marge définie précisément et l'évolution par produit, boutique et zone. Et nous voulons comprendre comment vous obtenez ces chiffres. »"},
+        {"type": "text", "text": "La mission paraît trop grande pour deux débutants. Elle ne l'est pas, à une condition : la découper en petites étapes vérifiables, faire écrire le code par Codex, et contrôler chaque résultat avant d'avancer. C'est exactement ce que ce cours vous apprend."},
+        {"type": "figure", "path": "../../docs/images/diagrams/v7-direction-decision.png", "height": 150, "caption": "De la question de la direction à la décision : chaque étape se justifie par la précédente."},
+        {"type": "section", "text": "Ce que vous saurez faire à la fin"},
+        {"type": "bullets", "items": [
+          "Transformer des données brutes (CSV, Excel, JSON, base SQL) en indicateurs utiles à une décision.",
+          "Diriger une IA (Codex) : décrire un objectif précis, lire ce qu'elle produit, exécuter des contrôles, corriger, expliquer.",
+          "Travailler à deux avec Git et GitHub : branche, commit, pull request, revue, fusion, intégration continue.",
+          "Construire un entrepôt en étoile, le mettre à jour sans doublon, garder l'historique d'une dimension.",
+          "Montrer le résultat dans une petite application locale et dans Power BI Desktop, puis défendre une recommandation."
+        ]},
+        {"type": "callout", "label": "Règle d'or", "text": "Vous n'écrivez jamais de code à la main. Codex écrit Python, SQL, DAX, tests et YAML. Vous rédigez les demandes, lisez les changements, lancez les contrôles, expliquez les résultats et prenez les décisions. Vous faites Git et GitHub vous-mêmes : ce sont vos gestes, pas ceux de l'IA."}
+      ]
+    },
+    {
+      "id": "calendrier",
+      "title": "Cinq séances, une mission, une soutenance",
+      "kicker": "00 / LIRE-MOI · LE CALENDRIER",
+      "blocks": [
+        {"type": "text", "text": "22 heures en présence : cinq séances de 4 h, puis un créneau de soutenance de 2 h pour toute la promotion. Comptez environ 8 h de travail personnel réparties sur le parcours, soit une charge totale d'environ 30 h par étudiant. Ces durées sont des estimations de conception, à confirmer par un essai réel."},
+        {"type": "figure", "path": "../../docs/images/diagrams/v7-seances.png", "height": 175, "caption": "Les épisodes de la mission Solen, séance après séance."},
+        {"type": "table", "headers": ["Séance", "Épisode Solen", "Ce que vous prouvez à la fin"], "widths": [1, 2.2, 2.6], "rows": [
+          ["S1 · 4 h", "La demande de la direction, le cadrage, les outils", "Les deux comptes collaborent : dépôt du binôme créé, première pull request relue et fusionnée ; un échantillon calculé à la main."],
+          ["S2 · 4 h", "Un premier résultat rassurant… et faux", "Les sources lues avec pandas ; les lignes acceptées et rejetées comptées et expliquées ; une correction après revue."],
+          ["S3 · 4 h", "La base opérationnelle des retours et l'étoile", "Un entrepôt en étoile chargé depuis les quatre sources ; faits reliés aux dimensions ; choix de votre mission du catalogue."],
+          ["S4 · 4 h", "Le besoin change : un nouveau lot, une boutique change de zone", "Incrément chargé, historique préservé, rejeu sans doublon, tests et CI verts, revue → correction → revue."],
+          ["S5 · 4 h", "Livrer", "Application locale et rapport Power BI actualisé ; recommandation à la direction ; répétition de la soutenance."],
+          ["Perso · ≈ 8 h", "Votre mission du catalogue", "Le dépôt du binôme complet, avec les preuves individuelles de chacun."],
+          ["Soutenance · 2 h", "Démonstration et questions individuelles", "Compréhension métier, maîtrise du workflow, justification des résultats."]
+        ]},
+        {"type": "text", "text": "Chaque séance alterne environ 30 % d'explications et 70 % de pratique, hors pauses. Vous avancez à votre rythme ; le professeur pose des questions et débloque. Finir plus tôt n'est pas le but : expliquer et réparer une étape vaut plus qu'en effleurer deux."}
+      ]
+    },
+    {
+      "id": "route",
+      "title": "La route A → B → C : quels documents, dans quel ordre",
+      "kicker": "00 / LIRE-MOI · LA ROUTE",
+      "blocks": [
+        {"type": "diagram", "nodes": ["A · Installer et créer le dépôt du binôme (livret 01)", "B · Tronc commun Solen Commerce 360, séances 1 à 4 (livret 02)", "C · Mission du catalogue, livraison et soutenance (livrets 04 et 05)"]},
+        {"type": "table", "headers": ["Fichier", "Quand l'ouvrir", "Ce qu'il contient"], "widths": [1.6, 1.6, 2.8], "rows": [
+          ["00_lire_moi.pdf", "Maintenant", "La mission, le calendrier, la route, le vocabulaire de départ."],
+          ["01_demarrer.pdf", "Avant et pendant la séance 1", "Windows + WSL2 ou Ubuntu, Python, l'application Codex avec un compte Free, GitHub à deux, le premier cycle de pull request."],
+          ["02_tronc_commun.pdf", "Séances 1 à 4", "La mission d'entraînement Solen Commerce 360, étape par étape : demande à Codex, contrôle, explication."],
+          ["03_diriger_codex_et_git.pdf", "À chaque demande, à chaque PR", "Prompts prêts à adapter, modèle et effort, revue en lecture seule, erreurs courantes, dépannage Git."],
+          ["04_catalogue_missions.pdf", "Fin de séance 3", "Les dix missions au choix, comment choisir, les règles communes ; un guide PDF par mission dans pdf/missions/."],
+          ["05_livrer_soutenir.pdf", "Séance 5 et après", "Application locale, Power BI, décision métier, critères annoncés, préparation de la soutenance."],
+          ["06_aide_memoire.pdf", "Toujours ouvert", "Git, Codex et BI sur quelques pages."]
+        ]},
+        {"type": "section", "text": "Les deux dépôts"},
+        {"type": "bullets", "items": [
+          "Le dépôt du cours (public, en lecture) : les livrets, les prompts, le modèle de dépôt et les données. Vous le téléchargez une fois.",
+          "Le dépôt du binôme (le vôtre, un par binôme) : vous le créez à partir du modèle fourni, vous y travaillez à deux avec deux comptes GitHub et deux comptes Codex Free, chacun dans sa copie locale."
+        ]},
+        {"type": "callout", "label": "Sans paiement", "text": "Tout fonctionne sans carte bancaire et sans clé API. Python, pandas, SQLite, Git sont libres. Codex (compte Free, application de bureau) et Power BI Desktop sont des logiciels propriétaires utilisables gratuitement dans le cadre décrit ; ce ne sont pas des logiciels libres, et leur accès gratuit dépend de leur éditeur. Le livret 01 explique ce qui est annoncé et ce que vous devez vérifier sur votre compte."}
+      ]
+    },
+    {
+      "id": "vocabulaire",
+      "title": "Dix mots pour commencer",
+      "kicker": "00 / LIRE-MOI · VOCABULAIRE",
+      "blocks": [
+        {"type": "table", "headers": ["Mot", "Ce que c'est", "Exemple Solen"], "widths": [1.2, 2.4, 2.4], "rows": [
+          ["BI", "Business Intelligence : transformer des données en indicateurs pour décider.", "Savoir quelle boutique perd de la marge à cause des retours."],
+          ["Source", "Un fichier ou une base où les données naissent.", "ventes.csv, catalogue.xlsx, boutiques.json, la base SQLite des retours."],
+          ["ETL", "Extraire, transformer, charger : le programme qui lit les sources, nettoie et remplit l'entrepôt.", "Le code Python que Codex écrit dans solen/."],
+          ["Entrepôt", "Une base organisée pour analyser, pas pour saisir.", "outputs/entrepot.sqlite, avec ses tables de faits et de dimensions."],
+          ["Fait", "Une ligne qui mesure quelque chose, à un grain précis.", "Une ligne de ticket : quantité × prix, un jour, dans une boutique."],
+          ["Dimension", "Une table qui décrit les faits.", "Le produit, la boutique, la date."],
+          ["Indicateur", "Un chiffre défini précisément, avec son unité.", "Ventes nettes = ventes brutes − retours, en TND."],
+          ["Codex", "L'agent de programmation d'OpenAI, dans l'application de bureau ChatGPT.", "Vous lui demandez une petite étape ; il propose un changement ; vous contrôlez."],
+          ["Git / GitHub", "Git enregistre l'histoire de vos fichiers sur votre PC ; GitHub héberge la copie partagée.", "Une pull request : « voici mon changement, relis-le avant de l'intégrer »."],
+          ["Contrôle", "Une commande qui compare ce que vous avez produit aux valeurs attendues.", "python -m controles.verifier --etape initial → OK ou ÉCHEC avec l'écart."]
+        ]},
+        {"type": "callout", "label": "À ce stade, je sais…", "text": "…raconter la mission Solen en trois phrases, citer les sept fichiers du cours dans l'ordre, et expliquer pourquoi je ne taperai jamais de code mais que je serai responsable de chaque résultat. Prochaine étape : le livret 01, route Windows ou Ubuntu."}
+      ]
+    }
+  ]
+}

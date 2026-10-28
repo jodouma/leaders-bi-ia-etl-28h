@@ -1,0 +1,25 @@
+{
+  "note": "Registre de provenance des captures réelles. Aucune interface n'est fabriquée. Chaque entrée indique l'environnement réel de la capture ; une capture macOS n'est pas une capture Windows/WSL.",
+  "captures": [
+    {
+      "fichier": "app-vue-direction.png",
+      "sujet": "Application locale de référence (outputs/app/index.html), écran Vue direction, après lot1 + lot2",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local",
+      "etape": "Livret 05 §1 · python -m solen app",
+      "zone_a_regarder": "les cinq indicateurs et le graphique empilé par zone ; Nord-Est apparaît à partir de 2026-07",
+      "signe_de_reussite": "Ventes nettes 91 444,460 TND, marge 35 606,860 TND, taux de retour 4,60 % = valeurs de référence",
+      "date": "2026-10-28",
+      "limite": "capture de la solution de référence privée, pas d'une production étudiante ; résolution 800 px"
+    },
+    {
+      "fichier": "app-qualite.png",
+      "sujet": "Application locale de référence, écran Qualité des données (rejets par motif et par lot)",
+      "environnement": "navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local",
+      "etape": "Livret 02 S2 / Livret 05 §1",
+      "zone_a_regarder": "les quatre motifs et les deux lots empilés",
+      "signe_de_reussite": "lot1 : 8 / 6 / 5 / 7 ; lot2 : 4 / 2 / 2 / 2 = reference/README.md",
+      "date": "2026-10-28",
+      "limite": "même limite que ci-dessus"
+    }
+  ]
+}

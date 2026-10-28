@@ -1,36 +1,54 @@
-name: Vérifier le parcours Atlas BI 15 h
+name: Vérifier le cours Solen BI 22 h
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
 jobs:
-  student-route:
-    name: Python 3.13 · ${{ matrix.os }}
+  donnees:
+    name: Données reproductibles et contrôles · Python ${{ matrix.python }} · ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.12']
     runs-on: ${{ matrix.os }}
     env:
       PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
-      - name: Contrats qualité, SQL, SCD2, transactions et exports
-        run: python -m unittest discover -s tests -v
-      - name: Sept jalons neufs et séquence initial / incrément / rejeu / export
-        run: python authoring/check_materials.py --runtime-only
-  printed-materials:
-    name: PDF et commandes Linux imprimées
+          python-version: ${{ matrix.python }}
+      - name: Dépendances étudiantes (modele-binome/requirements.txt) + outils d'édition
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r modele-binome/requirements.txt
+          python -m pip install -r authoring/requirements.txt
+      - name: Les générateurs reproduisent exactement les données publiées
+        shell: bash
+        run: python authoring/generateurs/verifier_reproductibilite.py
+      - name: Le vérificateur se lance et explique ce qui manque sur un dépôt binôme neuf
+        shell: bash
+        working-directory: modele-binome
+        run: |
+          python -m controles.verifier --help
+          # Sur un dépôt neuf, rien n'est construit : le vérificateur doit échouer proprement (code 1), pas planter.
+          if python -m controles.verifier --mission tronc-commun --etape initial; then echo "attendu : échec propre" ; exit 1; fi
+          for m in M01 M02 M03 M04 M05 M06 M07 M08 M09 M10; do
+            if [ -d "catalogue/$m" ]; then
+              if python -m controles.verifier --mission "$m" --etape initial; then echo "attendu : échec propre ($m)"; exit 1; fi
+            fi
+          done
+  livrets:
+    name: Livrets PDF reconstruits depuis leurs sources
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.12'
       - run: python -m pip install -r authoring/requirements.txt
-      - name: Exécuter les extraits des PDF distribués
-        run: python authoring/check_materials.py
-      # Native ETL execution does not establish WSL GUI, Codex Free account
-      # availability or an interactive Power BI Desktop import/refresh.
+      - name: Construire tous les livrets et les guides de mission
+        run: python authoring/build_pdfs.py --missions
+      - name: Aucune figure manquante dans les livrets publiés
+        run: python -c "import json;r=json.load(open('authoring/pdf_layout_report.json'));m=[(x['pdf'],x['missing_figures']) for x in r if x['missing_figures']];print(m);assert not m,'figures manquantes'"

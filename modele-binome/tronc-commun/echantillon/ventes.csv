@@ -1,0 +1,13 @@
+ligne_id;ticket_id;date_vente;boutique;produit;quantite;prix_unitaire;mode_paiement
+E-001-1;E-001;2026-03-02;TUN;P01;2;18.500;carte bancaire
+E-001-2;E-001;02/03/2026;TUN;P05;3;3,900;carte bancaire
+E-002-1;E-002;3 mars 2026; nbe ;P04;1;14.5;espèces
+E-003-1;E-003;2026-03-05;SFX;P01;1;18,5;chèque
+E-003-1;E-003;2026-03-05;SFX;P01;1;18,5;chèque
+E-004-1;E-004;2026-03-06;Sfx;P04;2;14,500;espèces
+E-005-1;E-005;2026-03-06;TUN;P01;1;16.650;carte bancaire
+E-006-1;E-006;2026-03-07;TUN;P05;2;3.900;espèces
+E-006-1;E-006;2026-03-07;TUN;P05;4;3.900;espèces
+;E-007;2026-03-08;NBE;P01;1;18.500;espèces
+E-008-1;E-008;2026-03-09;TUN;P99;1;9.000;carte bancaire
+E-009-1;E-009;2026-03-09;NBE;P05;-1;3.900;espèces

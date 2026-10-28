@@ -1,0 +1,355 @@
+{
+  "mission": "M02",
+  "entreprise": "Souk Express",
+  "lot": "lot1",
+  "etape": "initial",
+  "periode": {
+    "debut": "2026-01-01",
+    "fin": "2026-06-30"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "commandes.csv": {
+      "lignes": 2085,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "produits.xlsx": {
+      "feuilles": [
+        "Produits"
+      ],
+      "produits": 15,
+      "categories": 5,
+      "ligne_entete_produits": 3
+    },
+    "canaux.json": {
+      "canaux": 6,
+      "versions": 6
+    },
+    "operations.sqlite": {
+      "remboursement": 133,
+      "rembourse": 125,
+      "en_cours": 3,
+      "refuse": 5,
+      "motif_remboursement": 4
+    }
+  },
+  "nettoyage": {
+    "commandes.csv": {
+      "lignes_acceptees_nouvelles": 2050,
+      "doublons_exacts": 12,
+      "deja_charges": 0,
+      "formats_montants": 632,
+      "formats_dates": 494,
+      "casse_espaces": 206,
+      "remises_vides": 969
+    },
+    "operations.sqlite": {
+      "ignores_en_cours": 3,
+      "ignores_refuses": 5,
+      "deja_charges": 0,
+      "remboursements_acceptes_nouveaux": 123
+    }
+  },
+  "rejets": {
+    "total": 25,
+    "par_motif": {
+      "cle_inconnue": 8,
+      "id_conflit": 6,
+      "id_manquant": 5,
+      "quantite_invalide": 6
+    },
+    "par_source": {
+      "commandes.csv": {
+        "cle_inconnue": 6,
+        "id_conflit": 6,
+        "id_manquant": 5,
+        "quantite_invalide": 6
+      },
+      "operations.sqlite": {
+        "cle_inconnue": 2
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 181,
+    "dim_produit": 15,
+    "dim_canal": 6,
+    "fact_commande": 2050,
+    "fact_remboursement": 123
+  },
+  "indicateurs": {
+    "ca_brut_millimes": 220909500,
+    "remises_millimes": 9539800,
+    "remboursements_millimes": 10146717,
+    "ca_net_millimes": 201222983,
+    "nb_commandes": 1266,
+    "panier_moyen_net_millimes": 158944,
+    "unites_nettes": 3212
+  },
+  "agregats": {
+    "par_famille": {
+      "application": {
+        "ca_brut_millimes": 53046100,
+        "remises_millimes": 2115300,
+        "remboursements_millimes": 1076400,
+        "ca_net_millimes": 49854400,
+        "nb_commandes": 276,
+        "panier_moyen_net_millimes": 180632,
+        "unites_nettes": 762
+      },
+      "marketplace": {
+        "ca_brut_millimes": 53106600,
+        "remises_millimes": 4879200,
+        "remboursements_millimes": 3403817,
+        "ca_net_millimes": 44823583,
+        "nb_commandes": 318,
+        "panier_moyen_net_millimes": 140955,
+        "unites_nettes": 770
+      },
+      "réseaux sociaux": {
+        "ca_brut_millimes": 49891300,
+        "remises_millimes": 1479700,
+        "remboursements_millimes": 3144200,
+        "ca_net_millimes": 45267400,
+        "nb_commandes": 290,
+        "panier_moyen_net_millimes": 156094,
+        "unites_nettes": 733
+      },
+      "site": {
+        "ca_brut_millimes": 64865500,
+        "remises_millimes": 1065600,
+        "remboursements_millimes": 2522300,
+        "ca_net_millimes": 61277600,
+        "nb_commandes": 382,
+        "panier_moyen_net_millimes": 160413,
+        "unites_nettes": 947
+      }
+    },
+    "par_canal": {
+      "APP": {
+        "ca_brut_millimes": 53046100,
+        "remises_millimes": 2115300,
+        "remboursements_millimes": 1076400,
+        "ca_net_millimes": 49854400,
+        "nb_commandes": 276,
+        "panier_moyen_net_millimes": 180632,
+        "unites_nettes": 762
+      },
+      "BZL": {
+        "ca_brut_millimes": 37997800,
+        "remises_millimes": 3717300,
+        "remboursements_millimes": 2014117,
+        "ca_net_millimes": 32266383,
+        "nb_commandes": 223,
+        "panier_moyen_net_millimes": 144692,
+        "unites_nettes": 556
+      },
+      "GCO": {
+        "ca_brut_millimes": 26473600,
+        "remises_millimes": 792200,
+        "remboursements_millimes": 1376200,
+        "ca_net_millimes": 24305200,
+        "nb_commandes": 148,
+        "panier_moyen_net_millimes": 164224,
+        "unites_nettes": 380
+      },
+      "SHM": {
+        "ca_brut_millimes": 15108800,
+        "remises_millimes": 1161900,
+        "remboursements_millimes": 1389700,
+        "ca_net_millimes": 12557200,
+        "nb_commandes": 95,
+        "panier_moyen_net_millimes": 132181,
+        "unites_nettes": 214
+      },
+      "VSO": {
+        "ca_brut_millimes": 23417700,
+        "remises_millimes": 687500,
+        "remboursements_millimes": 1768000,
+        "ca_net_millimes": 20962200,
+        "nb_commandes": 142,
+        "panier_moyen_net_millimes": 147621,
+        "unites_nettes": 353
+      },
+      "WEB": {
+        "ca_brut_millimes": 64865500,
+        "remises_millimes": 1065600,
+        "remboursements_millimes": 2522300,
+        "ca_net_millimes": 61277600,
+        "nb_commandes": 382,
+        "panier_moyen_net_millimes": 160413,
+        "unites_nettes": 947
+      }
+    },
+    "par_mois": {
+      "2026-01": {
+        "ca_brut_millimes": 33623400,
+        "remises_millimes": 1487600,
+        "remboursements_millimes": 1509333,
+        "ca_net_millimes": 30626467,
+        "nb_commandes": 193,
+        "panier_moyen_net_millimes": 158686,
+        "unites_nettes": 498
+      },
+      "2026-02": {
+        "ca_brut_millimes": 30464300,
+        "remises_millimes": 1213700,
+        "remboursements_millimes": 656817,
+        "ca_net_millimes": 28593783,
+        "nb_commandes": 192,
+        "panier_moyen_net_millimes": 148926,
+        "unites_nettes": 459
+      },
+      "2026-03": {
+        "ca_brut_millimes": 49043100,
+        "remises_millimes": 2018400,
+        "remboursements_millimes": 1661000,
+        "ca_net_millimes": 45363700,
+        "nb_commandes": 286,
+        "panier_moyen_net_millimes": 158614,
+        "unites_nettes": 717
+      },
+      "2026-04": {
+        "ca_brut_millimes": 46751200,
+        "remises_millimes": 1970600,
+        "remboursements_millimes": 2586100,
+        "ca_net_millimes": 42194500,
+        "nb_commandes": 231,
+        "panier_moyen_net_millimes": 182660,
+        "unites_nettes": 622
+      },
+      "2026-05": {
+        "ca_brut_millimes": 31920200,
+        "remises_millimes": 1494400,
+        "remboursements_millimes": 2244467,
+        "ca_net_millimes": 28181333,
+        "nb_commandes": 186,
+        "panier_moyen_net_millimes": 151513,
+        "unites_nettes": 463
+      },
+      "2026-06": {
+        "ca_brut_millimes": 29107300,
+        "remises_millimes": 1355100,
+        "remboursements_millimes": 1489000,
+        "ca_net_millimes": 26263200,
+        "nb_commandes": 178,
+        "panier_moyen_net_millimes": 147546,
+        "unites_nettes": 453
+      }
+    },
+    "par_categorie": {
+      "Beauté": {
+        "ca_brut_millimes": 41999200,
+        "remises_millimes": 1603600,
+        "remboursements_millimes": 1556100,
+        "ca_net_millimes": 38839500,
+        "nb_commandes": 382,
+        "panier_moyen_net_millimes": 101674,
+        "unites_nettes": 677
+      },
+      "High-tech": {
+        "ca_brut_millimes": 53697100,
+        "remises_millimes": 2540800,
+        "remboursements_millimes": 2814867,
+        "ca_net_millimes": 48341433,
+        "nb_commandes": 437,
+        "panier_moyen_net_millimes": 110621,
+        "unites_nettes": 700
+      },
+      "Maison": {
+        "ca_brut_millimes": 52018900,
+        "remises_millimes": 2221000,
+        "remboursements_millimes": 3269950,
+        "ca_net_millimes": 46527950,
+        "nb_commandes": 297,
+        "panier_moyen_net_millimes": 156660,
+        "unites_nettes": 492
+      },
+      "Mode": {
+        "ca_brut_millimes": 55715700,
+        "remises_millimes": 2320500,
+        "remboursements_millimes": 1750900,
+        "ca_net_millimes": 51644300,
+        "nb_commandes": 446,
+        "panier_moyen_net_millimes": 115794,
+        "unites_nettes": 758
+      },
+      "Épicerie fine": {
+        "ca_brut_millimes": 17478600,
+        "remises_millimes": 853900,
+        "remboursements_millimes": 754900,
+        "ca_net_millimes": 15869800,
+        "nb_commandes": 365,
+        "panier_moyen_net_millimes": 43479,
+        "unites_nettes": 585
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_canal",
+    "cle_metier": "canal_id",
+    "attribut": "famille",
+    "versions": [
+      {
+        "cle_metier": "APP",
+        "attribut": "application",
+        "valid_from": "2024-09-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "BZL",
+        "attribut": "marketplace",
+        "valid_from": "2024-01-10",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "GCO",
+        "attribut": "réseaux sociaux",
+        "valid_from": "2023-06-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "SHM",
+        "attribut": "marketplace",
+        "valid_from": "2025-03-03",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "VSO",
+        "attribut": "réseaux sociaux",
+        "valid_from": "2023-06-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "WEB",
+        "attribut": "site",
+        "valid_from": "2023-02-01",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "VSO",
+        "date": "2026-06-30",
+        "attribut": "réseaux sociaux"
+      },
+      {
+        "cle_metier": "VSO",
+        "date": "2026-07-14",
+        "attribut": "réseaux sociaux"
+      },
+      {
+        "cle_metier": "VSO",
+        "date": "2026-07-15",
+        "attribut": "réseaux sociaux"
+      },
+      {
+        "cle_metier": "WEB",
+        "date": "2026-07-15",
+        "attribut": "site"
+      }
+    ]
+  }
+}
