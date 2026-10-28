@@ -299,7 +299,12 @@
     "sources": [
       "colis.csv",
       "facturation.sqlite"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "colis.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

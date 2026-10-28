@@ -270,7 +270,12 @@
     "sources": [
       "facturation.sqlite",
       "temps.csv"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "temps.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

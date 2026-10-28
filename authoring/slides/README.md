@@ -2,7 +2,7 @@
 
 [Retour au cours](../../README.md)
 
-80 diapositives françaises en 16:9 pour **Langage avancé : IA, Codex et BI — votre première mission chez Solen Digital**. Une idée par diapositive ; les explications détaillées, les sources et leurs dates sont dans les notes du présentateur.
+87 diapositives françaises en 16:9 pour **Langage avancé : IA, Codex et BI — votre première mission chez Solen Digital**. Une idée par diapositive ; les explications détaillées, les sources et leurs dates sont dans les notes du présentateur.
 
 Fichiers produits : `presentation/Solen_CODEX_BI_22h.pptx` (modifiable) et `presentation/Solen_CODEX_BI_22h.pdf` (conversion du même PPTX).
 
@@ -10,15 +10,22 @@ Fichiers produits : `presentation/Solen_CODEX_BI_22h.pptx` (modifiable) et `pres
 
 | Partie | Contenu | Diapositives |
 |---|---|---|
-| A | Bienvenue chez Solen Digital : mail de mission, binôme, contrat 22 h, route A → B → C, poste | 1–11 |
-| B | Ce que vous saurez faire : dix thèmes, matrice compétence → mission → action → preuve | 12–16 |
-| C | Git et GitHub de zéro : trois emplacements, huit mots, cycle de PR, rôles, revue, dépannage | 17–25 |
-| D | Codex Free (faits datés du 28/10/2026) : offre, efforts, ressources, fiche tâche, huit habitudes, Skills, quota | 26–37 |
-| E | Notions BI avec les chiffres de Maison Zitouna, dont le graphique natif par zone | 38–55 |
-| F | Les cinq séances (minutage 240 min), choix de mission, S5 : app, Power BI, recommandation | 56–67 |
-| G | Catalogue des dix missions et règles communes | 68–70 |
-| H | Soutenance : formule 120 min, script de 6 min, critères publics, questions individuelles | 71–75 |
-| I | Sources officielles, licences, clôture | 76–80 |
+| A | Bienvenue chez Solen Digital : mail de mission, binôme, contrat 22 h, route A → B → C, poste (WSL2 puis Ubuntu natif) | 1–12 |
+| B | Ce que vous saurez faire : dix thèmes, matrice compétence → mission → action → preuve | 13–17 |
+| C | Git et GitHub de zéro : trois emplacements, huit mots, cycle de PR en deux diapositives, rôles (PR n°1 par A, PR n°2 par B dès S1), revue, dépannage, les deux « workflows » (gestes humains / GitHub Actions) | 18–27 |
+| D | Codex Free (faits datés du 28/10/2026) : offre, efforts, ressources, fiche tâche en deux diapositives, huit habitudes, Skills, quota | 28–40 |
+| E | Notions BI avec les chiffres de Maison Zitouna (nettoyage en deux diapositives), dont le graphique natif par zone | 41–59 |
+| F | Séance 0 chez soi (≈ 2 h), les cinq séances (minutage 240 min : S1 ouvre sur 30 min de vérification des postes, S4 finit par 50 min « Passer à votre mission », S5 commence par la mission), de la fin de S3 à la soutenance avec les ≈ 8 h personnelles (2 + 4 + 2), app (trois captures recadrées), Power BI, recommandation | 60–72 |
+| G | Catalogue des dix missions (deux diapositives de cinq) et règles communes | 73–76 |
+| H | Soutenance : formule 120 min en deux diapositives, script de 6 min, critères publics, questions individuelles | 77–82 |
+| I | Sources officielles (titres seuls, adresses dans les notes), licences, clôture | 83–87 |
+
+## Lisibilité (revue visuelle du 28/10/2026)
+
+- Schémas et captures en pleine largeur : `build_slides.js` refuse un schéma sous 85 % de la largeur de la diapositive et une capture sous 80 %. Le champ `crop` de `slides.json` ([gauche, haut, droite, bas] en pixels de l'image source) cadre la zone utile : le titre interne du schéma, qui répète celui de la diapositive, est retiré ; un schéma trop haut est montré en deux diapositives. Les images sources ne sont pas modifiées.
+- Les puces qui ne tiennent plus sous un schéma sont dans les notes (« Points à dire : … ») ; `takeaway` affiche une phrase sous le schéma quand la place le permet.
+- Aucun texte de contenu sous 14 pt ; seuls le pied de page et le numéro de diapositive sont à 12 pt.
+- Minutages (décisions pédagogiques V7 du 28/10/2026, D1–D2) : la répartition explications / pratique de chaque séance est écrite dans le champ `split` de la diapositive de séance (S1 58/162, S2 et S3 66/154, S4 50/170, S5 35/185) ; la barre est proportionnelle aux minutes.
 
 ## Reconstruire
 
@@ -32,7 +39,7 @@ soffice --headless --convert-to pdf --outdir presentation presentation/Solen_COD
 ```
 
 - `slides.json` est la source du contenu (titre, mise en page, données, notes par diapositive). On la modifie à la main.
-- `make_content.py` **valide** sans rien réécrire : 70 à 90 diapositives, sections A → I dans l'ordre, titre et notes partout, chaque image présente (schémas du manifeste `authoring/visuals/manifest.json`, captures du registre `docs/images/captures/REGISTRE.json` avec la légende « Capture réelle, macOS »), notes datées dans les parties D et I, cinq séances de 240 min avec deux pauses, un seul graphique dont les valeurs égalent `modele-binome/tronc-commun/reference/attendu_lot2.json` (`agregats.par_zone`, ventes nettes en millimes).
+- `make_content.py` **valide** sans rien réécrire : 70 à 100 diapositives, sections A → I dans l'ordre, titre et notes partout, chaque image présente (schémas du manifeste `authoring/visuals/manifest.json`, captures du registre `docs/images/captures/REGISTRE.json` avec la légende « Capture réelle, macOS »), notes datées dans les parties D et I, cinq séances de 240 min avec deux pauses, un seul graphique dont les valeurs égalent `modele-binome/tronc-commun/reference/attendu_lot2.json` (`agregats.par_zone`, ventes nettes en millimes).
 - `build_slides.js` écrit le PPTX et `layout_manifest.json` (position et taille de chaque zone de texte). Une image manquante arrête la construction. Aucun téléchargement, aucun appel IA.
 - `SOLEN_ASSET_ROOT` peut désigner une autre copie complète du cours ; inutile aux étudiants.
 
@@ -40,7 +47,7 @@ Après chaque modification, régénérer le PDF puis le relire page par page (pa
 
 ## Ce qui est éditable
 
-Titres, textes, tableaux, cartes, frise de minutage, compteurs de chargement et le graphique « Ventes nettes par zone, après le lot 2 » (graphique PowerPoint natif ; valeurs en millimes, étiquettes au format `40 887,210`) sont des objets PowerPoint. Les 14 schémas `docs/images/diagrams/v7-*.png` et les 2 captures sont des images ; leurs sources sont dans `authoring/visuals/` et `docs/images/`.
+Titres, textes, tableaux, cartes, frise de minutage, compteurs de chargement et le graphique « Ventes nettes par zone, après le lot 2 » (graphique PowerPoint natif ; valeurs en millimes, étiquettes au format `40 887,210`) sont des objets PowerPoint. Les 14 schémas `docs/images/diagrams/v7-*.png` et les 2 captures sont des images, recadrées à l'affichage (`crop`) ; leurs sources sont dans `authoring/visuals/` et `docs/images/`.
 
 Le schéma `v7-chargements.png` n'est pas inséré : il affiche « n » et « 3 déjà connues ». La diapositive « Charger · compléter · rejouer » le redessine en objets natifs avec les compteurs de la référence (lot 2 : 413 lues, 15 déjà chargées, 385 ajoutées ; 2345 faits). Le schéma `v7-tache-modele-effort.png` est remplacé par un tableau natif lisible (il reste dans le livret 03).
 
@@ -53,4 +60,4 @@ Le schéma `v7-chargements.png` n'est pas inséré : il affiche « n » et « 3 
 
 ## Limites connues
 
-Contrôles d'édition seulement : construction, validation OOXML, conversion LibreOffice sur macOS et relecture des 80 pages rendues. Ce n'est ni un essai sur un compte Codex Free, ni une manipulation Power BI sous Windows, ni un pilote chronométré : les durées restent des estimations. Le livret 04 (catalogue) n'existait pas encore lors de cette construction ; les diapositives G s'appuient sur les fiches de mission.
+Contrôles d'édition seulement : construction, validation OOXML, conversion LibreOffice sur macOS et relecture des 87 pages rendues (planches à 30 dpi, gros plans à 80 dpi). Ce n'est ni un essai sur un compte Codex Free, ni une manipulation Power BI sous Windows, ni un pilote chronométré : les durées restent des estimations. Les diapositives G s'appuient sur les fiches de mission (`catalogue/M0x/fiche_mission.md`), reprises dans le livret 04. Le schéma `v7-seances.png` (diapositive 7) date d'avant la séance 0 et le nouveau minutage de S4–S5 : les notes de la diapositive donnent la version à jour, le schéma reste à régénérer dans `authoring/visuals/`.

@@ -57,7 +57,7 @@ WHITE = ParagraphStyle('white', parent=SMALL, textColor=colors.white)
 
 def marked(text):
     """Limited, predictable inline markup, keeping all source text escaped."""
-    text = html.escape(str(text))
+    text = html.escape(str(text)).replace('☐', '[ ]').replace('☑', '[x]')
     text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
     text = re.sub(r'`([^`]+)`', r'<font name="Courier">\1</font>', text)
     def linked(match):
@@ -140,8 +140,11 @@ def measure(block):
             raise ValueError('Invalid figure crop: ' + str(path))
         scale = min(WIDTH / (right-left), block.get('height', 170) / (bottom-top))
         visible_width, visible_height = (right-left)*scale, (bottom-top)*scale
-        caption = paragraph(block.get('caption', ''), SMALL)
-        caption_height = caption.wrap(WIDTH, 2000)[1] if block.get('caption') else 0
+        caption_text = block.get('caption', '')
+        if '/diagrams/' in str(block['path']) and caption_text and not caption_text.lower().startswith('schéma'):
+            caption_text = 'Schéma · ' + caption_text
+        caption = paragraph(caption_text, SMALL)
+        caption_height = caption.wrap(WIDTH, 2000)[1] if caption_text else 0
         layout = (path, iw, ih, left, top, scale, visible_width, visible_height,
                   caption, caption_height)
         return visible_height + (8+caption_height if caption_height else 0) + 10, layout
@@ -331,11 +334,11 @@ def cover(c, data, label):
         c.setFillColor(colors.white)
         c.roundRect(LEFT,188,150,52,8,fill=1,stroke=0)
         c.drawImage(str(solen), LEFT+8, 194, 134, 40, preserveAspectRatio=True, mask='auto')
-    c.setFillColor(colors.white)
-    c.setFont('InterBold',12)
-    c.drawString(LEFT+(165 if solen.is_file() else 0),215,cv.get('case','SOLEN DIGITAL · MISSION FICTIVE'))
-    c.setFont('Inter',10.5)
-    c.drawString(LEFT+(165 if solen.is_file() else 0),196,cv.get('flow','Codex + CSV, Excel, JSON, SQL → Entrepôt → App et Power BI'))
+    x0 = LEFT+(165 if solen.is_file() else 0)
+    wcase = ParagraphStyle('cvcase',fontName='InterBold',fontSize=11.5,leading=14,textColor=colors.white)
+    wflow = ParagraphStyle('cvflow',fontName='Inter',fontSize=10,leading=13,textColor=colors.white)
+    pc=paragraph(cv.get('case','SOLEN DIGITAL · MISSION FICTIVE'),wcase); _,hc=pc.wrap(WIDTH-(x0-LEFT),100); pc.drawOn(c,x0,236-hc)
+    pf=paragraph(cv.get('flow','Codex + CSV, Excel, JSON, SQL → Entrepôt → App et Power BI'),wflow); _,hf=pf.wrap(WIDTH-(x0-LEFT),100); pf.drawOn(c,x0,232-hc-hf)
     c.setFillColor(colors.HexColor('#C9D4EE'))
     c.setFont('Inter',10)
     c.drawString(LEFT,108,cv.get('label',label))

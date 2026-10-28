@@ -13,7 +13,8 @@ from common import (ChampsCSV, Doses, Feuille, Lot, LotResultat, Table, Colonne,
                     table_dim_date, rng_mission, jours, date_key, cle_version, construire_csv, ecrire_csv,
                     ecrire_excel, ecrire_json, ecrire_sqlite, preparer_dossier, produire_reference,
                     calculer_attendu_echantillon, ecrire_verite_privee, exporter_v7_data, format_montant,
-                    tnd_fr, pct_fr, md_tableau, taille_dossier, _plt, _sauver, PALETTE, SERIES, TAILLE_MAX_MISSION)
+                    tnd_fr, pct_fr, md_tableau, taille_dossier, _plt, _sauver, _figure,
+                    _barres_verticales, _titre_axe, PALETTE, SERIES, TAILLE_MAX_MISSION)
 from textes_mission06 import SPEC_TEXTES
 
 GRAINE = 260006
@@ -291,7 +292,7 @@ def produire_echantillon(spec, dossier) -> dict:
                                        {"lignes_csv": 12, "doublons_exacts": 1, "lignes_gardees": len(fs),
                                         "annulations_retirees_ignorees": 1})
     ecrire_json(dossier / "attendu.json", att)
-    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8")
+    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8", newline="\n")
     return att
 
 
@@ -357,23 +358,17 @@ def visuel_occupation_semestres(spec, con, attendus: dict, base) -> None:
     ag = attendus["lot2"]["agregats"]["par_etablissement_mois"]
     codes = [e[0] for e in ETABS]
     periodes = [("janvier → juin", ("01", "02", "03", "04", "05", "06")), ("juillet → août", ("07", "08"))]
-    fig, ax = plt.subplots(figsize=(8.5, 4.6))
+    fig, ax = _figure(plt, "Taux d'occupation par établissement : premier semestre et été")
+    series, textes = [], []
     for k, (lib, ms) in enumerate(periodes):
         vals = []
         for c in codes:
             sel = [v for cle, v in ag.items() if cle.startswith(c + " ") and cle[-2:] in ms]
             vals.append(100 * sum(v["nuitees_vendues"] for v in sel) / sum(v["chambres_disponibles"] for v in sel))
-        xs = [i + (k - 0.5) * 0.38 for i in range(len(codes))]
-        b = ax.bar(xs, vals, width=0.38, label=lib, color=SERIES[k])
-        ax.bar_label(b, labels=[f"{x:.1f}".replace(".", ",") for x in vals], fontsize=8, padding=2)
-    ax.set_xticks(range(len(codes)), codes)
-    ax.set_title("Taux d'occupation par établissement : premier semestre et été", color=PALETTE["deep"],
-                 fontweight="bold", loc="left")
-    ax.set_ylabel("Taux d'occupation (%)")
-    ax.set_xlabel("Établissement")
-    ax.legend(frameon=False)
-    ax.grid(axis="y", color=PALETTE["pale"])
-    ax.set_axisbelow(True)
+        series.append((lib, vals, SERIES[k]))
+        textes.append([f"{x:.1f}".replace(".", ",") for x in vals])
+    _barres_verticales(fig, ax, codes, series, textes, "Établissement", _titre_axe("Taux d'occupation", "%"),
+                       titre_legende="Période")
     _sauver(fig, base)
     plt.close(fig)
 

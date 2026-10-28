@@ -13,7 +13,9 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import io
 import json
+import os
 import random
 import re
 import shutil
@@ -28,8 +30,10 @@ from typing import Callable
 ICI = Path(__file__).resolve().parent
 DEPOT = ICI.parents[1]                                    # github/
 MODELE = DEPOT / "modele-binome"
-FORMATEUR = DEPOT.parent / "formateur" / "fable-v7-solen-22h"
-VERITE = FORMATEUR / "solutions" / "verite_terrain"       # privé : vérité terrain brute
+# Vérité terrain brute (CSV) : écrite UNIQUEMENT si SOLEN_VERITE_PRIVEE=<dossier> est défini (dossier privé du
+# formateur, hors dépôt) ; sans cette variable, rien n'est écrit hors de modele-binome/ et de v7-data.json.
+ENV_VERITE = "SOLEN_VERITE_PRIVEE"
+EMPREINTES = "empreintes.json"                            # reference/empreintes.json : empreintes de CONTENU
 V7_DATA = ICI / "v7-data.json"
 
 PALETTE = {"marine": "#2B3180", "deep": "#07152F", "orange": "#FF9A3C",
@@ -375,6 +379,7 @@ def _zip_deterministe(chemin: Path) -> None:
             if nom == "docProps/core.xml":
                 data = re.sub(rb"(<dcterms:(?:created|modified)[^>]*>)[^<]*", rb"\g<1>" + fixe, data)
             info = zipfile.ZipInfo(nom, date_time=(2026, 1, 1, 0, 0, 0))
+            info.create_system = 3                     # même en-tête ZIP sous Windows (0 par défaut) et ailleurs
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             z.writestr(info, data)
@@ -382,7 +387,7 @@ def _zip_deterministe(chemin: Path) -> None:
 
 def ecrire_json(chemin: Path, obj, indent: int = 2) -> None:
     chemin.parent.mkdir(parents=True, exist_ok=True)
-    chemin.write_text(json.dumps(obj, ensure_ascii=False, indent=indent) + "\n", encoding="utf-8")
+    chemin.write_text(json.dumps(obj, ensure_ascii=False, indent=indent) + "\n", encoding="utf-8", newline="\n")
 
 
 def ecrire_sqlite(chemin: Path, ddl: str, donnees: dict[str, list[dict]]) -> None:
@@ -674,7 +679,10 @@ def contrat_entrepot(spec: MissionSpec) -> dict:
         "axes": spec.axes,
         "rejets": {"colonnes_obligatoires": ["lot", "source", "numero_ligne", "motif"],
                    "motifs": list(spec.motifs), "motifs_toleres": ["doublon_exact"],
-                   "sources": sorted(set(spec.sources_rejets.values()))},
+                   "sources": sorted(set(spec.sources_rejets.values())),
+                   # --etape rejets (séance 2) : seuls les rejets du CSV de faits ; les autres sources → --etape initial
+                   "etape_rejets": {"sources": sorted({x.fichier for x in spec.sources if x.type == "csv"}
+                                                      & set(spec.sources_rejets.values()))}},
         "export": {"tables": [t.nom for t in spec.tables], "sommes": spec.export_sommes,
                    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"},
         "app": {"textes_obligatoires": spec.textes_app, "taille_max_octets": 5_000_000},
@@ -685,15 +693,53 @@ def contrat_entrepot(spec: MissionSpec) -> dict:
 
 
 # --------------------------------------------------------------------------- graphiques
+# Les PNG sont posés dans les guides A4 à ~170-205 pt de haut : une figure de 9 × 4,5 po y est réduite
+# d'environ moitié. Les polices ci-dessous (11 à 16 pt à la taille enregistrée) y donnent 6,5 à 9 pt imprimés.
+TAILLE_FIG = (9.0, 4.5)
+DPI_PNG = 200
+POLICE = {"base": 14, "titre": 16, "axe": 15, "graduation": 14, "legende": 14, "valeur": 13}
+HAUTEUR_TRACE_PT = 220.0                         # hauteur utile approximative (4,5 po moins titre, axe, légende)
+ABREGE_MAX = 20                                  # au-delà, une étiquette de catégorie est abrégée (« … »)
+
+
 def _plt():
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    plt.rcParams.update({"svg.hashsalt": "solen-v7", "font.family": "DejaVu Sans", "font.size": 10,
+    plt.rcParams.update({"svg.hashsalt": "solen-v7", "font.family": "DejaVu Sans", "font.size": POLICE["base"],
+                         "axes.titlesize": POLICE["titre"], "axes.labelsize": POLICE["axe"],
+                         "xtick.labelsize": POLICE["graduation"], "ytick.labelsize": POLICE["graduation"],
+                         "legend.fontsize": POLICE["legende"], "legend.title_fontsize": POLICE["legende"],
                          "axes.edgecolor": PALETTE["encre"], "axes.labelcolor": PALETTE["encre"],
                          "xtick.color": PALETTE["encre"], "ytick.color": PALETTE["encre"],
                          "axes.spines.top": False, "axes.spines.right": False})
     return plt
+
+
+def _figure(plt, titre: str):
+    """Figure 9 × 4,5 po en mise en page contrainte ; titre aligné à gauche sur la figure (pas sur l'axe, pour
+    qu'une longue étiquette d'axe ne le pousse pas hors du cadre), coupé à ~56 caractères."""
+    import textwrap
+    fig, ax = plt.subplots(figsize=TAILLE_FIG, layout="constrained")
+    fig.suptitle("\n".join(textwrap.wrap(titre, 56)), x=0.01, ha="left", color=PALETTE["deep"],
+                 fontweight="bold", fontsize=POLICE["titre"])
+    return fig, ax
+
+
+def _boites(fig, artistes) -> list:
+    fig.canvas.draw()
+    rendu = fig.canvas.get_renderer()
+    return [a.get_window_extent(rendu) for a in artistes if a.get_text()]
+
+
+def _chevauchent(boites, ecart: float = 3.0, dpi: float = 100.0) -> bool:
+    """Vrai si deux boîtes se touchent, en exigeant `ecart` points d'espace horizontal entre elles."""
+    ecart = ecart * dpi / 72
+    for i, a in enumerate(boites):
+        for b in boites[i + 1:]:
+            if a.x0 < b.x1 + ecart and b.x0 < a.x1 + ecart and a.y0 < b.y1 and b.y0 < a.y1:
+                return True
+    return False
 
 
 def _nombre_fr(x, _pos=None):
@@ -704,23 +750,123 @@ def _nombre_fr(x, _pos=None):
 
 def _sauver(fig, base: Path) -> None:
     base.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(base.with_suffix(".png"), dpi=150, bbox_inches="tight", metadata={"Software": None})
-    fig.savefig(base.with_suffix(".svg"), bbox_inches="tight", metadata={"Date": None, "Creator": None})
+    fig.savefig(base.with_suffix(".png"), dpi=DPI_PNG, bbox_inches="tight", pad_inches=0.08,
+                metadata={"Software": None})
+    svg = io.StringIO()                        # SVG en LF sur toutes les plateformes (pas de CRLF sous Windows)
+    fig.savefig(svg, format="svg", bbox_inches="tight", pad_inches=0.08, metadata={"Date": None, "Creator": None})
+    base.with_suffix(".svg").write_text(svg.getvalue(), encoding="utf-8", newline="\n")
 
 
 def _echelle(ind: dict):
-    return {"millimes": (1000.0, "TND"), "ratio": (0.01, "%"), "jours": (1.0, "jours"), "heures": (1.0, "h"),
-            "centiemes_heure": (100.0, "h")}.get(ind["unite"], (1.0, ""))
+    return {"millimes": (1000.0, "TND"), "ratio": (0.01, "%"), "jours": (1.0, "jours"), "heures": (1.0, "heures"),
+            "centiemes_heure": (100.0, "heures"), "nombre": (1.0, "nombre")}.get(ind["unite"], (1.0, ""))
 
 
 def _titre_axe(libelle: str, unite: str) -> str:
-    """« Coût (TND) » ; un comptage n'a pas d'unité : « Interventions », jamais « Interventions () »."""
-    return f"{libelle} ({unite})" if unite else libelle
+    """« Coût (TND) », « Interventions (nombre) » ; coupé en deux lignes s'il est trop long pour l'axe."""
+    import textwrap
+    t = f"{libelle} ({unite})" if unite else libelle
+    return "\n".join(textwrap.wrap(t, 26)) if len(t) > 26 else t
 
 
-def _legende_dessous(ax, n: int, titre: str | None = None) -> None:
-    """Légende sous le graphique : elle ne recouvre jamais une barre."""
-    ax.legend(title=titre, frameon=False, ncol=min(max(n, 1), 5), loc="upper center", bbox_to_anchor=(0.5, -0.14))
+def _abreger(e: str, n: int = ABREGE_MAX) -> str:
+    e = str(e)
+    return e if len(e) <= n else e[:n - 1].rstrip() + "…"
+
+
+def _largeur_texte(s: str, police: float) -> float:
+    """Largeur estimée en points (DejaVu Sans ≈ 0,6 em par caractère)."""
+    return len(s) * 0.6 * police
+
+
+def _etiquettes_x(fig, ax, etiquettes: list[str]) -> None:
+    """Étiquettes de catégories lisibles : droites si elles tiennent (mesuré au rendu), sinon inclinées à 30°
+    ou 45° selon le pas disponible, ou verticales ; abrégées (« … ») au-delà de 20 caractères."""
+    etiq = [_abreger(e) for e in etiquettes]
+    ax.set_xticks(range(len(etiq)), etiq)
+    if not etiq or not _chevauchent(_boites(fig, ax.get_xticklabels()), 6.0, fig.dpi):
+        return
+    pas = ax.get_window_extent(fig.canvas.get_renderer()).width / len(etiq)
+    haut = POLICE["graduation"] * fig.dpi / 72 * 1.25
+    if pas * 0.5 >= haut:
+        ax.set_xticks(range(len(etiq)), etiq, rotation=30, ha="right", rotation_mode="anchor")
+    elif pas * 0.707 >= haut:
+        ax.set_xticks(range(len(etiq)), etiq, rotation=45, ha="right", rotation_mode="anchor")
+    else:
+        ax.set_xticks(range(len(etiq)), etiq, rotation=90)
+
+
+def _legende_dessous(fig, ax, n: int, titre: str | None = None) -> None:
+    """Légende centrée sous le graphique (hors du tracé) : elle ne recouvre jamais une barre.
+    Autant de colonnes que la largeur de la figure le permet (mesuré au rendu)."""
+    poignees, libelles = ax.get_legend_handles_labels()
+    for ncol in range(min(n, 5), 0, -1):
+        leg = fig.legend(poignees, libelles, title=titre, frameon=False, ncol=ncol, loc="outside lower center",
+                         columnspacing=1.4, handlelength=1.6)
+        fig.canvas.draw()
+        if ncol == 1 or leg.get_window_extent(fig.canvas.get_renderer()).width <= fig.bbox.width * 0.98:
+            return
+        leg.remove()
+
+
+def _valeurs_barres(fig, ax, conteneurs: list, textes: list[list[str]]) -> bool:
+    """Valeurs au bout des barres verticales : 13 pt, sinon 12 pt, sinon tournées à 90° (13 puis 11 pt) ; si même
+    tournées elles se touchent (barres trop serrées), pas de valeurs : la grille et l'axe suffisent.
+    Mesuré au rendu. Renvoie True si les valeurs ont été tournées (il faut alors plus de marge au-dessus)."""
+    for police, rot in ((POLICE["valeur"], 0), (POLICE["valeur"] - 1, 0), (POLICE["valeur"], 90), (11, 90)):
+        poses = [t for b, tx in zip(conteneurs, textes)
+                 for t in ax.bar_label(b, labels=tx, fontsize=police, color=PALETTE["encre"],
+                                       padding=3 if rot else 2, rotation=rot)]
+        if not _chevauchent(_boites(fig, poses), 3.0, fig.dpi):
+            return bool(rot)
+        for t in poses:
+            t.remove()
+    return False
+
+
+def _marges_valeurs(ax, vals: list[float], textes: list[str], tourne: bool = False) -> None:
+    """Réserve la place des valeurs au-dessus (et au-dessous si négatif) des barres."""
+    haut = max([0.0] + vals)
+    bas = min([0.0] + vals)
+    etendue = (haut - bas) or 1.0
+    frac = ((max(_largeur_texte(t, POLICE["valeur"]) for t in textes) + 8) / HAUTEUR_TRACE_PT if tourne and textes
+            else 0.10)
+    marge = etendue * frac / max(1 - 2 * frac, 0.3)
+    ax.set_ylim(top=haut + marge if haut > 0 else marge * 0.3, bottom=bas - marge if bas < 0 else 0)
+
+
+def _texte_valeur(x: float, dec: int) -> str:
+    return _nombre_fr(round(x)) if dec == 0 else f"{x:,.{dec}f}".replace(",", " ").replace(".", ",")
+
+
+def _barres_verticales(fig, ax, rows_etiquettes: list[str], series: list[tuple[str, list[float], object]],
+                       textes: list[list[str]], libelle_x: str, libelle_y: str, titre_legende: str | None = None,
+                       entiers: bool = False) -> None:
+    """Barres groupées verticales communes à tous les graphiques en barres : séries = (libellé, valeurs, couleur)."""
+    from matplotlib.ticker import FuncFormatter, MaxNLocator
+    n = len(series)
+    larg = 0.8 / n
+    conteneurs, toutes = [], []
+    for k, (lib, vals, couleur) in enumerate(series):
+        pos = [i + (k - (n - 1) / 2) * larg for i in range(len(rows_etiquettes))]
+        conteneurs.append(ax.bar(pos, vals, larg, label=lib, color=couleur))
+        toutes += vals
+    plats = [t for tx in textes for t in tx]
+    ax.set_ylabel(libelle_y)
+    ax.set_xlabel(libelle_x)
+    if entiers:
+        ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
+    ax.grid(axis="y", color=PALETTE["pale"])
+    if any(x < 0 for x in toutes):
+        ax.axhline(0, color=PALETTE["encre"], linewidth=0.8)
+    _marges_valeurs(ax, toutes, plats)
+    if n > 1:
+        _legende_dessous(fig, ax, n, titre_legende)
+    _etiquettes_x(fig, ax, rows_etiquettes)
+    if _valeurs_barres(fig, ax, conteneurs, textes):
+        _marges_valeurs(ax, toutes, plats, tourne=True)
+    ax.set_axisbelow(True)
 
 
 def visuel_empile(spec: MissionSpec, con, v: dict, base: Path) -> None:
@@ -733,19 +879,19 @@ def visuel_empile(spec: MissionSpec, con, v: dict, base: Path) -> None:
     xs = sorted({r[0] for r in rows})
     series = list(dict.fromkeys(v.get("ordre_series") or sorted({r[1] for r in rows})))
     div, unite = _echelle(ind)
-    fig, ax = plt.subplots(figsize=(8.5, 4.8))
+    fig, ax = _figure(plt, v["titre"])
     bas = [0.0] * len(xs)
     for k, s in enumerate(series):
         val = [(next((r[2] for r in rows if r[0] == x and r[1] == s), 0) or 0) / div for x in xs]
-        ax.bar(xs, val, bottom=bas, label=s, color=SERIES[k % len(SERIES)], width=0.65)
+        ax.bar(range(len(xs)), val, bottom=bas, label=s, color=SERIES[k % len(SERIES)], width=0.65)
         bas = [a + b for a, b in zip(bas, val)]
-    ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
     ax.set_ylabel(_titre_axe(v.get("libelle_y", ind["libelle"]), unite))
     ax.set_xlabel(v.get("libelle_x", v["x"]))
     ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
-    _legende_dessous(ax, len(series), v.get("libelle_serie", v["serie"]))
     ax.grid(axis="y", color=PALETTE["pale"])
     ax.set_axisbelow(True)
+    _legende_dessous(fig, ax, len(series), v.get("libelle_serie", v["serie"]))
+    _etiquettes_x(fig, ax, [str(x) for x in xs])
     _sauver(fig, base)
     plt.close(fig)
 
@@ -755,7 +901,10 @@ def visuel_barres(spec: MissionSpec, con, v: dict, base: Path) -> None:
 
     Options : `top` (N valeurs les plus hautes du premier indicateur), `horizontal` (barres couchées, triées,
     lisibles avec beaucoup d'étiquettes ; valeurs négatives en orange), `libelle_y`, `libelle_x`.
-    Au-delà de 8 étiquettes verticales, elles sont inclinées.
+    Au-delà de 12 barres couchées, la figure de 9 × 4,5 po ne laisse plus une ligne lisible par barre :
+    elles sont alors dressées (même tri, de la plus haute à la plus basse, même code couleur).
+    Les étiquettes de catégories qui se chevauchent sont inclinées, puis verticales ; abrégées au-delà de
+    20 caractères (28 en barres couchées).
     """
     from matplotlib.ticker import FuncFormatter
     plt = _plt()
@@ -765,49 +914,43 @@ def visuel_barres(spec: MissionSpec, con, v: dict, base: Path) -> None:
     if v.get("top"):
         rows = sorted(rows, key=lambda r: (-(r[1] or 0), str(r[0])))[:v["top"]]
     div, unite = _echelle(inds[0])
-    dec = {"TND": 0, "": 0, "%": 1}.get(unite, 2)
+    dec = {"TND": 0, "": 0, "nombre": 0, "%": 1}.get(unite, 2)
     n = len(inds)
     titre_val = _titre_axe(v.get("libelle_y", inds[0]["libelle"]), unite)
+    couche = bool(v.get("horizontal")) and len(rows) * n <= 12
     if v.get("horizontal"):
         rows = sorted(rows, key=lambda r: ((r[1] or 0), str(r[0])))
-        fig, ax = plt.subplots(figsize=(8.5, max(4.6, 0.32 * len(rows) * n + 1.2)))
-    else:
-        fig, ax = plt.subplots(figsize=(8.5, 4.8))
-    larg = 0.8 / n
-    haut = 0.0
+        if not couche:
+            rows = rows[::-1]
+    fig, ax = _figure(plt, v["titre"])
+    series, textes = [], []
     for k, ind in enumerate(inds):
-        pos = [i + (k - (n - 1) / 2) * larg for i in range(len(rows))]
         vals = [(r[1 + k] or 0) / div for r in rows]
-        haut = max([haut] + [abs(x) for x in vals])
         couleur = ([PALETTE["orange"] if x < 0 else SERIES[0] for x in vals] if n == 1 and v.get("horizontal")
                    else SERIES[k % len(SERIES)])
-        trace = ax.barh if v.get("horizontal") else ax.bar
-        barres = trace(pos, vals, larg, label=ind["libelle"], color=couleur)
-        ax.bar_label(barres, labels=[_nombre_fr(round(x)) if dec == 0 else
-                                     f"{x:,.{dec}f}".replace(",", " ").replace(".", ",") for x in vals],
-                     fontsize=8 if len(rows) * n <= 12 else 7, color=PALETTE["encre"], padding=2)
+        series.append((ind["libelle"], vals, couleur))
+        textes.append([_texte_valeur(x, dec) for x in vals])
     etiquettes = [str(r[0]) for r in rows]
-    if v.get("horizontal"):
-        ax.set_yticks(range(len(rows)), etiquettes)
+    if couche:
+        larg = 0.8 / n
+        for k, (lib, vals, couleur) in enumerate(series):
+            pos = [i + (k - (n - 1) / 2) * larg for i in range(len(rows))]
+            b = ax.barh(pos, vals, larg, label=lib, color=couleur)
+            ax.bar_label(b, labels=textes[k], fontsize=POLICE["valeur"], color=PALETTE["encre"], padding=3)
+        ax.set_yticks(range(len(rows)), [_abreger(e, 28) for e in etiquettes])
         ax.set_xlabel(titre_val)
         ax.set_ylabel(v.get("libelle_x", v["axe"]))
         ax.xaxis.set_major_formatter(FuncFormatter(_nombre_fr))
-        ax.margins(x=0.15)
+        ax.margins(x=0.18)
         ax.grid(axis="x", color=PALETTE["pale"])
         if any((r[1] or 0) < 0 for r in rows):
             ax.axvline(0, color=PALETTE["encre"], linewidth=0.8)
+        if n > 1:
+            _legende_dessous(fig, ax, n)
+        ax.set_axisbelow(True)
     else:
-        incline = len(rows) > 8
-        ax.set_xticks(range(len(rows)), etiquettes, rotation=45 if incline else 0, ha="right" if incline else "center")
-        ax.set_ylabel(titre_val)
-        ax.set_xlabel(v.get("libelle_x", v["axe"]))
-        ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
-        ax.set_ylim(top=haut * 1.15 if haut else 1)
-        ax.grid(axis="y", color=PALETTE["pale"])
-    ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
-    if n > 1:
-        _legende_dessous(ax, n)
-    ax.set_axisbelow(True)
+        _barres_verticales(fig, ax, etiquettes, series, textes, v.get("libelle_x", v["axe"]), titre_val,
+                           entiers=unite == "nombre")
     _sauver(fig, base)
     plt.close(fig)
 
@@ -815,22 +958,14 @@ def visuel_barres(spec: MissionSpec, con, v: dict, base: Path) -> None:
 def visuel_rejets(attendus: dict[str, dict], v: dict, base: Path) -> None:
     plt = _plt()
     motifs = sorted({m for a in attendus.values() for m in a["rejets"]["par_motif"]})
-    fig, ax = plt.subplots(figsize=(8.5, 4.2))
-    n = len(attendus)
-    larg = 0.8 / n
+    fig, ax = _figure(plt, v["titre"])
+    series, textes = [], []
     for k, (lot, a) in enumerate(attendus.items()):
-        xs = [i + (k - (n - 1) / 2) * larg for i in range(len(motifs))]
-        vals = [a["rejets"]["par_motif"].get(m, 0) for m in motifs]
-        b = ax.bar(xs, vals, width=larg, label=lot, color=SERIES[k % len(SERIES)])
-        ax.bar_label(b, fontsize=8, padding=2)
-    ax.set_xticks(range(len(motifs)), motifs)
-    ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
-    ax.set_ylabel("Lignes rejetées")
-    ax.set_xlabel("Motif de rejet")
-    ax.set_ylim(top=max([1] + [x for a in attendus.values() for x in a["rejets"]["par_motif"].values()]) * 1.15)
-    _legende_dessous(ax, n)
-    ax.grid(axis="y", color=PALETTE["pale"])
-    ax.set_axisbelow(True)
+        vals = [float(a["rejets"]["par_motif"].get(m, 0)) for m in motifs]
+        series.append((lot, vals, SERIES[k % len(SERIES)]))
+        textes.append([_nombre_fr(x) for x in vals])
+    _barres_verticales(fig, ax, motifs, series, textes, "Motif de rejet", _titre_axe("Lignes rejetées", "nombre"),
+                       entiers=True)
     _sauver(fig, base)
     plt.close(fig)
 
@@ -1210,11 +1345,11 @@ def produire_reference(spec: MissionSpec, lots: list[LotResultat]) -> dict[str, 
         elif v["type"] == "fonction":            # graphique propre à la mission : dessiner(spec, con, attendus, base)
             v["dessiner"](spec, cons[dernier], attendus, base)
         noms_visuels.append(v["fichier"])
-    (ref / "README.md").write_text(doc_reference_readme(spec, attendus, noms_visuels), encoding="utf-8")
+    (ref / "README.md").write_text(doc_reference_readme(spec, attendus, noms_visuels), encoding="utf-8", newline="\n")
     d = spec.dossier
-    (d / "fiche_mission.md").write_text(doc_fiche(spec, attendus), encoding="utf-8")
-    (d / "cahier_des_charges.md").write_text(doc_cahier(spec, attendus), encoding="utf-8")
-    (d / "dictionnaire.md").write_text(doc_dictionnaire(spec), encoding="utf-8")
+    (d / "fiche_mission.md").write_text(doc_fiche(spec, attendus), encoding="utf-8", newline="\n")
+    (d / "cahier_des_charges.md").write_text(doc_cahier(spec, attendus), encoding="utf-8", newline="\n")
+    (d / "dictionnaire.md").write_text(doc_dictionnaire(spec), encoding="utf-8", newline="\n")
     return attendus
 
 
@@ -1272,15 +1407,87 @@ def exporter_v7_data(spec: MissionSpec, echantillon: dict, attendus: dict[str, d
     tmp = V7_DATA.with_suffix(".json.tmp")
     ecrire_json(tmp, data)
     tmp.replace(V7_DATA)
+    ecrire_empreintes(spec)                    # reference/empreintes.json, comme ecrire_verite_privee
 
 
 def ecrire_verite_privee(spec: MissionSpec, fichiers: dict[str, tuple[list[str], list[dict]]]) -> Path | None:
-    """Vérité terrain brute (CSV) dans le dossier PRIVÉ du formateur, s'il existe."""
-    if not FORMATEUR.exists():
+    """Vérité terrain brute (CSV) dans <SOLEN_VERITE_PRIVEE>/<mission>, seulement si la variable est définie.
+    Écrit aussi reference/empreintes.json (comme exporter_v7_data : le dernier des deux appelés fait foi)."""
+    ecrire_empreintes(spec)
+    racine = os.environ.get(ENV_VERITE, "").strip()
+    if not racine:
         return None
-    d = VERITE / spec.code
+    d = Path(racine).expanduser().resolve() / spec.code
     if d.exists():
         shutil.rmtree(d)
     for nom, (entete, lignes) in fichiers.items():
         ecrire_csv(d / nom, entete, lignes, sep=",")
     return d
+
+
+# --------------------------------------------------------------------------- empreintes de contenu
+# Comparer le CONTENU, pas les octets : l'en-tête SQLite porte la version de la bibliothèque, un .xlsx est un ZIP
+# dont les octets dépendent de zlib, et un texte peut être écrit en CRLF sous Windows. Les visuels PNG/SVG
+# dépendent de la version de matplotlib et de FreeType : seule leur présence est comparée.
+TEXTES = {".csv", ".json", ".md", ".txt"}
+VISUELS = {".png", ".svg"}
+
+
+def _sha(*morceaux) -> str:
+    h = hashlib.sha256()
+    for m in morceaux:
+        h.update(m if isinstance(m, bytes) else repr(m).encode("utf-8"))
+        h.update(b"\x00")
+    return h.hexdigest()
+
+
+def empreinte_fichier(p: Path) -> str:
+    ext = p.suffix.lower()
+    if ext in TEXTES:                                   # texte, quel que soit l'encodage : fins de ligne en LF
+        return "texte:" + _sha(p.read_bytes().replace(b"\r\n", b"\n"))
+    if ext == ".xlsx":                                  # valeurs des cellules, feuille par feuille
+        from openpyxl import load_workbook
+        wb = load_workbook(p, read_only=True, data_only=True)
+        try:
+            return "xlsx:" + _sha(*[(ws.title, [tuple(r) for r in ws.iter_rows(values_only=True)])
+                                    for ws in wb.worksheets])
+        finally:
+            wb.close()
+    if ext == ".sqlite":                                # schéma + SELECT * ORDER BY toutes les colonnes, par table
+        con = sqlite3.connect(p.resolve().as_uri() + "?mode=ro", uri=True)
+        try:
+            schema = con.execute("SELECT type, name, tbl_name, sql FROM sqlite_master "
+                                 "WHERE name NOT LIKE 'sqlite_%' ORDER BY type, name").fetchall()
+            morceaux = [schema]
+            for (t,) in con.execute("SELECT name FROM sqlite_master WHERE type = 'table' "
+                                    "AND name NOT LIKE 'sqlite_%' ORDER BY name").fetchall():
+                n = len(con.execute(f'SELECT * FROM "{t}" LIMIT 0').description)
+                ordre = ", ".join(str(i) for i in range(1, n + 1))
+                morceaux.append((t, con.execute(f'SELECT * FROM "{t}" ORDER BY {ordre}').fetchall()))
+            return "sqlite:" + _sha(*morceaux)
+        finally:
+            con.close()
+    if ext in VISUELS:
+        return "visuel:present"
+    return "octets:" + _sha(p.read_bytes())
+
+
+def empreintes_contenu(dossier: Path) -> dict[str, str]:
+    """Empreintes de contenu des fichiers générés d'une mission (chemins relatifs, séparateur /)."""
+    res = {}
+    for sous in ("echantillon", "sources", "reference"):
+        for p in sorted((dossier / sous).rglob("*")):
+            if p.is_file() and p.name != EMPREINTES:
+                res[p.relative_to(dossier).as_posix()] = empreinte_fichier(p)
+    for p in sorted(dossier.glob("*.md")):
+        res[p.name] = empreinte_fichier(p)
+    return dict(sorted(res.items()))
+
+
+def ecrire_empreintes(spec: MissionSpec) -> Path:
+    f = spec.dossier / "reference" / EMPREINTES
+    ecrire_json(f, {"_lisez_moi": "Empreintes de contenu des fichiers de la mission (textes en LF, valeurs des "
+                                  "cellules Excel, lignes SQLite triées et schéma ; visuels : présence). Écrit par "
+                                  "le générateur, comparé par authoring/generateurs/verifier_reproductibilite.py.",
+                    "fichiers": empreintes_contenu(spec.dossier)})
+    return f

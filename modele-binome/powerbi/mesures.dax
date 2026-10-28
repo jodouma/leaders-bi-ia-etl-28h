@@ -1,10 +1,11 @@
-// Mesures du tronc commun Solen Commerce 360.
+// Mesures du TRONC COMMUN uniquement (Solen Commerce 360).
 // Créer une mesure à la fois : sélectionner fact_vente, Modélisation > Nouvelle mesure,
 // coller UNE formule, valider. Les montants sont stockés en millimes entiers :
 // on additionne d'abord les millimes, puis on divise par 1 000 pour afficher des TND.
 // Si Desktop utilise les séparateurs locaux, la virgule entre arguments devient « ; ».
-// Ce fichier est écrit par Codex sur demande ; pour une mission du catalogue, il
-// est réécrit avec les indicateurs de son cahier des charges.
+// Ce fichier ne change pas quand vous passez à votre mission : pour une mission du
+// catalogue, Codex écrit un autre fichier, powerbi/mesures_<Mxx>.dax, avec les
+// formules de son cahier des charges (étape C du guide de mission).
 
 Ventes brutes TND = DIVIDE(SUM(fact_vente[montant_brut_millimes]), 1000)
 

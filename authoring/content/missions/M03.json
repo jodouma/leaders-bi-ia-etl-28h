@@ -39,7 +39,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Ce guide accompagne votre binôme sur la **mission 03**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un grossiste fictif, **Medina Distribution**, qui facture des clients professionnels. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : remplacer le contenu de `mission.txt` par `M03`."
+     "text": "Ce guide accompagne votre binôme sur la **mission 03**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un grossiste fictif, **Medina Distribution**, qui facture des clients professionnels. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : « Avant l’étape A » (page 9), en fin de séance 4."
     },
     {
      "type": "table",
@@ -71,23 +71,23 @@
       ],
       [
        "Étapes A → B → C",
-       "Charger, compléter et rejouer, livrer",
+       "Passer à M03, charger, compléter et rejouer, livrer",
        "9"
       ],
       [
        "La règle à clarifier et les variantes",
        "Défendre la décision, choisir une variante",
-       "12"
+       "13"
       ],
       [
        "La démonstration",
        "Trois écrans et un chiffre filtré contrôlé",
-       "13"
+       "14"
       ],
       [
        "À ce stade, je sais…",
        "Le bilan et ce qui a été vérifié",
-       "14"
+       "15"
       ]
      ],
      "widths": [
@@ -745,6 +745,34 @@
    ]
   },
   {
+   "title": "Avant l’étape A · passer à M03",
+   "kicker": "M03 · MEDINA DISTRIBUTION · ÉTAPES A → B → C",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR : votre dépôt passe du tronc commun à M03. On garde le code du tronc commun et on le **généralise**. Détail et raisons : livret 04, « Passer à votre mission »."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · sauvegarder, vider, changer de mission",
+     "text": "git switch main && git pull\ngit switch -c mission-M03\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*                 # .gitkeep (fichier caché) reste\necho \"M03\" > mission.txt"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · généraliser le tronc commun (première étape)",
+     "text": "Mission M03 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M03/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets\nde factures.csv au lot 1. Lance python -m solen initial, puis --mission M03\n--etape rejets et pytest controles ; recopie les sorties. Dis quels tests\nde tests/ lisent mission.txt et adapte-les. Ni commit ni push."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`livraison/` est versionné, `outputs/` ne l’est pas** : `livraison/tronc-commun/` garde la preuve du tronc commun (et sert à Power BI en séance 5) ; `outputs/` appartient à la mission courante, `python -m solen initial` le reconstruit pour M03.",
+      "**Ordre des contrôles**, un cran vert par PR : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`. Dans la même PR, `ETAPE_CI` revient à `aucune`, puis avance avec vous.",
+      "**Faux ÉCHEC ?** Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` : videz `outputs/`, relancez `initial`, reprenez l’ordre."
+     ]
+    }
+   ]
+  },
+  {
    "kicker": "M03 · MEDINA DISTRIBUTION · ÉTAPE A · CHARGER",
    "title": "Étape A · charger le lot 1",
    "blocks": [
@@ -819,7 +847,7 @@
     {
      "type": "code",
      "label": "Demande à Codex · prompt 08 adapté",
-     "text": "Mission M03. Ajoute python -m solen increment (lot2 de M03).\nSCD2 sur dim_client.segment : fermer « épicerie » de CL04 (valid_to\n2026-07-15, exclu), ouvrir « grande surface » (valid_from 2026-07-15).\nUne facture prend la version valable à SA date. Un avoir recopie le\nclient_key de sa ligne de facture (version de la date de facture) et\ngarde date_key = date de l'avoir. Rejeu : clé déjà chargée ignorée.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+     "text": "Mission M03. Ajoute python -m solen increment (lot2 de M03).\nSCD2 sur dim_client.segment : fermer « épicerie » de CL04 (valid_to\n2026-07-15, exclu), ouvrir « grande surface » (valid_from 2026-07-15).\nUne facture prend la version valable à SA date. Un avoir recopie le\nclient_key de sa ligne de facture (version de la date de facture) et\ngarde date_key = date de l'avoir. Rejeu : clé déjà chargée ignorée.\nLance initial, increment, --etape increment, increment (2e fois),\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
     },
     {
      "type": "code",
@@ -896,13 +924,13 @@
     },
     {
      "type": "text",
-     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** (trois dimensions × deux faits), par `client_key`, jamais par `client_id` (CL04 a deux lignes). `fact_avoir[date_facture_key]` reste sans relation active. Codex réécrit `powerbi/mesures.dax` : Montant facturé TND, Avoirs TND, Ventes nettes TND, Marge commerciale TND, Taux d’avoir. Après le lot 2 et **Actualiser** : 289 006,880 TND de ventes nettes, 39 074,380 TND de marge, 1,18 %. Erreur fréquente : relier `dim_date` à `fact_avoir[date_facture_key]` ; les avoirs changent alors de mois et le graphique mensuel ne colle plus à la référence."
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** (trois dimensions × deux faits), par `client_key`, jamais par `client_id` (CL04 a deux lignes). `fact_avoir[date_facture_key]` reste sans relation active. Demandez à Codex les mesures de la mission (formules du cahier) dans `powerbi/mesures_M03.dax` ; sans poste Windows, la démo se fait dans l’application : Montant facturé TND, Avoirs TND, Ventes nettes TND, Marge commerciale TND, Taux d’avoir. Après le lot 2 et **Actualiser** : 289 006,880 TND de ventes nettes, 39 074,380 TND de marge, 1,18 %. Erreur fréquente : relier `dim_date` à `fact_avoir[date_facture_key]` ; les avoirs changent alors de mois et le graphique mensuel ne colle plus à la référence."
     },
     {
      "type": "figure",
      "path": "../../../modele-binome/catalogue/M03/reference/visuels/marge_commerciale_par_produit.png",
      "caption": "Graphique de référence après le lot 2 : marge commerciale par produit, en TND. Deux produits sont sous zéro : l’huile PR03 et le sucre PR04.",
-     "height": 175
+     "height": 170
     }
    ]
   },
@@ -1041,7 +1069,7 @@
      "type": "figure",
      "path": "../../../modele-binome/catalogue/M03/reference/visuels/ventes_nettes_par_mois_et_segment.png",
      "caption": "Graphique de référence après le lot 2 : ventes nettes par mois et par segment, en TND. Dès le 15 juillet, les factures de CL04 passent en « grande surface ».",
-     "height": 200
+     "height": 225
     }
    ]
   },

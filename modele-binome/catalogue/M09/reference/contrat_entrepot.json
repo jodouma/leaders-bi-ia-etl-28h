@@ -287,7 +287,12 @@
     "sources": [
       "billets.csv",
       "remboursements.sqlite"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "billets.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

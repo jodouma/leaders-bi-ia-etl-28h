@@ -10,7 +10,7 @@ commande qui le prouve.
 
 ```text
 Utilise $preparer-pr pour la branche <branche>.
-Étape à contrôler : <initial | increment | rejeu | export | tout>.
+Étape à contrôler : <rejets|initial|increment|rejeu|export|app|tout>.
 Relecteur : <prénom et compte GitHub du partenaire>.
 Ma phrase : « Cette PR permet de <…> », preuve : <commande>.
 Fais la liste de contrôle, puis propose un titre et une description en français.

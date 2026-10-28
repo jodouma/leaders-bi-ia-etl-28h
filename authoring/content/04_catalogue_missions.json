@@ -39,7 +39,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Ce livret sert à la **fin de la séance 3** : vous choisissez, à deux, **une** des dix missions du catalogue. Elle sera votre projet jusqu’à la soutenance. Chaque mission applique la méthode du tronc commun (Maison Zitouna) à une autre entreprise fictive ; son guide détaillé est dans `pdf/missions/Mxx_guide.pdf`."
+     "text": "Ce livret sert à la **fin de la séance 3** : vous choisissez, à deux, **une** des dix missions du catalogue, votre projet jusqu’à la soutenance. Chaque mission applique la méthode du tronc commun à une autre entreprise fictive ; son guide est `pdf/missions/Mxx_guide.pdf`."
     },
     {
      "type": "table",
@@ -56,7 +56,7 @@
       ],
       [
        "Les dix missions en un coup d’œil",
-       "Entreprise, question, grain, historique, indicateurs, règle, chiffre clé",
+       "Entreprise, question, grain, historique, indicateurs, règle",
        "4"
       ],
       [
@@ -70,14 +70,19 @@
        "11"
       ],
       [
+       "Passer à votre mission",
+       "Fin de séance 4 : six gestes et la première PR",
+       "12"
+      ],
+      [
        "Les dix fiches",
        "Une page par mission : M01 à M10",
-       "12"
+       "14"
       ],
       [
        "À ce stade, je sais…",
        "Le bilan et ce qui a été vérifié",
-       "22"
+       "24"
       ]
      ],
      "widths": [
@@ -105,52 +110,52 @@
       [
        "M01",
        "Réseau de magasins · Carthage Market",
-       "12"
+       "14"
       ],
       [
        "M02",
        "E-commerce · Souk Express",
-       "13"
+       "15"
       ],
       [
        "M03",
        "Distribution B2B · Medina Distribution",
-       "14"
+       "16"
       ],
       [
        "M04",
        "Livraison · Colis Rapide",
-       "15"
+       "17"
       ],
       [
        "M05",
        "Centre de formation · Académie Nour",
-       "16"
+       "18"
       ],
       [
        "M06",
        "Hôtellerie · Dar Azur",
-       "17"
+       "19"
       ],
       [
        "M07",
        "Abonnements · FibreNet",
-       "18"
+       "20"
       ],
       [
        "M08",
        "Maintenance · TechniServ",
-       "19"
+       "21"
       ],
       [
        "M09",
        "Événementiel · Scène Libre",
-       "20"
+       "22"
       ],
       [
        "M10",
        "Agence numérique · Pixel Studio",
-       "21"
+       "23"
       ]
      ],
      "widths": [
@@ -240,7 +245,7 @@
     {
      "type": "callout",
      "label": "Ce que vous écrivez dans `notes/JOURNAL.md`",
-     "text": "Décision : « Mission Mxx, parce que … ». Preuve : la question de décision recopiée et le résultat de l’échantillon calculé à la main. Prochain objectif : la première PR de la mission (`mission.txt` = `Mxx`)."
+     "text": "Décision : « Mission Mxx, parce que … ». Preuve : la question de décision recopiée et le résultat de l’échantillon calculé à la main. Prochain objectif : la première PR de la mission, en fin de séance 4 (page « Passer à votre mission »)."
     }
    ]
   },
@@ -364,7 +369,7 @@
       ],
       [
        "**M04** · Colis Rapide",
-       "**ponctualité** (÷ colis livrés) · **retard moyen** (÷ colis en retard) · revenu net de pénalités · coût transporteur",
+       "**ponctualité** (÷ colis livrés) · **retard moyen** (÷ colis en retard) · revenu net de pénalités · coût transporteur · marge de livraison",
        "ponctualité **83,82 %**"
       ],
       [
@@ -645,8 +650,8 @@
      "type": "bullets",
      "items": [
       "**SCD2 sur une seule dimension** : une ligne par version, intervalle **[`valid_from`, `valid_to`)** : début inclus, fin exclue, `valid_to` vide = version courante. Un fait prend la version valable à **sa** date ; on ne réécrit jamais le passé.",
-      "**Rejeu** : relancer `increment` n’ajoute aucune ligne. Une clé métier déjà chargée est ignorée ; les rejets du lot sont **remplacés**, pas ajoutés.",
-      "**`mission.txt`** : votre première PR de la mission remplace `tronc-commun` par `M0x`. Codex lit ce fichier ; les données viennent alors de `catalogue/M0x/`."
+      "**Rejeu** : relancer `increment` n’ajoute aucune ligne. Une clé métier déjà chargée est ignorée ; les rejets du lot sont **remplacés**, pas ajoutés. `--etape increment` enregistre l’empreinte que `--etape rejeu` compare : lancez-le **entre** les deux `increment`.",
+      "**`mission.txt`** : votre première PR de la mission remplace `tronc-commun` par `M0x` (page « Passer à votre mission »). Codex lit ce fichier ; les données viennent alors de `catalogue/M0x/`."
      ]
     },
     {
@@ -656,7 +661,7 @@
     },
     {
      "type": "text",
-     "text": "La **CI** (`.github/workflows/controles.yml`) rejoue la même chaîne sur chaque PR. Avancez `ETAPE_CI` (`aucune` → `initial` → `increment` → `rejeu` → `export` → `tout`) seulement quand l’étape existe. La référence (`reference/attendu_lot*.json`) a été calculée par le générateur, pas par une solution : si un contrôle échoue, on corrige le code, jamais le contrôle."
+     "text": "La **CI** (`.github/workflows/controles.yml`) rejoue la même chaîne sur chaque PR. Avancez `ETAPE_CI` (`aucune` → `rejets` → `initial` → `increment` → `rejeu` → `export` → `tout`) seulement quand l’étape existe. La référence (`reference/attendu_lot*.json`) a été calculée par le générateur, pas par une solution : si un contrôle échoue, on corrige le code, jamais le contrôle."
     }
    ]
   },
@@ -679,7 +684,7 @@
       [
        "☐",
        "Vérificateur complet, strict, vert",
-       "`python -m controles.verifier --mission $(cat mission.txt) --etape tout --strict`"
+       "Rejeu prouvé dans l’ordre : `increment` → `--etape increment` → `increment` → `--etape rejeu` ; puis `python -m controles.verifier --mission $(cat mission.txt) --etape tout --strict`"
       ],
       [
        "☐",
@@ -699,12 +704,12 @@
       [
        "☐",
        "Rapport Power BI actualisé",
-       "Le `.pbix` après le lot 2 (dans `powerbi/` s’il fait moins de 10 Mo) et deux captures réelles légendées"
+       "Tronc commun : le `.pbix` lu depuis `livraison/`, actualisé au lot 2. Mission : si un poste Windows est disponible, sinon démo dans l’application"
       ],
       [
        "☐",
        "Mesures DAX de la mission",
-       "`powerbi/mesures.dax` réécrit avec les indicateurs de votre cahier des charges"
+       "`powerbi/mesures_M0x.dax` (formules du cahier) ; `mesures.dax` = tronc commun"
       ],
       [
        "☐",
@@ -754,7 +759,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Le tronc commun continue en séance 4 et 5 ; la mission du catalogue avance **en parallèle**, surtout en travail personnel. Les durées sont des **estimations** de conception, à ajuster."
+     "text": "La mission du catalogue a du **temps de séance** : le dernier bloc de S4 et la première moitié de S5 ; le reste en travail personnel (≈ 4 h). Durées : **estimations** de conception."
     },
     {
      "type": "table",
@@ -766,23 +771,28 @@
      "rows": [
       [
        "**Fin de séance 3**",
-       "choisir la mission ; lire la fiche, le cahier des charges et l’échantillon ; calculer l’échantillon à la main",
-       "le choix et sa raison dans le journal"
+       "choisir la mission ; lire fiche, cahier et échantillon. **Devoir avant S4** : l’échantillon à la main",
+       "choix, raison et calcul au journal"
       ],
       [
-       "**Fin de séance 4**",
-       "première PR de la mission : `mission.txt` = `M0x`, la lecture des sources ou le calcul de l’échantillon",
-       "une PR fusionnée, relue par l’autre"
+       "**Séance 4, dernier bloc (50 min)**",
+       "« Passer à votre mission » (page suivante) : livraison du tronc commun, `outputs/` vidé, `mission.txt`, première demande (sources + rejets)",
+       "1re PR de mission relue ; `--etape rejets` vert"
       ],
       [
-       "**Travail personnel (≈ 5 h)**",
-       "lot 1 → incrément et rejeu → export → application → Power BI → variante",
+       "**Séance 5, première moitié (≈ 100 min)**",
+       "`initial` → `increment` → `rejeu` → `export` → `app`, PR et revue croisée",
        "les contrôles verts, étape par étape"
       ],
       [
-       "**Séance 5**",
-       "finir, cocher la liste de contrôle, écrire la recommandation, répéter la démonstration",
-       "liste cochée, répétition chronométrée"
+       "**Séance 5, seconde moitié**",
+       "Power BI sur le tronc commun (depuis `livraison/`), visuels, répétition croisée",
+       "rapport actualisé ; démo de 6 min"
+      ],
+      [
+       "**Travail personnel (≈ 4 h)**",
+       "finir la mission et sa variante, recommandation, Power BI de la mission (si poste Windows), répétition",
+       "la liste de contrôle cochée"
       ]
      ],
      "widths": [
@@ -794,40 +804,35 @@
     {
      "type": "table",
      "headers": [
-      "Travail personnel",
+      "Travail personnel (≈ 4 h)",
       "Commandes à rendre vertes",
       "Durée estimée"
      ],
      "rows": [
       [
-       "Lot 1 : lecture, nettoyage, étoile",
-       "`--etape initial`",
-       "1 h 30"
-      ],
-      [
-       "Incrément, SCD2, rejeu",
-       "`--etape increment` puis `--etape rejeu`",
-       "1 h"
-      ],
-      [
-       "Export et manifeste",
-       "`--etape export`",
-       "20 min"
-      ],
-      [
-       "Application locale",
-       "`--etape app`",
-       "40 min"
-      ],
-      [
-       "Power BI : import, relations, mesures, actualisation",
-       "cartes = référence après le lot 2",
-       "45 min"
+       "Finir le pipeline si la séance 5 n’a pas suffi",
+       "`--etape tout --strict`",
+       "1 h 15"
       ],
       [
        "Variante, avec son test",
        "`pytest -q`, référence toujours verte",
        "45 min"
+      ],
+      [
+       "Mesures DAX et Power BI de la mission (si poste Windows)",
+       "cartes = référence après le lot 2",
+       "45 min"
+      ],
+      [
+       "Recommandation (livret 05, partie 4)",
+       "chaque chiffre retrouvé dans `outputs/` ou la référence",
+       "45 min"
+      ],
+      [
+       "Essai sur copie neuve et répétition chronométrée",
+       "clone neuf : `tout --strict` vert",
+       "30 min"
       ]
      ],
      "widths": [
@@ -835,6 +840,91 @@
       2,
       0.9
      ]
+    }
+   ]
+  },
+  {
+   "title": "Passer à votre mission (1/2) : six gestes",
+   "kicker": "04 / CATALOGUE · PASSER À VOTRE MISSION",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR (auteur et relecteur comme d’habitude). Exemple pour M04 : remplacez `M04` par votre code. Le dépôt garde le code du tronc commun : `solen/` sera **généralisé**, pas réécrit."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Geste",
+      "Pourquoi"
+     ],
+     "widths": [
+      3,
+      2.2
+     ],
+     "rows": [
+      [
+       "**0. Sauvegarder la livraison du tronc commun** : exporter après le lot 1 puis après le lot 2, copier dans `livraison/tronc-commun/export-lot1/` et `export-lot2/`, committer",
+       "de petits CSV : la preuve livrée, et la source de Power BI en séance 5. `livraison/` est versionné, `outputs/` ne l’est pas"
+      ],
+      [
+       "**1.** `git switch main && git pull`, puis la branche `mission-M04`",
+       "partir du dernier `main`"
+      ],
+      [
+       "**2.** vider `outputs/` (le fichier caché `.gitkeep` reste)",
+       "`outputs/` appartient à la mission courante : `python -m solen initial` le reconstruit pour M04"
+      ],
+      [
+       "**3.** `mission.txt` ← `M04`",
+       "Codex et le vérificateur lisent ce fichier"
+      ],
+      [
+       "**4.** demander à Codex de **généraliser** `solen/` (demande ci-dessous)",
+       "on garde ce qui marche ; les tests du tronc commun qui lisent `mission.txt` passent ou sont adaptés"
+      ],
+      [
+       "**5.** contrôler dans l’ordre : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`",
+       "un cran vert par PR ; rejeu : `--etape increment` **entre** les deux `increment` ; `ETAPE_CI` repart de `aucune`"
+      ]
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · gestes 1, 0, 2 et 3",
+     "text": "git switch main && git pull\ngit switch -c mission-M04\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*\necho \"M04\" > mission.txt"
+    }
+   ]
+  },
+  {
+   "title": "Passer à votre mission (2/2) : la demande à Codex",
+   "kicker": "04 / CATALOGUE · PASSER À VOTRE MISSION",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Prévoyez** d’abord : combien de rejets par motif au lot 1 de votre mission ? (`catalogue/M0x/reference/README.md`, tableau « Rejets par motif ».) Puis envoyez la demande du geste 4."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · geste 4 (à adapter)",
+     "text": "Mission M04 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M04/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets du\nlot 1. Lance python -m solen initial, puis --mission M04 --etape rejets et\npytest controles ; recopie les sorties. Dis quels tests de tests/ lisent\nmission.txt et adapte-les. Ne fais ni commit ni push."
+    },
+    {
+     "type": "section",
+     "text": "Ce que vous devez voir avant d’ouvrir la PR"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "`git status` : `livraison/tronc-commun/export-lot1/` et `export-lot2/` sont commités ; rien dans `outputs/` n’est suivi par Git.",
+      "`--mission M0x --etape rejets` (il ne juge que le CSV de faits du lot 1) → **0 ÉCHEC** ; `pytest controles` vert ; `python -m solen sources` montre les quatre sources de la mission.",
+      "Le diff de `solen/` **généralise** (noms lus depuis la mission) au lieu de dupliquer tout le code ; vous savez dire quel fichier a changé.",
+      "Dans `.github/workflows/controles.yml`, `ETAPE_CI` revient à `aucune` (puis `rejets` quand ce contrôle est vert) ; le journal a son entrée « PR mission M0x »."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Si vous oubliez de vider outputs/",
+     "text": "Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` donne de **faux ÉCHEC** sous M04 (`--etape tout`, `pytest -q`). Videz `outputs/`, relancez `initial`, puis suivez l’ordre du geste 5."
     },
     {
      "type": "callout",
@@ -1098,6 +1188,13 @@
        "58,500",
        "16 969,000",
        "20 308,300"
+      ],
+      [
+       "Marge de livraison (TND)",
+       "revenu net de pénalités − coût transporteur",
+       "22,250",
+       "9 183,498",
+       "10 858,939"
       ]
      ],
      "widths": [
@@ -1549,7 +1646,7 @@
       "…comparer les dix missions par leur question de décision, leur grain, leur dimension historisée et leurs indicateurs ;",
       "…repérer dans ma mission l’indicateur qui est un rapport et dire son dénominateur ;",
       "…expliquer le socle commun : quatre sources, deux lots, rejets avec motif, étoile en millimes, SCD2 [`valid_from`, `valid_to`), rejeu ;",
-      "…passer `mission.txt` à `M0x` et lancer le vérificateur avec `--mission M0x` à chaque étape ;",
+      "…passer de `tronc-commun` à `M0x` en six gestes (livraison sauvegardée, `outputs/` vidé, code généralisé) et lancer le vérificateur avec `--mission M0x` dans l’ordre des étapes ;",
       "…planifier la mission jusqu’à la séance 5 et savoir ce que chacun doit prouver dans Git ;",
       "…vérifier mon entrepôt d’un coup d’œil avec le chiffre clé après le lot 2."
      ]
@@ -1557,7 +1654,7 @@
     {
      "type": "callout",
      "label": "Prochaine action",
-     "text": "Ouvrez le guide de votre mission (`pdf/missions/M0x_guide.pdf`), calculez l’échantillon à la main à deux, puis ouvrez la première PR de la mission."
+     "text": "Ouvrez le guide de votre mission (`pdf/missions/M0x_guide.pdf`) et calculez l’échantillon à la main à deux avant la séance 4 ; en fin de séance 4, suivez « Passer à votre mission »."
     },
     {
      "type": "section",

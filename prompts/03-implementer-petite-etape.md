@@ -1,7 +1,8 @@
 # 03 — Réaliser une petite étape
 
 **Quand l'utiliser** : sur une branche neuve, pour l'étape choisie dans le plan
-(prompt 02). Sert aussi en séance 5 pour l'application locale (`python -m solen app`).
+(prompt 02). Sert aussi en séance 5 pour l'application locale de votre mission
+(`python -m solen app` ; demande complète : livret 05, partie 1).
 
 **Avant d'envoyer** : `git switch -c <branche>`. Écrivez la valeur que vous
 attendez (ex. « le nombre de lignes acceptées indiqué dans reference/README.md »), ou au moins son ordre de grandeur.

@@ -39,22 +39,26 @@ la réponse, et deux erreurs fréquentes.
 | S5, soutenance | [14 — Expliquer un résultat](14-expliquer-resultat.md) | une ligne suivie jusqu'au graphique |
 | S4 | [15 — Résoudre un conflit](15-resoudre-conflit.md) | plus aucun marqueur ; contrôles verts |
 | fin de séance | [16 — Note d'état et reprise](16-reprendre.md) | note de 8 lignes vérifiée |
-| S4 | [17 — Skill local](17-skill-local.md) | votre Skill, une règle, un effet observé |
+| S4, facultatif | [17 — Skill local](17-skill-local.md) | votre Skill, une règle, un effet observé |
 | mission catalogue | [18 — Variation métier](18-variation-metier.md) | impact mesuré ; test de la variante |
 
-**S5 — application locale** : utilisez la fiche 02 puis 03 avec l'objectif
-« `python -m solen app` écrit `outputs/app/index.html`, autonome, avec un filtre
-période et un filtre boutique/zone, les indicateurs et un graphique SVG ».
-**S5 — Power BI** : suivez `powerbi/README.md` de votre dépôt ; demandez à Codex
-d'adapter `powerbi/mesures.dax` à votre mission du catalogue.
+**Fin de S4 — passer à votre mission** : livret 04, « Passer à votre mission » (livraison
+du tronc commun dans `livraison/`, `outputs/` vidé, `mission.txt`, code généralisé).
+**S5 — application locale de votre mission** : fiche 02 puis 03, avec la demande complète
+du livret 05, partie 1 (trois écrans, filtres, journal des chargements).
+**S5 — Power BI** : suivez `powerbi/README.md` sur la livraison du tronc commun
+(`powerbi/mesures.dax`). Pour votre mission, demandez à Codex `powerbi/mesures_<Mxx>.dax`
+(étape C du guide).
 
 ## Les commandes que vous lancez vous-même
 
 ```bash
 source .venv/bin/activate          # à chaque nouveau terminal
+python -m solen sources            # S2 : lire les sources, sans rien charger
 python -m solen initial            # puis increment, export, app, quand Codex les a créées
 python -m controles.verifier --mission $(cat mission.txt) --etape initial
-                                   # étapes : initial, increment, rejeu, export, tout
+                                   # étapes : rejets|initial|increment|rejeu|export|app|tout
+                                   # rejeu : increment, --etape increment, increment, --etape rejeu
 pytest controles                   # tests fournis
 pytest -q                          # tous les tests, y compris les vôtres
 ```

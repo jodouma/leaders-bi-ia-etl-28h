@@ -10,7 +10,7 @@
       "title": "Langage avancé : IA, Codex et BI",
       "subtitle": "Votre première mission chez Solen Digital",
       "tagline": "22 h en présence · 5 séances de 4 h + soutenance 2 h · binômes · 0 code à la main",
-      "notes": "Titre figé du contrat d'édition V7 (formateur/fable-v7-solen-22h/design/CONTRAT_EDITION.md §1). Solen Digital est une société fictive : seuls son nom et ses logos fournis sont utilisés. Durées = estimations de conception, à confirmer par un essai humain. Version des faits officiels : 28/10/2026.",
+      "notes": "Titre figé du contrat d'édition V7 (document privé du professeur, §1). Solen Digital est une société fictive : seuls son nom et ses logos fournis sont utilisés. Durées = estimations de conception, à confirmer par un essai humain. Version des faits officiels : 28/10/2026.",
       "id": "v7-01"
     },
     {
@@ -55,13 +55,14 @@
       "title": "De la question de la direction à la décision",
       "kicker": "LA MISSION",
       "image": "docs/images/diagrams/v7-direction-decision.png",
-      "items": [
-        "Une question floue devient une question métier.",
-        "Un indicateur défini, avec son unité.",
-        "Sans question, pas de graphique."
-      ],
-      "notes": "Schéma v7-direction-decision (authoring/visuals/manifest.json). Chaîne : direction → question métier → données → indicateur → décision. Si l'indicateur ne répond pas à la question, on revient à la question métier. C'est aussi la structure de la recommandation de S5.",
-      "id": "v7-04"
+      "notes": "Schéma v7-direction-decision (authoring/visuals/manifest.json). Chaîne : direction → question métier → données → indicateur → décision. Si l'indicateur ne répond pas à la question, on revient à la question métier. C'est aussi la structure de la recommandation de S5. Points à dire : 1) Une question floue devient une question métier. 2) Un indicateur défini, avec son unité. 3) Sans question, pas de graphique.",
+      "id": "v7-04",
+      "crop": [
+        0,
+        240,
+        2400,
+        1230
+      ]
     },
     {
       "section": "A",
@@ -75,7 +76,7 @@
       "neutral": true,
       "arrow": "⇄",
       "note": "Deux comptes GitHub · deux comptes Codex Free · deux copies locales · un dépôt par binôme.",
-      "notes": "Contrat §1 (Équipes) et §8 (cycle). Les rôles s'inversent à chaque cycle : S1 et S2 A auteur, S3 B auteur, S4 revue d'un défaut planté et conflit contrôlé. L'auteur ne fusionne jamais sa propre PR. On ne partage jamais un compte.",
+      "notes": "Contrat §1 (Équipes) et §8 (cycle), décision V7 D3. Les rôles s'inversent dès S1 : PR n°1 `journal-binome` (livret 01, A auteur, B relit), PR n°2 `cadrage-binome` (B auteur, A relit), S2 A auteur, S3 B auteur, S4 revue d'un défaut planté et conflit contrôlé. L'auteur ne fusionne jamais sa propre PR. On ne partage jamais un compte.",
       "id": "v7-05"
     },
     {
@@ -90,11 +91,11 @@
         },
         {
           "value": "≈ 8 h",
-          "label": "de travail personnel\n(≈ 30 h au total)"
+          "label": "de travail personnel\ndont 2 h de séance 0\n(≈ 30 h au total)"
         },
         {
-          "value": "70 / 30",
-          "label": "pratique / explications\nhors pauses"
+          "value": "≥ 70 %",
+          "label": "de pratique\nhors pauses"
         },
         {
           "value": "0",
@@ -102,7 +103,7 @@
         }
       ],
       "note": "Durées estimées, à confirmer par un essai réel.",
-      "notes": "Contrat §1 et §3 : séance de 240 min = 2 pauses de 10 min + 220 min actives ≈ 66 min d'explications + 154 min de pratique (70 %). Total actif 1 100 min ≈ 330 explications / 770 pratique. Travail personnel ≈ 8 h : lecture 1 h, mission du catalogue 5 h, finition et oral 2 h. Ce sont des estimations de conception, pas des mesures.",
+      "notes": "Contrat §1 et §3, décisions V7 D1–D2 : séance de 240 min = 2 pauses de 10 min + 220 min actives, dont au moins 70 % de pratique (S1 58/162, S2 et S3 66/154, S4 50/170, S5 35/185 ; total 275 min d'explications / 825 de pratique). Travail personnel ≈ 8 h : 2 h de séance 0 avant S1 (installation, comptes, lecture du livret 00), 4 h de mission du catalogue, 2 h de finition, recommandation et préparation orale. Ce sont des estimations de conception, pas des mesures.",
       "id": "v7-06"
     },
     {
@@ -111,13 +112,14 @@
       "title": "Cinq séances, une mission, une soutenance",
       "kicker": "LE CONTRAT",
       "image": "docs/images/diagrams/v7-seances.png",
-      "items": [
-        "S1 → S4 : tronc commun guidé.",
-        "Fin S3 : choix d'une mission du catalogue.",
-        "S5 + perso : votre mission, puis soutenance."
-      ],
-      "notes": "Schéma v7-seances. Épisodes Solen : S1 demande et cadrage, S2 premier résultat faux, S3 anomalies et étoile, S4 changement de besoin et revue, S5 livraison ; ≈ 8 h personnelles ; soutenance 2 h pour la promotion. Contrat §7.",
-      "id": "v7-07"
+      "notes": "Schéma v7-seances. Épisodes Solen : S1 demande et cadrage, S2 premier résultat faux, S3 anomalies et étoile, S4 changement de besoin et revue, S5 livraison ; soutenance 2 h pour la promotion. Contrat §7, décisions V7 D1–D2. Points à dire : 0) Séance 0 chez vous (≈ 2 h) : installation et comptes avec le livret 01. 1) S1 → S4 : tronc commun guidé. 2) Fin S3 : choix d'une mission du catalogue ; fin S4 : 50 min pour passer à votre mission. 3) S5, première moitié : votre mission ; seconde moitié : Power BI et répétition ; puis 4 h de mission et 2 h de finition en travail personnel. Sur la diapositive, le schéma est recadré sur les cartes ; la frise à l'échelle des heures (22 h en présence = 5 × 4 h + 2 h, ≈ 8 h personnelles, ≈ 30 h de charge totale) reste dans le schéma complet.",
+      "id": "v7-07",
+      "crop": [
+        0,
+        255,
+        2400,
+        1215
+      ]
     },
     {
       "section": "A",
@@ -140,13 +142,14 @@
       "title": "Codex propose, les humains décident",
       "kicker": "LE CONTRAT",
       "image": "docs/images/diagrams/v7-codex-controle.png",
-      "items": [
-        "Codex propose dans une branche.",
-        "L'auteur contrôle, le binôme relit.",
-        "L'équipe livre après CI verte."
-      ],
-      "notes": "Schéma v7-codex-controle. Un contrôle rouge ou un écart renvoie à Codex avec une demande plus précise. La revue Codex est en lecture seule ; elle ne remplace pas la revue humaine.",
-      "id": "v7-09"
+      "notes": "Schéma v7-codex-controle. Un contrôle rouge ou un écart renvoie à Codex avec une demande plus précise. La revue Codex est en lecture seule ; elle ne remplace pas la revue humaine. Points à dire : 1) Codex propose dans une branche. 2) L'auteur contrôle, le binôme relit. 3) L'équipe livre après CI verte.",
+      "id": "v7-09",
+      "crop": [
+        0,
+        240,
+        2400,
+        1200
+      ]
     },
     {
       "section": "A",
@@ -156,7 +159,7 @@
       "items": [
         {
           "label": "A · Démarrer",
-          "text": "Livret 01 : poste, Codex Free, GitHub à deux."
+          "text": "Livret 01 : poste et comptes chez vous (séance 0 ≈ 2 h), GitHub à deux en S1."
         },
         {
           "label": "B · Tronc commun",
@@ -164,33 +167,59 @@
         },
         {
           "label": "C · Livrer",
-          "text": "Livrets 04 et 05 : votre mission, S5, soutenance."
+          "text": "Livrets 04 et 05 : votre mission (fin S4, S5), soutenance."
         }
       ],
       "note": "Toujours ouverts : 03 Diriger Codex et Git · 06 Aide-mémoire · prompts/.",
-      "notes": "Livret 00, « La route A → B → C ». Fichiers : 00_lire_moi, 01_demarrer, 02_tronc_commun, 03_diriger_codex_et_git, 04_catalogue_missions (fin S3), 05_livrer_soutenir, 06_aide_memoire. Dossier prompts/ : 18 fiches prêtes à adapter (prompts/README.md).",
+      "notes": "Livret 00, « La route A → B → C ». Séance 0 (décision V7 D1) : le professeur envoie le livret 01 une semaine avant S1 et répond aux blocages par message ; S1 commence par 30 min de vérification des postes. Fichiers : 00_lire_moi, 01_demarrer, 02_tronc_commun, 03_diriger_codex_et_git, 04_catalogue_missions (fin S3), 05_livrer_soutenir, 06_aide_memoire. Dossier prompts/ : 18 fiches prêtes à adapter (prompts/README.md).",
       "id": "v7-10"
     },
     {
       "section": "A",
       "layout": "picture",
-      "title": "Votre poste : qui fait quoi, où",
+      "title": "Votre poste : Windows + Ubuntu (WSL2)",
       "kicker": "LES OUTILS",
       "image": "docs/images/diagrams/v7-postes-wsl.png",
       "items": [
-        "Windows : app Codex + Power BI Desktop.",
-        "Ubuntu (WSL2) : projet, Python, Git.",
-        "Ubuntu natif : Power BI sur un poste Windows."
+        "Windows : app Codex et Power BI Desktop.",
+        "Ubuntu (WSL2) : projet, Python, Git ; Codex y agit.",
+        "GitHub relie les deux postes du binôme."
       ],
-      "notes": "Schéma v7-postes-wsl. Contrat §1 (OS). Windows : agent « Windows Subsystem for Linux » choisi dans Settings de l'app, puis redémarrage (OpenAI, Desktop app for Windows, https://learn.chatgpt.com/docs/app/windows, lu le 28/10/2026). Dépôts sous /home (OpenAI WSL, https://learn.chatgpt.com/docs/windows/wsl, lu le 28/10/2026). Ubuntu 24.04/26.04 : app Linux en preview, .deb (https://learn.chatgpt.com/docs/linux/linux-app, lu le 28/10/2026). Power BI Desktop uniquement sur Windows (Microsoft, lu le 28/10/2026). Pas de Docker.",
-      "id": "v7-11"
+      "notes": "Schéma v7-postes-wsl, partie haute (parcours Windows + WSL2). Contrat §1 (OS). Windows : agent « Windows Subsystem for Linux » choisi dans Settings de l'app, puis redémarrage (OpenAI, Desktop app for Windows, https://learn.chatgpt.com/docs/app/windows, lu le 28/10/2026). Dépôts sous /home (OpenAI WSL, https://learn.chatgpt.com/docs/windows/wsl, lu le 28/10/2026). Ubuntu 24.04/26.04 : app Linux en preview, .deb (https://learn.chatgpt.com/docs/linux/linux-app, lu le 28/10/2026). Power BI Desktop uniquement sur Windows (Microsoft, lu le 28/10/2026). Pas de Docker. Les fichiers du projet vivent dans Ubuntu (~/solen-bi), jamais dans un dossier Windows synchronisé.",
+      "id": "v7-11",
+      "crop": [
+        0,
+        235,
+        2400,
+        862
+      ]
+    },
+    {
+      "section": "A",
+      "layout": "picture",
+      "title": "Variante : Ubuntu natif",
+      "kicker": "LES OUTILS",
+      "image": "docs/images/diagrams/v7-postes-wsl.png",
+      "items": [
+        "Ubuntu 24.04 / 26.04 : app Codex Linux (preview).",
+        "Projet, Python et Git dans ~/solen-bi.",
+        "Power BI Desktop : sur un poste Windows, après pull."
+      ],
+      "notes": "Schéma v7-postes-wsl, partie basse (variante Ubuntu natif). Ubuntu 24.04/26.04 : app Linux en preview, .deb (https://learn.chatgpt.com/docs/linux/linux-app, lu le 28/10/2026). Power BI Desktop n'existe que sur Windows (Microsoft, lu le 28/10/2026) : le binôme ouvre le rapport sur un poste Windows après git pull. Pas de Docker.",
+      "id": "v7-11b",
+      "crop": [
+        0,
+        862,
+        2400,
+        1590
+      ]
     },
     {
       "section": "B",
       "layout": "divider",
       "title": "Ce que vous saurez faire",
       "subtitle": "Dix thèmes, chacun prouvé par une action réelle",
-      "notes": "Programme du PROMPT_FABLE §3 (formateur) : dix thèmes, aucun seulement cité. Objectif final : transformer des données brutes en indicateurs utiles à la décision, en sachant piloter l'IA et contrôler sa production.",
+      "notes": "Programme de l'édition (document privé du professeur) : dix thèmes, aucun seulement cité. Objectif final : transformer des données brutes en indicateurs utiles à la décision, en sachant piloter l'IA et contrôler sa production.",
       "id": "v7-12"
     },
     {
@@ -206,7 +235,7 @@
         "App locale + Power BI",
         "Codex + Git/GitHub"
       ],
-      "notes": "Formulation reprise du programme (PROMPT_FABLE §3) et du livret 00 (« Ce que vous saurez faire à la fin »).",
+      "notes": "Formulation reprise du programme de l'édition et du livret 00 (« Ce que vous saurez faire à la fin »).",
       "id": "v7-13"
     },
     {
@@ -277,7 +306,7 @@
           "tag": "S1 → S5"
         }
       ],
-      "notes": "Les dix thèmes du programme (PROMPT_FABLE §3) placés sur la progression du contrat §7. Python : on reconnaît et explique le code écrit par Codex, on ne le tape pas. Le thème 10 traverse toutes les séances.",
+      "notes": "Les dix thèmes du programme de l'édition placés sur la progression du contrat §7. Python : on reconnaît et explique le code écrit par Codex, on ne le tape pas. Le thème 10 traverse toutes les séances.",
       "id": "v7-14"
     },
     {
@@ -400,13 +429,14 @@
       "title": "Trois emplacements pour un même dépôt",
       "kicker": "GIT",
       "image": "docs/images/diagrams/v7-trois-emplacements.png",
-      "items": [
-        "Rien ne se synchronise tout seul.",
-        "Pas de lien direct entre vos deux PC.",
-        "Tout passe par GitHub."
-      ],
-      "notes": "Schéma v7-trois-emplacements. commit = enregistrer chez moi ; push = envoyer ; pull = récupérer ; PR = proposer et faire relire. Les deux ordinateurs n'échangent que via GitHub.",
-      "id": "v7-18"
+      "notes": "Schéma v7-trois-emplacements. commit = enregistrer chez moi ; push = envoyer ; pull = récupérer ; PR = proposer et faire relire. Les deux ordinateurs n'échangent que via GitHub. Points à dire : 1) Rien ne se synchronise tout seul. 2) Pas de lien direct entre vos deux PC. 3) Tout passe par GitHub. La bande de vocabulaire du bas du schéma est reprise sur la diapositive suivante (« Huit mots, huit gestes »).",
+      "id": "v7-18",
+      "crop": [
+        0,
+        245,
+        2400,
+        1235
+      ]
     },
     {
       "section": "C",
@@ -472,16 +502,42 @@
     {
       "section": "C",
       "layout": "picture",
-      "title": "Le cycle d'une pull request",
+      "title": "Le cycle d’une PR · 1/2 : de main à la revue",
       "kicker": "GIT",
       "image": "docs/images/diagrams/v7-cycle-pr.png",
       "items": [
-        "15 étapes, toujours dans le même ordre.",
-        "Le partenaire relit avant toute fusion.",
-        "Puis les rôles s'inversent."
+        "Étapes 1 → 7 : l’auteur prépare et pousse sa branche.",
+        "Étape 8 : la PR est ouverte sur GitHub.",
+        "Étapes 9 → 10 : le partenaire relit."
       ],
-      "notes": "Schéma v7-cycle-pr. Contrat §8 : git switch main → git pull → git switch -c <branche> → demande à Codex → contrôles → lire le diff → git add/commit → git push -u origin <branche> → PR → partenaire : git fetch + git switch <branche> + revue Codex lecture seule → revue humaine (Files changed → Review changes → Approve / Request changes) → corrections → CI verte → approbation → Merge pull request → les deux : git switch main && git pull.",
-      "id": "v7-20"
+      "notes": "Schéma v7-cycle-pr, étapes 1 à 10 (le schéma complet est coupé en deux diapositives pour rester lisible). Contrat §8 : git switch main → git pull → git switch -c <branche> → demande à Codex → contrôles → lire le diff → git add/commit → git push -u origin <branche> → PR → partenaire : git fetch + git switch <branche> + revue Codex lecture seule → revue humaine (Files changed → Review changes → Approve / Request changes) → corrections → CI verte → approbation → Merge pull request → les deux : git switch main && git pull.",
+      "id": "v7-20",
+      "crop": [
+        0,
+        255,
+        2400,
+        880
+      ]
+    },
+    {
+      "section": "C",
+      "layout": "picture",
+      "title": "Le cycle d’une PR · 2/2 : de la correction au pull",
+      "kicker": "GIT",
+      "image": "docs/images/diagrams/v7-cycle-pr.png",
+      "items": [
+        "Une correction = un commit de plus sur la branche.",
+        "Pas de fusion sans CI verte ni approbation.",
+        "Puis les deux font git pull et les rôles s’inversent."
+      ],
+      "notes": "Schéma v7-cycle-pr, étapes 11 à 15 et légende des couleurs (auteur, partenaire, GitHub, les deux). Une correction ajoute un commit sur la même branche ; la PR se met à jour et la CI repart. Après Merge pull request, les deux font git switch main && git pull ; au cycle suivant, l'auteur devient partenaire. Contrat §8.",
+      "id": "v7-20b",
+      "crop": [
+        0,
+        880,
+        2400,
+        1700
+      ]
     },
     {
       "section": "C",
@@ -490,8 +546,12 @@
       "kicker": "GIT",
       "items": [
         {
-          "label": "S1 · A auteur",
-          "text": "README + journal\nB relit"
+          "label": "S1 · PR n°1",
+          "text": "A auteur : journal\n(livret 01)\nB relit"
+        },
+        {
+          "label": "S1 · PR n°2",
+          "text": "B auteur : cadrage\nA relit"
         },
         {
           "label": "S2 · A auteur",
@@ -507,7 +567,7 @@
         }
       ],
       "note": "Chacun : des commits, au moins une PR comme auteur, une revue du partenaire.",
-      "notes": "Progression du livret 02 (S1-M5, S2-M4, S3-M6, S4-M4/M5). L'auteur ne s'approuve pas : GitHub ne le permet pas. L'accord de Codex ne remplace pas le jugement du partenaire.",
+      "notes": "Décision V7 D3 : une seule « PR n°1 », celle du livret 01, Cycle 1 (branche journal-binome, A auteur, B relecteur). Le livret 02 S1-M5 fait la PR n°2 (branche cadrage-binome) avec B auteur et A relecteur. Puis livret 02 S2-M4, S3-M6, S4-M4/M5. L'auteur ne s'approuve pas : GitHub ne le permet pas. L'accord de Codex ne remplace pas le jugement du partenaire.",
       "id": "v7-21"
     },
     {
@@ -582,26 +642,18 @@
     },
     {
       "section": "C",
-      "layout": "cards",
-      "title": "Un dépôt public, une CI gratuite",
+      "layout": "compare",
+      "title": "Deux « workflows » : même mot, deux choses",
       "kicker": "GITHUB",
-      "items": [
-        {
-          "label": "Public recommandé",
-          "text": "Données 100 % synthétiques. Protection de branche et revue requise disponibles sur GitHub Free."
-        },
-        {
-          "label": "controles.yml",
-          "text": "Linux neuf : installe, lance verifier + pytest. Aucune clé IA."
-        },
-        {
-          "label": "Variante privée",
-          "text": "Possible, sans protection imposée : l'auteur ne fusionne pas sa PR."
-        }
-      ],
-      "note": "Authentification : HTTPS + gh auth login (navigateur) ; aucun jeton dans le dépôt.",
-      "notes": "Contrat §1 (Dépôt binôme, CI). GitHub's plans (https://docs.github.com/en/get-started/learning-about-github/githubs-plans, lu le 28/10/2026) : protection de branche / revues requises sur les dépôts publics en Free, ajoutées aux privés par Pro. GitHub Actions billing (https://docs.github.com/en/billing/concepts/product-billing/github-actions, lu le 28/10/2026) : runners standard gratuits sur dépôts publics. gh auth login : https://cli.github.com/manual/gh_auth_login (lu le 28/10/2026).",
-      "id": "v7-25"
+      "note": "Dépôt public : protection de branche et CI gratuites sur GitHub Free · aucun jeton dans le dépôt.",
+      "notes": "Décision V7 D5 (livret 01 partie Git, livret 03 §7). Workflow de travail Git/GitHub = la suite de gestes humains du cycle de PR. Workflow GitHub Actions = le fichier .github/workflows/controles.yml, déclenché par pull_request, exécuté sur une machine neuve, visible dans l'onglet Actions (« Workflows »). Aucune clé IA dans la CI. Variante dépôt privé possible, sans protection imposée : l'auteur ne fusionne pas sa PR. Authentification : HTTPS + gh auth login (navigateur). Contrat §1 (Dépôt binôme, CI) : GitHub's plans (https://docs.github.com/en/get-started/learning-about-github/githubs-plans, lu le 28/10/2026) : protection de branche / revues requises sur les dépôts publics en Free, ajoutées aux privés par Pro. GitHub Actions billing (https://docs.github.com/en/billing/concepts/product-billing/github-actions, lu le 28/10/2026) : runners standard gratuits sur dépôts publics. gh auth login : https://cli.github.com/manual/gh_auth_login (lu le 28/10/2026).",
+      "id": "v7-25",
+      "neutral": true,
+      "arrow": "≠",
+      "leftLabel": "WORKFLOW DE TRAVAIL · VOUS",
+      "left": "Vos gestes, dans l'ordre :\nbranche → PR → revue → merge.\nC'est vous qui le faites, à deux.",
+      "rightLabel": "WORKFLOW GITHUB ACTIONS · LA MACHINE",
+      "right": "Le fichier controles.yml.\nGitHub le lance seul à chaque PR, sur un Linux neuf : verifier + pytest.\nOnglet Actions."
     },
     {
       "section": "D",
@@ -666,13 +718,14 @@
       "title": "Tokens · contexte · effort · quota",
       "kicker": "RESSOURCES",
       "image": "docs/images/diagrams/v7-tokens-contexte.png",
-      "items": [
-        "Tokens : morceaux de texte.",
-        "Contexte : ce que le chat garde en tête.",
-        "Quota : à lire dans l'app, jamais à deviner."
-      ],
-      "notes": "Schéma v7-tokens-contexte. Pricing (lu le 28/10/2026) : « The number of messages you can send depends on the model used, size and complexity of your tasks » ; « Weekly limits may also apply » ; usage visible dans le tableau d'usage. /status dans le composer montre contexte et limites (Slash commands, https://learn.chatgpt.com/codex/reference/slash-commands, lu le 28/10/2026). On ne promet ni nombre de tokens ni « 4 h de Codex ».",
-      "id": "v7-29"
+      "notes": "Schéma v7-tokens-contexte. Pricing (lu le 28/10/2026) : « The number of messages you can send depends on the model used, size and complexity of your tasks » ; « Weekly limits may also apply » ; usage visible dans le tableau d'usage. /status dans le composer montre contexte et limites (Slash commands, https://learn.chatgpt.com/codex/reference/slash-commands, lu le 28/10/2026). On ne promet ni nombre de tokens ni « 4 h de Codex ». Points à dire : 1) Tokens : morceaux de texte. 2) Contexte : ce que le chat garde en tête. 3) Quota : à lire dans l'app, jamais à deviner. Définitions du bas du schéma complet : tokens = unité de comptage du texte lu et écrit ; contexte = quantité maximale de texte qu'une tâche garde en vue ; effort = temps de réflexion choisi pour une demande ; quota = limite d'usage du compte, indépendante des trois autres. Plus d'effort ou plus de contexte = plus lent et plus d'usage, jamais une garantie de résultat juste.",
+      "id": "v7-29",
+      "crop": [
+        0,
+        245,
+        2400,
+        1150
+      ]
     },
     {
       "section": "D",
@@ -728,77 +781,107 @@
     {
       "section": "D",
       "layout": "table",
-      "title": "Quelle tâche, quel effort, quelle preuve ?",
+      "title": "Fiche tâche 1/2 : quelle tâche, quel effort ?",
       "kicker": "LA FICHE TÂCHE",
       "headers": [
         "Tâche (exemple Solen)",
-        "Modèle",
         "Effort",
-        "Raison",
-        "Preuve attendue"
+        "Raison"
       ],
       "widths": [
-        2.3,
-        0.8,
-        1.35,
-        1.5,
+        2.6,
+        1.3,
         1.9
       ],
-      "fontSize": 13.5,
+      "fontSize": 16,
       "rows": [
         [
           "Comprendre le grain de fact_vente",
-          "Luna",
           "High",
-          "relier fichiers et notions",
+          "relier fichiers et notions"
+        ],
+        [
+          "Planifier outputs/rejets.csv",
+          "High",
+          "découper avant d'écrire"
+        ],
+        [
+          "Petite fonction : 18,500 → 18500",
+          "Medium ou High",
+          "petit, bien délimité"
+        ],
+        [
+          "Intégrer python -m solen initial",
+          "High",
+          "plusieurs modules"
+        ],
+        [
+          "Déboguer « attendu 1960, observé 1966 »",
+          "High → Extra High",
+          "la cause, pas le symptôme"
+        ],
+        [
+          "Revoir avec $revoir-bi",
+          "High",
+          "trouver ce qui manque"
+        ],
+        [
+          "Question courte : « valid_to ? »",
+          "Light",
+          "rien à relier"
+        ]
+      ],
+      "note": "Un seul modèle annoncé pour Free, GPT-6 Luna : seul l’effort change.",
+      "notes": "Fiche tâche → modèle accessible → effort accessible → raison → preuve attendue (livret 03, « Quel effort pour quelle tâche ? » ; schéma docs/images/diagrams/v7-tache-modele-effort.png). Models (https://learn.chatgpt.com/docs/models, lu le 28/10/2026) : « Start with High for Luna » ; Light pour les tâches rapides et cadrées ; High et Extra High pour le travail difficile. Un faible effort n'est pas toujours moins cher : comparer qualité et reprises. Seuls les choix visibles sur un compte Free sont enseignés ; on ne copie pas les modèles payants de l'auteur. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
+      "id": "v7-31"
+    },
+    {
+      "section": "D",
+      "layout": "table",
+      "title": "Fiche tâche 2/2 : quelle preuve attendue ?",
+      "kicker": "LA FICHE TÂCHE",
+      "headers": [
+        "Tâche (exemple Solen)",
+        "Preuve attendue"
+      ],
+      "widths": [
+        2.6,
+        2.6
+      ],
+      "fontSize": 16,
+      "rows": [
+        [
+          "Comprendre le grain de fact_vente",
           "vous l'expliquez sans l'écran"
         ],
         [
           "Planifier outputs/rejets.csv",
-          "Luna",
-          "High",
-          "découper avant d'écrire",
           "3 à 5 étapes, un contrôle chacune"
         ],
         [
           "Petite fonction : 18,500 → 18500",
-          "Luna",
-          "Medium ou High",
-          "petit, bien délimité",
           "diff lu + test vert"
         ],
         [
           "Intégrer python -m solen initial",
-          "Luna",
-          "High",
-          "plusieurs modules",
           "--etape initial OK"
         ],
         [
           "Déboguer « attendu 1960, observé 1966 »",
-          "Luna",
-          "High → Extra High",
-          "la cause, pas le symptôme",
           "erreur reproduite puis disparue"
         ],
         [
           "Revoir avec $revoir-bi",
-          "Luna",
-          "High",
-          "trouver ce qui manque",
           "constats fichier:ligne"
         ],
         [
           "Question courte : « valid_to ? »",
-          "Luna",
-          "Light",
-          "rien à relier",
           "vous reformulez"
         ]
       ],
-      "note": "Un seul modèle annoncé pour Free : seul l'effort change. Le schéma v7-tache-modele-effort est dans le livret 03.",
-      "notes": "Fiche tâche → modèle accessible → effort accessible → raison → preuve attendue (livret 03, « Quel effort pour quelle tâche ? » ; schéma docs/images/diagrams/v7-tache-modele-effort.png). Models (https://learn.chatgpt.com/docs/models, lu le 28/10/2026) : « Start with High for Luna » ; Light pour les tâches rapides et cadrées ; High et Extra High pour le travail difficile. Un faible effort n'est pas toujours moins cher : comparer qualité et reprises. Seuls les choix visibles sur un compte Free sont enseignés ; on ne copie pas les modèles payants de l'auteur. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
-      "id": "v7-31"
+      "note": "Pas de preuve, pas de fusion. Le schéma v7-tache-modele-effort est dans le livret 03.",
+      "notes": "Suite de la fiche tâche : chaque tâche a une preuve observable, vérifiée par l'auteur puis par le binôme. Fiche tâche → modèle accessible → effort → raison → preuve (livret 03, « Quel effort pour quelle tâche ? », lu le 28/10/2026).",
+      "id": "v7-31b"
     },
     {
       "section": "D",
@@ -976,7 +1059,7 @@
       "layout": "divider",
       "title": "Les notions BI",
       "subtitle": "Chaque notion avec son schéma et les chiffres de Maison Zitouna",
-      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026.",
+      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur du cours, sans ETL), lus le 28/10/2026.",
       "id": "v7-38"
     },
     {
@@ -985,13 +1068,15 @@
       "title": "Des quatre sources au rapport",
       "kicker": "ETL",
       "image": "docs/images/diagrams/v7-pipeline.png",
-      "items": [
-        "Sources intactes, lues seulement.",
-        "Dimensions avant faits.",
-        "Rejets dans rejets.csv, avec motif."
+      "notes": "Schéma v7-pipeline. Sources lot 1 : ventes.csv (1998 lignes), catalogue.xlsx (8 produits, 6 familles), boutiques.json (3 boutiques), operations.sqlite (82 retours : 78 VALIDE, 4 ANNULE). Montants en millimes entiers dans l'entrepôt, affichés en TND à 3 décimales. Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur du cours, sans ETL), lus le 28/10/2026. Points à dire : 1) Sources intactes, lues seulement. 2) Dimensions avant faits. 3) Rejets dans rejets.csv, avec motif.",
+      "id": "v7-39",
+      "crop": [
+        0,
+        240,
+        2400,
+        1172
       ],
-      "notes": "Schéma v7-pipeline. Sources lot 1 : ventes.csv (1998 lignes), catalogue.xlsx (8 produits, 6 familles), boutiques.json (3 boutiques), operations.sqlite (82 retours : 78 VALIDE, 4 ANNULE). Montants en millimes entiers dans l'entrepôt, affichés en TND à 3 décimales. Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026.",
-      "id": "v7-39"
+      "takeaway": "Et à côté : outputs/rejets.csv, une ligne rejetée = un motif. Les sources ne sont jamais modifiées."
     },
     {
       "section": "E",
@@ -1040,13 +1125,14 @@
       "title": "L'étoile de la mission 00",
       "kicker": "MODÉLISATION",
       "image": "docs/images/diagrams/v7-etoile.png",
-      "items": [
-        "3 dimensions, 2 tables de faits.",
-        "Chaque relation : 1 → plusieurs.",
-        "Les deux faits ne sont pas reliés."
-      ],
-      "notes": "Schéma v7-etoile. Même modèle dans Power BI : 6 relations 1:*, filtre croisé simple, toutes actives (livret 05 §2 ; modele-binome/powerbi/README.md §4).",
-      "id": "v7-42"
+      "notes": "Schéma v7-etoile. Même modèle dans Power BI : 6 relations 1:*, filtre croisé simple, toutes actives (livret 05 §2 ; modele-binome/powerbi/README.md §4). Points à dire : 1) 3 dimensions, 2 tables de faits. 2) Chaque relation : 1 → plusieurs. 3) Les deux faits ne sont pas reliés. Bas du schéma complet : 1 → * = une ligne de dimension décrit plusieurs lignes de fait, la flèche suit le sens du filtre ; chaque flèche relie la clé de même nom (date_key, produit_key, boutique_key) ; dimensions chargées avant les faits ; montants en millimes entiers.",
+      "id": "v7-42",
+      "crop": [
+        0,
+        278,
+        2400,
+        1415
+      ]
     },
     {
       "section": "E",
@@ -1054,27 +1140,50 @@
       "title": "Clé métier et clé technique",
       "kicker": "CLÉS",
       "image": "docs/images/diagrams/v7-cles.png",
-      "items": [
-        "NBE = clé métier (sources).",
-        "2 et 5 = clés techniques (versions).",
-        "Les faits pointent vers boutique_key."
+      "notes": "Schéma v7-cles. boutique_id = NBE identifie la boutique ; boutique_key identifie une version (2 = Cap Bon, 4 = Nord-Est sur ce schéma). On ne relie jamais par boutique_id dans Power BI : NBE a deux lignes. Les numéros de clé réels dépendent du code ; le vérificateur contrôle la zone à la date, pas le numéro. Points à dire : 1) NBE = clé métier (sources). 2) 2 et 4 = clés techniques (versions). 3) Les faits pointent vers boutique_key.",
+      "id": "v7-43",
+      "crop": [
+        0,
+        250,
+        2400,
+        1150
       ],
-      "notes": "Schéma v7-cles. boutique_id = NBE identifie la boutique ; boutique_key identifie une version (2 = Cap Bon, 5 = Nord-Est sur ce schéma). On ne relie jamais par boutique_id dans Power BI : NBE a deux lignes. Les numéros de clé réels dépendent du code ; le vérificateur contrôle la zone à la date, pas le numéro.",
-      "id": "v7-43"
+      "takeaway": "Vente du 2026-07-14 → boutique_key 2 ; du 2026-07-15 → 4. Filtrer sur boutique_id = NBE réunit les deux."
     },
     {
       "section": "E",
       "layout": "picture",
-      "title": "Nettoyer sans toucher aux sources",
+      "title": "Nettoyer 1/2 : ce que la source contient",
       "kicker": "QUALITÉ",
       "image": "docs/images/diagrams/v7-nettoyage.png",
       "items": [
-        "Formats → millimes, dates ISO.",
-        "Doublon exact : une occurrence gardée.",
-        "Rejet = une ligne + un motif."
+        "ventes.csv reste intact : on lit, on n’écrit pas.",
+        "Six lignes, cinq défauts différents.",
+        "Chaque défaut a son traitement."
       ],
-      "notes": "Schéma v7-nettoyage (exemple pédagogique L001…L005, distinct de l'échantillon). Motifs standard du contrat §5 : id_conflit, id_manquant, cle_inconnue, quantite_invalide. Les sources restent intactes ; les rejets vont dans outputs/rejets.csv.",
-      "id": "v7-44"
+      "notes": "Schéma v7-nettoyage, partie AVANT. (exemple pédagogique L001…L005, distinct de l'échantillon). Motifs standard du contrat §5 : id_conflit, id_manquant, cle_inconnue, quantite_invalide. Les sources restent intactes ; les rejets vont dans outputs/rejets.csv.",
+      "id": "v7-44",
+      "crop": [
+        0,
+        245,
+        2400,
+        872
+      ]
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "Nettoyer 2/2 : acceptées, ignorées, rejetées",
+      "kicker": "QUALITÉ",
+      "image": "docs/images/diagrams/v7-nettoyage.png",
+      "notes": "Schéma v7-nettoyage, partie APRÈS. 6 lignes lues = 3 acceptées + 1 doublon ignoré + 2 rejets. \"12,500\" → 12,500 TND → 12 500 millimes ; 04/03/2026 → 2026-03-04 ; \" tun \" → TUN. Le doublon exact est compté, pas rejeté. Rejets dans outputs/rejets.csv avec un motif standard (contrat §5). Points à dire : 1) Formats → millimes, dates ISO. 2) Doublon exact : une occurrence gardée. 3) Rejet = une ligne + un motif.",
+      "id": "v7-44b",
+      "crop": [
+        0,
+        872,
+        2400,
+        1840
+      ]
     },
     {
       "section": "E",
@@ -1216,7 +1325,7 @@
         }
       ],
       "note": "14 doublons exacts ignorés · rejets : 8 cle_inconnue, 6 id_conflit, 5 id_manquant, 7 quantite_invalide.",
-      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026. Lot 1 : ventes brutes 78 067,830 TND ; retours 3 758,330 TND ; ventes nettes 74 309,500 TND ; marge 28 991,700 TND ; taux de retour 4,81 %. 1998 − 14 doublons − 24 rejets ventes = 1960 faits ; 2 rejets viennent de operations.sqlite (cle_inconnue).",
+      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur du cours, sans ETL), lus le 28/10/2026. Lot 1 : ventes brutes 78 067,830 TND ; retours 3 758,330 TND ; ventes nettes 74 309,500 TND ; marge 28 991,700 TND ; taux de retour 4,81 %. 1998 − 14 doublons − 24 rejets ventes = 1960 faits ; 2 rejets viennent de operations.sqlite (cle_inconnue).",
       "id": "v7-49"
     },
     {
@@ -1238,13 +1347,14 @@
       "title": "Un chiffre plausible n'est pas un chiffre juste",
       "kicker": "INDICATEUR",
       "image": "docs/images/diagrams/v7-indicateur-controle.png",
-      "items": [
-        "Même formule, données différentes.",
-        "Le contrôle : ligne_id distincts = lignes de fact_vente.",
-        "Écrire le contrôle avant de croire le total."
-      ],
-      "notes": "Schéma v7-indicateur-controle. Correct = après dédoublonnage ; erreur plausible = un doublon compté deux fois. Le contrôle qui tranche : nombre de ligne_id distincts parmi les lignes acceptées = nombre de lignes de fact_vente.",
-      "id": "v7-51"
+      "notes": "Schéma v7-indicateur-controle. Correct = après dédoublonnage ; erreur plausible = un doublon compté deux fois. Le contrôle qui tranche : nombre de ligne_id distincts parmi les lignes acceptées = nombre de lignes de fact_vente. Points à dire : 1) Même formule, données différentes. 2) Le contrôle : ligne_id distincts = lignes de fact_vente. 3) Écrire le contrôle avant de croire le total.",
+      "id": "v7-51",
+      "crop": [
+        0,
+        245,
+        2400,
+        1318
+      ]
     },
     {
       "section": "E",
@@ -1293,13 +1403,15 @@
       "title": "SCD2 : NBE change de zone le 2026-07-15",
       "kicker": "HISTORIQUE",
       "image": "docs/images/diagrams/v7-scd2-frise.png",
-      "items": [
-        "valid_from inclus, valid_to exclu.",
-        "Vente du 14 juillet → Cap Bon.",
-        "Vente du 15 juillet → Nord-Est."
+      "notes": "Schéma v7-scd2-frise. Référence après le dernier lot : NBE Cap Bon du 2021-05-10 au 2026-07-15 (exclu), NBE Nord-Est depuis le 2026-07-15 (courante) ; SFX Sud ; TUN Grand Tunis. Le schéma montre la vraie valid_from de la version 1 : 2021-05-10 (reference/README.md). Un fait ancien reste rattaché à la version valable à sa date : on n'écrit jamais UPDATE … SET zone. Points à dire : 1) valid_from inclus, valid_to exclu. 2) Vente du 14 juillet → Cap Bon. 3) Vente du 15 juillet → Nord-Est.",
+      "id": "v7-53",
+      "crop": [
+        0,
+        275,
+        2400,
+        1268
       ],
-      "notes": "Schéma v7-scd2-frise. Référence après le dernier lot : NBE Cap Bon du 2021-05-10 au 2026-07-15 (exclu), NBE Nord-Est depuis le 2026-07-15 (courante) ; SFX Sud ; TUN Grand Tunis. Le schéma simplifie la date de début de la version 1 au 2026-01-01 (début des données) ; la vraie valid_from est 2021-05-10 (reference/README.md). Un fait ancien reste rattaché à la version valable à sa date : on n'écrit jamais UPDATE … SET zone.",
-      "id": "v7-53"
+      "takeaway": "Version valable si : valid_from ≤ date de la vente < valid_to (ou valid_to = NULL). Frise non proportionnelle."
     },
     {
       "section": "E",
@@ -1325,7 +1437,7 @@
         }
       ],
       "note": "Le premier semestre n'a pas bougé : Nabeul reste en Cap Bon jusqu'au 14 juillet.",
-      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026. Après lot 2 : ventes brutes 95 849,090 TND ; retours 4 404,630 TND ; ventes nettes 91 444,460 TND ; coût d'achat des unités nettes 55 837,600 TND ; marge 35 606,860 TND ; taux de retour 4,60 % ; unités nettes 4264. Mêmes valeurs dans la capture réelle de l'application de référence.",
+      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur du cours, sans ETL), lus le 28/10/2026. Après lot 2 : ventes brutes 95 849,090 TND ; retours 4 404,630 TND ; ventes nettes 91 444,460 TND ; coût d'achat des unités nettes 55 837,600 TND ; marge 35 606,860 TND ; taux de retour 4,60 % ; unités nettes 4264. Mêmes valeurs dans la capture réelle de l'application de référence.",
       "id": "v7-54"
     },
     {
@@ -1362,30 +1474,25 @@
       "section": "F",
       "layout": "divider",
       "title": "Les cinq séances",
-      "subtitle": "240 minutes chacune · 2 pauses · 70 % de pratique",
-      "notes": "Minutages : livret 02 (S1 à S4) et livret 05 (S5). Ce sont des estimations de conception, à confirmer par un essai réel.",
+      "subtitle": "Séance 0 chez vous · 5 × 240 min · 2 pauses · ≥ 70 % de pratique",
+      "notes": "Décisions V7 D1–D2 (28/10/2026). Séance 0 ≈ 2 h chez soi avant S1 (livret 01 parties A–C). Minutages S1 à S4 : livret 02 ; S5 : livret 05. Travail personnel ≈ 8 h = 2 h séance 0 + 4 h mission + 2 h finition. Ce sont des estimations de conception, à confirmer par un essai réel.",
       "id": "v7-56"
     },
     {
       "section": "F",
       "layout": "session",
-      "title": "Séance 1 · La demande et le cadrage",
+      "title": "Séance 1 · Postes, GitHub à deux, cadrage",
       "kicker": "S1 · 240 MIN",
       "segments": [
         [
-          "Épisode 1, rôles",
-          15,
-          "e"
-        ],
-        [
-          "Traduire la demande",
+          "Vérifier les postes",
           30,
-          "m"
+          "p"
         ],
         [
-          "Échantillon à la main",
-          35,
-          "p"
+          "GitHub à deux, PR n°1",
+          50,
+          "m"
         ],
         [
           "Pause",
@@ -1393,12 +1500,17 @@
           "z"
         ],
         [
-          "Cadrage, outils",
-          46,
+          "Épisode 1, rôles",
+          15,
+          "e"
+        ],
+        [
+          "Traduire la demande",
+          25,
           "m"
         ],
         [
-          "1re demande à Codex",
+          "Échantillon à la main",
           25,
           "p"
         ],
@@ -1408,23 +1520,34 @@
           "z"
         ],
         [
-          "Cycle Git n°1",
-          59,
+          "Épisode 2, outils",
+          20,
           "m"
         ],
         [
-          "Note",
+          "1re demande à Codex",
+          15,
+          "p"
+        ],
+        [
+          "PR n°2 : B auteur",
+          30,
+          "m"
+        ],
+        [
+          "Note d'état",
           10,
           "p"
         ]
       ],
       "prove": [
-        "Dépôt du binôme créé, partenaire invité",
-        "1re PR (README + journal) relue et fusionnée",
+        "Postes vérifiés : checklist du livret 01",
+        "PR n°1 (A) et PR n°2 (B) relues, fusionnées",
         "Calcul à la main = attendu.md"
       ],
-      "notes": "Livret 02, séance 1 : 15 + 15/15 + 35 + pause 10 + 10 + 12/24 + 25 + pause 10 + 14/45 + 10 = 240 min ; 66 min d'explications, 154 de pratique. Épisodes 1 et 2 (mail, réunion de cadrage).",
-      "id": "v7-57"
+      "notes": "Décisions V7 D1 et D3. Avant S1 : séance 0 chez soi (≈ 2 h, livret 01 parties A–C). Séance 1 : 30 vérification des postes (checklist « À ce stade, je sais… » du livret 01) + 15/35 GitHub à deux (dépôt du binôme, invitation, protection de main, PR n°1 journal-binome : A auteur, B relit et fusionne) + pause 10 + 15 épisode 1 + 10/15 traduire la demande + 25 échantillon à la main + pause 10 + 10/10 épisode 2 et outils + 15 première demande à Codex + 8/22 PR n°2 cadrage-binome (B auteur, A relit) + 10 note = 240 min ; 58 min d'explications, 162 de pratique. Un poste non prêt après 30 min : le binôme travaille sur le poste du partenaire, l'installation se finit après la séance.",
+      "id": "v7-57",
+      "split": "58 min d'explications · 162 min de pratique · 2 pauses"
     },
     {
       "section": "F",
@@ -1549,101 +1672,16 @@
     {
       "section": "F",
       "layout": "session",
-      "title": "Séance 4 · Le besoin change, la revue",
+      "title": "Séance 4 · Le besoin change, puis votre mission",
       "kicker": "S4 · 240 MIN",
       "segments": [
         [
-          "Épisode 5",
-          8,
-          "e"
-        ],
-        [
-          "Incrément, SCD2",
-          40,
+          "Lot 2, SCD2",
+          60,
           "m"
         ],
         [
-          "Rejeu",
-          17,
-          "m"
-        ],
-        [
-          "Tests, CI",
-          32,
-          "m"
-        ],
-        [
-          "Pause",
-          10,
-          "z"
-        ],
-        [
-          "Revue → fix",
-          40,
-          "m"
-        ],
-        [
-          "Conflit",
-          28,
-          "m"
-        ],
-        [
-          "Pause",
-          10,
-          "z"
-        ],
-        [
-          "Skills",
-          22,
-          "m"
-        ],
-        [
-          "Export",
-          14,
-          "m"
-        ],
-        [
-          "App, bilan",
-          19,
-          "m"
-        ]
-      ],
-      "prove": [
-        "Lot 2 chargé, historique gardé",
-        "Rejeu stable, CI verte (ETAPE_CI: tout)",
-        "Un conflit résolu, un Skill à vous"
-      ],
-      "notes": "Livret 02, séance 4 : 8 + 12/28 + 5/12 + 10/22 + pause + 8/32 + 8/20 + pause + 7/15 + 4/10 + 4/15. Épisodes 5 (nouveau lot, Nabeul change de zone) et 6 (défaut planté, revue → correction → revue).",
-      "id": "v7-60"
-    },
-    {
-      "section": "F",
-      "layout": "session",
-      "title": "Séance 5 · Livrer et répéter",
-      "kicker": "S5 · 240 MIN",
-      "segments": [
-        [
-          "Épisode 7",
-          15,
-          "m"
-        ],
-        [
-          "App locale",
-          35,
-          "m"
-        ],
-        [
-          "Pause",
-          10,
-          "z"
-        ],
-        [
-          "Power BI Desktop",
-          65,
-          "m"
-        ],
-        [
-          "Visuels, reco",
+          "Rejeu, tests, CI",
           45,
           "m"
         ],
@@ -1653,49 +1691,110 @@
           "z"
         ],
         [
-          "Finir, démo",
-          20,
+          "Conflit : démo, reprise",
+          25,
           "m"
         ],
         [
-          "Répéter à deux",
+          "Revue → correction",
           40,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Passer à votre mission",
+          50,
           "m"
         ]
       ],
       "prove": [
-        "App locale ouverte, chiffres = référence",
-        "Rapport Power BI actualisé",
-        "Recommandation écrite, oral répété"
+        "Lot 2 chargé, historique gardé, rejeu stable",
+        "CI verte ; conflit reproduit à deux",
+        "1re PR de mission (mission.txt = M0x)"
       ],
-      "notes": "Livret 05, « Minutage de la séance 5 » : 15 + 35 + pause + 65 + 45 + pause + 20 + 40 = 240 ; 66 explications, 154 pratique. Un seul poste Windows pour deux : alterner. Power BI bloqué plus de 20 min : appeler le professeur, noter le message.",
-      "id": "v7-61"
+      "notes": "Décision V7 D2 : 10/50 lot 2 et SCD2 + 10/35 rejeu, tests et CI + pause 10 + 10 démonstration du conflit par le professeur / 15 reproduction par chaque binôme + 10/30 défaut planté, revue → correction → revue + pause 10 + 10/40 « Passer à votre mission » (vider outputs/, mission.txt = M0x, demande de généralisation à Codex, `rejets`, première PR de mission). Somme : 50 min d'explications, 170 de pratique. Le Skill local devient une extension facultative. Épisodes 5 (nouveau lot, Nabeul change de zone) et 6 (défaut planté).",
+      "id": "v7-60",
+      "split": "50 min d'explications · 170 min de pratique · 2 pauses"
+    },
+    {
+      "section": "F",
+      "layout": "session",
+      "title": "Séance 5 · Votre mission, puis Power BI",
+      "kicker": "S5 · 240 MIN",
+      "segments": [
+        [
+          "Mission : initial → app",
+          100,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Power BI (tronc commun)",
+          70,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Lire les visuels",
+          30,
+          "m"
+        ],
+        [
+          "Répétition croisée",
+          20,
+          "p"
+        ]
+      ],
+      "prove": [
+        "Mission : initial → app, PR relue",
+        "Rapport Power BI actualisé (tronc commun)",
+        "Démo de 6 min devant un autre binôme"
+      ],
+      "notes": "Décision V7 D2 : 10/90 mission du catalogue (initial → increment → rejeu → export → app, PR et revue croisée) + pause 10 + 15/55 Power BI Desktop sur le tronc commun (import, relations, mesures, filtre, actualisation) + pause 10 + 10/20 lire les visuels et contrôler un chiffre + 20 répétition croisée (6 min de démo devant un autre binôme). Somme : 35 min d'explications, 185 de pratique. La recommandation s'écrit en travail personnel (livret 05 §4). Un seul poste Windows pour deux : alterner. Power BI bloqué plus de 20 min : appeler le professeur, noter le message.",
+      "id": "v7-61",
+      "split": "35 min d'explications · 185 min de pratique · 2 pauses"
     },
     {
       "section": "F",
       "layout": "process",
-      "title": "Fin de S3 : choisir votre mission",
+      "title": "Votre mission : de la fin de S3 à la soutenance",
       "kicker": "LE CATALOGUE",
       "items": [
         {
-          "label": "Lire",
-          "text": "au moins deux fiches du livret 04"
+          "label": "Fin S3",
+          "text": "choisir : deux fiches lues, choix noté dans JOURNAL.md"
         },
         {
-          "label": "Choisir",
-          "text": "un métier que vous savez expliquer"
+          "label": "Avant S4",
+          "text": "lire la fiche, calculer l'échantillon à la main"
         },
         {
-          "label": "Noter",
-          "text": "JOURNAL.md, rubrique Décision"
+          "label": "Fin S4",
+          "text": "50 min : passer à votre mission, 1re PR"
         },
         {
-          "label": "Attendre",
-          "text": "mission.txt = tronc-commun jusqu'à fin S4"
+          "label": "S5",
+          "text": "100 min : initial → app, PR et revue croisée"
+        },
+        {
+          "label": "Perso",
+          "text": "4 h : mission, variante, Power BI si Windows\n2 h : reco et oral"
         }
       ],
-      "note": "Mêmes formes, mêmes gestes : seuls les mots du métier changent.",
-      "notes": "Livret 02, S3-M7. Chaque mission a fiche_mission.md, cahier_des_charges.md, dictionnaire.md, échantillon + attendu.md, deux lots, une base SQLite opérationnelle, une dimension historisée, reference/. Le livret 04 (catalogue) est en cours de construction à la date de ce deck.",
+      "note": "Travail personnel ≈ 8 h = 2 h séance 0 + 4 h mission + 2 h finition et oral.",
+      "notes": "Décisions V7 D1, D2, D9, D10. Fin S3 : lire au moins deux fiches du livret 04, choisir un métier que vous savez expliquer, noter la décision. Devoir avant S4 : lire la fiche et calculer l'échantillon à la main. Fin S4 (50 min) : git switch main && git pull, branche mission-M0x, vider outputs/ (garder .gitkeep), mission.txt = M0x, demander à Codex de généraliser le code du tronc commun, contrôles rejets → initial → increment → rejeu → export → app → tout --strict. S5 première moitié : la mission jusqu'à l'app. Perso 4 h : finir la mission (variante comprise), mesures DAX de la mission, Power BI de la mission si un poste Windows est disponible (sinon tronc commun seulement), répétition ; 2 h : finition, recommandation (livret 05 §4) et préparation orale.",
       "id": "v7-62"
     },
     {
@@ -1714,30 +1813,52 @@
         },
         {
           "label": "« Que conseillez-vous ? »",
-          "text": "recommandation chiffrée"
+          "text": "recommandation chiffrée (perso)"
         },
         {
           "label": "« Chacun répondra »",
           "text": "démo répétée à deux"
         }
       ],
-      "notes": "Livret 05, épisode 7 : mail fictif de Lamia Ben Salah. Chaque phrase du mail fixe un livrable. La présentation de « vendredi » est la soutenance, sur votre mission du catalogue.",
+      "notes": "Livret 05, épisode 7 : mail fictif de Lamia Ben Salah. Chaque phrase du mail fixe un livrable. La présentation de « vendredi » est la soutenance, sur votre mission du catalogue. Décision V7 D2 : en S5, l'app de la mission est faite en première moitié, Power BI sur le tronc commun en seconde moitié ; la recommandation s'écrit en travail personnel.",
       "id": "v7-63"
     },
     {
       "section": "F",
       "layout": "capture",
-      "title": "L'application locale : Vue direction",
+      "title": "Vue direction : cinq indicateurs",
       "kicker": "S5 · APPLICATION",
       "image": "docs/images/captures/app-vue-direction.png",
       "items": [
-        "Cinq indicateurs en cartes.",
-        "Barres empilées par mois et zone.",
-        "Nord-Est apparaît en juillet."
+        "Cinq indicateurs en cartes, en TND.",
+        "Filtres : période, boutique, zone.",
+        "Ventes nettes 91 444,460 TND = référence."
       ],
-      "caption": "Capture réelle, macOS · application de référence, après lots 1 et 2 · réussite : ventes nettes 91 444,460 TND = référence.",
-      "notes": "docs/images/captures/REGISTRE.json : navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local, 2026-10-28. Limite : capture de la solution de référence privée, pas d'une production étudiante ; 800 px. Une seule page HTML autonome générée par python -m solen app (outputs/app/index.html), sans serveur.",
-      "id": "v7-64"
+      "caption": "Capture réelle, macOS · application de référence, après lots 1 et 2 · haut de la Vue direction.",
+      "notes": "docs/images/captures/REGISTRE.json : navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local, 2026-10-28. Limite : capture de la solution de référence privée du professeur, pas d'une production étudiante ; 800 px. Une seule page HTML autonome générée par python -m solen app (outputs/app/index.html), sans serveur. Diapositive 1/2 : bandeau, filtres et cartes d'indicateurs (capture recadrée, rien n'est retouché).",
+      "id": "v7-64",
+      "crop": [
+        0,
+        0,
+        800,
+        212
+      ]
+    },
+    {
+      "section": "F",
+      "layout": "capture",
+      "title": "Vue direction : ventes nettes par mois et zone",
+      "kicker": "S5 · APPLICATION",
+      "image": "docs/images/captures/app-vue-direction.png",
+      "caption": "Capture réelle, macOS · application de référence, après lots 1 et 2 · réussite : ventes nettes 91 444,460 TND = référence.",
+      "notes": "docs/images/captures/REGISTRE.json : navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local, 2026-10-28. Limite : capture de la solution de référence privée du professeur, pas d'une production étudiante ; 800 px. Une seule page HTML autonome générée par python -m solen app (outputs/app/index.html), sans serveur. Diapositive 2/2 : graphique recadré (rien n'est retouché). Nord-Est apparaît en juillet : c'est le changement de zone de NBE (SCD2). Points à dire : 1) Barres empilées par mois et zone. 2) Nord-Est apparaît en juillet.",
+      "id": "v7-64b",
+      "crop": [
+        10,
+        222,
+        750,
+        550
+      ]
     },
     {
       "section": "F",
@@ -1745,14 +1866,15 @@
       "title": "L'application locale : Qualité des données",
       "kicker": "S5 · APPLICATION",
       "image": "docs/images/captures/app-qualite.png",
-      "items": [
-        "Rejets par motif et par lot.",
-        "Lot 1 : 8 · 6 · 5 · 7.",
-        "Lot 2 : 4 · 2 · 2 · 2."
-      ],
       "caption": "Capture réelle, macOS · application de référence · réussite : rejets par motif = reference/README.md.",
-      "notes": "docs/images/captures/REGISTRE.json : même environnement (macOS 26.3, navigateur intégré, 2026-10-28). Motifs : cle_inconnue, id_conflit, id_manquant, quantite_invalide. Ordre des motifs selon reference/README.md. Limite : solution de référence, pas une production étudiante.",
-      "id": "v7-65"
+      "notes": "docs/images/captures/REGISTRE.json : même environnement (macOS 26.3, navigateur intégré, 2026-10-28). Motifs : cle_inconnue, id_conflit, id_manquant, quantite_invalide. Ordre des motifs selon reference/README.md. Limite : solution de référence, pas une production étudiante. Capture recadrée sur le graphique (rien n'est retouché) ; sous le graphique, l'application liste les rejets par lot, source et motif. Les rejets ne dépendent pas des filtres : ils décrivent les fichiers sources de chaque lot. Points à dire : 1) Rejets par motif et par lot. 2) Lot 1 : 8 · 6 · 5 · 7. 3) Lot 2 : 4 · 2 · 2 · 2.",
+      "id": "v7-65",
+      "crop": [
+        12,
+        172,
+        738,
+        502
+      ]
     },
     {
       "section": "F",
@@ -1777,15 +1899,15 @@
           "text": "après le lot 2 :\n91 444,460 TND"
         }
       ],
-      "note": "Pas de capture Power BI ici : elles seront prises sur un vrai poste Windows.",
-      "notes": "modele-binome/powerbi/README.md et livret 05 §2. Power BI Desktop : gratuit, Windows uniquement (Microsoft, Download Power BI Desktop, https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop, lu le 28/10/2026). Jamais de relation par boutique_id. Actualiser prouve que le rapport relit les CSV, pas que les CSV sont justes. Captures Power BI : placeholders, en attente du prévol Windows Ines/Rayan (aucune capture fabriquée).",
+      "note": "En S5 : sur le tronc commun. Mission : si un poste Windows est libre, sinon l'app.",
+      "notes": "modele-binome/powerbi/README.md et livret 05 §2 ; décisions V7 D2 et D10. Power BI Desktop : gratuit, Windows uniquement (Microsoft, Download Power BI Desktop, https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop, lu le 28/10/2026). En S5 : tronc commun (5 CSV exportés, mesures.dax fourni). Mission du catalogue : Codex écrit les mesures DAX de la mission (formules du cahier, Étape C du guide) ; Power BI de la mission en travail personnel si un poste Windows est disponible, sinon la démo se fait dans l'app locale. Jamais de relation par boutique_id. Actualiser prouve que le rapport relit les CSV, pas que les CSV sont justes. Captures Power BI : aucune, en attente du prévol Windows (aucune capture fabriquée).",
       "id": "v7-66"
     },
     {
       "section": "F",
       "layout": "process",
       "title": "La recommandation en cinq parties",
-      "kicker": "S5 · DÉCISION",
+      "kicker": "PERSO · DÉCISION",
       "items": [
         {
           "label": "Constat",
@@ -1809,7 +1931,7 @@
         }
       ],
       "note": "Exemple : Sud à 7,40 % de retours… à cause d'un seul coffret de 1 240,000 TND.",
-      "notes": "Livret 05 §4, exemple travaillé : zone Sud (Sfax) 7,40 % de retours (2 124,470 / 28 704,340 TND, cohérent avec attendu_lot2.json par_zone.Sud) ; un coffret entreprise de 1 240,000 TND vendu le 28 mai, rendu le 2 juin ; sans lui le Sud serait ≈ 3,1 % et juin 2,2 %. Recommandation : revoir les conditions de retour des coffrets, pas un plan qualité sur toute la boutique. Limite : 8 mois, un seul retour. Donnée : motif du retour (présent dans operations.sqlite, non chargé).",
+      "notes": "Livret 05 §4, exemple travaillé ; décision V7 D2 : la recommandation de la mission s'écrit en travail personnel avec ce modèle. zone Sud (Sfax) 7,40 % de retours (2 124,470 / 28 704,340 TND, cohérent avec attendu_lot2.json par_zone.Sud) ; un coffret entreprise de 1 240,000 TND vendu le 28 mai, rendu le 2 juin ; sans lui le Sud serait ≈ 3,1 % et juin 2,2 %. Recommandation : revoir les conditions de retour des coffrets, pas un plan qualité sur toute la boutique. Limite : 8 mois, un seul retour. Donnée : motif du retour (présent dans operations.sqlite, non chargé).",
       "id": "v7-67"
     },
     {
@@ -1823,7 +1945,7 @@
     {
       "section": "G",
       "layout": "table",
-      "title": "Dix entreprises, dix questions de direction",
+      "title": "Dix entreprises · M01 à M05",
       "kicker": "CATALOGUE",
       "headers": [
         "#",
@@ -1832,12 +1954,12 @@
         "La direction veut savoir…"
       ],
       "widths": [
-        0.45,
-        1.75,
-        1.45,
-        3.6
+        0.55,
+        1.85,
+        1.55,
+        3.7
       ],
-      "fontSize": 12.5,
+      "fontSize": 17,
       "rows": [
         [
           "M01",
@@ -1868,7 +1990,30 @@
           "Académie Nour",
           "présence",
           "quelles sessions remplissent et encaissent"
-        ],
+        ]
+      ],
+      "notes": "Questions de direction 1/2. Questions résumées du « message de la direction » de chaque fiche_mission.md. Chaque mission a un changement SCD2 au 15 juillet (M01 Hammamet → Sahel ; M02 VSO → marketplace ; M03 CL04 → grande surface ; M04 agence de Nabeul → Centre-Sahel ; M05 SES-2619 → Sfax ; M06 commission OTA 18 % → 15 % ; M07 Fibre 300 → gamme pro, 99,900 TND ; M08 EQ-017 → CT-09 ; M09 frais REV 9 % → 11 % ; M10 PX07 → Nour Jebali) et une règle à clarifier tranchée par la direction (fiche, section « La règle à clarifier »).",
+      "id": "v7-69"
+    },
+    {
+      "section": "G",
+      "layout": "table",
+      "title": "Dix entreprises · M06 à M10",
+      "kicker": "CATALOGUE",
+      "headers": [
+        "#",
+        "Entreprise fictive",
+        "Grain",
+        "La direction veut savoir…"
+      ],
+      "widths": [
+        0.55,
+        1.85,
+        1.55,
+        3.7
+      ],
+      "fontSize": 17,
+      "rows": [
         [
           "M06",
           "Dar Azur",
@@ -1900,8 +2045,8 @@
           "quels projets rapportent vraiment"
         ]
       ],
-      "notes": "Questions résumées du « message de la direction » de chaque fiche_mission.md. Chaque mission a un changement SCD2 au 15 juillet (M01 Hammamet → Sahel ; M02 VSO → marketplace ; M03 CL04 → grande surface ; M04 agence de Nabeul → Centre-Sahel ; M05 SES-2619 → Sfax ; M06 commission OTA 18 % → 15 % ; M07 Fibre 300 → gamme pro, 99,900 TND ; M08 EQ-017 → CT-09 ; M09 frais REV 9 % → 11 % ; M10 PX07 → Nour Jebali) et une règle à clarifier tranchée par la direction (fiche, section « La règle à clarifier »).",
-      "id": "v7-69"
+      "notes": "Questions de direction 2/2. Questions résumées du « message de la direction » de chaque fiche_mission.md. Chaque mission a un changement SCD2 au 15 juillet (M01 Hammamet → Sahel ; M02 VSO → marketplace ; M03 CL04 → grande surface ; M04 agence de Nabeul → Centre-Sahel ; M05 SES-2619 → Sfax ; M06 commission OTA 18 % → 15 % ; M07 Fibre 300 → gamme pro, 99,900 TND ; M08 EQ-017 → CT-09 ; M09 frais REV 9 % → 11 % ; M10 PX07 → Nour Jebali) et une règle à clarifier tranchée par la direction (fiche, section « La règle à clarifier »).",
+      "id": "v7-69b"
     },
     {
       "section": "G",
@@ -1950,7 +2095,7 @@
       "layout": "divider",
       "title": "Soutenance et critères annoncés",
       "subtitle": "Une démo à deux, des questions à chacun",
-      "notes": "Livret 05 §6 et contrat §3/§9. La grille chiffrée et les ancrages restent privés (jury/) : aucun point n'est montré ici.",
+      "notes": "Livret 05 §6 et contrat §3/§9. La grille chiffrée et les ancrages restent dans les documents privés du jury : aucun point n'est montré ici.",
       "id": "v7-71"
     },
     {
@@ -1964,8 +2109,34 @@
         "Durée par binôme = 100 / N.",
         "Préparez la version de 6 minutes."
       ],
-      "notes": "Schéma v7-soutenance ; contrat §3. N = 5 → 20 min (6 démo + 2 × 6 questions + 2 transition) ; N = 8 → 12,5 min ; N ≥ 11 → ≈ 9,1 min ou moins : impossible en un seul créneau sans second créneau ou deux jurys en parallèle. À signaler au professeur dès que N est connu.",
-      "id": "v7-72"
+      "notes": "Schéma v7-soutenance, partie haute ; contrat §3. N = 5 → 20 min (6 démo + 2 × 6 questions + 2 transition).",
+      "id": "v7-72",
+      "crop": [
+        0,
+        255,
+        2400,
+        905
+      ]
+    },
+    {
+      "section": "H",
+      "layout": "picture",
+      "title": "Plus de binômes, moins de minutes",
+      "kicker": "FORMAT",
+      "image": "docs/images/diagrams/v7-soutenance.png",
+      "items": [
+        "N = 8 : 12,5 min par binôme.",
+        "N ≥ 11 : ≈ 9 min, impossible en un créneau.",
+        "Second créneau ou deux jurys : prévenir le professeur."
+      ],
+      "notes": "Schéma v7-soutenance, partie basse ; contrat §3. N = 8 → 12,5 min ; N ≥ 11 → ≈ 9,1 min ou moins : impossible en un seul créneau sans second créneau ou deux jurys en parallèle. À signaler au professeur dès que N est connu.",
+      "id": "v7-72b",
+      "crop": [
+        0,
+        905,
+        2400,
+        1530
+      ]
     },
     {
       "section": "H",
@@ -2043,7 +2214,7 @@
         }
       ],
       "note": "S'y ajoutent les questions individuelles : chacun répond seul.",
-      "notes": "Livret 05, encadré « Les critères annoncés (publics) » ; contrat §9 : part commune binôme (dépôt, résultats = référence, app/Power BI, qualité des PR) et part individuelle. Les points, la grille /20 et les ancrages sont dans jury/ (privé) et ne sont pas montrés aux étudiants.",
+      "notes": "Livret 05, encadré « Les critères annoncés (publics) » ; contrat §9 : part commune binôme (dépôt, résultats = référence, app/Power BI, qualité des PR) et part individuelle. Les points, la grille /20 et les ancrages sont dans les documents privés du jury et ne sont pas montrés aux étudiants.",
       "id": "v7-74"
     },
     {
@@ -2157,7 +2328,7 @@
           "https://learn.chatgpt.com/docs/codex/cli"
         ]
       ],
-      "notes": "URLs reprises de docs/setup/sources.json (verified_on 2026-10-28). Ces pages peuvent changer : l'écran du compte de l'étudiant fait foi. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
+      "notes": "URLs reprises de docs/setup/sources.json (verified_on 2026-10-28). Ces pages peuvent changer : l'écran du compte de l'étudiant fait foi. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche. Adresses complètes : Pricing (offre Free) : https://learn.chatgpt.com/docs/pricing ; Models (efforts, Luna) : https://learn.chatgpt.com/docs/models ; Desktop app for Windows : https://learn.chatgpt.com/docs/app/windows ; WSL : https://learn.chatgpt.com/docs/windows/wsl ; Desktop app for Linux : https://learn.chatgpt.com/docs/linux/linux-app ; Slash commands : https://learn.chatgpt.com/codex/reference/slash-commands ; AGENTS.md : https://learn.chatgpt.com/docs/agent-configuration/agents-md ; Build skills : https://learn.chatgpt.com/docs/build-skills ; Subagents : https://learn.chatgpt.com/docs/agent-configuration/subagents ; Codex CLI (annexe facultative) : https://learn.chatgpt.com/docs/codex/cli.",
       "id": "v7-77"
     },
     {
@@ -2207,7 +2378,7 @@
           "https://ubuntu.com/developers/docs/howto/python-setup/"
         ]
       ],
-      "notes": "Sélection de docs/setup/sources.json (38 sources au total, toutes vérifiées le 28/10/2026). La liste complète est dans ce fichier et dans les livrets 01 et 06.",
+      "notes": "Sélection de docs/setup/sources.json (38 sources au total, toutes vérifiées le 28/10/2026). La liste complète est dans ce fichier et dans les livrets 01 et 06. Adresses complètes : GitHub’s plans : https://docs.github.com/en/get-started/learning-about-github/githubs-plans ; GitHub Actions billing : https://docs.github.com/en/billing/concepts/product-billing/github-actions ; Creating a pull request : https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request ; Reviewing proposed changes : https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request ; Resolving a merge conflict : https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github ; gh auth login : https://cli.github.com/manual/gh_auth_login ; Install WSL (Microsoft) : https://learn.microsoft.com/en-us/windows/wsl/install ; Download Power BI Desktop : https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop ; venv (Python) : https://docs.python.org/3/library/venv.html ; Python on Ubuntu (Canonical) : https://ubuntu.com/developers/docs/howto/python-setup/.",
       "id": "v7-78"
     },
     {
@@ -2238,11 +2409,11 @@
       "layout": "closing",
       "title": "Lundi, 9 h : votre première mission commence",
       "items": [
-        "Lire le livret 00, puis 01 selon votre poste.",
-        "Créer deux comptes : GitHub et ChatGPT (Free).",
+        "Séance 0 (≈ 2 h, chez vous) : livret 00, puis 01 parties A–C.",
+        "Installer Ubuntu, Python, Git et l'app Codex ; créer vos comptes GitHub et ChatGPT (Free).",
         "Venir avec une question : « où passe la marge ? »"
       ],
-      "notes": "Préparation avant S1 (livret 00, « À ce stade, je sais… » ; livret 01). Aucun paiement ni clé API. Le compte Free et l'affichage de Luna sont à vérifier par chaque étudiant.",
+      "notes": "Séance 0 avant S1 (décision V7 D1 ; livret 00, « À ce stade, je sais… » ; livret 01 parties A–C) : Windows → WSL2 Ubuntu ou Ubuntu natif ; Python, venv, Git, sqlite3 ; application ChatGPT/Codex connectée au compte Free ; compte GitHub. Le professeur répond aux blocages par message ; S1 commence par 30 min de vérification des postes. Aucun paiement ni clé API. Le compte Free et l'affichage de Luna sont à vérifier par chaque étudiant.",
       "id": "v7-80"
     }
   ]

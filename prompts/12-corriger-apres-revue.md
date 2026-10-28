@@ -15,7 +15,7 @@ Pour chacun, vérifie d'abord contre le code actuel : établi, non établi, ou n
 avec une preuve observable.
 Corrige seulement les défauts établis, dans solen/ (ou tests/), sans toucher
 aux sources, aux références ni à controles/.
-Lance <contrôles de l'étape> et pytest -q, recopie les sorties.
+Lance <contrôles de l'étape>, pytest controles et pytest -q ; recopie les sorties.
 Explique pour chaque constat rejeté pourquoi, en une phrase.
 Je prévois que <valeur> passera de <avant> à <après> : compare.
 Ne fais ni commit ni push.

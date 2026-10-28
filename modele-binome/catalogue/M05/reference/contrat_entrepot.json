@@ -296,7 +296,12 @@
     "sources": [
       "operations.sqlite",
       "presences.csv"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "presences.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

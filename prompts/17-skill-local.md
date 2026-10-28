@@ -1,6 +1,7 @@
 # 17 — Créer et essayer un Skill local
 
-**Quand l'utiliser** : séance 4, après avoir utilisé `$revoir-bi` au moins une fois.
+**Quand l'utiliser** : extension **facultative** (fin de séance 4 si le temps le permet,
+ou travail personnel), après avoir utilisé `$revoir-bi` au moins une fois.
 Un **Skill** est une méthode réutilisable rangée dans `.agents/skills/<nom>/SKILL.md`,
 avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota.
 

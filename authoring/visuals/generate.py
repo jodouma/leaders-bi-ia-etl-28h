@@ -860,8 +860,8 @@ c = start('seances', 'Cinq séances · une mission · une soutenance',
 S = [('S1', 'Demande initiale et cadrage', 'Preuve : premier cycle PR à deux'),
      ('S2', 'Premier résultat… faux', 'Preuve : rejets.csv conforme'),
      ('S3', 'Anomalies et étoile', 'Preuve : entrepôt + choix de mission'),
-     ('S4', 'Changement de besoin et revue', 'Preuve : SCD2, rejeu, CI verte'),
-     ('S5', 'Livraison', 'Preuve : app, Power BI, recommandation')]
+     ('S4', 'Changement de besoin et revue', 'Preuve : SCD2, rejeu, CI, première PR de mission'),
+     ('S5', 'Mission puis livraison', 'Preuve : app de la mission, Power BI, répétition')]
 bw, gp = 280, 30
 for i, (s, t, p) in enumerate(S):
     x = 40 + i * (bw + gp)
@@ -871,7 +871,7 @@ for i, (s, t, p) in enumerate(S):
     pill(c, x + 22, 202, f'{s} · 4 h', 26, ORANGE, DEEP)
     yy = c.para(x + 22, 302, t, 30, tcol, 'bold', maxw=bw - 44, gap=40)
     c.para(x + 22, 470, p, 26, bcol, maxw=bw - 44, gap=36)
-box(c, 40, 620, 900, 180, 'Travail personnel ≈ 8 h', ['Lecture 1 h · mission du catalogue 5 h · finition et préparation orale 2 h'], 'white')
+box(c, 40, 620, 900, 180, 'Travail personnel ≈ 8 h', ['Séance 0 : installation et lecture 2 h · mission du catalogue 4 h · finition, recommandation et oral 2 h'], 'white')
 box(c, 980, 620, 580, 180, 'Soutenance · 2 h', ['Démo du binôme + questions individuelles'], 'navy')
 px = 1520 / 30
 x = 40

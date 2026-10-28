@@ -3,15 +3,15 @@
 Il compare VOS sorties (outputs/) aux valeurs de référence calculées par le générateur
 depuis la vérité terrain (reference/attendu_*.json). Il ne lit jamais votre code.
 
-    python -m controles.verifier --etape rejets       # après le nettoyage du lot 1 (rejets.csv seul)
-    python -m controles.verifier --etape initial      # après le lot 1
-    python -m controles.verifier --etape increment    # après le lot 2
-    python -m controles.verifier --etape rejeu        # après avoir relancé le lot 2
+    python -m controles.verifier --etape rejets       # séance 2 : rejets du CSV de faits du lot 1 (rejets.csv seul)
+    python -m controles.verifier --etape initial      # après le lot 1 (entrepôt + rejets de toutes les sources)
+    python -m controles.verifier --etape increment    # après le lot 2 ; enregistre l'empreinte de l'entrepôt
+    python -m controles.verifier --etape rejeu        # après avoir relancé le lot 2 ; compare à l'empreinte
     python -m controles.verifier --etape export       # export CSV + manifest.json
     python -m controles.verifier --etape app          # mini-application HTML
     python -m controles.verifier --etape tout         # tout ce qui existe déjà
 
-La mission vient de --mission ou du fichier mission.txt (tronc-commun, M01 … M10).
+La mission vient de --mission, de la variable SOLEN_MISSION ou du fichier mission.txt (tronc-commun, M01 … M10).
 Code de sortie : 0 = aucun échec, 1 = au moins un échec, 2 = mission ou référence introuvable.
 Ne modifiez pas ce fichier : si un contrôle échoue, corrigez le code qui produit les sorties.
 """
@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import os
 import re
@@ -35,6 +36,10 @@ FLOTTANTES = ("ratio", "jours", "heures")      # unités comparées avec la tol�
 
 class ErreurConfiguration(Exception):
     """Mission, référence ou contrat introuvable."""
+
+
+class ErreurLecture(Exception):
+    """Une de VOS sorties existe mais ne peut pas être lue (encodage, format) : message en français."""
 
 
 # --------------------------------------------------------------------------- rapport
@@ -118,15 +123,20 @@ def egal(attendu, observe, unite: str, tolerance: float) -> bool:
 
 
 # --------------------------------------------------------------------------- chargement
+def normaliser_mission(mission: str) -> str:
+    m = mission.strip()
+    return "tronc-commun" if m.lower() == "tronc-commun" else m.upper()
+
+
 def lire_mission(racine: Path, mission: str | None) -> str:
-    if mission:
-        return mission.strip()
+    if mission and mission.strip():
+        return normaliser_mission(mission)
     f = racine / "mission.txt"
     if f.exists():
         for ligne in f.read_text(encoding="utf-8").splitlines():
             ligne = ligne.split("#", 1)[0].strip()
             if ligne:
-                return ligne
+                return normaliser_mission(ligne)
     raise ErreurConfiguration("mission inconnue : indiquez --mission ou écrivez-la dans mission.txt")
 
 
@@ -145,12 +155,27 @@ def charger_json(chemin: Path) -> dict:
         raise ErreurConfiguration(f"fichier de référence absent : {chemin}") from None
 
 
-def lire_csv(chemin: Path) -> tuple[list[str], list[dict]]:
-    texte = chemin.read_text(encoding="utf-8-sig")
+def lire_texte(chemin: Path, quoi: str) -> str:
+    """Lit une sortie en UTF-8 ; un autre encodage donne un message clair, jamais une trace Python."""
+    try:
+        return chemin.read_bytes().decode("utf-8-sig")
+    except UnicodeDecodeError as e:
+        raise ErreurLecture(f"{quoi} ({chemin.name}) n'est pas écrit en UTF-8 (octet illisible en position {e.start}) : "
+                            f"demandez à Codex de l'écrire avec encoding=\"utf-8\", puis relancez la commande "
+                            f"qui le produit") from None
+    except OSError as e:
+        raise ErreurLecture(f"{quoi} ({chemin.name}) illisible : {e.strerror or e}") from None
+
+
+def lire_csv(chemin: Path, quoi: str = "fichier CSV") -> tuple[list[str], list[dict]]:
+    texte = lire_texte(chemin, quoi)
     premiere = texte.split("\n", 1)[0]
     sep = ";" if premiere.count(";") > premiere.count(",") else ","
-    lecteur = csv.DictReader(texte.splitlines(), delimiter=sep)
-    lignes = list(lecteur)
+    try:
+        lecteur = csv.DictReader(io.StringIO(texte, newline=""), delimiter=sep)
+        lignes = [{(k or "").strip(): v for k, v in l.items() if isinstance(k, str)} for l in lecteur]
+    except csv.Error as e:
+        raise ErreurLecture(f"{quoi} ({chemin.name}) n'est pas un CSV lisible : {e}") from None
     return [c.strip() for c in (lecteur.fieldnames or [])], lignes
 
 
@@ -177,48 +202,87 @@ class Verificateur:
     def verifier(self, etape: str) -> Rapport:
         self.r.info(f"mission {self.mission} · référence {self.ref} · sorties {self.sorties}")
         if etape == "rejets":
-            self.verifier_rejets()
+            self._proteger(self.verifier_rejets)
         elif etape in ("initial", "increment", "rejeu"):
-            self.verifier_lot(self.contrat["etapes"][etape], etape)
+            self._proteger(self.verifier_lot, self.contrat["etapes"][etape], etape)
         elif etape == "export":
-            self.verifier_export(obligatoire=True)
+            self._proteger(self.verifier_export, obligatoire=True)
         elif etape == "app":
-            self.verifier_app(obligatoire=True)
+            self._proteger(self.verifier_app, obligatoire=True)
         else:
-            lot = self.detecter_lot()
-            if lot is None:
-                if not self.entrepot.exists():
-                    (self.r.echec if self.strict else self.r.a_faire)(f"entrepôt absent : {self.entrepot}")
-                else:
-                    self.r.echec("l'entrepôt ne correspond à aucun lot de référence (comptes de faits différents) ; "
-                                 "lancez --etape initial ou --etape increment pour le détail")
-            else:
-                etape_lot = self.contrat["lots"][lot]["etape"]
-                self.r.info(f"état détecté : {lot} → contrôles de l'étape {etape_lot}")
-                self.verifier_lot(lot, "rejeu" if etape_lot == "increment" else etape_lot)
-            self.verifier_export(obligatoire=self.strict)
-            self.verifier_app(obligatoire=self.strict)
+            self._proteger(self.verifier_lot_detecte)
+            self._proteger(self.verifier_export, obligatoire=self.strict)
+            self._proteger(self.verifier_app, obligatoire=self.strict)
         return self.r
 
-    def verifier_rejets(self) -> None:
-        """Séance 2 : seul outputs/rejets.csv est contrôlé (lot initial), sans entrepôt."""
-        lot = self.contrat["etapes"]["initial"]
-        self.r.titre(f"Étape rejets : rejets.csv ({lot}) comparé à {self.contrat['lots'][lot]['attendu']}")
-        self.rejets_lot(lot, self.attendus[lot])
-        if self.rejets.exists() and not self.r.echecs:
-            self.r.info("l'entrepôt n'est pas contrôlé à cette étape : lancez ensuite --etape initial")
+    def _proteger(self, controle, *args, **kwargs) -> None:
+        """Une sortie illisible donne un ÉCHEC expliqué, jamais une trace Python."""
+        try:
+            controle(*args, **kwargs)
+        except ErreurLecture as e:
+            self.r.echec(str(e))
+        except sqlite3.DatabaseError as e:
+            self.r.echec(f"{self.contrat['fichiers']['entrepot']} : lecture impossible ({e}) ; supprimez le fichier et "
+                         f"relancez « python -m solen initial »")
 
-    def connexion(self) -> sqlite3.Connection | None:
+    def verifier_lot_detecte(self) -> None:
+        """--etape tout : contrôle l'état présent (lot 1 ou lot 2). Au lot 2, compare à l'empreinte si elle existe,
+        sinon l'enregistre (enchaînement initial → increment → increment sans --etape increment entre les deux)."""
+        lot = self.detecter_lot()
+        if lot is None:
+            if not self.entrepot.exists():
+                (self.r.echec if self.strict else self.r.a_faire)(f"entrepôt absent : {self.entrepot}")
+            elif (con := self.connexion(silencieux=True)) is None:
+                self.connexion()                                    # ÉCHEC expliqué : pas une base SQLite
+            else:
+                con.close()
+                self.r.echec("l'entrepôt ne correspond à aucun lot de référence (comptes de faits différents) ; "
+                             "lancez --etape initial ou --etape increment pour le détail")
+            return
+        etape_lot = self.contrat["lots"][lot]["etape"]
+        self.r.info(f"état détecté : {lot} → contrôles de l'étape {etape_lot}")
+        self.verifier_lot(lot, "tout" if etape_lot == "increment" else etape_lot)
+
+    def sources_etape_rejets(self) -> list[str]:
+        """Sources contrôlées par --etape rejets : le CSV de faits (contrat → rejets.etape_rejets.sources)."""
+        cfg = self.contrat["rejets"]
+        return list((cfg.get("etape_rejets") or {}).get("sources")
+                    or [s for s in cfg.get("sources", []) if s.lower().endswith(".csv")])
+
+    def verifier_rejets(self) -> None:
+        """Séance 2 : seul outputs/rejets.csv est contrôlé, pour le CSV de faits du lot initial, sans entrepôt."""
+        lot = self.contrat["etapes"]["initial"]
+        sources = self.sources_etape_rejets()
+        self.r.titre(f"Étape rejets : {', '.join(sources)} ({lot}) comparé à {self.contrat['lots'][lot]['attendu']}")
+        self.rejets_lot(lot, self.attendus[lot], sources=sources)
+        if self.rejets.exists() and not self.r.echecs:
+            autres = sorted(set(self.attendus[lot]["rejets"]["par_source"]) - set(sources))
+            self.r.info((f"rejets de {', '.join(autres)} et entrepôt" if autres else "entrepôt")
+                        + " : contrôlés par --etape initial")
+
+    def _uri(self) -> str:
+        return self.entrepot.resolve().as_uri() + "?mode=ro"
+
+    def connexion(self, silencieux: bool = False) -> sqlite3.Connection | None:
+        """Ouvre l'entrepôt en lecture seule ; un fichier qui n'est pas une base SQLite donne un ÉCHEC clair."""
         if not self.entrepot.exists():
-            self.r.echec(f"entrepôt absent : attendu {self.entrepot}")
+            if not silencieux:
+                self.r.echec(f"entrepôt absent : attendu {self.entrepot}")
             return None
-        con = sqlite3.connect(f"file:{self.entrepot}?mode=ro", uri=True)
+        try:
+            con = sqlite3.connect(self._uri(), uri=True)
+            con.execute("SELECT COUNT(*) FROM sqlite_master").fetchone()
+        except sqlite3.DatabaseError as e:
+            if not silencieux:
+                self.r.echec(f"{self.entrepot.name} n'est pas une base SQLite lisible ({e}) : supprimez-le et relancez "
+                             f"« python -m solen initial »")
+            return None
         return con
 
     def detecter_lot(self) -> str | None:
-        if not self.entrepot.exists():
+        con = self.connexion(silencieux=True)
+        if con is None:
             return None
-        con = sqlite3.connect(f"file:{self.entrepot}?mode=ro", uri=True)
         try:
             for lot, a in self.attendus.items():
                 try:
@@ -234,7 +298,8 @@ class Verificateur:
     # ------------------------------------------------------------- lot
     def verifier_lot(self, lot: str, etape: str) -> None:
         a = self.attendus[lot]
-        self.r.titre(f"Étape {etape} : comparaison avec {self.contrat['lots'][lot]['attendu']}")
+        nom = "rejeu" if etape == "tout" else etape
+        self.r.titre(f"Étape {nom} : comparaison avec {self.contrat['lots'][lot]['attendu']}")
         con = self.connexion()
         if con is None:
             return
@@ -245,7 +310,7 @@ class Verificateur:
             self.colonnes_valeurs(con)
             self.cles_etrangeres(con)
             self.scd2(con, a)
-            self.rejets_lot(lot, a)
+            self._proteger(self.rejets_lot, lot, a)
             self.indicateurs(con, a)
             self.agregats(con, a)
             self.empreinte(con, lot, etape)
@@ -376,17 +441,42 @@ class Verificateur:
             else:
                 self.r.ok(f"{fa['table']} : chaque fait est relié à la version de {t} valable à sa date")
 
-    def rejets_lot(self, lot: str, a) -> None:
+    def rejets_lot(self, lot: str, a, sources: list[str] | None = None) -> None:
+        """Compare outputs/rejets.csv à la référence du lot. `sources` limite le contrôle à ces sources (séance 2 :
+        le CSV de faits) ; sinon toutes les sources du lot sont comparées, motif par motif et source par source."""
         cfg = self.contrat["rejets"]
         if not self.rejets.exists():
             self.r.echec(f"fichier des rejets absent : attendu {self.rejets}")
             return
-        entete, lignes = lire_csv(self.rejets)
+        entete, lignes = lire_csv(self.rejets, "le fichier des rejets")
         manque = [c for c in cfg["colonnes_obligatoires"] if c not in entete]
         if manque:
             self.r.echec(f"rejets.csv : colonnes obligatoires absentes {manque} (observé {entete})")
             return
         du_lot = [l for l in lignes if (l.get("lot") or "").strip() == lot]
+        if lignes and not du_lot:
+            vus = sorted({(l.get("lot") or "").strip() for l in lignes})
+            self.r.echec(f"rejets.csv : aucune ligne avec lot = « {lot} » ; valeurs trouvées dans la colonne lot : "
+                         f"{vus[:8]}")
+            return
+        att_src_tout = a["rejets"]["par_source"]
+        if sources is None:
+            etiquette, att_src = f"rejets {lot}", att_src_tout
+            att = a["rejets"]["par_motif"]
+        else:
+            etiquette = f"rejets {lot} · {', '.join(sources)}"
+            att_src = {s: m for s, m in att_src_tout.items() if s in sources}
+            att = {}
+            for m in att_src.values():
+                for k, n in m.items():
+                    att[k] = att.get(k, 0) + n
+            retenues = [l for l in du_lot if (l.get("source") or "").strip() in sources]
+            if du_lot and not retenues:
+                vues = sorted({(l.get("source") or "").strip() for l in du_lot})
+                self.r.echec(f"rejets.csv : aucune ligne du {lot} avec source = « {' / '.join(sources)} » (nom exact du "
+                             f"fichier) ; valeurs trouvées dans la colonne source : {vues[:8]}")
+                return
+            du_lot = retenues
         par_motif: dict[str, int] = {}
         par_source: dict[str, dict[str, int]] = {}
         for l in du_lot:
@@ -396,23 +486,47 @@ class Verificateur:
             par_motif[m] = par_motif.get(m, 0) + 1
             par_source.setdefault(s, {})
             par_source[s][m] = par_source[s].get(m, 0) + 1
-        att = a["rejets"]["par_motif"]
         for m in sorted(set(att) | set(par_motif)):
             e, o = att.get(m, 0), par_motif.get(m, 0)
             if m not in att:
-                self.r.echec(f"rejets {lot} : motif inattendu « {m} » ({o} lignes)")
+                self.r.echec(f"{etiquette} : motif inattendu « {m} » ({o} lignes)")
             elif e == o:
-                self.r.ok(f"rejets {lot} : {m} = {o}")
+                self.r.ok(f"{etiquette} : {m} = {o}")
             else:
-                self.r.echec(f"rejets {lot} : {m}, attendu {e}, observé {o}")
-        att_src = a["rejets"]["par_source"]
-        if par_source == att_src:
-            self.r.ok(f"rejets {lot} : répartition par source conforme ({', '.join(sorted(att_src))})")
-        elif sum(par_motif.values()) == a["rejets"]["total"]:
-            self.r.echec(f"rejets {lot} : par source, attendu {att_src}, observé {par_source}")
+                self.r.echec(f"{etiquette} : {m}, attendu {e}, observé {o}")
+        if sources is None:
+            if par_source == att_src:
+                self.r.ok(f"{etiquette} : répartition par source conforme ({', '.join(sorted(att_src))})")
+            elif sum(par_motif.values()) == a["rejets"]["total"]:
+                self.r.echec(f"{etiquette} : par source, attendu {att_src}, observé {par_source}")
+        self.numeros_de_ligne(lot, a, du_lot, sources)
         tol = sum(1 for l in du_lot if (l.get("motif") or "").strip() in cfg["motifs_toleres"])
         if tol:
-            self.r.info(f"rejets {lot} : {tol} ligne(s) notée(s) {cfg['motifs_toleres']} (facultatif, non compté)")
+            self.r.info(f"{etiquette} : {tol} ligne(s) notée(s) {cfg['motifs_toleres']} (facultatif, non compté)")
+
+    def numeros_de_ligne(self, lot: str, a, du_lot: list[dict], sources: list[str] | None) -> None:
+        """Chaque rejet d'un CSV désigne une ligne réelle du fichier (l'en-tête est la ligne 1), une seule fois."""
+        toleres = self.contrat["rejets"]["motifs_toleres"]
+        for src, info in sorted(a.get("sources", {}).items()):
+            if not src.lower().endswith(".csv") or "lignes" not in info or (sources is not None and src not in sources):
+                continue
+            nums = [(l.get("numero_ligne") or "").strip() for l in du_lot
+                    if (l.get("source") or "").strip() == src and (l.get("motif") or "").strip() not in toleres]
+            if not nums:
+                continue
+            fin = int(info["lignes"]) + 1
+            hors = [n for n in nums if not (n.isdigit() and 2 <= int(n) <= fin)]
+            doubles = sorted({n for n in nums if nums.count(n) > 1})
+            if hors or doubles:
+                detail = []
+                if hors:
+                    detail.append(f"{len(hors)} numéro(s) hors du fichier, ex. {hors[:5]}")
+                if doubles:
+                    detail.append(f"{len(doubles)} numéro(s) en double, ex. {doubles[:5]}")
+                self.r.echec(f"rejets {lot} · {src} : numero_ligne doit être une ligne réelle du fichier (2 à {fin}, "
+                             f"l'en-tête étant la ligne 1), une seule fois ; observé {' et '.join(detail)}")
+            else:
+                self.r.ok(f"rejets {lot} · {src} : {len(nums)} numero_ligne réels (2 à {fin}), uniques")
 
     def _inds(self) -> list[dict]:
         return self.contrat["indicateurs"]
@@ -467,30 +581,59 @@ class Verificateur:
             else:
                 self.r.ok(f"agrégats {nom} : {len(att)} valeurs de « {axe} » × {len(self._inds())} indicateurs conformes")
 
+    def fichier_empreinte(self, lot: str) -> Path:
+        return self.sorties / "verification" / f"empreinte_{lot}.json"
+
     def empreinte(self, con, lot: str, etape: str) -> None:
+        """Empreinte de l'entrepôt = nombre de lignes + somme de contrôle SHA-256 de chaque table (lignes triées).
+        --etape increment l'enregistre ; --etape rejeu exige qu'elle existe et que rien n'ait changé ;
+        --etape tout compare si elle existe, sinon l'enregistre."""
         h = {}
         for t in self.contrat["ordre_tables"]:
             cols = self.contrat["tables"][t]["colonnes"]
-            digest = hashlib.sha256()
+            digest, n = hashlib.sha256(), 0
             for r in con.execute(f"SELECT {', '.join(cols)} FROM {t} ORDER BY {', '.join(cols)}"):
                 digest.update(repr(tuple(r)).encode())
-            h[t] = digest.hexdigest()
-        f = self.sorties / "verification" / f"empreinte_{lot}.json"
-        if etape == "increment":
-            if not self.r.echecs:
-                f.parent.mkdir(parents=True, exist_ok=True)
-                f.write_text(json.dumps(h, indent=2) + "\n", encoding="utf-8")
-                self.r.info(f"empreinte de l'entrepôt enregistrée ({f}) : --etape rejeu la comparera")
-        elif etape == "rejeu":
-            if not f.exists():
-                self.r.info("pas d'empreinte enregistrée : lancez --etape increment avant de relancer le lot")
+                n += 1
+            h[t] = {"lignes": n, "sha256": digest.hexdigest()}
+        f = self.fichier_empreinte(lot)
+        rel = f"{self.sorties.name}/{f.relative_to(self.sorties).as_posix()}"
+        if etape == "increment" or (etape == "tout" and not f.exists()):
+            if self.r.echecs:
+                if etape == "increment":
+                    self.r.info("empreinte non enregistrée : corrigez d'abord les ÉCHEC ci-dessus, puis relancez "
+                                "--etape increment")
                 return
-            avant = json.loads(f.read_text(encoding="utf-8"))
-            changees = [t for t in h if avant.get(t) != h[t]]
-            if changees:
-                self.r.echec(f"rejeu : attendu un entrepôt identique, observé des changements dans {changees}")
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_text(json.dumps({"lot": lot, "tables": h}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            if etape == "increment":
+                self.r.info(f"empreinte enregistrée : {rel}")
             else:
-                self.r.ok("rejeu : entrepôt identique, ligne par ligne, à celui contrôlé après l'incrément")
+                self.r.info(f"empreinte enregistrée maintenant ({rel}) : pour prouver le rejeu, relancez le lot 2, "
+                            f"puis --etape rejeu")
+        elif etape in ("rejeu", "tout"):
+            if not f.exists():
+                self.r.echec(f"rejeu : empreinte absente ({rel}), le rejeu ne peut pas être prouvé. Dans l'ordre : "
+                             f"« python -m solen increment », « python -m controles.verifier --etape increment » "
+                             f"(enregistre l'empreinte), « python -m solen increment » (rejeu), puis --etape rejeu")
+                return
+            try:
+                avant = json.loads(lire_texte(f, "l'empreinte enregistrée")).get("tables")
+                assert isinstance(avant, dict)
+            except (ErreurLecture, json.JSONDecodeError, AttributeError, AssertionError):
+                self.r.echec(f"rejeu : empreinte {rel} illisible ; relancez --etape increment pour la réécrire")
+                return
+            changees = []
+            for t, x in h.items():
+                y = avant.get(t) or {}
+                if y.get("sha256") != x["sha256"]:
+                    changees.append(f"{t} ({y.get('lignes', '?')} → {x['lignes']} lignes)")
+            if changees:
+                self.r.echec(f"rejeu : attendu un entrepôt identique à l'empreinte enregistrée par --etape increment, "
+                             f"observé des changements dans {', '.join(changees)} (si vous avez modifié le code depuis, "
+                             f"relancez --etape increment avant le rejeu)")
+            else:
+                self.r.ok(f"rejeu : {len(h)} tables identiques à l'empreinte de --etape increment")
 
     # ------------------------------------------------------------- export
     def verifier_export(self, obligatoire: bool) -> None:
@@ -499,9 +642,12 @@ class Verificateur:
             (self.r.echec if obligatoire else self.r.a_faire)(f"manifest absent : {self.manifest}")
             return
         try:
-            man = json.loads(self.manifest.read_text(encoding="utf-8"))
+            man = json.loads(lire_texte(self.manifest, "le manifeste"))
         except json.JSONDecodeError as e:
-            self.r.echec(f"manifest.json illisible : {e}")
+            self.r.echec(f"manifest.json illisible : JSON invalide ({e})")
+            return
+        if not isinstance(man, dict) or not isinstance(man.get("tables", {}), dict):
+            self.r.echec("manifest.json : attendu un objet JSON avec une clé « tables » {table: {lignes, sommes}}")
             return
         con = self.connexion()
         if con is None:
@@ -518,7 +664,7 @@ class Verificateur:
                 if not fichier.exists():
                     self.r.echec(f"export : fichier absent {fichier}")
                     continue
-                entete, lignes = lire_csv(fichier)
+                entete, lignes = lire_csv(fichier, f"l'export {t}.csv")
                 manque = [c for c in self.contrat["tables"][t]["colonnes"] if c not in entete]
                 if manque:
                     self.r.echec(f"export {t}.csv : colonnes absentes {manque}")
@@ -533,8 +679,10 @@ class Verificateur:
                     s_db = con.execute(f"SELECT COALESCE(SUM({c}), 0) FROM {t}").fetchone()[0]
                     try:
                         s_csv = sum(int(l[c]) for l in lignes if (l.get(c) or "") != "")
-                    except (KeyError, ValueError):
-                        s_csv = None
+                    except KeyError:
+                        s_csv = f"(colonne {c} absente)"
+                    except ValueError:
+                        s_csv = f"(valeur non entière dans la colonne {c})"
                     s_man = ((tables_man.get(t) or {}).get("sommes") or {}).get(c)
                     ref = ((self.attendus[lot].get("sommes_export") or {}).get(t) or {}).get(c) if lot else None
                     if ref is not None and s_db != ref:
@@ -567,7 +715,13 @@ class Verificateur:
         if reseau:
             self.r.echec(f"index.html : attendu aucun chargement externe, observé {sorted(set(reseau))[:5]}")
         else:
-            self.r.ok("index.html : autonome (aucun lien réseau, aucun chargement de fichier)")
+            locaux = re.findall(r"""<(?:img|script|link|iframe|source|embed)\b[^>]*?\b(?:src|href)\s*=\s*["']\s*"""
+                                r"""(?!data:|#|javascript:)([^"'\s][^"']*)""", html, re.I)
+            if locaux:
+                self.r.echec(f"index.html : attendu un seul fichier autonome, observé des fichiers chargés à côté "
+                             f"{sorted(set(locaux))[:5]} (intégrez-les ou supprimez-les)")
+            else:
+                self.r.ok("index.html : autonome (aucun lien réseau, aucun chargement de fichier)")
         for texte in cfg["textes_obligatoires"]:
             if texte.lower() in html.lower():
                 self.r.ok(f"index.html : écran « {texte} » présent")
@@ -585,7 +739,7 @@ class Verificateur:
 def verifier(etape: str, mission: str | None = None, racine: Path | None = None, sorties: Path | None = None,
              strict: bool = False) -> Rapport:
     racine = Path(racine or os.environ.get("SOLEN_RACINE") or Path.cwd()).resolve()
-    mission = lire_mission(racine, mission)
+    mission = lire_mission(racine, mission or os.environ.get("SOLEN_MISSION"))
     sorties = Path(sorties or os.environ.get("SOLEN_SORTIES") or racine / "outputs").resolve()
     return Verificateur(racine, mission, sorties, strict=strict).verifier(etape)
 
@@ -593,7 +747,7 @@ def verifier(etape: str, mission: str | None = None, racine: Path | None = None,
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="python -m controles.verifier",
                                 description="Compare vos sorties aux valeurs de référence de la mission.")
-    p.add_argument("--mission", help="tronc-commun ou M01 … M10 (défaut : mission.txt)")
+    p.add_argument("--mission", help="tronc-commun ou M01 … M10 (défaut : SOLEN_MISSION, sinon mission.txt)")
     p.add_argument("--etape", choices=ETAPES, default="tout", metavar="|".join(ETAPES),
                    help="étape contrôlée, dans l'ordre du parcours : " + " → ".join(ETAPES) + " (défaut : tout)")
     p.add_argument("--racine", type=Path, help="racine du dépôt binôme (défaut : dossier courant)")
@@ -605,6 +759,10 @@ def main(argv: list[str] | None = None) -> int:
     except ErreurConfiguration as e:
         print(f"ÉCHEC — {e}")
         return 2
+    except Exception as e:                                  # jamais de trace Python pour l'étudiant
+        print(f"ÉCHEC — le vérificateur n'a pas pu lire vos sorties ({type(e).__name__} : {e}) ; "
+              f"relancez la commande qui les produit, puis le vérificateur")
+        return 1
     print(rapport.texte())
     return 1 if rapport.echecs else 0
 

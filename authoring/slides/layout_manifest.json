@@ -42,7 +42,7 @@
   "y": 6.75,
   "w": 10,
   "h": 0.3,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 2,
@@ -51,16 +51,16 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 2,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LA MISSION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 2,
@@ -159,7 +159,7 @@
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 2,
@@ -177,16 +177,16 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 3,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LA MISSION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 3,
@@ -267,7 +267,7 @@
   "y": 2.1,
   "w": 2.2,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
   "slide": 3,
@@ -285,7 +285,7 @@
   "y": 5.85,
   "w": 2.182999999999998,
   "h": 0.6,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 4,
@@ -294,88 +294,49 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 4,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LA MISSION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 4,
   "text": "De la question de la direction à la décision",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 22
  },
  {
   "slide": 4,
   "text": "SCHÉMA · pas une capture",
-  "x": 9.799999999999999,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 4,
-  "text": "1",
-  "x": 9.799999999999999,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
   "slide": 4,
-  "text": "Une question floue devient une question métier.",
-  "x": 10.35,
-  "y": 2.65,
-  "w": 2.383,
-  "h": 0.95,
-  "size": 16
- },
- {
-  "slide": 4,
-  "text": "2",
-  "x": 9.799999999999999,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 4,
-  "text": "Un indicateur défini, avec son unité.",
-  "x": 10.35,
-  "y": 3.77,
-  "w": 2.383,
-  "h": 0.95,
-  "size": 16
- },
- {
-  "slide": 4,
-  "text": "3",
-  "x": 9.799999999999999,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 4,
-  "text": "Sans question, pas de graphique.",
-  "x": 10.35,
-  "y": 4.890000000000001,
-  "w": 2.383,
-  "h": 0.95,
-  "size": 16
+  "image": "docs/images/diagrams/v7-direction-decision.png",
+  "crop": [
+   0,
+   240,
+   2400,
+   1230
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 5.004862499999999,
+  "widthShare": 0.91
  },
  {
   "slide": 5,
@@ -384,16 +345,16 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 5,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LE BINÔME",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 5,
@@ -456,7 +417,7 @@
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 5,
@@ -474,16 +435,16 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 6,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LE CONTRAT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 6,
@@ -523,7 +484,7 @@
  },
  {
   "slide": 6,
-  "text": "de travail personnel\n(≈ 30 h au total)",
+  "text": "de travail personnel\ndont 2 h de séance 0\n(≈ 30 h au total)",
   "x": 3.90825,
   "y": 3.8499999999999996,
   "w": 2.40825,
@@ -532,16 +493,16 @@
  },
  {
   "slide": 6,
-  "text": "70 / 30",
+  "text": "≥ 70 %",
   "x": 7.016499999999999,
   "y": 2.5,
   "w": 2.40825,
   "h": 1.1,
-  "size": 36
+  "size": 44
  },
  {
   "slide": 6,
-  "text": "pratique / explications\nhors pauses",
+  "text": "de pratique\nhors pauses",
   "x": 7.016499999999999,
   "y": 3.8499999999999996,
   "w": 2.40825,
@@ -573,7 +534,7 @@
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 6,
@@ -591,88 +552,49 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 7,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LE CONTRAT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 7,
   "text": "Cinq séances, une mission, une soutenance",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 24
  },
  {
   "slide": 7,
   "text": "SCHÉMA · pas une capture",
-  "x": 8.814705882352941,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 7,
-  "text": "1",
-  "x": 8.814705882352941,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
   "slide": 7,
-  "text": "S1 → S4 : tronc commun guidé.",
-  "x": 9.364705882352942,
-  "y": 2.65,
-  "w": 3.368294117647058,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 7,
-  "text": "2",
-  "x": 8.814705882352941,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 7,
-  "text": "Fin S3 : choix d'une mission du catalogue.",
-  "x": 9.364705882352942,
-  "y": 3.77,
-  "w": 3.368294117647058,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 7,
-  "text": "3",
-  "x": 8.814705882352941,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 7,
-  "text": "S5 + perso : votre mission, puis soutenance.",
-  "x": 9.364705882352942,
-  "y": 4.890000000000001,
-  "w": 3.368294117647058,
-  "h": 0.95,
-  "size": 17
+  "image": "docs/images/diagrams/v7-seances.png",
+  "crop": [
+   0,
+   255,
+   2400,
+   1215
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.853199999999999,
+  "widthShare": 0.91
  },
  {
   "slide": 8,
@@ -681,16 +603,16 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 8,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LE CONTRAT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 8,
@@ -753,7 +675,7 @@
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 8,
@@ -771,88 +693,49 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 9,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LE CONTRAT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 9,
   "text": "Codex propose, les humains décident",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
   "slide": 9,
   "text": "SCHÉMA · pas une capture",
-  "x": 9.799999999999999,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 9,
-  "text": "1",
-  "x": 9.799999999999999,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
   "slide": 9,
-  "text": "Codex propose dans une branche.",
-  "x": 10.35,
-  "y": 2.65,
-  "w": 2.383,
-  "h": 0.95,
-  "size": 16
- },
- {
-  "slide": 9,
-  "text": "2",
-  "x": 9.799999999999999,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 9,
-  "text": "L'auteur contrôle, le binôme relit.",
-  "x": 10.35,
-  "y": 3.77,
-  "w": 2.383,
-  "h": 0.95,
-  "size": 16
- },
- {
-  "slide": 9,
-  "text": "3",
-  "x": 9.799999999999999,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 9,
-  "text": "L'équipe livre après CI verte.",
-  "x": 10.35,
-  "y": 4.890000000000001,
-  "w": 2.383,
-  "h": 0.95,
-  "size": 16
+  "image": "docs/images/diagrams/v7-codex-controle.png",
+  "crop": [
+   0,
+   240,
+   2400,
+   1200
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.853199999999999,
+  "widthShare": 0.91
  },
  {
   "slide": 10,
@@ -861,16 +744,16 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 10,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LES DOCUMENTS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 10,
@@ -901,7 +784,7 @@
  },
  {
   "slide": 10,
-  "text": "Livret 01 : poste, Codex Free, GitHub à deux.",
+  "text": "Livret 01 : poste et comptes chez vous (séance 0 ≈ 2 h), GitHub à deux en S1.",
   "x": 0.82,
   "y": 3.95,
   "w": 3.271,
@@ -955,7 +838,7 @@
  },
  {
   "slide": 10,
-  "text": "Livrets 04 et 05 : votre mission, S5, soutenance.",
+  "text": "Livrets 04 et 05 : votre mission (fin S4, S5), soutenance.",
   "x": 9.242,
   "y": 3.95,
   "w": 3.271,
@@ -969,7 +852,7 @@
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 10,
@@ -987,91 +870,211 @@
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
   "slide": 11,
   "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LES OUTILS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
   "slide": 11,
-  "text": "Votre poste : qui fait quoi, où",
+  "text": "Votre poste : Windows + Ubuntu (WSL2)",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
   "slide": 11,
   "text": "SCHÉMA · pas une capture",
-  "x": 8.521698113207547,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 11,
+  "image": "docs/images/diagrams/v7-postes-wsl.png",
+  "crop": [
+   0,
+   235,
+   2400,
+   862
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 3.1697462499999998,
+  "widthShare": 0.91
  },
  {
   "slide": 11,
   "text": "1",
-  "x": 8.521698113207547,
-  "y": 2.67,
+  "x": 0.6,
+  "y": 4.939746249999999,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
   "slide": 11,
-  "text": "Windows : app Codex + Power BI Desktop.",
-  "x": 9.071698113207548,
-  "y": 2.65,
-  "w": 3.661301886792452,
-  "h": 0.95,
+  "text": "Windows : app Codex et Power BI Desktop.",
+  "x": 1.12,
+  "y": 4.919746249999999,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
   "slide": 11,
   "text": "2",
-  "x": 8.521698113207547,
-  "y": 3.79,
+  "x": 4.760999999999999,
+  "y": 4.939746249999999,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
   "slide": 11,
-  "text": "Ubuntu (WSL2) : projet, Python, Git.",
-  "x": 9.071698113207548,
-  "y": 3.77,
-  "w": 3.661301886792452,
-  "h": 0.95,
+  "text": "Ubuntu (WSL2) : projet, Python, Git ; Codex y agit.",
+  "x": 5.280999999999999,
+  "y": 4.919746249999999,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
   "slide": 11,
   "text": "3",
-  "x": 8.521698113207547,
-  "y": 4.91,
+  "x": 8.921999999999999,
+  "y": 4.939746249999999,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
   "slide": 11,
-  "text": "Ubuntu natif : Power BI sur un poste Windows.",
-  "x": 9.071698113207548,
-  "y": 4.890000000000001,
-  "w": 3.661301886792452,
-  "h": 0.95,
+  "text": "GitHub relie les deux postes du binôme.",
+  "x": 9.441999999999998,
+  "y": 4.919746249999999,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
   "slide": 12,
+  "text": "A",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 12,
+  "text": "BIENVENUE CHEZ SOLEN DIGITAL  ·  LES OUTILS",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 12,
+  "text": "Variante : Ubuntu natif",
+  "x": 0.6,
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
+ },
+ {
+  "slide": 12,
+  "text": "SCHÉMA · pas une capture",
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 12,
+  "image": "docs/images/diagrams/v7-postes-wsl.png",
+  "crop": [
+   0,
+   862,
+   2400,
+   1590
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 3.6803433333333326,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 12,
+  "text": "1",
+  "x": 0.6,
+  "y": 5.450343333333333,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 12,
+  "text": "Ubuntu 24.04 / 26.04 : app Codex Linux (preview).",
+  "x": 1.12,
+  "y": 5.430343333333333,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 12,
+  "text": "2",
+  "x": 4.760999999999999,
+  "y": 5.450343333333333,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 12,
+  "text": "Projet, Python et Git dans ~/solen-bi.",
+  "x": 5.280999999999999,
+  "y": 5.430343333333333,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 12,
+  "text": "3",
+  "x": 8.921999999999999,
+  "y": 5.450343333333333,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 12,
+  "text": "Power BI Desktop : sur un poste Windows, après pull.",
+  "x": 9.441999999999998,
+  "y": 5.430343333333333,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 13,
   "text": "B",
   "x": 0.75,
   "y": 1.55,
@@ -1080,7 +1083,7 @@
   "size": 44
  },
  {
-  "slide": 12,
+  "slide": 13,
   "text": "PARTIE B / I",
   "x": 2.25,
   "y": 1.6,
@@ -1089,7 +1092,7 @@
   "size": 14
  },
  {
-  "slide": 12,
+  "slide": 13,
   "text": "Ce que vous saurez faire",
   "x": 2.25,
   "y": 2.05,
@@ -1098,7 +1101,7 @@
   "size": 40
  },
  {
-  "slide": 12,
+  "slide": 13,
   "text": "Dix thèmes, chacun prouvé par une action réelle",
   "x": 2.25,
   "y": 3.55,
@@ -1107,34 +1110,34 @@
   "size": 22
  },
  {
-  "slide": 12,
-  "text": "12 / 80",
+  "slide": 13,
+  "text": "13 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "B",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "CE QUE VOUS SAUREZ FAIRE  ·  COMPÉTENCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "L'objectif final",
   "x": 0.6,
   "y": 0.78,
@@ -1143,7 +1146,7 @@
   "size": 30
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "Transformer des données brutes en indicateurs utiles à la décision,",
   "x": 1.1,
   "y": 2.1,
@@ -1152,7 +1155,7 @@
   "size": 32
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "en sachant piloter l'IA et contrôler sa production.",
   "x": 1.1,
   "y": 3.8499999999999996,
@@ -1161,7 +1164,7 @@
   "size": 20
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "CSV · Excel · JSON · SQLite",
   "x": 0.75,
   "y": 5.15,
@@ -1170,7 +1173,7 @@
   "size": 17
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "Entrepôt en étoile",
   "x": 3.84575,
   "y": 5.15,
@@ -1179,7 +1182,7 @@
   "size": 17
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "App locale + Power BI",
   "x": 6.9415,
   "y": 5.15,
@@ -1188,7 +1191,7 @@
   "size": 17
  },
  {
-  "slide": 13,
+  "slide": 14,
   "text": "Codex + Git/GitHub",
   "x": 10.03725,
   "y": 5.15,
@@ -1197,25 +1200,25 @@
   "size": 17
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "B",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "CE QUE VOUS SAUREZ FAIRE  ·  COMPÉTENCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Dix thèmes, cinq séances",
   "x": 0.6,
   "y": 0.78,
@@ -1224,7 +1227,7 @@
   "size": 30
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "1",
   "x": 0.78,
   "y": 2.08,
@@ -1233,7 +1236,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Python appliqué",
   "x": 1.42,
   "y": 2.06,
@@ -1242,7 +1245,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "fonctions, modules, exceptions, classe",
   "x": 0.8,
   "y": 2.8,
@@ -1251,16 +1254,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S2 · S3",
   "x": 0.8,
-  "y": 3.74,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 3.72,
+  "w": 1.325,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "2",
   "x": 3.2506,
   "y": 2.08,
@@ -1269,7 +1272,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Données",
   "x": 3.8905999999999996,
   "y": 2.06,
@@ -1278,7 +1281,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "pandas : CSV, Excel, JSON",
   "x": 3.2706,
   "y": 2.8,
@@ -1287,16 +1290,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S2",
   "x": 3.2706,
-  "y": 3.74,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 3.72,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "3",
   "x": 5.721199999999999,
   "y": 2.08,
@@ -1305,7 +1308,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Qualité",
   "x": 6.361199999999999,
   "y": 2.06,
@@ -1314,7 +1317,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "doublons, formats, rejets motivés",
   "x": 5.741199999999999,
   "y": 2.8,
@@ -1323,16 +1326,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S2",
   "x": 5.741199999999999,
-  "y": 3.74,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 3.72,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "4",
   "x": 8.191799999999999,
   "y": 2.08,
@@ -1341,7 +1344,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "SQL + Python",
   "x": 8.8318,
   "y": 2.06,
@@ -1350,7 +1353,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "base opérationnelle, requêtes ?",
   "x": 8.211799999999998,
   "y": 2.8,
@@ -1359,16 +1362,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S3",
   "x": 8.211799999999998,
-  "y": 3.74,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 3.72,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "5",
   "x": 10.662399999999998,
   "y": 2.08,
@@ -1377,7 +1380,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Modéliser",
   "x": 11.302399999999999,
   "y": 2.06,
@@ -1386,7 +1389,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "grain, étoile, clés",
   "x": 10.682399999999998,
   "y": 2.8,
@@ -1395,16 +1398,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S3",
   "x": 10.682399999999998,
-  "y": 3.74,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 3.72,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "6",
   "x": 0.78,
   "y": 4.640000000000001,
@@ -1413,7 +1416,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "ETL",
   "x": 1.42,
   "y": 4.620000000000001,
@@ -1422,7 +1425,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "extraire, nettoyer, charger",
   "x": 0.8,
   "y": 5.360000000000001,
@@ -1431,16 +1434,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S2 → S4",
   "x": 0.8,
-  "y": 6.300000000000001,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 6.280000000000001,
+  "w": 1.325,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "7",
   "x": 3.2506,
   "y": 4.640000000000001,
@@ -1449,7 +1452,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Mises à jour",
   "x": 3.8905999999999996,
   "y": 4.620000000000001,
@@ -1458,7 +1461,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "incrément, rejeu, SCD2",
   "x": 3.2706,
   "y": 5.360000000000001,
@@ -1467,16 +1470,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S4",
   "x": 3.2706,
-  "y": 6.300000000000001,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 6.280000000000001,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "8",
   "x": 5.721199999999999,
   "y": 4.640000000000001,
@@ -1485,7 +1488,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Visualiser",
   "x": 6.361199999999999,
   "y": 4.620000000000001,
@@ -1494,7 +1497,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "unités, filtres, recommandation",
   "x": 5.741199999999999,
   "y": 5.360000000000001,
@@ -1503,16 +1506,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S5",
   "x": 5.741199999999999,
-  "y": 6.300000000000001,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 6.280000000000001,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "9",
   "x": 8.191799999999999,
   "y": 4.640000000000001,
@@ -1521,7 +1524,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Power BI",
   "x": 8.8318,
   "y": 4.620000000000001,
@@ -1530,7 +1533,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "types, relations, DAX, actualiser",
   "x": 8.211799999999998,
   "y": 5.360000000000001,
@@ -1539,16 +1542,16 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S5",
   "x": 8.211799999999998,
-  "y": 6.300000000000001,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 6.280000000000001,
+  "w": 1.2,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "10",
   "x": 10.662399999999998,
   "y": 4.640000000000001,
@@ -1557,7 +1560,7 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "IA et Git",
   "x": 11.302399999999999,
   "y": 4.620000000000001,
@@ -1566,7 +1569,7 @@
   "size": 15
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "Codex, AGENTS.md, Skills, Git, CI",
   "x": 10.682399999999998,
   "y": 5.360000000000001,
@@ -1575,34 +1578,34 @@
   "size": 16
  },
  {
-  "slide": 14,
+  "slide": 15,
   "text": "S1 → S5",
   "x": 10.682399999999998,
-  "y": 6.300000000000001,
-  "w": 1.35,
-  "h": 0.36,
-  "size": 11
+  "y": 6.280000000000001,
+  "w": 1.325,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 15,
+  "slide": 16,
   "text": "B",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 15,
+  "slide": 16,
   "text": "CE QUE VOUS SAUREZ FAIRE  ·  COMPÉTENCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 15,
+  "slide": 16,
   "text": "Matrice 1/2 : de la compétence à la preuve",
   "x": 0.6,
   "y": 0.78,
@@ -1611,32 +1614,32 @@
   "size": 30
  },
  {
-  "slide": 15,
+  "slide": 16,
   "table": "Compétence | Mission (épisode) | Votre action | Preuve visible",
   "rows": 5,
   "rowH": 0.78,
   "size": 14
  },
  {
-  "slide": 16,
+  "slide": 17,
   "text": "B",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 16,
+  "slide": 17,
   "text": "CE QUE VOUS SAUREZ FAIRE  ·  COMPÉTENCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 16,
+  "slide": 17,
   "text": "Matrice 2/2 : de la compétence à la preuve",
   "x": 0.6,
   "y": 0.78,
@@ -1645,14 +1648,14 @@
   "size": 30
  },
  {
-  "slide": 16,
+  "slide": 17,
   "table": "Compétence | Mission (épisode) | Votre action | Preuve visible",
   "rows": 5,
   "rowH": 0.78,
   "size": 14
  },
  {
-  "slide": 17,
+  "slide": 18,
   "text": "C",
   "x": 0.75,
   "y": 1.55,
@@ -1661,7 +1664,7 @@
   "size": 44
  },
  {
-  "slide": 17,
+  "slide": 18,
   "text": "PARTIE C / I",
   "x": 2.25,
   "y": 1.6,
@@ -1670,7 +1673,7 @@
   "size": 14
  },
  {
-  "slide": 17,
+  "slide": 18,
   "text": "Git et GitHub, de zéro",
   "x": 2.25,
   "y": 2.05,
@@ -1679,7 +1682,7 @@
   "size": 40
  },
  {
-  "slide": 17,
+  "slide": 18,
   "text": "Trois emplacements, un cycle, des rôles qui alternent",
   "x": 2.25,
   "y": 3.55,
@@ -1688,124 +1691,85 @@
   "size": 22
  },
  {
-  "slide": 17,
-  "text": "17 / 80",
+  "slide": 18,
+  "text": "18 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 18,
+  "slide": 19,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 18,
+  "slide": 19,
   "text": "GIT ET GITHUB  ·  GIT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 18,
+  "slide": 19,
   "text": "Trois emplacements pour un même dépôt",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
- },
- {
-  "slide": 18,
-  "text": "SCHÉMA · pas une capture",
-  "x": 9.299999999999999,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 18,
-  "text": "1",
-  "x": 9.299999999999999,
-  "y": 2.67,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 18,
-  "text": "Rien ne se synchronise tout seul.",
-  "x": 9.85,
-  "y": 2.65,
-  "w": 2.883,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 18,
-  "text": "2",
-  "x": 9.299999999999999,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 18,
-  "text": "Pas de lien direct entre vos deux PC.",
-  "x": 9.85,
-  "y": 3.77,
-  "w": 2.883,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 18,
-  "text": "3",
-  "x": 9.299999999999999,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 18,
-  "text": "Tout passe par GitHub.",
-  "x": 9.85,
-  "y": 4.890000000000001,
-  "w": 2.883,
-  "h": 0.95,
-  "size": 17
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
   "slide": 19,
+  "text": "SCHÉMA · pas une capture",
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 19,
+  "image": "docs/images/diagrams/v7-trois-emplacements.png",
+  "crop": [
+   0,
+   245,
+   2400,
+   1235
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 5.004862499999999,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 20,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 19,
+  "slide": 20,
   "text": "GIT ET GITHUB  ·  GIT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 19,
+  "slide": 20,
   "text": "Huit mots, huit gestes",
   "x": 0.6,
   "y": 0.78,
@@ -1814,122 +1778,242 @@
   "size": 30
  },
  {
-  "slide": 19,
+  "slide": 20,
   "table": "Mot | Ce que c'est | Geste",
   "rows": 8,
   "rowH": 0.5444444444444445,
   "size": 15
  },
  {
-  "slide": 20,
+  "slide": 21,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 20,
+  "slide": 21,
   "text": "GIT ET GITHUB  ·  GIT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 20,
-  "text": "Le cycle d'une pull request",
+  "slide": 21,
+  "text": "Le cycle d’une PR · 1/2 : de main à la revue",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 22
  },
  {
-  "slide": 20,
+  "slide": 21,
   "text": "SCHÉMA · pas une capture",
-  "x": 7.9369565217391305,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 20,
+  "slide": 21,
+  "image": "docs/images/diagrams/v7-cycle-pr.png",
+  "crop": [
+   0,
+   255,
+   2400,
+   880
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 3.1596354166666663,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 21,
   "text": "1",
-  "x": 7.9369565217391305,
-  "y": 2.67,
+  "x": 0.6,
+  "y": 4.929635416666666,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 20,
-  "text": "15 étapes, toujours dans le même ordre.",
-  "x": 8.486956521739131,
-  "y": 2.65,
-  "w": 4.2460434782608685,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 20,
-  "text": "2",
-  "x": 7.9369565217391305,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 20,
-  "text": "Le partenaire relit avant toute fusion.",
-  "x": 8.486956521739131,
-  "y": 3.77,
-  "w": 4.2460434782608685,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 20,
-  "text": "3",
-  "x": 7.9369565217391305,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 20,
-  "text": "Puis les rôles s'inversent.",
-  "x": 8.486956521739131,
-  "y": 4.890000000000001,
-  "w": 4.2460434782608685,
-  "h": 0.95,
+  "slide": 21,
+  "text": "Étapes 1 → 7 : l’auteur prépare et pousse sa branche.",
+  "x": 1.12,
+  "y": 4.909635416666666,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
   "slide": 21,
+  "text": "2",
+  "x": 4.760999999999999,
+  "y": 4.929635416666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 21,
+  "text": "Étape 8 : la PR est ouverte sur GitHub.",
+  "x": 5.280999999999999,
+  "y": 4.909635416666666,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 21,
+  "text": "3",
+  "x": 8.921999999999999,
+  "y": 4.929635416666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 21,
+  "text": "Étapes 9 → 10 : le partenaire relit.",
+  "x": 9.441999999999998,
+  "y": 4.909635416666666,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 22,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 21,
+  "slide": 22,
   "text": "GIT ET GITHUB  ·  GIT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 21,
+  "slide": 22,
+  "text": "Le cycle d’une PR · 2/2 : de la correction au pull",
+  "x": 0.6,
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 20
+ },
+ {
+  "slide": 22,
+  "text": "SCHÉMA · pas une capture",
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 22,
+  "image": "docs/images/diagrams/v7-cycle-pr.png",
+  "crop": [
+   0,
+   880,
+   2400,
+   1700
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.145441666666667,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 22,
+  "text": "1",
+  "x": 0.6,
+  "y": 5.915441666666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 22,
+  "text": "Une correction = un commit de plus sur la branche.",
+  "x": 1.12,
+  "y": 5.895441666666667,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 22,
+  "text": "2",
+  "x": 4.760999999999999,
+  "y": 5.915441666666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 22,
+  "text": "Pas de fusion sans CI verte ni approbation.",
+  "x": 5.280999999999999,
+  "y": 5.895441666666667,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 22,
+  "text": "3",
+  "x": 8.921999999999999,
+  "y": 5.915441666666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 22,
+  "text": "Puis les deux font git pull et les rôles s’inversent.",
+  "x": 9.441999999999998,
+  "y": 5.895441666666667,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 23,
+  "text": "C",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 23,
+  "text": "GIT ET GITHUB  ·  GIT",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 23,
   "text": "Les rôles alternent à chaque cycle",
   "x": 0.6,
   "y": 0.78,
@@ -1938,7 +2022,7 @@
   "size": 30
  },
  {
-  "slide": 21,
+  "slide": 23,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -1947,115 +2031,142 @@
   "size": 15
  },
  {
-  "slide": 21,
-  "text": "S1 · A auteur",
+  "slide": 23,
+  "text": "S1 · PR n°1",
   "x": 0.82,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 21,
-  "text": "README + journal\nB relit",
-  "x": 0.82,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 21,
+  "slide": 23,
+  "text": "A auteur : journal\n(livret 01)\nB relit",
+  "x": 0.82,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 23,
   "text": "2",
-  "x": 3.97825,
+  "x": 3.3466,
   "y": 2.4,
   "w": 0.46,
   "h": 0.46,
   "size": 15
  },
  {
-  "slide": 21,
-  "text": "S2 · A auteur",
-  "x": 3.97825,
+  "slide": 23,
+  "text": "S1 · PR n°2",
+  "x": 3.3466,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 21,
-  "text": "Lecture et rejets\nB relit, A corrige",
-  "x": 3.97825,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 21,
+  "slide": 23,
+  "text": "B auteur : cadrage\nA relit",
+  "x": 3.3466,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 23,
   "text": "3",
-  "x": 7.136499999999999,
+  "x": 5.873199999999999,
   "y": 2.4,
   "w": 0.46,
   "h": 0.46,
   "size": 15
  },
  {
-  "slide": 21,
-  "text": "S3 · B auteur",
-  "x": 7.136499999999999,
+  "slide": 23,
+  "text": "S2 · A auteur",
+  "x": 5.873199999999999,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 21,
-  "text": "Étoile, lot 1\nA relit",
-  "x": 7.136499999999999,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 21,
+  "slide": 23,
+  "text": "Lecture et rejets\nB relit, A corrige",
+  "x": 5.873199999999999,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 23,
   "text": "4",
-  "x": 10.29475,
+  "x": 8.399799999999999,
   "y": 2.4,
   "w": 0.46,
   "h": 0.46,
   "size": 15
  },
  {
-  "slide": 21,
-  "text": "S4 · revue",
-  "x": 10.29475,
+  "slide": 23,
+  "text": "S3 · B auteur",
+  "x": 8.399799999999999,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 21,
-  "text": "Défaut planté,\nconflit contrôlé",
-  "x": 10.29475,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 21,
+  "slide": 23,
+  "text": "Étoile, lot 1\nA relit",
+  "x": 8.399799999999999,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 23,
+  "text": "5",
+  "x": 10.9264,
+  "y": 2.4,
+  "w": 0.46,
+  "h": 0.46,
+  "size": 15
+ },
+ {
+  "slide": 23,
+  "text": "S4 · revue",
+  "x": 10.9264,
+  "y": 3.03,
+  "w": 1.5865999999999998,
+  "h": 0.9,
+  "size": 17
+ },
+ {
+  "slide": 23,
+  "text": "Défaut planté,\nconflit contrôlé",
+  "x": 10.9264,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 23,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 21,
+  "slide": 23,
   "text": "Chacun : des commits, au moins une PR comme auteur, une revue du partenaire.",
   "x": 1.25,
   "y": 6.15,
@@ -2064,25 +2175,25 @@
   "size": 15
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "GIT ET GITHUB  ·  REVUE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "Une revue utile cite ce que VOUS avez vu",
   "x": 0.6,
   "y": 0.78,
@@ -2091,7 +2202,7 @@
   "size": 30
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "REVUE FAIBLE",
   "x": 0.8999999999999999,
   "y": 2.2,
@@ -2100,7 +2211,7 @@
   "size": 14
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "« OK, Codex dit qu'il n'y a aucun défaut. »",
   "x": 0.8999999999999999,
   "y": 2.8,
@@ -2109,7 +2220,7 @@
   "size": 20
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "REVUE UTILE",
   "x": 7.382999999999998,
   "y": 2.2,
@@ -2118,7 +2229,7 @@
   "size": 14
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "« historique.py:42 : valid_to comparé avec <=.\nVente NBE du 2026-07-15 en Cap Bon.\nNon vérifié : le rejeu. → Request changes »",
   "x": 7.382999999999998,
   "y": 2.8,
@@ -2127,7 +2238,7 @@
   "size": 20
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "→",
   "x": 6.366499999999999,
   "y": 3.575,
@@ -2136,16 +2247,16 @@
   "size": 20
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 22,
+  "slide": 24,
   "text": "On n'approuve que si les contrôles sont verts chez vous ET dans la CI.",
   "x": 1.25,
   "y": 6.15,
@@ -2154,25 +2265,25 @@
   "size": 15
  },
  {
-  "slide": 23,
+  "slide": 25,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 23,
+  "slide": 25,
   "text": "GIT ET GITHUB  ·  DÉPANNAGE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 23,
+  "slide": 25,
   "text": "Une erreur Git se diagnostique, elle ne se force pas",
   "x": 0.6,
   "y": 0.78,
@@ -2181,32 +2292,32 @@
   "size": 30
  },
  {
-  "slide": 23,
+  "slide": 25,
   "table": "Symptôme | Cause | Réparer",
   "rows": 5,
   "rowH": 0.78,
   "size": 15
  },
  {
-  "slide": 24,
+  "slide": 26,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 24,
+  "slide": 26,
   "text": "GIT ET GITHUB  ·  DÉPANNAGE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 24,
+  "slide": 26,
   "text": "Jamais de raccourci destructif",
   "x": 0.6,
   "y": 0.78,
@@ -2215,7 +2326,7 @@
   "size": 30
  },
  {
-  "slide": 24,
+  "slide": 26,
   "text": "git push --force · git reset --hard\nsupprimer .git · fusionner sa propre PR",
   "x": 1.1,
   "y": 2.6999999999999997,
@@ -2224,7 +2335,7 @@
   "size": 28
  },
  {
-  "slide": 24,
+  "slide": 26,
   "text": "Ils effacent du travail ou contournent la revue. En cas de doute : montrez git status au binôme.",
   "x": 1.1,
   "y": 4.449999999999999,
@@ -2233,26 +2344,26 @@
   "size": 20
  },
  {
-  "slide": 25,
+  "slide": 27,
   "text": "C",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 25,
+  "slide": 27,
   "text": "GIT ET GITHUB  ·  GITHUB",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 25,
-  "text": "Un dépôt public, une CI gratuite",
+  "slide": 27,
+  "text": "Deux « workflows » : même mot, deux choses",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -2260,98 +2371,62 @@
   "size": 30
  },
  {
-  "slide": 25,
-  "text": "1",
-  "x": 0.85,
-  "y": 2.2800000000000002,
-  "w": 0.5,
-  "h": 0.5,
-  "size": 17
+  "slide": 27,
+  "text": "WORKFLOW DE TRAVAIL · VOUS",
+  "x": 0.8999999999999999,
+  "y": 2.2,
+  "w": 5.050000000000001,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 25,
-  "text": "Public recommandé",
-  "x": 0.85,
-  "y": 2.95,
-  "w": 3.344333333333333,
-  "h": 0.75,
-  "size": 22
+  "slide": 27,
+  "text": "Vos gestes, dans l'ordre :\nbranche → PR → revue → merge.\nC'est vous qui le faites, à deux.",
+  "x": 0.8999999999999999,
+  "y": 2.8,
+  "w": 5.050000000000001,
+  "h": 2.75,
+  "size": 20
  },
  {
-  "slide": 25,
-  "text": "Données 100 % synthétiques. Protection de branche et revue requise disponibles sur GitHub Free.",
-  "x": 0.85,
-  "y": 3.75,
-  "w": 3.344333333333333,
-  "h": 1.8,
-  "size": 18
+  "slide": 27,
+  "text": "WORKFLOW GITHUB ACTIONS · LA MACHINE",
+  "x": 7.382999999999998,
+  "y": 2.2,
+  "w": 5.050000000000001,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 25,
-  "text": "2",
-  "x": 4.994333333333333,
-  "y": 2.2800000000000002,
-  "w": 0.5,
-  "h": 0.5,
-  "size": 17
+  "slide": 27,
+  "text": "Le fichier controles.yml.\nGitHub le lance seul à chaque PR, sur un Linux neuf : verifier + pytest.\nOnglet Actions.",
+  "x": 7.382999999999998,
+  "y": 2.8,
+  "w": 5.050000000000001,
+  "h": 2.75,
+  "size": 20
  },
  {
-  "slide": 25,
-  "text": "controles.yml",
-  "x": 4.994333333333333,
-  "y": 2.95,
-  "w": 3.344333333333333,
-  "h": 0.75,
-  "size": 22
+  "slide": 27,
+  "text": "≠",
+  "x": 6.366499999999999,
+  "y": 3.575,
+  "w": 0.6,
+  "h": 0.6,
+  "size": 20
  },
  {
-  "slide": 25,
-  "text": "Linux neuf : installe, lance verifier + pytest. Aucune clé IA.",
-  "x": 4.994333333333333,
-  "y": 3.75,
-  "w": 3.344333333333333,
-  "h": 1.8,
-  "size": 18
- },
- {
-  "slide": 25,
-  "text": "3",
-  "x": 9.138666666666666,
-  "y": 2.2800000000000002,
-  "w": 0.5,
-  "h": 0.5,
-  "size": 17
- },
- {
-  "slide": 25,
-  "text": "Variante privée",
-  "x": 9.138666666666666,
-  "y": 2.95,
-  "w": 3.344333333333333,
-  "h": 0.75,
-  "size": 22
- },
- {
-  "slide": 25,
-  "text": "Possible, sans protection imposée : l'auteur ne fusionne pas sa PR.",
-  "x": 9.138666666666666,
-  "y": 3.75,
-  "w": 3.344333333333333,
-  "h": 1.8,
-  "size": 18
- },
- {
-  "slide": 25,
+  "slide": 27,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 25,
-  "text": "Authentification : HTTPS + gh auth login (navigateur) ; aucun jeton dans le dépôt.",
+  "slide": 27,
+  "text": "Dépôt public : protection de branche et CI gratuites sur GitHub Free · aucun jeton dans le dépôt.",
   "x": 1.25,
   "y": 6.15,
   "w": 11.283,
@@ -2359,7 +2434,7 @@
   "size": 15
  },
  {
-  "slide": 26,
+  "slide": 28,
   "text": "D",
   "x": 0.75,
   "y": 1.55,
@@ -2368,7 +2443,7 @@
   "size": 44
  },
  {
-  "slide": 26,
+  "slide": 28,
   "text": "PARTIE D / I",
   "x": 2.25,
   "y": 1.6,
@@ -2377,7 +2452,7 @@
   "size": 14
  },
  {
-  "slide": 26,
+  "slide": 28,
   "text": "Codex Free : diriger, pas taper",
   "x": 2.25,
   "y": 2.05,
@@ -2386,7 +2461,7 @@
   "size": 40
  },
  {
-  "slide": 26,
+  "slide": 28,
   "text": "Uniquement ce qu'un compte Free affiche · faits datés du 28/10/2026",
   "x": 2.25,
   "y": 3.55,
@@ -2395,34 +2470,34 @@
   "size": 22
  },
  {
-  "slide": 26,
-  "text": "26 / 80",
+  "slide": 28,
+  "text": "28 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "CODEX FREE  ·  CODEX FREE · 28/10/2026",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Ce que la doc annonce pour Free",
   "x": 0.6,
   "y": 0.78,
@@ -2431,7 +2506,7 @@
   "size": 30
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "1",
   "x": 0.85,
   "y": 2.2800000000000002,
@@ -2440,7 +2515,7 @@
   "size": 17
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Client",
   "x": 0.85,
   "y": 2.95,
@@ -2449,7 +2524,7 @@
   "size": 19
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Application de bureau ChatGPT, mode Codex.",
   "x": 0.85,
   "y": 3.75,
@@ -2458,7 +2533,7 @@
   "size": 16
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "2",
   "x": 3.9582499999999996,
   "y": 2.2800000000000002,
@@ -2467,7 +2542,7 @@
   "size": 17
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Modèle",
   "x": 3.9582499999999996,
   "y": 2.95,
@@ -2476,7 +2551,7 @@
   "size": 19
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "GPT-6 Luna, « subject to rollout ».",
   "x": 3.9582499999999996,
   "y": 3.75,
@@ -2485,7 +2560,7 @@
   "size": 16
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "3",
   "x": 7.066499999999999,
   "y": 2.2800000000000002,
@@ -2494,7 +2569,7 @@
   "size": 17
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Vitesse",
   "x": 7.066499999999999,
   "y": 2.95,
@@ -2503,7 +2578,7 @@
   "size": 19
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Standard : une vitesse, pas un effort.",
   "x": 7.066499999999999,
   "y": 3.75,
@@ -2512,7 +2587,7 @@
   "size": 16
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "4",
   "x": 10.174749999999998,
   "y": 2.2800000000000002,
@@ -2521,7 +2596,7 @@
   "size": 17
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "CLI",
   "x": 10.174749999999998,
   "y": 2.95,
@@ -2530,7 +2605,7 @@
   "size": 19
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Listé à partir de Plus : facultatif ici.",
   "x": 10.174749999999998,
   "y": 3.75,
@@ -2539,16 +2614,16 @@
   "size": 16
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 27,
+  "slide": 29,
   "text": "Votre écran fait foi : notez ce que VOTRE compte affiche.",
   "x": 1.25,
   "y": 6.15,
@@ -2557,25 +2632,25 @@
   "size": 15
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "CODEX FREE  ·  CODEX FREE · 28/10/2026",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "Quatre efforts : commencez par High",
   "x": 0.6,
   "y": 0.78,
@@ -2584,7 +2659,7 @@
   "size": 30
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "Light",
   "x": 0.75,
   "y": 4.25,
@@ -2593,7 +2668,7 @@
   "size": 24
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "question courte",
   "x": 0.6,
   "y": 5.42,
@@ -2602,7 +2677,7 @@
   "size": 16
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "Medium",
   "x": 3.8582499999999995,
   "y": 3.63,
@@ -2611,7 +2686,7 @@
   "size": 24
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "petite tâche cadrée",
   "x": 3.7082499999999996,
   "y": 5.42,
@@ -2620,7 +2695,7 @@
   "size": 16
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "High",
   "x": 6.966499999999999,
   "y": 3.01,
@@ -2629,7 +2704,7 @@
   "size": 24
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "point de départ",
   "x": 6.816499999999999,
   "y": 5.42,
@@ -2638,7 +2713,7 @@
   "size": 16
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "Extra High",
   "x": 10.074749999999998,
   "y": 2.39,
@@ -2647,7 +2722,7 @@
   "size": 24
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "débogage bloqué",
   "x": 9.924749999999998,
   "y": 5.42,
@@ -2656,16 +2731,16 @@
   "size": 16
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "COMMENCER ICI",
   "x": 7.320624999999999,
   "y": 2.36,
   "w": 1.8,
-  "h": 0.36,
-  "size": 11
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "GPT-6 Luna · Standard = vitesse, réglée par l'offre",
   "x": 0.6,
   "y": 1.85,
@@ -2674,16 +2749,16 @@
   "size": 15
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 28,
+  "slide": 30,
   "text": "« Start with High for Luna. » Plus d'effort ne dispense jamais de la preuve.",
   "x": 1.25,
   "y": 6.15,
@@ -2692,115 +2767,76 @@
   "size": 15
  },
  {
-  "slide": 29,
+  "slide": 31,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 29,
+  "slide": 31,
   "text": "CODEX FREE  ·  RESSOURCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 29,
+  "slide": 31,
   "text": "Tokens · contexte · effort · quota",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
-  "slide": 29,
+  "slide": 31,
   "text": "SCHÉMA · pas une capture",
-  "x": 8.121428571428572,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 29,
-  "text": "1",
-  "x": 8.121428571428572,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 29,
-  "text": "Tokens : morceaux de texte.",
-  "x": 8.671428571428573,
-  "y": 2.65,
-  "w": 4.061571428571427,
-  "h": 0.95,
-  "size": 17
+  "slide": 31,
+  "image": "docs/images/diagrams/v7-tokens-contexte.png",
+  "crop": [
+   0,
+   245,
+   2400,
+   1150
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.575152083333333,
+  "widthShare": 0.91
  },
  {
-  "slide": 29,
-  "text": "2",
-  "x": 8.121428571428572,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 29,
-  "text": "Contexte : ce que le chat garde en tête.",
-  "x": 8.671428571428573,
-  "y": 3.77,
-  "w": 4.061571428571427,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 29,
-  "text": "3",
-  "x": 8.121428571428572,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 29,
-  "text": "Quota : à lire dans l'app, jamais à deviner.",
-  "x": 8.671428571428573,
-  "y": 4.890000000000001,
-  "w": 4.061571428571427,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 30,
+  "slide": 32,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 30,
+  "slide": 32,
   "text": "CODEX FREE  ·  RESSOURCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 30,
+  "slide": 32,
   "text": "Six mots à ne pas confondre",
   "x": 0.6,
   "y": 0.78,
@@ -2809,33 +2845,33 @@
   "size": 30
  },
  {
-  "slide": 30,
+  "slide": 32,
   "table": "Mot | Ce que c'est | Le bon geste",
   "rows": 6,
   "rowH": 0.7000000000000001,
   "size": 15
  },
  {
-  "slide": 31,
+  "slide": 33,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 31,
+  "slide": 33,
   "text": "CODEX FREE  ·  LA FICHE TÂCHE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 31,
-  "text": "Quelle tâche, quel effort, quelle preuve ?",
+  "slide": 33,
+  "text": "Fiche tâche 1/2 : quelle tâche, quel effort ?",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -2843,24 +2879,24 @@
   "size": 30
  },
  {
-  "slide": 31,
-  "table": "Tâche (exemple Solen) | Modèle | Effort | Raison | Preuve attendue",
+  "slide": 33,
+  "table": "Tâche (exemple Solen) | Effort | Raison",
   "rows": 7,
   "rowH": 0.5125,
-  "size": 13.5
+  "size": 16
  },
  {
-  "slide": 31,
+  "slide": 33,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 31,
-  "text": "Un seul modèle annoncé pour Free : seul l'effort change. Le schéma v7-tache-modele-effort est dans le livret 03.",
+  "slide": 33,
+  "text": "Un seul modèle annoncé pour Free, GPT-6 Luna : seul l’effort change.",
   "x": 1.25,
   "y": 6.15,
   "w": 11.283,
@@ -2868,25 +2904,77 @@
   "size": 15
  },
  {
-  "slide": 32,
+  "slide": 34,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 32,
+  "slide": 34,
+  "text": "CODEX FREE  ·  LA FICHE TÂCHE",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 34,
+  "text": "Fiche tâche 2/2 : quelle preuve attendue ?",
+  "x": 0.6,
+  "y": 0.78,
+  "w": 10.6,
+  "h": 0.85,
+  "size": 30
+ },
+ {
+  "slide": 34,
+  "table": "Tâche (exemple Solen) | Preuve attendue",
+  "rows": 7,
+  "rowH": 0.5125,
+  "size": 16
+ },
+ {
+  "slide": 34,
+  "text": "i",
+  "x": 0.76,
+  "y": 6.27,
+  "w": 0.32,
+  "h": 0.32,
+  "size": 14
+ },
+ {
+  "slide": 34,
+  "text": "Pas de preuve, pas de fusion. Le schéma v7-tache-modele-effort est dans le livret 03.",
+  "x": 1.25,
+  "y": 6.15,
+  "w": 11.283,
+  "h": 0.56,
+  "size": 15
+ },
+ {
+  "slide": 35,
+  "text": "D",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 35,
   "text": "CODEX FREE  ·  MÉTHODE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Les huit habitudes",
   "x": 0.6,
   "y": 0.78,
@@ -2895,7 +2983,7 @@
   "size": 30
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "1",
   "x": 0.78,
   "y": 2.08,
@@ -2904,7 +2992,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Être précis",
   "x": 1.42,
   "y": 2.06,
@@ -2913,7 +3001,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "résultat, fichiers, contrôle, prévision",
   "x": 0.8,
   "y": 2.8,
@@ -2922,7 +3010,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "2",
   "x": 3.86825,
   "y": 2.08,
@@ -2931,7 +3019,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Plan court",
   "x": 4.50825,
   "y": 2.06,
@@ -2940,7 +3028,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "3 à 5 étapes, une à la fois",
   "x": 3.88825,
   "y": 2.8,
@@ -2949,7 +3037,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "3",
   "x": 6.956499999999999,
   "y": 2.08,
@@ -2958,7 +3046,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Diff + contrôle",
   "x": 7.5965,
   "y": 2.06,
@@ -2967,7 +3055,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "déterministe, pas « tout est bon ? »",
   "x": 6.9765,
   "y": 2.8,
@@ -2976,7 +3064,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "4",
   "x": 10.044749999999999,
   "y": 2.08,
@@ -2985,7 +3073,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Note courte",
   "x": 10.68475,
   "y": 2.06,
@@ -2994,7 +3082,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "état · décision · preuve · objectif",
   "x": 10.064749999999998,
   "y": 2.8,
@@ -3003,7 +3091,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "5",
   "x": 0.78,
   "y": 4.640000000000001,
@@ -3012,7 +3100,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Six mots",
   "x": 1.42,
   "y": 4.620000000000001,
@@ -3021,7 +3109,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "tokens ≠ contexte ≠ effort ≠ quota",
   "x": 0.8,
   "y": 5.360000000000001,
@@ -3030,7 +3118,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "6",
   "x": 3.86825,
   "y": 4.640000000000001,
@@ -3039,7 +3127,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Revue → fix",
   "x": 4.50825,
   "y": 4.620000000000001,
@@ -3048,7 +3136,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "lecture seule, correction, recontrôle",
   "x": 3.88825,
   "y": 5.360000000000001,
@@ -3057,7 +3145,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "7",
   "x": 6.956499999999999,
   "y": 4.640000000000001,
@@ -3066,7 +3154,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "AGENTS.md + Skills",
   "x": 7.5965,
   "y": 4.620000000000001,
@@ -3075,7 +3163,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "règles et méthodes du dépôt",
   "x": 6.9765,
   "y": 5.360000000000001,
@@ -3084,7 +3172,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "8",
   "x": 10.044749999999999,
   "y": 4.640000000000001,
@@ -3093,7 +3181,7 @@
   "size": 16
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "Parallèle ?",
   "x": 10.68475,
   "y": 4.620000000000001,
@@ -3102,7 +3190,7 @@
   "size": 18
  },
  {
-  "slide": 32,
+  "slide": 35,
   "text": "seulement si utile et proposé",
   "x": 10.064749999999998,
   "y": 5.360000000000001,
@@ -3111,25 +3199,25 @@
   "size": 16
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "CODEX FREE  ·  MÉTHODE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "Habitude 1 : une demande précise",
   "x": 0.6,
   "y": 0.78,
@@ -3138,7 +3226,7 @@
   "size": 30
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "FLOUE",
   "x": 0.8999999999999999,
   "y": 2.2,
@@ -3147,7 +3235,7 @@
   "size": 14
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "« Fais le nettoyage des ventes. »",
   "x": 0.8999999999999999,
   "y": 2.8,
@@ -3156,7 +3244,7 @@
   "size": 20
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "PRÉCISE",
   "x": 7.382999999999998,
   "y": 2.2,
@@ -3165,7 +3253,7 @@
   "size": 14
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "« Rejette les quantités ≤ 0, motif quantite_invalide, dans outputs/rejets.csv.\nSources et controles/ intacts.\nJe prévois 1 rejet (E-009-1). »",
   "x": 7.382999999999998,
   "y": 2.8,
@@ -3174,7 +3262,7 @@
   "size": 20
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "→",
   "x": 6.366499999999999,
   "y": 3.575,
@@ -3183,16 +3271,16 @@
   "size": 20
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 33,
+  "slide": 36,
   "text": "Objectif observable · fichiers à toucher et à ne pas toucher · contrôle · votre prévision.",
   "x": 1.25,
   "y": 6.15,
@@ -3201,25 +3289,25 @@
   "size": 15
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "CODEX FREE  ·  MÉTHODE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "Habitude 6 : revue → correction → revue",
   "x": 0.6,
   "y": 0.78,
@@ -3228,7 +3316,7 @@
   "size": 30
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -3237,7 +3325,7 @@
   "size": 15
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "Lecture seule",
   "x": 0.82,
   "y": 3.03,
@@ -3246,7 +3334,7 @@
   "size": 19
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "$revoir-bi : ≤ 3 défauts, avec preuve",
   "x": 0.82,
   "y": 3.95,
@@ -3255,7 +3343,7 @@
   "size": 17
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "2",
   "x": 3.97825,
   "y": 2.4,
@@ -3264,7 +3352,7 @@
   "size": 15
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "Constater",
   "x": 3.97825,
   "y": 3.03,
@@ -3273,7 +3361,7 @@
   "size": 19
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "vous reproduisez le défaut",
   "x": 3.97825,
   "y": 3.95,
@@ -3282,7 +3370,7 @@
   "size": 17
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "3",
   "x": 7.136499999999999,
   "y": 2.4,
@@ -3291,7 +3379,7 @@
   "size": 15
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "Corriger",
   "x": 7.136499999999999,
   "y": 3.03,
@@ -3300,7 +3388,7 @@
   "size": 19
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "une demande par défaut",
   "x": 7.136499999999999,
   "y": 3.95,
@@ -3309,7 +3397,7 @@
   "size": 17
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "4",
   "x": 10.29475,
   "y": 2.4,
@@ -3318,7 +3406,7 @@
   "size": 15
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "Recontrôler",
   "x": 10.29475,
   "y": 3.03,
@@ -3327,7 +3415,7 @@
   "size": 19
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "tous les contrôles + un cas limite",
   "x": 10.29475,
   "y": 3.95,
@@ -3336,16 +3424,16 @@
   "size": 17
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 34,
+  "slide": 37,
   "text": "Cas limite : vente NBE du 2026-07-14 → Cap Bon ; du 2026-07-15 → Nord-Est.",
   "x": 1.25,
   "y": 6.15,
@@ -3354,25 +3442,25 @@
   "size": 15
  },
  {
-  "slide": 35,
+  "slide": 38,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 35,
+  "slide": 38,
   "text": "CODEX FREE  ·  MÉTHODE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 35,
+  "slide": 38,
   "text": "AGENTS.md et Skills : les règles du dépôt",
   "x": 0.6,
   "y": 0.78,
@@ -3381,23 +3469,23 @@
   "size": 30
  },
  {
-  "slide": 35,
+  "slide": 38,
   "table": "Fichier | Quand | Ce qu'il garantit",
   "rows": 4,
   "rowH": 0.78,
   "size": 15
  },
  {
-  "slide": 35,
+  "slide": 38,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 35,
+  "slide": 38,
   "text": "Codex écrit ces fichiers ; vous expliquez et améliorez les consignes.",
   "x": 1.25,
   "y": 6.15,
@@ -3406,25 +3494,25 @@
   "size": 15
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "CODEX FREE  ·  MÉTHODE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "Habitude 8 : workers parallèles, facultatifs",
   "x": 0.6,
   "y": 0.78,
@@ -3433,7 +3521,7 @@
   "size": 30
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "AVEC SOUS-AGENTS (SI PROPOSÉS)",
   "x": 0.8999999999999999,
   "y": 2.2,
@@ -3442,7 +3530,7 @@
   "size": 14
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "Deux lectures indépendantes : données/rejets et modèle/historique.\nPlus de tokens consommés.",
   "x": 0.8999999999999999,
   "y": 2.8,
@@ -3451,7 +3539,7 @@
   "size": 20
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "SANS (MÉTHODE DE BASE)",
   "x": 7.382999999999998,
   "y": 2.2,
@@ -3460,7 +3548,7 @@
   "size": 14
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "Deux chats successifs avec $revoir-bi, un par angle.\nMême résultat, moins d'usage.",
   "x": 7.382999999999998,
   "y": 2.8,
@@ -3469,7 +3557,7 @@
   "size": 20
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "ou",
   "x": 6.366499999999999,
   "y": 3.575,
@@ -3478,16 +3566,16 @@
   "size": 20
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 36,
+  "slide": 39,
   "text": "Ils ne démarrent que sur demande explicite ; disponibilité Free non garantie.",
   "x": 1.25,
   "y": 6.15,
@@ -3496,25 +3584,25 @@
   "size": 15
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "D",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "CODEX FREE  ·  SANS CODEX",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Quota atteint : le travail continue",
   "x": 0.6,
   "y": 0.78,
@@ -3523,7 +3611,7 @@
   "size": 30
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "1",
   "x": 0.85,
   "y": 2.2800000000000002,
@@ -3532,7 +3620,7 @@
   "size": 17
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Git et revue",
   "x": 0.85,
   "y": 2.95,
@@ -3541,7 +3629,7 @@
   "size": 22
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Commiter ce qui est contrôlé, PR, relire celle du binôme.",
   "x": 0.85,
   "y": 3.75,
@@ -3550,7 +3638,7 @@
   "size": 18
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "2",
   "x": 4.994333333333333,
   "y": 2.2800000000000002,
@@ -3559,7 +3647,7 @@
   "size": 17
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Comprendre",
   "x": 4.994333333333333,
   "y": 2.95,
@@ -3568,7 +3656,7 @@
   "size": 22
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Lire le diff, calculer à la main, interpréter les visuels.",
   "x": 4.994333333333333,
   "y": 3.75,
@@ -3577,7 +3665,7 @@
   "size": 18
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "3",
   "x": 9.138666666666666,
   "y": 2.2800000000000002,
@@ -3586,7 +3674,7 @@
   "size": 17
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Préparer",
   "x": 9.138666666666666,
   "y": 2.95,
@@ -3595,7 +3683,7 @@
   "size": 22
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Note d'état, prochaine demande avec votre prévision.",
   "x": 9.138666666666666,
   "y": 3.75,
@@ -3604,16 +3692,16 @@
   "size": 18
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 37,
+  "slide": 40,
   "text": "Jamais : coder à la main, payer, utiliser le compte d'un autre. Notez l'heure de reprise.",
   "x": 1.25,
   "y": 6.15,
@@ -3622,7 +3710,7 @@
   "size": 15
  },
  {
-  "slide": 38,
+  "slide": 41,
   "text": "E",
   "x": 0.75,
   "y": 1.55,
@@ -3631,7 +3719,7 @@
   "size": 44
  },
  {
-  "slide": 38,
+  "slide": 41,
   "text": "PARTIE E / I",
   "x": 2.25,
   "y": 1.6,
@@ -3640,7 +3728,7 @@
   "size": 14
  },
  {
-  "slide": 38,
+  "slide": 41,
   "text": "Les notions BI",
   "x": 2.25,
   "y": 2.05,
@@ -3649,7 +3737,7 @@
   "size": 40
  },
  {
-  "slide": 38,
+  "slide": 41,
   "text": "Chaque notion avec son schéma et les chiffres de Maison Zitouna",
   "x": 2.25,
   "y": 3.55,
@@ -3658,124 +3746,94 @@
   "size": 22
  },
  {
-  "slide": 38,
-  "text": "38 / 80",
+  "slide": 41,
+  "text": "41 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 39,
+  "slide": 42,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 39,
+  "slide": 42,
   "text": "LES NOTIONS BI  ·  ETL",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 39,
+  "slide": 42,
   "text": "Des quatre sources au rapport",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
-  "slide": 39,
+  "slide": 42,
   "text": "SCHÉMA · pas une capture",
-  "x": 8.814705882352941,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 39,
-  "text": "1",
-  "x": 8.814705882352941,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 39,
-  "text": "Sources intactes, lues seulement.",
-  "x": 9.364705882352942,
-  "y": 2.65,
-  "w": 3.368294117647058,
-  "h": 0.95,
+  "slide": 42,
+  "image": "docs/images/diagrams/v7-pipeline.png",
+  "crop": [
+   0,
+   240,
+   2400,
+   1172
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.711648333333333,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 42,
+  "text": "Et à côté : outputs/rejets.csv, une ligne rejetée = un motif. Les sources ne sont jamais modifiées.",
+  "x": 0.6,
+  "y": 6.411648333333333,
+  "w": 12.133,
+  "h": 0.5,
   "size": 17
  },
  {
-  "slide": 39,
-  "text": "2",
-  "x": 8.814705882352941,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 39,
-  "text": "Dimensions avant faits.",
-  "x": 9.364705882352942,
-  "y": 3.77,
-  "w": 3.368294117647058,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 39,
-  "text": "3",
-  "x": 8.814705882352941,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 39,
-  "text": "Rejets dans rejets.csv, avec motif.",
-  "x": 9.364705882352942,
-  "y": 4.890000000000001,
-  "w": 3.368294117647058,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 40,
+  "slide": 43,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "LES NOTIONS BI  ·  GRAIN",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "Le grain : une ligne de fait = une ligne de ticket",
   "x": 0.6,
   "y": 0.78,
@@ -3784,7 +3842,7 @@
   "size": 30
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "UNE LIGNE DE fact_vente",
   "x": 0.6,
   "y": 1.9,
@@ -3793,7 +3851,7 @@
   "size": 18
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "QUOI ?",
   "x": 0.85,
   "y": 2.7,
@@ -3802,7 +3860,7 @@
   "size": 16
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "P01",
   "x": 0.85,
   "y": 3.3,
@@ -3811,7 +3869,7 @@
   "size": 28
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "OÙ ?",
   "x": 3.9582499999999996,
   "y": 2.7,
@@ -3820,7 +3878,7 @@
   "size": 16
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "TUN",
   "x": 3.9582499999999996,
   "y": 3.3,
@@ -3829,7 +3887,7 @@
   "size": 28
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "QUAND ?",
   "x": 7.066499999999999,
   "y": 2.7,
@@ -3838,7 +3896,7 @@
   "size": 16
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "2026-03-02",
   "x": 7.066499999999999,
   "y": 3.3,
@@ -3847,7 +3905,7 @@
   "size": 28
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "COMBIEN ?",
   "x": 10.174749999999998,
   "y": 2.7,
@@ -3856,7 +3914,7 @@
   "size": 16
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "2 × 18,500 TND",
   "x": 10.174749999999998,
   "y": 3.3,
@@ -3865,7 +3923,7 @@
   "size": 22
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "ID",
   "x": 0.6,
   "y": 5,
@@ -3874,7 +3932,7 @@
   "size": 16
  },
  {
-  "slide": 40,
+  "slide": 43,
   "text": "E-001-1 : identifiant stable, même si le fichier est rejoué.",
   "x": 1.45,
   "y": 5,
@@ -3883,25 +3941,25 @@
   "size": 21
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "LES NOTIONS BI  ·  MODÉLISATION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "Fait ou dimension ?",
   "x": 0.6,
   "y": 0.78,
@@ -3910,7 +3968,7 @@
   "size": 30
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "FAIT · ce qu'on mesure",
   "x": 0.8999999999999999,
   "y": 2.2,
@@ -3919,7 +3977,7 @@
   "size": 14
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "fact_vente : quantité, montant brut\nfact_retour : montant remboursé\nbeaucoup de lignes",
   "x": 0.8999999999999999,
   "y": 2.8,
@@ -3928,7 +3986,7 @@
   "size": 20
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "DIMENSION · ce qui décrit",
   "x": 7.382999999999998,
   "y": 2.2,
@@ -3937,7 +3995,7 @@
   "size": 14
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "dim_produit · dim_boutique · dim_date\npeu de lignes\non filtre et on regroupe par elles",
   "x": 7.382999999999998,
   "y": 2.8,
@@ -3946,7 +4004,7 @@
   "size": 20
  },
  {
-  "slide": 41,
+  "slide": 44,
   "text": "→",
   "x": 6.366499999999999,
   "y": 3.95,
@@ -3955,295 +4013,292 @@
   "size": 20
  },
  {
-  "slide": 42,
+  "slide": 45,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 42,
+  "slide": 45,
   "text": "LES NOTIONS BI  ·  MODÉLISATION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 42,
+  "slide": 45,
   "text": "L'étoile de la mission 00",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
-  "slide": 42,
+  "slide": 45,
   "text": "SCHÉMA · pas une capture",
-  "x": 7.997368421052632,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 42,
-  "text": "1",
-  "x": 7.997368421052632,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 42,
-  "text": "3 dimensions, 2 tables de faits.",
-  "x": 8.547368421052632,
-  "y": 2.65,
-  "w": 4.185631578947367,
-  "h": 0.95,
-  "size": 17
+  "slide": 45,
+  "image": "docs/images/diagrams/v7-etoile.png",
+  "crop": [
+   0,
+   278,
+   2400,
+   1415
+  ],
+  "x": 0.9145211081794192,
+  "y": 1.5,
+  "w": 11.50395778364116,
+  "h": 5.45,
+  "widthShare": 0.863
  },
  {
-  "slide": 42,
-  "text": "2",
-  "x": 7.997368421052632,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 42,
-  "text": "Chaque relation : 1 → plusieurs.",
-  "x": 8.547368421052632,
-  "y": 3.77,
-  "w": 4.185631578947367,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 42,
-  "text": "3",
-  "x": 7.997368421052632,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 42,
-  "text": "Les deux faits ne sont pas reliés.",
-  "x": 8.547368421052632,
-  "y": 4.890000000000001,
-  "w": 4.185631578947367,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 43,
+  "slide": 46,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 43,
+  "slide": 46,
   "text": "LES NOTIONS BI  ·  CLÉS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 43,
+  "slide": 46,
   "text": "Clé métier et clé technique",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
-  "slide": 43,
+  "slide": 46,
   "text": "SCHÉMA · pas une capture",
-  "x": 9.299999999999999,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 43,
-  "text": "1",
-  "x": 9.299999999999999,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 43,
-  "text": "NBE = clé métier (sources).",
-  "x": 9.85,
-  "y": 2.65,
-  "w": 2.883,
-  "h": 0.95,
+  "slide": 46,
+  "image": "docs/images/diagrams/v7-cles.png",
+  "crop": [
+   0,
+   250,
+   2400,
+   1150
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.549874999999999,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 46,
+  "text": "Vente du 2026-07-14 → boutique_key 2 ; du 2026-07-15 → 4. Filtrer sur boutique_id = NBE réunit les deux.",
+  "x": 0.6,
+  "y": 6.249874999999999,
+  "w": 12.133,
+  "h": 0.5,
   "size": 17
  },
  {
-  "slide": 43,
-  "text": "2",
-  "x": 9.299999999999999,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 43,
-  "text": "2 et 5 = clés techniques (versions).",
-  "x": 9.85,
-  "y": 3.77,
-  "w": 2.883,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 43,
-  "text": "3",
-  "x": 9.299999999999999,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 43,
-  "text": "Les faits pointent vers boutique_key.",
-  "x": 9.85,
-  "y": 4.890000000000001,
-  "w": 2.883,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 44,
+  "slide": 47,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 44,
+  "slide": 47,
   "text": "LES NOTIONS BI  ·  QUALITÉ",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 44,
-  "text": "Nettoyer sans toucher aux sources",
+  "slide": 47,
+  "text": "Nettoyer 1/2 : ce que la source contient",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 26
  },
  {
-  "slide": 44,
+  "slide": 47,
   "text": "SCHÉMA · pas une capture",
-  "x": 7.506521739130435,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 44,
+  "slide": 47,
+  "image": "docs/images/diagrams/v7-nettoyage.png",
+  "crop": [
+   0,
+   245,
+   2400,
+   872
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 3.1697462499999998,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 47,
   "text": "1",
-  "x": 7.506521739130435,
-  "y": 2.67,
+  "x": 0.6,
+  "y": 4.939746249999999,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 44,
-  "text": "Formats → millimes, dates ISO.",
-  "x": 8.056521739130435,
-  "y": 2.65,
-  "w": 4.676478260869564,
-  "h": 0.95,
+  "slide": 47,
+  "text": "ventes.csv reste intact : on lit, on n’écrit pas.",
+  "x": 1.12,
+  "y": 4.919746249999999,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
-  "slide": 44,
+  "slide": 47,
   "text": "2",
-  "x": 7.506521739130435,
-  "y": 3.79,
+  "x": 4.760999999999999,
+  "y": 4.939746249999999,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 44,
-  "text": "Doublon exact : une occurrence gardée.",
-  "x": 8.056521739130435,
-  "y": 3.77,
-  "w": 4.676478260869564,
-  "h": 0.95,
+  "slide": 47,
+  "text": "Six lignes, cinq défauts différents.",
+  "x": 5.280999999999999,
+  "y": 4.919746249999999,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
-  "slide": 44,
+  "slide": 47,
   "text": "3",
-  "x": 7.506521739130435,
-  "y": 4.91,
+  "x": 8.921999999999999,
+  "y": 4.939746249999999,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 44,
-  "text": "Rejet = une ligne + un motif.",
-  "x": 8.056521739130435,
-  "y": 4.890000000000001,
-  "w": 4.676478260869564,
-  "h": 0.95,
+  "slide": 47,
+  "text": "Chaque défaut a son traitement.",
+  "x": 9.441999999999998,
+  "y": 4.919746249999999,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
-  "slide": 45,
+  "slide": 48,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 45,
+  "slide": 48,
   "text": "LES NOTIONS BI  ·  QUALITÉ",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 45,
+  "slide": 48,
+  "text": "Nettoyer 2/2 : acceptées, ignorées, rejetées",
+  "x": 0.6,
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 22
+ },
+ {
+  "slide": 48,
+  "text": "SCHÉMA · pas une capture",
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 48,
+  "image": "docs/images/diagrams/v7-nettoyage.png",
+  "crop": [
+   0,
+   872,
+   2400,
+   1840
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 4.8936433333333325,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 49,
+  "text": "E",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 49,
+  "text": "LES NOTIONS BI  ·  QUALITÉ",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 49,
   "text": "L'échantillon : 12 lignes → 6 gardées",
   "x": 0.6,
   "y": 0.78,
@@ -4252,7 +4307,7 @@
   "size": 30
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -4261,7 +4316,7 @@
   "size": 15
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "12 lues",
   "x": 0.82,
   "y": 3.03,
@@ -4270,7 +4325,7 @@
   "size": 19
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "ventes.csv\nde l'échantillon",
   "x": 0.82,
   "y": 3.95,
@@ -4279,7 +4334,7 @@
   "size": 17
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "2",
   "x": 3.97825,
   "y": 2.4,
@@ -4288,7 +4343,7 @@
   "size": 15
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "1 doublon",
   "x": 3.97825,
   "y": 3.03,
@@ -4297,7 +4352,7 @@
   "size": 19
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "E-003-1 répété :\nignoré",
   "x": 3.97825,
   "y": 3.95,
@@ -4306,7 +4361,7 @@
   "size": 17
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "3",
   "x": 7.136499999999999,
   "y": 2.4,
@@ -4315,7 +4370,7 @@
   "size": 15
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "5 rejets",
   "x": 7.136499999999999,
   "y": 3.03,
@@ -4324,7 +4379,7 @@
   "size": 19
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "2 id_conflit\n1 id_manquant\n1 cle_inconnue\n1 quantite_invalide",
   "x": 7.136499999999999,
   "y": 3.95,
@@ -4333,7 +4388,7 @@
   "size": 17
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "4",
   "x": 10.29475,
   "y": 2.4,
@@ -4342,7 +4397,7 @@
   "size": 15
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "6 gardées",
   "x": 10.29475,
   "y": 3.03,
@@ -4351,7 +4406,7 @@
   "size": 19
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "à calculer\nà la main",
   "x": 10.29475,
   "y": 3.95,
@@ -4360,16 +4415,16 @@
   "size": 17
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 45,
+  "slide": 49,
   "text": "Un doublon exact n'est pas un rejet : on garde une occurrence.",
   "x": 1.25,
   "y": 6.15,
@@ -4378,25 +4433,25 @@
   "size": 15
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "LES NOTIONS BI  ·  INDICATEURS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "L'échantillon, calculé à la main",
   "x": 0.6,
   "y": 0.78,
@@ -4405,7 +4460,7 @@
   "size": 30
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "127,350",
   "x": 0.8,
   "y": 2.5,
@@ -4414,7 +4469,7 @@
   "size": 36
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "TND ventes brutes",
   "x": 0.8,
   "y": 3.8499999999999996,
@@ -4423,7 +4478,7 @@
   "size": 17
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "112,850",
   "x": 3.90825,
   "y": 2.5,
@@ -4432,7 +4487,7 @@
   "size": 36
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "TND ventes nettes\n(− 14,500 de retours)",
   "x": 3.90825,
   "y": 3.8499999999999996,
@@ -4441,7 +4496,7 @@
   "size": 17
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "45,600",
   "x": 7.016499999999999,
   "y": 2.5,
@@ -4450,7 +4505,7 @@
   "size": 44
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "TND marge sur coût d'achat",
   "x": 7.016499999999999,
   "y": 3.8499999999999996,
@@ -4459,7 +4514,7 @@
   "size": 17
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "11,39 %",
   "x": 10.124749999999997,
   "y": 2.5,
@@ -4468,7 +4523,7 @@
   "size": 36
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "taux de retour\n14 500 / 127 350",
   "x": 10.124749999999997,
   "y": 3.8499999999999996,
@@ -4477,16 +4532,16 @@
   "size": 17
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 46,
+  "slide": 50,
   "text": "Calculez AVANT de demander quoi que ce soit à Codex : ces nombres vérifient son code.",
   "x": 1.25,
   "y": 6.15,
@@ -4495,25 +4550,25 @@
   "size": 15
  },
  {
-  "slide": 47,
+  "slide": 51,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 47,
+  "slide": 51,
   "text": "LES NOTIONS BI  ·  INDICATEURS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 47,
+  "slide": 51,
   "text": "Cinq indicateurs, cinq définitions exactes",
   "x": 0.6,
   "y": 0.78,
@@ -4522,23 +4577,23 @@
   "size": 30
  },
  {
-  "slide": 47,
+  "slide": 51,
   "table": "Indicateur | Définition | Unité",
   "rows": 5,
   "rowH": 0.6833333333333332,
   "size": 16
  },
  {
-  "slide": 47,
+  "slide": 51,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 47,
+  "slide": 51,
   "text": "« Marge » veut toujours dire marge sur coût d'achat, jamais « bénéfice ».",
   "x": 1.25,
   "y": 6.15,
@@ -4547,25 +4602,25 @@
   "size": 15
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "LES NOTIONS BI  ·  SQL",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "SQL paramétré : le « ? » est une case",
   "x": 0.6,
   "y": 0.78,
@@ -4574,16 +4629,16 @@
   "size": 30
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "Code produit par Codex · à lire, pas à taper",
   "x": 0.6,
-  "y": 1.8,
+  "y": 1.75,
   "w": 7.6,
-  "h": 0.3,
-  "size": 12
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "sql = \"SELECT * FROM retour\"\n      \" WHERE statut = ?\"\n      \" AND date_retour >= ?\"\n      \" AND date_retour < ?\"\nmars = requete_sqlite(base, sql,\n  (\"VALIDE\", \"2026-03-01\", \"2026-04-01\"))",
   "x": 0.8999999999999999,
   "y": 2.35,
@@ -4592,7 +4647,7 @@
   "size": 19
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "1",
   "x": 8.7,
   "y": 2.27,
@@ -4601,7 +4656,7 @@
   "size": 14
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "Base opérationnelle ouverte en lecture seule.",
   "x": 9.25,
   "y": 2.25,
@@ -4610,7 +4665,7 @@
   "size": 17
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "2",
   "x": 8.7,
   "y": 3.39,
@@ -4619,7 +4674,7 @@
   "size": 14
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "La valeur part à part : jamais lue comme du SQL.",
   "x": 9.25,
   "y": 3.37,
@@ -4628,7 +4683,7 @@
   "size": 17
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "3",
   "x": 8.7,
   "y": 4.51,
@@ -4637,7 +4692,7 @@
   "size": 14
  },
  {
-  "slide": 48,
+  "slide": 52,
   "text": "Résultat : 25 retours VALIDE en mars 2026.",
   "x": 9.25,
   "y": 4.49,
@@ -4646,25 +4701,25 @@
   "size": 17
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "LES NOTIONS BI  ·  CHARGEMENT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "Lot 1 : le chargement initial",
   "x": 0.6,
   "y": 0.78,
@@ -4673,7 +4728,7 @@
   "size": 30
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "1998",
   "x": 0.8,
   "y": 2.5,
@@ -4682,7 +4737,7 @@
   "size": 44
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "lignes lues\ndans ventes.csv",
   "x": 0.8,
   "y": 3.8499999999999996,
@@ -4691,7 +4746,7 @@
   "size": 17
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "26",
   "x": 3.90825,
   "y": 2.5,
@@ -4700,7 +4755,7 @@
   "size": 44
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "rejets motivés\n(dont 2 retours)",
   "x": 3.90825,
   "y": 3.8499999999999996,
@@ -4709,7 +4764,7 @@
   "size": 17
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "1960",
   "x": 7.016499999999999,
   "y": 2.5,
@@ -4718,7 +4773,7 @@
   "size": 44
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "faits dans\nfact_vente",
   "x": 7.016499999999999,
   "y": 3.8499999999999996,
@@ -4727,7 +4782,7 @@
   "size": 17
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "74 309,500",
   "x": 10.124749999999997,
   "y": 2.5,
@@ -4736,7 +4791,7 @@
   "size": 30
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "TND de ventes nettes",
   "x": 10.124749999999997,
   "y": 3.8499999999999996,
@@ -4745,16 +4800,16 @@
   "size": 17
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 49,
+  "slide": 53,
   "text": "14 doublons exacts ignorés · rejets : 8 cle_inconnue, 6 id_conflit, 5 id_manquant, 7 quantite_invalide.",
   "x": 1.25,
   "y": 6.15,
@@ -4763,25 +4818,25 @@
   "size": 15
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "LES NOTIONS BI  ·  INDICATEUR",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "Épisode 3 : un total plausible… et faux",
   "x": 0.6,
   "y": 0.78,
@@ -4790,7 +4845,7 @@
   "size": 30
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "LE TABLEUR DE KARIM",
   "x": 0.8999999999999999,
   "y": 2.2,
@@ -4799,7 +4854,7 @@
   "size": 14
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "Toutes les lignes, sans règle\n78 839,780 TND",
   "x": 0.8999999999999999,
   "y": 2.8,
@@ -4808,7 +4863,7 @@
   "size": 20
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "APRÈS NETTOYAGE",
   "x": 7.382999999999998,
   "y": 2.2,
@@ -4817,7 +4872,7 @@
   "size": 14
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "Doublons, conflits, rejets écartés\n78 067,830 TND",
   "x": 7.382999999999998,
   "y": 2.8,
@@ -4826,7 +4881,7 @@
   "size": 20
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "→",
   "x": 6.366499999999999,
   "y": 3.575,
@@ -4835,16 +4890,16 @@
   "size": 20
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 50,
+  "slide": 54,
   "text": "771,950 TND d'écart : assez petit pour passer, assez grand pour tromper.",
   "x": 1.25,
   "y": 6.15,
@@ -4853,115 +4908,76 @@
   "size": 15
  },
  {
-  "slide": 51,
+  "slide": 55,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 51,
+  "slide": 55,
   "text": "LES NOTIONS BI  ·  INDICATEUR",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 51,
+  "slide": 55,
   "text": "Un chiffre plausible n'est pas un chiffre juste",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 22
  },
  {
-  "slide": 51,
+  "slide": 55,
   "text": "SCHÉMA · pas une capture",
-  "x": 9.475531914893617,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 51,
-  "text": "1",
-  "x": 9.475531914893617,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 51,
-  "text": "Même formule, données différentes.",
-  "x": 10.025531914893618,
-  "y": 2.65,
-  "w": 2.707468085106382,
-  "h": 0.95,
-  "size": 17
+  "slide": 55,
+  "image": "docs/images/diagrams/v7-indicateur-controle.png",
+  "crop": [
+   0,
+   245,
+   2400,
+   1318
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 5.424462083333333,
+  "widthShare": 0.91
  },
  {
-  "slide": 51,
-  "text": "2",
-  "x": 9.475531914893617,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 51,
-  "text": "Le contrôle : ligne_id distincts = lignes de fact_vente.",
-  "x": 10.025531914893618,
-  "y": 3.77,
-  "w": 2.707468085106382,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 51,
-  "text": "3",
-  "x": 9.475531914893617,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 51,
-  "text": "Écrire le contrôle avant de croire le total.",
-  "x": 10.025531914893618,
-  "y": 4.890000000000001,
-  "w": 2.707468085106382,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 52,
+  "slide": 56,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "LES NOTIONS BI  ·  MISES À JOUR",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "Charger · compléter · rejouer",
   "x": 0.6,
   "y": 0.78,
@@ -4970,7 +4986,7 @@
   "size": 30
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "1 · Chargement initial",
   "x": 0.8999999999999999,
   "y": 2.15,
@@ -4979,16 +4995,16 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "lot1",
   "x": 0.8999999999999999,
   "y": 2.75,
   "w": 1.2,
-  "h": 0.36,
-  "size": 11
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "1998 lignes lues",
   "x": 0.8999999999999999,
   "y": 3.3,
@@ -4997,7 +5013,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "26 rejets",
   "x": 0.8999999999999999,
   "y": 3.78,
@@ -5006,7 +5022,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "1960 faits insérés",
   "x": 0.8999999999999999,
   "y": 4.26,
@@ -5015,7 +5031,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "fact_vente : 1960",
   "x": 0.8999999999999999,
   "y": 4.92,
@@ -5024,7 +5040,7 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "2 · Incrément",
   "x": 5.127666666666666,
   "y": 2.15,
@@ -5033,16 +5049,16 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "lot2",
   "x": 5.127666666666666,
   "y": 2.75,
   "w": 1.2,
-  "h": 0.36,
-  "size": 11
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "413 lignes lues",
   "x": 5.127666666666666,
   "y": 3.3,
@@ -5051,7 +5067,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "15 déjà chargées : ignorées",
   "x": 5.127666666666666,
   "y": 3.78,
@@ -5060,7 +5076,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "385 nouvelles insérées",
   "x": 5.127666666666666,
   "y": 4.26,
@@ -5069,7 +5085,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "fact_vente : 2345",
   "x": 5.127666666666666,
   "y": 4.92,
@@ -5078,7 +5094,7 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "3 · Rejeu",
   "x": 9.355333333333334,
   "y": 2.15,
@@ -5087,16 +5103,16 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "lot2 relancé",
   "x": 9.355333333333334,
   "y": 2.75,
-  "w": 1.6600000000000001,
-  "h": 0.36,
-  "size": 11
+  "w": 1.95,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "413 lignes lues",
   "x": 9.355333333333334,
   "y": 3.3,
@@ -5105,7 +5121,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "0 insertion",
   "x": 9.355333333333334,
   "y": 3.78,
@@ -5114,7 +5130,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "totaux identiques",
   "x": 9.355333333333334,
   "y": 4.26,
@@ -5123,7 +5139,7 @@
   "size": 17
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "fact_vente : 2345",
   "x": 9.355333333333334,
   "y": 4.92,
@@ -5132,7 +5148,7 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "1960 + 385 = 2345 · rejeu : 0 ajout (clé métier ligne_id)",
   "x": 0.6,
   "y": 5.8,
@@ -5141,7 +5157,7 @@
   "size": 20
  },
  {
-  "slide": 52,
+  "slide": 56,
   "text": "Compteurs = référence du générateur, pas des valeurs inventées.",
   "x": 0.6,
   "y": 6.35,
@@ -5150,115 +5166,85 @@
   "size": 14
  },
  {
-  "slide": 53,
+  "slide": 57,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 53,
+  "slide": 57,
   "text": "LES NOTIONS BI  ·  HISTORIQUE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 53,
+  "slide": 57,
   "text": "SCD2 : NBE change de zone le 2026-07-15",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 26
  },
  {
-  "slide": 53,
+  "slide": 57,
   "text": "SCHÉMA · pas une capture",
-  "x": 8.592857142857142,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 53,
-  "text": "1",
-  "x": 8.592857142857142,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 53,
-  "text": "valid_from inclus, valid_to exclu.",
-  "x": 9.142857142857142,
-  "y": 2.65,
-  "w": 3.5901428571428573,
-  "h": 0.95,
+  "slide": 57,
+  "image": "docs/images/diagrams/v7-scd2-frise.png",
+  "crop": [
+   0,
+   275,
+   2400,
+   1268
+  ],
+  "x": 0.8658957703927491,
+  "y": 1.5,
+  "w": 11.6012084592145,
+  "h": 4.8,
+  "widthShare": 0.87
+ },
+ {
+  "slide": 57,
+  "text": "Version valable si : valid_from ≤ date de la vente < valid_to (ou valid_to = NULL). Frise non proportionnelle.",
+  "x": 0.6,
+  "y": 6.5,
+  "w": 12.133,
+  "h": 0.5,
   "size": 17
  },
  {
-  "slide": 53,
-  "text": "2",
-  "x": 8.592857142857142,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 53,
-  "text": "Vente du 14 juillet → Cap Bon.",
-  "x": 9.142857142857142,
-  "y": 3.77,
-  "w": 3.5901428571428573,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 53,
-  "text": "3",
-  "x": 8.592857142857142,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 53,
-  "text": "Vente du 15 juillet → Nord-Est.",
-  "x": 9.142857142857142,
-  "y": 4.890000000000001,
-  "w": 3.5901428571428573,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 54,
+  "slide": 58,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "LES NOTIONS BI  ·  INDICATEURS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "Après le lot 2",
   "x": 0.6,
   "y": 0.78,
@@ -5267,7 +5253,7 @@
   "size": 30
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "2345",
   "x": 0.8,
   "y": 2.5,
@@ -5276,7 +5262,7 @@
   "size": 44
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "faits dans\nfact_vente",
   "x": 0.8,
   "y": 3.8499999999999996,
@@ -5285,7 +5271,7 @@
   "size": 17
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "91 444,460",
   "x": 3.90825,
   "y": 2.5,
@@ -5294,7 +5280,7 @@
   "size": 30
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "TND de ventes nettes",
   "x": 3.90825,
   "y": 3.8499999999999996,
@@ -5303,7 +5289,7 @@
   "size": 17
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "35 606,860",
   "x": 7.016499999999999,
   "y": 2.5,
@@ -5312,7 +5298,7 @@
   "size": 30
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "TND de marge\nsur coût d'achat",
   "x": 7.016499999999999,
   "y": 3.8499999999999996,
@@ -5321,7 +5307,7 @@
   "size": 17
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "4,60 %",
   "x": 10.124749999999997,
   "y": 2.5,
@@ -5330,7 +5316,7 @@
   "size": 44
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "taux de retour",
   "x": 10.124749999999997,
   "y": 3.8499999999999996,
@@ -5339,16 +5325,16 @@
   "size": 17
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 54,
+  "slide": 58,
   "text": "Le premier semestre n'a pas bougé : Nabeul reste en Cap Bon jusqu'au 14 juillet.",
   "x": 1.25,
   "y": 6.15,
@@ -5357,25 +5343,25 @@
   "size": 15
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "E",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "LES NOTIONS BI  ·  VISUALISATION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "Ventes nettes par zone, après le lot 2",
   "x": 0.6,
   "y": 0.78,
@@ -5384,7 +5370,7 @@
   "size": 30
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "Janvier → août 2026 · TND · zone valable à la date de chaque vente",
   "x": 0.6,
   "y": 1.75,
@@ -5393,16 +5379,16 @@
   "size": 15
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "À RETENIR",
   "x": 9.6,
   "y": 2.4,
   "w": 3,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "Nord-Est : 4 323,400 TND",
   "x": 9.6,
   "y": 2.85,
@@ -5411,7 +5397,7 @@
   "size": 20
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "Uniquement les ventes de Nabeul depuis le 15 juillet. Cap Bon garde tout le reste.",
   "x": 9.6,
   "y": 3.85,
@@ -5420,7 +5406,7 @@
   "size": 16
  },
  {
-  "slide": 55,
+  "slide": 59,
   "text": "Total : 91 444,460 TND",
   "x": 9.6,
   "y": 5.6,
@@ -5429,7 +5415,7 @@
   "size": 15
  },
  {
-  "slide": 56,
+  "slide": 60,
   "text": "F",
   "x": 0.75,
   "y": 1.55,
@@ -5438,7 +5424,7 @@
   "size": 44
  },
  {
-  "slide": 56,
+  "slide": 60,
   "text": "PARTIE F / I",
   "x": 2.25,
   "y": 1.6,
@@ -5447,7 +5433,7 @@
   "size": 14
  },
  {
-  "slide": 56,
+  "slide": 60,
   "text": "Les cinq séances",
   "x": 2.25,
   "y": 2.05,
@@ -5456,8 +5442,8 @@
   "size": 40
  },
  {
-  "slide": 56,
-  "text": "240 minutes chacune · 2 pauses · 70 % de pratique",
+  "slide": 60,
+  "text": "Séance 0 chez vous · 5 × 240 min · 2 pauses · ≥ 70 % de pratique",
   "x": 2.25,
   "y": 3.55,
   "w": 10,
@@ -5465,35 +5451,35 @@
   "size": 22
  },
  {
-  "slide": 56,
-  "text": "56 / 80",
+  "slide": 60,
+  "text": "60 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "LES CINQ SÉANCES  ·  S1 · 240 MIN",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 57,
-  "text": "Séance 1 · La demande et le cadrage",
+  "slide": 61,
+  "text": "Séance 1 · Postes, GitHub à deux, cadrage",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -5501,224 +5487,260 @@
   "size": 30
  },
  {
-  "slide": 57,
-  "text": "15",
-  "x": 0.6,
-  "y": 1.85,
-  "w": 0.7583125,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 57,
+  "slide": 61,
   "text": "30",
-  "x": 1.3583124999999998,
+  "x": 0.6,
   "y": 1.85,
   "w": 1.516625,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
-  "text": "35",
-  "x": 2.8749374999999997,
+  "slide": 61,
+  "text": "50",
+  "x": 2.116625,
   "y": 1.85,
-  "w": 1.7693958333333333,
+  "w": 2.5277083333333334,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "10",
-  "x": 4.644333333333333,
+  "x": 4.644333333333334,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
-  "text": "46",
-  "x": 5.149875,
+  "slide": 61,
+  "text": "15",
+  "x": 5.149875000000001,
   "y": 1.85,
-  "w": 2.3254916666666663,
+  "w": 0.7583125,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "25",
-  "x": 7.475366666666666,
+  "x": 5.9081875,
   "y": 1.85,
   "w": 1.2638541666666667,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
+  "text": "25",
+  "x": 7.172041666666667,
+  "y": 1.85,
+  "w": 1.2638541666666667,
+  "h": 0.55,
+  "size": 14
+ },
+ {
+  "slide": 61,
   "text": "10",
-  "x": 8.739220833333333,
+  "x": 8.435895833333333,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
-  "text": "59",
-  "x": 9.244762499999998,
+  "slide": 61,
+  "text": "20",
+  "x": 8.9414375,
   "y": 1.85,
-  "w": 2.982695833333333,
+  "w": 1.0110833333333331,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
+  "text": "15",
+  "x": 9.952520833333333,
+  "y": 1.85,
+  "w": 0.7583125,
+  "h": 0.55,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "30",
+  "x": 10.710833333333333,
+  "y": 1.85,
+  "w": 1.516625,
+  "h": 0.55,
+  "size": 14
+ },
+ {
+  "slide": 61,
   "text": "10",
-  "x": 12.227458333333331,
+  "x": 12.227458333333333,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "explication",
   "x": 0.8999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "explication + pratique",
-  "x": 2.3499999999999996,
+  "x": 2.4499999999999997,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "pratique",
-  "x": 4.55,
+  "x": 4.999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "pause",
-  "x": 5.749999999999999,
+  "x": 6.35,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
- },
- {
-  "slide": 57,
-  "text": "66 min d'explications · 154 min de pratique · 2 pauses",
-  "x": 8.2,
-  "y": 2.5,
-  "w": 4.5329999999999995,
-  "h": 0.32,
-  "size": 12
- },
- {
-  "slide": 57,
-  "text": "15 min",
-  "x": 0.8999999999999999,
-  "y": 3.15,
-  "w": 0.9,
-  "h": 0.56,
+  "w": 2.4,
+  "h": 0.34,
   "size": 14
  },
  {
-  "slide": 57,
-  "text": "Épisode 1, rôles",
-  "x": 1.7999999999999998,
-  "y": 3.15,
-  "w": 2.55,
-  "h": 0.56,
+  "slide": 61,
+  "text": "58 min d'explications · 162 min de pratique · 2 pauses",
+  "x": 7.1,
+  "y": 2.5,
+  "w": 5.632999999999999,
+  "h": 0.34,
   "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "30 min",
   "x": 0.8999999999999999,
+  "y": 3.15,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "Vérifier les postes",
+  "x": 1.7999999999999998,
+  "y": 3.15,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "50 min",
+  "x": 0.8999999999999999,
   "y": 3.71,
   "w": 0.9,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
+  "text": "GitHub à deux, PR n°1",
+  "x": 1.7999999999999998,
+  "y": 3.71,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "10 min",
+  "x": 0.8999999999999999,
+  "y": 4.27,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "Pause",
+  "x": 1.7999999999999998,
+  "y": 4.27,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "15 min",
+  "x": 0.8999999999999999,
+  "y": 4.83,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "Épisode 1, rôles",
+  "x": 1.7999999999999998,
+  "y": 4.83,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "25 min",
+  "x": 0.8999999999999999,
+  "y": 5.390000000000001,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
   "text": "Traduire la demande",
   "x": 1.7999999999999998,
-  "y": 3.71,
+  "y": 5.390000000000001,
   "w": 2.55,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 57,
-  "text": "35 min",
+  "slide": 61,
+  "text": "25 min",
   "x": 0.8999999999999999,
-  "y": 4.27,
+  "y": 5.95,
   "w": 0.9,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "Échantillon à la main",
   "x": 1.7999999999999998,
-  "y": 4.27,
+  "y": 5.95,
   "w": 2.55,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "10 min",
-  "x": 0.8999999999999999,
-  "y": 4.83,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "Pause",
-  "x": 1.7999999999999998,
-  "y": 4.83,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "46 min",
-  "x": 0.8999999999999999,
-  "y": 5.390000000000001,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "Cadrage, outils",
-  "x": 1.7999999999999998,
-  "y": 5.390000000000001,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "25 min",
   "x": 4.75,
   "y": 3.15,
   "w": 0.9,
@@ -5726,53 +5748,53 @@
   "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
+  "text": "Pause",
+  "x": 5.65,
+  "y": 3.15,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "20 min",
+  "x": 4.75,
+  "y": 3.71,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "Épisode 2, outils",
+  "x": 5.65,
+  "y": 3.71,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "15 min",
+  "x": 4.75,
+  "y": 4.27,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
   "text": "1re demande à Codex",
   "x": 5.65,
-  "y": 3.15,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "10 min",
-  "x": 4.75,
-  "y": 3.71,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "Pause",
-  "x": 5.65,
-  "y": 3.71,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "59 min",
-  "x": 4.75,
-  "y": 4.27,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 57,
-  "text": "Cycle Git n°1",
-  "x": 5.65,
   "y": 4.27,
   "w": 2.55,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 57,
-  "text": "10 min",
+  "slide": 61,
+  "text": "30 min",
   "x": 4.75,
   "y": 4.83,
   "w": 0.9,
@@ -5780,8 +5802,8 @@
   "size": 14
  },
  {
-  "slide": 57,
-  "text": "Note",
+  "slide": 61,
+  "text": "PR n°2 : B auteur",
   "x": 5.65,
   "y": 4.83,
   "w": 2.55,
@@ -5789,88 +5811,106 @@
   "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
+  "text": "10 min",
+  "x": 4.75,
+  "y": 5.390000000000001,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
+  "text": "Note d'état",
+  "x": 5.65,
+  "y": 5.390000000000001,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 61,
   "text": "CE QUE VOUS PROUVEZ",
   "x": 8.8,
   "y": 3.3,
   "w": 3.5,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "✓",
   "x": 8.8,
   "y": 3.85,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 57,
-  "text": "Dépôt du binôme créé, partenaire invité",
+  "slide": 61,
+  "text": "Postes vérifiés : checklist du livret 01",
   "x": 9.3,
   "y": 3.8,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "✓",
   "x": 8.8,
   "y": 4.8,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 57,
-  "text": "1re PR (README + journal) relue et fusionnée",
+  "slide": 61,
+  "text": "PR n°1 (A) et PR n°2 (B) relues, fusionnées",
   "x": 9.3,
   "y": 4.75,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "✓",
   "x": 8.8,
   "y": 5.75,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 57,
+  "slide": 61,
   "text": "Calcul à la main = attendu.md",
   "x": 9.3,
   "y": 5.699999999999999,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "LES CINQ SÉANCES  ·  S2 · 240 MIN",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Séance 2 · Un premier résultat… faux",
   "x": 0.6,
   "y": 0.78,
@@ -5879,124 +5919,124 @@
   "size": 30
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "12",
   "x": 0.6,
   "y": 1.85,
   "w": 0.60665,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "44",
   "x": 1.20665,
   "y": 1.85,
   "w": 2.2243833333333334,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "10",
   "x": 3.4310333333333336,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "54",
   "x": 3.9365750000000004,
   "y": 1.85,
   "w": 2.7299249999999997,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "34",
   "x": 6.6665,
   "y": 1.85,
   "w": 1.7188416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "10",
   "x": 8.385341666666667,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "66",
   "x": 8.890883333333333,
   "y": 1.85,
   "w": 3.3365749999999994,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "10",
   "x": 12.227458333333333,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "explication",
   "x": 0.8999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "explication + pratique",
-  "x": 2.3499999999999996,
+  "x": 2.4499999999999997,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "pratique",
-  "x": 4.55,
+  "x": 4.999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "pause",
-  "x": 5.749999999999999,
+  "x": 6.35,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "66 min d'explications · 154 min de pratique · 2 pauses",
-  "x": 8.2,
+  "x": 7.1,
   "y": 2.5,
-  "w": 4.5329999999999995,
-  "h": 0.32,
-  "size": 12
+  "w": 5.632999999999999,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "12 min",
   "x": 0.8999999999999999,
   "y": 3.15,
@@ -6005,7 +6045,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Épisode 3",
   "x": 1.7999999999999998,
   "y": 3.15,
@@ -6014,7 +6054,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "44 min",
   "x": 0.8999999999999999,
   "y": 3.71,
@@ -6023,7 +6063,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Lire 3 formats (pandas)",
   "x": 1.7999999999999998,
   "y": 3.71,
@@ -6032,7 +6072,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "10 min",
   "x": 0.8999999999999999,
   "y": 4.27,
@@ -6041,7 +6081,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Pause",
   "x": 1.7999999999999998,
   "y": 4.27,
@@ -6050,7 +6090,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "54 min",
   "x": 0.8999999999999999,
   "y": 4.83,
@@ -6059,7 +6099,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Nettoyer, rejeter",
   "x": 1.7999999999999998,
   "y": 4.83,
@@ -6068,7 +6108,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "34 min",
   "x": 4.75,
   "y": 3.15,
@@ -6077,7 +6117,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Fonctions, modules",
   "x": 5.65,
   "y": 3.15,
@@ -6086,7 +6126,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "10 min",
   "x": 4.75,
   "y": 3.71,
@@ -6095,7 +6135,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Pause",
   "x": 5.65,
   "y": 3.71,
@@ -6104,7 +6144,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "66 min",
   "x": 4.75,
   "y": 4.27,
@@ -6113,7 +6153,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "PR : A auteur, B relit",
   "x": 5.65,
   "y": 4.27,
@@ -6122,7 +6162,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "10 min",
   "x": 4.75,
   "y": 4.83,
@@ -6131,7 +6171,7 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Note",
   "x": 5.65,
   "y": 4.83,
@@ -6140,88 +6180,88 @@
   "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "CE QUE VOUS PROUVEZ",
   "x": 8.8,
   "y": 3.3,
   "w": 3.5,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "✓",
   "x": 8.8,
   "y": 3.85,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "outputs/rejets.csv existe",
   "x": 9.3,
   "y": 3.8,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "✓",
   "x": 8.8,
   "y": 4.8,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "Gardées / rejetées = référence",
   "x": 9.3,
   "y": 4.75,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "✓",
   "x": 8.8,
   "y": 5.75,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 58,
+  "slide": 62,
   "text": "PR de A relue, corrigée, fusionnée",
   "x": 9.3,
   "y": 5.699999999999999,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "LES CINQ SÉANCES  ·  S3 · 240 MIN",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Séance 3 · Les retours, puis l'étoile",
   "x": 0.6,
   "y": 0.78,
@@ -6230,142 +6270,142 @@
   "size": 30
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "10",
   "x": 0.6,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "39",
   "x": 1.1055416666666664,
   "y": 1.85,
   "w": 1.9716124999999998,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "31",
   "x": 3.0771541666666664,
   "y": 1.85,
   "w": 1.5671791666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "10",
   "x": 4.644333333333333,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "25",
   "x": 5.149875,
   "y": 1.85,
   "w": 1.2638541666666667,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "41",
   "x": 6.413729166666666,
   "y": 1.85,
   "w": 2.0727208333333333,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "20",
   "x": 8.48645,
   "y": 1.85,
   "w": 1.0110833333333331,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "10",
   "x": 9.497533333333333,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "39",
   "x": 10.003074999999999,
   "y": 1.85,
   "w": 1.9716124999999998,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "15",
   "x": 11.974687499999998,
   "y": 1.85,
   "w": 0.7583125,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "explication",
   "x": 0.8999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "explication + pratique",
-  "x": 2.3499999999999996,
+  "x": 2.4499999999999997,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "pratique",
-  "x": 4.55,
+  "x": 4.999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "pause",
-  "x": 5.749999999999999,
+  "x": 6.35,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "66 min d'explications · 154 min de pratique · 2 pauses",
-  "x": 8.2,
+  "x": 7.1,
   "y": 2.5,
-  "w": 4.5329999999999995,
-  "h": 0.32,
-  "size": 12
+  "w": 5.632999999999999,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "10 min",
   "x": 0.8999999999999999,
   "y": 3.15,
@@ -6374,7 +6414,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Épisode 4",
   "x": 1.7999999999999998,
   "y": 3.15,
@@ -6383,7 +6423,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "39 min",
   "x": 0.8999999999999999,
   "y": 3.71,
@@ -6392,7 +6432,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "SQL paramétré",
   "x": 1.7999999999999998,
   "y": 3.71,
@@ -6401,7 +6441,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "31 min",
   "x": 0.8999999999999999,
   "y": 4.27,
@@ -6410,7 +6450,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Grain, étoile, clés",
   "x": 1.7999999999999998,
   "y": 4.27,
@@ -6419,7 +6459,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "10 min",
   "x": 0.8999999999999999,
   "y": 4.83,
@@ -6428,7 +6468,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Pause",
   "x": 1.7999999999999998,
   "y": 4.83,
@@ -6437,7 +6477,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "25 min",
   "x": 0.8999999999999999,
   "y": 5.390000000000001,
@@ -6446,7 +6486,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Classe Entrepot",
   "x": 1.7999999999999998,
   "y": 5.390000000000001,
@@ -6455,7 +6495,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "41 min",
   "x": 4.75,
   "y": 3.15,
@@ -6464,7 +6504,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Chargement initial",
   "x": 5.65,
   "y": 3.15,
@@ -6473,7 +6513,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "20 min",
   "x": 4.75,
   "y": 3.71,
@@ -6482,7 +6522,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Totaux",
   "x": 5.65,
   "y": 3.71,
@@ -6491,7 +6531,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "10 min",
   "x": 4.75,
   "y": 4.27,
@@ -6500,7 +6540,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Pause",
   "x": 5.65,
   "y": 4.27,
@@ -6509,7 +6549,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "39 min",
   "x": 4.75,
   "y": 4.83,
@@ -6518,7 +6558,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "PR : B auteur",
   "x": 5.65,
   "y": 4.83,
@@ -6527,7 +6567,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "15 min",
   "x": 4.75,
   "y": 5.390000000000001,
@@ -6536,7 +6576,7 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Choix mission",
   "x": 5.65,
   "y": 5.390000000000001,
@@ -6545,89 +6585,89 @@
   "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "CE QUE VOUS PROUVEZ",
   "x": 8.8,
   "y": 3.3,
   "w": 3.5,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "✓",
   "x": 8.8,
   "y": 3.85,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "--etape initial : 0 ÉCHEC",
   "x": 9.3,
   "y": 3.8,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "✓",
   "x": 8.8,
   "y": 4.8,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Entrepôt : 5 tables reliées",
   "x": 9.3,
   "y": 4.75,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "✓",
   "x": 8.8,
   "y": 5.75,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 59,
+  "slide": 63,
   "text": "Mission du catalogue choisie",
   "x": 9.3,
   "y": 5.699999999999999,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "LES CINQ SÉANCES  ·  S4 · 240 MIN",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "Séance 4 · Le besoin change, la revue",
+  "slide": 64,
+  "text": "Séance 4 · Le besoin change, puis votre mission",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -6635,143 +6675,116 @@
   "size": 30
  },
  {
-  "slide": 60,
-  "text": "40",
-  "x": 1.0044333333333333,
+  "slide": 64,
+  "text": "60",
+  "x": 0.6,
   "y": 1.85,
-  "w": 2.0221666666666662,
+  "w": 3.03325,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "17",
-  "x": 3.0265999999999993,
+  "slide": 64,
+  "text": "45",
+  "x": 3.63325,
   "y": 1.85,
-  "w": 0.8594208333333333,
+  "w": 2.2749375,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "32",
-  "x": 3.8860208333333324,
-  "y": 1.85,
-  "w": 1.6177333333333332,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 60,
+  "slide": 64,
   "text": "10",
-  "x": 5.503754166666665,
+  "x": 5.9081875,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
+  "text": "25",
+  "x": 6.413729166666667,
+  "y": 1.85,
+  "w": 1.2638541666666667,
+  "h": 0.55,
+  "size": 14
+ },
+ {
+  "slide": 64,
   "text": "40",
-  "x": 6.009295833333332,
+  "x": 7.677583333333334,
   "y": 1.85,
   "w": 2.0221666666666662,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "28",
-  "x": 8.031462499999998,
-  "y": 1.85,
-  "w": 1.4155166666666665,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 60,
+  "slide": 64,
   "text": "10",
-  "x": 9.446979166666665,
+  "x": 9.69975,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "22",
-  "x": 9.952520833333331,
+  "slide": 64,
+  "text": "50",
+  "x": 10.205291666666666,
   "y": 1.85,
-  "w": 1.1121916666666667,
+  "w": 2.5277083333333334,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "14",
-  "x": 11.064712499999997,
-  "y": 1.85,
-  "w": 0.7077583333333333,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 60,
-  "text": "19",
-  "x": 11.77247083333333,
-  "y": 1.85,
-  "w": 0.9605291666666667,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 60,
+  "slide": 64,
   "text": "explication",
   "x": 0.8999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "explication + pratique",
-  "x": 2.3499999999999996,
+  "x": 2.4499999999999997,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "pratique",
-  "x": 4.55,
+  "x": 4.999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "pause",
-  "x": 5.749999999999999,
+  "x": 6.35,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "66 min d'explications · 154 min de pratique · 2 pauses",
-  "x": 8.2,
+  "slide": 64,
+  "text": "50 min d'explications · 170 min de pratique · 2 pauses",
+  "x": 7.1,
   "y": 2.5,
-  "w": 4.5329999999999995,
-  "h": 0.32,
-  "size": 12
+  "w": 5.632999999999999,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "8 min",
+  "slide": 64,
+  "text": "60 min",
   "x": 0.8999999999999999,
   "y": 3.15,
   "w": 0.9,
@@ -6779,8 +6792,8 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "Épisode 5",
+  "slide": 64,
+  "text": "Lot 2, SCD2",
   "x": 1.7999999999999998,
   "y": 3.15,
   "w": 2.55,
@@ -6788,8 +6801,8 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "40 min",
+  "slide": 64,
+  "text": "45 min",
   "x": 0.8999999999999999,
   "y": 3.71,
   "w": 0.9,
@@ -6797,8 +6810,8 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "Incrément, SCD2",
+  "slide": 64,
+  "text": "Rejeu, tests, CI",
   "x": 1.7999999999999998,
   "y": 3.71,
   "w": 2.55,
@@ -6806,80 +6819,44 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "17 min",
-  "x": 0.8999999999999999,
-  "y": 4.27,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
-  "text": "Rejeu",
-  "x": 1.7999999999999998,
-  "y": 4.27,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
-  "text": "32 min",
-  "x": 0.8999999999999999,
-  "y": 4.83,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
-  "text": "Tests, CI",
-  "x": 1.7999999999999998,
-  "y": 4.83,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
+  "slide": 64,
   "text": "10 min",
   "x": 0.8999999999999999,
-  "y": 5.390000000000001,
+  "y": 4.27,
   "w": 0.9,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "Pause",
   "x": 1.7999999999999998,
-  "y": 5.390000000000001,
+  "y": 4.27,
   "w": 2.55,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "40 min",
+  "slide": 64,
+  "text": "25 min",
   "x": 0.8999999999999999,
-  "y": 5.95,
+  "y": 4.83,
   "w": 0.9,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "Revue → fix",
+  "slide": 64,
+  "text": "Conflit : démo, reprise",
   "x": 1.7999999999999998,
-  "y": 5.95,
+  "y": 4.83,
   "w": 2.55,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "28 min",
+  "slide": 64,
+  "text": "40 min",
   "x": 4.75,
   "y": 3.15,
   "w": 0.9,
@@ -6887,8 +6864,8 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "Conflit",
+  "slide": 64,
+  "text": "Revue → correction",
   "x": 5.65,
   "y": 3.15,
   "w": 2.55,
@@ -6896,7 +6873,7 @@
   "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "10 min",
   "x": 4.75,
   "y": 3.71,
@@ -6905,7 +6882,7 @@
   "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "Pause",
   "x": 5.65,
   "y": 3.71,
@@ -6914,8 +6891,8 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "22 min",
+  "slide": 64,
+  "text": "50 min",
   "x": 4.75,
   "y": 4.27,
   "w": 0.9,
@@ -6923,8 +6900,8 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "Skills",
+  "slide": 64,
+  "text": "Passer à votre mission",
   "x": 5.65,
   "y": 4.27,
   "w": 2.55,
@@ -6932,125 +6909,89 @@
   "size": 14
  },
  {
-  "slide": 60,
-  "text": "14 min",
-  "x": 4.75,
-  "y": 4.83,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
-  "text": "Export",
-  "x": 5.65,
-  "y": 4.83,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
-  "text": "19 min",
-  "x": 4.75,
-  "y": 5.390000000000001,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
-  "text": "App, bilan",
-  "x": 5.65,
-  "y": 5.390000000000001,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 60,
+  "slide": 64,
   "text": "CE QUE VOUS PROUVEZ",
   "x": 8.8,
   "y": 3.3,
   "w": 3.5,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "✓",
   "x": 8.8,
   "y": 3.85,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "Lot 2 chargé, historique gardé",
+  "slide": 64,
+  "text": "Lot 2 chargé, historique gardé, rejeu stable",
   "x": 9.3,
   "y": 3.8,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "✓",
   "x": 8.8,
   "y": 4.8,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "Rejeu stable, CI verte (ETAPE_CI: tout)",
+  "slide": 64,
+  "text": "CI verte ; conflit reproduit à deux",
   "x": 9.3,
   "y": 4.75,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 60,
+  "slide": 64,
   "text": "✓",
   "x": 8.8,
   "y": 5.75,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 60,
-  "text": "Un conflit résolu, un Skill à vous",
+  "slide": 64,
+  "text": "1re PR de mission (mission.txt = M0x)",
   "x": 9.3,
   "y": 5.699999999999999,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "LES CINQ SÉANCES  ·  S5 · 240 MIN",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "Séance 5 · Livrer et répéter",
+  "slide": 65,
+  "text": "Séance 5 · Votre mission, puis Power BI",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -7058,125 +6999,107 @@
   "size": 30
  },
  {
-  "slide": 61,
-  "text": "15",
+  "slide": 65,
+  "text": "100",
   "x": 0.6,
   "y": 1.85,
-  "w": 0.7583125,
+  "w": 5.055416666666667,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "35",
-  "x": 1.3583124999999998,
-  "y": 1.85,
-  "w": 1.7693958333333333,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 61,
+  "slide": 65,
   "text": "10",
-  "x": 3.127708333333333,
+  "x": 5.6554166666666665,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "65",
-  "x": 3.6332499999999994,
+  "slide": 65,
+  "text": "70",
+  "x": 6.160958333333333,
   "y": 1.85,
-  "w": 3.286020833333333,
+  "w": 3.5387916666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "45",
-  "x": 6.919270833333332,
-  "y": 1.85,
-  "w": 2.2749375,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 61,
+  "slide": 65,
   "text": "10",
-  "x": 9.194208333333332,
+  "x": 9.69975,
   "y": 1.85,
   "w": 0.5055416666666666,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
+  "text": "30",
+  "x": 10.205291666666666,
+  "y": 1.85,
+  "w": 1.516625,
+  "h": 0.55,
+  "size": 14
+ },
+ {
+  "slide": 65,
   "text": "20",
-  "x": 9.699749999999998,
+  "x": 11.721916666666665,
   "y": 1.85,
   "w": 1.0110833333333331,
   "h": 0.55,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "40",
-  "x": 10.710833333333332,
-  "y": 1.85,
-  "w": 2.0221666666666662,
-  "h": 0.55,
-  "size": 13
- },
- {
-  "slide": 61,
+  "slide": 65,
   "text": "explication",
   "x": 0.8999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "explication + pratique",
-  "x": 2.3499999999999996,
+  "x": 2.4499999999999997,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "pratique",
-  "x": 4.55,
+  "x": 4.999999999999999,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "pause",
-  "x": 5.749999999999999,
+  "x": 6.35,
   "y": 2.5,
-  "w": 2,
-  "h": 0.32,
-  "size": 12
+  "w": 2.4,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "66 min d'explications · 154 min de pratique · 2 pauses",
-  "x": 8.2,
+  "slide": 65,
+  "text": "35 min d'explications · 185 min de pratique · 2 pauses",
+  "x": 7.1,
   "y": 2.5,
-  "w": 4.5329999999999995,
-  "h": 0.32,
-  "size": 12
+  "w": 5.632999999999999,
+  "h": 0.34,
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "15 min",
+  "slide": 65,
+  "text": "100 min",
   "x": 0.8999999999999999,
   "y": 3.15,
   "w": 0.9,
@@ -7184,8 +7107,8 @@
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "Épisode 7",
+  "slide": 65,
+  "text": "Mission : initial → app",
   "x": 1.7999999999999998,
   "y": 3.15,
   "w": 2.55,
@@ -7193,26 +7116,26 @@
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "35 min",
-  "x": 0.8999999999999999,
-  "y": 3.71,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
-  "text": "App locale",
-  "x": 1.7999999999999998,
-  "y": 3.71,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
+  "slide": 65,
   "text": "10 min",
+  "x": 0.8999999999999999,
+  "y": 3.71,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 65,
+  "text": "Pause",
+  "x": 1.7999999999999998,
+  "y": 3.71,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 65,
+  "text": "70 min",
   "x": 0.8999999999999999,
   "y": 4.27,
   "w": 0.9,
@@ -7220,8 +7143,8 @@
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "Pause",
+  "slide": 65,
+  "text": "Power BI (tronc commun)",
   "x": 1.7999999999999998,
   "y": 4.27,
   "w": 2.55,
@@ -7229,53 +7152,35 @@
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "65 min",
-  "x": 0.8999999999999999,
-  "y": 4.83,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
-  "text": "Power BI Desktop",
-  "x": 1.7999999999999998,
-  "y": 4.83,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
-  "text": "45 min",
-  "x": 4.75,
-  "y": 3.15,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
-  "text": "Visuels, reco",
-  "x": 5.65,
-  "y": 3.15,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
+  "slide": 65,
   "text": "10 min",
   "x": 4.75,
+  "y": 3.15,
+  "w": 0.9,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 65,
+  "text": "Pause",
+  "x": 5.65,
+  "y": 3.15,
+  "w": 2.55,
+  "h": 0.56,
+  "size": 14
+ },
+ {
+  "slide": 65,
+  "text": "30 min",
+  "x": 4.75,
   "y": 3.71,
   "w": 0.9,
   "h": 0.56,
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "Pause",
+  "slide": 65,
+  "text": "Lire les visuels",
   "x": 5.65,
   "y": 3.71,
   "w": 2.55,
@@ -7283,7 +7188,7 @@
   "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "20 min",
   "x": 4.75,
   "y": 4.27,
@@ -7292,8 +7197,8 @@
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "Finir, démo",
+  "slide": 65,
+  "text": "Répétition croisée",
   "x": 5.65,
   "y": 4.27,
   "w": 2.55,
@@ -7301,107 +7206,89 @@
   "size": 14
  },
  {
-  "slide": 61,
-  "text": "40 min",
-  "x": 4.75,
-  "y": 4.83,
-  "w": 0.9,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
-  "text": "Répéter à deux",
-  "x": 5.65,
-  "y": 4.83,
-  "w": 2.55,
-  "h": 0.56,
-  "size": 14
- },
- {
-  "slide": 61,
+  "slide": 65,
   "text": "CE QUE VOUS PROUVEZ",
   "x": 8.8,
   "y": 3.3,
   "w": 3.5,
   "h": 0.35,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "✓",
   "x": 8.8,
   "y": 3.85,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "App locale ouverte, chiffres = référence",
+  "slide": 65,
+  "text": "Mission : initial → app, PR relue",
   "x": 9.3,
   "y": 3.8,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "✓",
   "x": 8.8,
   "y": 4.8,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "Rapport Power BI actualisé",
+  "slide": 65,
+  "text": "Rapport Power BI actualisé (tronc commun)",
   "x": 9.3,
   "y": 4.75,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 61,
+  "slide": 65,
   "text": "✓",
   "x": 8.8,
   "y": 5.75,
   "w": 0.36,
   "h": 0.36,
-  "size": 12
+  "size": 14
  },
  {
-  "slide": 61,
-  "text": "Recommandation écrite, oral répété",
+  "slide": 65,
+  "text": "Démo de 6 min devant un autre binôme",
   "x": 9.3,
   "y": 5.699999999999999,
   "w": 3.2329999999999988,
   "h": 0.85,
-  "size": 15
+  "size": 16
  },
  {
-  "slide": 62,
+  "slide": 66,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 62,
+  "slide": 66,
   "text": "LES CINQ SÉANCES  ·  LE CATALOGUE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 62,
-  "text": "Fin de S3 : choisir votre mission",
+  "slide": 66,
+  "text": "Votre mission : de la fin de S3 à la soutenance",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -7409,7 +7296,7 @@
   "size": 30
  },
  {
-  "slide": 62,
+  "slide": 66,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -7418,116 +7305,143 @@
   "size": 15
  },
  {
-  "slide": 62,
-  "text": "Lire",
+  "slide": 66,
+  "text": "Fin S3",
   "x": 0.82,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 62,
-  "text": "au moins deux fiches du livret 04",
-  "x": 0.82,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 62,
+  "slide": 66,
+  "text": "choisir : deux fiches lues, choix noté dans JOURNAL.md",
+  "x": 0.82,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 66,
   "text": "2",
-  "x": 3.97825,
+  "x": 3.3466,
   "y": 2.4,
   "w": 0.46,
   "h": 0.46,
   "size": 15
  },
  {
-  "slide": 62,
-  "text": "Choisir",
-  "x": 3.97825,
+  "slide": 66,
+  "text": "Avant S4",
+  "x": 3.3466,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 62,
-  "text": "un métier que vous savez expliquer",
-  "x": 3.97825,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 62,
+  "slide": 66,
+  "text": "lire la fiche, calculer l'échantillon à la main",
+  "x": 3.3466,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 66,
   "text": "3",
-  "x": 7.136499999999999,
+  "x": 5.873199999999999,
   "y": 2.4,
   "w": 0.46,
   "h": 0.46,
   "size": 15
  },
  {
-  "slide": 62,
-  "text": "Noter",
-  "x": 7.136499999999999,
+  "slide": 66,
+  "text": "Fin S4",
+  "x": 5.873199999999999,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 62,
-  "text": "JOURNAL.md, rubrique Décision",
-  "x": 7.136499999999999,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 62,
+  "slide": 66,
+  "text": "50 min : passer à votre mission, 1re PR",
+  "x": 5.873199999999999,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 66,
   "text": "4",
-  "x": 10.29475,
+  "x": 8.399799999999999,
   "y": 2.4,
   "w": 0.46,
   "h": 0.46,
   "size": 15
  },
  {
-  "slide": 62,
-  "text": "Attendre",
-  "x": 10.29475,
+  "slide": 66,
+  "text": "S5",
+  "x": 8.399799999999999,
   "y": 3.03,
-  "w": 2.21825,
+  "w": 1.5865999999999998,
   "h": 0.9,
-  "size": 19
- },
- {
-  "slide": 62,
-  "text": "mission.txt = tronc-commun jusqu'à fin S4",
-  "x": 10.29475,
-  "y": 3.95,
-  "w": 2.21825,
-  "h": 1.45,
   "size": 17
  },
  {
-  "slide": 62,
+  "slide": 66,
+  "text": "100 min : initial → app, PR et revue croisée",
+  "x": 8.399799999999999,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 66,
+  "text": "5",
+  "x": 10.9264,
+  "y": 2.4,
+  "w": 0.46,
+  "h": 0.46,
+  "size": 15
+ },
+ {
+  "slide": 66,
+  "text": "Perso",
+  "x": 10.9264,
+  "y": 3.03,
+  "w": 1.5865999999999998,
+  "h": 0.9,
+  "size": 17
+ },
+ {
+  "slide": 66,
+  "text": "4 h : mission, variante, Power BI si Windows\n2 h : reco et oral",
+  "x": 10.9264,
+  "y": 3.95,
+  "w": 1.5865999999999998,
+  "h": 1.45,
+  "size": 15
+ },
+ {
+  "slide": 66,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 62,
-  "text": "Mêmes formes, mêmes gestes : seuls les mots du métier changent.",
+  "slide": 66,
+  "text": "Travail personnel ≈ 8 h = 2 h séance 0 + 4 h mission + 2 h finition et oral.",
   "x": 1.25,
   "y": 6.15,
   "w": 11.283,
@@ -7535,25 +7449,25 @@
   "size": 15
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "LES CINQ SÉANCES  ·  S5 · LIVRAISON",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "Épisode 7 : « Présentez-moi tout ça vendredi »",
   "x": 0.6,
   "y": 0.78,
@@ -7562,7 +7476,7 @@
   "size": 30
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -7571,7 +7485,7 @@
   "size": 15
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "« Voir avec mes filtres »",
   "x": 0.82,
   "y": 3.03,
@@ -7580,7 +7494,7 @@
   "size": 19
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "application locale",
   "x": 0.82,
   "y": 3.95,
@@ -7589,7 +7503,7 @@
   "size": 17
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "2",
   "x": 3.97825,
   "y": 2.4,
@@ -7598,7 +7512,7 @@
   "size": 15
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "« Pouvoir faire confiance »",
   "x": 3.97825,
   "y": 3.03,
@@ -7607,7 +7521,7 @@
   "size": 19
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "Power BI actualisé + contrôles",
   "x": 3.97825,
   "y": 3.95,
@@ -7616,7 +7530,7 @@
   "size": 17
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "3",
   "x": 7.136499999999999,
   "y": 2.4,
@@ -7625,7 +7539,7 @@
   "size": 15
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "« Que conseillez-vous ? »",
   "x": 7.136499999999999,
   "y": 3.03,
@@ -7634,8 +7548,8 @@
   "size": 19
  },
  {
-  "slide": 63,
-  "text": "recommandation chiffrée",
+  "slide": 67,
+  "text": "recommandation chiffrée (perso)",
   "x": 7.136499999999999,
   "y": 3.95,
   "w": 2.21825,
@@ -7643,7 +7557,7 @@
   "size": 17
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "4",
   "x": 10.29475,
   "y": 2.4,
@@ -7652,7 +7566,7 @@
   "size": 15
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "« Chacun répondra »",
   "x": 10.29475,
   "y": 3.03,
@@ -7661,7 +7575,7 @@
   "size": 19
  },
  {
-  "slide": 63,
+  "slide": 67,
   "text": "démo répétée à deux",
   "x": 10.29475,
   "y": 3.95,
@@ -7670,223 +7584,259 @@
   "size": 17
  },
  {
-  "slide": 64,
+  "slide": 68,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 64,
+  "slide": 68,
   "text": "LES CINQ SÉANCES  ·  S5 · APPLICATION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 64,
-  "text": "L'application locale : Vue direction",
+  "slide": 68,
+  "text": "Vue direction : cinq indicateurs",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.633,
+  "h": 0.6,
+  "size": 28
  },
  {
-  "slide": 64,
+  "slide": 68,
   "text": "CAPTURE RÉELLE · macOS",
-  "x": 7.155096660808437,
-  "y": 1.95,
-  "w": 3,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 64,
-  "text": "1",
-  "x": 7.155096660808437,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.532999999999998,
+  "y": 0.84,
+  "w": 3.2,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 64,
-  "text": "Cinq indicateurs en cartes.",
-  "x": 7.705096660808437,
-  "y": 2.65,
-  "w": 5.027903339191562,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 64,
-  "text": "2",
-  "x": 7.155096660808437,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 64,
-  "text": "Barres empilées par mois et zone.",
-  "x": 7.705096660808437,
-  "y": 3.77,
-  "w": 5.027903339191562,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 64,
-  "text": "3",
-  "x": 7.155096660808437,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 64,
-  "text": "Nord-Est apparaît en juillet.",
-  "x": 7.705096660808437,
-  "y": 4.890000000000001,
-  "w": 5.027903339191562,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 64,
-  "text": "Capture réelle, macOS · application de référence, après lots 1 et 2 · réussite : ventes nettes 91 444,460 TND = référence.",
+  "slide": 68,
+  "image": "docs/images/captures/app-vue-direction.png",
+  "crop": [
+   0,
+   0,
+   800,
+   212
+  ],
   "x": 0.6,
-  "y": 6.38,
+  "y": 1.5,
   "w": 12.133,
-  "h": 0.5,
-  "size": 13
+  "h": 3.215245,
+  "widthShare": 0.91
  },
  {
-  "slide": 65,
+  "slide": 68,
+  "text": "Capture réelle, macOS · application de référence, après lots 1 et 2 · haut de la Vue direction.",
+  "x": 0.6,
+  "y": 4.835245,
+  "w": 12.133,
+  "h": 0.42,
+  "size": 14
+ },
+ {
+  "slide": 68,
+  "text": "1",
+  "x": 0.6,
+  "y": 5.425244999999999,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 68,
+  "text": "Cinq indicateurs en cartes, en TND.",
+  "x": 1.12,
+  "y": 5.405245,
+  "w": 3.291,
+  "h": 1,
+  "size": 17
+ },
+ {
+  "slide": 68,
+  "text": "2",
+  "x": 4.760999999999999,
+  "y": 5.425244999999999,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 68,
+  "text": "Filtres : période, boutique, zone.",
+  "x": 5.280999999999999,
+  "y": 5.405245,
+  "w": 3.291,
+  "h": 1,
+  "size": 17
+ },
+ {
+  "slide": 68,
+  "text": "3",
+  "x": 8.921999999999999,
+  "y": 5.425244999999999,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 68,
+  "text": "Ventes nettes 91 444,460 TND = référence.",
+  "x": 9.441999999999998,
+  "y": 5.405245,
+  "w": 3.291,
+  "h": 1,
+  "size": 17
+ },
+ {
+  "slide": 69,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 65,
+  "slide": 69,
   "text": "LES CINQ SÉANCES  ·  S5 · APPLICATION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 65,
+  "slide": 69,
+  "text": "Vue direction : ventes nettes par mois et zone",
+  "x": 0.6,
+  "y": 0.74,
+  "w": 8.633,
+  "h": 0.6,
+  "size": 22
+ },
+ {
+  "slide": 69,
+  "text": "CAPTURE RÉELLE · macOS",
+  "x": 9.532999999999998,
+  "y": 0.84,
+  "w": 3.2,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 69,
+  "image": "docs/images/captures/app-vue-direction.png",
+  "crop": [
+   10,
+   222,
+   750,
+   550
+  ],
+  "x": 1.1277804878048774,
+  "y": 1.5,
+  "w": 11.077439024390245,
+  "h": 4.91,
+  "widthShare": 0.831
+ },
+ {
+  "slide": 69,
+  "text": "Capture réelle, macOS · application de référence, après lots 1 et 2 · réussite : ventes nettes 91 444,460 TND = référence.",
+  "x": 0.6,
+  "y": 6.53,
+  "w": 12.133,
+  "h": 0.42,
+  "size": 14
+ },
+ {
+  "slide": 70,
+  "text": "F",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 70,
+  "text": "LES CINQ SÉANCES  ·  S5 · APPLICATION",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 70,
   "text": "L'application locale : Qualité des données",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.633,
+  "h": 0.6,
+  "size": 24
  },
  {
-  "slide": 65,
+  "slide": 70,
   "text": "CAPTURE RÉELLE · macOS",
-  "x": 7.2286476868327405,
-  "y": 1.95,
-  "w": 3,
-  "h": 0.36,
-  "size": 11
- },
- {
-  "slide": 65,
-  "text": "1",
-  "x": 7.2286476868327405,
-  "y": 2.67,
-  "w": 0.4,
+  "x": 9.532999999999998,
+  "y": 0.84,
+  "w": 3.2,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 65,
-  "text": "Rejets par motif et par lot.",
-  "x": 7.77864768683274,
-  "y": 2.65,
-  "w": 4.954352313167258,
-  "h": 0.95,
-  "size": 17
+  "slide": 70,
+  "image": "docs/images/captures/app-qualite.png",
+  "crop": [
+   12,
+   172,
+   738,
+   502
+  ],
+  "x": 1.265499999999999,
+  "y": 1.5,
+  "w": 10.802000000000001,
+  "h": 4.91,
+  "widthShare": 0.81
  },
  {
-  "slide": 65,
-  "text": "2",
-  "x": 7.2286476868327405,
-  "y": 3.79,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 65,
-  "text": "Lot 1 : 8 · 6 · 5 · 7.",
-  "x": 7.77864768683274,
-  "y": 3.77,
-  "w": 4.954352313167258,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 65,
-  "text": "3",
-  "x": 7.2286476868327405,
-  "y": 4.91,
-  "w": 0.4,
-  "h": 0.4,
-  "size": 14
- },
- {
-  "slide": 65,
-  "text": "Lot 2 : 4 · 2 · 2 · 2.",
-  "x": 7.77864768683274,
-  "y": 4.890000000000001,
-  "w": 4.954352313167258,
-  "h": 0.95,
-  "size": 17
- },
- {
-  "slide": 65,
+  "slide": 70,
   "text": "Capture réelle, macOS · application de référence · réussite : rejets par motif = reference/README.md.",
   "x": 0.6,
-  "y": 6.38,
+  "y": 6.53,
   "w": 12.133,
-  "h": 0.5,
-  "size": 13
+  "h": 0.42,
+  "size": 14
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "LES CINQ SÉANCES  ·  S5 · POWER BI",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "Power BI Desktop : quatre gestes",
   "x": 0.6,
   "y": 0.78,
@@ -7895,7 +7845,7 @@
   "size": 30
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -7904,7 +7854,7 @@
   "size": 15
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "Importer",
   "x": 0.82,
   "y": 3.03,
@@ -7913,7 +7863,7 @@
   "size": 19
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "5 CSV exportés, types fixés",
   "x": 0.82,
   "y": 3.95,
@@ -7922,7 +7872,7 @@
   "size": 17
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "2",
   "x": 3.97825,
   "y": 2.4,
@@ -7931,7 +7881,7 @@
   "size": 15
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "Relier",
   "x": 3.97825,
   "y": 3.03,
@@ -7940,7 +7890,7 @@
   "size": 19
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "6 relations 1:* par *_key",
   "x": 3.97825,
   "y": 3.95,
@@ -7949,7 +7899,7 @@
   "size": 17
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "3",
   "x": 7.136499999999999,
   "y": 2.4,
@@ -7958,7 +7908,7 @@
   "size": 15
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "Mesurer",
   "x": 7.136499999999999,
   "y": 3.03,
@@ -7967,7 +7917,7 @@
   "size": 19
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "5 mesures DAX écrites par Codex",
   "x": 7.136499999999999,
   "y": 3.95,
@@ -7976,7 +7926,7 @@
   "size": 17
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "4",
   "x": 10.29475,
   "y": 2.4,
@@ -7985,7 +7935,7 @@
   "size": 15
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "Actualiser",
   "x": 10.29475,
   "y": 3.03,
@@ -7994,7 +7944,7 @@
   "size": 19
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "après le lot 2 :\n91 444,460 TND",
   "x": 10.29475,
   "y": 3.95,
@@ -8003,17 +7953,17 @@
   "size": 17
  },
  {
-  "slide": 66,
+  "slide": 71,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 66,
-  "text": "Pas de capture Power BI ici : elles seront prises sur un vrai poste Windows.",
+  "slide": 71,
+  "text": "En S5 : sur le tronc commun. Mission : si un poste Windows est libre, sinon l'app.",
   "x": 1.25,
   "y": 6.15,
   "w": 11.283,
@@ -8021,25 +7971,25 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "F",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 67,
-  "text": "LES CINQ SÉANCES  ·  S5 · DÉCISION",
+  "slide": 72,
+  "text": "LES CINQ SÉANCES  ·  PERSO · DÉCISION",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "La recommandation en cinq parties",
   "x": 0.6,
   "y": 0.78,
@@ -8048,7 +7998,7 @@
   "size": 30
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "1",
   "x": 0.82,
   "y": 2.4,
@@ -8057,7 +8007,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "Constat",
   "x": 0.82,
   "y": 3.03,
@@ -8066,7 +8016,7 @@
   "size": 17
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "un chiffre, son unité",
   "x": 0.82,
   "y": 3.95,
@@ -8075,7 +8025,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "2",
   "x": 3.3466,
   "y": 2.4,
@@ -8084,7 +8034,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "Cause",
   "x": 3.3466,
   "y": 3.03,
@@ -8093,7 +8043,7 @@
   "size": 17
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "plausible, vérifiée",
   "x": 3.3466,
   "y": 3.95,
@@ -8102,7 +8052,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "3",
   "x": 5.873199999999999,
   "y": 2.4,
@@ -8111,7 +8061,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "Action",
   "x": 5.873199999999999,
   "y": 3.03,
@@ -8120,7 +8070,7 @@
   "size": 17
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "précise, pour lundi",
   "x": 5.873199999999999,
   "y": 3.95,
@@ -8129,7 +8079,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "4",
   "x": 8.399799999999999,
   "y": 2.4,
@@ -8138,7 +8088,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "Limite",
   "x": 8.399799999999999,
   "y": 3.03,
@@ -8147,7 +8097,7 @@
   "size": 17
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "ce qu'on ne sait pas",
   "x": 8.399799999999999,
   "y": 3.95,
@@ -8156,7 +8106,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "5",
   "x": 10.9264,
   "y": 2.4,
@@ -8165,7 +8115,7 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "Donnée",
   "x": 10.9264,
   "y": 3.03,
@@ -8174,7 +8124,7 @@
   "size": 17
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "ce qui trancherait",
   "x": 10.9264,
   "y": 3.95,
@@ -8183,16 +8133,16 @@
   "size": 15
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 67,
+  "slide": 72,
   "text": "Exemple : Sud à 7,40 % de retours… à cause d'un seul coffret de 1 240,000 TND.",
   "x": 1.25,
   "y": 6.15,
@@ -8201,7 +8151,7 @@
   "size": 15
  },
  {
-  "slide": 68,
+  "slide": 73,
   "text": "G",
   "x": 0.75,
   "y": 1.55,
@@ -8210,7 +8160,7 @@
   "size": 44
  },
  {
-  "slide": 68,
+  "slide": 73,
   "text": "PARTIE G / I",
   "x": 2.25,
   "y": 1.6,
@@ -8219,7 +8169,7 @@
   "size": 14
  },
  {
-  "slide": 68,
+  "slide": 73,
   "text": "Le catalogue des dix missions",
   "x": 2.25,
   "y": 2.05,
@@ -8228,7 +8178,7 @@
   "size": 40
  },
  {
-  "slide": 68,
+  "slide": 73,
   "text": "Une par binôme · même méthode, résultats propres",
   "x": 2.25,
   "y": 3.55,
@@ -8237,35 +8187,35 @@
   "size": 22
  },
  {
-  "slide": 68,
-  "text": "68 / 80",
+  "slide": 73,
+  "text": "73 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 69,
+  "slide": 74,
   "text": "G",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 69,
+  "slide": 74,
   "text": "LE CATALOGUE  ·  CATALOGUE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 69,
-  "text": "Dix entreprises, dix questions de direction",
+  "slide": 74,
+  "text": "Dix entreprises · M01 à M05",
   "x": 0.6,
   "y": 0.78,
   "w": 10.6,
@@ -8273,32 +8223,66 @@
   "size": 30
  },
  {
-  "slide": 69,
+  "slide": 74,
   "table": "# | Entreprise fictive | Grain | La direction veut savoir…",
-  "rows": 10,
-  "rowH": 0.4454545454545455,
-  "size": 12.5
+  "rows": 5,
+  "rowH": 0.78,
+  "size": 17
  },
  {
-  "slide": 70,
+  "slide": 75,
   "text": "G",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 70,
+  "slide": 75,
   "text": "LE CATALOGUE  ·  CATALOGUE",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 70,
+  "slide": 75,
+  "text": "Dix entreprises · M06 à M10",
+  "x": 0.6,
+  "y": 0.78,
+  "w": 10.6,
+  "h": 0.85,
+  "size": 30
+ },
+ {
+  "slide": 75,
+  "table": "# | Entreprise fictive | Grain | La direction veut savoir…",
+  "rows": 5,
+  "rowH": 0.78,
+  "size": 17
+ },
+ {
+  "slide": 76,
+  "text": "G",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 76,
+  "text": "LE CATALOGUE  ·  CATALOGUE",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 76,
   "text": "Les règles communes",
   "x": 0.6,
   "y": 0.78,
@@ -8307,7 +8291,7 @@
   "size": 30
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "4",
   "x": 0.78,
   "y": 2.08,
@@ -8316,7 +8300,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "sources",
   "x": 1.42,
   "y": 2.06,
@@ -8325,7 +8309,7 @@
   "size": 18
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "CSV · Excel · JSON · SQLite opérationnelle",
   "x": 0.8,
   "y": 2.8,
@@ -8334,7 +8318,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "2",
   "x": 4.897666666666666,
   "y": 2.08,
@@ -8343,7 +8327,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "lots + échantillon",
   "x": 5.5376666666666665,
   "y": 2.06,
@@ -8352,7 +8336,7 @@
   "size": 18
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "initial, incrément ; ≤ 12 lignes à la main",
   "x": 4.917666666666666,
   "y": 2.8,
@@ -8361,7 +8345,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "1",
   "x": 9.015333333333333,
   "y": 2.08,
@@ -8370,7 +8354,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "dimension SCD2",
   "x": 9.655333333333333,
   "y": 2.06,
@@ -8379,7 +8363,7 @@
   "size": 18
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "changement daté du 15 juillet",
   "x": 9.035333333333332,
   "y": 2.8,
@@ -8388,7 +8372,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "0",
   "x": 0.78,
   "y": 4.215,
@@ -8397,7 +8381,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "source modifiée",
   "x": 1.42,
   "y": 4.195,
@@ -8406,7 +8390,7 @@
   "size": 18
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "rejets dans outputs/rejets.csv, avec motif",
   "x": 0.8,
   "y": 4.9350000000000005,
@@ -8415,7 +8399,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "3",
   "x": 4.897666666666666,
   "y": 4.215,
@@ -8424,7 +8408,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "écrans d'app",
   "x": 5.5376666666666665,
   "y": 4.195,
@@ -8433,7 +8417,7 @@
   "size": 18
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "vue direction · détail SCD2 · qualité",
   "x": 4.917666666666666,
   "y": 4.9350000000000005,
@@ -8442,7 +8426,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "1",
   "x": 9.015333333333333,
   "y": 4.215,
@@ -8451,7 +8435,7 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "règle à clarifier",
   "x": 9.655333333333333,
   "y": 4.195,
@@ -8460,7 +8444,7 @@
   "size": 18
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "tranchée par la direction, appliquée partout",
   "x": 9.035333333333332,
   "y": 4.9350000000000005,
@@ -8469,16 +8453,16 @@
   "size": 16
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 70,
+  "slide": 76,
   "text": "Millimes entiers · vérificateur = référence · PR relues · recommandation · Power BI.",
   "x": 1.25,
   "y": 6.15,
@@ -8487,7 +8471,7 @@
   "size": 15
  },
  {
-  "slide": 71,
+  "slide": 77,
   "text": "H",
   "x": 0.75,
   "y": 1.55,
@@ -8496,7 +8480,7 @@
   "size": 44
  },
  {
-  "slide": 71,
+  "slide": 77,
   "text": "PARTIE H / I",
   "x": 2.25,
   "y": 1.6,
@@ -8505,7 +8489,7 @@
   "size": 14
  },
  {
-  "slide": 71,
+  "slide": 77,
   "text": "Soutenance et critères annoncés",
   "x": 2.25,
   "y": 2.05,
@@ -8514,7 +8498,7 @@
   "size": 40
  },
  {
-  "slide": 71,
+  "slide": 77,
   "text": "Une démo à deux, des questions à chacun",
   "x": 2.25,
   "y": 3.55,
@@ -8523,124 +8507,244 @@
   "size": 22
  },
  {
-  "slide": 71,
-  "text": "71 / 80",
+  "slide": 77,
+  "text": "77 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "H",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "SOUTENANCE  ·  FORMAT",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "120 minutes à partager",
   "x": 0.6,
-  "y": 0.78,
-  "w": 10.6,
-  "h": 0.85,
-  "size": 30
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "SCHÉMA · pas une capture",
-  "x": 8.383333333333333,
-  "y": 1.95,
-  "w": 2.9,
-  "h": 0.36,
-  "size": 11
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
  },
  {
-  "slide": 72,
+  "slide": 78,
+  "image": "docs/images/diagrams/v7-soutenance.png",
+  "crop": [
+   0,
+   255,
+   2400,
+   905
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 3.286020833333333,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 78,
   "text": "1",
-  "x": 8.383333333333333,
-  "y": 2.67,
+  "x": 0.6,
+  "y": 5.056020833333333,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "10 accueil + 100 binômes + 10 délibération.",
-  "x": 8.933333333333334,
-  "y": 2.65,
-  "w": 3.799666666666666,
-  "h": 0.95,
+  "x": 1.12,
+  "y": 5.036020833333334,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "2",
-  "x": 8.383333333333333,
-  "y": 3.79,
+  "x": 4.760999999999999,
+  "y": 5.056020833333333,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "Durée par binôme = 100 / N.",
-  "x": 8.933333333333334,
-  "y": 3.77,
-  "w": 3.799666666666666,
-  "h": 0.95,
+  "x": 5.280999999999999,
+  "y": 5.036020833333334,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "3",
-  "x": 8.383333333333333,
-  "y": 4.91,
+  "x": 8.921999999999999,
+  "y": 5.056020833333333,
   "w": 0.4,
   "h": 0.4,
   "size": 14
  },
  {
-  "slide": 72,
+  "slide": 78,
   "text": "Préparez la version de 6 minutes.",
-  "x": 8.933333333333334,
-  "y": 4.890000000000001,
-  "w": 3.799666666666666,
-  "h": 0.95,
+  "x": 9.441999999999998,
+  "y": 5.036020833333334,
+  "w": 3.291,
+  "h": 1.05,
   "size": 17
  },
  {
-  "slide": 73,
+  "slide": 79,
   "text": "H",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 73,
+  "slide": 79,
+  "text": "SOUTENANCE  ·  FORMAT",
+  "x": 1.1,
+  "y": 0.3,
+  "w": 9,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 79,
+  "text": "Plus de binômes, moins de minutes",
+  "x": 0.6,
+  "y": 0.74,
+  "w": 8.383,
+  "h": 0.6,
+  "size": 28
+ },
+ {
+  "slide": 79,
+  "text": "SCHÉMA · pas une capture",
+  "x": 9.282999999999998,
+  "y": 0.84,
+  "w": 3.45,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 79,
+  "image": "docs/images/diagrams/v7-soutenance.png",
+  "crop": [
+   0,
+   905,
+   2400,
+   1530
+  ],
+  "x": 0.6,
+  "y": 1.5,
+  "w": 12.133,
+  "h": 3.1596354166666663,
+  "widthShare": 0.91
+ },
+ {
+  "slide": 79,
+  "text": "1",
+  "x": 0.6,
+  "y": 4.929635416666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 79,
+  "text": "N = 8 : 12,5 min par binôme.",
+  "x": 1.12,
+  "y": 4.909635416666666,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 79,
+  "text": "2",
+  "x": 4.760999999999999,
+  "y": 4.929635416666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 79,
+  "text": "N ≥ 11 : ≈ 9 min, impossible en un créneau.",
+  "x": 5.280999999999999,
+  "y": 4.909635416666666,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 79,
+  "text": "3",
+  "x": 8.921999999999999,
+  "y": 4.929635416666666,
+  "w": 0.4,
+  "h": 0.4,
+  "size": 14
+ },
+ {
+  "slide": 79,
+  "text": "Second créneau ou deux jurys : prévenir le professeur.",
+  "x": 9.441999999999998,
+  "y": 4.909635416666666,
+  "w": 3.291,
+  "h": 1.05,
+  "size": 17
+ },
+ {
+  "slide": 80,
+  "text": "H",
+  "x": 0.6,
+  "y": 0.3,
+  "w": 0.36,
+  "h": 0.36,
+  "size": 14
+ },
+ {
+  "slide": 80,
   "text": "SOUTENANCE  ·  DÉMO",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 73,
+  "slide": 80,
   "text": "Le script de démonstration : 6 minutes",
   "x": 0.6,
   "y": 0.78,
@@ -8649,23 +8753,23 @@
   "size": 30
  },
  {
-  "slide": 73,
+  "slide": 80,
   "table": "Minute | Qui | Ce que vous montrez",
   "rows": 6,
   "rowH": 0.5857142857142856,
   "size": 16
  },
  {
-  "slide": 73,
+  "slide": 80,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 73,
+  "slide": 80,
   "text": "Tout est ouvert avant votre tour · un chiffre, une preuve · on ne lit pas.",
   "x": 1.25,
   "y": 6.15,
@@ -8674,25 +8778,25 @@
   "size": 15
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "H",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "SOUTENANCE  ·  CRITÈRES PUBLICS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "Les critères annoncés",
   "x": 0.6,
   "y": 0.78,
@@ -8701,7 +8805,7 @@
   "size": 30
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "1",
   "x": 0.85,
   "y": 2.2800000000000002,
@@ -8710,7 +8814,7 @@
   "size": 17
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "Résultats de la mission",
   "x": 0.85,
   "y": 2.95,
@@ -8719,7 +8823,7 @@
   "size": 19
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "chiffres = référence",
   "x": 0.85,
   "y": 3.75,
@@ -8728,7 +8832,7 @@
   "size": 16
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "2",
   "x": 3.9582499999999996,
   "y": 2.2800000000000002,
@@ -8737,7 +8841,7 @@
   "size": 17
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "Entrepôt et historique",
   "x": 3.9582499999999996,
   "y": 2.95,
@@ -8746,7 +8850,7 @@
   "size": 19
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "étoile, SCD2, rejeu",
   "x": 3.9582499999999996,
   "y": 3.75,
@@ -8755,7 +8859,7 @@
   "size": 16
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "3",
   "x": 7.066499999999999,
   "y": 2.2800000000000002,
@@ -8764,7 +8868,7 @@
   "size": 17
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "Livraison lisible",
   "x": 7.066499999999999,
   "y": 2.95,
@@ -8773,7 +8877,7 @@
   "size": 19
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "app, Power BI, recommandation",
   "x": 7.066499999999999,
   "y": 3.75,
@@ -8782,7 +8886,7 @@
   "size": 16
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "4",
   "x": 10.174749999999998,
   "y": 2.2800000000000002,
@@ -8791,7 +8895,7 @@
   "size": 17
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "Collaboration Git",
   "x": 10.174749999999998,
   "y": 2.95,
@@ -8800,7 +8904,7 @@
   "size": 19
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "PR, revues, CI",
   "x": 10.174749999999998,
   "y": 3.75,
@@ -8809,16 +8913,16 @@
   "size": 16
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 74,
+  "slide": 81,
   "text": "S'y ajoutent les questions individuelles : chacun répond seul.",
   "x": 1.25,
   "y": 6.15,
@@ -8827,25 +8931,25 @@
   "size": 15
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "H",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "SOUTENANCE  ·  CRITÈRES PUBLICS",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Les questions individuelles",
   "x": 0.6,
   "y": 0.78,
@@ -8854,7 +8958,7 @@
   "size": 30
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "1",
   "x": 0.78,
   "y": 2.08,
@@ -8863,7 +8967,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Un indicateur",
   "x": 1.3199999999999998,
   "y": 2.06,
@@ -8872,7 +8976,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "ce qu'il mesure, son unité",
   "x": 0.8,
   "y": 2.62,
@@ -8881,7 +8985,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "2",
   "x": 4.897666666666666,
   "y": 2.08,
@@ -8890,7 +8994,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Prévoir",
   "x": 5.437666666666666,
   "y": 2.06,
@@ -8899,7 +9003,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "le résultat d'un filtre",
   "x": 4.917666666666666,
   "y": 2.62,
@@ -8908,7 +9012,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "3",
   "x": 9.015333333333333,
   "y": 2.08,
@@ -8917,7 +9021,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Suivre une ligne",
   "x": 9.555333333333333,
   "y": 2.06,
@@ -8926,7 +9030,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "de la source au graphique",
   "x": 9.035333333333332,
   "y": 2.62,
@@ -8935,7 +9039,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "4",
   "x": 0.78,
   "y": 3.7866666666666666,
@@ -8944,7 +9048,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Rejet et version",
   "x": 1.3199999999999998,
   "y": 3.7666666666666666,
@@ -8953,7 +9057,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "id_conflit ; NBE le 14 juillet",
   "x": 0.8,
   "y": 4.326666666666666,
@@ -8962,7 +9066,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "5",
   "x": 4.897666666666666,
   "y": 3.7866666666666666,
@@ -8971,7 +9075,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Revue",
   "x": 5.437666666666666,
   "y": 3.7666666666666666,
@@ -8980,7 +9084,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "un défaut et son commit",
   "x": 4.917666666666666,
   "y": 4.326666666666666,
@@ -8989,7 +9093,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "6",
   "x": 9.015333333333333,
   "y": 3.7866666666666666,
@@ -8998,7 +9102,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Rejeu",
   "x": 9.555333333333333,
   "y": 3.7666666666666666,
@@ -9007,7 +9111,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "relancer : rien ne change",
   "x": 9.035333333333332,
   "y": 4.326666666666666,
@@ -9016,7 +9120,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "7",
   "x": 0.78,
   "y": 5.493333333333332,
@@ -9025,7 +9129,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Contribution Git",
   "x": 1.3199999999999998,
   "y": 5.473333333333333,
@@ -9034,7 +9138,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "une PR écrite, une relue",
   "x": 0.8,
   "y": 6.033333333333332,
@@ -9043,7 +9147,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "8",
   "x": 4.897666666666666,
   "y": 5.493333333333332,
@@ -9052,7 +9156,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Recommandation",
   "x": 5.437666666666666,
   "y": 5.473333333333333,
@@ -9061,7 +9165,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "la défendre, avec sa limite",
   "x": 4.917666666666666,
   "y": 6.033333333333332,
@@ -9070,7 +9174,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "9",
   "x": 9.015333333333333,
   "y": 5.493333333333332,
@@ -9079,7 +9183,7 @@
   "size": 14
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "Variation",
   "x": 9.555333333333333,
   "y": 5.473333333333333,
@@ -9088,7 +9192,7 @@
   "size": 16
  },
  {
-  "slide": 75,
+  "slide": 82,
   "text": "avec Codex, puis contrôlée",
   "x": 9.035333333333332,
   "y": 6.033333333333332,
@@ -9097,7 +9201,7 @@
   "size": 14
  },
  {
-  "slide": 76,
+  "slide": 83,
   "text": "I",
   "x": 0.75,
   "y": 1.55,
@@ -9106,7 +9210,7 @@
   "size": 44
  },
  {
-  "slide": 76,
+  "slide": 83,
   "text": "PARTIE I / I",
   "x": 2.25,
   "y": 1.6,
@@ -9115,7 +9219,7 @@
   "size": 14
  },
  {
-  "slide": 76,
+  "slide": 83,
   "text": "Sources et licences",
   "x": 2.25,
   "y": 2.05,
@@ -9124,7 +9228,7 @@
   "size": 40
  },
  {
-  "slide": 76,
+  "slide": 83,
   "text": "Pages officielles vérifiées le 28/10/2026",
   "x": 2.25,
   "y": 3.55,
@@ -9133,34 +9237,34 @@
   "size": 22
  },
  {
-  "slide": 76,
-  "text": "76 / 80",
+  "slide": 83,
+  "text": "83 / 87",
   "x": 11.232999999999999,
-  "y": 7.05,
+  "y": 7.04,
   "w": 1.5,
-  "h": 0.25,
-  "size": 10
+  "h": 0.28,
+  "size": 12
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "I",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "SOURCES ET LICENCES  ·  SOURCES · VÉRIFIÉES LE 28/10/2026",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Codex et ChatGPT · OpenAI",
   "x": 0.6,
   "y": 0.78,
@@ -9169,205 +9273,214 @@
   "size": 30
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Pricing (offre Free)",
-  "x": 0.8,
-  "y": 1.9000000000000001,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 1.9100000000000001,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/pricing",
-  "x": 0.8,
-  "y": 2.27,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 0.85,
+  "y": 2.29,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Models (efforts, Luna)",
-  "x": 0.8,
-  "y": 2.82,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 2.86,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/models",
-  "x": 0.8,
-  "y": 3.19,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 0.85,
+  "y": 3.2399999999999998,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Desktop app for Windows",
-  "x": 0.8,
-  "y": 3.74,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 3.81,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/app/windows",
-  "x": 0.8,
-  "y": 4.11,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 0.85,
+  "y": 4.19,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "WSL",
-  "x": 0.8,
-  "y": 4.66,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 4.759999999999999,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/windows/wsl",
-  "x": 0.8,
-  "y": 5.03,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 0.85,
+  "y": 5.14,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Desktop app for Linux",
-  "x": 0.8,
-  "y": 5.58,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 5.71,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/linux/linux-app",
-  "x": 0.8,
-  "y": 5.95,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 0.85,
+  "y": 6.090000000000001,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Slash commands",
-  "x": 7.0665,
-  "y": 1.9000000000000001,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 1.9100000000000001,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/codex/reference/slash-commands",
-  "x": 7.0665,
-  "y": 2.27,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 7.116499999999999,
+  "y": 2.29,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "AGENTS.md",
-  "x": 7.0665,
-  "y": 2.82,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 2.86,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
-  "x": 7.0665,
-  "y": 3.19,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 7.116499999999999,
+  "y": 3.2399999999999998,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Build skills",
-  "x": 7.0665,
-  "y": 3.74,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 3.81,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/build-skills",
-  "x": 7.0665,
-  "y": 4.11,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 7.116499999999999,
+  "y": 4.19,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Subagents",
-  "x": 7.0665,
-  "y": 4.66,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 4.759999999999999,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
-  "x": 7.0665,
-  "y": 5.03,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 7.116499999999999,
+  "y": 5.14,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 77,
+  "slide": 84,
   "text": "Codex CLI (annexe facultative)",
-  "x": 7.0665,
-  "y": 5.58,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 5.71,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 77,
-  "text": "https://learn.chatgpt.com/docs/codex/cli",
-  "x": 7.0665,
-  "y": 5.95,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 84,
+  "text": "learn.chatgpt.com",
+  "x": 7.116499999999999,
+  "y": 6.090000000000001,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 84,
+  "text": "Adresses complètes dans les notes du présentateur et dans docs/setup/sources.json.",
+  "x": 0.6,
+  "y": 6.62,
+  "w": 12.133,
+  "h": 0.3,
+  "size": 14
+ },
+ {
+  "slide": 85,
   "text": "I",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "SOURCES ET LICENCES  ·  SOURCES · VÉRIFIÉES LE 28/10/2026",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "GitHub, Microsoft, Python, Ubuntu",
   "x": 0.6,
   "y": 0.78,
@@ -9376,205 +9489,214 @@
   "size": 30
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "GitHub’s plans",
-  "x": 0.8,
-  "y": 1.9000000000000001,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 1.9100000000000001,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://docs.github.com/en/get-started/learning-about-github/githubs-plans",
-  "x": 0.8,
-  "y": 2.27,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "docs.github.com",
+  "x": 0.85,
+  "y": 2.29,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "GitHub Actions billing",
-  "x": 0.8,
-  "y": 2.82,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 2.86,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://docs.github.com/en/billing/concepts/product-billing/github-actions",
-  "x": 0.8,
-  "y": 3.19,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "docs.github.com",
+  "x": 0.85,
+  "y": 3.2399999999999998,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "Creating a pull request",
-  "x": 0.8,
-  "y": 3.74,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 3.81,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request",
-  "x": 0.8,
-  "y": 4.11,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "docs.github.com",
+  "x": 0.85,
+  "y": 4.19,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "Reviewing proposed changes",
-  "x": 0.8,
-  "y": 4.66,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 4.759999999999999,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request",
-  "x": 0.8,
-  "y": 5.03,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "docs.github.com",
+  "x": 0.85,
+  "y": 5.14,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "Resolving a merge conflict",
-  "x": 0.8,
-  "y": 5.58,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 0.85,
+  "y": 5.71,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github",
-  "x": 0.8,
-  "y": 5.95,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "docs.github.com",
+  "x": 0.85,
+  "y": 6.090000000000001,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "gh auth login",
-  "x": 7.0665,
-  "y": 1.9000000000000001,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 1.9100000000000001,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://cli.github.com/manual/gh_auth_login",
-  "x": 7.0665,
-  "y": 2.27,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "cli.github.com",
+  "x": 7.116499999999999,
+  "y": 2.29,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "Install WSL (Microsoft)",
-  "x": 7.0665,
-  "y": 2.82,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 2.86,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://learn.microsoft.com/en-us/windows/wsl/install",
-  "x": 7.0665,
-  "y": 3.19,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "learn.microsoft.com",
+  "x": 7.116499999999999,
+  "y": 3.2399999999999998,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "Download Power BI Desktop",
-  "x": 7.0665,
-  "y": 3.74,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 3.81,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop",
-  "x": 7.0665,
-  "y": 4.11,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "learn.microsoft.com",
+  "x": 7.116499999999999,
+  "y": 4.19,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "venv (Python)",
-  "x": 7.0665,
-  "y": 4.66,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 4.759999999999999,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://docs.python.org/3/library/venv.html",
-  "x": 7.0665,
-  "y": 5.03,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "docs.python.org",
+  "x": 7.116499999999999,
+  "y": 5.14,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 78,
+  "slide": 85,
   "text": "Python on Ubuntu (Canonical)",
-  "x": 7.0665,
-  "y": 5.58,
-  "w": 5.466499999999999,
-  "h": 0.36,
-  "size": 15
+  "x": 7.116499999999999,
+  "y": 5.71,
+  "w": 5.366499999999999,
+  "h": 0.42,
+  "size": 18
  },
  {
-  "slide": 78,
-  "text": "https://ubuntu.com/developers/docs/howto/python-setup/",
-  "x": 7.0665,
-  "y": 5.95,
-  "w": 5.466499999999999,
-  "h": 0.37,
-  "size": 10.5
+  "slide": 85,
+  "text": "ubuntu.com",
+  "x": 7.116499999999999,
+  "y": 6.090000000000001,
+  "w": 5.366499999999999,
+  "h": 0.35,
+  "size": 14
  },
  {
-  "slide": 79,
+  "slide": 85,
+  "text": "Adresses complètes dans les notes du présentateur et dans docs/setup/sources.json.",
+  "x": 0.6,
+  "y": 6.62,
+  "w": 12.133,
+  "h": 0.3,
+  "size": 14
+ },
+ {
+  "slide": 86,
   "text": "I",
   "x": 0.6,
   "y": 0.3,
   "w": 0.36,
   "h": 0.36,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "SOURCES ET LICENCES  ·  LICENCES",
   "x": 1.1,
   "y": 0.3,
-  "w": 9.2,
+  "w": 9,
   "h": 0.36,
-  "size": 11
+  "size": 14
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Licences et provenance",
   "x": 0.6,
   "y": 0.78,
@@ -9583,7 +9705,7 @@
   "size": 30
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "1",
   "x": 0.85,
   "y": 2.2800000000000002,
@@ -9592,7 +9714,7 @@
   "size": 17
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Polices",
   "x": 0.85,
   "y": 2.95,
@@ -9601,7 +9723,7 @@
   "size": 22
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Inter et Plus Jakarta Sans : SIL OFL 1.1 (schémas). Arial et Courier New ici.",
   "x": 0.85,
   "y": 3.75,
@@ -9610,7 +9732,7 @@
   "size": 18
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "2",
   "x": 4.994333333333333,
   "y": 2.2800000000000002,
@@ -9619,7 +9741,7 @@
   "size": 17
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Logos",
   "x": 4.994333333333333,
   "y": 2.95,
@@ -9628,7 +9750,7 @@
   "size": 22
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Leaders et Solen Digital tels que fournis, proportions gardées.",
   "x": 4.994333333333333,
   "y": 3.75,
@@ -9637,7 +9759,7 @@
   "size": 18
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "3",
   "x": 9.138666666666666,
   "y": 2.2800000000000002,
@@ -9646,7 +9768,7 @@
   "size": 17
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Visuels",
   "x": 9.138666666666666,
   "y": 2.95,
@@ -9655,7 +9777,7 @@
   "size": 22
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Schémas originaux · 2 captures réelles macOS · aucune interface simulée.",
   "x": 9.138666666666666,
   "y": 3.75,
@@ -9664,16 +9786,16 @@
   "size": 18
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "i",
   "x": 0.76,
   "y": 6.27,
   "w": 0.32,
   "h": 0.32,
-  "size": 13
+  "size": 14
  },
  {
-  "slide": 79,
+  "slide": 86,
   "text": "Données 100 % synthétiques · entreprises et personnes fictives · registre des captures : docs/images/captures/REGISTRE.json.",
   "x": 1.25,
   "y": 6.15,
@@ -9682,7 +9804,7 @@
   "size": 15
  },
  {
-  "slide": 80,
+  "slide": 87,
   "text": "Lundi, 9 h : votre première mission commence",
   "x": 0.75,
   "y": 1.95,
@@ -9691,7 +9813,7 @@
   "size": 38
  },
  {
-  "slide": 80,
+  "slide": 87,
   "text": "1",
   "x": 0.8,
   "y": 3.55,
@@ -9700,8 +9822,8 @@
   "size": 18
  },
  {
-  "slide": 80,
-  "text": "Lire le livret 00, puis 01 selon votre poste.",
+  "slide": 87,
+  "text": "Séance 0 (≈ 2 h, chez vous) : livret 00, puis 01 parties A–C.",
   "x": 1.55,
   "y": 3.55,
   "w": 10.5,
@@ -9709,7 +9831,7 @@
   "size": 22
  },
  {
-  "slide": 80,
+  "slide": 87,
   "text": "2",
   "x": 0.8,
   "y": 4.3999999999999995,
@@ -9718,8 +9840,8 @@
   "size": 18
  },
  {
-  "slide": 80,
-  "text": "Créer deux comptes : GitHub et ChatGPT (Free).",
+  "slide": 87,
+  "text": "Installer Ubuntu, Python, Git et l'app Codex ; créer vos comptes GitHub et ChatGPT (Free).",
   "x": 1.55,
   "y": 4.3999999999999995,
   "w": 10.5,
@@ -9727,7 +9849,7 @@
   "size": 22
  },
  {
-  "slide": 80,
+  "slide": 87,
   "text": "3",
   "x": 0.8,
   "y": 5.25,
@@ -9736,7 +9858,7 @@
   "size": 18
  },
  {
-  "slide": 80,
+  "slide": 87,
   "text": "Venir avec une question : « où passe la marge ? »",
   "x": 1.55,
   "y": 5.25,
@@ -9745,7 +9867,7 @@
   "size": 22
  },
  {
-  "slide": 80,
+  "slide": 87,
   "text": "Codex écrit le code. Vous décidez, vous contrôlez, vous expliquez.",
   "x": 0.8,
   "y": 6.45,

@@ -10,7 +10,7 @@ Règle d'or : **aucune ligne de code à la main.** Codex écrit Python, SQL, DAX
 
 ## Commencer : A → B → C
 
-1. **A — Lire et installer.** Ouvrir [00_lire_moi.pdf](pdf/00_lire_moi.pdf) (8 pages), puis [01_demarrer.pdf](pdf/01_demarrer.pdf) : Windows avec WSL2 Ubuntu, ou Ubuntu ; Python ; l'application Codex avec un compte Free ; deux comptes GitHub ; le dépôt du binôme créé à partir de [modele-binome/](modele-binome/).
+1. **A — Lire et installer, chez vous, avant la séance 1 (séance 0, ≈ 2 h).** Ouvrir [00_lire_moi.pdf](pdf/00_lire_moi.pdf) (8 pages), puis [01_demarrer.pdf](pdf/01_demarrer.pdf), parties A à C : Windows avec WSL2 Ubuntu, ou Ubuntu ; Python, venv, Git, `sqlite3` ; l'application Codex connectée avec un compte Free ; un compte GitHub chacun. Le professeur envoie le livret 01 une semaine avant la séance 1 et répond aux blocages par message. Le dépôt du binôme est créé à partir de [modele-binome/](modele-binome/) **en séance 1**, à deux.
 2. **B — Tronc commun (séances 1 à 4).** Suivre [02_tronc_commun.pdf](pdf/02_tronc_commun.pdf) sur la mission d'entraînement *Solen Commerce 360*. Garder [03_diriger_codex_et_git.pdf](pdf/03_diriger_codex_et_git.pdf) et [06_aide_memoire.pdf](pdf/06_aide_memoire.pdf) ouverts.
 3. **C — Votre mission du catalogue (fin de séance 3 → soutenance).** Choisir une des dix missions dans [04_catalogue_missions.pdf](pdf/04_catalogue_missions.pdf) et son guide dans [pdf/missions/](pdf/missions/). Livrer et préparer la soutenance avec [05_livrer_soutenir.pdf](pdf/05_livrer_soutenir.pdf).
 
@@ -22,15 +22,20 @@ Pour récupérer le cours : bouton **Code → Download ZIP**, ou `git clone http
 
 | Séance | Épisode Solen | Preuve visible à la fin |
 |---|---|---|
-| S1 · 4 h | La demande de la direction, le cadrage, les outils | Dépôt du binôme créé, partenaire invité, première pull request relue et fusionnée ; échantillon calculé à la main |
+| Séance 0 · ≈ 2 h, chez vous | Avant de commencer : installer et lire | Poste prêt (Ubuntu ou WSL2, Python, Git, Codex Free), compte GitHub, livret 00 lu |
+| S1 · 4 h | Vérification des postes (30 min), GitHub à deux, la demande de la direction, le cadrage | Dépôt du binôme créé et protégé, partenaire invité ; PR n°1 (A auteur, livret 01) et PR n°2 (B auteur) relues et fusionnées ; échantillon calculé à la main |
 | S2 · 4 h | Un premier résultat rassurant… et faux | Sources lues avec pandas ; lignes acceptées et rejetées = référence ; correction après revue |
-| S3 · 4 h | La base opérationnelle des retours et l'étoile | Entrepôt en étoile chargé ; faits reliés aux dimensions ; choix de la mission du catalogue |
-| S4 · 4 h | Le besoin change : nouveau lot, une boutique change de zone | Incrément, historique SCD2 préservé, rejeu sans doublon, tests et CI verts, conflit résolu |
-| S5 · 4 h | Livrer | Application locale et rapport Power BI actualisé ; recommandation ; répétition |
-| Perso · ≈ 8 h | La mission du catalogue | Dépôt du binôme complet avec les preuves individuelles |
+| S3 · 4 h | La base opérationnelle des retours et l'étoile | Entrepôt en étoile chargé ; faits reliés aux dimensions ; choix de la mission du catalogue (fiche lue et échantillon calculé avant S4) |
+| S4 · 4 h | Le besoin change : nouveau lot, une boutique change de zone ; puis « Passer à votre mission » (50 dernières minutes) | Incrément, historique SCD2 préservé, rejeu sans doublon, tests et CI verts, conflit reproduit et résolu ; première PR de la mission |
+| S5 · 4 h | Votre mission (première moitié), puis livrer (seconde moitié) | Mission du catalogue de `initial` à l'application, PR relue ; rapport Power BI du tronc commun actualisé ; démonstration de 6 min répétée devant un autre binôme |
+| Perso · ≈ 6 h après S5 | La mission du catalogue : 4 h (finir la mission et sa variante, Power BI de la mission si un poste Windows est disponible) + 2 h (finition, recommandation, préparation orale) | Dépôt du binôme complet avec les preuves individuelles ; `notes/recommandation.md` |
 | Soutenance · 2 h | Démonstration et questions individuelles | Compréhension métier, maîtrise du workflow, justification des résultats |
 
-Chaque séance alterne environ 30 % d'explications et 70 % de pratique hors pauses. Les durées sont des estimations de conception, à confirmer par un essai humain.
+Travail personnel ≈ 8 h au total : 2 h de séance 0 + 4 h de mission + 2 h de finition. Chaque séance compte au moins 70 % de pratique hors pauses (de 58 min d'explications en S1 à 35 min en S5, où l'on pratique surtout sur sa mission). Les durées sont des estimations de conception, à confirmer par un essai humain.
+
+### Ce qui a été vérifié, et ce qui ne l'a pas été
+
+**Vérifié (28 octobre 2026, sur macOS) :** les 18 PDF (sept livrets, dix guides de mission, la présentation de 87 diapositives) sont construits, ainsi que le ZIP étudiant ; les onze chaînes de preuve (tronc commun et M01 à M10) passent `verifier --etape tout --strict` sans échec ; un premier essai complet « comme un binôme débutant », livrets suivis à la lettre, a atteint **tous les nombres de référence** du tronc commun et d'une mission du catalogue. **Pas encore vérifié :** Windows avec WSL2, un vrai compte ChatGPT Free, Power BI Desktop, la CI sur GitHub et les captures des gestes à l'écran ; ils seront essayés lors d'un prévol sur un poste Windows, pas encore réalisé. Aucune séance n'a été chronométrée avec des étudiants.
 
 ## Le dépôt, dossier par dossier
 

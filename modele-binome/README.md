@@ -30,12 +30,14 @@ Les explications détaillées sont dans les livrets du **dépôt du cours**
 | `tronc-commun/`, `catalogue/` | données sources et cahiers des charges | personne |
 | `controles/` | vérificateur et tests fournis | personne |
 | `solen/` | le pipeline Python | Codex, à votre demande |
-| `outputs/` | entrepôt, rejets, exports, app (recréés, non versionnés) | le pipeline |
-| `powerbi/` | guide Power BI et mesures DAX | vous (rapport), Codex (DAX) |
+| `outputs/` | entrepôt, rejets, exports, app de la mission courante (recréés, non versionnés) | le pipeline |
+| `livraison/` | exports CSV du tronc commun, commités avant de passer à la mission (versionnés) | vous |
+| `powerbi/` | guide Power BI, `mesures.dax` (tronc commun), `mesures_Mxx.dax` (votre mission) | vous (rapport), Codex (DAX) |
 | `notes/JOURNAL.md` | une entrée par PR | vous |
+| `notes/recommandation.md` | la recommandation à la direction (livret 05, partie 4) | vous |
 | `AGENTS.md`, `.agents/skills/` | consignes et méthodes pour Codex | vous, avec soin |
 
-## Parcours A → B → C
+## Parcours A → B → C → D
 
 ### A. Créer le dépôt et le cloner (séance 1, 30 min)
 
@@ -57,7 +59,7 @@ Une seule personne, **A**, crée le dépôt ; **B** le rejoint.
 
    Adaptez `~/cours-bi` au dossier où vous avez cloné le cours.
 3. **A**, sur GitHub : **Settings → Collaborators → Add people**, invite le compte de B.
-   Puis protège `main` comme indiqué dans `03_diriger_codex_et_git.pdf` (une PR et une
+   Puis protège `main` comme indiqué dans `01_demarrer.pdf` (partie GitHub : une PR et une
    approbation avant fusion).
 4. **B** accepte l'invitation (mail ou notification GitHub), puis clone le dépôt
    avec la même commande `git clone … solen-bi` : le dossier local s'appelle `~/solen-bi` chez les deux.
@@ -115,6 +117,52 @@ Les rôles **alternent à chaque PR** : l'auteur d'aujourd'hui relit demain.
 
 Un cycle réussi se voit : une PR fusionnée, une revue écrite, une CI verte, une
 entrée de journal avec sa preuve.
+
+Ordre des contrôles, un cran vert par PR : `rejets` → `initial` → `increment` →
+`rejeu` → `export` → `app` → `tout --strict`. `--etape rejets` ne juge que le CSV
+de faits du lot 1. Le rejeu se prouve dans cet ordre exact :
+
+```bash
+python -m solen increment
+python -m controles.verifier --mission $(cat mission.txt) --etape increment   # enregistre l'empreinte
+python -m solen increment
+python -m controles.verifier --mission $(cat mission.txt) --etape rejeu
+```
+
+### D. Passer à votre mission (fin de séance 4)
+
+Une seule PR, à deux. Exemple pour `M03` : remplacez par votre code. On garde le
+code du tronc commun et on le **généralise** ; on ne repart pas de zéro.
+
+0. **Sauvegarder la livraison du tronc commun** : exporter après le lot 1 et après
+   le lot 2, copier dans `livraison/tronc-commun/export-lot1/` et `export-lot2/`,
+   committer. `livraison/` est versionné ; Power BI la lit en séance 5.
+1. `git switch main && git pull`, puis la branche `mission-M03`.
+2. Vider `outputs/` (le fichier caché `.gitkeep` reste) : `outputs/` appartient à
+   la mission courante, `python -m solen initial` le reconstruit.
+3. `mission.txt` ← `M03`.
+4. Demander à Codex de **généraliser** `solen/` (lire `mission.txt`,
+   `catalogue/M03/reference/contrat_entrepot.json`, le cahier) ; les tests de
+   `tests/` qui lisent `mission.txt` passent ou sont adaptés.
+5. Contrôler dans l'ordre ci-dessus, en commençant par `--etape rejets` ;
+   `ETAPE_CI` revient à `aucune` dans la même PR, puis avance avec vous.
+
+```bash
+git switch main && git pull
+git switch -c mission-M03
+python -m solen initial && python -m solen export
+mkdir -p livraison/tronc-commun/export-lot1
+cp outputs/export/* livraison/tronc-commun/export-lot1/
+python -m solen increment && python -m solen export
+mkdir -p livraison/tronc-commun/export-lot2
+cp outputs/export/* livraison/tronc-commun/export-lot2/
+git add livraison && git commit -m "Livraison du tronc commun (lots 1 et 2)"
+rm -rf outputs/*
+echo "M03" > mission.txt
+```
+
+Détail, demande à Codex et pièges : livret `04_catalogue_missions.pdf`, « Passer à
+votre mission », et le guide de votre mission (« Avant l'étape A »).
 
 ## Ce qu'on ne fait pas
 

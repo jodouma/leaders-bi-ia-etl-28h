@@ -25,13 +25,15 @@ permissions:
 env:
   # Jusqu'où le pipeline est construit. Valeurs possibles, dans l'ordre :
   #   aucune     → séance 1 : rien n'est encore construit, on vérifie seulement l'installation
-  #   rejets     → séance 2 : le nettoyage du lot 1 existe. Règle simple : la CI lance
-  #                `python -m solen initial` (même si l'entrepôt n'est pas encore écrit),
-  #                puis contrôle SEULEMENT outputs/rejets.csv (`verifier --etape rejets`).
+  #   rejets     → séance 2 : le nettoyage du CSV de faits du lot 1 existe. Règle simple : la CI
+  #                lance `python -m solen initial` (même si l'entrepôt n'est pas encore écrit),
+  #                puis contrôle SEULEMENT les rejets de ce CSV dans outputs/rejets.csv
+  #                (`verifier --etape rejets`) ; ceux de la base SQLite viennent avec « initial ».
   #                Aucune commande `nettoyer` séparée n'est demandée à Codex.
-  #   initial    → le chargement du lot 1 existe (rejets + entrepôt)
+  #   initial    → le chargement du lot 1 existe (rejets de toutes les sources + entrepôt)
   #   increment  → le lot 2 s'ajoute
-  #   rejeu      → relancer le lot 2 n'ajoute rien
+  #   rejeu      → relancer le lot 2 ne change rien : la CI contrôle l'incrément (ce qui
+  #                enregistre l'empreinte de l'entrepôt), relance le lot 2, puis compare
   #   export     → les CSV et le manifeste sont produits
   #   tout       → tout le parcours + les tests pytest (objectif de la séance 4)
   # Pour avancer, demandez à Codex : « passe ETAPE_CI à <valeur> dans controles.yml ».
@@ -48,11 +50,11 @@ jobs:
     steps:
       # 1. Récupérer une copie du dépôt (la branche de la PR) sur la machine.
       - name: Récupérer le dépôt
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 2. Installer Python 3.12, comme une installation neuve.
       - name: Installer Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -83,23 +85,33 @@ jobs:
         if: contains(fromJSON('["increment","rejeu","export","tout"]'), env.ETAPE_CI)
         run: python -m solen increment
 
-      # 7. Rejeu : on relance exactement le même lot 2. Il ne doit rien ajouter.
-      - name: Rejeu du lot 2 (ne doit rien ajouter)
+      # 7. Contrôle de l'incrément : compare le lot 2 à la référence et enregistre
+      #    l'empreinte de l'entrepôt (outputs/verification/), que le rejeu comparera.
+      - name: Contrôler l'incrément et enregistrer l'empreinte
         if: contains(fromJSON('["rejeu","export","tout"]'), env.ETAPE_CI)
-        run: python -m solen increment
+        run: python -m controles.verifier --etape increment
 
-      # 8. Export : écrit outputs/export/<table>.csv et manifest.json.
+      # 8. Rejeu : on relance exactement le même lot 2, puis on compare à l'empreinte :
+      #    aucune ligne ajoutée, aucune ligne modifiée.
+      - name: Rejeu du lot 2 (ne doit rien changer)
+        if: contains(fromJSON('["rejeu","export","tout"]'), env.ETAPE_CI)
+        run: |
+          python -m solen increment
+          python -m controles.verifier --etape rejeu
+
+      # 9. Export : écrit outputs/export/<table>.csv et manifest.json.
       - name: Export CSV et manifeste
         if: contains(fromJSON('["export","tout"]'), env.ETAPE_CI)
         run: python -m solen export
 
-      # 9. Vérificateur fourni : compare vos sorties aux valeurs de référence.
-      #    S'il échoue, corrigez le code, jamais le vérificateur ni la référence.
+      # 10. Vérificateur fourni : compare vos sorties aux valeurs de référence
+      #     (la mission est lue dans mission.txt). S'il échoue, corrigez le code,
+      #     jamais le vérificateur ni la référence.
       - name: Vérifier les résultats
         if: env.ETAPE_CI != 'aucune'
-        run: python -m controles.verifier --mission "$(cat mission.txt)" --etape "$ETAPE_CI"
+        run: python -m controles.verifier --etape "$ETAPE_CI"
 
-      # 10. Tests pytest : ceux fournis dans controles/ et ceux que Codex a écrits.
+      # 11. Tests pytest : ceux fournis dans controles/ et ceux que Codex a écrits.
       - name: Tests pytest
         if: env.ETAPE_CI == 'tout'
         run: pytest -q

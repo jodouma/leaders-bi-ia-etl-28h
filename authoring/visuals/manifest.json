@@ -31,7 +31,7 @@
   },
   "contact_sheet": {
     "png": "docs/images/diagrams/v7-contact-sheet.png",
-    "sha256": "0b8dedd0424a3b381b9436c8cd4d740f981257077a8d44df92249860c7667feb"
+    "sha256": "5f6b2b18e4c4bd3a7d0ccbeac1be544023bacd32406e4cb576589744d4dad2c6"
   },
   "license": "Schémas originaux ; aucune interface simulée, aucune capture, aucun logo tiers. Polices SIL OFL 1.1, glyphes en contours dans les SVG.",
   "assets": [
@@ -346,8 +346,8 @@
       ],
       "text_min_px": 26,
       "sha256": {
-        "svg": "83b78699cb6abb81358a72116f67f25d62af80c7f6bd3f570b38ce20bfa594c7",
-        "png": "00c1dec3b12ddce66689f9c28e65da531d6613ede7731e9e4456a33b424c70e5"
+        "svg": "dfff5a7bb5740d99ff8717b7f0ab338ee616b1ee3cf0ca18f7eae8c9212e7b8a",
+        "png": "2bf57a7ddb8ca8a37f9e70ff6013af4cef4db29a96c2ab1b93d9e183deac1478"
       }
     },
     {

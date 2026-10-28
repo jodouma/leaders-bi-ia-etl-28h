@@ -20,17 +20,21 @@ Modèle, effort, vitesse, tokens, contexte et quota sont six choses différentes
 
 ## C — Installer : Windows avec WSL2, ou Ubuntu
 
+L'installation se fait **chez vous, avant la séance 1** : c'est la séance 0 (≈ 2 h), avec le livret 01, parties A à C. La séance 1 commence par 30 minutes de vérification des postes ; le dépôt du binôme est ensuite créé à deux, en séance.
+
 Sous Windows, l'application ChatGPT reste une fenêtre Windows ; l'agent Codex, Python et Git travaillent dans Ubuntu WSL2 ; Power BI Desktop reste sur Windows. Sous Ubuntu natif, tout se fait dans Ubuntu sauf Power BI, sur un poste Windows de la salle ou du binôme.
 
 ![Qui fait quoi et sur quel système](images/diagrams/v7-postes-wsl.png)
 
 ## D — Travailler à deux avec Git et GitHub
 
-Deux copies locales, une copie partagée sur GitHub. Les fichiers ne se synchronisent pas tout seuls : commit, push, pull, pull request.
+Deux copies locales, une copie partagée sur GitHub. Les fichiers ne se synchronisent pas tout seuls : commit, push, pull, pull request. La première pull request du binôme (A auteur) est celle du livret 01 ; la deuxième, dès la séance 1, a B pour auteur.
 
 ![Trois emplacements pour un même dépôt](images/diagrams/v7-trois-emplacements.png)
 
 ![Le cycle d'une pull request](images/diagrams/v7-cycle-pr.png)
+
+Deux choses portent le même nom de « workflow ». Le **workflow de travail** est la suite de vos gestes : branche → pull request → revue → merge. Le **workflow GitHub Actions** est le fichier `.github/workflows/controles.yml`, que GitHub exécute tout seul à chaque pull request sur une machine neuve (onglet Actions).
 
 ## E — Des quatre sources à l'entrepôt
 
@@ -63,6 +67,8 @@ Un chiffre plausible n'est pas un chiffre juste : seul un contrôle les distingu
 *Capture réelle de l'application de référence (navigateur intégré, macOS, 28 octobre 2026). Les valeurs affichées sont les valeurs de référence après le lot 2. Le registre de provenance des captures est dans [images/captures/REGISTRE.json](images/captures/REGISTRE.json).*
 
 ## H — Le calendrier et la soutenance
+
+Séance 0 chez vous (≈ 2 h), cinq séances de 4 h, puis la soutenance. Votre mission du catalogue, choisie en fin de séance 3, commence en séance : les 50 dernières minutes de la séance 4 servent à passer à votre mission, la première moitié de la séance 5 la mène jusqu'à l'application. Le travail personnel (≈ 8 h) se répartit en 2 h de séance 0, 4 h de mission et 2 h de finition, recommandation et préparation orale.
 
 ![Cinq séances, une mission, une soutenance](images/diagrams/v7-seances.png)
 

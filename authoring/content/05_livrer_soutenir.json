@@ -31,7 +31,7 @@
  "visual_edition": "V7 · SOLEN BI · 22 h",
  "source_verification_date": "2026-10-28",
  "source_catalog": "../../docs/setup/sources.json",
- "verification_scope": "Chiffres recoupés avec reference/attendu_lot1.json, attendu_lot2.json et un entrepôt de référence ; application de référence ouverte dans un navigateur (macOS). Power BI Desktop non rejoué sur Windows pour cette édition : étapes issues de la documentation Microsoft et de l’édition précédente. Captures référencées : prévues, à produire.",
+ "verification_scope": "Chiffres recoupés avec reference/attendu_lot1.json, attendu_lot2.json et un entrepôt de référence ; application de référence ouverte dans un navigateur (macOS). Power BI Desktop non rejoué sur Windows pour cette édition : étapes issues de la documentation Microsoft. Captures Power BI : à produire au prévol Windows.",
  "planned_captures": [
   "app-vue-direction.png",
   "app-qualite.png",
@@ -64,43 +64,43 @@
       ],
       [
        "1. Montrer le résultat dans l’application locale",
-       "`outputs/app/index.html` et un chiffre filtré contrôlé",
+       "L’application de votre mission, sa demande à Codex, un chiffre filtré contrôlé",
        "5"
       ],
       [
        "2. Power BI Desktop, sur Windows",
-       "Un rapport à 5 tables, 6 relations, 5 mesures, actualisé après le lot 2",
-       "10"
+       "La livraison du tronc commun : 5 tables, 6 relations, 5 mesures, actualisée au lot 2",
+       "11"
       ],
       [
        "3. Lire les visualisations",
        "Unités, dénominateurs, limites ; l’enquête sur juin",
-       "17"
+       "18"
       ],
       [
        "4. La recommandation à la direction",
        "Une demi-page : constat → cause → recommandation → limite → donnée",
-       "20"
+       "21"
       ],
       [
        "5. Finir la mission du catalogue",
        "La liste de contrôle commune, cochée",
-       "23"
+       "24"
       ],
       [
        "6. Répéter la soutenance",
        "Un script de 6 minutes et des réponses entraînées",
-       "25"
+       "26"
       ],
       [
        "7. Préparer sa démonstration reproductible",
        "Un essai sur une copie neuve, la veille",
-       "29"
+       "30"
       ],
       [
        "Récapitulatif",
        "Ce que j’ai construit, ce que je peux refaire",
-       "31"
+       "32"
       ]
      ],
      "widths": [
@@ -121,16 +121,16 @@
      ],
      "rows": [
       [
-       "☐ Le pipeline du tronc commun complet",
-       "`python -m controles.verifier --mission tronc-commun --etape tout` vert dans votre dépôt (ou votre dernière étape verte notée au journal)."
+       "☐ La livraison du tronc commun",
+       "`livraison/tronc-commun/export-lot1/` et `export-lot2/` commités dans votre dépôt (fin de séance 4, livret 04)."
       ],
       [
        "☐ Un poste Windows pour le binôme",
        "Power BI Desktop installé et lancé une fois (livret 01, annexes). Sur Ubuntu natif : le poste du binôme ou de la salle."
       ],
       [
-       "☐ Votre mission du catalogue choisie",
-       "`mission.txt` et le guide de votre mission ouverts (livret 04)."
+       "☐ Votre mission démarrée",
+       "`mission.txt` = `M0x`, première PR de mission fusionnée, `--etape rejets` vert ; le guide de votre mission ouvert."
       ],
       [
        "☐ Les deux comptes prêts",
@@ -160,7 +160,7 @@
     },
     {
      "type": "text",
-     "text": "Ce mail fixe les quatre livrables de la séance. Chacun répond à une phrase de la direction :"
+     "text": "Ce mail fixe les quatre livrables de la fin du cours. Chacun répond à une phrase de la direction :"
     },
     {
      "type": "diagram",
@@ -173,7 +173,7 @@
     },
     {
      "type": "text",
-     "text": "La présentation de « vendredi » est votre **soutenance** : la même démonstration, sur **votre mission du catalogue**, devant un jury. Le tronc commun Maison Zitouna sert ici d’exemple travaillé ; vous refaites ensuite chaque geste sur votre mission."
+     "text": "La présentation de « vendredi » est votre **soutenance** : la même démonstration, sur **votre mission du catalogue**, devant un jury. En séance 5, la **première moitié** se fait sur votre mission (jusqu’à l’application) ; la **seconde**, Power BI, sur la livraison du tronc commun. Les exemples chiffrés de ce livret sont ceux du tronc commun (Maison Zitouna) ; votre guide de mission donne les vôtres."
     },
     {
      "type": "callout",
@@ -189,7 +189,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Quatre heures, deux vraies pauses de 10 minutes, environ 66 minutes d’explications et 154 minutes de pratique (70 %). Ce sont des **estimations** de conception, pas des mesures : la durée réelle dépend surtout de l’accès au poste Windows."
+     "text": "Quatre heures, deux vraies pauses de 10 minutes, environ 50 minutes d’explications et 170 minutes de pratique. Ce sont des **estimations** de conception, pas des mesures : la durée réelle dépend surtout de votre mission et de l’accès au poste Windows."
     },
     {
      "type": "table",
@@ -202,18 +202,11 @@
      ],
      "rows": [
       [
-       "Accueil, épisode 7, objectifs",
-       "15 min",
-       "10",
-       "5",
-       "Épisode"
-      ],
-      [
-       "Lancer et contrôler l’application locale",
-       "35 min",
-       "10",
-       "25",
-       "1"
+       "Mission du catalogue : `initial` → `increment` → `rejeu` → `export` → `app`, PR et revue croisée",
+       "100 min",
+       "15",
+       "85",
+       "1 et guide"
       ],
       [
        "Pause",
@@ -223,20 +216,13 @@
        "—"
       ],
       [
-       "Power BI Desktop : import, relations, mesures, actualisation",
-       "65 min",
-       "15",
+       "Power BI Desktop sur le tronc commun, depuis `livraison/` : import, relations, mesures, filtre, actualisation",
+       "70 min",
+       "20",
        "50",
        "2"
       ],
       [
-       "Lire les visualisations, écrire la recommandation",
-       "45 min",
-       "15",
-       "30",
-       "3 et 4"
-      ],
-      [
        "Pause",
        "10 min",
        "—",
@@ -244,24 +230,24 @@
        "—"
       ],
       [
-       "Finir la mission, préparer la démo reproductible",
-       "20 min",
-       "6",
-       "14",
-       "5 et 7"
+       "Lire les visuels et contrôler un chiffre",
+       "30 min",
+       "15",
+       "15",
+       "3"
       ],
       [
-       "Répéter la soutenance à deux",
-       "40 min",
-       "10",
-       "30",
+       "Répétition croisée : 6 min de démo devant un autre binôme, puis questions",
+       "20 min",
+       "—",
+       "20",
        "6"
       ],
       [
        "**Total**",
        "**240 min**",
-       "**66**",
-       "**154**",
+       "**50**",
+       "**170**",
        ""
       ]
      ],
@@ -280,15 +266,15 @@
     {
      "type": "bullets",
      "items": [
-      "**Un seul poste Windows pour deux** : pendant que A importe dans Power BI, B contrôle un chiffre de l’application (partie 1) et prépare la recommandation (partie 4). Inversez ensuite.",
+      "**Un seul poste Windows pour deux** : pendant que A importe dans Power BI, B contrôle un chiffre de l’application de la mission (partie 1). Inversez ensuite.",
       "**Power BI bloque plus de 20 minutes** : appelez le professeur, notez le message exact dans le journal et passez à la partie 3 ; revenez-y après la pause.",
-      "**Priorité de fin de séance** : une application qui s’ouvre, un rapport actualisé, une recommandation écrite. La mise en forme peut attendre ; un chiffre faux, non."
+      "**Priorité de fin de séance** : la mission jusqu’à la dernière étape verte (notée au journal), un rapport tronc commun actualisé, une répétition. La mise en forme peut attendre ; un chiffre faux, non."
      ]
     },
     {
      "type": "callout",
      "label": "Travail personnel après la séance",
-     "text": "Environ 2 heures de finition et de préparation orale (en plus de la mission du catalogue) : la liste de contrôle de la partie 5, l’essai sur copie neuve de la partie 7, et au moins une répétition chronométrée."
+     "text": "Environ 4 heures (planning du livret 04) : finir la mission et sa variante (partie 5), écrire la **recommandation** (partie 4), Power BI de la mission si un poste Windows est disponible (sinon, la démonstration se fait dans l’application locale), l’essai sur copie neuve (partie 7) et au moins une répétition chronométrée."
     }
    ]
   },
@@ -309,7 +295,7 @@
     },
     {
      "type": "text",
-     "text": "Dans le terminal Ubuntu, à la racine du dépôt, `(.venv)` actif, l’entrepôt déjà chargé (lot 1 **et** lot 2) :"
+     "text": "En séance 5, vous la générez pour **votre mission**, après `export`. Dans le terminal Ubuntu, à la racine du dépôt, `(.venv)` actif, l’entrepôt chargé (lot 1 **et** lot 2) ; `$(cat mission.txt)` est remplacé par le contenu de `mission.txt` :"
     },
     {
      "type": "code",
@@ -318,7 +304,7 @@
     },
     {
      "type": "text",
-     "text": "**Prévoyez** d’abord : le vérificateur cherche les trois écrans, des filtres, un graphique SVG et aucun lien réseau. Si Codex n’a pas encore écrit la commande `app`, demandez-la en citant le cahier des charges (§ 10) et les trois écrans de la fiche mission."
+     "text": "**Prévoyez** d’abord : le vérificateur cherche les trois écrans, des filtres, un graphique SVG et aucun lien réseau. Si Codex n’a pas encore écrit la commande `app`, utilisez la demande de la page suivante."
     },
     {
      "type": "table",
@@ -329,7 +315,7 @@
      "rows": [
       [
        "Windows + WSL2",
-       "`cd outputs/app`, puis `explorer.exe .`, puis double-clic sur `index.html` (il s’ouvre dans le navigateur Windows). Revenez avec `cd ../..`."
+       "`cd outputs/app`, puis `explorer.exe .`, puis double-clic sur `index.html` (navigateur Windows). Pour revenir à la racine du dépôt : `cd ../..` (remonter de deux dossiers)"
       ],
       [
        "Ubuntu natif",
@@ -340,6 +326,26 @@
       1.1,
       3.4
      ]
+    }
+   ]
+  },
+  {
+   "title": "Faire écrire l’application par Codex",
+   "kicker": "05 / LIVRER ET SOUTENIR · 1 · APPLICATION LOCALE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Une demande complète, à envoyer **après** un plan court (prompt 02), puis une étape à la fois (prompt 03). Elle vaut pour le tronc commun comme pour votre mission : Codex lit `mission.txt`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application locale (à adapter)",
+     "text": "Lis mission.txt, le cahier des charges (§ 10, les trois écrans), la fiche\nmission et contrat_entrepot.json. Propose d'abord un plan court.\npython -m solen app doit écrire outputs/app/index.html, un seul fichier\nautonome, sans lien Internet ni serveur :\n- Vue direction : les indicateurs du cahier en cartes, un graphique SVG,\n  filtres période et dimension (bouton Réinitialiser) ;\n- Détail par la dimension historisée : chaque version et ses dates ;\n- Qualité des données : rejets par motif et par lot, et une ligne par\n  chargement (lot 1, lot 2, puis le rejeu du lot 2 à 0 ajout).\nS'il n'existe pas de journal des chargements, propose où initial et\nincrement l'écrivent (dans outputs/). Montants affichés en TND à\n3 décimales. Lance --etape app et recopie la sortie."
+    },
+    {
+     "type": "callout",
+     "label": "Le journal des chargements",
+     "text": "L’écran Qualité a besoin des comptes **de chaque passage** (lus, gardés, ignorés, rejetés, ajoutés). Si vos commandes `initial` et `increment` les affichent puis les oublient, Codex doit d’abord les faire écrire dans un petit fichier de `outputs/` : c’est une étape à part, avec sa PR."
     },
     {
      "type": "callout",
@@ -441,7 +447,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Un indicateur sans unité ni définition ne se défend pas. Les définitions viennent du cahier des charges (§ 9) ; elles sont identiques dans l’entrepôt, l’application, le DAX et votre oral. Valeurs **sans filtre** de la référence :"
+     "text": "Un indicateur sans unité ni définition ne se défend pas. Les définitions viennent du cahier des charges (§ 9) ; elles sont identiques dans l’entrepôt, l’application, le DAX du tronc commun (`powerbi/mesures.dax`) et votre oral. Pour votre mission, vérifiez que les mesures écrites par Codex reprennent les formules du cahier. Valeurs **sans filtre** de la référence :"
     },
     {
      "type": "table",
@@ -643,29 +649,29 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Power BI Desktop est une application **Windows** gratuite. Pour un rapport local, aucune connexion à un compte, aucune licence Pro et aucun essai Fabric ne sont nécessaires : si une fenêtre de connexion s’ouvre, fermez-la. Rien n’est publié en ligne. Python et le pipeline restent dans Ubuntu ; Desktop lit seulement les CSV exportés. Le guide détaillé du dépôt est `powerbi/README.md` ; ce livret en suit les étapes."
+     "text": "Power BI Desktop est une application **Windows** gratuite. Pour un rapport local, aucune connexion à un compte, aucune licence Pro et aucun essai Fabric ne sont nécessaires : si une fenêtre de connexion s’ouvre, fermez-la. Rien n’est publié en ligne. En séance 5, Desktop lit la **livraison du tronc commun** commitée dans votre dépôt (`livraison/`) ; votre mission peut continuer dans `outputs/`. Le guide détaillé du dépôt est `powerbi/README.md`."
     },
     {
      "type": "callout",
      "label": "Ce qui a été vérifié, et ce qui ne l’a pas été",
-     "text": "Les étapes Power BI de ce livret viennent de la documentation Microsoft et des libellés vérifiés lors de l’édition précédente du cours. Les libellés **Segment**, **Graphique en courbes** et le réglage du format d’une mesure restent à confirmer sur un poste Windows. Si un nom diffère chez vous, cherchez l’équivalent et notez-le dans le journal."
+     "text": "Les étapes Power BI de ce livret viennent de la documentation Microsoft. Les libellés de l’interface (**Segment**, **Graphique en courbes**, format d’une mesure…) n’ont **pas** été vérifiés dans Power BI Desktop pour cette édition : ils le seront lors du prévol sur poste Windows. Si un nom diffère chez vous, cherchez l’équivalent et notez-le dans le journal."
     },
     {
      "type": "section",
-     "text": "Étape 1 · Un export de départ, après le lot 1 seulement"
+     "text": "Étape 1 · La livraison du lot 1, déjà dans votre dépôt"
     },
     {
      "type": "text",
-     "text": "Pour **voir** l’actualisation changer les chiffres plus tard, on commence par l’état après le lot 1 :"
+     "text": "Fin de séance 4 (livret 04, « Passer à votre mission »), vous avez exporté le tronc commun deux fois et commité les CSV. Pour **voir** l’actualisation changer les chiffres, Power BI commence par le lot 1 :"
     },
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · ~/solen-bi",
-     "text": "python -m solen initial\npython -m solen export\nls outputs/export"
+     "text": "ls livraison/tronc-commun/export-lot1\nls livraison/tronc-commun/export-lot2"
     },
     {
      "type": "text",
-     "text": "Vous devez voir `dim_date.csv`, `dim_produit.csv`, `dim_boutique.csv`, `fact_vente.csv`, `fact_retour.csv` et `manifest.json`. Ouvrez `manifest.json`. **Prévoyez** : `fact_vente` a 1 960 lignes et `montant_brut_millimes` vaut 78 067 830 ; la carte « Ventes brutes » devra donc afficher 78 067,830 TND."
+     "text": "Dans `export-lot1`, vous devez voir `dim_date.csv`, `dim_produit.csv`, `dim_boutique.csv`, `fact_vente.csv`, `fact_retour.csv` et `manifest.json`. Ouvrez son `manifest.json`. **Prévoyez** : `fact_vente` a 1 960 lignes et `montant_brut_millimes` vaut 78 067 830 ; la carte « Ventes brutes » devra donc afficher 78 067,830 TND."
     },
     {
      "type": "section",
@@ -680,11 +686,11 @@
      "rows": [
       [
        "Windows + WSL2",
-       "`cd outputs/export`, `explorer.exe .`, `cd ../..`. Copiez les six fichiers dans un dossier Windows stable, par exemple `Documents\\Solen\\export`. Notez le chemin exact et gardez **ce même dossier** pour toutes les actualisations."
+       "`cd livraison/tronc-commun`, `explorer.exe .`, puis copiez les six fichiers de `export-lot1` dans un dossier Windows stable, par exemple `Documents\\Solen\\export`. Notez le chemin exact et gardez **ce même dossier** pour l’actualisation. Retour à la racine : `cd ../..` (deux dossiers plus haut)"
       ],
       [
        "Ubuntu natif",
-       "Sur le poste Windows du binôme (avec WSL2) : `git pull`, puis relancez vous-même `initial` et `export`, puis `explorer.exe .`. À défaut, une clé USB vers `Documents\\Solen\\export`. Les `outputs/` ne passent pas par Git : on les reconstruit."
+       "Sur le poste Windows du binôme (avec WSL2) : `git pull` ; `livraison/` est versionné, les CSV sont déjà là. À défaut, une clé USB vers `Documents\\Solen\\export`."
       ]
      ],
      "widths": [
@@ -828,7 +834,7 @@
     {
      "type": "figure",
      "path": "../../docs/images/captures/powerbi-relations.png",
-     "caption": "Power BI Desktop (Windows) · vue Modèle · signe de réussite : six relations 1:* lisibles, aucune entre fact_vente et fact_retour.",
+     "caption": "Capture à produire lors du prévol Windows · Power BI Desktop, vue Modèle · signe de réussite : six relations 1:* lisibles, aucune entre fact_vente et fact_retour.",
      "height": 170
     }
    ]
@@ -840,16 +846,16 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Une **mesure** est un calcul que Power BI refait pour chaque filtre. Le DAX est du code : Codex l’écrit dans `powerbi/mesures.dax` ; vous le lisez, le collez, l’expliquez. Fourni pour le tronc commun ; pour votre mission, demandez :"
+     "text": "Une **mesure** est un calcul que Power BI refait pour chaque filtre. Codex écrit le DAX ; vous le lisez, le collez, l’expliquez. `powerbi/mesures.dax` couvre le **tronc commun** (séance 5). Pour votre mission, l’étape C du guide demande ses mesures à Codex :"
     },
     {
      "type": "code",
      "label": "Demande à Codex · texte à adapter",
-     "text": "Lis mission.txt, le cahier des charges (indicateurs) et contrat_entrepot.json.\nRéécris powerbi/mesures.dax : une mesure par indicateur, avec les noms exacts du\ncahier. Additionne d’abord les millimes, divise par 1 000 ensuite. Un commentaire\nd’une ligne par mesure. Ne modifie aucun autre fichier."
+     "text": "Lis mission.txt, le cahier des charges (indicateurs) et contrat_entrepot.json.\nÉcris powerbi/mesures_<Mxx>.dax : une mesure par indicateur, avec les noms\nexacts du cahier. Additionne d’abord les millimes, divise par 1 000 ensuite.\nUn commentaire d’une ligne par mesure. Ne modifie pas powerbi/mesures.dax."
     },
     {
      "type": "text",
-     "text": "Dans Power BI : sélectionnez `fact_vente`, puis **Modélisation → Nouvelle mesure**. Collez **une** formule à la fois, validez, recommencez. Voici celles du tronc commun :"
+     "text": "Power BI de la mission : si un poste Windows est disponible, sinon démo dans l’application. Ici : `fact_vente`, **Modélisation → Nouvelle mesure**, **une** formule à la fois :"
     },
     {
      "type": "code",
@@ -866,7 +872,7 @@
     {
      "type": "figure",
      "path": "../../docs/images/captures/powerbi-mesure.png",
-     "caption": "Power BI Desktop (Windows) · barre de formule · Marge sur coût d’achat TND validée · signe de réussite : la mesure apparaît dans fact_vente, sans erreur.",
+     "caption": "Capture à produire lors du prévol Windows · Power BI Desktop, barre de formule · Marge sur coût d’achat TND validée · signe de réussite : la mesure apparaît dans fact_vente, sans erreur.",
      "height": 170
     }
    ]
@@ -977,11 +983,11 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · ~/solen-bi",
-     "text": "python -m solen increment\npython -m solen export\npython -m controles.verifier --mission $(cat mission.txt) --etape export"
+     "text": "cd livraison/tronc-commun/export-lot2\nexplorer.exe ."
     },
     {
      "type": "text",
-     "text": "Recopiez les six fichiers dans **le même** dossier Windows en remplaçant les anciens, puis dans Desktop : **Accueil → Actualiser**."
+     "text": "Copiez les six fichiers de `export-lot2` dans **le même** dossier Windows en remplaçant ceux du lot 1 (ou faites pointer la source de chaque requête vers `export-lot2` : **Transformer les données**, étape **Source**). Puis dans Desktop : **Accueil → Actualiser**. Retour à la racine du dépôt : `cd ../../..` (trois dossiers plus haut)"
     },
     {
      "type": "table",
@@ -1045,7 +1051,7 @@
     {
      "type": "figure",
      "path": "../../docs/images/captures/powerbi-actualiser.png",
-     "caption": "Power BI Desktop (Windows) · page du rapport après Actualiser · aucun filtre · signe de réussite : Ventes nettes 91 444,460 TND et une barre Nord-Est.",
+     "caption": "Capture à produire lors du prévol Windows · Power BI Desktop, page du rapport après Actualiser, aucun filtre · signe de réussite : Ventes nettes 91 444,460 TND et une barre Nord-Est.",
      "height": 170
     }
    ],
@@ -1105,7 +1111,7 @@
     {
      "type": "callout",
      "label": "Ce que prouve « Actualiser »",
-     "text": "Le rapport relit les CSV du dossier à chaque actualisation : il est **branché sur les données**, pas sur des chiffres recopiés. Ce que cela **ne** prouve **pas** : que les CSV sont justes (c’est le rôle du vérificateur), ni que l’entrepôt a changé si vous n’avez pas relancé `export` et recopié les fichiers : Desktop relirait les anciens CSV."
+     "text": "Le rapport relit les CSV du dossier à chaque actualisation : il est **branché sur les données**, pas sur des chiffres recopiés. Ce que cela **ne** prouve **pas** : que les CSV sont justes (c’est le rôle du vérificateur), ni que vous lisez le lot 2 : si les fichiers de `export-lot2` ne sont pas dans le dossier, Desktop relit ceux du lot 1."
     },
     {
      "type": "section",
@@ -1114,7 +1120,7 @@
     {
      "type": "bullets",
      "items": [
-      "`export` a-t-il été relancé après `increment` ? Les nouveaux fichiers sont-ils dans **le même** dossier ?",
+      "Les fichiers de `export-lot2` ont-ils remplacé ceux du lot 1 dans **le même** dossier (ou la source pointe-t-elle vers `export-lot2`) ?",
       "Le chemin de chaque requête : **Transformer les données**, première étape **Source**.",
       "Gardez deux captures réelles, légendées (environnement, étape, signe de réussite) : la vue Modèle avec ses six relations, et la page après actualisation, sans filtre."
      ]
@@ -1404,7 +1410,7 @@
     },
     {
      "type": "text",
-     "text": "**Où l’écrire ?** Par exemple `notes/recommandation.md` (sauf autre emplacement dans le guide de votre mission), via une PR. Écrivez-la **vous-mêmes** ; Codex relit et questionne, il ne choisit pas à votre place."
+     "text": "**Quand et où ?** En travail personnel, après la séance 5, dans `notes/recommandation.md`, via une PR. Écrivez-la **vous-mêmes** ; Codex relit et questionne, il ne choisit pas à votre place."
     },
     {
      "type": "code",
@@ -1521,19 +1527,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Le tronc commun vous a appris les gestes ; votre **mission du catalogue** (`mission.txt` = `Mxx`) est ce que vous présentez à la soutenance :"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "Livret 04 : choisir sa mission et comprendre le socle commun",
-      "Guide de votre mission (`Mxx_guide.pdf`) : sources, indicateurs, variantes",
-      "Ce livret 05 : livrer, recommander, soutenir"
-     ]
-    },
-    {
-     "type": "text",
-     "text": "Le guide dit **quoi** construire ; ce livret dit **comment le livrer**. Votre référence est dans `catalogue/Mxx/reference/`. La liste de contrôle commune :"
+     "text": "Le tronc commun vous a appris les gestes ; votre **mission du catalogue** (`mission.txt` = `Mxx`) est ce que vous présentez à la soutenance. Le livret 04 donne le socle commun, le **guide de votre mission** dit **quoi** construire, ce livret dit **comment le livrer**. Votre référence : `catalogue/Mxx/reference/`. La liste de contrôle commune :"
     },
     {
      "type": "table",
@@ -1546,7 +1540,7 @@
       [
        "☐",
        "Vérificateur complet, strict, vert",
-       "`python -m controles.verifier --mission $(cat mission.txt) --etape tout --strict`"
+       "Rejeu prouvé dans l’ordre : `increment` → `--etape increment` → `increment` → `--etape rejeu` ; puis `python -m controles.verifier --mission $(cat mission.txt) --etape tout --strict`"
       ],
       [
        "☐",
@@ -1566,12 +1560,12 @@
       [
        "☐",
        "Rapport Power BI actualisé",
-       "Le `.pbix` après le lot 2 (dans `powerbi/` s’il fait moins de 10 Mo) et deux captures réelles légendées"
+       "Tronc commun : le `.pbix` lu depuis `livraison/`, actualisé au lot 2. Mission : si un poste Windows est disponible, sinon démo dans l’application"
       ],
       [
        "☐",
        "Mesures DAX de la mission",
-       "`powerbi/mesures.dax` réécrit avec les indicateurs de votre cahier des charges"
+       "`powerbi/mesures_M0x.dax` (formules du cahier) ; `mesures.dax` = tronc commun"
       ],
       [
        "☐",
@@ -1744,7 +1738,7 @@
       [
        "3:00 – 4:30",
        "B",
-       "Power BI : les relations, une mesure DAX, la page après actualisation",
+       "Power BI : les relations, une mesure DAX, la page après actualisation (sans poste Windows : l’application, un second filtre et son contrôle)",
        "« Le rapport relit l’export. »"
       ],
       [
@@ -1870,14 +1864,14 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Comptez 30 minutes de pratique en séance, puis au moins une répétition complète chez vous. La répétition se fait **sur votre mission** ; si elle n’est pas finie, répétez sur le tronc commun."
+     "text": "En séance 5 : **20 minutes** de répétition croisée, devant un autre binôme. Puis au moins une répétition complète chez vous. La répétition se fait **sur votre mission** ; si elle n’est pas finie, sur le tronc commun."
     },
     {
      "type": "diagram",
      "nodes": [
-      "Démo chronométrée : 6 min, sans s’arrêter",
-      "Questions croisées : B interroge A (6 min)",
-      "Questions croisées : A interroge B (6 min)",
+      "Démo chronométrée : 6 min, devant un autre binôme",
+      "Questions de l’autre binôme : 2 × 2 min en séance, 2 × 6 min chez vous",
+      "L’autre binôme présente à son tour",
       "Debrief : 3 corrections notées au journal"
      ]
     },
@@ -1949,7 +1943,7 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dossier personnel",
-     "text": "cd ~\ngit clone https://github.com/<compte>/<depot>.git essai-neuf\ncd essai-neuf\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install -r requirements.txt\npython -m solen initial\npython -m solen increment\npython -m solen increment\npython -m solen export\npython -m solen app\npython -m controles.verifier --mission $(cat mission.txt) --etape tout --strict\npytest -q"
+     "text": "cd ~\ngit clone https://github.com/<compte>/<depot>.git essai-neuf\ncd essai-neuf\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install -r requirements.txt\npython -m solen initial\npython -m solen increment\npython -m controles.verifier --mission $(cat mission.txt) --etape increment\npython -m solen increment\npython -m controles.verifier --mission $(cat mission.txt) --etape rejeu\npython -m solen export\npython -m solen app\npython -m controles.verifier --mission $(cat mission.txt) --etape tout --strict\npytest -q"
     },
     {
      "type": "table",
@@ -1963,12 +1957,12 @@
        "l’entrepôt se recrée depuis zéro avec le lot 1"
       ],
       [
-       "`increment` (1re fois)",
-       "le lot 2 s’ajoute, avec la nouvelle version historique"
+       "`increment` (1re fois), `--etape increment`",
+       "le lot 2 s’ajoute, avec la nouvelle version historique ; l’empreinte est enregistrée"
       ],
       [
-       "`increment` (2e fois)",
-       "le rejeu : aucune ligne ajoutée"
+       "`increment` (2e fois), `--etape rejeu`",
+       "le rejeu : aucune ligne ajoutée, entrepôt identique à l’empreinte"
       ],
       [
        "`export` puis `app`",
@@ -2149,11 +2143,10 @@
     {
      "type": "bullets",
      "items": [
-      "**Chiffres** : toutes les valeurs du tronc commun viennent de `modele-binome/tronc-commun/reference/` (calculées par le générateur, sans ETL) et ont été recoupées avec un entrepôt de référence. Les données sont 100 % synthétiques ; Maison Zitouna, Solen Digital comme client, Lamia Ben Salah et Karim Jaziri sont fictifs.",
+      "**Chiffres** : toutes les valeurs du tronc commun viennent de `modele-binome/tronc-commun/reference/` (calculées par le générateur, sans ETL) et ont été recoupées avec un entrepôt de référence. Les onze chaînes de preuve (tronc commun et dix missions : données, solution de référence, vérificateur strict, tests) passent, sur macOS. Données 100 % synthétiques ; Maison Zitouna, Solen Digital comme client, Lamia Ben Salah et Karim Jaziri sont fictifs.",
+      "**Essai apprenant** : un essai indépendant a suivi les livrets « comme un binôme » sur le tronc commun et une mission (M03) : tous les chiffres de référence ont été atteints ; ses constats ont corrigé cette édition.",
       "**Application** : les trois écrans et les filtres décrits sont ceux de l’application de référence du professeur, ouverte dans un navigateur sous macOS (captures macOS). Votre application peut différer en apparence.",
-      "**Power BI Desktop** : étapes issues de la documentation Microsoft et des libellés vérifiés lors de l’édition précédente du cours ; elles n’ont **pas** été rejouées sur un poste Windows pour cette édition. Segment, Graphique en courbes et format de mesure : à confirmer.",
-      "**Ouvrir un fichier** : `explorer.exe .` (WSL) et `xdg-open` (Ubuntu) sont les routes prévues ; elles restent à confirmer sur les postes de la salle.",
-      "**Captures** : les emplacements marqués « Capture à réaliser » seront remplacés par des captures réelles, légendées avec leur environnement.",
+      "**Pas encore essayé** : Windows et WSL2, un compte Codex Free, Power BI Desktop, la CI sur GitHub et les captures des gestes (GitHub, Power BI). Ils seront essayés lors d’un prévol sur poste Windows, avant diffusion ; les cadres « Capture prévue » seront alors remplacés.",
       "**Durées** : estimations de conception, pas mesures sur des étudiants."
      ]
     },

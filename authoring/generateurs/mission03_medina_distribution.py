@@ -300,7 +300,7 @@ def produire_echantillon(spec, dossier) -> dict:
                                        {"lignes_csv": 12, "doublons_exacts": 1, "lignes_gardees": len(acc),
                                         "avoirs_non_emis_exclus": 1})
     ecrire_json(dossier / "attendu.json", att)
-    (dossier / "attendu.md").write_text(md_echantillon(acc, av, att), encoding="utf-8")
+    (dossier / "attendu.md").write_text(md_echantillon(acc, av, att), encoding="utf-8", newline="\n")
     return att
 
 

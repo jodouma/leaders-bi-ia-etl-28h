@@ -53,56 +53,56 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Ce livret vous mène du poste vide au premier cycle Git réussi à deux. Lisez la route de votre système, puis tout le reste dans l’ordre. Durée indicative : 60 à 120 min en début de séance 1 (estimation, pas une mesure)."
+     "text": "Ce livret vous mène du poste vide au premier cycle Git réussi à deux, en deux temps. **Parties A à C : séance 0, chez vous, avant la séance 1** (≈ 2 h, estimation, pas une mesure). Le professeur envoie ce livret une semaine avant la séance 1 et répond aux blocages par message : copiez la commande et la dernière ligne affichée. **La séance 1 commence par 30 min de vérification** de la liste « Fin de la séance 0 » (page 18) ; les parties D et E se font en séance, à deux. Les cadres « Capture prévue » marquent des écrans pas encore photographiés : le professeur les montre en séance."
     },
     {
      "type": "table",
      "headers": [
       "Partie",
-      "Pour qui",
+      "Quand · pour qui",
       "Page"
      ],
      "rows": [
       [
-       "Comprendre son poste",
-       "Tous",
+       "A · Comprendre son poste, lire un terminal, quatre mots",
+       "Chez vous · tous",
        "3"
       ],
       [
-       "Route Windows",
-       "Windows",
-       "5"
+       "B · Installer : route Windows (WSL2)",
+       "Chez vous · Windows",
+       "6"
       ],
       [
-       "Route Ubuntu natif",
-       "Ubuntu",
-       "9"
+       "B · Installer : route Ubuntu natif",
+       "Chez vous · Ubuntu",
+       "10"
       ],
       [
-       "Codex : premiers réglages",
+       "C · Codex, compte GitHub, identité Git ; fin de la séance 0",
+       "Chez vous · tous",
+       "12"
+      ],
+      [
+       "D · GitHub à deux : dépôt, invitation, venv, protection",
+       "Séance 1 · le binôme",
+       "19"
+      ],
+      [
+       "E · Premier cycle à deux : la PR n°1",
+       "Séance 1 · le binôme",
+       "25"
+      ],
+      [
+       "Annexes : Power BI Desktop, Codex CLI, récapitulatif",
        "Tous",
-       "11"
-      ],
-      [
-       "GitHub et Git à deux",
-       "Tous",
-       "14"
-      ],
-      [
-       "Premier cycle à deux",
-       "Le binôme",
-       "23"
-      ],
-      [
-       "Annexes",
-       "Tous",
-       "29"
+       "31"
       ]
      ],
      "widths": [
       2.6,
-      1.3,
-      0.6
+      1.6,
+      0.5
      ]
     },
     {
@@ -154,7 +154,7 @@
   {
    "id": "poste",
    "title": "Mon poste : qui fait quoi",
-   "kicker": "01 / DÉMARRER · COMPRENDRE SON POSTE",
+   "kicker": "01 / DÉMARRER · A · COMPRENDRE SON POSTE · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -230,7 +230,7 @@
   {
    "id": "terminal",
    "title": "Lire un terminal et les blocs du livret",
-   "kicker": "01 / DÉMARRER · COMPRENDRE SON POSTE",
+   "kicker": "01 / DÉMARRER · A · COMPRENDRE SON POSTE · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -293,9 +293,57 @@
    "printed_page": 4
   },
   {
+   "id": "mots",
+   "title": "Quatre mots avant d’installer : chemin, éditeur, encodage, JSON",
+   "kicker": "01 / DÉMARRER · A · COMPRENDRE SON POSTE · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "Chemin"
+    },
+    {
+     "type": "text",
+     "text": "Un **chemin** dit où est un fichier. `/` est la racine de Linux : un chemin qui commence par `/` est **absolu** (`/home/amira/cours-bi`). `~` abrège votre dossier personnel : `~/cours-bi` = `/home/amira/cours-bi`. Sans `/` au début, le chemin part du dossier courant, celui qu’affiche `pwd` (`tronc-commun/sources/lot1/ventes.csv`). `..` est le dossier parent, `.` le dossier courant. Exemple, une fois le cours cloné : `cd ~/cours-bi/pdf` puis `pwd` affiche `/home/amira/cours-bi/pdf` ; `cd ..` puis `pwd` affiche `/home/amira/cours-bi`."
+    },
+    {
+     "type": "section",
+     "text": "Éditeur"
+    },
+    {
+     "type": "text",
+     "text": "Un **éditeur** ouvre un fichier texte pour le lire ou le modifier. Pour **lire** sans risque : `cat` (tout), `head -5` (5 premières lignes), `less` (page par page, `q` pour quitter). Pour **écrire** un texte (journal, README) : l’éditeur de l’application Codex si votre version en propose un, ou `nano` dans le terminal : `nano notes/JOURNAL.md`, puis **Ctrl + O** et Entrée pour enregistrer, **Ctrl + X** pour quitter. Git ouvre aussi nano pour un message de fusion (réglage de GitHub 1)."
+    },
+    {
+     "type": "section",
+     "text": "Encodage"
+    },
+    {
+     "type": "text",
+     "text": "Un fichier texte est une suite d’**octets** ; l’**encodage** est la table qui dit quel caractère chaque octet représente. Le cours écrit tout en **UTF-8** ; un vieux Windows ou Excel écrit parfois en **cp1252**. Le mot « août » : en UTF-8, « û » prend 2 octets (`C3 BB`) ; en cp1252, un seul (`FB`). Un fichier UTF-8 lu comme du cp1252 affiche `aoÃ»t` ; l’inverse affiche un losange ou un point d’interrogation à la place du « û ». Devant ces signes, le fichier est intact : c’est la lecture qui se trompe de table."
+    },
+    {
+     "type": "section",
+     "text": "JSON"
+    },
+    {
+     "type": "text",
+     "text": "**JSON** range des fiches dans un fichier texte : entre accolades `{ }`, des paires `\"clé\": valeur` ; entre crochets `[ ]`, une liste. Une valeur peut être elle-même une liste de fiches. Extrait de `boutiques.json` du tronc commun :"
+    },
+    {
+     "type": "code",
+     "label": "Fichier tronc-commun/sources/lot1/boutiques.json · extrait",
+     "text": "{\n  \"boutiques\": [\n    { \"code\": \"NBE\",\n      \"nom\": \"Maison Zitouna Nabeul\",\n      \"historique\": [\n        { \"zone\": \"Cap Bon\", \"valide_depuis\": \"2021-05-10\" }\n      ] }\n  ]\n}"
+    },
+    {
+     "type": "text",
+     "text": "Lecture : une liste `boutiques` ; chaque boutique est une fiche (`code`, `nom`…) qui contient une liste `historique` de versions de zone. Au lot 2, NBE aura deux versions."
+    }
+   ]
+  },
+  {
    "id": "w1",
    "title": "Windows 1 · Ubuntu, Python et Git",
-   "kicker": "01 / DÉMARRER · ROUTE WINDOWS",
+   "kicker": "01 / DÉMARRER · B · ROUTE WINDOWS · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -418,7 +466,7 @@
   {
    "id": "w5",
    "title": "Windows 2 · L’application ChatGPT et l’agent WSL",
-   "kicker": "01 / DÉMARRER · ROUTE WINDOWS",
+   "kicker": "01 / DÉMARRER · B · ROUTE WINDOWS · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -463,7 +511,7 @@
   {
    "id": "w6",
    "title": "Windows 3 · Récupérer le cours et l’ouvrir dans Codex",
-   "kicker": "01 / DÉMARRER · ROUTE WINDOWS",
+   "kicker": "01 / DÉMARRER · B · ROUTE WINDOWS · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -500,7 +548,7 @@
     {
      "type": "callout",
      "label": "À ce stade, je sais…",
-     "text": "…dire si je suis dans PowerShell ou Ubuntu en lisant l’invite ; montrer Ubuntu en VERSION 2, `python3` 3.11+ et `git` ; retrouver `~/cours-bi` depuis `\\\\wsl$\\` ; montrer l’agent et le terminal sur WSL ; obtenir une réponse de Codex sans modification. **Contrôle** : rouvrez l’app, terminal intégré (Ctrl + `), `pwd` doit afficher un chemin `/home/...`."
+     "text": "…dire si je suis dans PowerShell ou Ubuntu en lisant l’invite ; montrer Ubuntu en VERSION 2, `python3` 3.11+ et `git` ; retrouver `~/cours-bi` depuis `\\\\wsl$\\` ; montrer l’agent et le terminal sur WSL ; obtenir une réponse de Codex sans modification. **Contrôle** : rouvrez l’app, terminal intégré (Ctrl + accent grave), `pwd` doit afficher un chemin `/home/...`."
     }
    ],
    "source_ids": [
@@ -514,7 +562,7 @@
   {
    "id": "u1",
    "title": "Ubuntu natif 1 · Mise à jour, Python et Git",
-   "kicker": "01 / DÉMARRER · ROUTE UBUNTU NATIF",
+   "kicker": "01 / DÉMARRER · B · ROUTE UBUNTU NATIF · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -565,7 +613,7 @@
   {
    "id": "u2",
    "title": "Ubuntu natif 2 · L’application ChatGPT pour Linux",
-   "kicker": "01 / DÉMARRER · ROUTE UBUNTU NATIF",
+   "kicker": "01 / DÉMARRER · B · ROUTE UBUNTU NATIF · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -622,7 +670,7 @@
   {
    "id": "c1",
    "title": "Codex 1 · Compte Free, modèle et effort",
-   "kicker": "01 / DÉMARRER · CODEX : PREMIERS RÉGLAGES",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -688,7 +736,7 @@
   {
    "id": "c2",
    "title": "Codex 2 · Une demande, un diff, un contrôle",
-   "kicker": "01 / DÉMARRER · CODEX : PREMIERS RÉGLAGES",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -738,7 +786,7 @@
   {
    "id": "c3",
    "title": "Compte Free : ce que dit la doc, ce que vous vérifiez",
-   "kicker": "01 / DÉMARRER · CODEX : PREMIERS RÉGLAGES",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -782,7 +830,7 @@
      "items": [
       "**Token** : un petit morceau de texte. Vos fichiers, la demande et la réponse se comptent en tokens.",
       "**Contexte** : ce que Codex garde en tête dans ce chat. Un chat trop long se remplit ; ouvrez un nouveau chat avec un résumé court.",
-      "**Effort** : combien Codex réfléchit avant de répondre. Plus d’effort coûte plus d’usage.",
+      "**Effort** : combien Codex réfléchit avant de répondre. Plus d’effort demande souvent plus d’usage par demande ; mais un effort trop faible peut obliger à reprendre la demande plusieurs fois.",
       "**Quota** : votre allocation d’usage sur une période. Elle varie, elle se consulte, elle ne se devine pas."
      ]
     },
@@ -800,145 +848,9 @@
    "printed_page": 13
   },
   {
-   "id": "g0",
-   "title": "Git et GitHub en mots et en images",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
-   "blocks": [
-    {
-     "type": "text",
-     "text": "Git photographie vos fichiers ; GitHub garde l’album partagé. Chaque concept ci-dessous revient à chaque séance."
-    },
-    {
-     "type": "section",
-     "text": "Dossier local, Git, GitHub"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "Dossier local ~/solen-bi : vos fichiers",
-      "Git : l’historique caché dans .git",
-      "GitHub : la copie partagée du binôme"
-     ]
-    },
-    {
-     "type": "section",
-     "text": "Commit"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "Modifier un fichier",
-      "`git add` : choisir ce qui part",
-      "`git commit -m` : photo + message",
-      "Un point d’historique daté"
-     ]
-    },
-    {
-     "type": "section",
-     "text": "Branche"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "main : la version validée",
-      "`git switch -c lecture-csv`",
-      "Travail isolé sur la branche",
-      "main reste intacte pendant ce temps"
-     ]
-    },
-    {
-     "type": "section",
-     "text": "Push et pull"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "Commit sur mon PC",
-      "`git push` : envoyer à GitHub",
-      "Le binôme : `git pull`",
-      "Les deux copies sont alignées"
-     ]
-    }
-   ],
-   "source_ids": [
-    "github-plans"
-   ],
-   "printed_page": 14
-  },
-  {
-   "id": "g0b",
-   "title": "Pull request, revue, merge, CI",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
-   "blocks": [
-    {
-     "type": "section",
-     "text": "Pull request (PR)"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "Branche poussée sur GitHub",
-      "Compare & pull request",
-      "Titre + description : quoi, pourquoi, preuve",
-      "La PR attend une revue"
-     ]
-    },
-    {
-     "type": "section",
-     "text": "Revue"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "B lit Files changed",
-      "B relance les contrôles chez lui",
-      "Approve ou Request changes",
-      "L’auteur corrige si besoin"
-     ]
-    },
-    {
-     "type": "section",
-     "text": "Merge"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "PR approuvée + checks verts",
-      "Merge pull request",
-      "La branche entre dans main",
-      "Les deux : git switch main && git pull"
-     ]
-    },
-    {
-     "type": "section",
-     "text": "CI (intégration continue)"
-    },
-    {
-     "type": "diagram",
-     "nodes": [
-      "Chaque PR déclenche controles.yml",
-      "Machine Linux neuve chez GitHub",
-      "Installe et lance les contrôles",
-      "Coche verte ou croix rouge"
-     ]
-    },
-    {
-     "type": "callout",
-     "label": "Pourquoi tout ce chemin pour deux personnes ?",
-     "text": "Parce que c’est ainsi que travaille une équipe BI : personne ne publie seul un chiffre de marge. La PR garde la trace de la demande, du diff, de la preuve et de la décision. À la soutenance, vous montrerez vos PR et vos revues."
-    }
-   ],
-   "source_ids": [
-    "github-review",
-    "github-merge",
-    "github-actions-billing"
-   ],
-   "printed_page": 15
-  },
-  {
    "id": "g1",
    "title": "GitHub 1 · Compte et identité Git",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -958,21 +870,21 @@
     },
     {
      "type": "text",
-     "text": "Chaque commit porte un nom et une adresse : réglez-les une fois par poste, avec l’adresse noreply. Deux réglages de plus : la branche par défaut s’appelle `main`, et `git pull` n’invente jamais de fusion."
+     "text": "Chaque commit (une photo datée de vos fichiers, voir partie D) porte un nom et une adresse : réglez-les une fois par poste, avec l’adresse noreply. Trois réglages de plus : la branche par défaut s’appelle `main` ; `git pull` fait une **fusion simple** quand votre copie et GitHub ont avancé chacune de leur côté ; l’éditeur de Git est `nano`."
     },
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash)",
-     "text": "git config --global user.name \"<Prénom Nom>\"\ngit config --global user.email \"<id+compte>@users.noreply.github.com\"\ngit config --global init.defaultBranch main\ngit config --global pull.ff only\ngit config --global --list"
+     "text": "git config --global user.name \"<Prénom Nom>\"\ngit config --global user.email \"<id+compte>@users.noreply.github.com\"\ngit config --global init.defaultBranch main\ngit config --global pull.rebase false\ngit config --global core.editor nano\ngit config --global --list"
     },
     {
      "type": "code",
      "label": "Sortie attendue · ne pas recopier",
-     "text": "user.name=Amira Ben Khalifa\nuser.email=12345678+amira-bk@users.noreply.github.com\ninit.defaultbranch=main\npull.ff=only"
+     "text": "user.name=Amira Ben Khalifa\nuser.email=12345678+amira-bk@users.noreply.github.com\ninit.defaultbranch=main\npull.rebase=false\ncore.editor=nano"
     },
     {
      "type": "text",
-     "text": "Avec `pull.ff only`, si votre `main` locale et celle de GitHub ont divergé, `git pull` s’arrête avec un message au lieu de mélanger : voyez alors la page Erreurs Git."
+     "text": "Avec `pull.rebase false`, si votre branche et celle de GitHub ont toutes deux avancé, `git pull` les fusionne et ouvre nano avec un message déjà écrit (« Merge branch… ») : gardez-le, **Ctrl + O**, Entrée, **Ctrl + X**. Si les deux changements touchent les mêmes lignes, Git annonce un conflit : page « Résoudre un conflit »."
     },
     {
      "type": "callout",
@@ -991,7 +903,7 @@
   {
    "id": "g2",
    "title": "GitHub 2 · Relier Ubuntu à GitHub",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
    "blocks": [
     {
      "type": "text",
@@ -1093,9 +1005,216 @@
    "printed_page": 17
   },
   {
+   "id": "seance0",
+   "title": "Fin de la séance 0 · la liste vérifiée en début de séance 1",
+   "kicker": "01 / DÉMARRER · C · VOS COMPTES ET RÉGLAGES · CHEZ VOUS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "La séance 1 commence par **30 min de vérification des postes** : vous **montrez** chaque ligne au professeur ou à votre binôme. Préparez-la chez vous. Ce qui ne marche pas, signalez-le **avant** la séance, par message, avec la commande et la dernière ligne affichée."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "☐ Je montre…",
+      "Commande ou écran",
+      "Réussite"
+     ],
+     "widths": [
+      1.9,
+      2.0,
+      1.7
+     ],
+     "rows": [
+      [
+       "☐ Ubuntu prêt",
+       "`wsl -l -v` (PowerShell) ; Ubuntu natif : `lsb_release -ds`",
+       "VERSION 2 ; ou 24.04 / 26.04 LTS"
+      ],
+      [
+       "☐ Python, Git et sqlite3",
+       "`python3 --version`, `git --version`, `sqlite3 --version`",
+       "Python 3.11 ou plus ; deux autres numéros"
+      ],
+      [
+       "☐ Le cours cloné",
+       "`ls ~/cours-bi`",
+       "`modele-binome`, `pdf`, `prompts`…"
+      ],
+      [
+       "☐ Codex travaille dans Ubuntu",
+       "terminal intégré de l’application : `pwd`",
+       "`/home/<utilisateur-linux>`"
+      ],
+      [
+       "☐ Compte Free, modèle et effort",
+       "sélecteur de modèle ; `/status`",
+       "Luna et High, ou ce que votre écran propose, noté"
+      ],
+      [
+       "☐ Compte GitHub et identité Git",
+       "`git config --global --list`",
+       "nom, adresse noreply, `pull.rebase=false`"
+      ],
+      [
+       "☐ Git relié à GitHub",
+       "`gh auth status`",
+       "`Logged in to github.com`"
+      ],
+      [
+       "☐ Le binôme se connaît",
+       "message",
+       "A et B ont le nom d’utilisateur GitHub de l’autre"
+      ]
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ensuite, en séance 1, à deux",
+     "text": "Partie D : A crée le dépôt du binôme, invite B et protège `main` ; chacun clone le dépôt et crée son venv. Partie E : la **PR n°1** (`journal-binome`, A auteur, B relecteur). Après la pause, le livret 02 prend le relais avec la PR n°2, dont B sera l’auteur."
+    }
+   ]
+  },
+  {
+   "id": "g0",
+   "title": "Git et GitHub en mots et en images",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Git photographie vos fichiers ; GitHub garde l’album partagé. Chaque concept ci-dessous revient à chaque séance."
+    },
+    {
+     "type": "section",
+     "text": "Dossier local, Git, GitHub"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Dossier local ~/solen-bi : vos fichiers",
+      "Git : l’historique caché dans .git",
+      "GitHub : la copie partagée du binôme"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Commit"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Modifier un fichier",
+      "`git add` : choisir ce qui part",
+      "`git commit -m` : photo + message",
+      "Un point d’historique daté"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Branche"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "main : la version validée",
+      "`git switch -c lecture-csv`",
+      "Travail isolé sur la branche",
+      "main reste intacte pendant ce temps"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Push et pull"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Commit sur mon PC",
+      "`git push` : envoyer à GitHub",
+      "Le binôme : `git pull`",
+      "Les deux copies sont alignées"
+     ]
+    }
+   ],
+   "source_ids": [
+    "github-plans"
+   ],
+   "printed_page": 14
+  },
+  {
+   "id": "g0b",
+   "title": "Pull request, revue, merge, CI",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "Pull request (PR)"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Branche poussée sur GitHub",
+      "Compare & pull request",
+      "Titre + description : quoi, pourquoi, preuve",
+      "La PR attend une revue"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Revue"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "B lit Files changed",
+      "B relance les contrôles chez lui",
+      "Approve ou Request changes",
+      "L’auteur corrige si besoin"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Merge"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "PR approuvée + checks verts",
+      "Merge pull request",
+      "La branche entre dans main",
+      "Les deux : git switch main && git pull"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "CI (intégration continue)"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Chaque PR déclenche controles.yml",
+      "Machine Linux neuve chez GitHub",
+      "Installe et lance les contrôles",
+      "Coche verte ou croix rouge"
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pourquoi tout ce chemin pour deux personnes ?",
+     "text": "Parce que c’est ainsi que travaille une équipe BI : personne ne publie seul un chiffre de marge. La PR garde la trace de la demande, du diff, de la preuve et de la décision. À la soutenance, vous montrerez vos PR et vos revues."
+    }
+   ],
+   "source_ids": [
+    "github-review",
+    "github-merge",
+    "github-actions-billing"
+   ],
+   "printed_page": 15
+  },
+  {
    "id": "g5",
    "title": "GitHub 3 · A crée le dépôt et invite B",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1132,7 +1251,7 @@
   {
    "id": "g7",
    "title": "GitHub 4 · Cloner et pousser le premier commit",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1181,7 +1300,7 @@
   {
    "id": "g8",
    "title": "GitHub 5 · Environnement Python et projet Codex",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1234,7 +1353,7 @@
   {
    "id": "g9",
    "title": "GitHub 6 · A protège la branche main",
-   "kicker": "01 / DÉMARRER · GITHUB ET GIT À DEUX",
+   "kicker": "01 / DÉMARRER · D · GITHUB À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1246,7 +1365,7 @@
       "**Branch name pattern** : `main`.",
       "**Require a pull request before merging**, puis **Require approvals** ; **Required number of approvals before merging** : **1**.",
       "**Do not allow bypassing the above settings** : la règle vaut aussi pour A, propriétaire.",
-      "**Require status checks to pass before merging** : plus tard, après une première CI, avec le check « Pipeline et contrôles ».",
+      "**Require status checks to pass before merging** : plus tard, après une première CI ; le check s’appelle **Pipeline et contrôles (pull_request)** (le nom contient l’événement qui a lancé la CI).",
       "**Create**."
      ]
     },
@@ -1274,11 +1393,11 @@
   {
    "id": "cycle1",
    "title": "Cycle 1 · Branche, commit, push",
-   "kicker": "01 / DÉMARRER · PREMIER CYCLE À DEUX",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
-     "text": "Premier cycle : A présente le binôme dans `notes/JOURNAL.md` ; B relit. Toujours partir d’un `main` à jour, puis ouvrir une branche au nom court et parlant."
+     "text": "Premier cycle, la **PR n°1** du binôme : A présente le binôme dans `notes/JOURNAL.md` ; B relit. La PR n°2 (livret 02, S1-M5) inversera les rôles. Toujours partir d’un `main` à jour, puis ouvrir une branche au nom court et parlant."
     },
     {
      "type": "code",
@@ -1322,7 +1441,7 @@
   {
    "id": "cycle2",
    "title": "Cycle 2 · Ouvrir la pull request",
-   "kicker": "01 / DÉMARRER · PREMIER CYCLE À DEUX",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1362,7 +1481,7 @@
   {
    "id": "cycle3",
    "title": "Cycle 3 · B relit et approuve",
-   "kicker": "01 / DÉMARRER · PREMIER CYCLE À DEUX",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1407,7 +1526,7 @@
   {
    "id": "cycle4",
    "title": "Cycle 4 · Checks, merge, retour à main",
-   "kicker": "01 / DÉMARRER · PREMIER CYCLE À DEUX",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1416,7 +1535,7 @@
     {
      "type": "figure",
      "path": "../../docs/images/captures/github-checks-verts.png",
-     "caption": "Capture prévue · navigateur, github.com, bas de la PR #1. Réussite : « Pipeline et contrôles » en vert, une approbation, bouton de fusion actif.",
+     "caption": "Capture prévue · navigateur, github.com, bas de la PR #1. Réussite : « Pipeline et contrôles (pull_request) » en vert, une approbation, bouton de fusion actif.",
      "height": 120
     },
     {
@@ -1441,7 +1560,12 @@
     {
      "type": "code",
      "label": "Sortie attendue · ne pas recopier",
-     "text": "Fast-forward\n notes/JOURNAL.md | 1 +\nDeleted branch journal-binome (was 9a8b7c6)."
+     "text": "Fast-forward\n notes/JOURNAL.md | 4 ++--\nDeleted branch journal-binome (was 9a8b7c6)."
+    },
+    {
+     "type": "callout",
+     "label": "Deux « workflows » : même mot, deux choses",
+     "text": "**Workflow de travail Git/GitHub** : la suite de **vos** gestes, branche → commit → push → PR → revue → merge → pull ; vous venez de le faire. **Workflow GitHub Actions** : le fichier `.github/workflows/controles.yml`, que GitHub **exécute tout seul** sur une machine neuve à chaque PR ; on le voit dans l’onglet **Actions** et dans les checks. Le premier se fait à la main, le second tourne sans vous."
     }
    ],
    "source_ids": [
@@ -1453,7 +1577,7 @@
   {
    "id": "erreurs",
    "title": "Erreurs Git courantes : diagnostiquer sans casser",
-   "kicker": "01 / DÉMARRER · PREMIER CYCLE À DEUX",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1490,7 +1614,7 @@
       [
        "Push refusé : `fetch first` / `non-fast-forward`",
        "Le binôme a poussé sur la même branche.",
-       "`git pull` sur cette branche, relancez les contrôles, puis `git push`. Jamais `--force`."
+       "`git pull` sur cette branche (fusion simple ; si nano s’ouvre : Ctrl + O, Entrée, Ctrl + X), relancez les contrôles, puis `git push`. Jamais `--force`."
       ],
       [
        "PR : `This branch is out-of-date`",
@@ -1498,9 +1622,9 @@
        "`git fetch`, puis sur votre branche `git merge origin/main`, contrôles, push."
       ],
       [
-       "`git pull` : `Not possible to fast-forward`",
-       "main locale a divergé.",
-       "Ne forcez rien. Montrez `git status` et `git log --oneline -5` au professeur."
+       "`git pull` : `Need to specify how to reconcile divergent branches`",
+       "Réglage `pull.rebase` absent sur ce poste.",
+       "`git config --global pull.rebase false` (GitHub 1), puis `git pull` de nouveau."
       ],
       [
        "Check rouge",
@@ -1529,7 +1653,7 @@
   {
    "id": "conflit",
    "title": "Résoudre un conflit, calmement",
-   "kicker": "01 / DÉMARRER · PREMIER CYCLE À DEUX",
+   "kicker": "01 / DÉMARRER · E · PREMIER CYCLE À DEUX · SÉANCE 1",
    "blocks": [
     {
      "type": "text",
@@ -1634,7 +1758,7 @@
   },
   {
    "id": "recap",
-   "title": "Récapitulatif : prêt pour la séance 1",
+   "title": "Récapitulatif : prêt pour la suite de la séance 1",
    "kicker": "01 / DÉMARRER · ANNEXES",
    "blocks": [
     {
@@ -1654,7 +1778,7 @@
     {
      "type": "callout",
      "label": "Preuve observable du binôme",
-     "text": "Sur GitHub : un dépôt public `solen-<nomA>-<nomB>`, B collaborateur, main protégée, la PR #1 fusionnée avec une revue écrite de B. Chez chacun : `git status` sur main propre, `(.venv)` actif, `gh auth status` connecté."
+     "text": "Sur GitHub : un dépôt public `solen-<nomA>-<nomB>`, B collaborateur, main protégée, la PR n°1 (`journal-binome`, A auteur) fusionnée avec une revue écrite de B. Chez chacun : `git status` sur main propre, `(.venv)` actif, `gh auth status` connecté."
     },
     {
      "type": "section",
@@ -1662,7 +1786,7 @@
     },
     {
      "type": "text",
-     "text": "Ouvrez le livret du tronc commun, mission Solen Commerce 360 (Maison Zitouna). Gardez l’aide-mémoire Git · Codex · BI ouvert pendant les séances."
+     "text": "Après la pause, ouvrez le livret 02 (tronc commun, mission Solen Commerce 360) : la PR n°2 de la séance (`cadrage-binome`) aura **B** pour auteur et A pour relecteur. Gardez l’aide-mémoire Git · Codex · BI ouvert pendant les séances."
     },
     {
      "type": "section",

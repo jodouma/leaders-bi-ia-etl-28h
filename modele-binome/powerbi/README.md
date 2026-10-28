@@ -10,18 +10,21 @@ aucun essai Fabric ne sont nécessaires (si une fenêtre de connexion s'ouvre, f
 Rien n'est publié en ligne. Python et le pipeline tournent dans Ubuntu ; Desktop
 lit seulement les CSV exportés.
 
-Prérequis : `python -m controles.verifier --mission $(cat mission.txt) --etape export`
-réussit sur votre poste.
+Ce guide porte sur le **tronc commun** (séance 5). Il lit la livraison commitée en
+fin de séance 4 (livret 04, « Passer à votre mission ») : `livraison/tronc-commun/export-lot1/`
+et `export-lot2/`. Votre mission peut continuer dans `outputs/` pendant ce temps.
+Pour votre mission du catalogue, Codex écrit `powerbi/mesures_<Mxx>.dax` (étape C du
+guide de mission) ; `mesures.dax` reste celui du tronc commun. Power BI de la mission
+est l'objectif si un poste Windows est disponible ; sinon, la démonstration se fait
+dans l'application locale.
 
-## 1. Produire un export de départ (lot 1 seul)
+## 1. Partir de la livraison du lot 1
 
 Pour voir plus tard l'actualisation changer les chiffres, on commence par l'état
-**après le lot 1**. Dans le terminal Ubuntu, à la racine du dépôt, venv activé :
+**après le lot 1**. Dans le terminal Ubuntu, à la racine du dépôt :
 
 ```bash
-python -m solen initial
-python -m solen export
-ls outputs/export
+ls livraison/tronc-commun/export-lot1
 ```
 
 Vous devez voir `dim_date.csv`, `dim_produit.csv`, `dim_boutique.csv`,
@@ -34,9 +37,9 @@ notez le nombre de lignes de `fact_vente` et la somme de `montant_brut_millimes`
 **Windows + WSL2** : dans le terminal Ubuntu, tapez
 
 ```bash
-cd outputs/export
+cd livraison/tronc-commun/export-lot1
 explorer.exe .
-cd ../..
+cd ../../..
 ```
 
 L'Explorateur Windows s'ouvre sur le dossier. Copiez les six fichiers dans un
@@ -49,10 +52,9 @@ exemple celui de votre binôme. Deux routes :
 
 - copier les six fichiers sur une clé USB ou un dossier partagé, vers
   `Documents\Solen\export` du poste Windows ;
-- ou, mieux, sur le poste Windows (avec WSL2) : `git pull` dans le dépôt, puis
-  relancer vous-même `python -m solen initial` et `python -m solen export`, puis
-  `explorer.exe .` comme ci-dessus. Les `outputs/` ne sont pas versionnés : on les
-  reconstruit, on ne les transporte pas par Git.
+- ou, mieux, sur le poste Windows (avec WSL2) : `git pull` dans le dépôt ;
+  `livraison/` est versionné, les CSV sont déjà là. Puis `explorer.exe .` comme
+  ci-dessus.
 
 ## 3. Importer les cinq tables
 
@@ -155,15 +157,17 @@ boutique qui change de zone au 2026-07-15 changent-elles de barre ?
 Dans Ubuntu, à la racine du dépôt :
 
 ```bash
-python -m solen increment
-python -m solen export
-python -m controles.verifier --mission $(cat mission.txt) --etape export
+cd livraison/tronc-commun/export-lot2
+explorer.exe .
+cd ../../..
 ```
 
-Recopiez les six fichiers dans **le même** dossier Windows, en remplaçant les
-anciens (même route qu'à l'étape 2). Dans Desktop : **Accueil → Actualiser**.
+Recopiez les six fichiers de `export-lot2` dans **le même** dossier Windows, en
+remplaçant ceux du lot 1 (ou faites pointer la source de chaque requête vers
+`export-lot2` : **Transformer les données**, étape **Source**). Dans Desktop :
+**Accueil → Actualiser**.
 
-- Les cartes changent et correspondent au nouveau `manifest.json` (somme ÷ 1 000).
+- Les cartes changent et correspondent au `manifest.json` de `export-lot2` (somme ÷ 1 000).
 - Les mois de juillet et août apparaissent dans la courbe.
 - Les ventes de la boutique avant le 2026-07-15 restent dans son ancienne zone ;
   celles d'après vont dans la nouvelle.
@@ -174,8 +178,8 @@ identiques.
 **Ce que « Actualiser » prouve** : le rapport relit les fichiers CSV du dossier à
 chaque actualisation ; il est branché sur les données, pas sur des chiffres
 recopiés. Ce que cela **ne** prouve **pas** : que les CSV sont justes (c'est le rôle
-du vérificateur), ni que l'entrepôt a changé si vous n'avez pas relancé `export`
-et recopié les fichiers — Desktop relirait alors les anciens CSV.
+du vérificateur), ni que vous lisez le lot 2 : si les fichiers de `export-lot2` ne
+sont pas dans le dossier, Desktop relit ceux du lot 1.
 
 Gardez deux captures réelles, légendées : la vue Modèle avec ses six relations
 lisibles, et la page du rapport après actualisation, sans filtre.
@@ -186,8 +190,8 @@ lisibles, et la page du rapport après actualisation, sans filtre.
 - **Accents illisibles** (`Ã©`) : l'origine n'est pas 65001 : Unicode (UTF-8).
 - **Relation plusieurs-à-plusieurs proposée** : la dimension a une clé en double ;
   vérifier qu'on relie par `*_key` et non par `*_id`. Ne masquez pas le problème.
-- **Les chiffres n'ont pas bougé après actualisation** : vérifier que `export` a
-  été relancé, que les nouveaux fichiers sont dans **le même** dossier, et le chemin
+- **Les chiffres n'ont pas bougé après actualisation** : vérifier que les fichiers
+  de `export-lot2` sont dans **le même** dossier, et le chemin
   de chaque requête (dans **Transformer les données**, première étape **Source**).
 - **Erreur dans `valid_to`** : la case doit être vide, pas le texte `NULL` ;
   demandez à Codex de corriger l'export, pas de contourner dans Power BI.
@@ -204,6 +208,6 @@ Sources techniques : [Desktop](https://learn.microsoft.com/power-bi/fundamentals
 [CSV](https://learn.microsoft.com/power-query/connectors/text-csv),
 [schéma en étoile](https://learn.microsoft.com/power-bi/guidance/star-schema),
 [relations](https://learn.microsoft.com/power-bi/transform-model/desktop-create-and-manage-relationships).
-Ce guide reprend les libellés vérifiés de l'édition précédente ; les autres
-(Segment, Graphique en courbes, format de mesure) restent à confirmer dans un essai
-réel sous Windows.
+Les étapes viennent de la documentation Microsoft ; les libellés de l'interface
+(Segment, Graphique en courbes, format de mesure…) n'ont pas été vérifiés dans Power BI
+Desktop pour cette édition : ils le seront lors du prévol sur poste Windows.

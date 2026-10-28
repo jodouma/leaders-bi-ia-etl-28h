@@ -19,13 +19,17 @@ dans solen/ seulement. Sources intactes.
 - montants en millimes entiers (12,500 / 12.5 / 12 500 → 12500), dates en YYYY-MM-DD,
   codes en strip + majuscules.
 Écris outputs/rejets.csv avec la ligne d'origine et une colonne motif.
-Teste d'abord sur l'échantillon : j'attends <mes comptes>. Puis sur lot1, et lance
+Teste d'abord sur l'échantillon : j'attends <mes comptes>. Puis sur lot1 : lance
+python -m solen initial, puis
 python -m controles.verifier --mission $(cat mission.txt) --etape rejets
 Montre la fonction qui décide du motif et explique l'ordre des règles.
 ```
 
 ## Vérifier dans la réponse
 
+- `--etape rejets` ne juge que le CSV de faits du lot 1 (en séance 2, les retours de la
+  base SQLite viennent plus tard) ; chaque `numero_ligne` est une vraie ligne du CSV
+  (en-tête = ligne 1), une seule fois.
 - Vos comptes sur l'échantillon sont retrouvés exactement ; sinon, faites-vous
   expliquer **la** ligne qui diffère.
 - `outputs/rejets.csv` a une colonne `motif` et ne contient que les motifs prévus.

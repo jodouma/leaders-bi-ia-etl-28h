@@ -297,7 +297,12 @@
     "sources": [
       "operations.sqlite",
       "sejours.csv"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "sejours.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

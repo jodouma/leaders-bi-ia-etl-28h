@@ -3,7 +3,8 @@
     python authoring/generateurs/mission09_scene_libre.py            # écrit la mission
 
 Écrit modele-binome/catalogue/M09/{fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/,
-sources/lot1/, sources/lot2/, reference/} et la vérité privée dans solutions/verite_terrain/M09/.
+sources/lot1/, sources/lot2/, reference/} et, si SOLEN_VERITE_PRIVEE est définie,
+la vérité brute dans <SOLEN_VERITE_PRIVEE>/M09/ (dossier privé, hors dépôt).
 """
 from __future__ import annotations
 
@@ -289,7 +290,7 @@ def produire_echantillon(spec, dossier) -> dict:
                                        {"lignes_csv": 12, "doublons_exacts": 1, "lignes_gardees": len(fb),
                                         "demandes_non_remboursees_ignorees": 2})
     ecrire_json(dossier / "attendu.json", att)
-    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8")
+    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8", newline="\n")
     return att
 
 

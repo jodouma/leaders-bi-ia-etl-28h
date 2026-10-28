@@ -285,7 +285,12 @@
     "sources": [
       "avoirs.sqlite",
       "factures.csv"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "factures.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

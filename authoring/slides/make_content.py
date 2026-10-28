@@ -25,8 +25,8 @@ def main():
     slides = spec["slides"]
     if spec.get("edition") != "V7-Solen-22h":
         fail("edition attendue : V7-Solen-22h")
-    if not 70 <= len(slides) <= 90:
-        fail(f"{len(slides)} diapositives (attendu 70 à 90)")
+    if not 70 <= len(slides) <= 100:
+        fail(f"{len(slides)} diapositives (attendu 70 à 100)")
     for logo in ("authoring/assets/leaders-logo.jpeg", "authoring/assets/solen-digital-horizontal.png"):
         if not (ROOT / logo).exists():
             fail("logo absent : " + logo)

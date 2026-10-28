@@ -283,7 +283,12 @@
     "sources": [
       "abonnements.sqlite",
       "facturation.csv"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "facturation.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

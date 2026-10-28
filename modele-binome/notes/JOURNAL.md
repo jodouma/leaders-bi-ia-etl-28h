@@ -26,5 +26,5 @@ Auteur : <prénom A> · Relecteur : <prénom B> · Mission : tronc-commun
 - **État actuel** : dépôt créé, B invité et contributeur ; rien n'est encore construit.
 - **Décision** : A crée la première PR, B relit ; les rôles alternent ensuite.
 - **Preuve** : `python -m controles.verifier --mission tronc-commun --etape initial`
-  → échec attendu, message : « <recopier la première ligne du message> ».
+  → échec attendu, message : « <recopier la ligne ÉCHEC> ».
 - **Prochain objectif** : lire les quatre sources du tronc commun et compter leurs lignes.

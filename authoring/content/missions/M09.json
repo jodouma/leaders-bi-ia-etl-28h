@@ -39,7 +39,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Ce guide accompagne votre binôme sur la **mission 09**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un organisateur de spectacles fictif, **Scène Libre**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : remplacer le contenu de `mission.txt` par `M09`."
+     "text": "Ce guide accompagne votre binôme sur la **mission 09**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un organisateur de spectacles fictif, **Scène Libre**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : « Avant l’étape A » (page 9), en fin de séance 4."
     },
     {
      "type": "table",
@@ -71,23 +71,23 @@
       ],
       [
        "Étapes A → B → C",
-       "Charger, compléter et rejouer, livrer",
+       "Passer à M09, charger, compléter et rejouer, livrer",
        "9"
       ],
       [
        "La règle à clarifier et les variantes",
        "Défendre la décision, choisir une variante",
-       "12"
+       "13"
       ],
       [
        "La démonstration",
        "Trois écrans et un chiffre filtré contrôlé",
-       "13"
+       "14"
       ],
       [
        "À ce stade, je sais…",
        "Le bilan et ce qui a été vérifié",
-       "14"
+       "15"
       ]
      ],
      "widths": [
@@ -412,7 +412,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "`echantillon/` contient **12 lignes** de `billets.csv`, 2 événements (E01 : 10 places, E02 : 8 places), les 4 canaux et 4 demandes de remboursement. Calculez **sur papier**, à deux, avant Codex. La correction est page suivante."
+     "text": "`echantillon/` contient **12 lignes** de `billets.csv`, 2 événements (EV01 : 10 places, EV02 : 8 places), les 4 canaux et 4 demandes de remboursement. Calculez **sur papier**, à deux, avant Codex. La correction est page suivante."
     },
     {
      "type": "table",
@@ -426,73 +426,73 @@
       [
        "2",
        "S-001",
-       "E01 · WEB · 2026-03-02 · CAT1 · places 1 · prix 40.000",
+       "EV01 · WEB · 2026-03-02 · CAT1 · places 1 · prix 40.000",
        ""
       ],
       [
        "3",
        "S-002",
-       "E01 · « web » · 02/03/2026 · CAT2 · places 1 · prix 25,000",
+       "EV01 · « web » · 02/03/2026 · CAT2 · places 1 · prix 25,000",
        ""
       ],
       [
        "4",
        "S-003",
-       "E01 · GUI · 3 mars 2026 · cat2 · places 1 · prix 20",
+       "EV01 · GUI · 3 mars 2026 · cat2 · places 1 · prix 20",
        ""
       ],
       [
        "5",
        "S-004",
-       "E02 · REV · 2026-03-05 · VIP · places 1 · prix 80,000",
+       "EV02 · REV · 2026-03-05 · VIP · places 1 · prix 80,000",
        ""
       ],
       [
        "6",
        "S-004",
-       "E02 · REV · 2026-03-05 · VIP · places 1 · prix 80,000",
+       "EV02 · REV · 2026-03-05 · VIP · places 1 · prix 80,000",
        ""
       ],
       [
        "7",
        "S-005",
-       "E02 · PAR · 2026-03-06 · CAT1 · places 1 · prix 50,0",
+       "EV02 · PAR · 2026-03-06 · CAT1 · places 1 · prix 50,0",
        ""
       ],
       [
        "8",
        "S-006",
-       "E02 · WEB · 2026-03-06 · CAT1 · places 1 · prix 50.000",
+       "EV02 · WEB · 2026-03-06 · CAT1 · places 1 · prix 50.000",
        ""
       ],
       [
        "9",
        "S-006",
-       "E02 · WEB · 2026-03-06 · CAT1 · places 2 · prix 50.000",
+       "EV02 · WEB · 2026-03-06 · CAT1 · places 2 · prix 50.000",
        ""
       ],
       [
        "10",
        "(vide)",
-       "E01 · WEB · 2026-03-07 · CAT1 · places 1 · prix 40.000",
+       "EV01 · WEB · 2026-03-07 · CAT1 · places 1 · prix 40.000",
        ""
       ],
       [
        "11",
        "S-007",
-       "E09 · WEB · 2026-03-07 · CAT1 · places 1 · prix 40.000",
+       "EV99 · WEB · 2026-03-07 · CAT1 · places 1 · prix 40.000",
        ""
       ],
       [
        "12",
        "S-008",
-       "E01 · GUI · 2026-03-08 · CAT2 · places 0 · prix 25.000",
+       "EV01 · GUI · 2026-03-08 · CAT2 · places 0 · prix 25.000",
        ""
       ],
       [
        "13",
        "S-009",
-       "E02 · « Rev » · 2026-03-09 · CAT2 · places 1 · prix 35",
+       "EV02 · « Rev » · 2026-03-09 · CAT2 · places 1 · prix 35",
        ""
       ]
      ],
@@ -514,7 +514,7 @@
     {
      "type": "callout",
      "label": "Mes résultats, avant de tourner la page",
-     "text": "Gardés : ……  Rejets : ……  Recettes : …… TND  Frais : …… TND  Remboursements : …… TND\nBillets nets : ……  Remplissage : …… % (E01 …… %, E02 …… %)  Recettes nettes : …… TND"
+     "text": "Gardés : ……  Rejets : ……  Recettes : …… TND  Frais : …… TND  Remboursements : …… TND\nBillets nets : ……  Remplissage : …… % (EV01 …… %, EV02 …… %)  Recettes nettes : …… TND"
     }
    ]
   },
@@ -524,7 +524,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "Ligne 6 : doublon exact, **ignorée**. Lignes 8 et 9 : même `billet_id`, places différentes → **les deux** en `id_conflit`. Ligne 10 : `id_manquant`. Ligne 11 : événement `E09` inconnu → `cle_inconnue`. Ligne 12 : 0 place → `quantite_invalide`. Bilan : **6 billets gardés**. `20` pour S-003 est un tarif réduit : on garde le prix payé."
+     "text": "Ligne 6 : doublon exact, **ignorée**. Lignes 8 et 9 : même `billet_id`, places différentes → **les deux** en `id_conflit`. Ligne 10 : `id_manquant`. Ligne 11 : événement `EV99` inconnu → `cle_inconnue`. Ligne 12 : 0 place → `quantite_invalide`. Bilan : **6 billets gardés**. `20` pour S-003 est un tarif réduit : on garde le prix payé."
     },
     {
      "type": "table",
@@ -539,7 +539,7 @@
      "rows": [
       [
        "S-001",
-       "E01",
+       "EV01",
        "WEB",
        "40,000",
        "45",
@@ -547,7 +547,7 @@
       ],
       [
        "S-002",
-       "E01",
+       "EV01",
        "WEB",
        "25,000",
        "45",
@@ -555,7 +555,7 @@
       ],
       [
        "S-003",
-       "E01",
+       "EV01",
        "GUI",
        "20,000",
        "0",
@@ -563,7 +563,7 @@
       ],
       [
        "S-004",
-       "E02",
+       "EV02",
        "REV",
        "80,000",
        "90",
@@ -571,7 +571,7 @@
       ],
       [
        "S-005",
-       "E02",
+       "EV02",
        "PAR",
        "50,000",
        "60",
@@ -579,7 +579,7 @@
       ],
       [
        "S-009",
-       "E02",
+       "EV02",
        "REV",
        "35,000",
        "90",
@@ -622,7 +622,7 @@
       ],
       [
        "Taux de remplissage",
-       "5 ÷ (10 + 8) ; E01 : 3 ÷ 10 ; E02 : 2 ÷ 8",
+       "5 ÷ (10 + 8) ; EV01 : 3 ÷ 10 ; EV02 : 2 ÷ 8",
        "**27,78 %** (30,00 % et 25,00 %)"
       ],
       [
@@ -682,9 +682,9 @@
       ]
      ],
      "widths": [
-      1.4,
+      1.66,
       2.1,
-      2.4
+      2.14
      ]
     },
     {
@@ -750,6 +750,34 @@
      "type": "callout",
      "label": "Ignorer ou rejeter ?",
      "text": "**Ignorer** : doublon exact, ligne déjà chargée, demande `CONSERVE` ou `REFUSE`. **Rejeter** : `id_conflit`, `id_manquant`, `cle_inconnue` (événement, canal ou billet inconnu), `quantite_invalide` (`nb_places` ≠ 1)."
+    }
+   ]
+  },
+  {
+   "title": "Avant l’étape A · passer à M09",
+   "kicker": "M09 · SCÈNE LIBRE · ÉTAPES A → B → C",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fin de séance 4, à deux, en une PR : votre dépôt passe du tronc commun à M09. On garde le code du tronc commun et on le **généralise**. Détail et raisons : livret 04, « Passer à votre mission »."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · sauvegarder, vider, changer de mission",
+     "text": "git switch main && git pull\ngit switch -c mission-M09\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*                 # .gitkeep (fichier caché) reste\necho \"M09\" > mission.txt"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · généraliser le tronc commun (première étape)",
+     "text": "Mission M09 : lis mission.txt, le cahier des charges, le dictionnaire et\ncatalogue/M09/reference/contrat_entrepot.json. Ne repars pas de zéro :\ngénéralise le code de solen/ écrit pour le tronc commun (sources, tables,\ncolonnes lues depuis la mission). Première étape seulement : les rejets\nde billets.csv au lot 1. Lance python -m solen initial, puis --mission M09\n--etape rejets et pytest controles ; recopie les sorties. Dis quels tests\nde tests/ lisent mission.txt et adapte-les. Ni commit ni push."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`livraison/` est versionné, `outputs/` ne l’est pas** : `livraison/tronc-commun/` garde la preuve du tronc commun (et sert à Power BI en séance 5) ; `outputs/` appartient à la mission courante, `python -m solen initial` le reconstruit pour M09.",
+      "**Ordre des contrôles**, un cran vert par PR : `rejets` → `initial` → `increment` → `rejeu` → `export` → `app` → `tout --strict`. Dans la même PR, `ETAPE_CI` revient à `aucune`, puis avance avec vous.",
+      "**Faux ÉCHEC ?** Une application ou une empreinte de rejeu du tronc commun restée dans `outputs/` : videz `outputs/`, relancez `initial`, reprenez l’ordre."
+     ]
     }
    ]
   },
@@ -824,7 +852,7 @@
     {
      "type": "code",
      "label": "Demande à Codex · prompt 08 adapté",
-     "text": "Mission M09. Ajoute python -m solen increment (lot2 de M09).\n- SCD2 sur dim_canal.frais_pour_mille : fermer la version 90 de REV\n  (valid_to 2026-07-15, exclu), ouvrir 110 (valid_from 2026-07-15) ;\n- un billet prend le taux valable à sa date de VENTE, une fois pour\n  toutes ; un remboursement ne recalcule jamais les frais ;\n- nouveaux événements ajoutés, anciens inchangés ;\n- rejeu : billet_id ou numéro de remboursement déjà chargés ignorés.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+     "text": "Mission M09. Ajoute python -m solen increment (lot2 de M09).\n- SCD2 sur dim_canal.frais_pour_mille : fermer la version 90 de REV\n  (valid_to 2026-07-15, exclu), ouvrir 110 (valid_from 2026-07-15) ;\n- un billet prend le taux valable à sa date de VENTE, une fois pour\n  toutes ; un remboursement ne recalcule jamais les frais ;\n- nouveaux événements ajoutés, anciens inchangés ;\n- rejeu : billet_id ou numéro de remboursement déjà chargés ignorés.\nLance initial, increment, --etape increment, increment (2e fois),\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
     },
     {
      "type": "code",
@@ -901,13 +929,13 @@
     },
     {
      "type": "text",
-     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** (`dim_date`, `dim_evenement`, `dim_canal` vers les deux faits), par `canal_key`. Codex réécrit `powerbi/mesures.dax` : Billets nets, Taux de remplissage = billets nets ÷ somme de `dim_evenement[capacite]`, Recettes nettes TND. Après le lot 2 et **Actualiser** : 2 489, 32,12 %, 109 866,930 TND. Erreur fréquente : un axe des mois pris dans `dim_date` (date de vente) alors que la référence range par mois du spectacle."
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** (`dim_date`, `dim_evenement`, `dim_canal` vers les deux faits), par `canal_key`. Demandez à Codex les mesures de la mission (formules du cahier) dans `powerbi/mesures_M09.dax` ; sans poste Windows, la démo se fait dans l’application : Billets nets, Taux de remplissage = billets nets ÷ somme de `dim_evenement[capacite]`, Recettes nettes TND. Après le lot 2 et **Actualiser** : 2 489, 32,12 %, 109 866,930 TND. Erreur fréquente : un axe des mois pris dans `dim_date` (date de vente) alors que la référence range par mois du spectacle."
     },
     {
      "type": "figure",
      "path": "../../../modele-binome/catalogue/M09/reference/visuels/taux_remplissage_par_evenement.png",
      "caption": "Graphique de référence après le lot 2 : taux de remplissage par événement, en %. EV05 et EV12, annulés, sont à 0 %.",
-     "height": 175
+     "height": 170
     }
    ]
   },
@@ -1053,7 +1081,7 @@
      "type": "figure",
      "path": "../../../modele-binome/catalogue/M09/reference/visuels/recettes_nettes_par_mois_et_type.png",
      "caption": "Graphique de référence après le lot 2 : recettes nettes par mois du spectacle et par type, en TND.",
-     "height": 195
+     "height": 225
     }
    ]
   },

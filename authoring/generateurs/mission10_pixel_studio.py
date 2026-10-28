@@ -3,8 +3,8 @@
     python authoring/generateurs/mission10_pixel_studio.py
 
 Écrit modele-binome/catalogue/M10/{fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/,
-sources/lot1/, sources/lot2/, reference/}, le bloc M10 de v7-data.json et la vérité privée dans
-solutions/verite_terrain/M10/.
+sources/lot1/, sources/lot2/, reference/}, le bloc M10 de v7-data.json et, si SOLEN_VERITE_PRIVEE
+est définie, la vérité brute dans <SOLEN_VERITE_PRIVEE>/M10/ (dossier privé, hors dépôt).
 """
 from __future__ import annotations
 
@@ -350,7 +350,7 @@ def produire_echantillon(spec, dossier) -> dict:
                                         "factures_annulees_exclues": 1,
                                         "unite_heures": "centièmes d'heure (750 = 7,5 h)"})
     ecrire_json(dossier / "attendu.json", att)
-    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8")
+    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8", newline="\n")
     return att
 
 

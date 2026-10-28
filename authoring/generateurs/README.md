@@ -9,12 +9,21 @@ Depuis `github/` :
 ```bash
 .venv/bin/python authoring/generateurs/mission00_commerce360.py          # une mission
 for g in authoring/generateurs/mission*.py; do .venv/bin/python "$g"; done   # les onze
-.venv/bin/python authoring/generateurs/verifier_reproductibilite.py      # 11 OK attendus (ne pas lancer pendant qu'un autre agent génère)
+.venv/bin/python authoring/generateurs/verifier_reproductibilite.py      # 11 OK attendus (restaure ensuite chaque mission et v7-data.json)
 ```
 
-Un script réécrit uniquement le dossier de SA mission (`modele-binome/tronc-commun/` ou `modele-binome/catalogue/MNN/` : `fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/, sources/, reference/`), fusionne SON bloc dans `v7-data.json` et, si le dossier formateur existe, écrit la vérité brute privée dans `formateur/fable-v7-solen-22h/solutions/verite_terrain/<mission>/` (jamais dans le dépôt public).
+Un script réécrit uniquement le dossier de SA mission (`modele-binome/tronc-commun/` ou `modele-binome/catalogue/MNN/` : `fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/, sources/, reference/`) et fusionne SON bloc dans `v7-data.json`. La vérité terrain brute (CSV) n'est écrite que si la variable d'environnement `SOLEN_VERITE_PRIVEE=<dossier>` est définie (dossier privé du formateur, hors dépôt) : sans elle, rien n'est écrit ailleurs.
 
-Reproductible : deux exécutions donnent les mêmes octets (graine fixe, classeur Excel zippé avec des dates figées, SVG avec `svg.hashsalt` fixe, PNG sans métadonnées variables).
+Reproductible : sur une même machine, deux exécutions donnent les mêmes octets (graine fixe, classeur Excel zippé avec des dates figées et `create_system` fixe, textes écrits en LF avec `newline="\n"`, SVG avec `svg.hashsalt` fixe, PNG sans métadonnées variables). Entre plateformes, on compare le **contenu** : chaque générateur écrit `reference/empreintes.json` (une empreinte par fichier de la mission) et `verifier_reproductibilite.py` la compare aux fichiers publiés puis aux fichiers régénérés :
+
+| Fichier | Empreinte comparée |
+|---|---|
+| `.csv`, `.json`, `.md` | octets du texte, fins de ligne normalisées en LF (quel que soit l'encodage, cp1252 compris) |
+| `.xlsx` | valeurs des cellules, feuille par feuille (openpyxl) ; pas les octets du ZIP (zlib) |
+| `.sqlite` | schéma (`sqlite_master`) + `SELECT * ORDER BY` toutes les colonnes, table par table ; pas l'en-tête (il porte la version de SQLite) |
+| `.png`, `.svg` (`reference/visuels/`) | présence seulement : le rendu dépend de matplotlib et de FreeType |
+
+C'est ce qui rend le job `donnees` de `verify.yml` déterministe sous Ubuntu et Windows.
 
 | Mission | Script (+ `textes_missionNN.py`) | Graine | Taille | CSV de faits lot1 / lot2 (lignes) | Faits après lot2 | Rejets lot1 / lot2 | Nombre clé (après lot2) |
 |---|---|---|---|---|---|---|---|
@@ -30,7 +39,7 @@ Reproductible : deux exécutions donnent les mêmes octets (graine fixe, classeu
 | M09 — Scène Libre | `mission09_scene_libre.py` | 260009 | ≈ 695 Ko | `billets.csv` 2380 / 441 | `fact_billet` 2757 · `fact_remboursement` 268 | 25 / 10 | Recettes nettes : 109 866,930 TND |
 | M10 — Pixel Studio | `mission10_pixel_studio.py` | 261010 | ≈ 748 Ko | `temps.csv` 2015 / 426 | `fact_temps` 2384 · `fact_facture` 86 | 24 / 11 | Marge de contribution : 132 912,525 TND |
 
-Versions utilisées pour la génération de référence : Python 3.13.17 · pandas 3.1.0 · openpyxl 3.1.5 · matplotlib 3.11.2 · pytest 9.2.0. Le code n'utilise que la bibliothèque standard + openpyxl + matplotlib.
+Versions de la construction publiée (données, visuels et PDF du 28/10/2026, macOS) : Python 3.13.17 · SQLite 3.54.1 · openpyxl 3.1.5 · matplotlib 3.11.2 · reportlab 5.1.0 · Pillow 13.0.0 · pypdf 6.21.3 · fonttools 4.68.0 ; côté dépôt binôme : pandas 3.1.0 · pytest 9.2.0. Les plages de `authoring/requirements.txt` et de `modele-binome/requirements.txt` incluent ces versions. Les générateurs n'utilisent que la bibliothèque standard + openpyxl + matplotlib (ni pandas, ni pytest).
 
 ## Ce que produit une mission
 
@@ -39,18 +48,18 @@ Versions utilisées pour la génération de référence : Python 3.13.17 · pand
 <mission>/echantillon/      ventes.csv (≤ 12 lignes) catalogue.xlsx boutiques.json operations.sqlite attendu.md attendu.json
 <mission>/sources/lot1/     4 sources (CSV, Excel, JSON, SQLite)
 <mission>/sources/lot2/     4 sources : nouvelles lignes + lignes déjà chargées (rejeu) + 1 changement SCD2
-<mission>/reference/        attendu_lot1.json attendu_lot2.json contrat_entrepot.json README.md visuels/*.png|svg
+<mission>/reference/        attendu_lot1.json attendu_lot2.json contrat_entrepot.json empreintes.json README.md visuels/*.png|svg
 ```
 
 - `attendu_<lot>.json` : comptes par source, nettoyage (formats normalisés, doublons, lignes déjà chargées), rejets par motif et par source, lignes par table, indicateurs globaux, agrégats par axe (zone, boutique, mois, famille…) en millimes entiers, versions SCD2 avec `valid_from`/`valid_to`, contrôles de date frontière. `attendu_lot2.json` vaut aussi pour le rejeu (bloc `rejeu`).
-- `contrat_entrepot.json` : ce qui rend le vérificateur générique pour les 11 missions — tables, colonnes, colonnes entières, clés étrangères, dimension SCD2 et faits qui y pointent, vue d'analyse SQL « mouvements », indicateurs (code, formule française, agrégat SQL, tolérance), axes, colonnes obligatoires de `rejets.csv`, sommes de l'export, textes obligatoires de l'application, lots et étapes.
+- `contrat_entrepot.json` : ce qui rend le vérificateur générique pour les 11 missions — tables, colonnes, colonnes entières, clés étrangères, dimension SCD2 et faits qui y pointent, vue d'analyse SQL « mouvements », indicateurs (code, formule française, agrégat SQL, tolérance), axes, colonnes obligatoires de `rejets.csv` et sources contrôlées par `--etape rejets` (`rejets.etape_rejets` : le CSV de faits seul ; la base SQLite est contrôlée à `--etape initial`), sommes de l'export, textes obligatoires de l'application, lots et étapes.
 
 ## Comment la référence est calculée (indépendance)
 
 1. Le script de mission crée des **événements vrais** (ventes, retours…) avec une graine.
 2. `construire_csv()` les rend en texte « sale » et **ajoute** des lignes piégées comptées (doublons exacts, conflits d'identifiant, identifiants vides, clés inconnues, quantités invalides) ; les formats de montants, dates et codes sont mélangés sur une part des lignes vraies.
 3. Les tables de l'étoile sont construites **directement depuis les événements vrais** (`tables_verite`), puis `entrepot_verite()` les charge en mémoire et exécute la vue d'analyse du contrat : ce sont les valeurs attendues. Aucune source n'est relue.
-4. Un double contrôle Python pur (sans SQL) vérifie ventes nettes et marge dans le script ; le formateur dispose en plus de `solutions/controle_croise_mission00.py` (pandas sur la vérité brute).
+4. Un double contrôle Python pur (sans SQL) vérifie ventes nettes et marge dans le script ; le formateur dispose en plus, dans son dossier privé, d'un contrôle croisé pandas sur la vérité brute.
 
 ## Ajouter une mission (M01…M10)
 
@@ -66,13 +75,13 @@ Ce que le cadre écrit seul (ne pas le recoder dans un script de mission) :
 - **Unités d'indicateur** : `millimes`, `ratio`, `nombre`, `jours`, `heures`, `centiemes_heure` (documents : « 2,41 jours », « 20,18 h » ; le vérificateur compare `ratio`/`jours`/`heures` avec la tolérance du contrat).
 - **Anomalies** : `Doses.quantites_invalides` remplace la liste par défaut quand « 1.5 » est une valeur valable (poids, heures). M04, M05 et M10 gardent leur passage local (même résultat octet pour octet, l'ordre d'affectation diffère).
 - **Graphiques** : `empile` et `barres` (légende sous le graphique, axe sans « () » pour un comptage ; `barres` accepte `top`, `horizontal`, étiquettes inclinées au-delà de 8 valeurs), `rejets`, et `fonction` (`dessiner(spec, con, attendus, base)`) pour un graphique vraiment propre à la mission, listé dans `reference/README.md` comme les autres.
-4. Vérifier : taille < 1,5 Mo (`TAILLE_MAX_MISSION`), deux exécutions identiques, puis la solution de référence (`solutions/solen_ref`, un adaptateur de plus) passe `python -m controles.verifier --mission MNN --etape tout`.
+4. Vérifier : taille < 1,5 Mo (`TAILLE_MAX_MISSION`), deux exécutions identiques, puis la solution de référence du formateur (dossier privé, un adaptateur de plus) passe `python -m controles.verifier --mission MNN --etape tout --strict`.
 
 Les 9 anomalies standard (contrat § 5) : doublon exact, `id_conflit`, `id_manquant`, `cle_inconnue`, format décimal, format date, casse/espaces, `quantite_invalide`, encodage (`ecrire_csv(..., encodage="cp1252")` pour M02 et M06).
 
 ## v7-data.json
 
-Un bloc par mission (`missions.<code>`), écrit par `exporter_v7_data` à chaque génération : vérités de l'échantillon et nombres clés (indicateurs et unités, tables, rejets, nettoyage, versions SCD2, frontières, agrégats par axe) pour le générateur de schémas. Fusion par code de mission, écriture atomique : générer une mission ne touche jamais le bloc d'une autre (plus d'option `--v7-data`, plus de fichiers `verite_terrain/M0x/v7_data_M0x.json`). Montants en millimes. Ne pas éditer à la main.
+Un bloc par mission (`missions.<code>`), écrit par `exporter_v7_data` à chaque génération : vérités de l'échantillon et nombres clés (indicateurs et unités, tables, rejets, nettoyage, versions SCD2, frontières, agrégats par axe) pour le générateur de schémas. Fusion par code de mission, écriture atomique : générer une mission ne touche jamais le bloc d'une autre. Montants en millimes. Ne pas éditer à la main.
 
 ## Décisions de format fixées ici
 

@@ -3,7 +3,8 @@
     python authoring/generateurs/mission08_techniserv.py            # depuis github/
 
 Écrit modele-binome/catalogue/M08/{fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/,
-sources/lot1/, sources/lot2/, reference/} et la vérité privée formateur/…/solutions/verite_terrain/M08/.
+sources/lot1/, sources/lot2/, reference/} et, si SOLEN_VERITE_PRIVEE est définie,
+la vérité brute dans <SOLEN_VERITE_PRIVEE>/M08/ (dossier privé, hors dépôt).
 """
 from __future__ import annotations
 
@@ -382,7 +383,7 @@ def produire_echantillon(spec, dossier) -> dict:
                                         "consommations_lues": len(CONSO_ECH),
                                         "consommations_acceptees": len(CONSO_ECH) - len(CONSO_ECH_REJET)})
     ecrire_json(dossier / "attendu.json", att)
-    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8")
+    (dossier / "attendu.md").write_text(md_echantillon(acc, att), encoding="utf-8", newline="\n")
     return att
 
 

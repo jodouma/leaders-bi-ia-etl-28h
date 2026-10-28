@@ -302,7 +302,12 @@
     "sources": [
       "interventions.csv",
       "operations.sqlite"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "interventions.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

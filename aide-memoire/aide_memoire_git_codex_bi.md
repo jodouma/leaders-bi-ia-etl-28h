@@ -49,9 +49,9 @@ Les rôles alternent à chaque PR. Chaque PR ajoute une entrée à `notes/JOURNA
 | commit fait sur `main` | `git switch -c <branche>`, push, PR ; après fusion, `git switch main && git pull` |
 | `Your local changes ... would be overwritten` | commit sur la bonne branche, ou `git stash` → changer de branche → `git stash pop` |
 | push refusé, `protected branch` | normal : branche + PR |
-| push refusé, `fetch first` | `git pull` sur la branche, contrôles, `git push` |
+| push refusé, `fetch first` | `git pull` sur la branche (fusion simple grâce à `pull.rebase false`) ; si un éditeur s’ouvre, enregistrer et fermer ; contrôles, `git push` |
 | PR `out-of-date` | `git fetch`, puis sur la branche `git merge origin/main`, contrôles, push |
-| `Not possible to fast-forward` | ne rien forcer ; montrer `git status` et `git log --oneline -5` |
+| `Need to specify how to reconcile divergent branches` | `git config --global pull.rebase false`, puis `git pull` ; ne rien forcer |
 | check rouge | **Details**, lire la fin, relancer la même commande chez soi, corriger le code (jamais les contrôles ni la référence) |
 | `CONFLICT` | lire les deux versions, décider à deux, retirer `<<<<<<<` `=======` `>>>>>>>`, contrôles, `git add`, `git commit` ; annuler : `git merge --abort` |
 
@@ -130,3 +130,22 @@ Montants stockés en **millimes entiers** (1 TND = 1 000 millimes), affichés en
 | **Rejeu** | relancer le même lot sans créer de doublon | relancer le lot 2 : le nombre de lignes de `fact_vente` ne bouge pas |
 
 Une vente de juin reste rattachée à l’ancienne zone de la boutique ; une vente d’août, à la nouvelle. C’est la question à poser à chaque graphique « par zone ».
+
+---
+
+## 5. Contrôles du dépôt
+
+```bash
+source .venv/bin/activate        # à chaque nouveau terminal
+python -m solen sources          # S2 : lire les sources, sans rien charger
+python -m solen initial          # puis increment, export, app
+python -m controles.verifier --mission $(cat mission.txt) --etape initial
+      # étapes : rejets|initial|increment|rejeu|export|app|tout
+pytest controles                 # tests fournis
+pytest -q                        # tous les tests, y compris les vôtres
+```
+
+- `rejets` (séance 2) ne juge que le CSV de faits du lot 1 ; chaque `numero_ligne` est une vraie ligne du CSV (en-tête = ligne 1), une seule fois.
+- Le rejeu se prouve dans cet ordre exact : `python -m solen increment` → `--etape increment` (enregistre l’empreinte) → `python -m solen increment` → `--etape rejeu`.
+- `ETAPE_CI` (dans `.github/workflows/controles.yml`) suit le même ordre, en partant de `aucune`.
+- Passer à votre mission (fin de séance 4) : sauvegarder la livraison du tronc commun dans `livraison/tronc-commun/` (versionné), vider `outputs/` (non versionné), `mission.txt` ← `M0x`, faire **généraliser** `solen/` par Codex (livret 04).

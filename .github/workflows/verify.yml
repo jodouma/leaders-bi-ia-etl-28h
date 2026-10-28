@@ -11,44 +11,75 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         python: ['3.12']
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    # bash partout, y compris sous Windows (Git Bash) : mêmes boucles, mêmes guillemets, pas de PowerShell.
+    defaults:
+      run:
+        shell: bash
     env:
       PYTHONIOENCODING: utf-8
       PYTHONUTF8: '1'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python }}
       - name: Dépendances étudiantes (modele-binome/requirements.txt) + outils d'édition
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r modele-binome/requirements.txt
-          python -m pip install -r authoring/requirements.txt
-      - name: Les générateurs reproduisent exactement les données publiées
-        shell: bash
+          python -m pip install -r modele-binome/requirements.txt -r authoring/requirements.txt
+          python -m pip freeze | grep -iE '^(pandas|openpyxl|pytest|matplotlib|reportlab|pillow|pypdf|fonttools)=='
+      - name: Les générateurs reproduisent le contenu des données publiées (empreintes de contenu)
         run: python authoring/generateurs/verifier_reproductibilite.py
       - name: Le vérificateur se lance et explique ce qui manque sur un dépôt binôme neuf
-        shell: bash
         working-directory: modele-binome
         run: |
           python -m controles.verifier --help
           # Sur un dépôt neuf, rien n'est construit : le vérificateur doit échouer proprement (code 1), pas planter.
-          if python -m controles.verifier --mission tronc-commun --etape initial; then echo "attendu : échec propre" ; exit 1; fi
-          for m in M01 M02 M03 M04 M05 M06 M07 M08 M09 M10; do
-            if [ -d "catalogue/$m" ]; then
-              if python -m controles.verifier --mission "$m" --etape initial; then echo "attendu : échec propre ($m)"; exit 1; fi
+          for m in tronc-commun M01 M02 M03 M04 M05 M06 M07 M08 M09 M10; do
+            if [ "$m" = tronc-commun ] || [ -d "catalogue/$m" ]; then
+              for e in rejets initial rejeu; do
+                set +e; python -m controles.verifier --mission "$m" --etape "$e" > sortie.txt 2>&1; code=$?; set -e
+                if [ "$code" != 1 ] || grep -q Traceback sortie.txt; then
+                  cat sortie.txt; echo "attendu : échec propre, code 1 ($m, $e), observé $code"; exit 1
+                fi
+              done
+            fi
+          done
+          rm -f sortie.txt
+      - name: Tests de contrat sur un dépôt neuf (6 réussis, 3 ignorés par mission)
+        working-directory: modele-binome
+        run: |
+          for m in tronc-commun M01 M02 M03 M04 M05 M06 M07 M08 M09 M10; do
+            if [ "$m" = tronc-commun ] || [ -d "catalogue/$m" ]; then
+              echo "== $m"; SOLEN_MISSION="$m" python -m pytest controles -q -p no:cacheprovider
             fi
           done
   livrets:
     name: Livrets PDF reconstruits depuis leurs sources
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - run: python -m pip install -r authoring/requirements.txt
       - name: Construire tous les livrets et les guides de mission
         run: python authoring/build_pdfs.py --missions
-      - name: Aucune figure manquante dans les livrets publiés
-        run: python -c "import json;r=json.load(open('authoring/pdf_layout_report.json'));m=[(x['pdf'],x['missing_figures']) for x in r if x['missing_figures']];print(m);assert not m,'figures manquantes'"
+      - name: Aucune figure manquante, hors captures prévues (docs/images/captures/)
+        run: |
+          python - <<'PY'
+          import json
+          rapport = json.load(open("authoring/pdf_layout_report.json", encoding="utf-8"))
+          prevues, manquantes = [], []
+          for livret in rapport:
+              for f in livret["missing_figures"]:
+                  (prevues if "docs/images/captures/" in f.replace("\\", "/") else manquantes).append((livret["pdf"], f))
+          print(f"Captures prévues, encore à réaliser (encadré « CAPTURE À RÉALISER ») : {len(prevues)}")
+          for pdf, f in prevues:
+              print(f"::warning title=Capture à réaliser::{pdf} · {f.rsplit('/', 1)[-1]}")
+          for pdf, f in manquantes:
+              print(f"::error title=Figure manquante::{pdf} · {f}")
+          assert not manquantes, f"{len(manquantes)} figure(s) manquante(s) hors captures prévues"
+          PY

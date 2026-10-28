@@ -58,16 +58,24 @@ function circle(s, label, x, y, d, fill = C.navy, size = 16, color = C.white) {
 function arrow(s, x1, y1, x2, y2, color = C.orange, width = 2.5) {
   s.addShape(ST.line, { x: x1, y: y1, w: x2 - x1, h: y2 - y1, line: { color, width, endArrowType: 'triangle' } });
 }
+function pillW(label) { return Math.max(1.2, 0.125 * label.length + 0.45); }
 function pill(s, label, x, y, fill, color, w) {
-  const ww = w || Math.max(1.2, 0.105 * label.length + 0.4);
-  s.addShape(ST.roundRect, { x, y, w: ww, h: 0.36, rectRadius: 0.18, fill: { color: fill }, line: { color: fill } });
-  text(s, label, x, y, ww, 0.36, 11, color, true, { align: 'center', charSpacing: 0.5 });
+  const ww = w || pillW(label);
+  s.addShape(ST.roundRect, { x, y, w: ww, h: 0.4, rectRadius: 0.2, fill: { color: fill }, line: { color: fill } });
+  text(s, label, x, y, ww, 0.4, 14, color, true, { align: 'center' });
   return ww;
 }
 function fitImage(file, bx, by, bw, bh) {
   const [pw, ph] = pngSize(file); const r = pw / ph;
   let w = bw, h = bw / r; if (h > bh) { h = bh; w = bh * r; }
   return { w, h, x: bx, y: by + (bh - h) / 2 };
+}
+// Picture shown through a crop window [l, t, r, b] in source pixels, at `scale` inches per pixel.
+// pptxgenjs: w/h = whole picture at that scale, sizing = the visible window (written as srcRect).
+function addCropped(s, file, crop, x, y, scale, altText) {
+  const [pw, ph] = pngSize(file), [l, t, r, b] = crop;
+  s.addImage({ path: file, x, y, w: pw * scale, h: ph * scale, altText,
+    sizing: { type: 'crop', x: l * scale, y: t * scale, w: (r - l) * scale, h: (b - t) * scale } });
 }
 function solenOnWhite(s, x, y, h) { // dark background: logo on a white rounded panel, proportions kept
   const [pw, ph] = pngSize(LOGO_SOLEN); const lw = h * pw / ph, pad = 0.18;
@@ -77,13 +85,33 @@ function solenOnWhite(s, x, y, h) { // dark background: logo on a white rounded 
 }
 function note(s, msg) {
   rect(s, X0, 6.12, CW, 0.62, C.pale, C.pale, 0.08);
-  circle(s, 'i', X0 + 0.16, 6.27, 0.32, C.orange, 13, C.deep);
+  circle(s, 'i', X0 + 0.16, 6.27, 0.32, C.orange, 14, C.deep);
   text(s, msg, X0 + 0.65, 6.15, CW - 0.85, 0.56, 15, C.navy, true);
 }
+function kicker(s, d) {
+  circle(s, d.section, X0, 0.3, 0.36, C.navy, 14);
+  text(s, SECTIONS[d.section] + (d.kicker ? '  ·  ' + d.kicker : ''), X0 + 0.5, 0.3, 9.0, 0.36, 14, C.navy, true, { charSpacing: 0.5 });
+}
 function header(s, d) {
-  circle(s, d.section, X0, 0.3, 0.36, C.navy, 13);
-  text(s, SECTIONS[d.section] + (d.kicker ? '  ·  ' + d.kicker : ''), X0 + 0.5, 0.3, 9.2, 0.36, 11, C.navy, true, { charSpacing: 1 });
+  kicker(s, d);
   text(s, d.title, X0, 0.78, 10.6, 0.85, d.title.length > 52 ? 26 : 30, C.ink, true);
+}
+// Compact header for full-width visuals: one title line with the honesty label on its right.
+function visualHeader(s, d, label, fill, color) {
+  kicker(s, d);
+  const lw = pillW(label), tw = CW - lw - 0.3;
+  const fsz = [28, 26, 24, 22].find(f => d.title.length * f * 0.0080 <= tw) || 20;
+  text(s, d.title, X0, 0.74, tw, 0.6, fsz, C.ink, true);
+  pill(s, label, X1 - lw, 0.84, fill, color, lw);
+}
+// Numbered points in one row under a visual.
+function itemRow(s, items, y, h) {
+  const n = items.length, gap = 0.35, w = (CW - gap * (n - 1)) / n;
+  items.forEach((it, i) => {
+    const x = X0 + i * (w + gap);
+    circle(s, String(i + 1), x, y + 0.02, 0.4, C.orange, 14, C.deep);
+    text(s, it, x + 0.52, y, w - 0.52, h, 17, C.ink, false, { valign: 'top' });
+  });
 }
 function sideItems(s, items, x, y, w, size = 17) {
   items.forEach((it, i) => {
@@ -101,9 +129,9 @@ function sideItems(s, items, x, y, w, size = 17) {
     objects: [
       { image: { path: LOGO_SOLEN, x: X1 - lw - 0.52, y: 0.32, w: lw, h: lh, altText: 'Logo fourni : Solen Digital' } },
       { image: { path: LOGO_LEADERS, x: X1 - 0.42, y: 0.29, w: 0.42, h: 0.42, altText: 'Logo fourni : Leaders University' } },
-      { text: { text: 'Solen BI 22 h · V7 · Youssef Douma · Leaders University', options: { x: X0, y: 7.05, w: 8, h: 0.25, fontFace: 'Arial', fontSize: 10, color: C.muted, margin: 0 } } },
+      { text: { text: 'Solen BI 22 h · V7 · Youssef Douma · Leaders University', options: { x: X0, y: 7.06, w: 8, h: 0.26, fontFace: 'Arial', fontSize: 12, color: C.muted, margin: 0 } } },
     ],
-    slideNumber: { x: X1 - 0.8, y: 7.05, w: 0.8, h: 0.25, fontFace: 'Arial', fontSize: 10, color: C.muted, bold: true, align: 'right', margin: 0 },
+    slideNumber: { x: X1 - 0.8, y: 7.06, w: 0.8, h: 0.26, fontFace: 'Arial', fontSize: 12, color: C.muted, bold: true, align: 'right', margin: 0 },
   });
 })();
 
@@ -118,7 +146,7 @@ L.cover = (s, d) => {
   text(s, d.title, 0.75, 2.45, 10.5, 1.3, 44, C.white, true);
   text(s, d.subtitle, 0.78, 3.8, 10, 0.7, 28, C.white, false);
   text(s, d.tagline, 0.78, 5.15, 10.8, 0.5, 18, C.orange, true);
-  text(s, 'Youssef Douma · Leaders University · faits officiels vérifiés le 28/10/2026', 0.78, 6.75, 10, 0.3, 13, C.white);
+  text(s, 'Youssef Douma · Leaders University · faits officiels vérifiés le 28/10/2026', 0.78, 6.75, 10, 0.3, 14, C.white);
 };
 L.divider = (s, d) => {
   s.background = { color: C.deep };
@@ -128,7 +156,7 @@ L.divider = (s, d) => {
   text(s, d.subtitle, 2.25, 3.55, 10, 0.9, 22, C.white, false, { valign: 'top' });
   const pw = solenOnWhite(s, 0.75, 6.25, 0.42);
   s.addImage({ path: LOGO_LEADERS, x: 0.75 + pw + 0.25, y: 6.25, w: 0.78, h: 0.78, altText: 'Logo fourni : Leaders University' });
-  text(s, String(slideNo).padStart(2, '0') + ' / ' + spec.slides.length, X1 - 1.5, 7.05, 1.5, 0.25, 10, C.white, true, { align: 'right' });
+  text(s, String(slideNo).padStart(2, '0') + ' / ' + spec.slides.length, X1 - 1.5, 7.04, 1.5, 0.28, 12, C.white, true, { align: 'right' });
 };
 L.closing = (s, d) => {
   s.background = { color: C.deep };
@@ -138,29 +166,34 @@ L.closing = (s, d) => {
   d.items.forEach((v, i) => { circle(s, String(i + 1), 0.8, 3.55 + i * 0.85, 0.5, C.orange, 18, C.deep); text(s, v, 1.55, 3.55 + i * 0.85, 10.5, 0.5, 22, C.white); });
   text(s, 'Codex écrit le code. Vous décidez, vous contrôlez, vous expliquez.', 0.8, 6.45, 11.5, 0.45, 20, C.orange, true);
 };
+// Full-width visual (diagram or capture): crop window from slides.json, width as large as the height allows.
+const VIS_TOP = 1.5, VIS_BOTTOM = 6.95;
+function visual(s, d, file, maxH, minW) {
+  const [pw, ph] = pngSize(file), crop = d.crop || [0, 0, pw, ph];
+  const cw = crop[2] - crop[0], ch = crop[3] - crop[1];
+  const w = Math.min(CW, maxH * cw / ch), h = w * ch / cw, scale = w / cw, x = X0 + (CW - w) / 2;
+  if (w < minW) throw new Error(`Visuel trop étroit (${(w / W * 100).toFixed(0)} % de la largeur) : ${d.id}`);
+  rect(s, x - 0.06, VIS_TOP - 0.06, w + 0.12, h + 0.12, C.white, C.line, 0.06);
+  addCropped(s, file, crop, x, VIS_TOP, scale, d.alt || d.caption || d.title);
+  manifest.push({ slide: slideNo, image: d.image, crop, x, y: VIS_TOP, w, h, widthShare: +(w / W).toFixed(3) });
+  return { x, y: VIS_TOP, w, h };
+}
 L.picture = (s, d) => {
-  header(s, d);
-  const file = need(d.image), hasItems = d.items && d.items.length;
-  const box = hasItems ? fitImage(file, X0, 1.8, 8.75, 4.95) : fitImage(file, X0, 1.8, CW, 4.95);
-  if (!hasItems) box.x = X0 + (CW - box.w) / 2;
-  rect(s, box.x - 0.06, box.y - 0.06, box.w + 0.12, box.h + 0.12, C.white, C.line, 0.06);
-  s.addImage({ path: file, x: box.x, y: box.y, w: box.w, h: box.h, altText: d.alt || d.title });
-  if (hasItems) {
-    const rx = box.x + box.w + 0.45, rw = X1 - rx;
-    pill(s, 'SCHÉMA · pas une capture', rx, 1.95, C.pale, C.navy, Math.min(rw, 2.9));
-    sideItems(s, d.items, rx, 2.65, rw, rw < 3.2 ? 16 : 17);
-  }
+  visualHeader(s, d, 'SCHÉMA · pas une capture', C.pale, C.navy);
+  const file = need(d.image), rowH = 1.05, lineH = 0.5;
+  const below = d.items ? rowH + 0.2 : (d.takeaway ? lineH + 0.15 : 0);
+  const box = visual(s, d, file, VIS_BOTTOM - VIS_TOP - below, 0.85 * W);
+  const y = box.y + box.h + 0.25;
+  if (d.items) itemRow(s, d.items, y, Math.min(rowH, VIS_BOTTOM - y));
+  else if (d.takeaway) text(s, d.takeaway, X0, y - 0.05, CW, lineH, 17, C.navy, true, { align: 'center' });
 };
 L.capture = (s, d) => {
-  header(s, d);
-  const file = need(d.image);
-  const box = fitImage(file, X0 + 0.12, 1.92, 7.6, 4.2);
-  rect(s, X0, 1.8, box.w + 0.24, box.h + 0.24, C.pale, C.line, 0.06);
-  s.addImage({ path: file, x: box.x, y: 1.92, w: box.w, h: box.h, altText: d.caption });
-  const rx = X0 + box.w + 0.65, rw = X1 - rx;
-  pill(s, 'CAPTURE RÉELLE · macOS', rx, 1.95, C.orange, C.deep, Math.min(rw, 3.0));
-  sideItems(s, d.items, rx, 2.65, rw, 17);
-  text(s, d.caption, X0, 1.8 + box.h + 0.38, CW, 0.5, 13, C.muted, false, { italic: true, valign: 'top' });
+  visualHeader(s, d, 'CAPTURE RÉELLE · macOS', C.orange, C.deep);
+  const file = need(d.image), capH = 0.42, rowH = 1.0;
+  const below = capH + 0.12 + (d.items ? rowH + 0.15 : 0);
+  const box = visual(s, d, file, VIS_BOTTOM - VIS_TOP - below, 0.80 * W);
+  text(s, d.caption, X0, box.y + box.h + 0.12, CW, capH, 14, C.muted, false, { italic: true, align: 'center' });
+  if (d.items) itemRow(s, d.items, box.y + box.h + 0.12 + capH + 0.15, rowH);
 };
 L.cards = (s, d) => {
   header(s, d);
@@ -221,9 +254,9 @@ L.mail = (s, d) => {
   s.addShape(ST.line, { x: X0 + 0.3, y: 3.35, w: 8.5, h: 0, line: { color: C.line, width: 1 } });
   text(s, d.body, X0 + 0.3, 3.5, 8.5, 3.0, 21, C.navy, false, { valign: 'top', paraSpaceAfter: 8 });
   rect(s, 10.05, 1.85, X1 - 10.05, 4.85, C.deep);
-  text(s, 'À NOTER', 10.3, 2.1, 2.2, 0.35, 12, C.orange, true, { charSpacing: 1 });
+  text(s, 'À NOTER', 10.3, 2.1, 2.2, 0.35, 14, C.orange, true, { charSpacing: 1 });
   text(s, d.aside, 10.3, 2.6, X1 - 10.55, 2.3, 20, C.white, true, { valign: 'top' });
-  text(s, 'Personnages et entreprise fictifs.', 10.3, 5.85, X1 - 10.55, 0.6, 13, C.white, false, { valign: 'top' });
+  text(s, 'Personnages et entreprise fictifs.', 10.3, 5.85, X1 - 10.55, 0.6, 14, C.white, false, { valign: 'top' });
 };
 L.statement = (s, d) => {
   header(s, d);
@@ -251,7 +284,7 @@ L.compare = (s, d) => {
 };
 L.code = (s, d) => {
   header(s, d);
-  text(s, d.caption, X0, 1.8, 7.6, 0.3, 12, C.muted, true);
+  text(s, d.caption, X0, 1.75, 7.6, 0.34, 14, C.muted, true);
   rect(s, X0, 2.15, 7.6, 3.75, C.deep, C.deep, 0.08);
   text(s, d.code, X0 + 0.3, 2.35, 7.0, 3.35, 19, C.white, false, { fontFace: 'Courier New', valign: 'top' });
   sideItems(s, d.items, 8.7, 2.25, X1 - 8.7, 17);
@@ -268,7 +301,7 @@ L.grid = (s, d) => {
     circle(s, it.num, x + 0.18, y + 0.18, small ? 0.42 : 0.5, C.navy, small ? 14 : 16);
     text(s, it.label, x + (small ? 0.72 : 0.82), y + 0.16, w - (small ? 0.85 : 0.98), small ? 0.46 : 0.55, cols >= 5 ? 15 : (small ? 16 : 18), C.navy, true);
     text(s, it.text, x + 0.2, y + (small ? 0.72 : 0.9), w - 0.4, h - (small ? 0.8 : 1.0) - (it.tag ? 0.4 : 0), small ? 14 : 16, C.ink, false, { valign: 'top' });
-    if (it.tag) pill(s, it.tag, x + 0.2, y + h - 0.5, C.orange, C.deep, Math.min(w - 0.4, 1.35));
+    if (it.tag) pill(s, it.tag, x + 0.2, y + h - 0.52, C.orange, C.deep, Math.min(w - 0.4, pillW(it.tag)));
   });
   if (d.note) note(s, d.note);
 };
@@ -325,7 +358,7 @@ L.chart = (s, d) => {
     showLegend: false, showTitle: false, chartColors: [C.navy], valGridLine: { style: 'none' }, catGridLine: { style: 'none' }, barGapWidthPct: 55,
   });
   rect(s, 9.35, 2.2, X1 - 9.35, 4.5, C.pale);
-  text(s, 'À RETENIR', 9.6, 2.4, 3, 0.35, 12, C.orange, true, { charSpacing: 1 });
+  text(s, 'À RETENIR', 9.6, 2.4, 3, 0.35, 14, C.orange, true, { charSpacing: 1 });
   text(s, d.insight, 9.6, 2.85, X1 - 9.85, 0.9, 20, C.navy, true, { valign: 'top' });
   text(s, d.explanation, 9.6, 3.85, X1 - 9.85, 1.5, 16, C.ink, false, { valign: 'top' });
   text(s, 'Total : ' + d.total, 9.6, 5.6, X1 - 9.85, 0.8, 15, C.navy, true, { valign: 'top' });
@@ -337,27 +370,29 @@ L.session = (s, d) => {
   const col = { e: C.navy, p: C.orange, m: C.mid, z: 'C9CDD8' }, tc = { e: C.white, p: C.deep, m: C.white, z: C.ink };
   let x = X0; const y = 1.85, h = 0.55;
   d.segments.forEach(g => { const w = CW * g[1] / 240; s.addShape(ST.rect, { x, y, w, h, fill: { color: col[g[2]] }, line: { color: C.white, width: 1.5 } });
-    if (w > 0.5) text(s, String(g[1]), x, y, w, h, 13, tc[g[2]], true, { align: 'center' }); x += w; });
+    if (w > 0.5) text(s, String(g[1]), x, y, w, h, 14, tc[g[2]], true, { align: 'center' }); x += w; });
   const leg = [['e', 'explication'], ['m', 'explication + pratique'], ['p', 'pratique'], ['z', 'pause']];
-  const lx = [0, 1.45, 3.65, 4.85];
-  leg.forEach((l, i) => { s.addShape(ST.rect, { x: X0 + lx[i], y: 2.55, w: 0.22, h: 0.22, fill: { color: col[l[0]] }, line: { color: col[l[0]] } }); text(s, l[1], X0 + lx[i] + 0.3, 2.5, 2.0, 0.32, 12, C.muted); });
-  text(s, '66 min d\'explications · 154 min de pratique · 2 pauses', X0 + 7.6, 2.5, CW - 7.6, 0.32, 12, C.navy, true, { align: 'right' });
+  const lx = [0, 1.55, 4.1, 5.45];
+  leg.forEach((l, i) => { s.addShape(ST.rect, { x: X0 + lx[i], y: 2.56, w: 0.22, h: 0.22, fill: { color: col[l[0]] }, line: { color: col[l[0]] } }); text(s, l[1], X0 + lx[i] + 0.3, 2.5, 2.4, 0.34, 14, C.muted); });
+  text(s, d.split || '66 min d\'explications · 154 min de pratique · 2 pauses', X0 + 6.5, 2.5, CW - 6.5, 0.34, 14, C.navy, true, { align: 'right' });
   const per = Math.ceil(d.segments.length / 2), rowH = Math.min(0.56, 3.55 / per);
   d.segments.forEach((g, i) => { const cx = X0 + Math.floor(i / per) * 3.85, cy = 3.15 + (i % per) * rowH;
     s.addShape(ST.rect, { x: cx, y: cy + 0.1, w: 0.18, h: rowH - 0.2, fill: { color: col[g[2]] }, line: { color: col[g[2]] } });
     text(s, g[1] + ' min', cx + 0.3, cy, 0.9, rowH, 14, C.navy, true);
     text(s, g[0], cx + 1.2, cy, 2.55, rowH, 14, C.ink); });
   rect(s, 8.55, 3.1, X1 - 8.55, 3.65, C.deep);
-  text(s, 'CE QUE VOUS PROUVEZ', 8.8, 3.3, 3.5, 0.35, 12, C.orange, true, { charSpacing: 1 });
-  d.prove.forEach((p, i) => { circle(s, '✓', 8.8, 3.85 + i * 0.95, 0.36, C.orange, 12, C.deep); text(s, p, 9.3, 3.8 + i * 0.95, X1 - 9.5, 0.85, 15, C.white, false, { valign: 'top' }); });
+  text(s, 'CE QUE VOUS PROUVEZ', 8.8, 3.3, 3.5, 0.35, 14, C.orange, true, { charSpacing: 1 });
+  d.prove.forEach((p, i) => { circle(s, '✓', 8.8, 3.85 + i * 0.95, 0.36, C.orange, 14, C.deep); text(s, p, 9.3, 3.8 + i * 0.95, X1 - 9.5, 0.85, 16, C.white, false, { valign: 'top' }); });
 };
 L.sources = (s, d) => {
   header(s, d);
-  const per = Math.ceil(d.links.length / 2), w = (CW - 0.4) / 2, rowH = Math.min(0.92, 4.85 / per);
+  // Titles only on the slide (each one is a link); full addresses are in the speaker notes.
+  const per = Math.ceil(d.links.length / 2), w = (CW - 0.4) / 2, rowH = Math.min(0.95, 4.95 / per);
   d.links.forEach((l, i) => { const x = X0 + Math.floor(i / per) * (w + 0.4), y = 1.85 + (i % per) * rowH;
-    rect(s, x, y, w, rowH - 0.1, i % 2 ? C.white : C.pale, C.line, 0.06);
-    text(s, l[0], x + 0.2, y + 0.05, w - 0.4, 0.36, 15, C.navy, true);
-    text(s, [{ text: l[1], options: { hyperlink: { url: l[1], tooltip: l[0] } } }], x + 0.2, y + 0.42, w - 0.4, rowH - 0.55, 10.5, C.muted, false, { valign: 'top', fit: 'shrink' }); });
+    rect(s, x, y, w, rowH - 0.12, i % 2 ? C.white : C.pale, C.line, 0.06);
+    text(s, [{ text: l[0], options: { hyperlink: { url: l[1], tooltip: l[1] } } }], x + 0.25, y + 0.06, w - 0.5, 0.42, 18, C.navy, true);
+    text(s, new URL(l[1]).host, x + 0.25, y + 0.44, w - 0.5, rowH - 0.6, 14, C.muted, false); });
+  text(s, 'Adresses complètes dans les notes du présentateur et dans docs/setup/sources.json.', X0, 6.62, CW, 0.3, 14, C.muted, false, { italic: true });
 };
 
 // ---------- build ----------

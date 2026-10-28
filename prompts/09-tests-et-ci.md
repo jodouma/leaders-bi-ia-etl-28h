@@ -13,7 +13,7 @@ Dans tests/ (pas dans controles/), écris 3 à 5 tests pytest courts pour nos r�
 <règle 1>, <règle 2>, le rejeu, et la version SCD2 à la date frontière <date>.
 Chaque test a un nom en français qui dit la règle, et utilise un petit jeu de données
 construit dans le test (pas les sources complètes).
-Lance pytest -q et recopie la sortie.
+Lance pytest controles puis pytest -q et recopie les sorties.
 Puis, sans le garder, montre-moi quel test échouerait si on supprimait la règle <règle 1>,
 et pourquoi.
 Ensuite mets à jour .github/workflows/controles.yml : passe ETAPE_CI de <valeur actuelle> à <nouvelle valeur>,
@@ -22,7 +22,9 @@ et explique en 5 lignes ce que la CI va exécuter. Ne fais ni commit ni push.
 
 ## Vérifier dans la réponse
 
-- `pytest -q` passe en local avant de pousser.
+- `pytest controles` et `pytest -q` passent en local avant de pousser.
+- `ETAPE_CI` suit l'ordre `aucune` → `rejets` → `initial` → `increment` → `rejeu` →
+  `export` → `tout`.
 - Le diff de `controles.yml` ne change que ce que vous avez demandé ; aucun secret,
   aucune clé d'IA, aucun service externe n'y apparaît.
 - Après le push, onglet **Actions** de la PR : la CI s'exécute ; ouvrez une étape

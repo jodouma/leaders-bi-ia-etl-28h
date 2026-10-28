@@ -53,28 +53,28 @@
       ],
       [
        "**Séance 1 · Cadrage**",
-       "Le mail de la direction, l'échantillon à la main, les outils, la première demande à Codex, le cycle Git n°1",
+       "Vérification des postes et GitHub à deux (livret 01, D–E : PR n°1 de A), le mail de la direction, l'échantillon à la main, les outils, la première demande à Codex, la PR n°2 (B auteur)",
        "5"
       ],
       [
        "**Séance 2 · Premier résultat… faux**",
-       "pandas (CSV, Excel, JSON), fonctions, modules, exceptions, règles de nettoyage et rejets, PR A → revue B",
+       "pandas (CSV, Excel, JSON), fonctions, modules, exceptions, règles de nettoyage et rejets, une modification demandée à Codex avec son test, PR A → revue B",
        "17"
       ],
       [
        "**Séance 3 · Base opérationnelle et étoile**",
        "SQL paramétré, grain, étoile, clés, classe Entrepot, chargement initial, totaux, choix de la mission, PR B → revue A",
-       "29"
+       "30"
       ],
       [
        "**Séance 4 · Le besoin change**",
-       "lot 2, SCD2, rejeu, tests et CI, revue → correction → revue, conflit contrôlé, Skills, export, premier regard sur l'app",
-       "41"
+       "lot 2, SCD2, rejeu, journal des chargements, tests et CI, revue → correction → revue, conflit contrôlé, export, passer à votre mission ; extension : un Skill local",
+       "42"
       ],
       [
        "**Annexes**",
        "Les nombres de référence · lire un ÉCHEC",
-       "56"
+       "58"
       ]
      ],
      "widths": [
@@ -101,7 +101,7 @@
     {
      "type": "callout",
      "label": "Les autres livrets",
-     "text": "`01_demarrer.pdf` : installation et premier cycle Git détaillé écran par écran. `03_diriger_codex_et_git.pdf` : chaque fois que vous ouvrez une branche ou une PR. `04_catalogue_missions.pdf` : fin de séance 3, pour choisir votre mission. `06_aide_memoire.pdf` : à garder ouvert."
+     "text": "`01_demarrer.pdf` : parties A–C chez vous avant la séance 1 (séance 0), parties D–E en début de séance 1 (GitHub à deux, PR n°1). `03_diriger_codex_et_git.pdf` : chaque fois que vous ouvrez une branche ou une PR. `04_catalogue_missions.pdf` : fin de séance 3 pour choisir votre mission, fin de séance 4 pour passer à votre mission. `05_livrer_soutenir.pdf` : séance 5. `06_aide_memoire.pdf` : à garder ouvert."
     }
    ]
   },
@@ -292,18 +292,33 @@
      ],
      "rows": [
       [
-       "15",
+       "30",
+       "Pratique",
+       "Vérification des postes (livret 01, « Fin de la séance 0 »)"
+      ],
+      [
+       "10 + 45",
+       "Expl. + pratique",
+       "GitHub à deux (livret 01, D–E) : dépôt, protection, venv, PR n°1 de A"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "10",
        "Explication",
        "Épisode 1, la mission, les rôles A et B"
       ],
       [
-       "15 + 15",
+       "10 + 10",
        "Expl. + pratique",
        "S1-M1 · Traduire la demande en indicateurs"
       ],
       [
-       "35",
-       "Pratique",
+       "5 + 30",
+       "Expl. + pratique",
        "S1-M2 · L'échantillon, à la main d'abord"
       ],
       [
@@ -312,34 +327,19 @@
        "—"
       ],
       [
-       "10",
+       "8",
        "Explication",
        "Épisode 2 · Réunion de cadrage avec Karim"
       ],
       [
-       "12 + 24",
+       "10 + 20",
        "Expl. + pratique",
-       "S1-M3 · Les outils et le premier contrôle"
+       "S1-M3 · Les outils et le premier contrôle ; S1-M4 · Première demande à Codex"
       ],
       [
-       "25",
-       "Pratique",
-       "S1-M4 · Première demande à Codex : le cadrage"
-      ],
-      [
-       "10",
-       "Pause",
-       "—"
-      ],
-      [
-       "14 + 45",
+       "5 + 27",
        "Expl. + pratique",
-       "S1-M5 · Cycle Git n°1 : README + journal, A auteur"
-      ],
-      [
-       "10",
-       "Pratique",
-       "Note d'état de fin de séance"
+       "S1-M5 · PR n°2 `cadrage-binome` (B auteur, A relecteur), puis note d'état"
       ]
      ],
      "widths": [
@@ -350,7 +350,7 @@
     },
     {
      "type": "text",
-     "text": "Total : **66 min** d'explications, **154 min** de pratique, deux pauses de 10 min. Preuve visible en fin de séance : **le dépôt du binôme a une première PR relue et fusionnée**, et votre calcul à la main est égal à `echantillon/attendu.md`."
+     "text": "Total : **58 min** d'explications, **162 min** de pratique, deux pauses de 10 min. Fin de séance : **deux PR relues et fusionnées** (n°1 de A, n°2 de B) ; votre calcul à la main = `echantillon/attendu.md`."
     }
    ]
   },
@@ -526,6 +526,10 @@
     {
      "type": "text",
      "text": "Normalisations (ce ne sont pas des rejets) : `18,5` = `18.500` = 18 500 millimes ; `02/03/2026` se lit **jour d'abord** (2 mars 2026) et `3 mars 2026` devient `2026-03-03` ; ` nbe ` et `Sfx` deviennent `NBE` et `SFX` (espaces retirés, majuscules)."
+    },
+    {
+     "type": "text",
+     "text": "Retours (cahier § 3 et § 4) : un retour **ANNULE** est ignoré ; un retour dont la ligne d'origine n'existe pas est rejeté en `cle_inconnue`."
     }
    ]
   },
@@ -848,7 +852,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "**Quoi :** savoir dans quel outil se fait chaque geste. **Pourquoi :** la moitié des blocages du premier jour viennent d'une commande tapée au mauvais endroit. **Prérequis :** le livret `01_demarrer.pdf` est fait (Ubuntu ou WSL2, Python, Git, application Codex, dépôt `~/solen-bi` cloné par A et B, venv créé)."
+     "text": "**Quoi :** savoir dans quel outil se fait chaque geste. **Pourquoi :** la moitié des blocages du premier jour viennent d'une commande tapée au mauvais endroit. **Prérequis :** livret 01 fait : parties A–C en séance 0, D–E en début de séance (dépôt `~/solen-bi` cloné par A et B, venv créé, PR n°1 fusionnée)."
     },
     {
      "type": "table",
@@ -1006,22 +1010,22 @@
   },
   {
    "id": "s1m5a",
-   "title": "S1-M5 · Cycle Git n°1 : la branche",
+   "title": "S1-M5 · PR n°2 : B auteur, la branche",
    "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
    "blocks": [
     {
      "type": "text",
-     "text": "**Quoi :** une première pull request (PR) qui présente le binôme dans `README.md` et remplit l'entrée « PR #1 » de `notes/JOURNAL.md`. **A** est auteur, **B** relit. **Pourquoi :** répéter le cycle complet sur un changement sans risque, avant le premier code. Le livret 01 montre chaque écran."
+     "text": "**Quoi :** la **PR n°2** du binôme : présenter le binôme dans `README.md` et ajouter au journal une entrée « PR #2 » avec les décisions de cadrage. **B** est auteur, **A** relit : les rôles s'inversent après la PR n°1 (livret 01, cycle 1). **Pourquoi :** chacun doit avoir fait le cycle complet comme auteur, sur un changement sans risque, avant le premier code."
     },
     {
      "type": "figure",
      "path": "../../docs/images/diagrams/v7-cycle-pr.png",
      "caption": "Le cycle d'une PR : main à jour, branche, demande, contrôles, diff, commit, push, PR, revue Codex en lecture seule, revue humaine, correction, CI verte, approbation, merge, pull par les deux. Puis les rôles s'inversent.",
-     "height": 148
+     "height": 125
     },
     {
      "type": "section",
-     "text": "A · Terminal Ubuntu : partir d'un main à jour"
+     "text": "B · Terminal Ubuntu : partir d'un main à jour"
     },
     {
      "type": "code",
@@ -1034,24 +1038,24 @@
      "text": "Switched to a new branch 'cadrage-binome'"
     },
     {
-     "type": "text",
-     "text": "**Branche** = une ligne de travail séparée : `main` reste propre tant que la PR n'est pas fusionnée. Le Markdown n'est pas du code : vous pouvez écrire ces deux textes vous-mêmes, ou demander un brouillon à Codex et le corriger."
-    },
-    {
      "type": "code",
      "label": "Demande à Codex · texte à adapter",
-     "text": "Sur la branche cadrage-binome, prépare deux changements de texte, sans code :\n1. README.md : ajoute en haut une section « Notre binôme » avec\n   A = <prénom A> (<compte GitHub A>), B = <prénom B> (<compte GitHub B>),\n   mission en cours : tronc-commun ;\n2. notes/JOURNAL.md : remplis l'entrée « PR #1 » avec la date du jour,\n   nos décisions de cadrage (grain, prix du ticket, millimes, règle B)\n   et la preuve : la ligne ÉCHEC du vérificateur, recopiée telle quelle :\n   <coller la ligne>.\nNe modifie aucun autre fichier. Ne fais ni commit ni push."
+     "text": "Sur la branche cadrage-binome, prépare deux changements de texte, sans code :\n1. README.md : ajoute en haut une section « Notre binôme » avec\n   A = <prénom A> (<compte GitHub A>), B = <prénom B> (<compte GitHub B>),\n   mission en cours : tronc-commun ;\n2. notes/JOURNAL.md : ajoute en haut une entrée « PR #2 — Cadrage »\n   (copie le modèle en commentaire) : date du jour, auteur B, relecteur A,\n   nos décisions de cadrage (grain, prix du ticket, millimes, règle B)\n   et la preuve : la ligne ÉCHEC du vérificateur, recopiée telle quelle :\n   <coller la ligne>.\nNe modifie aucun autre fichier. Ne fais ni commit ni push."
     }
    ]
   },
   {
    "id": "s1m5b",
-   "title": "S1-M5 · Cycle Git n°1 : la PR",
+   "title": "S1-M5 · PR n°2 : la revue de A",
    "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
    "blocks": [
     {
+     "type": "text",
+     "text": "**Markdown** (`.md`) : du texte avec quelques signes, `#` pour un titre, `-` pour une puce. Ce n'est pas du code : écrivez ces textes vous-mêmes (nano, livret 01) ou faites faire un brouillon à Codex, puis corrigez-le."
+    },
+    {
      "type": "section",
-     "text": "A · Lire le diff, puis enregistrer et envoyer"
+     "text": "B · Lire le diff, puis enregistrer et envoyer"
     },
     {
      "type": "code",
@@ -1064,18 +1068,18 @@
     },
     {
      "type": "section",
-     "text": "A · GitHub : ouvrir la PR"
+     "text": "B · GitHub : ouvrir la PR"
     },
     {
      "type": "bullets",
      "items": [
       "**Compare & pull request** ; vérifiez **base: main ← compare: cadrage-binome**. Titre : celui du commit.",
-      "Description : ce qui change, la preuve (`ÉCHEC — entrepôt absent`), à relire en priorité. **Reviewers** : le compte de B. **Create pull request**."
+      "Description : ce qui change, la preuve (`ÉCHEC — entrepôt absent`), à relire en priorité. **Reviewers** : le compte de A. **Create pull request**."
      ]
     },
     {
      "type": "section",
-     "text": "B · Relire et décider"
+     "text": "A · Relire et décider"
     },
     {
      "type": "bullets",
@@ -1083,22 +1087,17 @@
       "Onglet **Files changed** : lisez chaque ligne. Une décision du journal est-elle fausse ou floue ? Cliquez sur la ligne et écrivez un commentaire précis.",
       "**Review changes** → **Approve** si tout est juste, **Request changes** sinon. Exemple utile : « La règle B est mal recopiée : un retour compte dans la zone du jour du **retour**. »",
       "Onglet **Checks** : la CI « Contrôles Solen » tourne. Avec `ETAPE_CI: aucune`, elle vérifie seulement l'installation : elle doit être verte.",
-      "CI verte + approbation : **B** clique **Merge pull request**. L'auteur ne fusionne jamais sa propre PR."
+      "CI verte + approbation : **A** clique **Merge pull request**. L'auteur ne fusionne jamais sa propre PR."
      ]
     },
     {
-     "type": "section",
-     "text": "A et B · Revenir à main"
-    },
-    {
      "type": "code",
-     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "git switch main\ngit pull\ngit log --oneline -3     # en haut : la fusion de la PR #1"
+     "label": "A et B · Revenir à main",
+     "text": "git switch main\ngit pull\ngit log --oneline -3     # en haut : la fusion de la PR #2"
     },
     {
-     "type": "callout",
-     "label": "Erreurs courantes",
-     "text": "• Commit fait sur `main` par erreur : ne poussez pas ; voir « Erreurs Git courantes » (livret 01). Jamais de commande « forcée » sans le professeur.\n• B approuve sans lire : une revue utile cite au moins une ligne précise."
+     "type": "text",
+     "text": "**Erreurs courantes** — Commit fait sur `main` par erreur : ne poussez pas ; voir « Erreurs Git courantes » (livret 01). Jamais de commande « forcée » sans le professeur. · A approuve sans lire : une revue utile cite au moins une ligne précise."
     }
    ]
   },
@@ -1133,7 +1132,7 @@
      "rows": [
       [
        "Calcul à la main = `attendu.md` (127,350 / 112,850 / 45,600 / 11,39 %)",
-       "votre feuille, et l'entrée PR #1 du journal"
+       "votre feuille, et l'entrée PR #2 du journal"
       ],
       [
        "Définitions des cinq indicateurs avec unité",
@@ -1144,7 +1143,7 @@
        "terminal ; recopié dans le journal"
       ],
       [
-       "PR #1 relue par B et fusionnée, CI verte",
+       "PR n°1 (A) et PR n°2 (B) relues et fusionnées, CI verte",
        "GitHub, onglet Pull requests (Closed)"
       ],
       [
@@ -1160,7 +1159,7 @@
     {
      "type": "callout",
      "label": "À ce stade, je sais…",
-     "text": "☐ expliquer la question de la direction et les cinq indicateurs ;\n☐ calculer l'échantillon à la main et justifier chaque rejet ;\n☐ faire le cycle branche → commit → push → PR → revue → merge → pull."
+     "text": "☐ expliquer la question de la direction et les cinq indicateurs ;\n☐ calculer l'échantillon à la main et justifier chaque rejet ;\n☐ faire le cycle complet de PR, comme auteur et comme relecteur."
     },
     {
      "type": "callout",
@@ -1220,9 +1219,9 @@
        "S2-M2 · Nettoyer et rejeter avec un motif"
       ],
       [
-       "14 + 20",
+       "14 + 25",
        "Expl. + pratique",
-       "S2-M3 · Fonctions, modules, exceptions dans le code"
+       "S2-M3 · Fonctions, modules, exceptions ; une modification demandée"
       ],
       [
        "10",
@@ -1230,7 +1229,7 @@
        "—"
       ],
       [
-       "12 + 54",
+       "12 + 49",
        "Expl. + pratique",
        "S2-M4 · PR : A auteur, B relecteur, correction"
       ],
@@ -1287,7 +1286,7 @@
       [
        "Encodage",
        "`espèces`, `chèque`",
-       "UTF-8 ; si `Ã¨` apparaît, mauvais encodage"
+       "UTF-8 ; `Ã¨` = mauvais encodage (livret 01)"
       ]
      ],
      "widths": [
@@ -1439,17 +1438,17 @@
     {
      "type": "code",
      "label": "Demande à Codex · texte à adapter",
-     "text": "Applique les règles des § 3 et § 4 de tronc-commun/cahier_des_charges.md\naux lignes de ventes.csv, dans solen/ seulement. Sources intactes.\nDans l'ordre : doublon exact = garder une occurrence (pas un rejet) ;\nligne_id vide = id_manquant ; même ligne_id sur des lignes différentes =\nrejeter toutes ces lignes, id_conflit ; boutique ou produit inconnus =\ncle_inconnue ; quantité <= 0 ou non entière = quantite_invalide.\nPrix en millimes entiers (18,500 / 18.5 / 1 240,000), dates AAAA-MM-JJ\n(JJ/MM/AAAA = jour d'abord), codes sans espaces et en majuscules.\nÉcris outputs/rejets.csv : colonnes lot, source, numero_ligne, motif\n(l'en-tête du fichier source est la ligne 1).\nPour l'instant, python -m solen initial fait seulement cela et affiche\nles comptes ; l'entrepôt viendra à la séance 3.\nTeste d'abord sur tronc-commun/echantillon/ : j'attends 6 lignes gardées,\nid_conflit 2, id_manquant 1, cle_inconnue 1, quantite_invalide 1.\nPuis lot1 : affiche aussi les ventes brutes des lignes gardées en millimes.\nMontre la fonction qui décide du motif. Ne fais ni commit ni push."
+     "text": "Applique les règles des § 3 et § 4 de tronc-commun/cahier_des_charges.md\naux lignes de ventes.csv, dans solen/ seulement. Sources intactes.\nDans l'ordre : doublon exact = garder une occurrence (pas un rejet) ;\nligne_id vide = id_manquant ; même ligne_id sur des lignes différentes =\nrejeter toutes ces lignes, id_conflit ; boutique ou produit inconnus =\ncle_inconnue ; quantité <= 0 ou non entière = quantite_invalide.\nPrix en millimes entiers (18,500 / 18.5 / 1 240,000), dates AAAA-MM-JJ\n(JJ/MM/AAAA = jour d'abord), codes sans espaces et en majuscules.\nÉcris outputs/rejets.csv : colonnes lot, source, numero_ligne, motif\n(l'en-tête du fichier source est la ligne 1).\nPour l'instant, python -m solen initial fait seulement cela et affiche\nles comptes ; l'entrepôt viendra à la séance 3.\nD'abord python -m solen echantillon, même traitement sur l'échantillon :\nj'attends 6 gardées, id_conflit 2, id_manquant 1, cle_inconnue 1,\nquantite_invalide 1. Puis lot1 : affiche aussi les ventes brutes des\nlignes gardées en millimes.\nMontre la fonction qui décide du motif. Ne fais ni commit ni push."
     },
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "python -m solen initial"
+     "text": "python -m solen echantillon\npython -m solen initial"
     },
     {
      "type": "code",
      "label": "Sortie attendue · forme libre, les nombres comptent",
-     "text": "lot1 · ventes.csv : 1998 lignes lues, 14 doublons exacts ignorés\ngardées 1960 · rejetées 24 : cle_inconnue 6, id_conflit 6,\nid_manquant 5, quantite_invalide 7\nventes brutes des lignes gardées : 78067830 millimes (78 067,830 TND)"
+     "text": "echantillon · 12 lues, 1 doublon exact ignoré, gardées 6, rejetées 5\nlot1 · ventes.csv : 1998 lignes lues, 14 doublons exacts ignorés\ngardées 1960 · rejetées 24 : cle_inconnue 6, id_conflit 6,\nid_manquant 5, quantite_invalide 7\nventes brutes des lignes gardées : 78067830 millimes (78 067,830 TND)"
     },
     {
      "type": "callout",
@@ -1465,7 +1464,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "**Contrôle :** l'entrepôt n'existe pas encore, donc le vérificateur ne peut pas juger les rejets. Vous comparez vous-mêmes avec la référence, motif par motif."
+     "text": "**Contrôle :** l'entrepôt n'existe pas encore, mais le vérificateur juge déjà les rejets de `ventes.csv` : `--etape rejets` compare `outputs/rejets.csv` à la référence, motif par motif, pour cette seule source. Attendu : **0 ÉCHEC**."
     },
     {
      "type": "code",
@@ -1475,11 +1474,11 @@
     {
      "type": "code",
      "label": "Sortie attendue · ne pas recopier",
-     "text": "6\n5\n6\n7\n    \"par_source\": {\n      \"ventes.csv\": {\n        \"cle_inconnue\": 6,\n        \"id_conflit\": 6,\n        \"id_manquant\": 5,\n        \"quantite_invalide\": 7"
+     "text": "lot,source,numero_ligne,identifiant,motif,detail\nlot1,ventes.csv,23,TK10111-9,id_conflit,2 lignes différentes\nlot1,ventes.csv,416,TK10074-9,id_conflit,2 lignes différentes\nINFO — mission tronc-commun · référence …/reference · sorties …/outputs\n\n== Étape rejets : ventes.csv (lot1) comparé à attendu_lot1.json ==\nOK — rejets lot1 · ventes.csv : cle_inconnue = 6\nOK — rejets lot1 · ventes.csv : id_conflit = 6\nOK — rejets lot1 · ventes.csv : id_manquant = 5\nOK — rejets lot1 · ventes.csv : quantite_invalide = 7\nOK — rejets lot1 · ventes.csv : 24 numero_ligne réels (2 à 1999), uniques\nINFO — rejets de operations.sqlite et entrepôt : contrôlés par --etape initial\n\nRésultat : 5 OK, 0 ÉCHEC."
     },
     {
      "type": "text",
-     "text": "Plus tard (séance 3), la référence comptera **8** `cle_inconnue` : les 6 de `ventes.csv` + 2 retours de la base SQLite. Et le total des ventes brutes, 78 067 830 millimes, est exactement l'indicateur `ventes_brutes_millimes` de la référence."
+     "text": "À la séance 3, `--etape initial` contrôlera **toutes** les sources : **8** `cle_inconnue`, les 6 de `ventes.csv` + 2 retours de la base SQLite. Chaque `numero_ligne` doit désigner une vraie ligne du fichier (l'en-tête est la ligne 1). Et le total des ventes brutes, 78 067 830 millimes, est exactement l'indicateur `ventes_brutes_millimes` de la référence."
     },
     {
      "type": "figure",
@@ -1556,12 +1555,12 @@
    "blocks": [
     {
      "type": "text",
-     "text": "**Action :** chercher vous-mêmes, puis faire expliquer. `grep -n` affiche les lignes qui contiennent un mot, avec leur numéro. Les noms ci-dessous sont un exemple : les vôtres seront différents."
+     "text": "**Action :** chercher vous-mêmes, puis faire expliquer. `grep -n` affiche les lignes qui contiennent un mot, avec leur numéro. Les noms **et les fichiers** ci-dessous sont un exemple : chez vous, `RejetLigne` peut être définie ailleurs que dans `erreurs.py` ; `grep` vous le dit."
     },
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "ls solen/\ngrep -n \"def \" solen/*.py\ngrep -rn \"quantite_invalide\" solen/"
+     "text": "ls solen/\ngrep -n \"def \" solen/*.py\ngrep -rn \"class RejetLigne\" solen/\ngrep -rn \"quantite_invalide\" solen/"
     },
     {
      "type": "code",
@@ -1581,6 +1580,36 @@
      "type": "callout",
      "label": "Le jeu des trois questions (à deux)",
      "text": "B pose à A, qui répond en montrant l'écran : 1) où le CSV est-il lu ? 2) où un prix devient-il des millimes ? 3) que se passe-t-il si `ventes.csv` n'existe pas ? Puis on inverse."
+    }
+   ]
+  },
+  {
+   "id": "s2m3c",
+   "title": "S2-M3 · Demander une modification précise",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** faire modifier **une** fonction par Codex, en prévoyant l'effet avant d'envoyer. **Pourquoi :** lire du code ne suffit pas ; il faut savoir demander un changement précis, puis prouver qu'il fait ce qui était prévu, et rien d'autre. **Où :** même branche `lecture-nettoyage`, A au clavier, B prévoit avec lui."
+    },
+    {
+     "type": "text",
+     "text": "**La modification :** un futur export de caisse pourrait écrire le code produit `p-01` (minuscules, tiret) au lieu de `P01` ; on veut l'accepter comme `P01`. **Prévoir, à deux :** combien de rejets du lot 1 changeront ? Regardez les données : `grep -ci ';p-[0-9]' tronc-commun/sources/lot1/ventes.csv` affiche `0`. Aucune ligne n'est écrite ainsi, et la règle casse/espaces transforme déjà ` p01 ` en `P01`. Prévision : **aucun** rejet ne change (6 / 6 / 5 / 7, 1960 gardées) ; seul un test prouvera que `p-01` est accepté."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Dans solen/, modifie seulement la fonction qui normalise les codes\nproduit : accepte aussi un code écrit p-01 (minuscules, tiret entre la\nlettre et les chiffres) comme P01. Ne change aucune autre règle.\nAjoute un test pytest dans tests/test_codes.py : « p-01 », « p01 » et\n« P01 » donnent tous P01. Lance pytest -q, puis python -m solen initial ;\nrecopie les sorties. Ma prévision : aucun rejet du lot 1 ne change\n(6 / 6 / 5 / 7, 1960 gardées). Dis si elle est juste. Montre le diff.\nNe fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git diff\npytest -q\npython -m solen initial\npython -m controles.verifier --mission tronc-commun --etape rejets"
+    },
+    {
+     "type": "callout",
+     "label": "Contrôle et sortie attendue",
+     "text": "Le diff ne touche que la fonction des codes produit et `tests/`. `pytest -q` : aucun `failed`. `solen initial` : toujours 1960 gardées, rejets 6 / 6 / 5 / 7 ; `--etape rejets` : `Résultat : 5 OK, 0 ÉCHEC.` Votre prévision est vérifiée. Lancez `pytest -q` à la racine du dépôt (`pytest tests` seul ne trouve pas le paquet `solen`). Le test part dans la même PR."
     }
    ]
   },
@@ -1607,7 +1636,7 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "git status\ngit add solen/ notes/JOURNAL.md\ngit commit -m \"Lire les sources et rejeter les lignes avec un motif\"\ngit push -u origin lecture-nettoyage"
+     "text": "git status\ngit add solen/ tests/ notes/JOURNAL.md\ngit commit -m \"Lire les sources et rejeter les lignes avec un motif\"\ngit push -u origin lecture-nettoyage"
     },
     {
      "type": "text",
@@ -1692,7 +1721,7 @@
     {
      "type": "callout",
      "label": "L'entrée du journal de cette PR, exemple",
-     "text": "**État actuel** : sources du lot 1 lues ; `ventes.csv` nettoyé. **Décision** : doublon exact ignoré avant tout autre test. **Preuve** : `python -m solen initial` puis `--etape rejets` → 0 ÉCHEC : 1960 gardées, rejets 6 / 6 / 5 / 7 = `attendu_lot1.json`. **Prochain objectif** : lire les retours en SQL et charger l'étoile ; preuve : `--etape initial` OK."
+     "text": "**État actuel** : sources du lot 1 lues ; `ventes.csv` nettoyé. **Décision** : doublon exact ignoré avant tout autre test. **Preuve** : `python -m solen initial` puis `--etape rejets` → 5 OK, 0 ÉCHEC : 1960 gardées, rejets de `ventes.csv` 6 / 6 / 5 / 7 = `attendu_lot1.json` (le vérificateur ne contrôle encore que cette source). **Prochain objectif** : lire les retours en SQL et charger l'étoile ; preuve : `--etape initial` OK."
     }
    ]
   },
@@ -1887,12 +1916,12 @@
     },
     {
      "type": "text",
-     "text": "**Action :** installer l'outil `sqlite3` (une fois), puis regarder la base **en lecture seule** (`-readonly`). Ces deux requêtes sont des commandes de contrôle fournies : copiez-les, ne les modifiez pas."
+     "text": "**Action :** regarder la base **en lecture seule** (`-readonly`) avec `sqlite3`, installé en séance 0. `DB=…` crée une **variable du terminal** : ensuite, `$DB` est remplacé par ce chemin. Ces deux requêtes sont des commandes de contrôle fournies : copiez-les, ne les modifiez pas."
     },
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "sudo apt install -y sqlite3\nDB=tronc-commun/sources/lot1/operations.sqlite\nsqlite3 -readonly $DB \".tables\"\nsqlite3 -readonly $DB \"SELECT statut, COUNT(*) FROM retour GROUP BY statut;\""
+     "text": "DB=tronc-commun/sources/lot1/operations.sqlite\nsqlite3 -readonly $DB \".tables\"\nsqlite3 -readonly $DB \"SELECT statut, COUNT(*) FROM retour GROUP BY statut;\""
     },
     {
      "type": "code",
@@ -2213,7 +2242,7 @@
     {
      "type": "code",
      "label": "Sortie attendue · ne pas recopier · extrait",
-     "text": "== Étape initial : comparaison avec attendu_lot1.json ==\nOK — fact_vente : 1960 lignes\nOK — fact_retour : 76 lignes\nOK — PRAGMA foreign_key_check : 0 violation (6 clés étrangères déclarées)\nOK — dim_boutique : NBE le 2026-07-15 → zone « Cap Bon »\nOK — rejets lot1 : cle_inconnue = 8\nOK — Ventes nettes : 74309500 millimes (74 309,500 TND)\nOK — Taux de retour : 0,048142 (4,81 %)\nOK — agrégats par_zone : 3 valeurs de « zone » × 7 indicateurs conformes\n\nRésultat : 50 OK, 0 ÉCHEC.\n1960"
+     "text": "== Étape initial : comparaison avec attendu_lot1.json ==\nOK — fact_vente : 1960 lignes\nOK — fact_retour : 76 lignes\nOK — PRAGMA foreign_key_check : 0 violation (6 clés étrangères déclarées)\nOK — dim_boutique : NBE le 2026-07-15 → zone « Cap Bon »\nOK — rejets lot1 : cle_inconnue = 8\nOK — rejets lot1 · ventes.csv : 24 numero_ligne réels (2 à 1999), uniques\nOK — Ventes nettes : 74309500 millimes (74 309,500 TND)\nOK — Taux de retour : 0,048142 (4,81 %)\nOK — agrégats par_zone : 3 valeurs de « zone » × 7 indicateurs conformes\n\nRésultat : 51 OK, 0 ÉCHEC.\n1960"
     },
     {
      "type": "text",
@@ -2376,12 +2405,12 @@
       [
        "B",
        "`$preparer-pr` (étape `initial`), puis `git add solen/ notes/JOURNAL.md`, `git commit`, `git push -u origin etoile-initial`, PR, Reviewers = A",
-       "description avec `Résultat : 50 OK, 0 ÉCHEC.`"
+       "description avec `Résultat : 51 OK, 0 ÉCHEC.`"
       ],
       [
        "A",
        "`git fetch`, `git switch etoile-initial`, `python -m solen initial`, vérificateur",
-       "le même `50 OK` sur **son** poste"
+       "le même `51 OK` sur **son** poste"
       ],
       [
        "A",
@@ -2437,7 +2466,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "**Quoi :** choisir **une** mission parmi dix, pour le travail personnel et la séance 5. **Pourquoi :** vous referez seuls, sur un autre métier, tout ce que le tronc commun vous a appris. Le livret `04_catalogue_missions.pdf` décrit chacune ; lisez au moins deux fiches avant de décider."
+     "text": "**Quoi :** choisir **une** mission parmi dix, pour le dernier bloc de la séance 4, la séance 5 et le travail personnel. **Pourquoi :** vous referez seuls, sur un autre métier, tout ce que le tronc commun vous a appris. Le livret `04_catalogue_missions.pdf` décrit chacune ; lisez au moins deux fiches avant de décider."
     },
     {
      "type": "table",
@@ -2521,7 +2550,7 @@
      "items": [
       "Choisissez un métier que vous savez **expliquer** avec un exemple de la vie réelle.",
       "Notez le choix dans `notes/JOURNAL.md` (rubrique **Décision**) et dites-le au professeur.",
-      "**Ne changez pas encore `mission.txt`** : il reste `tronc-commun` jusqu'à la fin de la séance 4."
+      "**Ne changez pas encore `mission.txt`** : il reste `tronc-commun` jusqu'au dernier bloc de la séance 4 (« Passer à votre mission »)."
      ]
     },
     {
@@ -2548,7 +2577,7 @@
        "fonction SQL paramétrée"
       ],
       [
-       "`--etape initial` : 50 OK, 0 ÉCHEC",
+       "`--etape initial` : 51 OK, 0 ÉCHEC",
        "terminal de A **et** de B"
       ],
       [
@@ -2576,8 +2605,8 @@
     },
     {
      "type": "callout",
-     "label": "Avant la séance 4 (≈ 30 min)",
-     "text": "Lisez la fiche de votre mission du catalogue. Ouvrez `tronc-commun/sources/lot2/boutiques.json` : trouvez la ligne qui annonce Nord-Est, et prévoyez combien de lignes aura `dim_boutique` après le lot 2."
+     "label": "Avant la séance 4 (≈ 1 h, à deux : compté dans les 4 h de la mission)",
+     "text": "Lisez la fiche et le guide de votre mission, puis calculez son **échantillon à la main** avant de lire la correction. Ouvrez aussi `tronc-commun/sources/lot2/boutiques.json` : trouvez la ligne qui annonce Nord-Est, et prévoyez combien de lignes aura `dim_boutique` après le lot 2."
     },
     {
      "type": "text",
@@ -2617,24 +2646,14 @@
      ],
      "rows": [
       [
-       "8",
-       "Explication",
-       "Épisode 5 : un nouveau lot, une boutique change de zone"
+       "10 + 50",
+       "Expl. + pratique",
+       "Épisode 5 · S4-M1 · Incrément et historique SCD2"
       ],
       [
-       "12 + 28",
+       "10 + 35",
        "Expl. + pratique",
-       "S4-M1 · Incrément et historique SCD2"
-      ],
-      [
-       "5 + 12",
-       "Expl. + pratique",
-       "S4-M2 · Rejeu : relancer sans rien ajouter"
-      ],
-      [
-       "10 + 22",
-       "Expl. + pratique",
-       "S4-M3 · Tests écrits par Codex, CI qui avance"
+       "S4-M2 · Rejeu et journal des chargements · S4-M3 · Tests, CI"
       ],
       [
        "10",
@@ -2642,14 +2661,14 @@
        "—"
       ],
       [
-       "8 + 32",
+       "10 + 30",
        "Expl. + pratique",
        "S4-M4 · Épisode 6 : revue → correction → revue"
       ],
       [
-       "8 + 20",
-       "Expl. + pratique",
-       "S4-M5 · Un conflit Git contrôlé"
+       "10 + 15",
+       "Démo + pratique",
+       "S4-M5 · Conflit : démonstration du professeur, puis reproduction"
       ],
       [
        "10",
@@ -2657,19 +2676,14 @@
        "—"
       ],
       [
-       "7 + 15",
+       "10 + 40",
        "Expl. + pratique",
-       "S4-M6 · Les Skills locaux"
+       "Passer à votre mission : S4-M7 export et livraison du tronc commun ; S4-M8 changement de mission, première PR"
       ],
       [
-       "4 + 10",
-       "Expl. + pratique",
-       "S4-M7 · Export CSV et manifeste"
-      ],
-      [
-       "4 + 15",
-       "Expl. + pratique",
-       "S4-M8 · Premier regard sur l'app, bilan"
+       "—",
+       "Facultatif",
+       "S4-M6 · Un Skill local (extension, ou travail personnel)"
       ]
      ],
      "widths": [
@@ -2680,7 +2694,7 @@
     },
     {
      "type": "text",
-     "text": "Total : **66 min** d'explications, **154 min** de pratique, deux pauses. Preuve en fin de séance : lot 2 chargé, historique préservé, rejeu stable, **CI verte** à `ETAPE_CI: tout`, un conflit résolu, un Skill à vous."
+     "text": "Total : **50 min** d'explications (dont 10 min de démonstration du conflit), **170 min** de pratique, deux pauses. Preuve en fin de séance : lot 2 chargé, historique préservé, rejeu prouvé, CI verte, un défaut trouvé et corrigé, un conflit résolu, la livraison du tronc commun commitée dans `livraison/tronc-commun/`, la première PR de votre mission ouverte."
     }
    ]
   },
@@ -2772,7 +2786,7 @@
     },
     {
      "type": "text",
-     "text": "Lisez la requête à voix haute avec la date 2026-07-15 : la version Cap Bon a `valid_to` = 2026-07-15, qui n'est **pas** > 2026-07-15 ; elle est exclue. Seule Nord-Est reste."
+     "text": "Lisez la requête à voix haute avec la date 2026-07-15 : la version Cap Bon a `valid_to` = 2026-07-15, qui n'est **pas** > 2026-07-15 ; elle est exclue. Seule Nord-Est reste. Fermer l'ancienne version demande un `UPDATE` de `valid_to` : c'est normal. Ce qui est interdit, c'est un `UPDATE` de la **zone** (défaut 2 de S4-M4)."
     }
    ]
   },
@@ -2838,11 +2852,11 @@
     {
      "type": "code",
      "label": "Sortie attendue · ne pas recopier · extrait",
-     "text": "INFO — empreinte de l'entrepôt enregistrée (...) : --etape rejeu la comparera\nRésultat : 50 OK, 0 ÉCHEC.\nOK — dim_boutique : NBE le 2026-07-15 → zone « Nord-Est »\nOK — rejeu : entrepôt identique, ligne par ligne, à celui contrôlé après\nl'incrément\nRésultat : 51 OK, 0 ÉCHEC.\n10"
+     "text": "INFO — empreinte enregistrée : outputs/verification/empreinte_lot2.json\nRésultat : 51 OK, 0 ÉCHEC.\nOK — dim_boutique : NBE le 2026-07-15 → zone « Nord-Est »\nOK — rejeu : 5 tables identiques à l'empreinte de --etape increment\nRésultat : 52 OK, 0 ÉCHEC.\n10"
     },
     {
      "type": "text",
-     "text": "L'**empreinte**, résumé de chaque table enregistré par `--etape increment`, est comparée par `--etape rejeu` : lancez `--etape increment` **avant** de relancer. Rejets du lot 2 : toujours 10 (relancer un lot remplace ses rejets)."
+     "text": "L'**empreinte** (lignes et somme de contrôle de chaque table), enregistrée par `--etape increment`, est comparée par `--etape rejeu` : lancez `--etape increment` **avant** de relancer, sinon `ÉCHEC — rejeu : empreinte absente`. Rejets du lot 2 : toujours 10 (relancer un lot remplace ses rejets)."
     },
     {
      "type": "callout",
@@ -2950,6 +2964,62 @@
    ]
   },
   {
+   "id": "s4m2c",
+   "title": "S4-M2 · Garder un journal des chargements",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** garder une trace de **chaque** chargement dans `outputs/journal_chargements.json`. **Pourquoi :** l'écran « Qualité des données » de l'application (séance 5) affiche une ligne par chargement : lot 1, lot 2, puis le rejeu du lot 2 à 0 ajout. Le pipeline affiche ces comptes puis les oublie ; sans journal, l'application n'a rien à lire. **Où :** branche `increment-scd2`, poste de A."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Fais écrire par python -m solen initial et increment un journal des\nchargements : outputs/journal_chargements.json, une liste avec une entrée\npar chargement : lot, date et heure, et pour chaque source : lues,\ndoublons ignorés, déjà chargées, ignorées (ANNULE), rejetées, ajoutées.\ninitial recrée le fichier ; increment ajoute une entrée, même s'il\nn'ajoute aucune ligne. Ne change aucun compte ni aucune table.\nMontre le fichier après initial, increment, increment.\nNe fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m solen initial\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape increment\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape rejeu\npython -m json.tool outputs/journal_chargements.json | head -40"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Entrée du journal",
+      "ventes.csv : ajoutées",
+      "operations.sqlite : ajoutés"
+     ],
+     "widths": [
+      2.0,
+      1.8,
+      1.8
+     ],
+     "rows": [
+      [
+       "1 · lot1 (`initial`)",
+       "1960",
+       "76"
+      ],
+      [
+       "2 · lot2 (`increment`)",
+       "385",
+       "23"
+      ],
+      [
+       "3 · lot2 relancé (rejeu)",
+       "0",
+       "0"
+      ]
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Contrôle",
+     "text": "Trois entrées, dans l'ordre ; la troisième n'ajoute rien. Les contrôles ne bougent pas : `--etape increment` 51 OK, `--etape rejeu` 52 OK. Le journal vit dans `outputs/` : il n'est pas commité, et `initial` le recrée pour chaque mission."
+    }
+   ]
+  },
+  {
    "id": "s4m3a",
    "title": "S4-M3 · Des tests écrits par Codex",
    "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
@@ -2984,7 +3054,7 @@
     },
     {
      "type": "text",
-     "text": "Les 2 tests ignorés sont ceux de l'export et de l'application : pas encore construits."
+     "text": "Les 2 tests ignorés sont ceux de l'export et de l'application : pas encore construits. Lancez `pytest -q` à la racine du dépôt : `pytest tests` seul ne trouve pas le paquet `solen`."
     }
    ]
   },
@@ -3022,12 +3092,12 @@
       ],
       [
        "`export`",
-       "S4-M7",
+       "S4-M7, si l'export résiste",
        "`solen export`, vérificateur `--etape export`"
       ],
       [
        "`tout`",
-       "fin de S4",
+       "S4-M7 (export)",
        "tout le parcours + `pytest -q` (vos tests compris)"
       ]
      ],
@@ -3044,7 +3114,7 @@
     },
     {
      "type": "text",
-     "text": "**Contrôle :** `git diff .github/workflows/controles.yml` montre une seule ligne changée : `ETAPE_CI: aucune` devient `ETAPE_CI: rejeu`. Après le push, onglet **Actions** de la PR : ouvrez **Chargement initial (lot 1)**, **Incrément (lot 2)**, **Rejeu du lot 2 (ne doit rien ajouter)**, puis **Vérifier les résultats** ; la dernière ligne doit être `Résultat : 51 OK, 0 ÉCHEC.`"
+     "text": "**Contrôle :** `git diff .github/workflows/controles.yml` montre une seule ligne changée : `ETAPE_CI: aucune` devient `ETAPE_CI: rejeu`. Après le push, onglet **Actions** de la PR : ouvrez **Chargement initial (lot 1)**, **Incrément (lot 2)**, **Contrôler l'incrément et enregistrer l'empreinte**, **Rejeu du lot 2 (ne doit rien changer)**, puis **Vérifier les résultats** ; la dernière ligne doit être `Résultat : 52 OK, 0 ÉCHEC.`"
     },
     {
      "type": "callout",
@@ -3066,26 +3136,30 @@
      "type": "table",
      "headers": [
       "Défaut (A en choisit un)",
-      "Ce que le vérificateur affiche (format réel)"
+      "Ce qui peut arriver (selon le code de Codex)"
      ],
      "rows": [
       [
        "1 · `valid_to` traité comme **inclus**",
-       "`ÉCHEC — fact_vente : attendu chaque fait relié à la version valable à sa date, observé <n> faits mal rattachés`"
+       "`increment` peut planter (deux versions de NBE valables le 15 juillet) ; ou un ÉCHEC du type `… faits mal rattachés`"
       ],
       [
        "2 · la zone est **écrasée** (`UPDATE`) au lieu d'ajouter une version",
-       "`ÉCHEC — dim_boutique : version attendue absente ('NBE', 'Cap Bon', '2021-05-10', '2026-07-15')`"
+       "un ÉCHEC du type `version attendue absente (…)`, parfois après d'autres ÉCHEC ; ou un plantage si une vente ne trouve plus de version"
       ],
       [
        "3 · les retours **ANNULE** sont chargés",
-       "`ÉCHEC — fact_retour : attendu 99 lignes, observé <n>`"
+       "un ÉCHEC du type `fact_retour : attendu 99 lignes, observé <n>`"
       ]
      ],
      "widths": [
       2.2,
       3.8
      ]
+    },
+    {
+     "type": "text",
+     "text": "Un défaut produit **un** de trois symptômes : (a) `python -m solen increment` **plante** : traceback Python, la transaction annule le lot 2, puis beaucoup de lignes ÉCHEC ; (b) le vérificateur affiche un **ÉCHEC** ; (c) un **chiffre faux sans erreur**, visible seulement face à la référence. Les messages du tableau sont **possibles**, pas promis."
     },
     {
      "type": "code",
@@ -3115,21 +3189,21 @@
    "blocks": [
     {
      "type": "section",
-     "text": "B · reproduire, faire relire, écrire la revue"
+     "text": "B · reproduire, lire, localiser, demander la correction"
     },
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "git fetch\ngit switch increment-scd2\npython -m solen initial\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape increment"
+     "text": "git fetch\ngit switch increment-scd2\npython -m solen initial\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape increment\ngit show HEAD"
     },
     {
      "type": "code",
      "label": "Demande à Codex · texte à adapter",
-     "text": "Utilise $revoir-bi. Branche : increment-scd2. Lecture seule : ne modifie\nrien, ne lance aucun chargement. Angle : SCD2 et rejeu.\nRapporte au plus 3 défauts établis (fichier:ligne, règle violée, exemple\nobservable, correction proposée), puis les contrôles non réalisés.\nVoici la première ligne ÉCHEC que j'ai obtenue : <coller>."
+     "text": "Utilise $revoir-bi. Branche : increment-scd2. Lecture seule : ne modifie\nrien, ne lance aucun chargement. Angle : SCD2 et rejeu.\nRapporte au plus 3 défauts établis (fichier:ligne, règle violée, exemple\nobservable, correction proposée), puis les contrôles non réalisés.\nSymptôme que j'ai reproduit : <dernière ligne du traceback, ou première\nligne ÉCHEC, ou chiffre différent de la référence>."
     },
     {
      "type": "text",
-     "text": "Revue GitHub : **Request changes**, avec le défaut **reproduit** : la commande, la ligne `ÉCHEC`, le fichier et la ligne en cause, la règle du cahier des charges."
+     "text": "B **lit** le symptôme (dernière ligne du traceback et le fichier cité, première ligne `ÉCHEC`, ou écart avec la référence) et le **localise** dans `git show HEAD`, le dernier commit de A. Revue GitHub : **Request changes**, avec la commande, le symptôme, fichier et ligne, la règle et la correction demandée."
     },
     {
      "type": "section",
@@ -3142,7 +3216,7 @@
     },
     {
      "type": "text",
-     "text": "A commite et pousse la correction (`git commit -m \"Corriger <le défaut> après revue\"`, `git push`). B ouvre une **nouvelle** conversation : « Utilise $revoir-bi sur la version corrigée de increment-scd2. Pour chaque constat initial : corrigé avec preuve, encore présent, ou non vérifié. Cherche une erreur introduite par la correction. Ne modifie rien. » CI verte + **Approve** : **B** fusionne ; les deux `git switch main`, `git pull`."
+     "text": "A commite et pousse la correction. B ouvre une **nouvelle** conversation : « Utilise $revoir-bi sur la version corrigée de increment-scd2 : chaque constat initial est-il corrigé, encore présent ou non vérifié ? Cherche une erreur introduite par la correction. Ne modifie rien. » CI verte + **Approve** : **B** fusionne ; puis les deux `git switch main`, `git pull`."
     },
     {
      "type": "callout",
@@ -3158,7 +3232,7 @@
    "blocks": [
     {
      "type": "text",
-     "text": "**Quoi :** provoquer volontairement un **conflit** : A et B modifient la **même ligne** de `notes/JOURNAL.md` dans deux branches. **Pourquoi :** un conflit n'est pas une panne ; Git demande simplement à un humain de choisir. Mieux vaut l'apprendre sur un journal que sur du code."
+     "text": "**Quoi :** provoquer volontairement un **conflit** : A et B modifient la **même ligne** de `notes/JOURNAL.md` dans deux branches. **Pourquoi :** un conflit n'est pas une panne ; Git demande simplement à un humain de choisir. Mieux vaut l'apprendre sur un journal que sur du code. Le professeur le montre d'abord (10 min) ; chaque binôme le reproduit ensuite (15 min)."
     },
     {
      "type": "table",
@@ -3173,7 +3247,7 @@
       ],
       [
        "A",
-       "`git switch -c journal-a` ; dans la dernière entrée du journal, réécrit la ligne **Prochain objectif** : « exporter les tables » ; commit, push, PR"
+       "`git switch -c journal-a` ; dans la dernière entrée du journal, réécrit la ligne **Prochain objectif** : « exporter les tables » (une phrase différente de celle déjà écrite) ; commit, push, PR"
       ],
       [
        "B",
@@ -3210,7 +3284,7 @@
     },
     {
      "type": "text",
-     "text": "Entre `<<<<<<<` et `=======` : votre version (la branche où vous êtes, `HEAD`). Entre `=======` et `>>>>>>>` : celle qui arrive de `main`."
+     "text": "Entre `<<<<<<<` et `=======` : votre version (`HEAD`, la branche où vous êtes). Entre `=======` et `>>>>>>>` : celle qui arrive, nommée après `>>>>>>>` (`main` ici, `origin/main` dans l'exemple du livret 01)."
     }
    ]
   },
@@ -3250,12 +3324,12 @@
   },
   {
    "id": "s4m6",
-   "title": "S4-M6 · Les Skills locaux",
+   "title": "S4-M6 · Extension facultative : un Skill local",
    "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
    "blocks": [
     {
      "type": "text",
-     "text": "Un **Skill** est une méthode réutilisable, écrite en français dans `.agents/skills/<nom>/SKILL.md`, avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota : il évite de réécrire la même consigne à chaque fois. Vous en avez déjà utilisé trois."
+     "text": "**Facultatif** : si le temps le permet, ou en travail personnel ; la séance passe directement à S4-M7. Un **Skill** est une méthode réutilisable, écrite en français dans `.agents/skills/<nom>/SKILL.md`, avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota : il évite de réécrire la même consigne à chaque fois. Vous en avez déjà utilisé trois."
     },
     {
      "type": "table",
@@ -3313,17 +3387,17 @@
   },
   {
    "id": "s4m7",
-   "title": "S4-M7 · Export CSV et manifeste",
+   "title": "S4-M7 · Export et livraison",
    "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
    "blocks": [
     {
      "type": "text",
-     "text": "**Quoi :** écrire chaque table dans `outputs/export/<table>.csv` et un `manifest.json` (comptes et sommes). **Pourquoi :** Power BI (séance 5) lira ces CSV ; le manifeste prouve que l'export est complet et identique à l'entrepôt. **B** est auteur, branche `export-manifest`."
+     "text": "**Quoi :** écrire chaque table dans `outputs/export/<table>.csv` et un `manifest.json` (comptes et sommes). **Pourquoi :** c'est la livraison du tronc commun : Power BI (séance 5) lira ces CSV, et le manifeste prouve que l'export est complet. Ici commence le dernier bloc (50 min), « Passer à votre mission ». **B** est auteur, branche `export-manifest`."
     },
     {
      "type": "code",
      "label": "Demande à Codex · texte à adapter",
-     "text": "Ajoute la commande python -m solen export : pour chaque table de\nl'entrepôt, outputs/export/<table>.csv (UTF-8, séparateur virgule,\nen-tête = noms de colonnes) et outputs/export/manifest.json au format\ndu cahier des charges § 10 (lignes et sommes par table).\nPuis passe ETAPE_CI de rejeu à tout dans .github/workflows/controles.yml.\nLance export, python -m controles.verifier --mission tronc-commun\n--etape export et pytest -q ; recopie les sorties.\nJ'attends 2345 lignes dans fact_vente.csv : compare.\nNe fais ni commit ni push."
+     "text": "Ajoute la commande python -m solen export : pour chaque table de\nl'entrepôt, outputs/export/<table>.csv (UTF-8, séparateur virgule,\nen-tête = noms de colonnes) et outputs/export/manifest.json au format\ndu cahier des charges § 10 (lignes et sommes par table).\nPuis passe ETAPE_CI de rejeu à tout dans .github/workflows/controles.yml.\nLance export, python -m controles.verifier --mission tronc-commun\n--etape export et pytest -q ; recopie les sorties.\nJ'attends 2345 lignes dans fact_vente.csv, en-tête non compté : compare.\nNe fais ni commit ni push."
     },
     {
      "type": "code",
@@ -3368,49 +3442,38 @@
     {
      "type": "callout",
      "label": "Erreurs courantes",
-     "text": "• Retoucher un CSV exporté à la main : `observé CSV 2344 et manifest 2345`. On relance `export` ; on ne corrige jamais une sortie."
+     "text": "• Retoucher un CSV exporté à la main : `observé CSV 2344 et manifest 2345`. On relance `export` ; on ne corrige jamais une sortie. `wc -l` affiche 2346 : l'en-tête compte pour une ligne."
     }
    ]
   },
   {
    "id": "s4m8",
-   "title": "S4-M8 · Premier regard sur l'application",
+   "title": "S4-M8 · Passer à votre mission",
    "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
    "blocks": [
     {
      "type": "text",
-     "text": "**Quoi :** préparer la mini-application locale construite en séance 5 : **un seul** fichier `outputs/app/index.html`, sans serveur, avec trois écrans : **Vue direction** (cinq indicateurs, ventes nettes par mois et par zone), **Détail par boutique** (NBE en Cap Bon jusqu'au 2026-07-14, puis Nord-Est), **Qualité des données** (lignes lues, gardées, rejetées par motif et par lot)."
-    },
-    {
-     "type": "figure",
-     "path": "../../docs/images/captures/app-vue-direction.png",
-     "caption": "Capture réelle sous macOS (navigateur intégré, 1280 × 900) de l'application de **référence** privée, écran Vue direction après lot 1 + lot 2 : ventes nettes 91 444,460 TND, marge 35 606,860 TND, taux 4,60 %. Ce n'est pas une production étudiante : la vôtre sera différente.",
-     "height": 195
+     "text": "**Quoi :** une PR, à deux, qui fait passer le dépôt du tronc commun à votre mission, une fois la PR `export-manifest` fusionnée. **Pourquoi :** la séance 5 commence sur votre mission ; le code du tronc commun est gardé et **généralisé**, pas réécrit. **A** est auteur. Exemple pour `M03` : remplacez par votre code."
     },
     {
      "type": "code",
-     "label": "Demande à Codex · texte à adapter",
-     "text": "Objectif : python -m solen app écrit outputs/app/index.html, un seul\nfichier autonome (CSS, JavaScript et données dedans, aucun lien Internet),\navec les écrans « Vue direction », « Détail par boutique », « Qualité des\ndonnées », un filtre période, un filtre boutique/zone, les cinq\nindicateurs et un graphique SVG. Lis mission.txt et le § 10 du cahier des\ncharges. Ne modifie rien. Propose un plan de 3 à 5 petites étapes : fichier,\nsortie observable, commande de contrôle, nom de branche."
-    },
-    {
-     "type": "code",
-     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
-     "text": "python -m controles.verifier --mission tronc-commun --etape app"
-    },
-    {
-     "type": "code",
-     "label": "Sortie attendue · ne pas recopier",
-     "text": "ÉCHEC — application absente : /home/<vous>/solen-bi/outputs/app/index.html"
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · gestes 1, 0, 2 et 3",
+     "text": "git switch main && git pull\ngit switch -c mission-M03\npython -m solen initial && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot1\ncp outputs/export/* livraison/tronc-commun/export-lot1/\npython -m solen increment && python -m solen export\nmkdir -p livraison/tronc-commun/export-lot2\ncp outputs/export/* livraison/tronc-commun/export-lot2/\ngit add livraison && git commit -m \"Livraison du tronc commun (lots 1 et 2)\"\nrm -rf outputs/*\necho \"M03\" > mission.txt"
     },
     {
      "type": "text",
-     "text": "Cet échec est votre point de départ de la séance 5 (livret `05_livrer_soutenir.pdf`). Gardez le plan de Codex dans le journal, rubrique **Prochain objectif**."
+     "text": "**Geste 0, la livraison :** deux exports du tronc commun, après le lot 1 puis après le lot 2, copiés dans `livraison/tronc-commun/export-lot1/` et `export-lot2/` et commités : de petits CSV, la preuve livrée, que Power BI lira en séance 5. **Geste 2 :** `rm -rf outputs/*` vide `outputs/`, qui appartient à la mission courante ; le fichier caché `.gitkeep` reste (`*` ne prend pas les fichiers cachés) : vérifiez avec `ls -a outputs`. Oublier ce geste laisse de faux ÉCHEC du tronc commun. **Geste 3 :** `mission.txt` contient votre code."
+    },
+    {
+     "type": "callout",
+     "label": "Geste 4 : la première demande à Codex, puis la PR",
+     "text": "Livret 04, « Passer à votre mission (2/2) » : Codex **généralise** `solen/` pour votre mission, première étape seulement : les rejets du lot 1. Contrôle : `--etape rejets` → 0 ÉCHEC ; les tests de `tests/` qui lisent `mission.txt` passent ou sont adaptés ; `ETAPE_CI` revient à `aucune` dans la même PR. Puis `git push`, PR, revue de B, fusion."
     }
    ]
   },
   {
    "id": "s4fin",
-   "title": "Fin de séance 4 · Passer à votre mission",
+   "title": "Fin de séance 4 · Bilan et suite",
    "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
    "blocks": [
     {
@@ -3421,12 +3484,16 @@
      ],
      "rows": [
       [
-       "`--etape increment` 50 OK puis `--etape rejeu` 51 OK, 0 ÉCHEC",
+       "`--etape increment` 51 OK puis `--etape rejeu` 52 OK, 0 ÉCHEC",
        "terminal"
       ],
       [
        "dim_boutique 4 versions ; NBE le 14/07 → Cap Bon, le 15/07 → Nord-Est",
-       "vérificateur, votre Skill"
+       "vérificateur"
+      ],
+      [
+       "Journal des chargements : 3 entrées, le rejeu à 0 ajout",
+       "`outputs/journal_chargements.json`"
       ],
       [
        "Défaut planté trouvé par B, corrigé par A, relu, fusionné",
@@ -3437,8 +3504,12 @@
        "PR journal-b, `grep`"
       ],
       [
-       "`--etape export` 12 OK ; CI verte à `ETAPE_CI: tout`",
-       "onglet Actions"
+       "`--etape export` 12 OK ; livraison commitée (lots 1 et 2)",
+       "`livraison/tronc-commun/`"
+      ],
+      [
+       "Première PR de la mission : `mission.txt` = M0x, `--etape rejets` 0 ÉCHEC",
+       "PR mission-M0x"
       ]
      ],
      "widths": [
@@ -3449,18 +3520,17 @@
     {
      "type": "callout",
      "label": "À ce stade, je sais…",
-     "text": "☐ expliquer SCD2 avec la vente du 14 et celle du 15 juillet ;\n☐ dire pourquoi relancer `increment` n'ajoute rien, et le prouver ;\n☐ lire un test pytest et dire quelle règle il protège ;\n☐ faire avancer la CI d'un cran et lire une étape dans Actions ;\n☐ résoudre un conflit et finir les gestes Git soi-même ;\n☐ créer un Skill avec une règle observable."
+     "text": "☐ expliquer SCD2 avec la vente du 14 et celle du 15 juillet ;\n☐ dire pourquoi relancer `increment` n'ajoute rien, et le prouver ;\n☐ lire un test pytest et dire quelle règle il protège ;\n☐ reproduire un défaut, le localiser dans un diff et demander sa correction ;\n☐ résoudre un conflit et finir les gestes Git soi-même ;\n☐ dire pourquoi `outputs/` est vidé et `livraison/` commitée ;\n☐ (facultatif) créer un Skill avec une règle observable."
     },
     {
      "type": "section",
-     "text": "Et maintenant : votre mission du catalogue"
+     "text": "La suite : séance 5 et travail personnel"
     },
     {
      "type": "bullets",
      "items": [
-      "Nouvelle branche `mission-<Mxx>` ; remplacez le contenu de `mission.txt` par votre code, par exemple `echo \"M03\" > mission.txt`.",
-      "Dans la même PR, demandez à Codex de remettre `ETAPE_CI` à `aucune` : la CI repartira cran par cran, comme pour le tronc commun.",
-      "Le vérificateur échouera de nouveau : c'est votre nouveau point de départ. Commencez par l'échantillon de la mission, **à la main**."
+      "**Séance 5, première moitié** : votre mission, `initial` → `increment` → `rejeu` → `export` → `app` (son écran « Qualité des données » lit le journal des chargements), un cran vert par PR, revue croisée. Livret 04 et guide de votre mission.",
+      "**Séance 5, seconde moitié** : Power BI Desktop sur le tronc commun depuis `livraison/tronc-commun/` (actualisation : lot 1, puis lot 2), lecture des visuels, répétition. Livret 05."
      ]
     },
     {
@@ -3588,7 +3658,7 @@
     },
     {
      "type": "text",
-     "text": "Contrôles : `--etape initial` → `Résultat : 50 OK, 0 ÉCHEC.` ; `--etape increment` → 50 OK, puis `--etape rejeu` → 51 OK ; `--etape export` → 12 OK. SCD2 : NBE le 2026-06-30 et le 2026-07-14 → Cap Bon ; le 2026-07-15 → Nord-Est."
+     "text": "Contrôles : `--etape rejets` → 5 OK ; `--etape initial` → `Résultat : 51 OK, 0 ÉCHEC.` ; `--etape increment` → 51 OK, puis `--etape rejeu` → 52 OK ; `--etape export` → 12 OK. SCD2 : NBE le 2026-06-30 et le 2026-07-14 → Cap Bon ; le 2026-07-15 → Nord-Est."
     }
    ]
   },
@@ -3655,9 +3725,9 @@
        "suivre une ligne rejetée avec `$expliquer-bi`"
       ],
       [
-       "`rejeu : … changements dans [...]`",
-       "la relance ajoute ou modifie des lignes",
-       "comparer les comptes avant / après la relance"
+       "`rejeu : … changements dans [...]`, `empreinte absente`",
+       "la relance modifie l'entrepôt ; `--etape increment` oublié",
+       "comparer avant / après ; ordre : increment, relance, rejeu"
       ],
       [
        "`export … CSV … manifest`",

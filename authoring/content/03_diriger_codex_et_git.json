@@ -101,7 +101,7 @@
           "type": "table",
           "headers": [
             "Moment",
-            "Les 18 prompts (page)"
+            "Les 18 prompts (page), rangés par moment et non par numéro"
           ],
           "rows": [
             [
@@ -125,7 +125,7 @@
               "14 Ligne source → graphique (23) · 16 Note d'état et reprise (24)"
             ],
             [
-              "Aller plus loin (S4, mission)",
+              "Aller plus loin (facultatif, mission)",
               "17 Skill local (25) · 18 Variation métier (26)"
             ]
           ],
@@ -312,7 +312,7 @@
               "`--etape initial` OK"
             ],
             [
-              "**Déboguer** « attendu 1960, observé 1966 »",
+              "**Déboguer** « attendu 1960, observé 1974 »",
               "Luna",
               "High → Extra High si bloqué",
               "La cause, pas le symptôme",
@@ -540,7 +540,7 @@
           "rows": [
             [
               "« Fais deux lectures indépendantes, l'une sur les données et les rejets, l'autre sur le modèle et l'historique, puis fusionne sans doublon. » Un seul auteur corrige ensuite.",
-              "Deux conversations successives avec `$revoir-bi`, une par angle. Même résultat, moins d'usage consommé."
+              "Deux conversations successives avec `$revoir-bi`, une par angle. Résultat comparable, en général moins d'usage (rien n'est mesuré)."
             ]
           ],
           "widths": [
@@ -655,12 +655,12 @@
       "blocks": [
         {
           "type": "text",
-          "text": "**Quand** : sur une branche neuve, pour l'étape choisie dans le plan (prompt 02). Sert aussi en séance 5 pour l'application locale (`python -m solen app`). S5 : même fiche pour l'application locale, objectif « `python -m solen app` écrit `outputs/app/index.html`, autonome, filtres période et boutique/zone, indicateurs, graphique SVG »."
+          "text": "**Quand** : sur une branche neuve, pour l'étape choisie dans le plan (prompt 02). En séance 5, même fiche pour l'application locale de votre mission, objectif « `python -m solen app` écrit `outputs/app/index.html`, autonome, filtres, indicateurs, graphique SVG » (demande complète : livret 05, partie 1)."
         },
         {
           "type": "callout",
           "label": "Prévoir avant d'envoyer",
-          "text": "`git switch -c <branche>`. Écrivez la valeur que vous attendez (ex. « 1 482 lignes acceptées »), ou au moins son ordre de grandeur."
+          "text": "`git switch -c <branche>`. Écrivez la valeur que vous attendez (ex. « 1 960 lignes acceptées », le lot 1 du tronc commun), ou au moins son ordre de grandeur."
         },
         {
           "type": "code",
@@ -698,12 +698,12 @@
         {
           "type": "callout",
           "label": "Prévoir avant d'envoyer",
-          "text": "dans le terminal, `wc -l <dossier>/lot1/*.csv`. Combien de lignes de données attendez-vous (en-tête exclu) ? Ouvrez le JSON dans l'éditeur : combien de boutiques ? Notez vos deux nombres."
+          "text": "dans le terminal, `wc -l <dossier>/lot1/*.csv`. Combien de lignes de données attendez-vous (en-tête exclu) ? Affichez le JSON sans le modifier : `less <dossier>/lot1/boutiques.json` (flèches pour défiler, `q` pour sortir). Combien de boutiques ? Notez vos deux nombres."
         },
         {
           "type": "code",
           "label": "Prompt 04 · à adapter : remplacez chaque <…>",
-          "text": "Lis mission.txt. Crée dans solen/ un module de lecture des sources de <lot1>\n(le CSV de faits, le classeur Excel, le JSON) avec pandas, sans nettoyer\nencore.\nLis chaque fichier avec son vrai encodage et le bon séparateur ; ne modifie\npas les fichiers sources.\nAjoute une commande temporaire ou une fonction qui affiche pour chaque\nsource :\nnom du fichier, nombre de lignes, noms des colonnes, 3 premières lignes.\nLance-la et recopie la sortie.\nJ'attends <n lignes CSV> lignes dans le CSV et <n boutiques> boutiques :\ncompare.\nExplique en 4 lignes la différence entre un DataFrame et le fichier d'origine,\net une exception qui peut arriver à la lecture (fichier absent, encodage)."
+          "text": "Lis mission.txt. Crée dans solen/ un module de lecture des sources de <lot1>\n(le CSV de faits, le classeur Excel, le JSON) avec pandas, sans nettoyer\nencore.\nLis chaque fichier avec son vrai encodage et le bon séparateur ; ne modifie\npas les fichiers sources.\nAjoute la commande python -m solen sources, qui affiche pour chaque\nsource : nom du fichier, nombre de lignes, noms des colonnes et\n3 premières lignes. Lance-la et recopie la sortie.\nJ'attends <n lignes CSV> lignes dans le CSV et <n boutiques> boutiques :\ncompare.\nExplique en 4 lignes la différence entre un DataFrame et le fichier d'origine,\net une exception qui peut arriver à la lecture (fichier absent, encodage)."
         },
         {
           "type": "table",
@@ -731,7 +731,7 @@
       "blocks": [
         {
           "type": "text",
-          "text": "**Quand** : séance 2, après la lecture (prompt 04). Épisode « premier résultat rassurant… faux ». Tronc commun : comparez avec `tronc-commun/echantillon/attendu.md` **après** votre propre calcul."
+          "text": "**Quand** : séance 2, après la lecture (prompt 04). Épisode « premier résultat rassurant… faux ». Tronc commun : comparez avec `tronc-commun/echantillon/attendu.md` **après** votre propre calcul. Dans une commande, `$(cat mission.txt)` est remplacé par le terminal par le contenu de `mission.txt` (ex. `tronc-commun`). En séance 2, `--etape rejets` ne juge que les rejets du CSV de faits."
         },
         {
           "type": "callout",
@@ -741,7 +741,7 @@
         {
           "type": "code",
           "label": "Prompt 05 · à adapter : remplacez chaque <…>",
-          "text": "Applique les règles de nettoyage du cahier des charges de <mission> aux faits\nde <lot1>, dans solen/ seulement. Sources intactes.\n- doublon exact : garder une occurrence ;\n- même identifiant avec contenu différent : rejeter les deux, motif\n  id_conflit ;\n- identifiant vide : id_manquant ; produit ou boutique inconnus :\n  cle_inconnue ;\n- quantité ≤ 0 ou non entière : quantite_invalide ;\n- montants en millimes entiers (12,500 / 12.5 / 12 500 → 12500), dates en\n  YYYY-MM-DD, codes en strip + majuscules.\nÉcris outputs/rejets.csv avec la ligne d'origine et une colonne motif.\nTeste d'abord sur l'échantillon : j'attends <mes comptes>. Puis sur lot1, et\nlance python -m controles.verifier --mission $(cat mission.txt) --etape\ninitial si ce contrôle couvre déjà les rejets.\nMontre la fonction qui décide du motif et explique l'ordre des règles."
+          "text": "Applique les règles de nettoyage du cahier des charges de <mission> aux faits\nde <lot1>, dans solen/ seulement. Sources intactes.\n- doublon exact : garder une occurrence ;\n- même identifiant avec contenu différent : rejeter les deux, motif\n  id_conflit ;\n- identifiant vide : id_manquant ; produit ou boutique inconnus :\n  cle_inconnue ;\n- quantité ≤ 0 ou non entière : quantite_invalide ;\n- montants en millimes entiers (12,500 / 12.5 / 12 500 → 12500), dates en\n  YYYY-MM-DD, codes en strip + majuscules.\nÉcris outputs/rejets.csv avec la ligne d'origine et une colonne motif.\nTeste d'abord sur l'échantillon : j'attends <mes comptes>. Puis sur lot1 :\nlance python -m solen initial, puis python -m controles.verifier\n--mission $(cat mission.txt) --etape rejets.\nMontre la fonction qui décide du motif et explique l'ordre des règles."
         },
         {
           "type": "table",
@@ -859,7 +859,7 @@
         {
           "type": "code",
           "label": "Prompt 08 · à adapter : remplacez chaque <…>",
-          "text": "Ajoute la commande python -m solen increment qui charge <lot2> dans l'entrepôt\nexistant.\nRègles :\n- SCD2 sur <dim_boutique> : quand la zone change, fermer l'ancienne version\n  (valid_to = date du changement, exclue) et créer une nouvelle version\n  (valid_from = même date, incluse, valid_to NULL) ;\n- un fait est rattaché à la version valable à SA date ; ne jamais modifier les\n  faits anciens ;\n- rejeu : relancer le même lot n'ajoute aucune ligne (clé métier unique,\n  insertion idempotente).\nLance : initial, increment, increment, puis les vérifications --etape\nincrement et --etape rejeu, et recopie les sorties. Montre la requête qui\nchoisit la version de boutique pour une date.\nMes prévisions : <1>, <2>, <3>. Compare chacune avec le résultat réel."
+          "text": "Ajoute la commande python -m solen increment qui charge <lot2> dans l'entrepôt\nexistant.\nRègles :\n- SCD2 sur <dim_boutique> : quand la zone change, fermer l'ancienne version\n  (valid_to = date du changement, exclue) et créer une nouvelle version\n  (valid_from = même date, incluse, valid_to NULL) ;\n- un fait est rattaché à la version valable à SA date ; ne jamais modifier les\n  faits anciens ;\n- rejeu : relancer le même lot n'ajoute aucune ligne (clé métier unique,\n  insertion idempotente).\nLance dans cet ordre : initial, increment, --etape increment, increment\n(2e fois), --etape rejeu ; recopie les sorties. Montre la requête qui\nchoisit la version de boutique pour une date.\nMes prévisions : <1>, <2>, <3>. Compare chacune avec le résultat réel."
         },
         {
           "type": "table",
@@ -887,7 +887,7 @@
       "blocks": [
         {
           "type": "text",
-          "text": "**Quand** : séance 4, quand `initial`, `increment` et `export` existent. Objectif : une CI verte sur GitHub à chaque PR. Valeur actuelle de `ETAPE_CI` : dans `.github/workflows/controles.yml` (au départ `aucune`)."
+          "text": "**Quand** : séance 4, quand `initial`, `increment` et `export` existent. Objectif : une CI verte sur GitHub à chaque PR. Valeur actuelle de `ETAPE_CI` : dans `.github/workflows/controles.yml` (au départ `aucune`, puis `rejets`, `initial`, `increment`, `rejeu`, `export`, `tout`)."
         },
         {
           "type": "callout",
@@ -897,7 +897,7 @@
         {
           "type": "code",
           "label": "Prompt 09 · à adapter : remplacez chaque <…>",
-          "text": "Dans tests/ (pas dans controles/), écris 3 à 5 tests pytest courts pour nos\nrègles :\n<règle 1>, <règle 2>, le rejeu, et la version SCD2 à la date frontière <date>.\nChaque test a un nom en français qui dit la règle, et utilise un petit jeu de\ndonnées construit dans le test (pas les sources complètes).\nLance pytest -q et recopie la sortie.\nPuis, sans le garder, montre-moi quel test échouerait si on supprimait la\nrègle <règle 1>, et pourquoi.\nEnsuite mets à jour .github/workflows/controles.yml : passe ETAPE_CI de\n<valeur actuelle> à <nouvelle valeur>, et explique en 5 lignes ce que la CI va\nexécuter. Ne fais ni commit ni push."
+          "text": "Dans tests/ (pas dans controles/), écris 3 à 5 tests pytest courts pour nos\nrègles :\n<règle 1>, <règle 2>, le rejeu, et la version SCD2 à la date frontière <date>.\nChaque test a un nom en français qui dit la règle, et utilise un petit jeu de\ndonnées construit dans le test (pas les sources complètes).\nLance pytest controles puis pytest -q et recopie les sorties.\nPuis, sans le garder, montre-moi quel test échouerait si on supprimait la\nrègle <règle 1>, et pourquoi.\nEnsuite mets à jour .github/workflows/controles.yml : passe ETAPE_CI de\n<valeur actuelle> à <nouvelle valeur>, et explique en 5 lignes ce que la CI va\nexécuter. Ne fais ni commit ni push."
         },
         {
           "type": "table",
@@ -977,7 +977,7 @@
         {
           "type": "code",
           "label": "Prompt 12 · corriger (auteur)",
-          "text": "Voici les constats de revue reçus sur ma PR <n> :\n<coller les constats>\nPour chacun, vérifie d'abord contre le code actuel : établi, non établi, ou\nnon vérifiable, avec une preuve observable.\nCorrige seulement les défauts établis, dans solen/ (ou tests/), sans toucher\naux sources, aux références ni à controles/.\nLance <contrôles de l'étape> et pytest -q, recopie les sorties.\nExplique pour chaque constat rejeté pourquoi, en une phrase.\nJe prévois que <valeur> passera de <avant> à <après> : compare.\nNe fais ni commit ni push."
+          "text": "Voici les constats de revue reçus sur ma PR <n> :\n<coller les constats>\nPour chacun, vérifie d'abord contre le code actuel : établi, non établi, ou\nnon vérifiable, avec une preuve observable.\nCorrige seulement les défauts établis, dans solen/ (ou tests/), sans toucher\naux sources, aux références ni à controles/.\nLance <contrôles de l'étape>, pytest controles et pytest -q ; recopie.\nExplique pour chaque constat rejeté pourquoi, en une phrase.\nJe prévois que <valeur> passera de <avant> à <après> : compare.\nNe fais ni commit ni push."
         },
         {
           "type": "code",
@@ -1020,7 +1020,7 @@
         {
           "type": "code",
           "label": "Prompt 13 · préparer",
-          "text": "Utilise $preparer-pr pour la branche <branche>.\nÉtape à contrôler : <initial | increment | rejeu | export | tout>.\nRelecteur : <prénom et compte GitHub du partenaire>.\nMa phrase : « Cette PR permet de <…> », preuve : <commande>.\nFais la liste de contrôle, puis propose un titre et une description en\nfrançais.\nNe commite pas, ne pousse pas, n'ouvre pas la PR."
+          "text": "Utilise $preparer-pr pour la branche <branche>.\nÉtape à contrôler : <rejets|initial|increment|rejeu|export|app|tout>.\nRelecteur : <prénom et compte GitHub du partenaire>.\nMa phrase : « Cette PR permet de <…> », preuve : <commande>.\nFais la liste de contrôle, puis propose un titre et une description en\nfrançais.\nNe commite pas, ne pousse pas, n'ouvre pas la PR."
         },
         {
           "type": "code",
@@ -1227,7 +1227,7 @@
       "blocks": [
         {
           "type": "text",
-          "text": "**Quand** : séance 4, après avoir utilisé `$revoir-bi` au moins une fois. Un **Skill** est une méthode réutilisable rangée dans `.agents/skills/<nom>/SKILL.md`, avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota."
+          "text": "**Quand** : extension **facultative** (fin de séance 4 si le temps le permet, ou travail personnel), après avoir utilisé `$revoir-bi` au moins une fois. Un **Skill** est une méthode réutilisable rangée dans `.agents/skills/<nom>/SKILL.md`, avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota."
         },
         {
           "type": "callout",
@@ -1415,7 +1415,7 @@
         {
           "type": "code",
           "label": "Code produit par Codex · solen/conversions.py (extrait)",
-          "text": "def texte_vers_millimes(texte) -> int:\n    \"\"\"« 18,500 », « 18.5 », « 1 240,000 » → millimes entiers.\"\"\"\n    t = str(texte).strip().replace(\" \", \"\").replace(\",\", \".\")\n    if not re.fullmatch(r\"\\d+(\\.\\d+)?\", t):\n        raise RejetLigne(\"format_invalide\", f\"montant illisible {texte!r}\")\n    entier, _, dec = t.partition(\".\")\n    return int(entier) * 1000 + int((dec + \"000\")[:3])"
+          "text": "def texte_vers_millimes(texte) -> int:\n    \"\"\"« 18,500 », « 18.5 », « 1 240,000 » → millimes entiers.\"\"\"\n    t = str(texte).strip().replace(\" \", \"\").replace(\",\", \".\")\n    if not re.fullmatch(r\"\\d+(\\.\\d+)?\", t):\n        raise ValueError(f\"montant illisible {texte!r}\")\n    entier, _, dec = t.partition(\".\")\n    return int(entier) * 1000 + int((dec + \"000\")[:3])"
         },
         {
           "type": "table",
@@ -1430,7 +1430,7 @@
             ],
             [
               "4-5",
-              "Si le texte n'a pas la forme « chiffres, éventuellement un point et des chiffres », la ligne est rejetée avec un motif."
+              "Texte illisible : la fonction s'arrête avec `ValueError`, une erreur interne et **pas** un motif de rejet du cahier ; on lit le message (prompt 10)."
             ],
             [
               "6-7",
@@ -1445,7 +1445,7 @@
         {
           "type": "callout",
           "label": "À vous",
-          "text": "Prévoyez sans exécuter : `\"3,9\"` ? `\"14.5\"` ? `\"12,5 TND\"` ? Puis faites lancer ces trois cas par Codex (`$expliquer-bi`) et comparez. Pourquoi le troisième est-il rejeté ?"
+          "text": "Prévoyez sans exécuter : `\"3,9\"` ? `\"14.5\"` ? `\"12,5 TND\"` ? Puis faites lancer ces trois cas par Codex (`$expliquer-bi`) et comparez. Pourquoi le troisième s'arrête-t-il sur une erreur ?"
         }
       ]
     },
@@ -1530,16 +1530,25 @@
           "text": "Git enregistre l'histoire de vos fichiers sur votre PC ; GitHub héberge la copie partagée. La plupart des erreurs viennent de trois questions oubliées : **où suis-je** (`pwd`), **sur quelle branche** (`git status`, `git branch`), **qu'est-ce qui a changé** (`git diff`, `git log --oneline -5`) ? Lisez avant d'agir."
         },
         {
+          "type": "text",
+          "text": "Réglage du livret 01 : `git config --global pull.rebase false`. Si les deux copies ont avancé, `git pull` fait une **fusion simple**."
+        },
+        {
           "type": "figure",
           "path": "../../docs/images/diagrams/v7-trois-emplacements.png",
-          "height": 215,
+          "height": 135,
           "caption": "Trois emplacements : vos deux copies locales et GitHub. commit enregistre localement, push envoie, pull récupère, la PR propose de fusionner une branche dans main."
         },
         {
           "type": "figure",
           "path": "../../docs/images/diagrams/v7-cycle-pr.png",
-          "height": 290,
+          "height": 210,
           "caption": "Le cycle complet d'une pull request à deux, de `main` à jour au `pull` des deux copies ; puis les rôles s'inversent."
+        },
+        {
+          "type": "callout",
+          "label": "Deux « workflows », deux choses",
+          "text": "**Workflow de travail Git/GitHub** : la suite de gestes **humains** de ce chapitre : branche → PR → revue → merge. **Workflow GitHub Actions** : le fichier `.github/workflows/controles.yml`, que **GitHub exécute tout seul** sur une machine neuve à chaque PR (onglet **Actions**). Même mot : le premier, vous le faites ; le second, la machine le fait."
         }
       ]
     },
@@ -1697,14 +1706,14 @@
               "`cd ~/solen-bi`, puis `git status`."
             ],
             [
-              "Commit fait alors que `git status` dit « On branch main ».",
+              "Commit fait sur `main` (« On branch main »).",
               "**Mauvaise branche** : `git switch -c` oublié.",
-              "`git switch -c <branche>` (le commit suit), `git push -u origin <branche>`, PR. Après fusion : `git switch main && git pull`."
+              "`git switch -c <branche>` (le commit suit), push, PR. Après fusion : `git switch main && git pull`."
             ],
             [
               "`Your local changes … would be overwritten by checkout`",
-              "**Changement non commité** au moment de changer de branche.",
-              "Voulu : commit sur la bonne branche. Sinon : `git stash`, changer de branche, `git stash pop`."
+              "**Changement non commité** avant de changer de branche.",
+              "Commit sur la bonne branche, ou `git stash`, changer de branche, `git stash pop`."
             ],
             [
               "Push refusé : `protected branch`",
@@ -1714,17 +1723,17 @@
             [
               "Push refusé : `fetch first` / `rejected`",
               "**Push refusé** : GitHub a des commits que vous n'avez pas.",
-              "`git pull` sur la branche, contrôles, `git push`. Jamais `--force`."
+              "`git pull` sur la branche (fusion simple grâce à `pull.rebase false`) ; un éditeur s'ouvre ? enregistrez et fermez. Contrôles, `git push`."
             ],
             [
-              "PR « out-of-date » ; votre `main` local n'a pas la dernière fusion.",
-              "**main en retard**.",
-              "`git switch main && git pull` ; sur la branche : `git fetch`, `git merge origin/main`, contrôles, `git push`."
+              "PR « out-of-date »",
+              "**main a avancé** depuis la branche.",
+              "Sur la branche : `git fetch`, `git merge origin/main`, contrôles, `git push`."
             ],
             [
               "Croix rouge sur la PR",
-              "**PR avec contrôle rouge** : la CI a échoué.",
-              "**Details**, lire la fin ; relancer la même commande chez soi ; prompt 10 ; corriger le code, jamais les contrôles ni la référence."
+              "**La CI a échoué.**",
+              "**Details**, lire la fin ; relancer chez soi ; prompt 10 ; corriger le code, jamais les contrôles."
             ],
             [
               "`CONFLICT (content): Merge conflict in …`",
@@ -1732,9 +1741,9 @@
               "Prompt 15 : lire les deux versions, décider à deux, retirer `<<<<<<<` `=======` `>>>>>>>`, contrôles, `git add`, `git commit`. Abandonner : `git merge --abort`."
             ],
             [
-              "`Not possible to fast-forward`",
-              "Histoires divergentes.",
-              "Ne rien forcer ; montrer `git status` et `git log --oneline -5`."
+              "`Need to specify how to reconcile divergent branches`",
+              "Réglage `pull` absent ou ancien.",
+              "`git config --global pull.rebase false`, puis `git pull`. Rien de forcé."
             ]
           ],
           "widths": [
@@ -1746,7 +1755,7 @@
         {
           "type": "callout",
           "label": "Interdits",
-          "text": "`git push --force`, `git reset --hard`, supprimer `.git`, fusionner sa propre PR sans approbation : ils effacent du travail ou contournent la revue. Avant toute réparation : `pwd`, `git status`, `git log --oneline -5` ; en cas de doute, montrez-les au binôme ou au professeur."
+          "text": "`git push --force`, `git reset --hard`, supprimer `.git`, fusionner sa propre PR sans approbation. Avant de réparer : `pwd`, `git status`, `git log --oneline -5` ; dans le doute, montrez-les."
         }
       ]
     },
@@ -1889,7 +1898,7 @@
         {
           "type": "code",
           "label": "Terminal · python -m controles.verifier --mission tronc-commun --etape increment",
-          "text": "== Étape increment : comparaison avec attendu_lot2.json ==\nOK — dim_boutique : 4 lignes\nÉCHEC — fact_retour : attendu 99 lignes, observé 98\nÉCHEC — rejets lot2 : cle_inconnue, attendu 4, observé 8\nÉCHEC — fact_vente : attendu chaque fait relié à la version valable à sa\ndate, observé 1 faits mal rattachés\n\nRésultat : 58 OK, 3 ÉCHEC."
+          "text": "INFO — mission tronc-commun · référence … · sorties …/outputs\n== Étape increment : comparaison avec attendu_lot2.json ==\nOK — dim_boutique : 4 lignes\nÉCHEC — fact_retour : attendu 99 lignes, observé 98\nÉCHEC — rejets lot2 : cle_inconnue, attendu 4, observé 8\nÉCHEC — fact_vente : attendu chaque fait relié à la version valable à sa\ndate, observé 1 faits mal rattachés\n\nRésultat : 48 OK, 3 ÉCHEC."
         },
         {
           "type": "table",
@@ -1908,6 +1917,11 @@
               "`rejets lot2 : cle_inconnue, attendu 4, observé 8`",
               "Exactement le double : les rejets du lot 2 ont été écrits deux fois.",
               "4, même après un deuxième `increment`."
+            ],
+            [
+              "`rejets … : numero_ligne doit être une ligne réelle du fichier`",
+              "Numéro hors du CSV ou en double (en-tête = ligne 1).",
+              "Le vrai numéro de ligne, une fois."
             ],
             [
               "`… observé 1 faits mal rattachés`",
@@ -1934,7 +1948,7 @@
         {
           "type": "callout",
           "label": "Ce qu'on demande à Codex",
-          "text": "Prompt 10, avec la commande exacte, le dossier, votre prévision et **toute** la sortie. Une ligne ÉCHEC à la fois, en commençant par la première. Correction dans `solen/` ; si Codex propose de modifier `controles/` ou `attendu_lot2.json`, refusez. Puis relancez **toutes** les étapes acquises (`initial`, `increment`, `rejeu`) et `pytest -q`."
+          "text": "Prompt 10 : commande exacte, dossier, prévision et **toute** la sortie ; une ligne ÉCHEC à la fois, la première d’abord. Correction dans `solen/` ; refusez toute modification de `controles/` ou de `attendu_lot2.json`. Puis relancez les étapes acquises et `pytest -q`."
         }
       ]
     },

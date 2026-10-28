@@ -298,7 +298,12 @@
     "sources": [
       "operations.sqlite",
       "ventes.csv"
-    ]
+    ],
+    "etape_rejets": {
+      "sources": [
+        "ventes.csv"
+      ]
+    }
   },
   "export": {
     "tables": [

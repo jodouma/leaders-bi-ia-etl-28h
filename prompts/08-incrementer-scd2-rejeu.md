@@ -17,7 +17,8 @@ Règles :
   exclue) et créer une nouvelle version (valid_from = même date, incluse, valid_to NULL) ;
 - un fait est rattaché à la version valable à SA date ; ne jamais modifier les faits anciens ;
 - rejeu : relancer le même lot n'ajoute aucune ligne (clé métier unique, insertion idempotente).
-Lance : initial, increment, increment, puis les vérifications --etape increment et --etape rejeu,
+Lance dans cet ordre : initial, increment, --etape increment (enregistre l'empreinte),
+increment (2e fois), --etape rejeu,
 et recopie les sorties. Montre la requête qui choisit la version de boutique pour une date.
 Mes prévisions : <1>, <2>, <3>. Compare chacune avec le résultat réel.
 ```

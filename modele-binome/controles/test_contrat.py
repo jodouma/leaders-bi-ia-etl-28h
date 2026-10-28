@@ -58,7 +58,8 @@ def test_entrepot_conforme(verificateur, contrat):
     lot = verificateur.detecter_lot()
     assert lot is not None, "l'entrepôt ne correspond à aucun lot de référence : lancez le vérificateur pour le détail"
     etape = contrat["lots"][lot]["etape"]
-    verificateur.verifier_lot(lot, "rejeu" if etape == "increment" else etape)
+    # au lot 2 : comme --etape tout (compare à l'empreinte de --etape increment si elle existe, sinon l'enregistre)
+    verificateur.verifier_lot(lot, "tout" if etape == "increment" else etape)
     _sans_echec(verificateur.r)
 
 
