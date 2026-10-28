@@ -1,0 +1,54 @@
+{
+  "source": "Parc d'équipements sous contrat TechniServ",
+  "extrait_le": "2026-03-31",
+  "equipements": [
+    {
+      "id": "EQ-001",
+      "designation": "Climatiseur split 18 000 BTU",
+      "categorie": "CLIM",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-004",
+      "designation": "Ascenseur 8 personnes",
+      "categorie": "ASC",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-011",
+      "designation": "Groupe électrogène 250 kVA",
+      "categorie": "GE",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-017",
+      "designation": "Groupe électrogène 100 kVA",
+      "categorie": "GE",
+      "site": "Résidences Nakhla — Les Berges",
+      "historique": [
+        {
+          "contrat": "CT-03",
+          "valide_depuis": "2024-09-01"
+        }
+      ]
+    }
+  ]
+}

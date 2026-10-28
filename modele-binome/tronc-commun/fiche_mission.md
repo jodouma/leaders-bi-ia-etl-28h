@@ -21,7 +21,7 @@ Maison Zitouna vend de l'huile d'olive, des olives, des dattes et des coffrets c
 
 1. `outputs/rejets.csv` : chaque ligne écartée avec son motif.
 2. `outputs/entrepot.sqlite` : une étoile (dim_date, dim_produit, dim_boutique, fact_vente, fact_retour).
-3. Le lot 2 chargé, l'historique gardé (La boutique NBE (Nabeul) passe de la zone « Cap Bon » à la zone « Nord-Est » le 2026-07-15 (inclus). Cette information arrive avec `lot2/boutiques.json`.), un rejeu sans doublon.
+3. Le lot 2 chargé, l'historique gardé et un rejeu sans doublon. La boutique NBE (Nabeul) passe de la zone « Cap Bon » à la zone « Nord-Est » le 2026-07-15 (inclus). Cette information arrive avec `lot2/boutiques.json`.
 4. `outputs/export/*.csv` + `manifest.json`, puis le rapport Power BI actualisé.
 5. `outputs/app/index.html` : une mini-application locale de trois écrans.
 6. Une recommandation courte à la direction, appuyée sur les chiffres.
@@ -56,7 +56,7 @@ Un `echantillon/` de 12 lignes permet de tout calculer à la main d'abord (voir 
 
 1. **Vue direction** — les cinq indicateurs et les ventes nettes par mois et par zone (barres empilées).
 2. **Détail par boutique** — chaque boutique avec ses versions : NBE en Cap Bon jusqu'au 2026-07-14, puis Nord-Est.
-3. **Qualité des données** — lignes lues, gardées, rejetées par motif et par lot.
+3. **Qualité des données** — lignes lues, gardées, rejetées par motif et par lot ; une ligne par chargement (lot 1, lot 2, puis le rejeu du lot 2 à 0 ajout).
 
 ## Trois variantes possibles (évolutions)
 

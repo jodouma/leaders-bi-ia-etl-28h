@@ -1,0 +1,325 @@
+{
+  "version_contrat": 1,
+  "mission": "M10",
+  "entreprise": "Pixel Studio",
+  "grain": "une ligne de temps (un collaborateur, un projet, un jour, une tâche, des heures)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_collaborateur",
+    "dim_projet",
+    "fact_temps",
+    "fact_facture"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_collaborateur": {
+      "role": "dimension",
+      "cle": "collaborateur_key",
+      "cle_metier": "collaborateur_id",
+      "colonnes": [
+        "collaborateur_key",
+        "collaborateur_id",
+        "nom",
+        "profil",
+        "taux_horaire_millimes"
+      ],
+      "colonnes_entieres": [
+        "collaborateur_key",
+        "taux_horaire_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_projet": {
+      "role": "dimension_scd2",
+      "cle": "projet_key",
+      "cle_metier": "projet_id",
+      "colonnes": [
+        "projet_key",
+        "projet_id",
+        "nom",
+        "client",
+        "type_projet",
+        "chef_projet",
+        "date_debut",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "projet_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_temps": {
+      "role": "fait",
+      "cle": "temps_id",
+      "cle_metier": null,
+      "colonnes": [
+        "temps_id",
+        "date_key",
+        "collaborateur_key",
+        "projet_key",
+        "tache",
+        "heures_centiemes",
+        "taux_horaire_millimes",
+        "cout_charge_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "collaborateur_key",
+        "projet_key",
+        "heures_centiemes",
+        "taux_horaire_millimes",
+        "cout_charge_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "collaborateur_key": "dim_collaborateur.collaborateur_key",
+        "projet_key": "dim_projet.projet_key"
+      }
+    },
+    "fact_facture": {
+      "role": "fait",
+      "cle": "document_id",
+      "cle_metier": null,
+      "colonnes": [
+        "document_id",
+        "type_document",
+        "facture_origine_id",
+        "date_key",
+        "projet_key",
+        "signe",
+        "montant_ht_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "projet_key",
+        "signe",
+        "montant_ht_millimes"
+      ],
+      "colonnes_nullables": [
+        "facture_origine_id"
+      ],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "projet_key": "dim_projet.projet_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_temps",
+    "fact_facture"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_projet",
+    "cle": "projet_key",
+    "cle_metier": "projet_id",
+    "attribut": "chef_projet",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_temps",
+        "colonne": "projet_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_facture",
+        "colonne": "projet_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "PX07",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "PX07",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "PX07",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "PX02",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, d.date_complete AS jour, p.projet_id, p.client, p.type_projet, p.chef_projet, t.heures_centiemes AS heures, t.cout_charge_millimes AS cout, 0 AS facture, 0 AS avoir FROM fact_temps t JOIN dim_date d ON d.date_key = t.date_key JOIN dim_projet p ON p.projet_key = t.projet_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), d.date_complete, p.projet_id, p.client, p.type_projet, p.chef_projet, 0, 0, CASE WHEN f.signe = 1 THEN f.montant_ht_millimes ELSE 0 END, CASE WHEN f.signe = -1 THEN f.montant_ht_millimes ELSE 0 END FROM fact_facture f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_projet p ON p.projet_key = f.projet_key",
+  "indicateurs": [
+    {
+      "code": "heures_centiemes",
+      "libelle": "Heures",
+      "unite": "centiemes_heure",
+      "formule": "somme des heures des lignes de temps acceptées, en centièmes d'heure (750 = 7,5 h)",
+      "sql": "SUM(heures)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "cout_charge_millimes",
+      "libelle": "Coût de charge",
+      "unite": "millimes",
+      "formule": "somme de heures × taux horaire coût du profil du collaborateur",
+      "sql": "SUM(cout)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "factures_millimes",
+      "libelle": "Factures",
+      "unite": "millimes",
+      "formule": "somme des montants HT des factures EMISE acceptées",
+      "sql": "SUM(facture)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "avoirs_millimes",
+      "libelle": "Avoirs",
+      "unite": "millimes",
+      "formule": "somme des montants HT des avoirs acceptés",
+      "sql": "SUM(avoir)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "facture_net_millimes",
+      "libelle": "Facturé net",
+      "unite": "millimes",
+      "formule": "factures − avoirs (montants HT)",
+      "sql": "SUM(facture) - SUM(avoir)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "marge_contribution_millimes",
+      "libelle": "Marge de contribution",
+      "unite": "millimes",
+      "formule": "facturé net − coût de charge (ce n'est PAS un bénéfice : aucun frais général)",
+      "sql": "SUM(facture) - SUM(avoir) - SUM(cout)",
+      "tolerance": 0.0,
+      "principal": true
+    }
+  ],
+  "axes": {
+    "par_projet": "projet_id",
+    "par_client": "client",
+    "par_type": "type_projet",
+    "par_chef_projet": "chef_projet",
+    "par_mois": "mois"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "facturation.sqlite",
+      "temps.csv"
+    ]
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_collaborateur",
+      "dim_projet",
+      "fact_temps",
+      "fact_facture"
+    ],
+    "sommes": {
+      "fact_temps": [
+        "heures_centiemes",
+        "cout_charge_millimes"
+      ],
+      "fact_facture": [
+        "signe",
+        "montant_ht_millimes"
+      ],
+      "dim_collaborateur": [
+        "taux_horaire_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par projet",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "mission": "M09",
+  "echantillon": true,
+  "lignes_csv": 12,
+  "doublons_exacts": 1,
+  "lignes_gardees": 6,
+  "demandes_non_remboursees_ignorees": 2,
+  "rejets": {
+    "total": 6,
+    "par_motif": {
+      "cle_inconnue": 2,
+      "id_conflit": 2,
+      "id_manquant": 1,
+      "quantite_invalide": 1
+    },
+    "par_source": {
+      "billets.csv": {
+        "cle_inconnue": 1,
+        "id_conflit": 2,
+        "id_manquant": 1,
+        "quantite_invalide": 1
+      },
+      "remboursements.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 31,
+    "dim_evenement": 2,
+    "dim_canal": 4,
+    "fact_billet": 6,
+    "fact_remboursement": 1
+  },
+  "indicateurs": {
+    "billets_vendus": 6,
+    "billets_rembourses": 1,
+    "billets_nets": 5,
+    "taux_remplissage": 0.277778,
+    "recettes_billets_millimes": 250000,
+    "remboursements_millimes": 50000,
+    "frais_distribution_millimes": 16275,
+    "recettes_nettes_millimes": 183725
+  },
+  "agregats": {
+    "par_evenement": {
+      "E01": {
+        "billets_vendus": 3,
+        "billets_rembourses": 0,
+        "billets_nets": 3,
+        "taux_remplissage": 0.3,
+        "recettes_billets_millimes": 85000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 2925,
+        "recettes_nettes_millimes": 82075
+      },
+      "E02": {
+        "billets_vendus": 3,
+        "billets_rembourses": 1,
+        "billets_nets": 2,
+        "taux_remplissage": 0.25,
+        "recettes_billets_millimes": 165000,
+        "remboursements_millimes": 50000,
+        "frais_distribution_millimes": 13350,
+        "recettes_nettes_millimes": 101650
+      }
+    },
+    "par_type": {
+      "Concert": {
+        "billets_vendus": 3,
+        "billets_rembourses": 1,
+        "billets_nets": 2,
+        "taux_remplissage": 0.25,
+        "recettes_billets_millimes": 165000,
+        "remboursements_millimes": 50000,
+        "frais_distribution_millimes": 13350,
+        "recettes_nettes_millimes": 101650
+      },
+      "Théâtre": {
+        "billets_vendus": 3,
+        "billets_rembourses": 0,
+        "billets_nets": 3,
+        "taux_remplissage": 0.3,
+        "recettes_billets_millimes": 85000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 2925,
+        "recettes_nettes_millimes": 82075
+      }
+    },
+    "par_mois": {
+      "2026-03": {
+        "billets_vendus": 6,
+        "billets_rembourses": 1,
+        "billets_nets": 5,
+        "taux_remplissage": 0.277778,
+        "recettes_billets_millimes": 250000,
+        "remboursements_millimes": 50000,
+        "frais_distribution_millimes": 16275,
+        "recettes_nettes_millimes": 183725
+      }
+    },
+    "par_lieu": {
+      "Espace Kasbah Live": {
+        "billets_vendus": 3,
+        "billets_rembourses": 1,
+        "billets_nets": 2,
+        "taux_remplissage": 0.25,
+        "recettes_billets_millimes": 165000,
+        "remboursements_millimes": 50000,
+        "frais_distribution_millimes": 13350,
+        "recettes_nettes_millimes": 101650
+      },
+      "Théâtre des Jasmins": {
+        "billets_vendus": 3,
+        "billets_rembourses": 0,
+        "billets_nets": 3,
+        "taux_remplissage": 0.3,
+        "recettes_billets_millimes": 85000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 2925,
+        "recettes_nettes_millimes": 82075
+      }
+    },
+    "par_canal": {
+      "(capacité)": {
+        "billets_vendus": 0,
+        "billets_rembourses": 0,
+        "billets_nets": 0,
+        "taux_remplissage": 0.0,
+        "recettes_billets_millimes": 0,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 0,
+        "recettes_nettes_millimes": 0
+      },
+      "GUI": {
+        "billets_vendus": 1,
+        "billets_rembourses": 0,
+        "billets_nets": 1,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 20000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 0,
+        "recettes_nettes_millimes": 20000
+      },
+      "PAR": {
+        "billets_vendus": 1,
+        "billets_rembourses": 1,
+        "billets_nets": 0,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 50000,
+        "remboursements_millimes": 50000,
+        "frais_distribution_millimes": 3000,
+        "recettes_nettes_millimes": -3000
+      },
+      "REV": {
+        "billets_vendus": 2,
+        "billets_rembourses": 0,
+        "billets_nets": 2,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 115000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 10350,
+        "recettes_nettes_millimes": 104650
+      },
+      "WEB": {
+        "billets_vendus": 2,
+        "billets_rembourses": 0,
+        "billets_nets": 2,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 65000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 2925,
+        "recettes_nettes_millimes": 62075
+      }
+    }
+  }
+}

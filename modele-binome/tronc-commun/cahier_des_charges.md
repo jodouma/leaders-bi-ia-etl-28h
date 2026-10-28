@@ -39,7 +39,7 @@ Les sources sont **lues, jamais modifiées**.
 |---|---|
 | `id_conflit` | même identifiant sur deux lignes différentes : les deux lignes sont rejetées |
 | `id_manquant` | identifiant vide |
-| `cle_inconnue` | code absent du référentiel (produit, boutique, ligne de vente…) |
+| `cle_inconnue` | code absent du référentiel ou ligne d'origine inconnue |
 | `quantite_invalide` | quantité nulle, négative ou non entière |
 
 Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le motif) :
@@ -161,7 +161,7 @@ La boutique NBE (Nabeul) passe de la zone « Cap Bon » à la zone « Nord-Est �
 | Taux de retour | ratio | retours / ventes brutes (en montant) |
 | Unités nettes | nombre | unités vendues − unités retournées |
 
-Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (ventes et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
+Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (faits et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
 
 ## 10. Sorties
 
@@ -182,3 +182,20 @@ python -m controles.verifier --mission tronc-commun --etape tout
 ## 12. Règle à clarifier
 
 Un client rapporte le 20 juillet un produit acheté le 30 juin à Nabeul. Le retour compte-t-il dans la zone Cap Bon (zone de la vente) ou Nord-Est (zone le jour du retour) ? — **Décision :** B. Chaque mouvement (vente ou retour) est rattaché à la version de la boutique valable à SA date et compté dans SON mois. C'est la même règle que pour les ventes.
+
+Options étudiées :
+
+- A : zone de la vente d'origine (il faut relier le retour à la version de la vente).
+- B : zone valable à la date du retour (chaque mouvement suit sa propre date).
+
+## 13. Trois variantes (évolutions possibles)
+
+1. Nouvel indicateur : panier moyen net = ventes nettes / nombre de tickets distincts.
+2. Nouvelle règle : un retour plus de 30 jours après la vente est refusé → nouveau motif `retour_hors_delai`.
+3. Changement historique : SFX passe en zone « Centre-Est » le 2026-08-01 (troisième version dans `dim_boutique`).
+
+## 14. Parcours de démonstration de l'application (3 écrans)
+
+1. **Vue direction** — les cinq indicateurs et les ventes nettes par mois et par zone (barres empilées).
+2. **Détail par boutique** — chaque boutique avec ses versions : NBE en Cap Bon jusqu'au 2026-07-14, puis Nord-Est.
+3. **Qualité des données** — lignes lues, gardées, rejetées par motif et par lot ; une ligne par chargement (lot 1, lot 2, puis le rejeu du lot 2 à 0 ajout).

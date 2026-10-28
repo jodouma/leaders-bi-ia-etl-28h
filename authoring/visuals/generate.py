@@ -630,16 +630,16 @@ save(c)
 c = start('cles', 'Clé métier et clé technique',
           'Une boutique, NBE ; deux versions, donc deux clés techniques.', 960,
           "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : "
-          "2 pour Cap Bon (du 2026-01-01 au 2026-07-15 exclu), 5 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.")
+          "2 pour Cap Bon (du 2021-05-10 au 2026-07-15 exclu), 4 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.")
 box(c, 40, 175, 730, 250, 'Clé métier · boutique_id', ['Vient des sources : NBE = Nabeul.', 'Texte, stable, identique pour toutes les versions.'], 'pale')
 box(c, 830, 175, 730, 250, 'Clé technique · boutique_key', ['Créée par l’entrepôt : un entier par version.', 'Les faits pointent vers elle.'], 'dark')
 c.text(40, 490, 'dim_boutique : deux lignes pour la même boutique', 28, NAVY, 'bold')
 hl = (DEEP, WHITE, 'bold'); ml = (ORANGE, DEEP, 'bold')
 end = table(c, 40, 515, [270, 270, 330, 325, 325], ['boutique_key', 'boutique_id', 'zone', 'valid_from', 'valid_to'],
-            [['2', 'NBE', 'Cap Bon', '2026-01-01', '2026-07-15'], ['5', 'NBE', 'Nord-Est', '2026-07-15', 'NULL (en cours)']],
+            [['2', 'NBE', 'Cap Bon', '2021-05-10', '2026-07-15'], ['4', 'NBE', 'Nord-Est', '2026-07-15', 'NULL (en cours)']],
             size=29, hsize=27, pad=18, styles={(0, 0): hl, (1, 0): hl, (0, 1): ml, (1, 1): ml})
-note(c, end + 50, '2 et 5 : deux versions de NBE · NBE : la même boutique dans les deux lignes', 27, NAVY, 'bold')
-band(c, end + 95, 120, 'Une vente du 2026-07-14 porte boutique_key = 2 ; une vente du 2026-07-15 porte boutique_key = 5. Filtrer sur boutique_id = NBE réunit les deux.', 27, 'pale', 'body')
+note(c, end + 50, '2 et 4 : deux versions de NBE · NBE : la même boutique dans les deux lignes', 27, NAVY, 'bold')
+band(c, end + 95, 120, 'Une vente du 2026-07-14 porte boutique_key = 2 ; une vente du 2026-07-15 porte boutique_key = 4. Filtrer sur boutique_id = NBE réunit les deux.', 27, 'pale', 'body')
 save(c)
 
 # 9 ─ nettoyage -----------------------------------------------------------------------------------
@@ -684,10 +684,10 @@ save(c)
 # 10 ─ chargements -----------------------------------------------------------------------------------
 c = start('chargements', 'Charger · compléter · rejouer',
           'Un même entrepôt, trois passages ; le rejeu ne doit rien ajouter.', 940,
-          "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et 3 lignes déjà connues, ignorées), puis rejeu du lot 2 : "
+          "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et des lignes déjà connues, ignorées), puis rejeu du lot 2 : "
           "0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.")
 L1 = dict(lues=counter('lot1', 'lues'), inserees=counter('lot1', 'inserees'), rejets=counter('lot1', 'rejets'), faits=counter('lot1', 'faits'))
-L2 = dict(lues=counter('lot2', 'lues'), nouvelles=counter('lot2', 'nouvelles'), connues=counter('lot2', 'deja_connues', default='3'), faits=counter('lot2', 'faits'))
+L2 = dict(lues=counter('lot2', 'lues'), nouvelles=counter('lot2', 'nouvelles'), connues=counter('lot2', 'deja_connues'), faits=counter('lot2', 'faits'))
 RJ = dict(lues=counter('rejeu', 'lues'), inserees=counter('rejeu', 'inserees', default='0'), faits=counter('rejeu', 'faits'))
 cards = [('1 · Chargement initial', 'lot1', [f'{L1["lues"]} lignes lues', f'{L1["inserees"]} faits insérés', f'{L1["rejets"]} rejets'], f'{L1["faits"]} faits', 'pale'),
          ('2 · Incrément', 'lot2', [f'{L2["lues"]} lignes lues', f'{L2["nouvelles"]} nouvelles insérées', f'{L2["connues"]} déjà connues : ignorées'], f'{L2["faits"]} faits', 'dark'),
@@ -715,27 +715,27 @@ save(c)
 # 11 ─ SCD2 frise -----------------------------------------------------------------------------------
 c = start('scd2-frise', 'NBE change de zone le 2026-07-15',
           'SCD2 : valid_from inclus, valid_to exclu ; chaque vente prend la version valable à sa date.', 1050,
-          "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2026-01-01, 2026-07-15) ; version 2 (boutique_key 5, Nord-Est) sur [2026-07-15, NULL). "
+          "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2021-05-10, 2026-07-15) ; version 2 (boutique_key 4, Nord-Est) sur [2026-07-15, NULL). "
           "Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.")
 X0, XB, X1 = 70, 960, 1530
 box(c, X0, 190, XB - X0 - 6, 150, 'Version 1 · Cap Bon', ['boutique_key = 2'], 'pale', tsize=31, bsize=28)
-box(c, XB + 6, 190, X1 - XB - 6, 150, 'Version 2 · Nord-Est', ['boutique_key = 5'], 'dark', tsize=31, bsize=28)
+box(c, XB + 6, 190, X1 - XB - 6, 150, 'Version 2 · Nord-Est', ['boutique_key = 4'], 'dark', tsize=31, bsize=28)
 c.line(X0, 430, X1 - 20, 430, NAVY, 5)
 c._head((X1 - 40, 430), (X1, 430), NAVY, 20)
 c.line(XB, 360, XB, 520, ORANGE, 9)
-c.text(X0, 475, '2026-01-01', 28, INK, 'bold')
+c.text(X0, 475, '2021-05-10', 28, INK, 'bold')
 c.text(X0, 515, 'valid_from (inclus)', 26, GREY)
 c.text(XB + 30, 563, '2026-07-15', 32, DEEP, 'bold')
 c.text(XB + 30, 603, 'fin de v1 (exclue) = début de v2 (incluse)', 26, NAVY, 'bold')
 c.text(X1, 475, 'NULL', 28, INK, 'bold', 'end')
 c.text(X1, 515, 'en cours', 26, GREY, anchor='end')
-c.text((X0 + XB) / 2, 395, '[2026-01-01, 2026-07-15)', 28, NAVY, 'bold', 'middle')
+c.text((X0 + XB) / 2, 395, '[2021-05-10, 2026-07-15)', 28, NAVY, 'bold', 'middle')
 c.text((XB + X1) / 2, 395, '[2026-07-15, NULL)', 28, NAVY, 'bold', 'middle')
 # ventes
 sa, sb = XB - 70, XB + 0
 c.circle(sa, 430, 13, DEEP); c.circle(XB, 430, 13, DEEP)
 box(c, 250, 690, 670, 140, 'Vente du 2026-07-14', ['→ version 1 · Cap Bon · boutique_key 2'], 'white', tsize=29, bsize=27)
-box(c, 960, 690, 570, 140, 'Vente du 2026-07-15', ['→ version 2 · Nord-Est · boutique_key 5'], 'white', tsize=29, bsize=27)
+box(c, 960, 690, 570, 140, 'Vente du 2026-07-15', ['→ version 2 · Nord-Est · boutique_key 4'], 'white', tsize=29, bsize=27)
 c.arrow((sa, 682), (sa, 650), (sa, 452), width=4)
 c.arrow((XB, 682), (XB, 448), width=4)
 band(c, 870, 90, 'Version valable si : valid_from ≤ date de la vente < valid_to (ou valid_to = NULL)', 29)

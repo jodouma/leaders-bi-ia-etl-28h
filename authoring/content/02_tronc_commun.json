@@ -1,0 +1,3687 @@
+{
+ "title": "Tronc commun : Solen Commerce 360, séances 1 à 4",
+ "cover_title": "Tronc commun : Solen Commerce 360, séances 1 à 4",
+ "subtitle": "IA, Codex et BI · le livret central du binôme · de la demande de la direction à un entrepôt historisé, contrôlé et relu à deux",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Livret 02 · Tronc commun",
+ "output_filename": "02_tronc_commun.pdf",
+ "header_label": "SOLEN  /  IA, CODEX ET BI",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF MAISON ZITOUNA",
+  "flow": "Échantillon  →  rejets  →  étoile  →  lot 2 et SCD2  →  revue et CI",
+  "stats": [
+   [
+    "4",
+    "SÉANCES DE 4 H (S1 → S4)"
+   ],
+   [
+    "4",
+    "SOURCES : CSV, EXCEL, JSON, SQL"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "02 / TRONC COMMUN"
+ },
+ "pages": [
+  {
+   "id": "sommaire",
+   "title": "Sommaire",
+   "kicker": "02 / TRONC COMMUN · SOMMAIRE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Séances 1 à 4, mission d'entraînement **Solen Commerce 360** (client fictif Maison Zitouna). Chaque séance s'ouvre sur un épisode Solen, puis des missions numérotées (S1-M1, S1-M2…)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Contenu",
+      "Page"
+     ],
+     "rows": [
+      [
+       "**Avant de commencer**",
+       "Comment lire ce livret · la mission en une page",
+       "3"
+      ],
+      [
+       "**Séance 1 · Cadrage**",
+       "Le mail de la direction, l'échantillon à la main, les outils, la première demande à Codex, le cycle Git n°1",
+       "5"
+      ],
+      [
+       "**Séance 2 · Premier résultat… faux**",
+       "pandas (CSV, Excel, JSON), fonctions, modules, exceptions, règles de nettoyage et rejets, PR A → revue B",
+       "17"
+      ],
+      [
+       "**Séance 3 · Base opérationnelle et étoile**",
+       "SQL paramétré, grain, étoile, clés, classe Entrepot, chargement initial, totaux, choix de la mission, PR B → revue A",
+       "29"
+      ],
+      [
+       "**Séance 4 · Le besoin change**",
+       "lot 2, SCD2, rejeu, tests et CI, revue → correction → revue, conflit contrôlé, Skills, export, premier regard sur l'app",
+       "41"
+      ],
+      [
+       "**Annexes**",
+       "Les nombres de référence · lire un ÉCHEC",
+       "56"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3.4,
+      0.55
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Six règles pour tout le livret"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Prévoir avant de demander** : écrivez la valeur attendue avant d'envoyer.",
+      "**Codex écrit le code, vous contrôlez** : vous tapez des commandes, jamais de Python, SQL ou YAML.",
+      "**Une demande = une petite étape** avec un résultat observable.",
+      "**Relancer vous-même** une commande « lancée » par Codex : c'est votre preuve.",
+      "**Ne jamais toucher** aux sources, à `reference/` ni à `controles/`.",
+      "`<chevrons>` = à remplacer en entier : `<branche>` devient `lecture-nettoyage`."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Les autres livrets",
+     "text": "`01_demarrer.pdf` : installation et premier cycle Git détaillé écran par écran. `03_diriger_codex_et_git.pdf` : chaque fois que vous ouvrez une branche ou une PR. `04_catalogue_missions.pdf` : fin de séance 3, pour choisir votre mission. `06_aide_memoire.pdf` : à garder ouvert."
+    }
+   ]
+  },
+  {
+   "id": "lire",
+   "title": "Comment lire ce livret",
+   "kicker": "02 / TRONC COMMUN · AVANT DE COMMENCER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Chaque mission suit le même chemin : **quoi** (le résultat visé), **pourquoi** (la question de la direction qu'il sert), **la notion** (un schéma ou un petit tableau), **l'action exacte** (où cliquer, quoi taper), **la demande à Codex**, **le résultat attendu** avec les vrais nombres de la mission, **le contrôle**, les **erreurs courantes**, et ce que vous savez faire à la fin."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Bloc",
+      "Ce qu'il contient",
+      "Ce que vous faites"
+     ],
+     "rows": [
+      [
+       "**Où :**",
+       "Le lieu de l'action : terminal Ubuntu, application Codex, ou GitHub dans le navigateur.",
+       "Ouvrez le bon outil avant de lire la suite."
+      ],
+      [
+       "Demande à Codex",
+       "Un texte prêt à adapter, tiré du dossier `prompts/` du cours.",
+       "Remplacez chaque `<…>`, relisez, puis envoyez dans l'application Codex."
+      ],
+      [
+       "Terminal Ubuntu (bash)",
+       "Une commande que **vous** tapez (ou collez) dans le terminal, dans `~/solen-bi`, venv actif.",
+       "Tapez-la, Entrée, lisez la sortie."
+      ],
+      [
+       "Sortie attendue",
+       "Ce que l'écran devrait afficher. Les nombres viennent de la référence de la mission.",
+       "Comparez ; ne la tapez jamais."
+      ],
+      [
+       "Exemple de code produit par Codex",
+       "Un court extrait du genre de code que Codex écrit. Le vôtre sera différent.",
+       "Lisez-le, expliquez-le ; ne le tapez pas."
+      ],
+      [
+       "Contrôle",
+       "La commande qui tranche (`python -m controles.verifier …`) et ce qu'affiche une réussite (`OK`) ou un échec (`ÉCHEC`).",
+       "Lancez-la vous-même."
+      ],
+      [
+       "Erreurs courantes",
+       "Deux ou trois pièges vus souvent, et la sortie.",
+       "Lisez-les **avant** d'être bloqué."
+      ],
+      [
+       "À ce stade, je sais…",
+       "Une courte liste à cocher.",
+       "Cochez seulement ce que vous savez montrer à votre binôme."
+      ]
+     ],
+     "widths": [
+      1.25,
+      2.6,
+      2.0
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Les durées",
+     "text": "Les minutages de chaque séance sont des **estimations** de conception, à confirmer par un essai réel. Avancez au rythme du binôme : une mission comprise vaut mieux que deux missions recopiées."
+    }
+   ]
+  },
+  {
+   "id": "mission",
+   "title": "La mission en une page",
+   "kicker": "02 / TRONC COMMUN · AVANT DE COMMENCER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Maison Zitouna vend huile d'olive, olives, dattes, savons et coffrets dans **trois boutiques** : Tunis Centre (`TUN`, zone Grand Tunis), Nabeul (`NBE`, zone Cap Bon) et Sfax (`SFX`, zone Sud). Quatre sources décrivent son activité de 2026."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-pipeline.png",
+     "caption": "Les quatre sources passent par l'ETL écrit par Codex : extraire, nettoyer, harmoniser, dédoublonner, charger les dimensions puis les faits. Les lignes écartées vont dans `outputs/rejets.csv` avec leur motif.",
+     "height": 150
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Source (dans `tronc-commun/sources/lot1/`)",
+      "Contenu",
+      "Taille lot 1"
+     ],
+     "rows": [
+      [
+       "`ventes.csv`",
+       "Lignes de tickets de caisse, séparateur `;`",
+       "1998 lignes + en-tête"
+      ],
+      [
+       "`catalogue.xlsx`",
+       "Feuilles `Catalogue` (en-tête ligne 3) et `Familles`",
+       "8 produits, 6 familles"
+      ],
+      [
+       "`boutiques.json`",
+       "Boutiques et historique de zone",
+       "3 boutiques"
+      ],
+      [
+       "`operations.sqlite`",
+       "Base des retours : tables `retour`, `motif_retour`, `parametre`",
+       "82 retours (78 VALIDE, 4 ANNULE)"
+      ]
+     ],
+     "widths": [
+      2.1,
+      2.6,
+      1.5
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Définition exacte (cahier des charges)"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "somme de quantité × prix unitaire du ticket, lignes acceptées"
+      ],
+      [
+       "Retours",
+       "somme des montants remboursés des retours VALIDE acceptés"
+      ],
+      [
+       "Ventes nettes",
+       "ventes brutes − retours"
+      ],
+      [
+       "Marge sur coût d'achat",
+       "ventes nettes − coût d'achat des unités nettes"
+      ],
+      [
+       "Taux de retour",
+       "retours / ventes brutes (en montant)"
+      ]
+     ],
+     "widths": [
+      1.4,
+      4.0
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Montants stockés en **millimes entiers** (1 TND = 1 000 millimes), affichés en TND à 3 décimales. « Marge » veut toujours dire **marge sur coût d'achat**, jamais « bénéfice »."
+    }
+   ]
+  },
+  {
+   "id": "s1",
+   "title": "Séance 1 · Lundi, 9 h : le mail de la direction",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Premier jour chez Solen Digital. Karim Jaziri, responsable BI (personnage fictif), vous fait asseoir, ouvre sa messagerie et vous transfère ce mail, reçu vendredi soir :"
+    },
+    {
+     "type": "callout",
+     "label": "Épisode 1 · Mail de Lamia Ben Salah, directrice (fictive)",
+     "text": "« Bonjour à tous les deux,\n\nLes ventes montent, mais où passe la marge ? Je veux, par boutique, par zone et par mois : les ventes brutes, les retours, les ventes nettes, la marge sur coût d'achat et le taux de retour. Et je veux pouvoir faire confiance aux chiffres : dites-moi aussi ce que vous avez dû écarter, et pourquoi.\n\nPour information : à partir du 15 juillet, la boutique de Nabeul passe de la zone Cap Bon à la zone Nord-Est. Les chiffres du premier semestre doivent rester dans Cap Bon. »"
+    },
+    {
+     "type": "section",
+     "text": "Minutage de la séance 1 (240 min, estimations)"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Min",
+      "Format",
+      "Contenu"
+     ],
+     "rows": [
+      [
+       "15",
+       "Explication",
+       "Épisode 1, la mission, les rôles A et B"
+      ],
+      [
+       "15 + 15",
+       "Expl. + pratique",
+       "S1-M1 · Traduire la demande en indicateurs"
+      ],
+      [
+       "35",
+       "Pratique",
+       "S1-M2 · L'échantillon, à la main d'abord"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "10",
+       "Explication",
+       "Épisode 2 · Réunion de cadrage avec Karim"
+      ],
+      [
+       "12 + 24",
+       "Expl. + pratique",
+       "S1-M3 · Les outils et le premier contrôle"
+      ],
+      [
+       "25",
+       "Pratique",
+       "S1-M4 · Première demande à Codex : le cadrage"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "14 + 45",
+       "Expl. + pratique",
+       "S1-M5 · Cycle Git n°1 : README + journal, A auteur"
+      ],
+      [
+       "10",
+       "Pratique",
+       "Note d'état de fin de séance"
+      ]
+     ],
+     "widths": [
+      0.8,
+      1.3,
+      3.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Total : **66 min** d'explications, **154 min** de pratique, deux pauses de 10 min. Preuve visible en fin de séance : **le dépôt du binôme a une première PR relue et fusionnée**, et votre calcul à la main est égal à `echantillon/attendu.md`."
+    }
+   ]
+  },
+  {
+   "id": "s1m1",
+   "title": "S1-M1 · Traduire la demande en indicateurs",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** transformer le mail en une liste d'indicateurs définis, avec unité et grain. **Pourquoi :** une question vague (« où passe la marge ? ») ne se calcule pas ; un indicateur défini, si. **Où :** papier et `cahier_des_charges.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "En une phrase",
+      "Exemple Maison Zitouna"
+     ],
+     "rows": [
+      [
+       "**BI** (informatique décisionnelle)",
+       "Transformer des données en chiffres qui aident à décider.",
+       "« Sfax a 9 % de retours contre 2 % à Tunis : on regarde les coffrets. »"
+      ],
+      [
+       "**ETL**",
+       "Extraire les sources, les Transformer (nettoyer), les Charger dans une base d'analyse.",
+       "Lire `ventes.csv`, écrire `18,500` en 18500 millimes, ranger la ligne dans `fact_vente`."
+      ],
+      [
+       "**Entrepôt**",
+       "Base faite pour analyser, séparée des sources.",
+       "`outputs/entrepot.sqlite`, recréé par le pipeline."
+      ],
+      [
+       "**Grain**",
+       "Ce que représente **une** ligne de la table de faits.",
+       "Une ligne de ticket : `TK10001-2` = 4 bouteilles de P01 à 18,500 TND."
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.2,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Action, sur papier :** lisez le § 9 du cahier des charges, puis comparez à deux : la formule doit être **identique** au cahier des charges."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule",
+      "Unité stockée",
+      "Unité affichée"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "Σ quantité × prix du ticket",
+       "millimes",
+       "TND, 3 décimales"
+      ],
+      [
+       "Retours",
+       "Σ montant remboursé (VALIDE)",
+       "millimes",
+       "TND"
+      ],
+      [
+       "Ventes nettes",
+       "brutes − retours",
+       "millimes",
+       "TND"
+      ],
+      [
+       "Marge sur coût d'achat",
+       "nettes − coût d'achat des unités nettes",
+       "millimes",
+       "TND"
+      ],
+      [
+       "Taux de retour",
+       "retours / brutes",
+       "ratio",
+       "%, 2 décimales"
+      ]
+     ],
+     "widths": [
+      1.5,
+      2.4,
+      1.1,
+      1.2
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Écrire « bénéfice » : salaires et loyer ne sont pas déduits. On dit **marge sur coût d'achat**. Et le taux de retour se calcule **en montant**, pas en unités."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ dire ce qu'est le grain, avec un exemple de ligne, et les formules des cinq indicateurs avec leur unité."
+    }
+   ]
+  },
+  {
+   "id": "s1m2a",
+   "title": "S1-M2 · L'échantillon, à la main d'abord",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** décider, pour chacune des 12 lignes de `tronc-commun/echantillon/ventes.csv`, si elle est **gardée**, **ignorée** ou **rejetée**, puis calculer les indicateurs. **Pourquoi :** ces nombres serviront à vérifier le code de Codex. Si vous ne savez pas faire le calcul à la main, vous ne saurez pas dire si le code est faux. **Où :** papier et calculatrice. **Interdit :** demander à Codex avant d'avoir fini."
+    },
+    {
+     "type": "code",
+     "label": "Fichier tronc-commun/echantillon/ventes.csv · ligne 1 = en-tête · sans la colonne mode_paiement",
+     "text": "ligne_id;ticket_id;date_vente;boutique;produit;quantite;prix_unitaire\nE-001-1;E-001;2026-03-02;TUN;P01;2;18.500\nE-001-2;E-001;02/03/2026;TUN;P05;3;3,900\nE-002-1;E-002;3 mars 2026; nbe ;P04;1;14.5\nE-003-1;E-003;2026-03-05;SFX;P01;1;18,5\nE-003-1;E-003;2026-03-05;SFX;P01;1;18,5\nE-004-1;E-004;2026-03-06;Sfx;P04;2;14,500\nE-005-1;E-005;2026-03-06;TUN;P01;1;16.650\nE-006-1;E-006;2026-03-07;TUN;P05;2;3.900\nE-006-1;E-006;2026-03-07;TUN;P05;4;3.900\n;E-007;2026-03-08;NBE;P01;1;18.500\nE-008-1;E-008;2026-03-09;TUN;P99;1;9.000\nE-009-1;E-009;2026-03-09;NBE;P05;-1;3.900"
+    },
+    {
+     "type": "section",
+     "text": "Les règles, dans l'ordre (cahier des charges § 4)"
+    },
+    {
+     "type": "text",
+     "text": "Le **premier** problème trouvé donne le motif. Un **rejet** est une ligne écartée et écrite dans `rejets.csv` avec son **motif** ; un **doublon exact** est simplement ignoré (on garde une occurrence)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "#",
+      "Test",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "1",
+       "ligne identique, caractère pour caractère, à une ligne précédente",
+       "ignorée (doublon exact)"
+      ],
+      [
+       "2",
+       "`ligne_id` vide",
+       "rejet `id_manquant`"
+      ],
+      [
+       "3",
+       "même `ligne_id` sur plusieurs lignes **différentes**",
+       "rejet `id_conflit` pour **toutes** ces lignes"
+      ],
+      [
+       "4",
+       "boutique ou produit absent des référentiels",
+       "rejet `cle_inconnue`"
+      ],
+      [
+       "5",
+       "quantité non entière ou ≤ 0",
+       "rejet `quantite_invalide`"
+      ]
+     ],
+     "widths": [
+      0.3,
+      3.6,
+      2.0
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Normalisations (ce ne sont pas des rejets) : `18,5` = `18.500` = 18 500 millimes ; `02/03/2026` se lit **jour d'abord** (2 mars 2026) et `3 mars 2026` devient `2026-03-03` ; ` nbe ` et `Sfx` deviennent `NBE` et `SFX` (espaces retirés, majuscules)."
+    }
+   ]
+  },
+  {
+   "id": "s1m2b",
+   "title": "S1-M2 · Calculer les cinq indicateurs",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Sur papier, **sans regarder la page suivante**. Prix du **ticket** : `16.650` (E-005-1) est une promotion, on le garde."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ligne",
+      "ligne_id",
+      "Décision",
+      "Calcul",
+      "Brut (TND)"
+     ],
+     "rows": [
+      [
+       "2",
+       "E-001-1",
+       "gardée",
+       "2 × 18,500",
+       "37,000"
+      ],
+      [
+       "3",
+       "E-001-2",
+       "…",
+       "…",
+       "…"
+      ],
+      [
+       "4",
+       "E-002-1",
+       "…",
+       "…",
+       "…"
+      ],
+      [
+       "5 et 6",
+       "E-003-1",
+       "…",
+       "…",
+       "…"
+      ],
+      [
+       "7",
+       "E-004-1",
+       "…",
+       "…",
+       "…"
+      ],
+      [
+       "8",
+       "E-005-1",
+       "…",
+       "…",
+       "…"
+      ],
+      [
+       "9 à 13",
+       "les 5 autres",
+       "motif ?",
+       "—",
+       "—"
+      ]
+     ],
+     "widths": [
+      0.8,
+      1.0,
+      1.9,
+      1.3,
+      1.0
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Retour",
+      "Ligne d'origine",
+      "Statut",
+      "Montant",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "R-0001",
+       "E-004-1 (1 × dattes P04)",
+       "VALIDE",
+       "14,5",
+       "…"
+      ],
+      [
+       "R-0002",
+       "E-001-1",
+       "ANNULE",
+       "18,5",
+       "…"
+      ],
+      [
+       "R-0003",
+       "E-099-9",
+       "VALIDE",
+       "18,5",
+       "…"
+      ]
+     ],
+     "widths": [
+      0.9,
+      2.0,
+      0.9,
+      0.8,
+      1.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Coût d'achat unitaire : P01 = 11,200 ; P04 = 8,750 ; P05 = 1,650 TND. Coût des **unités nettes** = coût des unités vendues − coût des unités retournées."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Votre calcul",
+      "Votre résultat"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "",
+       ""
+      ],
+      [
+       "Retours",
+       "",
+       ""
+      ],
+      [
+       "Ventes nettes",
+       "",
+       ""
+      ],
+      [
+       "Coût d'achat des unités nettes",
+       "",
+       ""
+      ],
+      [
+       "Marge sur coût d'achat",
+       "",
+       ""
+      ],
+      [
+       "Taux de retour",
+       "",
+       ""
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.5,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s1m2c",
+   "title": "S1-M2 · Comparer avec attendu.md",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Contrôle :** ouvrez `tronc-commun/echantillon/attendu.md`. Comparez case par case. Un écart n'est pas une honte : c'est exactement le genre d'écart que vous chercherez plus tard dans le code de Codex. Trouvez **la** ligne qui diffère et la règle mal appliquée."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Résultat de référence",
+      "Valeur",
+      "Comment on l'obtient"
+     ],
+     "rows": [
+      [
+       "Lignes",
+       "12 lues → 6 gardées",
+       "1 doublon exact ignoré ; 5 rejets : 2 `id_conflit`, 1 `id_manquant`, 1 `cle_inconnue` (P99), 1 `quantite_invalide`"
+      ],
+      [
+       "Ventes brutes",
+       "**127,350 TND**",
+       "37,000 + 11,700 + 14,500 + 18,500 + 29,000 + 16,650 (127350 millimes)"
+      ],
+      [
+       "Retours",
+       "**14,500 TND**",
+       "R-0001 gardé ; R-0002 ANNULE ignoré ; R-0003 rejet `cle_inconnue` (E-099-9 n'existe pas)"
+      ],
+      [
+       "Ventes nettes",
+       "**112,850 TND**",
+       "127,350 − 14,500"
+      ],
+      [
+       "Coût des unités nettes",
+       "**67,250 TND**",
+       "76,000 vendus − 8,750 retournés"
+      ],
+      [
+       "Marge sur coût d'achat",
+       "**45,600 TND**",
+       "112,850 − 67,250"
+      ],
+      [
+       "Taux de retour",
+       "**11,39 %**",
+       "14500 / 127350"
+      ]
+     ],
+     "widths": [
+      1.6,
+      1.3,
+      3.3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Attendu aussi pour l'entrepôt de l'échantillon : `fact_vente` 6 lignes, `fact_retour` 1, `dim_produit` 8, `dim_boutique` 3, `dim_date` 31 jours (mars 2026), 6 lignes de rejets (5 ventes + 1 retour)."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Compter le doublon exact E-003-1 comme un `id_conflit` : les deux lignes sont **identiques**, on en garde une. `id_conflit`, c'est même identifiant avec un contenu **différent** (E-006-1 : quantité 2 puis 4).\n• Lire `02/03/2026` comme le 3 février : le format `JJ/MM/AAAA` met le **jour** d'abord.\n• Compter R-0002 comme un rejet : un retour ANNULE est **ignoré**, ce n'est pas une erreur de données."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ décider à la main du sort d'une ligne et citer son motif ;\n☐ calculer ventes nettes, marge et taux de retour de l'échantillon, avec l'unité ;\n☐ expliquer pourquoi un doublon exact n'est pas un rejet."
+    }
+   ]
+  },
+  {
+   "id": "s1cadrage",
+   "title": "Épisode 2 · La réunion de cadrage",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Après la pause, Karim Jaziri réunit le binôme dix minutes. Il veut que chaque définition soit **tranchée et écrite** avant la première ligne de code. Voici ce qui est décidé. Recopiez les décisions dans `notes/JOURNAL.md` (rubrique **Décision**) pendant S1-M5."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Question posée",
+      "Décision",
+      "Conséquence sur un chiffre"
+     ],
+     "rows": [
+      [
+       "Que représente une ligne de fait ?",
+       "**Une ligne de ticket** (grain).",
+       "Un ticket de 3 produits = 3 lignes dans `fact_vente`."
+      ],
+      [
+       "Quel prix pour les ventes brutes ?",
+       "Le prix **du ticket**, pas celui du catalogue.",
+       "E-005-1 compte 16,650 TND, pas 18,500."
+      ],
+      [
+       "Un retour ANNULE compte-t-il ?",
+       "Non : ignoré, pas rejeté.",
+       "R-0002 (18,5) ne réduit pas les ventes nettes."
+      ],
+      [
+       "Que veut dire « marge » ?",
+       "Marge **sur coût d'achat** = nettes − coût d'achat des unités nettes.",
+       "Échantillon : 45,600 TND."
+      ],
+      [
+       "Comment stocker l'argent ?",
+       "En **millimes entiers**.",
+       "18,500 TND → 18500 ; jamais 18.499999."
+      ],
+      [
+       "Un retour du 20 juillet d'un achat du 30 juin à Nabeul : quelle zone ?",
+       "**B** : la zone valable à la date **du retour** (Nord-Est), compté dans **son** mois.",
+       "Le retour pèse sur Nord-Est en juillet, pas sur Cap Bon en juin."
+      ]
+     ],
+     "widths": [
+      1.8,
+      2.2,
+      2.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Pourquoi des millimes entiers ?"
+    },
+    {
+     "type": "text",
+     "text": "L'ordinateur stocke mal certains décimaux : `0.1 + 0.2` ne vaut pas exactement `0.3` en Python. Sur 2 000 lignes, ces poussières font varier le total d'un millime. En entiers, 18500 + 3900 = 22400, toujours. On ne repasse en TND (÷ 1 000) qu'au moment d'afficher."
+    },
+    {
+     "type": "callout",
+     "label": "La dernière règle, la plus importante",
+     "text": "Ces décisions sont **les vôtres** et celles de la direction. Codex peut proposer une question à trancher ; il ne la tranche pas. Si Codex propose une autre définition, la référence est le cahier des charges."
+    }
+   ]
+  },
+  {
+   "id": "s1m3a",
+   "title": "S1-M3 · Vos outils : qui fait quoi, où",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** savoir dans quel outil se fait chaque geste. **Pourquoi :** la moitié des blocages du premier jour viennent d'une commande tapée au mauvais endroit. **Prérequis :** le livret `01_demarrer.pdf` est fait (Ubuntu ou WSL2, Python, Git, application Codex, dépôt `~/solen-bi` cloné par A et B, venv créé)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Outil",
+      "Ce que vous y faites",
+      "Exemple"
+     ],
+     "rows": [
+      [
+       "Application Codex",
+       "Écrire une demande, lire la réponse et le diff, accepter ou refuser.",
+       "Projet `solen-bi`, modèle **GPT-6 Luna**, effort **High** pour commencer."
+      ],
+      [
+       "Terminal Ubuntu",
+       "Lancer les commandes : Git, Python, contrôles.",
+       "`python -m controles.verifier --mission tronc-commun --etape initial`"
+      ],
+      [
+       "GitHub (navigateur)",
+       "Pull requests, revues écrites, CI (onglet **Actions**), fusion.",
+       "**Files changed → Review changes → Approve**"
+      ],
+      [
+       "Papier",
+       "Prévoir une valeur, calculer l'échantillon, dessiner l'étoile.",
+       "« J'attends 1960 lignes de faits. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.4,
+      2.4
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-trois-emplacements.png",
+     "caption": "Trois emplacements : votre copie locale, celle de votre binôme, et GitHub. `commit` enregistre chez vous, `push` envoie, `pull` récupère, la pull request propose de fusionner une branche dans `main`.",
+     "height": 128
+    },
+    {
+     "type": "section",
+     "text": "Effort, contexte, quota : trois mots à ne pas confondre"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "Ce que c'est",
+      "Ce que vous faites"
+     ],
+     "rows": [
+      [
+       "Effort",
+       "Le temps de réflexion choisi : Light, Medium, High, Extra High. « Standard » est une vitesse, pas un effort.",
+       "High par défaut ; Medium pour une petite fonction bien délimitée."
+      ],
+      [
+       "Contexte",
+       "Ce que la conversation contient (fichiers lus, échanges).",
+       "Une conversation par étape ; une neuve si elle devient longue."
+      ],
+      [
+       "Quota",
+       "La limite d'usage du compte, affichée dans l'application.",
+       "Quota atteint : continuez les gestes locaux (contrôles, diff, calcul). Aucun achat."
+      ]
+     ],
+     "widths": [
+      1.0,
+      2.6,
+      2.5
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s1m3b",
+   "title": "S1-M3 · Un premier échec, attendu",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** lancer les contrôles fournis sur un dépôt où rien n'est construit. **Pourquoi :** partir d'un échec utile ; chaque PR en fera passer un morceau au vert. **Où :** terminal Ubuntu, chacun sur son poste. **Prévoir :** réussite ou échec, pour chacune des deux commandes ?"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "cd ~/solen-bi\nsource .venv/bin/activate\ncat mission.txt\npython -m controles.verifier --mission tronc-commun --etape initial\npytest controles"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "tronc-commun\n\n== Étape initial : comparaison avec attendu_lot1.json ==\nÉCHEC — entrepôt absent : attendu /home/<vous>/solen-bi/outputs/entrepot.sqlite\n\nRésultat : 0 OK, 1 ÉCHEC.\n...\ncontroles/test_contrat.py ...sss...\n6 passed, 3 skipped"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Le vérificateur **compare vos sorties** (`outputs/`) à la référence ; il ne lit jamais votre code. Chaque ligne commence par `OK`, `ÉCHEC`, `INFO` ou `À FAIRE` ; la dernière fait le bilan. Ici l'échec est normal : `solen/` est vide.",
+      "`pytest controles` : 6 tests (référence, sources) **passent** ; les 3 tests sur vos sorties sont **ignorés** (`s` = skipped) tant que les sorties n'existent pas.",
+      "`echo $?` juste après le vérificateur affiche le code de sortie : `1` = au moins un échec. La CI s'en sert."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• `No module named controles` : pas à la racine du dépôt (`cd ~/solen-bi`). `No module named pandas` : le venv n'est pas actif, l'invite doit commencer par `(.venv)`.\n• Modifier `controles/` ou `reference/` pour « voir du vert » : interdit, et visible dans le diff."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ dire où se fait chaque geste (Codex, terminal, GitHub) ;\n☐ lancer le vérificateur et lire la première ligne `ÉCHEC`."
+    }
+   ]
+  },
+  {
+   "id": "s1m4",
+   "title": "S1-M4 · Première demande à Codex : le cadrage",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** faire relire votre cadrage par Codex, **sans code**. **Pourquoi :** apprendre à écrire une demande précise, et à juger une réponse avec votre propre calcul. **Où :** application Codex, projet `solen-bi`, modèle GPT-6 Luna, effort High. **Avant :** vous avez votre total des ventes brutes de l'échantillon (S1-M2)."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Lis mission.txt, tronc-commun/cahier_des_charges.md,\ntronc-commun/dictionnaire.md et les fichiers de tronc-commun/echantillon/.\nNe modifie aucun fichier et n'écris pas de code.\nPour chaque indicateur demandé par la direction, donne en tableau :\nnom, définition en une phrase, formule, unité (millimes, TND, %, quantité),\ngrain du fait utilisé, et le calcul sur l'échantillon ligne par ligne.\nMon calcul à la main des ventes brutes donne <ma valeur> TND :\ncompare et explique l'écart s'il y en a un.\nListe ensuite au plus 3 questions ambiguës à poser à la direction,\navec la conséquence de chaque réponse sur un chiffre."
+    },
+    {
+     "type": "section",
+     "text": "Résultat attendu"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Cinq indicateurs, chacun avec une unité, une formule **identique** au cahier des charges : ventes brutes 127,350 TND ; retours 14,500 ; nettes 112,850 ; marge sur coût d'achat 45,600 ; taux de retour 11,39 %.",
+      "Le calcul ligne par ligne retombe sur `echantillon/attendu.md`. S'il diffère de votre calcul, l'un des deux a tort : retrouvez la ligne en cause, à deux.",
+      "Des questions **métier** (exemple : « un retour plus de 30 jours après la vente est-il accepté ? »), pas des questions techniques."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Contrôle",
+     "text": "Codex ne devait rien modifier. Dans le terminal : `git status` doit afficher `nothing to commit, working tree clean`. Sinon, demandez : « Qu'as-tu modifié ? Annule ces changements. » et vérifiez de nouveau."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Accepter la valeur de Codex sans avoir fait votre propre calcul : vous ne saurez pas l'expliquer.\n• Mélanger millimes et TND : 12500 « TND » au lieu de 12,500 TND.\n• Laisser un `<…>` dans la demande : elle n'est pas prête."
+    }
+   ]
+  },
+  {
+   "id": "s1m5a",
+   "title": "S1-M5 · Cycle Git n°1 : la branche",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** une première pull request (PR) qui présente le binôme dans `README.md` et remplit l'entrée « PR #1 » de `notes/JOURNAL.md`. **A** est auteur, **B** relit. **Pourquoi :** répéter le cycle complet sur un changement sans risque, avant le premier code. Le livret 01 montre chaque écran."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-cycle-pr.png",
+     "caption": "Le cycle d'une PR : main à jour, branche, demande, contrôles, diff, commit, push, PR, revue Codex en lecture seule, revue humaine, correction, CI verte, approbation, merge, pull par les deux. Puis les rôles s'inversent.",
+     "height": 148
+    },
+    {
+     "type": "section",
+     "text": "A · Terminal Ubuntu : partir d'un main à jour"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git switch main\ngit pull\ngit switch -c cadrage-binome"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Switched to a new branch 'cadrage-binome'"
+    },
+    {
+     "type": "text",
+     "text": "**Branche** = une ligne de travail séparée : `main` reste propre tant que la PR n'est pas fusionnée. Le Markdown n'est pas du code : vous pouvez écrire ces deux textes vous-mêmes, ou demander un brouillon à Codex et le corriger."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Sur la branche cadrage-binome, prépare deux changements de texte, sans code :\n1. README.md : ajoute en haut une section « Notre binôme » avec\n   A = <prénom A> (<compte GitHub A>), B = <prénom B> (<compte GitHub B>),\n   mission en cours : tronc-commun ;\n2. notes/JOURNAL.md : remplis l'entrée « PR #1 » avec la date du jour,\n   nos décisions de cadrage (grain, prix du ticket, millimes, règle B)\n   et la preuve : la ligne ÉCHEC du vérificateur, recopiée telle quelle :\n   <coller la ligne>.\nNe modifie aucun autre fichier. Ne fais ni commit ni push."
+    }
+   ]
+  },
+  {
+   "id": "s1m5b",
+   "title": "S1-M5 · Cycle Git n°1 : la PR",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "A · Lire le diff, puis enregistrer et envoyer"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git status\ngit diff\ngit add README.md notes/JOURNAL.md\ngit commit -m \"Cadrage : binôme, décisions et premier contrôle\"\ngit push -u origin cadrage-binome"
+    },
+    {
+     "type": "text",
+     "text": "`git status` doit lister **deux** fichiers modifiés, rien d'autre (ni `outputs/`, ni `.venv/`). `git diff` montre les lignes : `+` ajoutée, `-` retirée. Lisez-les toutes avant `git add` ; on ajoute les fichiers **par leur nom**."
+    },
+    {
+     "type": "section",
+     "text": "A · GitHub : ouvrir la PR"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Compare & pull request** ; vérifiez **base: main ← compare: cadrage-binome**. Titre : celui du commit.",
+      "Description : ce qui change, la preuve (`ÉCHEC — entrepôt absent`), à relire en priorité. **Reviewers** : le compte de B. **Create pull request**."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "B · Relire et décider"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Onglet **Files changed** : lisez chaque ligne. Une décision du journal est-elle fausse ou floue ? Cliquez sur la ligne et écrivez un commentaire précis.",
+      "**Review changes** → **Approve** si tout est juste, **Request changes** sinon. Exemple utile : « La règle B est mal recopiée : un retour compte dans la zone du jour du **retour**. »",
+      "Onglet **Checks** : la CI « Contrôles Solen » tourne. Avec `ETAPE_CI: aucune`, elle vérifie seulement l'installation : elle doit être verte.",
+      "CI verte + approbation : **B** clique **Merge pull request**. L'auteur ne fusionne jamais sa propre PR."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "A et B · Revenir à main"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git switch main\ngit pull\ngit log --oneline -3     # en haut : la fusion de la PR #1"
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Commit fait sur `main` par erreur : ne poussez pas ; voir « Erreurs Git courantes » (livret 01). Jamais de commande « forcée » sans le professeur.\n• B approuve sans lire : une revue utile cite au moins une ligne précise."
+    }
+   ]
+  },
+  {
+   "id": "s1fin",
+   "title": "Fin de séance 1 · Note d'état et bilan",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 1 · CADRAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Dernières minutes : une **note d'état** courte vous permet de reprendre en séance 2 sans relire toute la conversation. **Où :** application Codex, puis `notes/JOURNAL.md` si nécessaire."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Rédige une note d'état de 8 lignes maximum, que je copierai moi-même.\nNe modifie aucun fichier.\nContenu : mission (mission.txt), branche actuelle, ce qui fonctionne,\ncommandes réellement exécutées et leur résultat, défaut encore ouvert,\nprochaine petite étape et sa preuve de réussite.\nSépare clairement : réalisé / à faire / non vérifié.\nAucun identifiant de compte."
+    },
+    {
+     "type": "text",
+     "text": "Vérifiez **une** ligne de la note contre le terminal. Une note qui affirme « vérificateur OK » est fausse : rien n'est encore construit."
+    },
+    {
+     "type": "section",
+     "text": "Preuves de la séance 1"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Preuve",
+      "Où la voir"
+     ],
+     "rows": [
+      [
+       "Calcul à la main = `attendu.md` (127,350 / 112,850 / 45,600 / 11,39 %)",
+       "votre feuille, et l'entrée PR #1 du journal"
+      ],
+      [
+       "Définitions des cinq indicateurs avec unité",
+       "journal, rubrique Décision"
+      ],
+      [
+       "Premier contrôle : `ÉCHEC — entrepôt absent`",
+       "terminal ; recopié dans le journal"
+      ],
+      [
+       "PR #1 relue par B et fusionnée, CI verte",
+       "GitHub, onglet Pull requests (Closed)"
+      ],
+      [
+       "`main` à jour chez A et B",
+       "`git log --oneline -3` sur les deux postes"
+      ]
+     ],
+     "widths": [
+      3.2,
+      2.4
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ expliquer la question de la direction et les cinq indicateurs ;\n☐ calculer l'échantillon à la main et justifier chaque rejet ;\n☐ faire le cycle branche → commit → push → PR → revue → merge → pull."
+    },
+    {
+     "type": "callout",
+     "label": "Avant la séance 2 (≈ 20 min)",
+     "text": "Relisez le § 3 du cahier des charges (règles de nettoyage) et ouvrez `tronc-commun/sources/lot1/ventes.csv` : repérez à l'œil un prix écrit avec une virgule, un autre avec un point, et une date en toutes lettres."
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Séance 2 · Un premier résultat… faux",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Mardi matin. Karim Jaziri arrive avec un sourire et une feuille imprimée."
+    },
+    {
+     "type": "callout",
+     "label": "Épisode 3 · Ce que Karim a calculé",
+     "text": "« J'ai additionné quantité × prix sur tout `ventes.csv` du lot 1 dans un tableur : 1998 lignes, **78 839,780 TND** de ventes brutes. C'est cohérent avec ce que la direction imagine. Lamia veut l'envoyer au client cet après-midi. Vous confirmez ? »"
+    },
+    {
+     "type": "text",
+     "text": "Vous refaites sa méthode sur l'échantillon : toutes les lignes, sans aucune règle. Résultat : **192,850 TND**, alors que votre calcul à la main de la séance 1 donne **127,350 TND**. Le doublon compte deux fois, les lignes en conflit, sans identifiant, au produit inconnu et à quantité négative sont toutes additionnées. Sur le lot 1, le vrai total après nettoyage sera **78 067,830 TND** : 771,950 TND de moins. Un chiffre plausible n'est pas un chiffre juste."
+    },
+    {
+     "type": "section",
+     "text": "Minutage de la séance 2 (240 min, estimations)"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Min",
+      "Format",
+      "Contenu"
+     ],
+     "rows": [
+      [
+       "12",
+       "Explication",
+       "Épisode 3 : pourquoi le total de Karim est faux"
+      ],
+      [
+       "14 + 30",
+       "Expl. + pratique",
+       "S2-M1 · Lire CSV, Excel et JSON avec pandas"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "14 + 40",
+       "Expl. + pratique",
+       "S2-M2 · Nettoyer et rejeter avec un motif"
+      ],
+      [
+       "14 + 20",
+       "Expl. + pratique",
+       "S2-M3 · Fonctions, modules, exceptions dans le code"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "12 + 54",
+       "Expl. + pratique",
+       "S2-M4 · PR : A auteur, B relecteur, correction"
+      ],
+      [
+       "10",
+       "Pratique",
+       "Note d'état, journal"
+      ]
+     ],
+     "widths": [
+      0.8,
+      1.3,
+      3.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Total : **66 min** d'explications, **154 min** de pratique, deux pauses. Preuve en fin de séance : `outputs/rejets.csv` existe, les comptes gardés / rejetés de `ventes.csv` sont égaux à la référence, et la PR de A est relue par B, corrigée si besoin, fusionnée."
+    }
+   ]
+  },
+  {
+   "id": "s2m1a",
+   "title": "S2-M1 · Lire trois formats avec pandas",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** lire `ventes.csv`, `catalogue.xlsx` et `boutiques.json` du lot 1 **sans rien corriger**. **Pourquoi :** si la lecture abîme une valeur (`18,500` lu comme 18,5 € ou comme du texte vide), aucun nettoyage ne la rattrapera. **pandas** est la bibliothèque Python qui lit ces fichiers ; elle les range dans un **DataFrame**, un tableau en mémoire (lignes numérotées, colonnes nommées). Le fichier, lui, reste intact sur le disque."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Source",
+      "Piège",
+      "Ce que la lecture doit faire"
+     ],
+     "rows": [
+      [
+       "`ventes.csv`",
+       "séparateur `;` ; prix `18,500`, `18.5`, `1 240,000` ; trois formats de date",
+       "séparateur `;`, encodage UTF-8, **toutes les colonnes en texte** : on convertira au nettoyage"
+      ],
+      [
+       "`catalogue.xlsx`",
+       "un titre au-dessus du tableau ; deux feuilles",
+       "feuille `Catalogue`, en-tête à la **ligne 3** (pandas compte à partir de 0 : `header=2`) ; feuille `Familles` à part"
+      ],
+      [
+       "`boutiques.json`",
+       "liste imbriquée : chaque boutique a un `historique`",
+       "parcourir les boutiques puis leurs versions (3 au lot 1)"
+      ],
+      [
+       "Encodage",
+       "`espèces`, `chèque`",
+       "UTF-8 ; si `Ã¨` apparaît, mauvais encodage"
+      ]
+     ],
+     "widths": [
+      1.1,
+      2.0,
+      2.9
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Prévoir, dans le terminal"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "wc -l tronc-commun/sources/lot1/ventes.csv\ngrep -c '\"code\"' tronc-commun/sources/lot1/boutiques.json"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "1999 tronc-commun/sources/lot1/ventes.csv\n3"
+    },
+    {
+     "type": "text",
+     "text": "`wc -l` compte 1999 lignes : **1998 lignes de données** + l'en-tête. Notez vos prévisions : 1998 lignes CSV, 8 produits, 3 boutiques."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Laisser pandas convertir les prix dès la lecture : `18,500` devient du texte et `18.500` devient 18.5, deux traitements pour la même valeur.\n• Catalogue lu avec la ligne de titre comme en-tête : colonnes `Unnamed: 1`, `Unnamed: 2`… : l'en-tête est à la ligne 3."
+    }
+   ]
+  },
+  {
+   "id": "s2m1b",
+   "title": "S2-M1 · La demande de lecture",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Où :** **A** au clavier, **B** à côté qui lit et pose des questions. Terminal Ubuntu, puis application Codex."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git switch main\ngit pull\ngit switch -c lecture-nettoyage"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Lis mission.txt et tronc-commun/dictionnaire.md. Crée dans solen/ un module\nde lecture des sources de tronc-commun/sources/lot1/ : ventes.csv,\ncatalogue.xlsx (feuilles Catalogue et Familles) et boutiques.json,\navec pandas, toutes les colonnes en texte, sans nettoyer.\nBon séparateur, bon encodage, en-tête du catalogue à la ligne 3.\nAjoute une commande temporaire python -m solen sources qui affiche pour\nchaque source : nom, nombre de lignes, colonnes, 3 premières lignes.\nLance-la et recopie la sortie. J'attends 1998 lignes CSV, 8 produits,\n6 familles, 3 boutiques : compare. Explique en 4 lignes un DataFrame et\nune exception possible à la lecture. Ne fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m solen sources"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · forme libre, les nombres comptent",
+     "text": "ventes.csv : 1998 lignes, 8 colonnes (ligne_id, ticket_id, date_vente, ...)\ncatalogue.xlsx / Catalogue : 8 lignes · Familles : 6 lignes\nboutiques.json : 3 boutiques"
+    },
+    {
+     "type": "callout",
+     "label": "Contrôle",
+     "text": "Vos trois nombres sont retrouvés. Les accents s'affichent (`chèque`, pas `chÃ¨que`). `git diff` ne touche que `solen/` ; aucune ligne n'est déjà corrigée ni supprimée. Dans le diff, cherchez `dtype=str` (ou équivalent) : la preuve que tout est lu en texte."
+    }
+   ]
+  },
+  {
+   "id": "s2m2a",
+   "title": "S2-M2 · Les règles de nettoyage",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** appliquer les règles du cahier des charges (§ 3 et § 4) et écrire chaque ligne écartée dans `outputs/rejets.csv` avec son **motif**. **Pourquoi :** la direction veut savoir « ce que vous avez dû écarter, et pourquoi ». Supprimer sans trace, c'est demander à être cru sur parole."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-nettoyage.png",
+     "caption": "Avant / après sur six lignes : formats normalisés (millimes entiers, dates ISO, codes en majuscules), doublon exact ignoré, deux rejets écrits avec leur motif. Les sources restent intactes.",
+     "height": 205
+    },
+    {
+     "type": "section",
+     "text": "Ce que contient vraiment le lot 1 (référence `attendu_lot1.json`)"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Cas",
+      "Exemple réel dans `ventes.csv`",
+      "Lot 1"
+     ],
+     "rows": [
+      [
+       "Doublon exact (ignoré)",
+       "deux lignes identiques caractère pour caractère",
+       "14 lignes"
+      ],
+      [
+       "`id_conflit`",
+       "`TK10111-9` aux lignes 23 (qté 2) et 858 (qté 1)",
+       "6 lignes"
+      ],
+      [
+       "`id_manquant`",
+       "ligne 445 : `ligne_id` vide",
+       "5 lignes"
+      ],
+      [
+       "`cle_inconnue`",
+       "ligne 699 : boutique `BZT` ; produits `P09`, `P13`",
+       "6 lignes"
+      ],
+      [
+       "`quantite_invalide`",
+       "ligne 762 : `-2` ; ligne 1015 : `1.5`",
+       "7 lignes"
+      ],
+      [
+       "Gardées",
+       "1998 − 14 − 24",
+       "**1960**"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3.2,
+      0.9
+     ]
+    },
+    {
+     "type": "text",
+     "text": "À normaliser sans rejeter (rubrique `nettoyage`) : 597 montants, 496 dates et 208 codes (casse, espaces) écrits autrement que le format cible."
+    }
+   ]
+  },
+  {
+   "id": "s2m2b",
+   "title": "S2-M2 · La demande de nettoyage",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Où :** application Codex, même branche `lecture-nettoyage`. **Avant :** gardez votre feuille de la séance 1 : vos comptes sur l'échantillon sont la première preuve."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Applique les règles des § 3 et § 4 de tronc-commun/cahier_des_charges.md\naux lignes de ventes.csv, dans solen/ seulement. Sources intactes.\nDans l'ordre : doublon exact = garder une occurrence (pas un rejet) ;\nligne_id vide = id_manquant ; même ligne_id sur des lignes différentes =\nrejeter toutes ces lignes, id_conflit ; boutique ou produit inconnus =\ncle_inconnue ; quantité <= 0 ou non entière = quantite_invalide.\nPrix en millimes entiers (18,500 / 18.5 / 1 240,000), dates AAAA-MM-JJ\n(JJ/MM/AAAA = jour d'abord), codes sans espaces et en majuscules.\nÉcris outputs/rejets.csv : colonnes lot, source, numero_ligne, motif\n(l'en-tête du fichier source est la ligne 1).\nPour l'instant, python -m solen initial fait seulement cela et affiche\nles comptes ; l'entrepôt viendra à la séance 3.\nTeste d'abord sur tronc-commun/echantillon/ : j'attends 6 lignes gardées,\nid_conflit 2, id_manquant 1, cle_inconnue 1, quantite_invalide 1.\nPuis lot1 : affiche aussi les ventes brutes des lignes gardées en millimes.\nMontre la fonction qui décide du motif. Ne fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m solen initial"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · forme libre, les nombres comptent",
+     "text": "lot1 · ventes.csv : 1998 lignes lues, 14 doublons exacts ignorés\ngardées 1960 · rejetées 24 : cle_inconnue 6, id_conflit 6,\nid_manquant 5, quantite_invalide 7\nventes brutes des lignes gardées : 78067830 millimes (78 067,830 TND)"
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Un compte diffère d'une unité : faites-vous montrer **la** ligne en cause (numéro de ligne dans `rejets.csv`), puis relisez la règle dans le cahier des charges avant de demander une correction.\n• Le doublon exact rejeté en `id_conflit` : l'ordre des règles est faux (le doublon exact se traite en premier).\n• `12.5 * 1000` calculé en flottant : exigez un calcul en entiers."
+    }
+   ]
+  },
+  {
+   "id": "s2m2c",
+   "title": "S2-M2 · Contrôler les rejets",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Contrôle :** l'entrepôt n'existe pas encore, donc le vérificateur ne peut pas juger les rejets. Vous comparez vous-mêmes avec la référence, motif par motif."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "head -3 outputs/rejets.csv\ngrep -c \"id_conflit\" outputs/rejets.csv\ngrep -c \"id_manquant\" outputs/rejets.csv\ngrep -c \"cle_inconnue\" outputs/rejets.csv\ngrep -c \"quantite_invalide\" outputs/rejets.csv\ngrep -A 7 '\"par_source\"' tronc-commun/reference/attendu_lot1.json"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "6\n5\n6\n7\n    \"par_source\": {\n      \"ventes.csv\": {\n        \"cle_inconnue\": 6,\n        \"id_conflit\": 6,\n        \"id_manquant\": 5,\n        \"quantite_invalide\": 7"
+    },
+    {
+     "type": "text",
+     "text": "Plus tard (séance 3), la référence comptera **8** `cle_inconnue` : les 6 de `ventes.csv` + 2 retours de la base SQLite. Et le total des ventes brutes, 78 067 830 millimes, est exactement l'indicateur `ventes_brutes_millimes` de la référence."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-indicateur-controle.png",
+     "caption": "Le même calcul avant et après dédoublonnage : seul un contrôle tranche. Ici : nombre de `ligne_id` distincts parmi les lignes gardées = nombre de lignes de faits.",
+     "height": 140
+    }
+   ]
+  },
+  {
+   "id": "s2m3a",
+   "title": "S2-M3 · Fonctions, modules, exceptions",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** reconnaître dans le code de Codex trois notions de Python, sans en écrire une ligne. **Pourquoi :** à l'oral, on vous demandera « où la ligne est-elle rejetée ? » ; il faut savoir ouvrir le bon fichier et montrer la bonne ligne."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "Ce que c'est",
+      "Exemple chez vous"
+     ],
+     "rows": [
+      [
+       "**Module**",
+       "Un fichier `.py` qui regroupe des fonctions d'un même thème.",
+       "`solen/lecture.py`"
+      ],
+      [
+       "**Paquet**",
+       "Un dossier de modules. `python -m solen` lance `solen/__main__.py`.",
+       "`solen/`"
+      ],
+      [
+       "**Fonction**",
+       "Un bloc nommé `def nom(...)` : reçoit des valeurs (paramètres), renvoie un résultat (`return`).",
+       "`def lire_csv_texte(chemin, sep=\";\")`"
+      ],
+      [
+       "**Exception**",
+       "Un signal d'erreur lancé par `raise`, rattrapé plus loin par `try … except`.",
+       "`raise RejetLigne(\"quantite_invalide\", …)`"
+      ],
+      [
+       "**import**",
+       "Utiliser un module dans un autre.",
+       "`from .erreurs import RejetLigne`"
+      ]
+     ],
+     "widths": [
+      1.0,
+      2.9,
+      2.2
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Exemple de code produit par Codex · à lire, pas à taper",
+     "text": "# solen/lecture.py : un module, une fonction, une exception\nimport pandas as pd\nfrom .erreurs import ErreurSource\n\n\ndef lire_csv_texte(chemin, sep=\";\", encodage=\"utf-8\"):\n    \"\"\"Toutes les colonnes en texte : rien n'est converti.\"\"\"\n    if not chemin.exists():\n        raise ErreurSource(f\"source absente : {chemin}\")\n    return pd.read_csv(chemin, sep=sep, dtype=str,\n                       keep_default_na=False, encoding=encodage)"
+    },
+    {
+     "type": "text",
+     "text": "Lisez à voix haute : « La fonction `lire_csv_texte` reçoit un chemin ; si le fichier n'existe pas, elle **lève** l'exception `ErreurSource` et le chargement s'arrête ; sinon elle **renvoie** un DataFrame où tout est texte. »"
+    }
+   ]
+  },
+  {
+   "id": "s2m3b",
+   "title": "S2-M3 · Où est la fonction qui rejette une ligne ?",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Action :** chercher vous-mêmes, puis faire expliquer. `grep -n` affiche les lignes qui contiennent un mot, avec leur numéro. Les noms ci-dessous sont un exemple : les vôtres seront différents."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "ls solen/\ngrep -n \"def \" solen/*.py\ngrep -rn \"quantite_invalide\" solen/"
+    },
+    {
+     "type": "code",
+     "label": "Exemple de code produit par Codex · à lire, pas à taper",
+     "text": "for num, ligne in lignes:                  # num = numéro dans le fichier\n    lid = ligne[\"ligne_id\"].strip()\n    try:\n        if not lid:\n            raise RejetLigne(\"id_manquant\", \"ligne_id vide\")\n        if nb_id[lid] > 1:\n            raise RejetLigne(\"id_conflit\", \"plusieurs lignes\")\n        if boutique not in boutiques or produit not in produits:\n            raise RejetLigne(\"cle_inconnue\", f\"{boutique} / {produit}\")\n        q = texte_vers_quantite(ligne[\"quantite\"])   # peut lever\n    except RejetLigne as rej:\n        rejets.ajouter(\"ventes.csv\", num, lid, rej.motif)"
+    },
+    {
+     "type": "text",
+     "text": "L'ordre des `if` **est** l'ordre des règles. Chaque `raise` saute directement au bloc `except`, qui écrit la ligne dans le journal des rejets."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $expliquer-bi. Ne modifie rien.\nOù est la fonction qui rejette une ligne de ventes.csv ? Donne le fichier\net le numéro de ligne de chaque raise, puis l'endroit où l'exception est\nrattrapée et écrite dans outputs/rejets.csv.\nSuis la ligne 13 de l'échantillon (E-009-1, quantité -1).\nTermine par une question pour vérifier que j'ai compris."
+    },
+    {
+     "type": "callout",
+     "label": "Le jeu des trois questions (à deux)",
+     "text": "B pose à A, qui répond en montrant l'écran : 1) où le CSV est-il lu ? 2) où un prix devient-il des millimes ? 3) que se passe-t-il si `ventes.csv` n'existe pas ? Puis on inverse."
+    }
+   ]
+  },
+  {
+   "id": "s2m4a",
+   "title": "S2-M4 · A prépare et ouvre la PR",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** proposer la lecture et le nettoyage à la revue. **A** est auteur, **B** relecteur. **Pourquoi :** une deuxième paire d'yeux trouve ce que l'auteur ne voit plus, et chacun doit pouvoir expliquer le code fusionné."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-codex-controle.png",
+     "caption": "Codex propose dans une branche ; l'auteur contrôle (diff, contrôles, référence) ; le binôme relit (Codex en lecture seule, puis revue humaine) ; l'équipe livre après CI verte et approbation.",
+     "height": 140
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $preparer-pr pour la branche lecture-nettoyage.\nÉtape à contrôler : comptes de rejets de ventes.csv (lot1) contre\ntronc-commun/reference/attendu_lot1.json ; l'entrepôt n'existe pas encore.\nRelecteur : <prénom et compte GitHub de B>.\nMa phrase : « Cette PR permet de <…> », preuve : <commande>.\nFais la liste de contrôle, puis propose un titre et une description.\nNe commite pas, ne pousse pas, n'ouvre pas la PR."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git status\ngit add solen/ notes/JOURNAL.md\ngit commit -m \"Lire les sources et rejeter les lignes avec un motif\"\ngit push -u origin lecture-nettoyage"
+    },
+    {
+     "type": "text",
+     "text": "Avant `git add` : `git status` ne doit montrer ni `outputs/` (ignoré par `.gitignore`), ni `.venv/`. Sur GitHub : **Compare & pull request**, collez la description, **Reviewers** = B, **Create pull request**."
+    }
+   ]
+  },
+  {
+   "id": "s2m4b",
+   "title": "S2-M4 · B relit : Codex d'abord, puis vous",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Où :** poste de **B** : terminal, puis application Codex, puis GitHub."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git fetch\ngit switch lecture-nettoyage\nsource .venv/bin/activate\npython -m solen initial\ngrep -c \"id_conflit\" outputs/rejets.csv"
+    },
+    {
+     "type": "text",
+     "text": "B **reproduit** la preuve sur son poste : mêmes comptes que dans la description de la PR. Puis une revue Codex en **lecture seule**, sous un angle précis :"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $revoir-bi. Branche : lecture-nettoyage. Mission : lis mission.txt.\nRelis en lecture seule le diff de cette branche par rapport à main :\nne modifie rien, ne lance aucun chargement ni export.\nAngle de la revue : données et rejets.\nRapporte au plus 3 défauts établis (fichier:ligne, règle violée,\nexemple observable, correction proposée), puis les contrôles non réalisés.\nJ'ai moi-même un doute sur : <mon point>. Dis s'il est fondé, avec une preuve."
+    },
+    {
+     "type": "section",
+     "text": "Puis la revue humaine, sur GitHub"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Files changed** : lisez au moins la fonction qui décide du motif et la conversion en millimes ; commentez une ligne précise.",
+      "**Review changes** : **Approve** si tout est établi, **Request changes** si un défaut est **reproduit** (une valeur, une ligne, un compte).",
+      "`git status` après la revue Codex : rien ne doit avoir changé."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Une revue utile, exemple",
+     "text": "« Ligne 42 de `solen/nettoyage.py` : une quantité `2,0` est acceptée alors que le cahier des charges dit « non entière → rejet ». Reproduit avec la ligne 1015 du lot 1 (`1.5`) : elle est bien rejetée, donc le cas `2,0` reste à vérifier. Question : faut-il un test ? »"
+    }
+   ]
+  },
+  {
+   "id": "s2m4c",
+   "title": "S2-M4 · Corriger, relire, fusionner",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Si B demande des changements, **A** corrige sur la **même branche** : un nouveau commit, un nouveau push, la PR se met à jour toute seule. Chaque constat reçoit une réponse : « corrigé dans <commit> » ou « non retenu parce que… »."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Voici les constats de revue reçus sur ma PR <n> :\n<coller les constats>\nPour chacun, vérifie d'abord contre le code actuel : établi, non établi,\nou non vérifiable, avec une preuve observable.\nCorrige seulement les défauts établis, dans solen/, sans toucher\naux sources, aux références ni à controles/.\nRelance python -m solen initial et recopie les comptes par motif.\nJe prévois que <valeur> passera de <avant> à <après> : compare.\nNe fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git add <fichiers corrigés>\ngit commit -m \"Corriger <le défaut> après revue\"\ngit push"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**B** relit la correction (deuxième revue, éventuellement une nouvelle conversation Codex en lecture seule), puis **Approve**.",
+      "CI verte (elle vérifie encore seulement l'installation) + approbation : **B** clique **Merge pull request**.",
+      "Les deux : `git switch main` puis `git pull`."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Corriger en modifiant `controles/` ou la référence : interdit ; le relecteur le verra dans le diff.\n• Ouvrir une nouvelle PR pour la correction : inutile, la même branche suffit."
+    },
+    {
+     "type": "callout",
+     "label": "L'entrée du journal de cette PR, exemple",
+     "text": "**État actuel** : sources du lot 1 lues ; `ventes.csv` nettoyé. **Décision** : doublon exact ignoré avant tout autre test. **Preuve** : `python -m solen initial` → 1960 gardées, rejets 6 / 6 / 5 / 7 = `attendu_lot1.json`. **Prochain objectif** : lire les retours en SQL et charger l'étoile ; preuve : `--etape initial` OK."
+    }
+   ]
+  },
+  {
+   "id": "s2fin",
+   "title": "Fin de séance 2 · Bilan",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 2 · LIRE ET NETTOYER",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Preuve",
+      "Où la voir"
+     ],
+     "rows": [
+      [
+       "Lecture : 1998 lignes, 8 produits, 6 familles, 3 boutiques",
+       "`python -m solen sources`"
+      ],
+      [
+       "Rejets `ventes.csv` lot 1 : 6 / 6 / 5 / 7 ; 14 doublons ; 1960 gardées",
+       "`outputs/rejets.csv` + `grep -c`"
+      ],
+      [
+       "Ventes brutes des lignes gardées : 78 067,830 TND",
+       "sortie de `solen initial`"
+      ],
+      [
+       "PR de A relue par B (Codex + humain), corrigée, fusionnée",
+       "GitHub"
+      ],
+      [
+       "Entrée du journal avec preuve réelle",
+       "`notes/JOURNAL.md`"
+      ]
+     ],
+     "widths": [
+      3.4,
+      2.2
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/tronc-commun/reference/visuels/rejets_par_motif.png",
+     "caption": "Visuel de référence (`reference/visuels/`) : lignes rejetées par motif et par lot. Pour l'instant, seul le lot 1 vous concerne ; les 8 `cle_inconnue` incluent les 2 retours de la séance 3.",
+     "height": 165
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ expliquer pourquoi le total de Karim (78 839,780 TND) est faux ;\n☐ citer les quatre motifs de rejet et l'ordre des règles ;\n☐ montrer, dans le code, la fonction qui rejette une ligne et l'exception utilisée ;\n☐ reproduire la preuve d'une PR avant de l'approuver."
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Séance 3 · Les retours, puis l'étoile",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Jeudi. Les ventes sont propres ; il manque les retours, donc les ventes nettes et la marge. Karim Jaziri vous montre l'outil de caisse."
+    },
+    {
+     "type": "callout",
+     "label": "Épisode 4 · Ce que dit Karim",
+     "text": "« Les retours ne sont pas dans un fichier : ils sont dans la base de la caisse, `operations.sqlite`. Certains ont été **annulés** par le magasin. Deux pointent vers des tickets que personne ne retrouve : `TK1999-1` et `TK2817-2`. Ne les inventez pas, ne les jetez pas en silence. Et rangez tout dans un vrai entrepôt : je veux pouvoir couper les chiffres par boutique, par zone et par mois sans tout recalculer. »"
+    },
+    {
+     "type": "section",
+     "text": "Minutage de la séance 3 (240 min, estimations)"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Min",
+      "Format",
+      "Contenu"
+     ],
+     "rows": [
+      [
+       "10",
+       "Explication",
+       "Épisode 4 : base opérationnelle contre entrepôt"
+      ],
+      [
+       "14 + 25",
+       "Expl. + pratique",
+       "S3-M1 · SQL paramétré sur la base des retours"
+      ],
+      [
+       "16 + 15",
+       "Expl. + pratique",
+       "S3-M2 · Grain, étoile, clés métier et techniques"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "10 + 15",
+       "Expl. + pratique",
+       "S3-M3 · La classe Entrepot"
+      ],
+      [
+       "6 + 35",
+       "Expl. + pratique",
+       "S3-M4 · Chargement initial et vérificateur"
+      ],
+      [
+       "20",
+       "Pratique",
+       "S3-M5 · Les totaux égaux à la référence"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "5 + 34",
+       "Expl. + pratique",
+       "S3-M6 · PR : B auteur, A relecteur"
+      ],
+      [
+       "5 + 10",
+       "Expl. + pratique",
+       "S3-M7 · Choisir votre mission du catalogue"
+      ]
+     ],
+     "widths": [
+      0.8,
+      1.3,
+      3.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Total : **66 min** d'explications, **154 min** de pratique, deux pauses. Preuve en fin de séance : `--etape initial` affiche **0 ÉCHEC** ; l'entrepôt a 5 tables reliées ; la mission du catalogue est choisie ; la PR de B est fusionnée."
+    }
+   ]
+  },
+  {
+   "id": "s3m1a",
+   "title": "S3-M1 · SQL : interroger la base des retours",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** lire les retours dans la base SQLite **opérationnelle** (celle de la caisse) avec des requêtes SQL. **Pourquoi :** beaucoup de données d'entreprise vivent dans des bases, pas dans des fichiers. **Base opérationnelle** = sert à travailler au jour le jour (encaisser, rembourser) ; **entrepôt** = sert à analyser. On lit la première, on remplit le second, on ne modifie jamais la première."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot SQL",
+      "Rôle",
+      "Exemple sur la table `retour`"
+     ],
+     "rows": [
+      [
+       "`SELECT`",
+       "quelles colonnes",
+       "`SELECT numero_retour, montant_rembourse`"
+      ],
+      [
+       "`FROM`",
+       "quelle table",
+       "`FROM retour`"
+      ],
+      [
+       "`WHERE`",
+       "quelles lignes",
+       "`WHERE statut = 'VALIDE'`"
+      ],
+      [
+       "`GROUP BY`",
+       "regrouper pour compter ou additionner",
+       "`SELECT statut, COUNT(*) … GROUP BY statut`"
+      ],
+      [
+       "`ORDER BY`",
+       "trier",
+       "`ORDER BY id`"
+      ]
+     ],
+     "widths": [
+      1.0,
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Action :** installer l'outil `sqlite3` (une fois), puis regarder la base **en lecture seule** (`-readonly`). Ces deux requêtes sont des commandes de contrôle fournies : copiez-les, ne les modifiez pas."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "sudo apt install -y sqlite3\nDB=tronc-commun/sources/lot1/operations.sqlite\nsqlite3 -readonly $DB \".tables\"\nsqlite3 -readonly $DB \"SELECT statut, COUNT(*) FROM retour GROUP BY statut;\""
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "motif_retour  parametre     retour\nANNULE|4\nVALIDE|78"
+    },
+    {
+     "type": "text",
+     "text": "82 retours : 78 VALIDE, 4 ANNULE. Prévoyez : combien de retours VALIDE en mars 2026 (aucun, une dizaine, une centaine) ? Notez votre estimation."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Comparer des dates de formats différents : vérifiez que `date_retour` est bien écrit `AAAA-MM-JJ hh:mm:ss`.\n• Après chargement, mars ne vaudra que **875,310 TND** : le retour `R26-00039` (18,500 TND) vise `TK1999-1`, inconnu → rejet `cle_inconnue`. Ce n'est pas une erreur."
+    }
+   ]
+  },
+  {
+   "id": "s3m1b",
+   "title": "S3-M1 · SQL paramétré depuis Python",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Où :** poste de **B**, qui est auteur à cette séance ; A à côté. Terminal, puis Codex."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git switch main\ngit pull\ngit switch -c etoile-initial"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Dans solen/, ajoute une fonction qui lit les retours de la base\ntronc-commun/sources/lot1/operations.sqlite avec le module sqlite3, en\nlecture seule. La requête SQL est paramétrée avec ? (jamais de f-string\nni de concaténation pour les valeurs) et accepte un statut, une date de\ndébut (incluse) et une date de fin (exclue).\nLance-la pour les retours VALIDE de 2026-03 et affiche : nombre de lignes,\nsomme de montant_rembourse en millimes. Montre la requête et explique\nSELECT, FROM, WHERE, ORDER BY. Explique en 3 lignes pourquoi ? protège\nmieux qu'une chaîne construite. Ne fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "retours VALIDE 2026-03 : 25 lignes · 893810 millimes (893,810 TND)"
+    },
+    {
+     "type": "code",
+     "label": "Exemple de code produit par Codex · à lire, pas à taper",
+     "text": "def requete_sqlite(chemin, sql, parametres=()):\n    \"\"\"Base ouverte en lecture seule ; requête toujours paramétrée.\"\"\"\n    con = sqlite3.connect(f\"file:{chemin}?mode=ro\", uri=True)\n    con.row_factory = sqlite3.Row\n    try:\n        return [dict(r) for r in con.execute(sql, parametres)]\n    finally:\n        con.close()\n\nsql = \"SELECT * FROM retour WHERE statut = ? AND date_retour >= ?\" \\\n      \" AND date_retour < ? ORDER BY id\"\nmars = requete_sqlite(base, sql, (\"VALIDE\", \"2026-03-01\", \"2026-04-01\"))"
+    },
+    {
+     "type": "text",
+     "text": "Le `?` est une **case** : la valeur est envoyée à part et ne peut jamais être lue comme du SQL. Une chaîne construite à la main avec une valeur comme `NBE' OR '1'='1` changerait le sens de la requête. **Borne de fin exclue** (`< 2026-04-01`) : un retour du 31 mars à 18 h est compté une fois, en mars."
+    }
+   ]
+  },
+  {
+   "id": "s3m2a",
+   "title": "S3-M2 · Grain et schéma en étoile",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** organiser l'entrepôt en **étoile** : des tables de **faits** au centre, des **dimensions** autour. **Pourquoi :** la direction veut couper les mêmes chiffres par boutique, par zone, par mois, par famille. Chaque coupe est une dimension ; les montants à additionner sont dans les faits."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-etoile.png",
+     "caption": "L'étoile de la mission 00 : `fact_vente` et `fact_retour` partagent trois dimensions. Chaque flèche va d'une dimension (1) vers les faits (plusieurs) : une boutique décrit des centaines de ventes.",
+     "height": 230
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Rôle",
+      "Une ligne =",
+      "Lot 1"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "dimension",
+       "un jour",
+       "181 (1er janvier → 30 juin)"
+      ],
+      [
+       "`dim_produit`",
+       "dimension",
+       "un produit du catalogue",
+       "8"
+      ],
+      [
+       "`dim_boutique`",
+       "dimension **SCD2**",
+       "une **version** de boutique",
+       "3"
+      ],
+      [
+       "`fact_vente`",
+       "fait",
+       "une ligne de ticket acceptée (le grain)",
+       "1960"
+      ],
+      [
+       "`fact_retour`",
+       "fait",
+       "un retour VALIDE accepté",
+       "76"
+      ]
+     ],
+     "widths": [
+      1.2,
+      1.3,
+      2.4,
+      1.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Fait** = un événement qui se mesure (quantité, montant). **Dimension** = ce qui le décrit : quand, quoi, où. Exemple : la vente `TK10001-2` (fait) a lieu le 2026-01-01 (dim_date), porte sur P01 (dim_produit), à TUN (dim_boutique)."
+    }
+   ]
+  },
+  {
+   "id": "s3m2b",
+   "title": "S3-M2 · Clé métier, clé technique",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Une **clé métier** vient des sources et a un sens pour l'entreprise (`NBE`, `P01`). Une **clé technique** est un entier attribué par l'entrepôt. On en a besoin dès qu'une même boutique a **plusieurs versions** : NBE en aura deux au lot 2."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-cles.png",
+     "caption": "Une boutique, deux versions, donc deux clés techniques ; les faits pointent vers `boutique_key`. Schéma d'explication : les numéros 2 et 5 et la date 2026-01-01 sont des exemples. Dans vos données, NBE est en Cap Bon depuis le 2021-05-10 et les numéros sont ceux que votre code attribue.",
+     "height": 200
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Objet",
+      "Clé métier (texte)",
+      "Clé technique (entier)"
+     ],
+     "rows": [
+      [
+       "Produit",
+       "`produit_id` = `P01`",
+       "`produit_key` = 1, 2, 3…"
+      ],
+      [
+       "Boutique",
+       "`boutique_id` = `NBE`",
+       "`boutique_key` : une par **version**"
+      ],
+      [
+       "Jour",
+       "`date_complete` = `2026-03-04`",
+       "`date_key` = 20260304"
+      ],
+      [
+       "Vente",
+       "`ligne_id` = `TK10001-2` (clé unique du fait)",
+       "—"
+      ],
+      [
+       "Retour",
+       "`retour_id` = `R26-00001`",
+       "—"
+      ]
+     ],
+     "widths": [
+      1.0,
+      2.6,
+      2.4
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Dimensions avant faits** : une vente ne peut pointer que vers une `boutique_key` qui existe déjà. Les `FOREIGN KEY` (clés étrangères) déclarées dans SQLite le vérifient : le vérificateur affichera `PRAGMA foreign_key_check : 0 violation`."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Relier les faits par `boutique_id` (texte) : dès que NBE aura deux versions, ses ventes seront comptées deux fois."
+    }
+   ]
+  },
+  {
+   "id": "s3m3",
+   "title": "S3-M3 · La classe Entrepot",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** comprendre pourquoi Codex range l'accès à l'entrepôt dans une **classe**. **Pourquoi :** c'est le seul endroit où la programmation objet sert vraiment dans ce projet : une seule porte d'entrée vers la base, et un chargement **tout ou rien**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mot",
+      "En une phrase",
+      "Ici"
+     ],
+     "rows": [
+      [
+       "**Classe**",
+       "Un plan qui décrit des données et des actions.",
+       "`class Entrepot`"
+      ],
+      [
+       "**Objet**",
+       "Une chose construite à partir du plan.",
+       "`e`, l'entrepôt ouvert sur `outputs/entrepot.sqlite`"
+      ],
+      [
+       "**Méthode**",
+       "Une action de l'objet, appelée avec un point.",
+       "`e.inserer(\"fact_vente\", …)`, `e.compter(\"fact_vente\")`"
+      ],
+      [
+       "**Transaction**",
+       "Un lot d'écritures validé en entier ou annulé en entier.",
+       "`commit` si tout va bien, `rollback` sinon"
+      ]
+     ],
+     "widths": [
+      1.1,
+      2.6,
+      2.4
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Exemple de code produit par Codex · à lire, pas à taper",
+     "text": "class Entrepot:\n    \"\"\"Accès à outputs/entrepot.sqlite : with Entrepot(chemin) as e:\"\"\"\n    def __enter__(self):\n        self.con = sqlite3.connect(self.chemin)\n        self.con.execute(\"PRAGMA foreign_keys = ON\")\n        return self\n\n    def __exit__(self, typ, val, tb):\n        if typ is None:\n            self.con.commit()      # tout s'est bien passé : on valide\n        else:\n            self.con.rollback()    # une erreur : on annule tout"
+    },
+    {
+     "type": "text",
+     "text": "`with Entrepot(chemin) as e:` ouvre la base ; à la fin du bloc, `__exit__` valide ou annule. Si une exception arrive au milieu des faits, **rien** n'est écrit : pas d'entrepôt à moitié chargé."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $expliquer-bi. Ne modifie rien.\nExplique la classe Entrepot de notre code : où elle ouvre la base, où\nelle valide, où elle annule. Que contient fact_vente si une erreur\nsurvient pendant le chargement des retours ? Laisse-moi prévoir\navant de donner la réponse."
+    }
+   ]
+  },
+  {
+   "id": "s3m4a",
+   "title": "S3-M4 · Chargement initial : la demande",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** `python -m solen initial` recrée l'entrepôt depuis zéro avec le lot 1. **Pourquoi :** c'est la première version complète des chiffres, et le premier contrôle complet du vérificateur. **Prévoir** (sur papier, avant d'envoyer) :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Votre prévision",
+      "Pourquoi"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "…",
+       "un jour par ligne du 2026-01-01 au 2026-06-30"
+      ],
+      [
+       "`dim_boutique`",
+       "…",
+       "trois boutiques, une version chacune au lot 1"
+      ],
+      [
+       "`fact_vente`",
+       "…",
+       "lignes gardées en séance 2"
+      ],
+      [
+       "`fact_retour`",
+       "…",
+       "78 VALIDE − 2 vers une ligne inconnue"
+      ],
+      [
+       "rejets `cle_inconnue`",
+       "…",
+       "6 ventes + 2 retours"
+      ]
+     ],
+     "widths": [
+      1.4,
+      1.2,
+      3.4
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Lis tronc-commun/cahier_des_charges.md (§ 4 à 6) et\ntronc-commun/reference/contrat_entrepot.json. Dans solen/, crée une classe\nEntrepot qui gère outputs/entrepot.sqlite, et complète python -m solen\ninitial : recréer l'entrepôt depuis zéro avec lot1 ; d'abord les dimensions\n(dim_date, dim_produit, dim_boutique), puis les faits (fact_vente, puis\nfact_retour avec les retours VALIDE) ; clés *_key entières, clés *_id\ntexte, montants en millimes entiers, FOREIGN KEY déclarées, transaction\ntout ou rien. dim_boutique a valid_from et valid_to (NULL = courante).\nRetour vers une ligne inconnue : rejets.csv, cle_inconnue,\nnumero_ligne = retour.id. Lance python -m solen initial puis\npython -m controles.verifier --mission tronc-commun --etape initial\net recopie les sorties. J'attends <mes prévisions> : compare.\nExplique le grain de chaque table de faits. Ne fais ni commit ni push."
+    },
+    {
+     "type": "callout",
+     "label": "Si Codex propose d'abord un plan",
+     "text": "C'est normal : `AGENTS.md` lui demande un plan avant un changement de plus de ~50 lignes. Choisissez **une** étape (par exemple les dimensions), contrôlez, puis la suivante. Ne répondez pas « fais tout »."
+    }
+   ]
+  },
+  {
+   "id": "s3m4b",
+   "title": "S3-M4 · Contrôle : --etape initial",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m solen initial\npython -m controles.verifier --mission tronc-commun --etape initial\nsqlite3 -readonly outputs/entrepot.sqlite \"SELECT COUNT(*) FROM fact_vente;\""
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier · extrait",
+     "text": "== Étape initial : comparaison avec attendu_lot1.json ==\nOK — fact_vente : 1960 lignes\nOK — fact_retour : 76 lignes\nOK — PRAGMA foreign_key_check : 0 violation (6 clés étrangères déclarées)\nOK — dim_boutique : NBE le 2026-07-15 → zone « Cap Bon »\nOK — rejets lot1 : cle_inconnue = 8\nOK — Ventes nettes : 74309500 millimes (74 309,500 TND)\nOK — Taux de retour : 0,048142 (4,81 %)\nOK — agrégats par_zone : 3 valeurs de « zone » × 7 indicateurs conformes\n\nRésultat : 50 OK, 0 ÉCHEC.\n1960"
+    },
+    {
+     "type": "text",
+     "text": "Remarquez : au lot 1, NBE est **encore** en Cap Bon le 2026-07-15. Normal : le changement de zone n'arrive qu'avec le lot 2. Un `ÉCHEC` dit toujours **attendu** puis **observé** ; il se lit comme un indice :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Message (extrait réel du format)",
+      "Cause probable"
+     ],
+     "rows": [
+      [
+       "`ÉCHEC — fact_vente : attendu 1960 lignes, observé 1974`",
+       "1974 = 1960 + 14 : les doublons exacts sont gardés."
+      ],
+      [
+       "`ÉCHEC — fact_vente : attendu des entiers et aucune valeur vide, observé montant_brut_millimes (… valeurs non entières)`",
+       "montants stockés en décimaux, pas en millimes entiers."
+      ],
+      [
+       "`ÉCHEC — rejets lot1 : cle_inconnue, attendu 8, observé 6`",
+       "les 2 retours vers un ticket inconnu ne sont pas écrits dans `rejets.csv`."
+      ]
+     ],
+     "widths": [
+      3.3,
+      2.5
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Un échec ? Lisez la **première** ligne `ÉCHEC`, puis utilisez la fiche `prompts/10-erreur.md` : message exact collé, hypothèse, diagnostic **avant** correction."
+    }
+   ]
+  },
+  {
+   "id": "s3m5",
+   "title": "S3-M5 · Les totaux égaux à la référence",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** vérifier que vous savez **refaire** les chiffres, pas seulement lire `OK`. **Pourquoi :** devant la direction, « le vérificateur est vert » ne suffit pas ; il faut savoir d'où vient chaque nombre. **Où :** papier, calculatrice, et `tronc-commun/reference/README.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur, lot 1",
+      "Référence",
+      "À refaire à la main"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "78 067,830 TND",
+       "—"
+      ],
+      [
+       "Retours",
+       "3 758,330 TND",
+       "—"
+      ],
+      [
+       "Ventes nettes",
+       "**74 309,500 TND**",
+       "78 067,830 − 3 758,330"
+      ],
+      [
+       "Coût d'achat des unités nettes",
+       "45 317,800 TND",
+       "—"
+      ],
+      [
+       "Marge sur coût d'achat",
+       "**28 991,700 TND**",
+       "74 309,500 − 45 317,800"
+      ],
+      [
+       "Taux de retour",
+       "**4,81 %**",
+       "3 758 330 / 78 067 830 = 0,0481"
+      ]
+     ],
+     "widths": [
+      2.1,
+      1.6,
+      2.4
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Zone (boutique)",
+      "Ventes nettes",
+      "Marge",
+      "Taux de retour"
+     ],
+     "rows": [
+      [
+       "Grand Tunis (TUN)",
+       "34 686,420",
+       "13 421,220",
+       "2,48 %"
+      ],
+      [
+       "Cap Bon (NBE)",
+       "19 262,780",
+       "7 577,880",
+       "4,14 %"
+      ],
+      [
+       "Sud (SFX)",
+       "20 360,300",
+       "7 992,600",
+       "**9,12 %**"
+      ],
+      [
+       "Total",
+       "74 309,500",
+       "28 991,700",
+       "4,81 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      1.4,
+      1.4,
+      1.3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Action :** additionnez les trois zones : vous devez retrouver 74 309,500. Puis repérez deux faits surprenants : Sfax rend presque 4 fois plus que Tunis, et juin atteint **15,88 %** de retours (1 435,700 TND sur 9 042,420)."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $expliquer-bi. Ne modifie rien.\nLe taux de retour de juin 2026 vaut 15,88 % dans la référence. À partir de\noutputs/entrepot.sqlite (lecture seule), donne les retours de juin par\nboutique et par famille, en TND, et le fichier:ligne qui produit ce calcul.\nMa prévision : <boutique et famille>. Dis si j'ai raison."
+    }
+   ]
+  },
+  {
+   "id": "s3m6",
+   "title": "S3-M6 · PR : B auteur, A relecteur",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Même cycle qu'en séance 2, **rôles inversés**. B a écrit les demandes ; A doit pouvoir expliquer le code fusionné aussi bien que B."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Qui",
+      "Geste",
+      "Preuve"
+     ],
+     "rows": [
+      [
+       "B",
+       "`$preparer-pr` (étape `initial`), puis `git add solen/ notes/JOURNAL.md`, `git commit`, `git push -u origin etoile-initial`, PR, Reviewers = A",
+       "description avec `Résultat : 50 OK, 0 ÉCHEC.`"
+      ],
+      [
+       "A",
+       "`git fetch`, `git switch etoile-initial`, `python -m solen initial`, vérificateur",
+       "le même `50 OK` sur **son** poste"
+      ],
+      [
+       "A",
+       "`$revoir-bi`, angle **modèle et clés**",
+       "≤ 3 défauts établis, contrôles non réalisés séparés"
+      ],
+      [
+       "A",
+       "revue GitHub : Approve ou Request changes",
+       "un commentaire sur une ligne"
+      ],
+      [
+       "B",
+       "correction sur la même branche si besoin",
+       "nouveau commit, contrôles relancés"
+      ],
+      [
+       "A",
+       "**Merge pull request** ; puis les deux `git switch main`, `git pull`",
+       "PR fusionnée"
+      ]
+     ],
+     "widths": [
+      0.5,
+      3.5,
+      2.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Ce que A vérifie lui-même dans **Files changed**"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Les dimensions sont chargées **avant** les faits (ordre des appels).",
+      "Chaque requête SQL qui reçoit une valeur utilise `?` ; aucune f-string avec une valeur dans un `execute`.",
+      "Les montants sont des entiers (`int`), jamais des `float` stockés.",
+      "Rien n'est modifié dans `tronc-commun/`, `reference/` ou `controles/`."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Et la CI ?",
+     "text": "Elle reste à `ETAPE_CI: aucune` jusqu'à la séance 4 : elle ne vérifie que l'installation. Vous l'avancerez quand le pipeline saura aussi charger le lot 2 (S4-M3)."
+    }
+   ]
+  },
+  {
+   "id": "s3m7",
+   "title": "S3-M7 · Choisir votre mission du catalogue",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** choisir **une** mission parmi dix, pour le travail personnel et la séance 5. **Pourquoi :** vous referez seuls, sur un autre métier, tout ce que le tronc commun vous a appris. Le livret `04_catalogue_missions.pdf` décrit chacune ; lisez au moins deux fiches avant de décider."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "#",
+      "Entreprise fictive",
+      "Grain du fait",
+      "Historique (SCD2)"
+     ],
+     "rows": [
+      [
+       "M01",
+       "Carthage Market, magasins",
+       "ligne de ticket",
+       "magasin → région"
+      ],
+      [
+       "M02",
+       "Souk Express, e-commerce",
+       "ligne de commande",
+       "canal → famille"
+      ],
+      [
+       "M03",
+       "Medina Distribution, B2B",
+       "ligne de facture",
+       "client → segment"
+      ],
+      [
+       "M04",
+       "Colis Rapide, livraison",
+       "colis livré",
+       "agence → zone"
+      ],
+      [
+       "M05",
+       "Académie Nour, formation",
+       "présence",
+       "session → centre"
+      ],
+      [
+       "M06",
+       "Dar Azur, hôtellerie",
+       "séjour (nuitées)",
+       "canal → commission"
+      ],
+      [
+       "M07",
+       "FibreNet, abonnements",
+       "facture mensuelle",
+       "offre → gamme / prix"
+      ],
+      [
+       "M08",
+       "TechniServ, maintenance",
+       "intervention",
+       "équipement → contrat"
+      ],
+      [
+       "M09",
+       "Scène Libre, événementiel",
+       "billet vendu",
+       "canal → frais"
+      ],
+      [
+       "M10",
+       "Pixel Studio, agence",
+       "ligne de temps",
+       "projet → chef de projet"
+      ]
+     ],
+     "widths": [
+      0.5,
+      2.2,
+      1.6,
+      1.8
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Choisissez un métier que vous savez **expliquer** avec un exemple de la vie réelle.",
+      "Notez le choix dans `notes/JOURNAL.md` (rubrique **Décision**) et dites-le au professeur.",
+      "**Ne changez pas encore `mission.txt`** : il reste `tronc-commun` jusqu'à la fin de la séance 4."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ce qui changera, ce qui ne changera pas",
+     "text": "Chaque mission du catalogue a la même forme que le tronc commun : `fiche_mission.md`, `cahier_des_charges.md`, `dictionnaire.md`, un `echantillon/` avec `attendu.md`, deux lots, une base SQLite opérationnelle, une dimension historisée et un dossier `reference/`. Les mots changent (colis, nuitées, abonnés…), la méthode reste : échantillon à la main, petites étapes, contrôles, PR relues."
+    }
+   ]
+  },
+  {
+   "id": "s3fin",
+   "title": "Fin de séance 3 · Bilan",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 3 · BASE OPÉRATIONNELLE ET ÉTOILE",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Preuve",
+      "Où la voir"
+     ],
+     "rows": [
+      [
+       "Retours VALIDE de mars : 25 lignes, 893,810 TND en source",
+       "fonction SQL paramétrée"
+      ],
+      [
+       "`--etape initial` : 50 OK, 0 ÉCHEC",
+       "terminal de A **et** de B"
+      ],
+      [
+       "dim_date 181 · dim_produit 8 · dim_boutique 3 · fact_vente 1960 · fact_retour 76",
+       "vérificateur, `sqlite3 -readonly`"
+      ],
+      [
+       "Ventes nettes 74 309,500 · marge 28 991,700 · taux 4,81 %",
+       "vérificateur + calcul à la main"
+      ],
+      [
+       "PR de B relue par A, fusionnée ; mission du catalogue choisie",
+       "GitHub, journal"
+      ]
+     ],
+     "widths": [
+      3.6,
+      2.0
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ expliquer la différence entre base opérationnelle et entrepôt ;\n☐ lire une requête SQL et dire pourquoi elle utilise `?` ;\n☐ dessiner l'étoile de mémoire, avec le grain de chaque fait ;\n☐ distinguer clé métier et clé technique, avec NBE comme exemple ;\n☐ dire ce que fait `with Entrepot(...)` quand une erreur arrive ;\n☐ refaire à la main ventes nettes, marge et taux de retour du lot 1."
+    },
+    {
+     "type": "callout",
+     "label": "Avant la séance 4 (≈ 30 min)",
+     "text": "Lisez la fiche de votre mission du catalogue. Ouvrez `tronc-commun/sources/lot2/boutiques.json` : trouvez la ligne qui annonce Nord-Est, et prévoyez combien de lignes aura `dim_boutique` après le lot 2."
+    },
+    {
+     "type": "text",
+     "text": "Gardez une note d'état de fin de séance (fiche `prompts/16-reprendre.md`), comme en séance 1."
+    },
+    {
+     "type": "callout",
+     "label": "À préparer à deux",
+     "text": "Suivez à voix haute une ligne de `ventes.csv` jusqu'à l'entrepôt : `TK10001-2` (gardée), puis `TK10111-9` (rejetée). Pour chacune : quelle règle, quelle table, quelle clé, quel montant en millimes."
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Séance 4 · Juillet arrive, Nabeul change",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Épisode 5 · Mail de Lamia Ben Salah",
+     "text": "« Voici l'export de juillet et août (`lot2`). Rappel : Nabeul est en zone Nord-Est depuis le 15 juillet. Le service caisse me dit que l'export a recopié les ventes des 29 et 30 juin et quelques retours de fin juin. Je ne veux **aucun doublon**, et les chiffres du premier semestre ne doivent **pas bouger**. »"
+    },
+    {
+     "type": "text",
+     "text": "Karim ajoute : « Et avant de livrer quoi que ce soit, je veux voir que vous savez trouver un défaut que vous n'avez pas écrit, le corriger, et le prouver. » (Épisode 6, la revue.)"
+    },
+    {
+     "type": "section",
+     "text": "Minutage de la séance 4 (240 min, estimations)"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Min",
+      "Format",
+      "Contenu"
+     ],
+     "rows": [
+      [
+       "8",
+       "Explication",
+       "Épisode 5 : un nouveau lot, une boutique change de zone"
+      ],
+      [
+       "12 + 28",
+       "Expl. + pratique",
+       "S4-M1 · Incrément et historique SCD2"
+      ],
+      [
+       "5 + 12",
+       "Expl. + pratique",
+       "S4-M2 · Rejeu : relancer sans rien ajouter"
+      ],
+      [
+       "10 + 22",
+       "Expl. + pratique",
+       "S4-M3 · Tests écrits par Codex, CI qui avance"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "8 + 32",
+       "Expl. + pratique",
+       "S4-M4 · Épisode 6 : revue → correction → revue"
+      ],
+      [
+       "8 + 20",
+       "Expl. + pratique",
+       "S4-M5 · Un conflit Git contrôlé"
+      ],
+      [
+       "10",
+       "Pause",
+       "—"
+      ],
+      [
+       "7 + 15",
+       "Expl. + pratique",
+       "S4-M6 · Les Skills locaux"
+      ],
+      [
+       "4 + 10",
+       "Expl. + pratique",
+       "S4-M7 · Export CSV et manifeste"
+      ],
+      [
+       "4 + 15",
+       "Expl. + pratique",
+       "S4-M8 · Premier regard sur l'app, bilan"
+      ]
+     ],
+     "widths": [
+      0.8,
+      1.3,
+      3.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Total : **66 min** d'explications, **154 min** de pratique, deux pauses. Preuve en fin de séance : lot 2 chargé, historique préservé, rejeu stable, **CI verte** à `ETAPE_CI: tout`, un conflit résolu, un Skill à vous."
+    }
+   ]
+  },
+  {
+   "id": "s4m1a",
+   "title": "S4-M1 · Garder l'historique : SCD2",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** quand NBE change de zone, **ajouter** une version au lieu d'écraser l'ancienne. **Pourquoi :** la direction veut que juin reste dans Cap Bon. Si l'on remplace « Cap Bon » par « Nord-Est », tout l'historique de Nabeul bascule et les chiffres du premier semestre changent. **SCD2** (dimension à variation lente, type 2) = une ligne par version, avec ses dates de validité."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-scd2-frise.png",
+     "caption": "NBE change de zone le 2026-07-15 : la vente du 14 juillet garde la version Cap Bon, celle du 15 prend la version Nord-Est. Schéma d'explication : clés 2 et 5 et date de début d'exemple ; dans vos données, la version Cap Bon commence le 2021-05-10.",
+     "height": 190
+    },
+    {
+     "type": "table",
+     "headers": [
+      "boutique_id",
+      "zone",
+      "valid_from (inclus)",
+      "valid_to (exclu)"
+     ],
+     "rows": [
+      [
+       "NBE",
+       "Cap Bon",
+       "2021-05-10",
+       "2026-07-15"
+      ],
+      [
+       "NBE",
+       "Nord-Est",
+       "2026-07-15",
+       "(vide = courante)"
+      ],
+      [
+       "SFX",
+       "Sud",
+       "2022-09-19",
+       "(vide)"
+      ],
+      [
+       "TUN",
+       "Grand Tunis",
+       "2018-04-02",
+       "(vide)"
+      ]
+     ],
+     "widths": [
+      1.2,
+      1.4,
+      1.7,
+      1.7
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Une version est valable un jour donné si `valid_from <= jour` **et** (`valid_to` vide **ou** `jour < valid_to`). D'où les trois dates frontières que le vérificateur contrôle : NBE le **2026-06-30** → Cap Bon, le **2026-07-14** → Cap Bon, le **2026-07-15** → Nord-Est."
+    }
+   ]
+  },
+  {
+   "id": "s4m1b",
+   "title": "S4-M1 · La demande d'incrément",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Où :** poste de **A** (auteur), branche neuve. **Prévoir** sur papier : (1) lignes de `dim_boutique` après le lot 2 ; (2) zone d'une vente NBE du 14 puis du 15 juillet ; (3) lignes de `fact_vente` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git switch main\ngit pull\ngit switch -c increment-scd2"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Ajoute la commande python -m solen increment qui charge\ntronc-commun/sources/lot2/ dans l'entrepôt existant, sans effacer lot1.\nRègles (cahier des charges § 7 et § 8) :\n- SCD2 sur dim_boutique : quand la zone change, fermer l'ancienne version\n  (valid_to = date du changement, exclue) et créer une nouvelle version\n  (valid_from = même date, incluse, valid_to NULL) ;\n- un fait est rattaché à la version valable à SA date ; ne jamais\n  modifier les faits anciens ; dim_date prolongée jusqu'au 2026-08-31 ;\n- rejeu : une vente ou un retour dont la clé métier est déjà dans\n  l'entrepôt est ignoré ; relancer increment n'ajoute aucune ligne ;\n- les rejets de lot2 remplacent ceux de lot2 et gardent ceux de lot1.\nLance initial, increment, le vérificateur --etape increment, puis\nincrement encore et --etape rejeu. Recopie les sorties.\nMontre la requête qui choisit la version de boutique pour une date.\nMes prévisions : <1>, <2>, <3>. Compare. Ne fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Exemple de code produit par Codex · à lire, pas à taper",
+     "text": "SELECT boutique_key FROM dim_boutique\nWHERE boutique_id = ? AND valid_from <= ?\n  AND (valid_to IS NULL OR valid_to > ?)"
+    },
+    {
+     "type": "text",
+     "text": "Lisez la requête à voix haute avec la date 2026-07-15 : la version Cap Bon a `valid_to` = 2026-07-15, qui n'est **pas** > 2026-07-15 ; elle est exclue. Seule Nord-Est reste."
+    }
+   ]
+  },
+  {
+   "id": "s4m2",
+   "title": "S4-M2 · Rejeu : relancer sans rien ajouter",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** relancer le même lot 2 ne doit rien changer. **Pourquoi :** en vrai, un chargement se relance souvent (panne, export refait). Une **insertion idempotente** (relancée, elle donne le même résultat) repose sur la **clé métier** : `ligne_id` déjà présent → ligne ignorée."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Lot 2",
+      "Lues",
+      "Ignorées",
+      "Rejetées",
+      "Ajoutées",
+      "Après"
+     ],
+     "rows": [
+      [
+       "`ventes.csv`",
+       "413",
+       "4 doublons + 15 déjà chargées (29-30 juin)",
+       "9",
+       "385",
+       "fact_vente **2345**"
+      ],
+      [
+       "`operations.sqlite`",
+       "29",
+       "2 ANNULE + 3 déjà chargés",
+       "1",
+       "23",
+       "fact_retour **99**"
+      ],
+      [
+       "Dimensions",
+       "—",
+       "—",
+       "—",
+       "62 jours, 1 version",
+       "dim_date 243, dim_boutique 4"
+      ]
+     ],
+     "widths": [
+      1.7,
+      0.6,
+      2.0,
+      0.9,
+      0.9,
+      1.4
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m solen initial\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape increment\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape rejeu\ngrep -c \"lot2\" outputs/rejets.csv"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier · extrait",
+     "text": "INFO — empreinte de l'entrepôt enregistrée (...) : --etape rejeu la comparera\nRésultat : 50 OK, 0 ÉCHEC.\nOK — dim_boutique : NBE le 2026-07-15 → zone « Nord-Est »\nOK — rejeu : entrepôt identique, ligne par ligne, à celui contrôlé après\nl'incrément\nRésultat : 51 OK, 0 ÉCHEC.\n10"
+    },
+    {
+     "type": "text",
+     "text": "L'**empreinte**, résumé de chaque table enregistré par `--etape increment`, est comparée par `--etape rejeu` : lancez `--etape increment` **avant** de relancer. Rejets du lot 2 : toujours 10 (relancer un lot remplace ses rejets)."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• `UPDATE … SET zone` sur la ligne existante : le vérificateur répond `dim_boutique : version attendue absente ('NBE', 'Cap Bon', '2021-05-10', '2026-07-15')`.\n• `fact_vente : attendu 2345 lignes, observé 2360` : les 15 ventes recopiées des 29-30 juin sont chargées deux fois ; la clé métier n'est pas testée."
+    }
+   ]
+  },
+  {
+   "id": "s4m2b",
+   "title": "S4-M2 · Les chiffres après le lot 2",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Après lot 1",
+      "Après lot 2 (= après rejeu)"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "78 067,830 TND",
+       "95 849,090 TND"
+      ],
+      [
+       "Retours",
+       "3 758,330 TND",
+       "4 404,630 TND"
+      ],
+      [
+       "Ventes nettes",
+       "74 309,500 TND",
+       "**91 444,460 TND**"
+      ],
+      [
+       "Marge sur coût d'achat",
+       "28 991,700 TND",
+       "**35 606,860 TND**"
+      ],
+      [
+       "Taux de retour",
+       "4,81 %",
+       "**4,60 %**"
+      ],
+      [
+       "Unités nettes",
+       "3605",
+       "4264"
+      ]
+     ],
+     "widths": [
+      2.0,
+      1.8,
+      2.3
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Zone",
+      "Ventes nettes",
+      "Taux de retour"
+     ],
+     "rows": [
+      [
+       "Grand Tunis",
+       "40 887,210",
+       "3,11 %"
+      ],
+      [
+       "Cap Bon",
+       "19 653,980",
+       "4,06 %"
+      ],
+      [
+       "Nord-Est",
+       "4 323,400",
+       "3,01 %"
+      ],
+      [
+       "Sud",
+       "26 579,870",
+       "7,40 %"
+      ]
+     ],
+     "widths": [
+      2.0,
+      2.0,
+      2.0
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/tronc-commun/reference/visuels/ventes_nettes_par_mois_et_zone.png",
+     "caption": "Visuel de référence : ventes nettes par mois et par zone (TND). Nord-Est n'apparaît qu'à partir de juillet ; janvier à juin sont identiques à l'état après lot 1.",
+     "height": 140
+    },
+    {
+     "type": "callout",
+     "label": "Exercice à deux",
+     "text": "Cap Bon passe de 19 262,780 à 19 653,980 TND alors que Nabeul est en Nord-Est depuis le 15 juillet. D'où viennent ces 391,200 TND ? (Indice : du 1er au 14 juillet.) Vérifiez : 19 653,980 + 4 323,400 = 23 977,380 = ventes nettes de NBE."
+    }
+   ]
+  },
+  {
+   "id": "s4m3a",
+   "title": "S4-M3 · Des tests écrits par Codex",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** des tests automatiques sur **vos** règles, dans `tests/`. **Pourquoi :** le vérificateur compare des totaux ; un test dit **quelle règle** est cassée. Un **test pytest** est une petite fonction qui prépare un cas calculé à la main, appelle le code et vérifie le résultat avec `assert`. S'il échoue, `pytest` l'affiche en rouge."
+    },
+    {
+     "type": "code",
+     "label": "Exemple de code produit par Codex · à lire, pas à taper",
+     "text": "import pytest\nfrom solen.conversions import texte_vers_millimes, texte_vers_quantite\nfrom solen.erreurs import RejetLigne\n\ndef test_une_quantite_negative_est_rejetee():\n    with pytest.raises(RejetLigne) as erreur:\n        texte_vers_quantite(\"-2\")\n    assert erreur.value.motif == \"quantite_invalide\"\n\ndef test_un_prix_avec_espace_et_virgule_devient_des_millimes():\n    assert texte_vers_millimes(\"1 240,000\") == 1240000"
+    },
+    {
+     "type": "text",
+     "text": "Un bon test part d'un exemple **calculé à la main** (1 240,000 TND = 1 240 000 millimes), jamais du résultat du code (`assert total == total` ne peut pas échouer)."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Dans tests/ (pas dans controles/), écris 4 tests pytest courts :\nune quantité -2 est rejetée (quantite_invalide) ; « 1 240,000 » vaut\n1240000 millimes ; une vente NBE du 2026-07-14 est en Cap Bon et une du\n2026-07-15 en Nord-Est ; relancer increment n'ajoute aucune ligne.\nNoms en français qui disent la règle ; petits jeux de données construits\ndans le test, pas les sources complètes. Lance pytest -q, recopie la\nsortie. Puis, sans le garder, montre quel test échouerait si l'on\nacceptait les quantités négatives, et pourquoi. Ne fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "pytest -q"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "..............ss\n<n> passed, 2 skipped"
+    },
+    {
+     "type": "text",
+     "text": "Les 2 tests ignorés sont ceux de l'export et de l'application : pas encore construits."
+    }
+   ]
+  },
+  {
+   "id": "s4m3b",
+   "title": "S4-M3 · La CI avance d'un cran",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**CI** (intégration continue) : à chaque PR, GitHub prend une machine Linux neuve, installe le projet depuis zéro et lance les contrôles. Si c'est vert là-bas, le résultat ne dépend pas de « ça marche chez moi ». La variable `ETAPE_CI` de `.github/workflows/controles.yml` dit jusqu'où aller."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "`ETAPE_CI`",
+      "Quand",
+      "Ce que la CI ajoute"
+     ],
+     "rows": [
+      [
+       "`aucune`",
+       "S1 → S3",
+       "installation seulement"
+      ],
+      [
+       "`initial` / `increment`",
+       "si une étape résiste",
+       "`solen initial`, puis `solen increment`, et le vérificateur de l'étape"
+      ],
+      [
+       "`rejeu`",
+       "**maintenant** (S4-M3)",
+       "relance `increment`, vérificateur `--etape rejeu`"
+      ],
+      [
+       "`export`",
+       "S4-M7",
+       "`solen export`, vérificateur `--etape export`"
+      ],
+      [
+       "`tout`",
+       "fin de S4",
+       "tout le parcours + `pytest -q` (vos tests compris)"
+      ]
+     ],
+     "widths": [
+      1.5,
+      1.5,
+      3.0
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Mets à jour .github/workflows/controles.yml : passe ETAPE_CI de aucune\nà rejeu, et rien d'autre. Explique en 5 lignes ce que la CI exécutera\nà la prochaine PR, étape par étape. Aucun secret, aucun service externe.\nNe fais ni commit ni push."
+    },
+    {
+     "type": "text",
+     "text": "**Contrôle :** `git diff .github/workflows/controles.yml` montre une seule ligne changée : `ETAPE_CI: aucune` devient `ETAPE_CI: rejeu`. Après le push, onglet **Actions** de la PR : ouvrez **Chargement initial (lot 1)**, **Incrément (lot 2)**, **Rejeu du lot 2 (ne doit rien ajouter)**, puis **Vérifier les résultats** ; la dernière ligne doit être `Résultat : 51 OK, 0 ÉCHEC.`"
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• CI rouge avec `ModuleNotFoundError` alors que tout passe chez vous : Codex a utilisé une bibliothèque absente de `requirements.txt`.\n• Passer à `tout` trop tôt : la CI est rouge pour une raison attendue, et l'équipe s'habitue à ignorer le rouge."
+    }
+   ]
+  },
+  {
+   "id": "s4m4a",
+   "title": "S4-M4 · Épisode 6 : le défaut planté",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** un exercice de revue sur la PR `increment-scd2`. Quand tout est vert, **A** fait introduire par Codex **un** défaut, sans dire lequel à B. B doit le trouver, A le corrige, B relit encore. **Pourquoi :** c'est la seule façon de vérifier qu'une revue trouve quelque chose, et de voir la chaîne complète revue → correction → revue."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Défaut (A en choisit un)",
+      "Ce que le vérificateur affiche (format réel)"
+     ],
+     "rows": [
+      [
+       "1 · `valid_to` traité comme **inclus**",
+       "`ÉCHEC — fact_vente : attendu chaque fait relié à la version valable à sa date, observé <n> faits mal rattachés`"
+      ],
+      [
+       "2 · la zone est **écrasée** (`UPDATE`) au lieu d'ajouter une version",
+       "`ÉCHEC — dim_boutique : version attendue absente ('NBE', 'Cap Bon', '2021-05-10', '2026-07-15')`"
+      ],
+      [
+       "3 · les retours **ANNULE** sont chargés",
+       "`ÉCHEC — fact_retour : attendu 99 lignes, observé <n>`"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3.8
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Exercice de revue demandé par le professeur, sur la branche increment-scd2.\nDans solen/, introduis UN seul défaut : <1, 2 ou 3, recopié du livret>.\nNe touche ni à tests/, ni à controles/, ni aux sources.\nNe mets aucun commentaire qui signale le défaut dans le code.\nÉcris seulement en toute fin de réponse une ligne « NOTE AUTEUR : »\nqui dit le fichier et la ligne modifiés. Ne fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git add solen/\ngit commit -m \"Incrément : ajustements\"\ngit push"
+    },
+    {
+     "type": "text",
+     "text": "Gardez la NOTE AUTEUR pour vous. Avec `ETAPE_CI: rejeu`, la CI de la PR devrait passer au rouge : c'est le premier indice de B."
+    },
+    {
+     "type": "callout",
+     "label": "Règle du jeu",
+     "text": "Le défaut est planté **pour l'exercice** et sera corrigé dans la même PR avant toute fusion. Jamais de défaut volontaire hors exercice annoncé."
+    }
+   ]
+  },
+  {
+   "id": "s4m4b",
+   "title": "S4-M4 · Revue → correction → revue",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "B · reproduire, faire relire, écrire la revue"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git fetch\ngit switch increment-scd2\npython -m solen initial\npython -m solen increment\npython -m controles.verifier --mission tronc-commun --etape increment"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $revoir-bi. Branche : increment-scd2. Lecture seule : ne modifie\nrien, ne lance aucun chargement. Angle : SCD2 et rejeu.\nRapporte au plus 3 défauts établis (fichier:ligne, règle violée, exemple\nobservable, correction proposée), puis les contrôles non réalisés.\nVoici la première ligne ÉCHEC que j'ai obtenue : <coller>."
+    },
+    {
+     "type": "text",
+     "text": "Revue GitHub : **Request changes**, avec le défaut **reproduit** : la commande, la ligne `ÉCHEC`, le fichier et la ligne en cause, la règle du cahier des charges."
+    },
+    {
+     "type": "section",
+     "text": "A · corriger, puis B · deuxième revue"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Voici les constats de revue reçus sur ma PR <n> : <coller>.\nPour chacun : établi, non établi ou non vérifiable, avec une preuve.\nCorrige seulement les défauts établis, dans solen/. Relance initial,\nincrement, --etape increment, increment, --etape rejeu et pytest -q ;\nrecopie les sorties. Ne fais ni commit ni push."
+    },
+    {
+     "type": "text",
+     "text": "A commite et pousse la correction (`git commit -m \"Corriger <le défaut> après revue\"`, `git push`). B ouvre une **nouvelle** conversation : « Utilise $revoir-bi sur la version corrigée de increment-scd2. Pour chaque constat initial : corrigé avec preuve, encore présent, ou non vérifié. Cherche une erreur introduite par la correction. Ne modifie rien. » CI verte + **Approve** : **B** fusionne ; les deux `git switch main`, `git pull`."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Coller la conclusion de Codex comme revue GitHub : écrivez ce que **vous** avez reproduit.\n• « Aucun défaut établi » n'est pas « tout est juste » : c'est le résultat d'une lecture, sous un angle."
+    }
+   ]
+  },
+  {
+   "id": "s4m5a",
+   "title": "S4-M5 · Un conflit Git contrôlé",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** provoquer volontairement un **conflit** : A et B modifient la **même ligne** de `notes/JOURNAL.md` dans deux branches. **Pourquoi :** un conflit n'est pas une panne ; Git demande simplement à un humain de choisir. Mieux vaut l'apprendre sur un journal que sur du code."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Qui",
+      "Geste"
+     ],
+     "rows": [
+      [
+       "A et B",
+       "partent d'un `main` à jour : `git switch main`, `git pull`"
+      ],
+      [
+       "A",
+       "`git switch -c journal-a` ; dans la dernière entrée du journal, réécrit la ligne **Prochain objectif** : « exporter les tables » ; commit, push, PR"
+      ],
+      [
+       "B",
+       "`git switch -c journal-b` ; réécrit **la même ligne** : « écrire un Skill de revue SCD2 » ; commit, push, PR"
+      ],
+      [
+       "B",
+       "relit et fusionne la PR de A. La PR de B affiche alors **This branch has conflicts that must be resolved**"
+      ]
+     ],
+     "widths": [
+      0.8,
+      5.2
+     ]
+    },
+    {
+     "type": "section",
+     "text": "B · faire apparaître le conflit sur son poste"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "git switch main\ngit pull\ngit switch journal-b\ngit merge main"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "Auto-merging notes/JOURNAL.md\nCONFLICT (content): Merge conflict in notes/JOURNAL.md\nAutomatic merge failed; fix conflicts and then commit the result."
+    },
+    {
+     "type": "code",
+     "label": "Fichier en conflit · notes/JOURNAL.md, extrait",
+     "text": "<<<<<<< HEAD\n- **Prochain objectif** : écrire un Skill de revue SCD2 (preuve : PR relue).\n=======\n- **Prochain objectif** : exporter les tables (preuve : --etape export OK).\n>>>>>>> main"
+    },
+    {
+     "type": "text",
+     "text": "Entre `<<<<<<<` et `=======` : votre version (la branche où vous êtes, `HEAD`). Entre `=======` et `>>>>>>>` : celle qui arrive de `main`."
+    }
+   ]
+  },
+  {
+   "id": "s4m5b",
+   "title": "S4-M5 · Résoudre avec Codex, finir avec Git",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Codex **propose** la résolution ; vous **décidez** et faites les gestes Git."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "J'ai un conflit Git. Voici la sortie exacte de git status :\n<coller>\nExplique en mots simples ce qui s'est passé (quelles deux versions se\nrencontrent). Pour notes/JOURNAL.md, montre les deux blocs et dis ce que\nchacun voulait garder. Propose une résolution qui garde l'intention des\ndeux. Ne modifie le fichier qu'après mon accord, et seulement lui.\nNe lance ni git add, ni git commit, ni git push : je les fais moi-même."
+    },
+    {
+     "type": "text",
+     "text": "Résolution attendue ici : garder **les deux** objectifs, dans l'ordre que vous choisissez, sans aucun marqueur. Puis :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "grep -n \"<<<<<<<\\|=======\\|>>>>>>>\" notes/JOURNAL.md\ngit add notes/JOURNAL.md\ngit commit --no-edit\ngit push"
+    },
+    {
+     "type": "text",
+     "text": "Le `grep` ne doit **rien** afficher. `git commit --no-edit` garde le message proposé par Git (`Merge branch 'main' into journal-b`). Sur GitHub, la PR de B redevient fusionnable : A relit et fusionne. Puis les deux : `git switch main`, `git pull`."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Garder « sa » version d'un clic sans lire l'autre : le travail du binôme disparaît.\n• Laisser un marqueur `=======` : dans un fichier Python, le code ne s'exécute plus ; dans le journal, la PR montre un texte cassé."
+    }
+   ]
+  },
+  {
+   "id": "s4m6",
+   "title": "S4-M6 · Les Skills locaux",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Un **Skill** est une méthode réutilisable, écrite en français dans `.agents/skills/<nom>/SKILL.md`, avec un en-tête `name` et `description`. Il n'ajoute ni modèle, ni outil, ni quota : il évite de réécrire la même consigne à chaque fois. Vous en avez déjà utilisé trois."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Skill fourni",
+      "Ce qu'il fait",
+      "Ce qu'il ne fait jamais"
+     ],
+     "rows": [
+      [
+       "`$expliquer-bi`",
+       "explique une notion ou un code avec un exemple Solen chiffré, termine par une question",
+       "modifier un fichier"
+      ],
+      [
+       "`$revoir-bi`",
+       "relit en lecture seule ; au plus 3 défauts établis ; contrôles non réalisés à part",
+       "dire « tout est correct »"
+      ],
+      [
+       "`$preparer-pr`",
+       "liste OK / À corriger / Non vérifié ; titre et description de PR",
+       "commit, push, ouvrir la PR"
+      ]
+     ],
+     "widths": [
+      1.3,
+      3.0,
+      1.7
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Créer le vôtre : une règle, observable"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Crée .agents/skills/revue-scd2-zitouna/SKILL.md, en partant de\n.agents/skills/revoir-bi/SKILL.md. En-tête : name: revue-scd2-zitouna,\net une description d'une phrase qui dit quand l'utiliser.\nGarde la lecture seule et la limite de 3 défauts établis.\nAjoute cette règle précise : contrôler une vente NBE du 2026-07-14 et\nune du 2026-07-15, et dire pour chacune la boutique_key et la zone\nretenues. Ne modifie pas les Skills fournis. Montre le fichier complet."
+    },
+    {
+     "type": "text",
+     "text": "**Essayer**, dans une nouvelle conversation : « Utilise $revue-scd2-zitouna pour relire l'historique sur main. Lecture seule. » La réponse doit citer les deux dates et deux zones différentes. Si le Skill n'est pas proposé : redémarrez l'application et rouvrez le dossier, ou écrivez « Lis .agents/skills/revue-scd2-zitouna/SKILL.md et applique sa méthode ». Notez quelle route a marché."
+    },
+    {
+     "type": "text",
+     "text": "Le Skill est un fichier du dépôt : il passe par une branche (`skill-revue-scd2`) et une courte PR, comme le reste."
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Une règle vague (« vérifie bien tout ») : elle ne change rien à la réponse.\n• Croire qu'un Skill remplace le vérificateur : comparez toujours avec `python -m controles.verifier`."
+    }
+   ]
+  },
+  {
+   "id": "s4m7",
+   "title": "S4-M7 · Export CSV et manifeste",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** écrire chaque table dans `outputs/export/<table>.csv` et un `manifest.json` (comptes et sommes). **Pourquoi :** Power BI (séance 5) lira ces CSV ; le manifeste prouve que l'export est complet et identique à l'entrepôt. **B** est auteur, branche `export-manifest`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Ajoute la commande python -m solen export : pour chaque table de\nl'entrepôt, outputs/export/<table>.csv (UTF-8, séparateur virgule,\nen-tête = noms de colonnes) et outputs/export/manifest.json au format\ndu cahier des charges § 10 (lignes et sommes par table).\nPuis passe ETAPE_CI de rejeu à tout dans .github/workflows/controles.yml.\nLance export, python -m controles.verifier --mission tronc-commun\n--etape export et pytest -q ; recopie les sorties.\nJ'attends 2345 lignes dans fact_vente.csv : compare.\nNe fais ni commit ni push."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m solen export\npython -m controles.verifier --mission tronc-commun --etape export"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier · extrait",
+     "text": "OK — export fact_vente.montant_brut_millimes : somme 95849090 (CSV = entrepôt\n= manifest)\nRésultat : 12 OK, 0 ÉCHEC."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Lignes",
+      "Sommes contrôlées"
+     ],
+     "rows": [
+      [
+       "`fact_vente`",
+       "2345",
+       "quantite 4412 · montant_brut_millimes 95 849 090"
+      ],
+      [
+       "`fact_retour`",
+       "99",
+       "quantite 148 · montant_millimes 4 404 630"
+      ],
+      [
+       "`dim_produit`",
+       "8",
+       "prix_millimes 1 434 900 · cout_achat_millimes 908 100"
+      ]
+     ],
+     "widths": [
+      1.7,
+      0.8,
+      3.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Erreurs courantes",
+     "text": "• Retoucher un CSV exporté à la main : `observé CSV 2344 et manifest 2345`. On relance `export` ; on ne corrige jamais une sortie."
+    }
+   ]
+  },
+  {
+   "id": "s4m8",
+   "title": "S4-M8 · Premier regard sur l'application",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Quoi :** préparer la mini-application locale construite en séance 5 : **un seul** fichier `outputs/app/index.html`, sans serveur, avec trois écrans : **Vue direction** (cinq indicateurs, ventes nettes par mois et par zone), **Détail par boutique** (NBE en Cap Bon jusqu'au 2026-07-14, puis Nord-Est), **Qualité des données** (lignes lues, gardées, rejetées par motif et par lot)."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/app-vue-direction.png",
+     "caption": "Capture réelle sous macOS (navigateur intégré, 1280 × 900) de l'application de **référence** privée, écran Vue direction après lot 1 + lot 2 : ventes nettes 91 444,460 TND, marge 35 606,860 TND, taux 4,60 %. Ce n'est pas une production étudiante : la vôtre sera différente.",
+     "height": 195
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Objectif : python -m solen app écrit outputs/app/index.html, un seul\nfichier autonome (CSS, JavaScript et données dedans, aucun lien Internet),\navec les écrans « Vue direction », « Détail par boutique », « Qualité des\ndonnées », un filtre période, un filtre boutique/zone, les cinq\nindicateurs et un graphique SVG. Lis mission.txt et le § 10 du cahier des\ncharges. Ne modifie rien. Propose un plan de 3 à 5 petites étapes : fichier,\nsortie observable, commande de contrôle, nom de branche."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dans ~/solen-bi, venv actif",
+     "text": "python -m controles.verifier --mission tronc-commun --etape app"
+    },
+    {
+     "type": "code",
+     "label": "Sortie attendue · ne pas recopier",
+     "text": "ÉCHEC — application absente : /home/<vous>/solen-bi/outputs/app/index.html"
+    },
+    {
+     "type": "text",
+     "text": "Cet échec est votre point de départ de la séance 5 (livret `05_livrer_soutenir.pdf`). Gardez le plan de Codex dans le journal, rubrique **Prochain objectif**."
+    }
+   ]
+  },
+  {
+   "id": "s4fin",
+   "title": "Fin de séance 4 · Passer à votre mission",
+   "kicker": "02 / TRONC COMMUN · SÉANCE 4 · LE BESOIN CHANGE",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Preuve",
+      "Où la voir"
+     ],
+     "rows": [
+      [
+       "`--etape increment` 50 OK puis `--etape rejeu` 51 OK, 0 ÉCHEC",
+       "terminal"
+      ],
+      [
+       "dim_boutique 4 versions ; NBE le 14/07 → Cap Bon, le 15/07 → Nord-Est",
+       "vérificateur, votre Skill"
+      ],
+      [
+       "Défaut planté trouvé par B, corrigé par A, relu, fusionné",
+       "PR increment-scd2"
+      ],
+      [
+       "Conflit résolu, aucun marqueur",
+       "PR journal-b, `grep`"
+      ],
+      [
+       "`--etape export` 12 OK ; CI verte à `ETAPE_CI: tout`",
+       "onglet Actions"
+      ]
+     ],
+     "widths": [
+      3.6,
+      2.0
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "☐ expliquer SCD2 avec la vente du 14 et celle du 15 juillet ;\n☐ dire pourquoi relancer `increment` n'ajoute rien, et le prouver ;\n☐ lire un test pytest et dire quelle règle il protège ;\n☐ faire avancer la CI d'un cran et lire une étape dans Actions ;\n☐ résoudre un conflit et finir les gestes Git soi-même ;\n☐ créer un Skill avec une règle observable."
+    },
+    {
+     "type": "section",
+     "text": "Et maintenant : votre mission du catalogue"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Nouvelle branche `mission-<Mxx>` ; remplacez le contenu de `mission.txt` par votre code, par exemple `echo \"M03\" > mission.txt`.",
+      "Dans la même PR, demandez à Codex de remettre `ETAPE_CI` à `aucune` : la CI repartira cran par cran, comme pour le tronc commun.",
+      "Le vérificateur échouera de nouveau : c'est votre nouveau point de départ. Commencez par l'échantillon de la mission, **à la main**."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Dernier geste de la séance",
+     "text": "Une note d'état (fiche `prompts/16-reprendre.md`), vérifiée contre le terminal, puis l'entrée du journal de la dernière PR : état, décision, preuve réelle, prochain objectif."
+    }
+   ]
+  },
+  {
+   "id": "annexe-nombres",
+   "title": "Annexe · Les nombres de référence",
+   "kicker": "02 / TRONC COMMUN · ANNEXES",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Source : `tronc-commun/reference/README.md`, `attendu_lot1.json`, `attendu_lot2.json` et `echantillon/attendu.md`. Calculés par le générateur des données, pas par une solution. Montants stockés en millimes, affichés ici en TND."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "",
+      "Échantillon",
+      "Après lot 1 (`initial`)",
+      "Après lot 2 (= rejeu)"
+     ],
+     "rows": [
+      [
+       "Lignes de `ventes.csv` lues",
+       "12",
+       "1998",
+       "+ 413"
+      ],
+      [
+       "Doublons exacts ignorés",
+       "1",
+       "14",
+       "+ 4"
+      ],
+      [
+       "Ventes déjà chargées (ignorées)",
+       "—",
+       "0",
+       "+ 15"
+      ],
+      [
+       "Rejets `ventes.csv`",
+       "5",
+       "24",
+       "+ 9"
+      ],
+      [
+       "Rejets `operations.sqlite`",
+       "1",
+       "2",
+       "+ 1"
+      ],
+      [
+       "Rejets : cle_inconnue / id_conflit / id_manquant / quantite_invalide",
+       "1 / 2 / 1 / 1",
+       "8 / 6 / 5 / 7 (26)",
+       "lot2 : 4 / 2 / 2 / 2 (10)"
+      ],
+      [
+       "`fact_vente` / `fact_retour`",
+       "6 / 1",
+       "1960 / 76",
+       "2345 / 99"
+      ],
+      [
+       "`dim_date` / `dim_produit` / `dim_boutique`",
+       "31 / 8 / 3",
+       "181 / 8 / 3",
+       "243 / 8 / 4"
+      ],
+      [
+       "Ventes brutes",
+       "127,350",
+       "78 067,830",
+       "95 849,090"
+      ],
+      [
+       "Retours",
+       "14,500",
+       "3 758,330",
+       "4 404,630"
+      ],
+      [
+       "Ventes nettes",
+       "112,850",
+       "74 309,500",
+       "91 444,460"
+      ],
+      [
+       "Coût d'achat des unités nettes",
+       "67,250",
+       "45 317,800",
+       "55 837,600"
+      ],
+      [
+       "Marge sur coût d'achat",
+       "45,600",
+       "28 991,700",
+       "35 606,860"
+      ],
+      [
+       "Taux de retour",
+       "11,39 %",
+       "4,81 %",
+       "4,60 %"
+      ],
+      [
+       "Unités nettes",
+       "—",
+       "3605",
+       "4264"
+      ]
+     ],
+     "widths": [
+      2.6,
+      1.1,
+      1.5,
+      1.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Contrôles : `--etape initial` → `Résultat : 50 OK, 0 ÉCHEC.` ; `--etape increment` → 50 OK, puis `--etape rejeu` → 51 OK ; `--etape export` → 12 OK. SCD2 : NBE le 2026-06-30 et le 2026-07-14 → Cap Bon ; le 2026-07-15 → Nord-Est."
+    }
+   ]
+  },
+  {
+   "id": "annexe-echec",
+   "title": "Annexe · Lire un ÉCHEC et réagir",
+   "kicker": "02 / TRONC COMMUN · ANNEXES",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Lisez la **première** ligne `ÉCHEC` : les suivantes en découlent souvent. Puis la fiche `prompts/10-erreur.md` : message exact collé, votre hypothèse, diagnostic **avant** toute correction. Ne modifiez jamais le vérificateur ni la référence."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Le message contient…",
+      "Cause probable",
+      "Premier geste"
+     ],
+     "rows": [
+      [
+       "`entrepôt absent`",
+       "pipeline pas lancé, ou mauvais dossier",
+       "`pwd`, puis `python -m solen initial`"
+      ],
+      [
+       "`table … absente` ou `colonnes absentes`",
+       "noms différents du cahier des charges",
+       "demander de respecter le § 6 mot pour mot"
+      ],
+      [
+       "`attendu N lignes, observé M`",
+       "doublons gardés, rejet oublié, lot rechargé",
+       "comparer M − N aux comptes de l'annexe précédente"
+      ],
+      [
+       "`clé métier … en double`",
+       "insertion non idempotente",
+       "tester la clé métier avant d'insérer"
+      ],
+      [
+       "`attendu des entiers`",
+       "montants stockés en décimaux",
+       "exiger des millimes entiers (`int`)"
+      ],
+      [
+       "`ligne orpheline` ou `foreign_key_check`",
+       "faits chargés avant les dimensions, ou mauvaise clé",
+       "vérifier l'ordre de chargement"
+      ],
+      [
+       "`version attendue absente`",
+       "SCD2 écrasé ou dates de validité fausses",
+       "relire le § 7 ; jamais d'`UPDATE` de la zone"
+      ],
+      [
+       "`faits mal rattachés`",
+       "`valid_to` inclus, ou jointure par `boutique_id`",
+       "relire la requête qui choisit la version"
+      ],
+      [
+       "`rejets lot… : <motif>, attendu, observé`",
+       "ordre des règles ; retours oubliés",
+       "suivre une ligne rejetée avec `$expliquer-bi`"
+      ],
+      [
+       "`rejeu : … changements dans [...]`",
+       "la relance ajoute ou modifie des lignes",
+       "comparer les comptes avant / après la relance"
+      ],
+      [
+       "`export … CSV … manifest`",
+       "export obsolète ou retouché",
+       "relancer `python -m solen export`"
+      ],
+      [
+       "`ne correspond à aucun lot de référence`",
+       "état intermédiaire (`--etape tout`)",
+       "lancer `--etape initial` ou `--etape increment` pour le détail"
+      ],
+      [
+       "`ÉCHEC — mission … inconnue` (code 2)",
+       "`mission.txt` vide ou mal écrit",
+       "`cat mission.txt`"
+      ]
+     ],
+     "widths": [
+      2.1,
+      2.0,
+      2.0
+     ]
+    }
+   ]
+  }
+ ]
+}

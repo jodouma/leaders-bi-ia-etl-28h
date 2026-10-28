@@ -1,0 +1,341 @@
+{
+  "version_contrat": 1,
+  "mission": "M03",
+  "entreprise": "Medina Distribution",
+  "grain": "une ligne de facture",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_produit",
+    "dim_client",
+    "fact_facture",
+    "fact_avoir"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_produit": {
+      "role": "dimension",
+      "cle": "produit_key",
+      "cle_metier": "produit_id",
+      "colonnes": [
+        "produit_key",
+        "produit_id",
+        "nom",
+        "famille",
+        "cout_achat_millimes",
+        "prix_tarif_millimes"
+      ],
+      "colonnes_entieres": [
+        "produit_key",
+        "cout_achat_millimes",
+        "prix_tarif_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_client": {
+      "role": "dimension_scd2",
+      "cle": "client_key",
+      "cle_metier": "client_id",
+      "colonnes": [
+        "client_key",
+        "client_id",
+        "nom",
+        "segment",
+        "region",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "client_key"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_facture": {
+      "role": "fait",
+      "cle": "ligne_id",
+      "cle_metier": null,
+      "colonnes": [
+        "ligne_id",
+        "facture_id",
+        "date_key",
+        "produit_key",
+        "client_key",
+        "quantite",
+        "prix_negocie_millimes",
+        "montant_facture_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "produit_key",
+        "client_key",
+        "quantite",
+        "prix_negocie_millimes",
+        "montant_facture_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "produit_key": "dim_produit.produit_key",
+        "client_key": "dim_client.client_key"
+      }
+    },
+    "fact_avoir": {
+      "role": "fait",
+      "cle": "avoir_id",
+      "cle_metier": null,
+      "colonnes": [
+        "avoir_id",
+        "ligne_id",
+        "date_key",
+        "date_facture_key",
+        "produit_key",
+        "client_key",
+        "type_avoir",
+        "quantite",
+        "montant_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "date_facture_key",
+        "produit_key",
+        "client_key",
+        "quantite",
+        "montant_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "ligne_id": "fact_facture.ligne_id",
+        "date_key": "dim_date.date_key",
+        "date_facture_key": "dim_date.date_key",
+        "produit_key": "dim_produit.produit_key",
+        "client_key": "dim_client.client_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_facture",
+    "fact_avoir"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_client",
+    "cle": "client_key",
+    "cle_metier": "client_id",
+    "attribut": "segment",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_facture",
+        "colonne": "client_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_avoir",
+        "colonne": "client_key",
+        "date_key": "date_facture_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "CL04",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "CL04",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "CL04",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "CL05",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, d.date_complete AS jour, c.client_id, c.segment, c.region, p.produit_id, p.famille, f.montant_facture_millimes AS facture, 0 AS avoir, f.quantite * p.cout_achat_millimes AS cout_facture, 0 AS cout_avoir, f.quantite AS unites_facturees, 0 AS unites_retournees FROM fact_facture f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_client c ON c.client_key = f.client_key JOIN dim_produit p ON p.produit_key = f.produit_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), d.date_complete, c.client_id, c.segment, c.region, p.produit_id, p.famille, 0, a.montant_millimes, 0, a.quantite * p.cout_achat_millimes, 0, a.quantite FROM fact_avoir a JOIN dim_date d ON d.date_key = a.date_key JOIN dim_client c ON c.client_key = a.client_key JOIN dim_produit p ON p.produit_key = a.produit_key",
+  "indicateurs": [
+    {
+      "code": "montant_facture_millimes",
+      "libelle": "Montant facturé",
+      "unite": "millimes",
+      "formule": "somme de quantite × prix_unitaire_negocie des lignes de facture acceptées",
+      "sql": "SUM(facture)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "avoirs_millimes",
+      "libelle": "Avoirs",
+      "unite": "millimes",
+      "formule": "somme des montants des avoirs EMIS acceptés (RETOUR et REMISE)",
+      "sql": "SUM(avoir)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "ventes_nettes_millimes",
+      "libelle": "Ventes nettes",
+      "unite": "millimes",
+      "formule": "montant facturé − avoirs",
+      "sql": "SUM(facture) - SUM(avoir)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "cout_achat_net_millimes",
+      "libelle": "Coût d'achat des unités nettes",
+      "unite": "millimes",
+      "formule": "(cartons facturés − cartons repris par avoir RETOUR) × coût d'achat unitaire, produit par produit",
+      "sql": "SUM(cout_facture) - SUM(cout_avoir)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "marge_commerciale_millimes",
+      "libelle": "Marge commerciale",
+      "unite": "millimes",
+      "formule": "ventes nettes − coût d'achat des unités nettes",
+      "sql": "SUM(facture) - SUM(avoir) - SUM(cout_facture) + SUM(cout_avoir)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "taux_avoir",
+      "libelle": "Taux d'avoir",
+      "unite": "ratio",
+      "formule": "avoirs / montant facturé (en montant)",
+      "sql": "ROUND(1.0 * SUM(avoir) / NULLIF(SUM(facture), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "unites_nettes",
+      "libelle": "Cartons nets",
+      "unite": "nombre",
+      "formule": "cartons facturés − cartons repris",
+      "sql": "SUM(unites_facturees) - SUM(unites_retournees)",
+      "tolerance": 0.0,
+      "principal": false
+    }
+  ],
+  "axes": {
+    "par_segment": "segment",
+    "par_client": "client_id",
+    "par_region": "region",
+    "par_mois": "mois",
+    "par_famille": "famille",
+    "par_produit": "produit_id"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "avoirs.sqlite",
+      "factures.csv"
+    ]
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_produit",
+      "dim_client",
+      "fact_facture",
+      "fact_avoir"
+    ],
+    "sommes": {
+      "fact_facture": [
+        "quantite",
+        "montant_facture_millimes"
+      ],
+      "fact_avoir": [
+        "quantite",
+        "montant_millimes"
+      ],
+      "dim_produit": [
+        "cout_achat_millimes",
+        "prix_tarif_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par client",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

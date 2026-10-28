@@ -115,18 +115,18 @@ Montants stockés en **millimes entiers** (1 TND = 1 000 millimes), affichés en
 | Mot | Définition courte | Exemple Maison Zitouna |
 |---|---|---|
 | **ETL** | Extraire, Transformer, Charger | lire le CSV des ventes, nettoyer les formats, charger `entrepot.sqlite` |
-| **Grain** | ce que représente une ligne de fait | une ligne de ticket : 2 savons à 4,500 TND = 9 000 millimes |
-| **Fait** | événement mesuré, avec des montants | `fact_ventes` : quantité, montant brut, coût d’achat |
+| **Grain** | ce que représente une ligne de fait | une ligne de ticket : 2 savons P05 à 3,900 TND = 7 800 millimes |
+| **Fait** | événement mesuré, avec des montants | `fact_vente` : quantité, montant brut, coût d’achat |
 | **Dimension** | ce qui décrit le fait | `dim_boutique` (nom, zone commerciale), `dim_produit`, `dim_date` |
-| **Clé métier** | identifiant du monde réel, en texte | `boutique_id = "BTQ-SFX"` |
-| **Clé technique** | entier créé par l’entrepôt | `boutique_key = 7` ; une nouvelle version de la boutique aura une autre clé |
-| **Schéma en étoile** | un fait au centre, relié à ses dimensions | `fact_ventes` relié à date, produit, boutique |
+| **Clé métier** | identifiant du monde réel, en texte | `boutique_id = "SFX"` |
+| **Clé technique** | entier créé par l’entrepôt | `boutique_key = 2` pour NBE avant le 2026-07-15, `boutique_key = 4` après : une nouvelle version, une nouvelle clé |
+| **Schéma en étoile** | un fait au centre, relié à ses dimensions | `fact_vente` relié à date, produit, boutique |
 | **Ventes nettes** | ventes brutes − retours | 120 000 − 6 000 = 114 000 millimes |
 | **Marge sur coût d’achat** | ventes nettes − coût d’achat des unités nettes | 114 000 − 70 000 = 44 000 millimes (jamais « bénéfice ») |
 | **Taux de retour** | retours / ventes brutes | 6 000 / 120 000 = 5 % |
 | **Rejet** | ligne source écartée, avec un motif | même `vente_id` avec deux montants → `id_conflit` dans `outputs/rejets.csv` |
 | **SCD2** | dimension qui garde son historique par versions datées | la boutique change de zone le 2026-07-15 : ancienne version `valid_to = 2026-07-15`, nouvelle `valid_from = 2026-07-15` |
 | **Incrément** | charger seulement le nouveau lot | le lot 2 (juillet–août) s’ajoute au lot 1 sans le recharger |
-| **Rejeu** | relancer le même lot sans créer de doublon | relancer le lot 2 : le nombre de lignes de `fact_ventes` ne bouge pas |
+| **Rejeu** | relancer le même lot sans créer de doublon | relancer le lot 2 : le nombre de lignes de `fact_vente` ne bouge pas |
 
 Une vente de juin reste rattachée à l’ancienne zone de la boutique ; une vente d’août, à la nouvelle. C’est la question à poser à chaque graphique « par zone ».

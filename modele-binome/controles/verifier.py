@@ -3,6 +3,7 @@
 Il compare VOS sorties (outputs/) aux valeurs de référence calculées par le générateur
 depuis la vérité terrain (reference/attendu_*.json). Il ne lit jamais votre code.
 
+    python -m controles.verifier --etape rejets       # après le nettoyage du lot 1 (rejets.csv seul)
     python -m controles.verifier --etape initial      # après le lot 1
     python -m controles.verifier --etape increment    # après le lot 2
     python -m controles.verifier --etape rejeu        # après avoir relancé le lot 2
@@ -27,8 +28,9 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-ETAPES = ("initial", "increment", "rejeu", "export", "app", "tout")
+ETAPES = ("rejets", "initial", "increment", "rejeu", "export", "app", "tout")
 MAX_DETAILS = 12
+FLOTTANTES = ("ratio", "jours", "heures")      # unités comparées avec la tolérance du contrat
 
 
 class ErreurConfiguration(Exception):
@@ -86,13 +88,28 @@ def montrer(valeur, unite: str) -> str:
         return f"{int(valeur)} millimes ({tnd(valeur)})"
     if unite == "ratio":
         return f"{float(valeur):.6f} ({float(valeur) * 100:.2f} %)".replace(".", ",")
+    if unite == "jours":
+        return f"{float(valeur):.2f} jours".replace(".", ",")
+    if unite == "heures":
+        return f"{float(valeur):.2f} h".replace(".", ",")
+    if unite == "centiemes_heure":
+        return f"{int(valeur)} centièmes ({int(valeur) / 100:.2f} h)".replace(".", ",")
     return str(valeur)
+
+
+def texte(v) -> str | None:
+    """Valeur d'attribut SCD2 en texte des deux côtés : 18, 18.0 et « 18 » donnent « 18 »."""
+    if v is None:
+        return None
+    if isinstance(v, float) and v.is_integer():
+        return str(int(v))
+    return str(v).strip()
 
 
 def egal(attendu, observe, unite: str, tolerance: float) -> bool:
     if attendu is None or observe is None:
         return attendu is None and observe is None
-    if unite == "ratio":
+    if unite in FLOTTANTES:
         return abs(float(attendu) - float(observe)) <= max(tolerance, 1e-9)
     try:
         return int(attendu) == int(round(float(observe))) and float(observe) == round(float(observe))
@@ -159,7 +176,9 @@ class Verificateur:
     # ------------------------------------------------------------- entrée
     def verifier(self, etape: str) -> Rapport:
         self.r.info(f"mission {self.mission} · référence {self.ref} · sorties {self.sorties}")
-        if etape in ("initial", "increment", "rejeu"):
+        if etape == "rejets":
+            self.verifier_rejets()
+        elif etape in ("initial", "increment", "rejeu"):
             self.verifier_lot(self.contrat["etapes"][etape], etape)
         elif etape == "export":
             self.verifier_export(obligatoire=True)
@@ -180,6 +199,14 @@ class Verificateur:
             self.verifier_export(obligatoire=self.strict)
             self.verifier_app(obligatoire=self.strict)
         return self.r
+
+    def verifier_rejets(self) -> None:
+        """Séance 2 : seul outputs/rejets.csv est contrôlé (lot initial), sans entrepôt."""
+        lot = self.contrat["etapes"]["initial"]
+        self.r.titre(f"Étape rejets : rejets.csv ({lot}) comparé à {self.contrat['lots'][lot]['attendu']}")
+        self.rejets_lot(lot, self.attendus[lot])
+        if self.rejets.exists() and not self.r.echecs:
+            self.r.info("l'entrepôt n'est pas contrôlé à cette étape : lancez ensuite --etape initial")
 
     def connexion(self) -> sqlite3.Connection | None:
         if not self.entrepot.exists():
@@ -304,8 +331,8 @@ class Verificateur:
     def scd2(self, con, a) -> None:
         s = self.contrat["scd2"]
         t, cm, at, vf, vt = s["table"], s["cle_metier"], s["attribut"], s["valid_from"], s["valid_to"]
-        obs = {(str(r[0]), str(r[1]), r[2], r[3]) for r in con.execute(f"SELECT {cm}, {at}, {vf}, {vt} FROM {t}")}
-        att = {(v["cle_metier"], v["attribut"], v["valid_from"], v["valid_to"]) for v in a["scd2"]["versions"]}
+        obs = {(str(r[0]), texte(r[1]), r[2], r[3]) for r in con.execute(f"SELECT {cm}, {at}, {vf}, {vt} FROM {t}")}
+        att = {(v["cle_metier"], texte(v["attribut"]), v["valid_from"], v["valid_to"]) for v in a["scd2"]["versions"]}
         if obs == att:
             self.r.ok(f"{t} : {len(att)} versions conformes (clé métier, {at}, valid_from, valid_to)")
         else:
@@ -332,8 +359,8 @@ class Verificateur:
         for f in a["scd2"]["frontieres"]:
             r = con.execute(f"SELECT {at} FROM {t} WHERE {cm} = ? AND {vf} <= ? AND ({vt} IS NULL OR {vt} > ?)",
                             (f["cle_metier"], f["date"], f["date"])).fetchall()
-            obs_v = [x[0] for x in r]
-            if obs_v == [f["attribut"]]:
+            obs_v = [texte(x[0]) for x in r]
+            if obs_v == [texte(f["attribut"])]:
                 self.r.ok(f"{t} : {f['cle_metier']} le {f['date']} → {at} « {f['attribut']} »")
             else:
                 self.r.echec(f"{t} : {f['cle_metier']} le {f['date']}, attendu « {f['attribut']} », observé {obs_v}")
@@ -563,7 +590,8 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="python -m controles.verifier",
                                 description="Compare vos sorties aux valeurs de référence de la mission.")
     p.add_argument("--mission", help="tronc-commun ou M01 … M10 (défaut : mission.txt)")
-    p.add_argument("--etape", choices=ETAPES, default="tout")
+    p.add_argument("--etape", choices=ETAPES, default="tout", metavar="|".join(ETAPES),
+                   help="étape contrôlée, dans l'ordre du parcours : " + " → ".join(ETAPES) + " (défaut : tout)")
     p.add_argument("--racine", type=Path, help="racine du dépôt binôme (défaut : dossier courant)")
     p.add_argument("--sorties", type=Path, help="dossier des sorties (défaut : <racine>/outputs)")
     p.add_argument("--strict", action="store_true", help="avec --etape tout : export et app obligatoires")

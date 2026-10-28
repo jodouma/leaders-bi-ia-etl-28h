@@ -1,0 +1,554 @@
+{
+  "mission": "M09",
+  "entreprise": "Scène Libre",
+  "lot": "lot2",
+  "etape": "increment",
+  "periode": {
+    "debut": "2026-07-01",
+    "fin": "2026-08-31"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "billets.csv": {
+      "lignes": 441,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "evenements.xlsx": {
+      "feuilles": [
+        "Programme",
+        "Tarifs"
+      ],
+      "evenements": 17,
+      "tarifs": 45,
+      "ligne_entete_programme": 3
+    },
+    "canaux.json": {
+      "canaux": 4,
+      "versions": 5
+    },
+    "remboursements.sqlite": {
+      "remboursement": 86,
+      "rembourse": 71,
+      "conserve": 7,
+      "refuse": 8,
+      "motif": 3
+    }
+  },
+  "nettoyage": {
+    "billets.csv": {
+      "lignes_acceptees_nouvelles": 412,
+      "doublons_exacts": 4,
+      "deja_charges": 16,
+      "formats_montants": 117,
+      "formats_dates": 100,
+      "casse_espaces": 32
+    },
+    "remboursements.sqlite": {
+      "demandes_non_remboursees_ignorees": 15,
+      "deja_charges": 10,
+      "remboursements_acceptes_nouveaux": 60
+    }
+  },
+  "rejets": {
+    "total": 10,
+    "par_motif": {
+      "cle_inconnue": 4,
+      "id_conflit": 2,
+      "id_manquant": 2,
+      "quantite_invalide": 2
+    },
+    "par_source": {
+      "billets.csv": {
+        "cle_inconnue": 3,
+        "id_conflit": 2,
+        "id_manquant": 2,
+        "quantite_invalide": 2
+      },
+      "remboursements.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 243,
+    "dim_evenement": 17,
+    "dim_canal": 5,
+    "fact_billet": 2757,
+    "fact_remboursement": 268
+  },
+  "indicateurs": {
+    "billets_vendus": 2757,
+    "billets_rembourses": 268,
+    "billets_nets": 2489,
+    "taux_remplissage": 0.321161,
+    "recettes_billets_millimes": 129085000,
+    "remboursements_millimes": 12928000,
+    "frais_distribution_millimes": 6290070,
+    "recettes_nettes_millimes": 109866930
+  },
+  "agregats": {
+    "par_evenement": {
+      "EV01": {
+        "billets_vendus": 209,
+        "billets_rembourses": 0,
+        "billets_nets": 209,
+        "taux_remplissage": 0.95,
+        "recettes_billets_millimes": 9469000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 455685,
+        "recettes_nettes_millimes": 9013315
+      },
+      "EV02": {
+        "billets_vendus": 126,
+        "billets_rembourses": 0,
+        "billets_nets": 126,
+        "taux_remplissage": 0.7,
+        "recettes_billets_millimes": 4030000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 194550,
+        "recettes_nettes_millimes": 3835450
+      },
+      "EV03": {
+        "billets_vendus": 225,
+        "billets_rembourses": 0,
+        "billets_nets": 225,
+        "taux_remplissage": 0.5,
+        "recettes_billets_millimes": 10545000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 525375,
+        "recettes_nettes_millimes": 10019625
+      },
+      "EV04": {
+        "billets_vendus": 194,
+        "billets_rembourses": 0,
+        "billets_nets": 194,
+        "taux_remplissage": 0.881818,
+        "recettes_billets_millimes": 6215000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 273600,
+        "recettes_nettes_millimes": 5941400
+      },
+      "EV05": {
+        "billets_vendus": 192,
+        "billets_rembourses": 192,
+        "billets_nets": 0,
+        "taux_remplissage": 0.0,
+        "recettes_billets_millimes": 9236000,
+        "remboursements_millimes": 9236000,
+        "frais_distribution_millimes": 463290,
+        "recettes_nettes_millimes": -463290
+      },
+      "EV06": {
+        "billets_vendus": 330,
+        "billets_rembourses": 0,
+        "billets_nets": 330,
+        "taux_remplissage": 0.33,
+        "recettes_billets_millimes": 20593000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 1010880,
+        "recettes_nettes_millimes": 19582120
+      },
+      "EV07": {
+        "billets_vendus": 166,
+        "billets_rembourses": 0,
+        "billets_nets": 166,
+        "taux_remplissage": 0.922222,
+        "recettes_billets_millimes": 5250000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 265350,
+        "recettes_nettes_millimes": 4984650
+      },
+      "EV08": {
+        "billets_vendus": 248,
+        "billets_rembourses": 16,
+        "billets_nets": 232,
+        "taux_remplissage": 0.515556,
+        "recettes_billets_millimes": 11615000,
+        "remboursements_millimes": 644000,
+        "frais_distribution_millimes": 538470,
+        "recettes_nettes_millimes": 10432530
+      },
+      "EV09": {
+        "billets_vendus": 348,
+        "billets_rembourses": 0,
+        "billets_nets": 348,
+        "taux_remplissage": 0.58,
+        "recettes_billets_millimes": 19072000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 906720,
+        "recettes_nettes_millimes": 18165280
+      },
+      "EV10": {
+        "billets_vendus": 198,
+        "billets_rembourses": 0,
+        "billets_nets": 198,
+        "taux_remplissage": 0.9,
+        "recettes_billets_millimes": 6135000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 304725,
+        "recettes_nettes_millimes": 5830275
+      },
+      "EV11": {
+        "billets_vendus": 170,
+        "billets_rembourses": 0,
+        "billets_nets": 170,
+        "taux_remplissage": 0.17,
+        "recettes_billets_millimes": 10783000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 554870,
+        "recettes_nettes_millimes": 10228130
+      },
+      "EV12": {
+        "billets_vendus": 60,
+        "billets_rembourses": 60,
+        "billets_nets": 0,
+        "taux_remplissage": 0.0,
+        "recettes_billets_millimes": 3048000,
+        "remboursements_millimes": 3048000,
+        "frais_distribution_millimes": 139335,
+        "recettes_nettes_millimes": -139335
+      },
+      "EV13": {
+        "billets_vendus": 66,
+        "billets_rembourses": 0,
+        "billets_nets": 66,
+        "taux_remplissage": 0.3,
+        "recettes_billets_millimes": 2205000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 123075,
+        "recettes_nettes_millimes": 2081925
+      },
+      "EV14": {
+        "billets_vendus": 91,
+        "billets_rembourses": 0,
+        "billets_nets": 91,
+        "taux_remplissage": 0.151667,
+        "recettes_billets_millimes": 5802000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 296295,
+        "recettes_nettes_millimes": 5505705
+      },
+      "EV15": {
+        "billets_vendus": 63,
+        "billets_rembourses": 0,
+        "billets_nets": 63,
+        "taux_remplissage": 0.14,
+        "recettes_billets_millimes": 2830000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 109720,
+        "recettes_nettes_millimes": 2720280
+      },
+      "EV16": {
+        "billets_vendus": 36,
+        "billets_rembourses": 0,
+        "billets_nets": 36,
+        "taux_remplissage": 0.036,
+        "recettes_billets_millimes": 1192000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 67630,
+        "recettes_nettes_millimes": 1124370
+      },
+      "EV17": {
+        "billets_vendus": 35,
+        "billets_rembourses": 0,
+        "billets_nets": 35,
+        "taux_remplissage": 0.194444,
+        "recettes_billets_millimes": 1065000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 60500,
+        "recettes_nettes_millimes": 1004500
+      }
+    },
+    "par_type": {
+      "Concert": {
+        "billets_vendus": 1345,
+        "billets_rembourses": 268,
+        "billets_nets": 1077,
+        "taux_remplissage": 0.365085,
+        "recettes_billets_millimes": 65815000,
+        "remboursements_millimes": 12928000,
+        "frais_distribution_millimes": 3138595,
+        "recettes_nettes_millimes": 49748405
+      },
+      "Festival": {
+        "billets_vendus": 627,
+        "billets_rembourses": 0,
+        "billets_nets": 627,
+        "taux_remplissage": 0.174167,
+        "recettes_billets_millimes": 38370000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 1929675,
+        "recettes_nettes_millimes": 36440325
+      },
+      "Théâtre": {
+        "billets_vendus": 785,
+        "billets_rembourses": 0,
+        "billets_nets": 785,
+        "taux_remplissage": 0.654167,
+        "recettes_billets_millimes": 24900000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 1221800,
+        "recettes_nettes_millimes": 23678200
+      }
+    },
+    "par_mois": {
+      "2026-02": {
+        "billets_vendus": 335,
+        "billets_rembourses": 0,
+        "billets_nets": 335,
+        "taux_remplissage": 0.8375,
+        "recettes_billets_millimes": 13499000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 650235,
+        "recettes_nettes_millimes": 12848765
+      },
+      "2026-03": {
+        "billets_vendus": 225,
+        "billets_rembourses": 0,
+        "billets_nets": 225,
+        "taux_remplissage": 0.5,
+        "recettes_billets_millimes": 10545000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 525375,
+        "recettes_nettes_millimes": 10019625
+      },
+      "2026-04": {
+        "billets_vendus": 386,
+        "billets_rembourses": 192,
+        "billets_nets": 194,
+        "taux_remplissage": 0.236585,
+        "recettes_billets_millimes": 15451000,
+        "remboursements_millimes": 9236000,
+        "frais_distribution_millimes": 736890,
+        "recettes_nettes_millimes": 5478110
+      },
+      "2026-05": {
+        "billets_vendus": 496,
+        "billets_rembourses": 0,
+        "billets_nets": 496,
+        "taux_remplissage": 0.420339,
+        "recettes_billets_millimes": 25843000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 1276230,
+        "recettes_nettes_millimes": 24566770
+      },
+      "2026-06": {
+        "billets_vendus": 348,
+        "billets_rembourses": 0,
+        "billets_nets": 348,
+        "taux_remplissage": 0.58,
+        "recettes_billets_millimes": 19072000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 906720,
+        "recettes_nettes_millimes": 18165280
+      },
+      "2026-07": {
+        "billets_vendus": 616,
+        "billets_rembourses": 16,
+        "billets_nets": 600,
+        "taux_remplissage": 0.359281,
+        "recettes_billets_millimes": 28533000,
+        "remboursements_millimes": 644000,
+        "frais_distribution_millimes": 1398065,
+        "recettes_nettes_millimes": 26490935
+      },
+      "2026-08": {
+        "billets_vendus": 189,
+        "billets_rembourses": 60,
+        "billets_nets": 129,
+        "taux_remplissage": 0.151765,
+        "recettes_billets_millimes": 8083000,
+        "remboursements_millimes": 3048000,
+        "frais_distribution_millimes": 372130,
+        "recettes_nettes_millimes": 4662870
+      },
+      "2026-09": {
+        "billets_vendus": 162,
+        "billets_rembourses": 0,
+        "billets_nets": 162,
+        "taux_remplissage": 0.091011,
+        "recettes_billets_millimes": 8059000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 424425,
+        "recettes_nettes_millimes": 7634575
+      }
+    },
+    "par_lieu": {
+      "Amphithéâtre de la Corniche": {
+        "billets_vendus": 631,
+        "billets_rembourses": 192,
+        "billets_nets": 439,
+        "taux_remplissage": 0.243889,
+        "recettes_billets_millimes": 34110000,
+        "remboursements_millimes": 9236000,
+        "frais_distribution_millimes": 1666305,
+        "recettes_nettes_millimes": 23207695
+      },
+      "Espace Kasbah Live": {
+        "billets_vendus": 536,
+        "billets_rembourses": 16,
+        "billets_nets": 520,
+        "taux_remplissage": 0.385185,
+        "recettes_billets_millimes": 24990000,
+        "remboursements_millimes": 644000,
+        "frais_distribution_millimes": 1173565,
+        "recettes_nettes_millimes": 23172435
+      },
+      "Jardin des Orangers": {
+        "billets_vendus": 536,
+        "billets_rembourses": 0,
+        "billets_nets": 536,
+        "taux_remplissage": 0.178667,
+        "recettes_billets_millimes": 32568000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 1633380,
+        "recettes_nettes_millimes": 30934620
+      },
+      "Salle Zéphyr": {
+        "billets_vendus": 387,
+        "billets_rembourses": 60,
+        "billets_nets": 327,
+        "taux_remplissage": 0.454167,
+        "recettes_billets_millimes": 13393000,
+        "remboursements_millimes": 3048000,
+        "frais_distribution_millimes": 659735,
+        "recettes_nettes_millimes": 9685265
+      },
+      "Théâtre des Jasmins": {
+        "billets_vendus": 667,
+        "billets_rembourses": 0,
+        "billets_nets": 667,
+        "taux_remplissage": 0.757955,
+        "recettes_billets_millimes": 24024000,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 1157085,
+        "recettes_nettes_millimes": 22866915
+      }
+    },
+    "par_canal": {
+      "(capacité)": {
+        "billets_vendus": 0,
+        "billets_rembourses": 0,
+        "billets_nets": 0,
+        "taux_remplissage": 0.0,
+        "recettes_billets_millimes": 0,
+        "remboursements_millimes": 0,
+        "frais_distribution_millimes": 0,
+        "recettes_nettes_millimes": 0
+      },
+      "GUI": {
+        "billets_vendus": 500,
+        "billets_rembourses": 51,
+        "billets_nets": 449,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 23161000,
+        "remboursements_millimes": 2507000,
+        "frais_distribution_millimes": 0,
+        "recettes_nettes_millimes": 20654000
+      },
+      "PAR": {
+        "billets_vendus": 410,
+        "billets_rembourses": 38,
+        "billets_nets": 372,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 20230000,
+        "remboursements_millimes": 1878000,
+        "frais_distribution_millimes": 1213800,
+        "recettes_nettes_millimes": 17138200
+      },
+      "REV": {
+        "billets_vendus": 556,
+        "billets_rembourses": 58,
+        "billets_nets": 498,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 26108000,
+        "remboursements_millimes": 2804000,
+        "frais_distribution_millimes": 2394900,
+        "recettes_nettes_millimes": 20909100
+      },
+      "WEB": {
+        "billets_vendus": 1291,
+        "billets_rembourses": 121,
+        "billets_nets": 1170,
+        "taux_remplissage": null,
+        "recettes_billets_millimes": 59586000,
+        "remboursements_millimes": 5739000,
+        "frais_distribution_millimes": 2681370,
+        "recettes_nettes_millimes": 51165630
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_canal",
+    "cle_metier": "canal_id",
+    "attribut": "frais_pour_mille",
+    "versions": [
+      {
+        "cle_metier": "GUI",
+        "attribut": "0",
+        "valid_from": "2025-09-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "PAR",
+        "attribut": "60",
+        "valid_from": "2025-11-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "REV",
+        "attribut": "90",
+        "valid_from": "2025-09-01",
+        "valid_to": "2026-07-15"
+      },
+      {
+        "cle_metier": "REV",
+        "attribut": "110",
+        "valid_from": "2026-07-15",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "WEB",
+        "attribut": "45",
+        "valid_from": "2025-09-01",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "REV",
+        "date": "2026-06-30",
+        "attribut": 90
+      },
+      {
+        "cle_metier": "REV",
+        "date": "2026-07-14",
+        "attribut": 90
+      },
+      {
+        "cle_metier": "REV",
+        "date": "2026-07-15",
+        "attribut": 110
+      },
+      {
+        "cle_metier": "WEB",
+        "date": "2026-07-15",
+        "attribut": 45
+      }
+    ]
+  },
+  "increment": {
+    "fact_billet_ajoutees": 412,
+    "fact_remboursement_ajoutees": 60,
+    "versions_scd2_ajoutees": 1,
+    "dim_evenement_ajoutees": 3,
+    "dim_date_ajoutees": 62
+  },
+  "rejeu": {
+    "etape": "rejeu",
+    "lignes_ajoutees": 0,
+    "regle": "relancer lot2 donne exactement ce fichier : mêmes tables, mêmes rejets, mêmes agrégats"
+  }
+}

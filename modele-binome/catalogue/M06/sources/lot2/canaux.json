@@ -1,0 +1,50 @@
+{
+  "source": "Contrats de distribution Dar Azur (commission en % du prix total)",
+  "extrait_le": "2026-08-31",
+  "canaux": [
+    {
+      "code": "DIR",
+      "libelle": "direct",
+      "historique": [
+        {
+          "taux_commission": 0,
+          "valide_depuis": "2025-01-01"
+        }
+      ]
+    },
+    {
+      "code": "ENT",
+      "libelle": "entreprise",
+      "historique": [
+        {
+          "taux_commission": 10.0,
+          "valide_depuis": "2025-01-01"
+        }
+      ]
+    },
+    {
+      "code": "OTA",
+      "libelle": "agence en ligne",
+      "historique": [
+        {
+          "taux_commission": 18,
+          "valide_depuis": "2025-01-01"
+        },
+        {
+          "taux_commission": 15,
+          "valide_depuis": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "code": "TOP",
+      "libelle": "tour-opérateur",
+      "historique": [
+        {
+          "taux_commission": 25,
+          "valide_depuis": "2025-01-01"
+        }
+      ]
+    }
+  ]
+}

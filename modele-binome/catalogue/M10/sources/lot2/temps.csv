@@ -1,0 +1,427 @@
+temps_id;date_travail;collaborateur;profil;projet;heures;tache
+T26-01966;2026-06-30;C02;designer;PX16;4.5;design graphique
+T26-01967;2026-06-30;C02;designer;PX05 ;2,0;maquettes
+T26-01968;2026-06-30;C03;chef de projet;PX08;8;recette
+T26-01969;2026-06-30;C05;développeur;PX05;8,0;développement
+T26-01970;2026-06-30;C08;designer;PX19;5;design graphique
+T26-01971;2026-06-30;C08;designer;PX01;3.25;maquettes
+T26-01972;2026-06-30;C09;développeur;PX05;5;correction d'anomalies
+T26-01973;2026-06-30;C09;développeur;PX05;4;développement
+T26-01974;2026-06-30;C10;consultant;PX05;4,5;conseil
+T26-01975;2026-06-30;C10;consultant;PX02;3,5;conseil
+T26-01982;2026-07-01; C01;développeur;PX05;1,5;correction d'anomalies
+T26-01983;2026-07-01;C01;développeur;PX08;1;développement
+T26-01984;2026-07-01;C02;designer;PX18;1.5;atelier client
+T26-01985;01/07/2026;C02;designer;PX06;2;atelier client
+T26-01986;2026-07-01;C03;chef de projet;PX07;8.00;recette
+T26-01987;2026-07-01;C04;consultant;PX19;3.25;atelier client
+T26-01988;2026-07-01;C04;consultant;PX03;3;conseil
+T26-01989;2026-07-01;C09;développeur;PX06;7.5;correction d'anomalies
+T26-01990;01/07/2026;C10;consultant;PX02;6.00;atelier client
+T26-01991;2026-07-01;C12;chef de projet;PX05;2,5;recette
+T26-01992;1 juillet 2026;C12;chef de projet;PX17;5;gestion de projet
+T26-01993;2026-07-01;C14;développeur;PX05;7.75;développement
+T26-01994;2026-07-02;C01;développeur;PX07;8,0;développement
+T26-01995;2026-07-02;C02;designer;PX06;4;atelier client
+T26-01996;2026-07-02;C02;designer;PX05;4;design graphique
+T26-01997;2026-07-02;C03;chef de projet;PX08;7;recette
+T26-01998;2 juillet 2026;C06;développeur;PX10;8.00;intégration
+T26-01999;2026-07-02;C07;chef de projet;PX02;8.00;gestion de projet
+T26-02000;2 juillet 2026;C09;développeur;PX02;4,0;correction d'anomalies
+T26-02001;02/07/2026;C09;développeur;PX06;3.25;développement
+T26-02002;02/07/2026;C10;consultant;PX02;8;conseil
+T26-02003;2026-07-02;C12;chef de projet;PX17;6;réunion client
+T26-02004;2 juillet 2026;C13;développeur;PX02;7;correction d'anomalies
+T26-02005;2026-07-03;C01;développeur;PX08;6.00;développement
+T26-02006;2026-07-03;C03;chef de projet;PX12;7.75;recette
+T26-02007;03/07/2026;C06;développeur;PX05;3.00;correction d'anomalies
+T26-02008;2026-07-03;C06;développeur;Px06;5;recette
+T26-02009;3 juillet 2026;C08;designer;PX05;8.00;atelier client
+T26-02010;2026-07-03;C09;développeur;PX02;8.00;développement
+T26-02011;2026-07-03;C10;consultant;PX05;7,0;rédaction des spécifications
+T26-02012;2026-07-03;C12;chef de projet;PX11;3,5;recette
+T26-02013;2026-07-03;C12;chef de projet;PX15;4;gestion de projet
+T26-02014;2026-07-03;C14;développeur;PX05;1.50;intégration
+T26-02015;2026-07-03;C14;développeur;PX04;4.00;développement
+T26-02016;2026-07-03;C15;consultant;PX13;8;atelier client
+T26-02017;06/07/2026;C04;consultant;PX03;7,75;rédaction des spécifications
+T26-02018;2026-07-06;C05;développeur;PX07;7,75;intégration
+T26-02019;2026-07-06;C06;développeur;PX07;3.25;recette
+T26-02020;2026-07-06;C06;développeur;PX07;3,0;recette
+T26-02021;2026-07-06;C08;designer; PX01;3.00;design graphique
+T26-02022;06/07/2026;C08;designer;PX05;2.5;maquettes
+T26-02023;06/07/2026;C10;consultant;PX02 ;1;conseil
+T26-02024;2026-07-06;C10;consultant;PX02;2,5;conseil
+T26-02025;2026-07-06;C11;designer;PX05;6.00;atelier client
+T26-02026;6 juillet 2026;C12;chef de projet;PX15;7.5;recette
+T26-02027;2026-07-06;C13;développeur;PX01;3;intégration
+T26-02028;2026-07-06;C13;développeur;PX02;3,5;développement
+T26-02029;6 juillet 2026;C15;consultant;PX08;7.75;rédaction des spécifications
+T26-02030;7 juillet 2026;C01;développeur;PX07;8;intégration
+T26-02031;2026-07-07;C05;développeur;PX05;8.00;développement
+T26-02032;07/07/2026;C06;développeur;PX05;1,5;recette
+T26-02033;7 juillet 2026;C06;développeur;PX07;3;développement
+T26-02034;2026-07-07;C07;chef de projet;PX02;2;réunion client
+T26-02035;2026-07-07;C07;chef de projet;PX10;3;réunion client
+T26-02036;07/07/2026;C08;designer;PX19;6;atelier client
+T26-02037;07/07/2026; c11 ;designer;PX15;7.5;maquettes
+T26-02038;2026-07-07;C13;développeur;PX02;8;recette
+T26-02039;2026-07-07;C15;consultant;PX15;6;atelier client
+T26-02040;2026-07-08;C01;développeur;PX03;8.00;intégration
+T26-02041;2026-07-08;C02;designer;PX16;7.75;design graphique
+T26-02028;2026-07-06;C13;développeur;PX02;3,5;développement
+T26-02042;08/07/2026;C04;consultant;PX07;3.25;atelier client
+T26-02043;2026-07-08;C04;consultant;PX07;4;rédaction des spécifications
+T26-02010;2026-07-03;C09;développeur;PX02;8.00;développement
+T26-02044;2026-07-08;C05;développeur;PX07;5,0;développement
+T26-02045;2026-07-08;C05;développeur;PX04;1;développement
+T26-02046;08/07/2026;C08;designer;PX05;7,75;design graphique
+T26-02047;2026-07-08;C13;développeur;PX02;3;intégration
+T26-02048;2026-07-08;C13;développeur;PX02;3,25;intégration
+T26-02049;2026-07-08;C14;développeur;PX04;1;recette
+T26-02050;2026-07-08;C14;développeur;PX04;5;recette
+T26-02051;2026-07-08;C15;consultant;PX08;3;atelier client
+T26-02052;08/07/2026;C15;consultant;PX15 ;2.5;atelier client
+T26-02053;2026-07-09;C03;chef de projet;PX01;7.5;réunion client
+T26-02054;2026-07-09;C09;développeur;PX06;7,5;correction d'anomalies
+T26-02055;09/07/2026;C11;designer;PX05;2;design graphique
+T26-02056;2026-07-09;C11;designer;PX05;4;design graphique
+T26-02057;2026-07-09;C13;développeur; PX02;3.25;intégration
+T26-02058;09/07/2026;C13;développeur;PX07;2,5;recette
+T26-02059;2026-07-10;C05;développeur;PX05;3;recette
+T26-02060;2026-07-10;C05;développeur;PX07;2.50;développement
+T26-02061;10/07/2026;C08;designer;PX19;1.00;maquettes
+T26-02062;10 juillet 2026;C08;designer;PX05;4.5;maquettes
+T26-02063;2026-07-10;C09;développeur;PX02;3,5;développement
+T26-02064;2026-07-10;C09;développeur;PX02;5;développement
+T26-02065;2026-07-10;C10;consultant;INT01;7,5;formation
+T26-02066;2026-07-10;C13;développeur;PX02;8;correction d'anomalies
+T26-02067;2026-07-13;C01;développeur;PX08;8;développement
+T26-02068;2026-07-13;C05;développeur;PX05;7;correction d'anomalies
+T26-02069;2026-07-13;C06;développeur;PX07;3.25;développement
+T26-02070;2026-07-13;C06;développeur;PX07;2,5;développement
+T26-02071;2026-07-13;C07;chef de projet;PX10;5;réunion client
+T26-02072;13/07/2026;C07;chef de projet;PX19;4;réunion client
+T26-02073;2026-07-13;C09;développeur;PX02;6;recette
+T26-02074;2026-07-13;C15;consultant;PX19;3.5;atelier client
+T26-02075;2026-07-13;C15;consultant;PX13;3,5;atelier client
+T26-02076;2026-07-14;C01;développeur;PX05;4.5;intégration
+T26-02077;14/07/2026;C01;développeur;PX08;1,0;développement
+T26-02078;2026-07-14;C03;chef de projet;PX07;7.5;réunion client
+T26-02079;2026-07-14;C04;consultant;PX11 ;8,0;atelier client
+T26-02080;14/07/2026;C05;développeur;PX07;2.5;intégration
+T26-02081;2026-07-14;C05;développeur;PX07;2.5;intégration
+T26-02082;2026-07-14; C08;designer;PX05;8.00;maquettes
+T26-02083;2026-07-14;C09;développeur;PX05;1.50;recette
+T26-02084;2026-07-14;C09;développeur;PX02;1.5;intégration
+T26-02085;2026-07-14;C11;designer;PX07;8;atelier client
+T26-02086;2026-07-14;C12;chef de projet;PX09;3.25;gestion de projet
+T26-02087;2026-07-14;C12;chef de projet;PX04;1,0;gestion de projet
+T26-02088;14 juillet 2026;C14;développeur;PX04;4.00;développement
+T26-02089;2026-07-14;C14;développeur;PX05;2.5;développement
+T26-02090;2026-07-14;C15;consultant;PX13;7.75;atelier client
+T26-02091;2026-07-15;C01;développeur;PX08;4;correction d'anomalies
+T26-02092;15 juillet 2026;C01;développeur;PX05;4;développement
+T26-02093;2026-07-15;C02;designer;PX16;7.5;atelier client
+T26-02094;2026-07-15;C05;développeur;PX07;7.75;développement
+T26-02095;2026-07-15;C09;développeur;PX17;1;développement
+T26-02096;2026-07-15;C09;développeur;PX05;4.5;développement
+T26-02097;2026-07-15;C10;consultant;PX16;7,5;rédaction des spécifications
+T26-02098;2026-07-15;C11;designer;PX07;7.5;maquettes
+T26-02099;2026-07-15;C12;chef de projet;INT01;7.75;formation
+T26-02100;2026-07-15;C15;consultant;INT01;7,0;formation
+T26-02101;16/07/2026;C02;designer;PX06;7.00;design graphique
+T26-02102;2026-07-16;C07;chef de projet;PX02;8;recette
+T26-02103;2026-07-16;C09;développeur;PX17;7,0;recette
+T26-02104;2026-07-16;C15;consultant;PX15;4;atelier client
+T26-02105;2026-07-16;C15;consultant;PX15;3;rédaction des spécifications
+T26-02106;2026-07-17;C02;designer;PX05;3.50;maquettes
+T26-02107;2026-07-17;C02;designer;PX06;4.00;maquettes
+T26-02108;2026-07-17;C04;consultant;PX03;4.5;atelier client
+T26-02109;2026-07-17;C04;consultant;PX11;3.00;rédaction des spécifications
+T26-02110;17/07/2026;C06;développeur;PX10;7.5;développement
+;2026-07-14;C03;chef de projet;PX07;7.5;réunion client
+T26-80006;2026-07-13;C06;développeur;PX07;-0.5;développement
+T26-02111;2026-07-17;C10;consultant;PX05;6;rédaction des spécifications
+T26-02112;2026-07-17;C11;designer;PX05;4,5;design graphique
+T26-02113;17 juillet 2026;C11;designer;PX05;4,0;atelier client
+T26-02114;17 juillet 2026;C12;chef de projet;INT01;6;avant-vente
+T26-02115;2026-07-17;C14;développeur;PX13;8;intégration
+T26-02116;2026-07-20;C01;développeur;PX05;4;intégration
+T26-02117;2026-07-20;C01;développeur;PX07;3,5;développement
+T26-02118;2026-07-20;C04;consultant;PX19;7;rédaction des spécifications
+T26-80001;2026-07-28;C04;consultant;PX03;2;rédaction des spécifications
+T26-02119;2026-07-20;C07;chef de projet;PX10;7;réunion client
+T26-02120;2026-07-20;C08;designer;PX19;1,5;design graphique
+T26-02121;20 juillet 2026;C08;designer;PX15;3;maquettes
+T26-02122;2026-07-20;C15;consultant;PX08;7;atelier client
+T26-02123;2026-07-21;C01;développeur;PX07 ;7.75;développement
+T26-80004;2026-07-07;C16;développeur;Px05;8;développement
+T26-02124;21 juillet 2026;C02;designer;PX05;7;atelier client
+T26-02125;2026-07-21;C07;chef de projet;PX16;3;gestion de projet
+T26-02126;2026-07-21;C07;chef de projet;PX06;1.5;réunion client
+T26-02127;2026-07-21;C08;designer;PX05;7.5;atelier client
+T26-02128;21/07/2026;C09;développeur; PX05;6,0;développement
+T26-02129;21 juillet 2026;C12;chef de projet;PX09;7;réunion client
+T26-02130;21/07/2026;C14;développeur;PX04;7;correction d'anomalies
+T26-02131;2026-07-22;C01;développeur; PX03;8.00;correction d'anomalies
+T26-02132;2026-07-22;C04;consultant;PX07;8;atelier client
+T26-02133;2026-07-22;C05;développeur;PX07;8.00;développement
+T26-02134;2026-07-22;C08;designer;PX15;8,0;atelier client
+T26-80001;28/07/2026;C04;consultant;PX03;2.5;rédaction des spécifications
+T26-02135;22 juillet 2026;C09;développeur;PX06;6;intégration
+T26-02136;2026-07-22;C10;consultant;PX02;3.25;atelier client
+T26-02137;2026-07-22;C10;consultant;PX05;3.25;rédaction des spécifications
+T26-80005;16 juillet 2026;C02;designer;PX06;0;design graphique
+T26-02138;2026-07-22;C11;designer;PX15 ;7,5;design graphique
+T26-02139;2026-07-22;C13;développeur;PX19;8;correction d'anomalies
+T26-02140;2026-07-23;C08;designer;PX05;8;design graphique
+T26-02141;2026-07-23;C10;consultant;PX05;6;atelier client
+T26-02142;2026-07-23;C12;chef de projet;PX05;6,0;gestion de projet
+T26-02143;2026-07-23;C13;développeur;PX01;7.50;développement
+T26-02144;2026-07-23;C14;développeur;PX05;2.5;correction d'anomalies
+T26-02145;2026-07-23;C14;développeur;PX04;3,5;correction d'anomalies
+T26-02146;2026-07-24;C01;développeur;PX07;3;développement
+T26-02147;2026-07-24;C01;développeur;INT01;3.5;formation
+T26-02148;2026-07-24;C02;designer;PX16;2.5;atelier client
+T26-02149;24/07/2026;C02;designer;px05;4;design graphique
+T26-02150;2026-07-24;C05;développeur;PX07;2;recette
+T26-02151;2026-07-24;C05;développeur;PX05;3.5;développement
+T26-02152;2026-07-24;C10;consultant;PX02;4.5;atelier client
+T26-02153;2026-07-24;C10;consultant;PX05;4;conseil
+T26-02154;2026-07-24;C12;chef de projet;PX17;6;réunion client
+T26-02155;24 juillet 2026;C13;développeur;PX02;8,0;développement
+T26-02156;2026-07-24;C15;consultant;PX15;7;rédaction des spécifications
+T26-02157;2026-07-27;C02;designer;PX05;5.00;design graphique
+T26-02158;2026-07-27;C02;designer;PX05;1.5;atelier client
+T26-02159;2026-07-27;C04;consultant;PX03;7.50;atelier client
+T26-02160;2026-07-27;C07;chef de projet;PX02;7.75;recette
+T26-02161;2026-07-27;C08;designer;PX15;7;design graphique
+T26-02162;2026-07-27;C09;développeur;PX02;3.5;intégration
+T26-02163;27/07/2026;C09;développeur;PX05;1,0;développement
+T26-02164;27/07/2026;C10;consultant;PX16;7,0;conseil
+T26-02165;27 juillet 2026;C11;designer;PX06;6;maquettes
+T26-02166;2026-07-27;C14;développeur;PX09;4,0;correction d'anomalies
+T26-02167;27 juillet 2026;C14;développeur;PX09;2;développement
+T26-02168;2026-07-28;C04;consultant;PX03;2;rédaction des spécifications
+T26-02169;2026-07-28;C04;consultant;PX11;4;conseil
+T26-02170;28/07/2026;C06;développeur;PX05;3.5;correction d'anomalies
+T26-02171;2026-07-28;C06;développeur;PX05;1;développement
+T26-02172;2026-07-28;C09;développeur;PX06;2.5;recette
+T26-02173;28/07/2026;C09;développeur;PX05;3;développement
+T26-02174;2026-07-28;C10;consultant;PX02;1;rédaction des spécifications
+T26-02175;2026-07-28;C10;consultant;PX05;4;conseil
+T26-02176;2026-07-29;C02;designer;PX05;3.00;design graphique
+T26-02177;2026-07-29;C02;designer;PX06;2,5;atelier client
+T26-02178;29/07/2026;C08;designer;PX05;7.75;atelier client
+T26-02179;2026-07-29;C15;consultant;PX19;7.75;atelier client
+T26-02146;2026-07-24;C01;développeur;PX07;3;développement
+T26-02180;30 juillet 2026; C06;développeur;PX05;7.75;développement
+T26-80002;2026-07-27;C99;designer;PX05;1.5;atelier client
+T26-02181;2026-07-30;C07;chef de projet;PX16;7;réunion client
+T26-02182;2026-07-30;C10;consultant;PX02;8;conseil
+T26-02183;30 juillet 2026;C11;designer;PX05;8;design graphique
+T26-02184;30 juillet 2026;C13;développeur;PX07;5;recette
+T26-02185;2026-07-30;C13;développeur;PX02;2,5;développement
+T26-02186;2026-07-30;C14;développeur;PX05;7.5;développement
+T26-02187;2026-07-30;C15;consultant;PX08;8;rédaction des spécifications
+T26-02188;2026-07-31;C01;développeur;PX07;7.5;développement
+T26-02189;2026-07-31; C02;designer;PX16;7;atelier client
+T26-02190;31/07/2026;C03;chef de projet;PX18;7.00;réunion client
+T26-02191;31 juillet 2026;C04;consultant;PX03;7,75;rédaction des spécifications
+T26-02192;2026-07-31;C06;développeur;PX05;6.00;recette
+T26-02193;2026-07-31;C08;designer;px15;4.00;design graphique
+T26-02194;2026-07-31;C08;designer;PX05;1;atelier client
+T26-02195;2026-07-31;C09;développeur;PX06;8;développement
+T26-02196;2026-07-31;C12;chef de projet;PX15;3,25;réunion client
+T26-02197;2026-07-31;C12;chef de projet;PX05;3;réunion client
+T26-02198;2026-07-31;C14;développeur;PX13;2.5;développement
+T26-02199;31 juillet 2026;C14;développeur;PX09;1.5;intégration
+T26-02200;2026-08-03;C06;développeur;PX07;8,0;correction d'anomalies
+T26-02201;2026-08-03;C07;chef de projet;PX06;7,5;gestion de projet
+T26-02202;2026-08-03;C08;designer;PX01;7,5;maquettes
+T26-02203;03/08/2026;C09 ;développeur;PX05;8;développement
+T26-02204;2026-08-03;C10;consultant;INT01;1,5;formation
+T26-02205;03/08/2026;C10;consultant;PX16;3;conseil
+T26-02206;2026-08-03;C13;développeur;PX02;8;recette
+T26-02207;2026-08-03; c14 ;développeur;PX04;8;développement
+T26-02208;2026-08-04;C01;développeur;PX05;1.5;recette
+T26-02209;2026-08-04;C01;développeur;PX08;4;correction d'anomalies
+T26-02210;2026-08-04;C04;consultant;PX03;8;rédaction des spécifications
+T26-02211;4 août 2026;C07;chef de projet;PX02;3.5;recette
+T26-02212;2026-08-04;C07;chef de projet;PX16;3,5;gestion de projet
+T26-02213;2026-08-04;C08;designer;PX15;8,0;design graphique
+T26-02214;4 août 2026;C09;développeur;PX05;7.50;recette
+T26-02215;2026-08-04;C12;chef de projet;PX04;6;réunion client
+T26-02216;2026-08-04;C15;consultant;INT01;3.00;formation
+T26-02217;2026-08-04;C15;consultant;INT01;3.25;avant-vente
+T26-02218;2026-08-05;C01;développeur;PX03;7.5;développement
+T26-02219;5 août 2026;C02;designer;PX16;3;atelier client
+T26-02220;5 août 2026;C02;designer;PX16;2.5;maquettes
+T26-02221;2026-08-05;C03;chef de projet;PX07;6;recette
+T26-02222;05/08/2026;C05;développeur;PX07;8;intégration
+T26-02223;05/08/2026;C06;développeur;PX05;8,0;recette
+T26-02224;2026-08-05;C07;chef de projet;PX06;8,0;gestion de projet
+T26-02225;2026-08-05;C08;designer;PX15;7.5;design graphique
+T26-02226;2026-08-05;C09;développeur;PX02;7.5;intégration
+;8 juillet 2026;C02;designer;PX16;7.75;design graphique
+T26-02227;2026-08-05;C10;consultant;PX04;3;rédaction des spécifications
+T26-02228;05/08/2026;C10;consultant;PX04;3.25;conseil
+T26-80003;2026-08-21;C11;designer;PX00;1;atelier client
+T26-02229;2026-08-05;C11;designer;PX05;2;maquettes
+T26-02230;2026-08-05;C11;designer;PX07;1;design graphique
+T26-02231;2026-08-05;C13;développeur;PX07;8;développement
+T26-02232;05/08/2026;C14;développeur;PX04;6;développement
+T26-02233;5 août 2026;C15;consultant;PX08;2;rédaction des spécifications
+T26-02234;2026-08-05;C15;consultant;PX15;4;atelier client
+T26-02235;2026-08-06;C02;designer;PX16;6;atelier client
+T26-02236;2026-08-06;C04;consultant;PX19;7.5;conseil
+T26-02237;2026-08-06;C05;développeur;PX07;7.75;correction d'anomalies
+T26-02238;6 août 2026;C08;designer;PX01;7.75;maquettes
+T26-02239;2026-08-06;C10;consultant;PX02;1.5;conseil
+T26-02240;06/08/2026;C10;consultant;PX05;2.5;conseil
+T26-02241;2026-08-06;C11;designer;PX15;8.00;atelier client
+T26-02242;6 août 2026;C14;développeur;PX13;8.00;correction d'anomalies
+T26-02243;06/08/2026;C15;consultant;PX15;4,5;conseil
+T26-02244;2026-08-06;C15;consultant;PX15;4;rédaction des spécifications
+T26-02245;7 août 2026;C01;développeur;PX05;8;recette
+T26-02246;07/08/2026;C04;consultant;PX19;5;rédaction des spécifications
+T26-02247;2026-08-07;C04;consultant;PX03;4;conseil
+T26-02248;2026-08-07;C05;développeur;PX04;3.25;développement
+T26-02249;2026-08-07;C05;développeur;PX07;4.5;correction d'anomalies
+T26-02250;2026-08-07;C06;développeur;PX07;8;intégration
+T26-02251;7 août 2026;C07;chef de projet;PX10;7.75;recette
+T26-02252;2026-08-07;C11;designer;PX06;7;design graphique
+T26-02253;7 août 2026;C14;développeur;PX09;7.5;intégration
+T26-02254;2026-08-10;C03;chef de projet;PX08;4;réunion client
+T26-02255;2026-08-10;C03;chef de projet;PX03;3.25;recette
+T26-02256;2026-08-10;C04;consultant;PX07;4.5;atelier client
+T26-02257;2026-08-10;C04;consultant;PX07;2.5;atelier client
+T26-02258;10 août 2026;C05;développeur;PX07;8;recette
+T26-02259;10/08/2026;C07;chef de projet;PX19;6.00;réunion client
+T26-02260;10 août 2026;C08;designer;PX05;6;maquettes
+T26-02261;10/08/2026;C10;consultant;PX16;8;atelier client
+T26-02262;2026-08-10;C11;designer;PX05;6;design graphique
+T26-02263;10/08/2026;C14;développeur;PX04;7;correction d'anomalies
+T26-02264;10 août 2026;C15;consultant;PX15;7.75;rédaction des spécifications
+T26-02265;2026-08-11;C01;développeur;PX08;6;intégration
+T26-02266;2026-08-11;C02;designer;PX05;8;atelier client
+T26-02267;11 août 2026;C03;chef de projet;PX01;4;réunion client
+T26-02268;2026-08-11;C03;chef de projet;PX08;3.5;recette
+T26-02269;2026-08-11;C04;consultant;PX11;4;conseil
+T26-02270;2026-08-11;C04;consultant;INT01;1,5;avant-vente
+T26-02271;2026-08-11;C06;développeur;PX07;8;intégration
+T26-02272;2026-08-11;C07;chef de projet;PX02;7.5;réunion client
+T26-02273;2026-08-11;C10;consultant;PX16;6,0;atelier client
+T26-02274;2026-08-11;C11;designer;PX05;2.5;design graphique
+T26-02275;2026-08-11;C11;designer;PX15;1.5;maquettes
+T26-02276;11 août 2026;C14;développeur;PX09;4;développement
+T26-02277;11 août 2026;C14;développeur;PX04;3.50;développement
+T26-02278;2026-08-11;C15;consultant;PX08;3;atelier client
+T26-02279;2026-08-11;C15;consultant;PX19;3,25;atelier client
+T26-02280;2026-08-12;C05;développeur;PX07;6;développement
+T26-02281;12 août 2026;C10;consultant;PX02;2;conseil
+T26-02282;2026-08-12; c10 ;consultant;PX04;4;rédaction des spécifications
+T26-02283;2026-08-12;C14;développeur;PX13;8;intégration
+T26-02284;2026-08-14;C01;développeur;PX07;3.50;intégration
+T26-02285;2026-08-14;C01;développeur;PX03;2,5;recette
+T26-02286;2026-08-14;C02;designer;PX06;7,5;atelier client
+T26-02287;2026-08-14;C04 ;consultant;PX11;7.75;rédaction des spécifications
+T26-02288;2026-08-14;C07;chef de projet;PX06;6;réunion client
+T26-02289;2026-08-14;C09;développeur;PX06;8;développement
+T26-02290;14/08/2026;C10;consultant;PX05;7.5;atelier client
+T26-02291;2026-08-14;C11;designer;PX05;8;design graphique
+T26-02292;14/08/2026;C12;chef de projet;PX15;3.25;recette
+T26-02293;2026-08-14;C12;chef de projet;PX15;2;recette
+T26-02294;14/08/2026;C14;développeur;PX04;8;intégration
+T26-02295;2026-08-14;C15;consultant;PX19;1;rédaction des spécifications
+T26-02296;2026-08-14;C15;consultant;PX19;2,5;atelier client
+T26-02297;17/08/2026;C04;consultant;PX03;1,5;conseil
+T26-02298;2026-08-17;C04;consultant;PX03;4,5;rédaction des spécifications
+T26-02299;2026-08-17;C05;développeur;PX03;7.75;intégration
+T26-02300;2026-08-17;C06;développeur;PX06;7.5;développement
+T26-02301;2026-08-17;C10;consultant;PX02;1.5;conseil
+T26-02302;2026-08-17;C10;consultant;PX02;4,5;conseil
+T26-02303;17/08/2026;C11;designer;PX07;7.75;maquettes
+T26-02304;2026-08-17;C14;développeur;PX13;7.75;correction d'anomalies
+T26-02305;18 août 2026;C01;développeur;PX05;6.00;recette
+T26-02306;2026-08-18; C02;designer;PX05;3.25;atelier client
+T26-02307;2026-08-18;C02;designer;PX06;1.00;atelier client
+T26-02308;2026-08-18;C04;consultant;PX11;7.5;rédaction des spécifications
+T26-02309;2026-08-18;C11;designer;PX07;6;atelier client
+T26-02310;2026-08-18;C13;développeur;PX19;8;développement
+T26-02311;2026-08-18;C14;développeur;PX04;7.75;correction d'anomalies
+T26-02312;2026-08-19;C02;designer;PX05;8;design graphique
+T26-02313;2026-08-19;C05;développeur;PX04;7;développement
+T26-02314;2026-08-19;C06;développeur;PX07;8;intégration
+T26-02315;2026-08-19;C08;designer;PX19;7;atelier client
+T26-02316;19/08/2026;C09;développeur;PX06;6.00;correction d'anomalies
+T26-02317;2026-08-20;C01;développeur;PX03;6;développement
+T26-02318;20/08/2026;C02;designer;PX05;1.5;atelier client
+T26-02319;20/08/2026;C02;designer;PX06;4;maquettes
+T26-02320;20/08/2026;C06;développeur;PX06;7;développement
+T26-02321;20/08/2026;C07;chef de projet;PX06;6;réunion client
+T26-02322;2026-08-20;C08;designer;PX01;6;design graphique
+T26-02323;2026-08-20;C09;développeur;PX06;8;intégration
+T26-02324;2026-08-20;C11;designer;PX07;8;design graphique
+T26-02325;2026-08-20;C12;chef de projet;px05;7.75;gestion de projet
+T26-02326;2026-08-20;C13;développeur;PX01;8;développement
+T26-80007;2026-08-10;C03;chef de projet;PX08;-2;réunion client
+T26-02327;20 août 2026;C15;consultant;PX13;2;conseil
+T26-02328;2026-08-20; C15;consultant;PX15;3.5;atelier client
+T26-02329;2026-08-21;c02;designer;PX06;7.50;maquettes
+T26-02330;2026-08-21;C04;consultant;PX03;7;rédaction des spécifications
+T26-02331;2026-08-21;C07;chef de projet;PX19;2;réunion client
+T26-02332;2026-08-21;C07;chef de projet;PX10;2.00;recette
+T26-02333;2026-08-21;C11;designer;PX05;1.00;atelier client
+T26-02334;2026-08-21;C11;designer;PX06;2;atelier client
+T26-02335;24/08/2026;C01;développeur;PX07;3;correction d'anomalies
+T26-02336;24 août 2026;C01;développeur;PX07;1.00;développement
+T26-02337;24/08/2026;C06;développeur;PX05;5;intégration
+T26-02338;2026-08-24;C06;développeur;PX07;3.25;développement
+T26-02339;24 août 2026;c14;développeur;PX04;2.5;développement
+T26-02340;2026-08-24; c14 ;développeur;PX05;2.00;développement
+T26-02341;25 août 2026; c04 ;consultant;PX03;7;rédaction des spécifications
+T26-02342;2026-08-25;C05;développeur;PX07;7;développement
+T26-02343;2026-08-25;C07;chef de projet;PX06;7,5;gestion de projet
+T26-02344;25 août 2026;C11;designer;PX07;7;design graphique
+T26-02345;2026-08-25;C13;développeur;PX01;5;recette
+T26-02346;25/08/2026;C13;développeur;PX19;4.5;recette
+T26-02347;25/08/2026;C15 ;consultant;PX19;7.50;rédaction des spécifications
+T26-02348;26/08/2026;C01;développeur;PX05;2.50;recette
+T26-02349;2026-08-26;C01;développeur;PX05;4,0;développement
+T26-02350;26 août 2026;C02;designer;PX05;7.75;maquettes
+T26-02351;26/08/2026;C05;développeur;PX05;6;développement
+T26-02352;2026-08-26;C06;développeur;PX07;8;recette
+T26-02353;2026-08-26;C07;chef de projet;PX06;3;recette
+T26-02354;2026-08-26;C07;chef de projet;PX13;3.5;recette
+T26-02355;2026-08-26;C08 ;designer;PX01;7.75;design graphique
+T26-02356;2026-08-26;C09;développeur;PX02;8;correction d'anomalies
+T26-02357;2026-08-26;C10;consultant;PX05;7,75;atelier client
+T26-02358;2026-08-26;C15;consultant;PX08;8.00;rédaction des spécifications
+T26-02359;2026-08-27;C03;chef de projet;PX14;7.5;réunion client
+T26-02360;2026-08-27;C05;développeur;PX04;7.5;développement
+T26-02361;2026-08-27;C08 ;designer;PX19;3.5;atelier client
+T26-02362;27/08/2026;C08;designer;PX01;3,5;maquettes
+T26-02363;2026-08-27;C10;consultant;PX04;6;rédaction des spécifications
+T26-02364;27 août 2026;C12;chef de projet;PX15;2.5;gestion de projet
+T26-02365;27/08/2026;C12;chef de projet;PX17;3.25;gestion de projet
+T26-02366;27 août 2026;C15;consultant;PX19;8;atelier client
+T26-02367;2026-08-28;C01;développeur;PX07;7;recette
+T26-02368;2026-08-28;C07;chef de projet;PX19;8.00;gestion de projet
+T26-02369;2026-08-28;C09;développeur;PX02;4;intégration
+T26-02370;2026-08-28;C09;développeur;PX02;5,0;intégration
+T26-02371;2026-08-28;C11;designer;PX05;3.25;design graphique
+T26-02372;28/08/2026;C11;designer;PX05 ;2.5;atelier client
+T26-02373;2026-08-28;C12;chef de projet;PX11;7.5;recette
+T26-02374;28/08/2026;C14;développeur;PX04;7.00;développement
+T26-02375;2026-08-31;C01;développeur;PX07;7;correction d'anomalies
+T26-02376;2026-08-31;C06;développeur;PX05;7.75;développement
+T26-02377;2026-08-31; C08;designer;INT01;3;avant-vente
+T26-02378;2026-08-31;C08;designer;PX05;3.25;atelier client
+T26-02379;2026-08-31;C09;développeur;PX06;5,0;intégration
+T26-02380;31/08/2026;C09;développeur;PX05;3.5;recette
+T26-02381;31/08/2026;C12;chef de projet;PX11;8.00;réunion client
+T26-02382;2026-08-31;C13;développeur;PX01;8.00;développement
+T26-02383;31 août 2026; c14 ;développeur;PX09;8,0;développement
+T26-02384;2026-08-31;C15;consultant;INT01;7.5;formation

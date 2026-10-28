@@ -63,7 +63,7 @@ SPEC_TEXTES = dict(
             ColonneSource("prix_unitaire_negocie", "texte", "Prix négocié d'un carton en TND, formats variés.", "18,280"),
             ColonneSource("commercial", "texte", "Prénom du commercial (avec accents).", "Sélima"),
         ], ["formats de prix et de dates mélangés", "doublons", "identifiants vides ou en conflit",
-            "codes inconnus", "quantités invalides", "lot2 : recopie des lignes du 30 juin"]),
+            "codes inconnus", "quantités invalides", "lot2 : recopie des dernières factures du 30 juin"]),
         Source("couts.xlsx", "excel", "Feuille `Articles` (en-têtes à la ligne 3) + feuille `Familles`.", [
             ColonneSource("Code article", "texte", "Code produit (une cellule mal saisie).", " pr07"),
             ColonneSource("Désignation", "texte", "Nom et conditionnement.", "Huile végétale — bidon 5 L"),
@@ -122,7 +122,9 @@ SPEC_TEXTES = dict(
               faits=[("fact_facture", "client_key", "date_key"), ("fact_avoir", "client_key", "date_facture_key")],
               frontieres=[("CL04", "2026-06-30"), ("CL04", "2026-07-14"), ("CL04", "2026-07-15"), ("CL05", "2026-07-15")],
               changement="Le client CL04 (Supérette El Amel) passe du segment « épicerie » au segment « grande "
-                         "surface » le 2026-07-15 (inclus). Cette information arrive avec `lot2/clients.json`."),
+                         "surface » le 2026-07-15 (inclus). Cette information arrive avec `lot2/clients.json`.",
+              precisions=["**Pour un avoir, la date qui choisit la version est la date de sa facture d'origine** "
+                          "(`fact_avoir.date_facture_key`), pas la date de l'avoir (voir § 12)."]),
     regles=[
         ("Doublon exact", "la même ligne deux fois", "garder une seule occurrence (pas un rejet)"),
         ("Doublon d'identifiant", "`F26-90003-9` deux fois avec des quantités différentes",
@@ -138,7 +140,7 @@ SPEC_TEXTES = dict(
         ("Quantité invalide", "`-2`, `0`, `1.5`, `2,5`", "rejet `quantite_invalide`"),
         ("Encodage", "`Sélima`, `Hédi`, `Supérette`", "lire les fichiers en UTF-8"),
         ("Avoir non émis", "`statut` = `ANNULE` ou `BROUILLON`", "ignorer (ce n'est pas un rejet)"),
-        ("Ligne déjà chargée", "lot2 recopie les lignes du 30 juin", "ignorer : la clé métier existe déjà"),
+        ("Ligne déjà chargée", "lot2 recopie les dernières factures du 30 juin", "ignorer : la clé métier existe déjà"),
     ],
     motifs=dict(MOTIFS_STANDARD),
     ordre_controles=[
@@ -216,7 +218,7 @@ SPEC_TEXTES = dict(
     sources_rejets={"factures": "factures.csv", "avoirs": "avoirs.sqlite"},
 )
 
-# Compléments du cahier des charges (le cadre commun n'y écrit pas les variantes ni le parcours de démonstration).
+# Parcours de démonstration détaillé et décision attendue (écrits par common.doc_cahier / doc_fiche).
 PARCOURS_DEMO = [
     ("Vue direction", "Montrer les six indicateurs sur toute la période, puis lire le graphique ventes nettes par "
                       "mois et par segment. Choisir le filtre Produit = `PR03` (huile végétale), puis Client = "
@@ -233,3 +235,11 @@ QUESTION_DECISION = (
     "les clients et les produits par marge commerciale et par taux de marge (marge / ventes nettes), repérez ceux "
     "dont le taux d'avoir est le plus haut, et proposez à la direction **une** action chiffrée (par exemple : "
     "revoir le prix négocié d'un produit pour un client, ou traiter la cause des avoirs d'une famille).")
+
+SPEC_TEXTES["regle_a_clarifier"]["consequence"] = (
+    "Conséquence dans l'entrepôt : `fact_avoir.client_key` = `client_key` de la ligne de facture ; "
+    "`fact_avoir.date_key` = date de l'avoir (mois de l'avoir) ; `fact_avoir.date_facture_key` = date de la facture "
+    "(contrôle SCD2).")
+SPEC_TEXTES["parcours_app"] = "Démonstration conseillée :\n\n" + "\n".join(
+    f"{k}. **{t}** — {c}" for k, (t, c) in enumerate(PARCOURS_DEMO, 1))
+SPEC_TEXTES["question_decision"] = QUESTION_DECISION

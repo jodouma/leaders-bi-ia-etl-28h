@@ -38,7 +38,7 @@ SERIES = ["#2B3180", "#FF9A3C", "#07152F", "#8A90D6", "#C96A12", "#5A5F8F"]
 MOIS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
            "août", "septembre", "octobre", "novembre", "décembre"]
 DATE_FIXE = datetime(2026, 10, 28, 9, 0, 0)
-TAILLE_MAX_MISSION = 2 * 1024 * 1024
+TAILLE_MAX_MISSION = 1_500_000                  # contrat de l'édition : dossier de mission < 1,5 Mo
 
 
 def rng_mission(graine: int) -> random.Random:
@@ -127,6 +127,30 @@ def pct_fr(x: float, dec: int = 2) -> str:
     return f"{x * 100:.{dec}f}".replace(".", ",") + " %"
 
 
+def _decimal_fr(x: float, dec: int) -> str:
+    return f"{x:,.{dec}f}".replace(",", " ").replace(".", ",")
+
+
+def jours_fr(x: float, dec: int = 2) -> str:
+    return _decimal_fr(x, dec) + " jours"
+
+
+def heures_fr(x: float, dec: int = 2) -> str:
+    return _decimal_fr(x, dec) + " h"
+
+
+# Unités d'indicateur : millimes (TND) · ratio (affiché en %) · nombre · jours / heures (nombres décimaux,
+# comparés avec la tolérance du contrat) · centiemes_heure (entier, 750 = 7,5 h).
+UNITES_FLOTTANTES = ("ratio", "jours", "heures")
+UNITES_DOC = {"millimes": "TND", "jours": "jours, nombre décimal", "heures": "heures, nombre décimal",
+              "centiemes_heure": "centièmes d'heure, 750 = 7,5 h"}
+
+
+def unite_doc(unite: str) -> str:
+    """Libellé d'unité dans les documents (ratio et nombre restent écrits tels quels)."""
+    return UNITES_DOC.get(unite, unite)
+
+
 def variante_code(code: str, rng: random.Random) -> str:
     return rng.choice([f" {code.lower()} ", code.lower(), code.capitalize(), f"{code} ", f" {code}"])
 
@@ -135,10 +159,10 @@ def variante_code(code: str, rng: random.Random) -> str:
 MOTIFS_STANDARD = {
     "id_conflit": "même identifiant sur deux lignes différentes : les deux lignes sont rejetées",
     "id_manquant": "identifiant vide",
-    "cle_inconnue": "code absent du référentiel (produit, boutique, ligne de vente…)",
+    "cle_inconnue": "code absent du référentiel ou ligne d'origine inconnue",
     "quantite_invalide": "quantité nulle, négative ou non entière",
 }
-QUANTITES_INVALIDES = ["-2", "0", "1.5", "-1", "2,5", "0", "-3", "0.5"]
+QUANTITES_INVALIDES = ["-2", "0", "1.5", "-1", "2,5", "0", "-3", "0.5"]   # défaut de Doses.quantites_invalides
 
 
 @dataclass
@@ -164,6 +188,9 @@ class Doses:
     part_montants: float = 0.30
     part_dates: float = 0.25
     part_codes: float = 0.10
+    # valeurs écrites dans la colonne quantité des lignes `quantite_invalide` (dans l'ordre de création) ;
+    # à remplacer quand « 1.5 » est une valeur valable (poids, heures…)
+    quantites_invalides: list[str] = field(default_factory=lambda: list(QUANTITES_INVALIDES))
 
 
 @dataclass
@@ -258,7 +285,7 @@ def construire_csv(evenements: list[dict], champs: ChampsCSV, doses: Doses, rng:
         e = copie()
         e[idc] = faux_id()
         v = rendre_evenement(e, champs, doses, rng)
-        v[champs.quantite] = QUANTITES_INVALIDES[i % len(QUANTITES_INVALIDES)]
+        v[champs.quantite] = doses.quantites_invalides[i % len(doses.quantites_invalides)]
         pieges.append(LigneSource(v, "quantite_invalide"))
     # les deux lignes d'un conflit restent séparées (comme dans un vrai export)
     for p in pieges:
@@ -430,7 +457,7 @@ class Source:
 class Indicateur:
     code: str
     libelle: str
-    unite: str                 # millimes | ratio | nombre
+    unite: str                 # millimes | ratio | nombre | jours | heures | centiemes_heure
     formule: str               # formule exacte en français
     sql: str                   # agrégat SQL sur la vue « mouvements »
     tolerance: float = 0.0
@@ -446,6 +473,8 @@ class SCD2:
     faits: list[tuple[str, str, str]]          # (table de fait, colonne clé SCD2, colonne date_key)
     frontieres: list[tuple[str, str]]          # (clé métier, date ISO) à contrôler
     changement: str = ""                       # phrase : ce qui change, quand
+    libelle_attribut: str = ""                 # en-tête de l'attribut dans reference/README.md (défaut : attribut)
+    precisions: list[str] = field(default_factory=list)   # puces ajoutées au § 7 du cahier
 
 
 @dataclass
@@ -487,6 +516,15 @@ class MissionSpec:
     debut_calendrier: date
     graine: int
     sources_rejets: dict[str, str] = field(default_factory=dict)   # nom source → fichier
+    # --- compléments des documents (évitent les ajouts locaux dans les scripts de mission) -------------------
+    # regle_a_clarifier = {"question", "options", "decision"} (+ "consequence" facultatif : effet dans l'entrepôt)
+    # variantes = 3 évolutions ; ecrans_app = 3 écrans (titre, contenu) ; parcours_app = démonstration conseillée.
+    # Un texte peut être une fonction (attendus → texte) quand il cite des valeurs de référence.
+    parcours_app: str | Callable[[dict], str] = ""
+    question_decision: str | Callable[[dict], str] = ""        # la décision attendue de la direction
+    regle_mois: str = "(faits et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**."
+    sections_cahier: list[tuple[str, str | Callable[[dict], str]]] = field(default_factory=list)  # § 13 et suivants
+    complement_reference: Callable[[dict], str] | None = None  # texte ajouté à reference/README.md
 
     @property
     def dossier(self) -> Path:
@@ -555,7 +593,7 @@ def requete_indicateurs(spec_vue: str, indicateurs: list[dict], axe: str | None 
 def _valeur(ind: dict, v):
     if v is None:
         return None
-    return round(float(v), 6) if ind["unite"] == "ratio" else int(v)
+    return round(float(v), 6) if ind["unite"] in UNITES_FLOTTANTES else int(v)
 
 
 def calculer_attendu(spec: MissionSpec, con: sqlite3.Connection) -> dict:
@@ -670,7 +708,18 @@ def _sauver(fig, base: Path) -> None:
 
 
 def _echelle(ind: dict):
-    return (1000.0, "TND") if ind["unite"] == "millimes" else ((0.01, "%") if ind["unite"] == "ratio" else (1.0, ""))
+    return {"millimes": (1000.0, "TND"), "ratio": (0.01, "%"), "jours": (1.0, "jours"), "heures": (1.0, "h"),
+            "centiemes_heure": (100.0, "h")}.get(ind["unite"], (1.0, ""))
+
+
+def _titre_axe(libelle: str, unite: str) -> str:
+    """« Coût (TND) » ; un comptage n'a pas d'unité : « Interventions », jamais « Interventions () »."""
+    return f"{libelle} ({unite})" if unite else libelle
+
+
+def _legende_dessous(ax, n: int, titre: str | None = None) -> None:
+    """Légende sous le graphique : elle ne recouvre jamais une barre."""
+    ax.legend(title=titre, frameon=False, ncol=min(max(n, 1), 5), loc="upper center", bbox_to_anchor=(0.5, -0.14))
 
 
 def visuel_empile(spec: MissionSpec, con, v: dict, base: Path) -> None:
@@ -683,17 +732,17 @@ def visuel_empile(spec: MissionSpec, con, v: dict, base: Path) -> None:
     xs = sorted({r[0] for r in rows})
     series = list(dict.fromkeys(v.get("ordre_series") or sorted({r[1] for r in rows})))
     div, unite = _echelle(ind)
-    fig, ax = plt.subplots(figsize=(8.5, 4.6))
+    fig, ax = plt.subplots(figsize=(8.5, 4.8))
     bas = [0.0] * len(xs)
     for k, s in enumerate(series):
-        val = [next((r[2] for r in rows if r[0] == x and r[1] == s), 0) / div for x in xs]
+        val = [(next((r[2] for r in rows if r[0] == x and r[1] == s), 0) or 0) / div for x in xs]
         ax.bar(xs, val, bottom=bas, label=s, color=SERIES[k % len(SERIES)], width=0.65)
         bas = [a + b for a, b in zip(bas, val)]
     ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
-    ax.set_ylabel(f"{ind['libelle']} ({unite})")
+    ax.set_ylabel(_titre_axe(v.get("libelle_y", ind["libelle"]), unite))
     ax.set_xlabel(v.get("libelle_x", v["x"]))
     ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
-    ax.legend(title=v.get("libelle_serie", v["serie"]), frameon=False, ncol=min(4, len(series)))
+    _legende_dessous(ax, len(series), v.get("libelle_serie", v["serie"]))
     ax.grid(axis="y", color=PALETTE["pale"])
     ax.set_axisbelow(True)
     _sauver(fig, base)
@@ -701,29 +750,62 @@ def visuel_empile(spec: MissionSpec, con, v: dict, base: Path) -> None:
 
 
 def visuel_barres(spec: MissionSpec, con, v: dict, base: Path) -> None:
+    """Barres par valeur d'un axe, un ou plusieurs indicateurs de même unité.
+
+    Options : `top` (N valeurs les plus hautes du premier indicateur), `horizontal` (barres couchées, triées,
+    lisibles avec beaucoup d'étiquettes ; valeurs négatives en orange), `libelle_y`, `libelle_x`.
+    Au-delà de 8 étiquettes verticales, elles sont inclinées.
+    """
     from matplotlib.ticker import FuncFormatter
     plt = _plt()
     inds = [indicateur_dict(next(i for i in spec.indicateurs if i.code == c)) for c in v["indicateurs"]]
     q = requete_indicateurs(spec.vue_analyse, inds, v["axe"])
     rows = con.execute(q).fetchall()
+    if v.get("top"):
+        rows = sorted(rows, key=lambda r: (-(r[1] or 0), str(r[0])))[:v["top"]]
     div, unite = _echelle(inds[0])
-    fig, ax = plt.subplots(figsize=(8.5, 4.6))
+    dec = {"TND": 0, "": 0, "%": 1}.get(unite, 2)
     n = len(inds)
+    titre_val = _titre_axe(v.get("libelle_y", inds[0]["libelle"]), unite)
+    if v.get("horizontal"):
+        rows = sorted(rows, key=lambda r: ((r[1] or 0), str(r[0])))
+        fig, ax = plt.subplots(figsize=(8.5, max(4.6, 0.32 * len(rows) * n + 1.2)))
+    else:
+        fig, ax = plt.subplots(figsize=(8.5, 4.8))
     larg = 0.8 / n
+    haut = 0.0
     for k, ind in enumerate(inds):
-        xs = [i + (k - (n - 1) / 2) * larg for i in range(len(rows))]
+        pos = [i + (k - (n - 1) / 2) * larg for i in range(len(rows))]
         vals = [(r[1 + k] or 0) / div for r in rows]
-        barres = ax.bar(xs, vals, width=larg, label=ind["libelle"], color=SERIES[k % len(SERIES)])
-        ax.bar_label(barres, labels=[_nombre_fr(round(x, 1 if unite == "%" else 0)) for x in vals],
-                     fontsize=8, color=PALETTE["encre"], padding=2)
-    ax.set_xticks(range(len(rows)), [str(r[0]) for r in rows])
+        haut = max([haut] + [abs(x) for x in vals])
+        couleur = ([PALETTE["orange"] if x < 0 else SERIES[0] for x in vals] if n == 1 and v.get("horizontal")
+                   else SERIES[k % len(SERIES)])
+        trace = ax.barh if v.get("horizontal") else ax.bar
+        barres = trace(pos, vals, larg, label=ind["libelle"], color=couleur)
+        ax.bar_label(barres, labels=[_nombre_fr(round(x)) if dec == 0 else
+                                     f"{x:,.{dec}f}".replace(",", " ").replace(".", ",") for x in vals],
+                     fontsize=8 if len(rows) * n <= 12 else 7, color=PALETTE["encre"], padding=2)
+    etiquettes = [str(r[0]) for r in rows]
+    if v.get("horizontal"):
+        ax.set_yticks(range(len(rows)), etiquettes)
+        ax.set_xlabel(titre_val)
+        ax.set_ylabel(v.get("libelle_x", v["axe"]))
+        ax.xaxis.set_major_formatter(FuncFormatter(_nombre_fr))
+        ax.margins(x=0.15)
+        ax.grid(axis="x", color=PALETTE["pale"])
+        if any((r[1] or 0) < 0 for r in rows):
+            ax.axvline(0, color=PALETTE["encre"], linewidth=0.8)
+    else:
+        incline = len(rows) > 8
+        ax.set_xticks(range(len(rows)), etiquettes, rotation=45 if incline else 0, ha="right" if incline else "center")
+        ax.set_ylabel(titre_val)
+        ax.set_xlabel(v.get("libelle_x", v["axe"]))
+        ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
+        ax.set_ylim(top=haut * 1.15 if haut else 1)
+        ax.grid(axis="y", color=PALETTE["pale"])
     ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
-    ax.set_ylabel(f"{v.get('libelle_y', inds[0]['libelle'])} ({unite})")
-    ax.set_xlabel(v.get("libelle_x", v["axe"]))
-    ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
     if n > 1:
-        ax.legend(frameon=False)
-    ax.grid(axis="y", color=PALETTE["pale"])
+        _legende_dessous(ax, n)
     ax.set_axisbelow(True)
     _sauver(fig, base)
     plt.close(fig)
@@ -742,9 +824,10 @@ def visuel_rejets(attendus: dict[str, dict], v: dict, base: Path) -> None:
         ax.bar_label(b, fontsize=8, padding=2)
     ax.set_xticks(range(len(motifs)), motifs)
     ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
-    ax.set_ylabel("Lignes rejetées (nombre)")
+    ax.set_ylabel("Lignes rejetées")
     ax.set_xlabel("Motif de rejet")
-    ax.legend(frameon=False)
+    ax.set_ylim(top=max([1] + [x for a in attendus.values() for x in a["rejets"]["par_motif"].values()]) * 1.15)
+    _legende_dessous(ax, n)
     ax.grid(axis="y", color=PALETTE["pale"])
     ax.set_axisbelow(True)
     _sauver(fig, base)
@@ -761,15 +844,41 @@ def md_tableau(entete: list[str], lignes: list[list]) -> str:
 def _ind_valeur(i: dict, v) -> str:
     if v is None:
         return "—"
-    return pct_fr(v) if i["unite"] == "ratio" else (tnd_fr(v) if i["unite"] == "millimes" else f"{v}")
+    u = i["unite"]
+    if u == "ratio":
+        return pct_fr(v)
+    if u == "millimes":
+        return tnd_fr(v)
+    if u == "jours":
+        return jours_fr(v)
+    if u == "heures":
+        return heures_fr(v)
+    if u == "centiemes_heure":
+        return heures_fr(v / 100) + f" ({v} centièmes)"
+    return f"{v}"
 
 
-def doc_fiche(spec: MissionSpec) -> str:
-    inds = "\n".join(f"- **{i.libelle}** ({'TND' if i.unite == 'millimes' else i.unite}) : {i.formule}"
+def _texte(t, attendus: dict | None) -> str:
+    """Texte de MissionSpec : chaîne, ou fonction des valeurs attendues (attendus par lot)."""
+    return t(attendus or {}) if callable(t) else (t or "")
+
+
+def _liste_numerotee(elements) -> str:
+    return "\n".join(f"{k}. {e}" for k, e in enumerate(elements, 1))
+
+
+def _ecrans(spec: MissionSpec) -> str:
+    return _liste_numerotee(f"**{t}** — {c}" for t, c in spec.ecrans_app)
+
+
+def doc_fiche(spec: MissionSpec, attendus: dict | None = None) -> str:
+    inds = "\n".join(f"- **{i.libelle}** ({unite_doc(i.unite)}) : {i.formule}"
                      for i in spec.indicateurs if i.principal)
-    ecrans = "\n".join(f"{k}. **{t}** — {c}" for k, (t, c) in enumerate(spec.ecrans_app, 1))
-    variantes = "\n".join(f"{k}. {v}" for k, v in enumerate(spec.variantes, 1))
+    ecrans = _ecrans(spec)
+    variantes = _liste_numerotee(spec.variantes)
     q = spec.regle_a_clarifier
+    decision = _texte(spec.question_decision, attendus)
+    decision = f"## La décision attendue\n\n{decision}\n\n" if decision else ""
     lots = "\n".join(f"- `{l.nom}` ({l.debut.isoformat()} → {l.fin.isoformat()}) : {l.description}" for l in spec.lots)
     return f"""# Mission {spec.numero} — {spec.titre}
 
@@ -788,12 +897,12 @@ Données 100 % synthétiques : noms, chiffres et personnes sont inventés.
 
 1. `outputs/rejets.csv` : chaque ligne écartée avec son motif.
 2. `outputs/entrepot.sqlite` : une étoile ({', '.join(t.nom for t in spec.tables)}).
-3. Le lot 2 chargé, l'historique gardé ({spec.scd2.changement}), un rejeu sans doublon.
+3. Le lot 2 chargé, l'historique gardé et un rejeu sans doublon. {spec.scd2.changement}
 4. `outputs/export/*.csv` + `manifest.json`, puis le rapport Power BI actualisé.
 5. `outputs/app/index.html` : une mini-application locale de trois écrans.
 6. Une recommandation courte à la direction, appuyée sur les chiffres.
 
-## Les indicateurs (définitions exactes)
+{decision}## Les indicateurs (définitions exactes)
 
 {inds}
 
@@ -832,7 +941,7 @@ Les valeurs attendues sont dans `reference/attendu_lot1.json` et `reference/atte
 """
 
 
-def doc_cahier(spec: MissionSpec) -> str:
+def doc_cahier(spec: MissionSpec, attendus: dict | None = None) -> str:
     srcs = md_tableau(["Fichier", "Type", "Contenu", "Pièges connus"],
                       [[f"`{s.fichier}`", s.type, s.description, " ; ".join(s.pieges) or "—"] for s in spec.sources])
     regles = md_tableau(["Anomalie", "Exemple", "Règle"], [list(r) for r in spec.regles])
@@ -846,11 +955,22 @@ def doc_cahier(spec: MissionSpec) -> str:
                                                           for c in t.colonnes])
         tables.append(f"### `{t.nom}` — {t.role.replace('_', ' ')}\n\n{t.description}\n\n{cols}\n")
     inds = md_tableau(["Indicateur", "Unité", "Formule exacte"],
-                      [[i.libelle, "TND (stocké en millimes)" if i.unite == "millimes" else i.unite, i.formule]
+                      [[i.libelle, "TND (stocké en millimes)" if i.unite == "millimes" else unite_doc(i.unite), i.formule]
                        for i in spec.indicateurs])
     s = spec.scd2
+    precisions = "".join(f"\n- {p}" for p in s.precisions)
     sommes = "; ".join(f"`{t}` : {', '.join(c)}" for t, c in spec.export_sommes.items())
+    csv_faits = next((x.fichier for x in spec.sources if x.type == "csv"), spec.sources[0].fichier)
     q = spec.regle_a_clarifier
+    # § 12 règle à clarifier, puis § 13… : sections propres à la mission, variantes, parcours, décision attendue
+    fin = [("Trois variantes (évolutions possibles)", _liste_numerotee(spec.variantes)),
+           ("Parcours de démonstration de l'application (3 écrans)",
+            _ecrans(spec) + (f"\n\n{_texte(spec.parcours_app, attendus)}" if spec.parcours_app else ""))]
+    if spec.question_decision:
+        fin.append(("La décision attendue", _texte(spec.question_decision, attendus)))
+    suite = "".join(f"\n## {k}. {t}\n\n{_texte(x, attendus)}\n"
+                    for k, (t, x) in enumerate(list(spec.sections_cahier) + fin, 13))
+    consequence = f"\n\n{q['consequence']}" if q.get("consequence") else ""
     return f"""# Cahier des charges — Mission {spec.numero} : {spec.titre}
 
 Client fictif : **{spec.entreprise}**. Ce document fixe les règles. En cas de doute, il gagne sur toute autre explication. Les noms de tables et de colonnes ci-dessous sont **obligatoires** : les contrôles automatiques et le guide Power BI les utilisent.
@@ -877,7 +997,7 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 
 {ordre}
 
-`outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `ventes.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
+`outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `{csv_faits}`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
 ## 5. Règles métier
 
@@ -896,7 +1016,7 @@ Charger les dimensions **avant** les faits. Clés techniques `*_key` entières ;
 - Une ligne par version : `valid_from` **inclus**, `valid_to` **exclu**, `valid_to` vide (NULL) = version courante.
 - La première version commence à la date `valide_depuis` donnée par la source.
 - Une nouvelle version **ferme** la précédente : `valid_to` de l'ancienne = `valid_from` de la nouvelle.
-- Un fait est rattaché à la version valable **à la date du fait** : un fait ancien garde l'ancienne version.
+- Un fait est rattaché à la version valable **à la date du fait** : un fait ancien garde l'ancienne version.{precisions}
 
 ## 8. Chargement incrémental et rejeu
 
@@ -909,7 +1029,7 @@ Charger les dimensions **avant** les faits. Clés techniques `*_key` entières ;
 
 {inds}
 
-Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (ventes et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
+Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` {spec.regle_mois}
 
 ## 10. Sorties
 
@@ -930,7 +1050,11 @@ python -m controles.verifier --mission {spec.code} --etape tout
 ## 12. Règle à clarifier
 
 {q['question']} — **Décision :** {q['decision']}
-"""
+
+Options étudiées :
+
+{q['options']}{consequence}
+{suite}"""
 
 
 def doc_dictionnaire(spec: MissionSpec) -> str:
@@ -949,7 +1073,8 @@ def doc_dictionnaire(spec: MissionSpec) -> str:
                                 [[f"`{c.nom}`", c.type, c.description] for c in t.colonnes]) + "\n")
     parts.append("## Indicateurs\n")
     parts.append(md_tableau(["Code", "Libellé", "Unité", "Formule"],
-                            [[f"`{i.code}`", i.libelle, i.unite, i.formule] for i in spec.indicateurs]) + "\n")
+                            [[f"`{i.code}`", i.libelle, i.unite if i.unite == "millimes" else unite_doc(i.unite),
+                              i.formule] for i in spec.indicateurs]) + "\n")
     return "\n".join(parts)
 
 
@@ -966,7 +1091,7 @@ def doc_reference_readme(spec: MissionSpec, attendus: dict[str, dict], visuels: 
                                                                   for a in attendus.values()] for m in motifs]
                        + [["**total**"] + [a["rejets"]["total"] for a in attendus.values()]])
     dern = list(attendus.values())[-1]
-    t_scd = md_tableau(["Clé métier", spec.scd2.attribut, "valid_from", "valid_to"],
+    t_scd = md_tableau(["Clé métier", spec.scd2.libelle_attribut or spec.scd2.attribut, "valid_from", "valid_to"],
                        [[v["cle_metier"], v["attribut"], v["valid_from"], v["valid_to"] or "(courante)"]
                         for v in dern["scd2"]["versions"]])
     vis = "\n".join(f"- `visuels/{v}.png` · `visuels/{v}.svg`" for v in visuels)
@@ -996,7 +1121,7 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 - `attendu_lot2.json` : état attendu après `increment` **et** après `rejeu` (identique).
 - `contrat_entrepot.json` : noms des tables et colonnes, SCD2, vue d'analyse, indicateurs, axes — lu par le vérificateur.
 {vis}
-"""
+""" + (spec.complement_reference(attendus) if spec.complement_reference else "")
 
 
 # --------------------------------------------------------------------------- orchestration
@@ -1066,11 +1191,13 @@ def produire_reference(spec: MissionSpec, lots: list[LotResultat]) -> dict[str, 
             visuel_barres(spec, cons[dernier], v, base)
         elif v["type"] == "rejets":
             visuel_rejets(attendus, v, base)
+        elif v["type"] == "fonction":            # graphique propre à la mission : dessiner(spec, con, attendus, base)
+            v["dessiner"](spec, cons[dernier], attendus, base)
         noms_visuels.append(v["fichier"])
     (ref / "README.md").write_text(doc_reference_readme(spec, attendus, noms_visuels), encoding="utf-8")
     d = spec.dossier
-    (d / "fiche_mission.md").write_text(doc_fiche(spec), encoding="utf-8")
-    (d / "cahier_des_charges.md").write_text(doc_cahier(spec), encoding="utf-8")
+    (d / "fiche_mission.md").write_text(doc_fiche(spec, attendus), encoding="utf-8")
+    (d / "cahier_des_charges.md").write_text(doc_cahier(spec, attendus), encoding="utf-8")
     (d / "dictionnaire.md").write_text(doc_dictionnaire(spec), encoding="utf-8")
     return attendus
 
@@ -1098,14 +1225,10 @@ def calculer_attendu_echantillon(spec: MissionSpec, tables: dict[str, list[dict]
             "agregats": calc["agregats"]}
 
 
-def exporter_v7_data(spec: MissionSpec, echantillon: dict, attendus: dict[str, dict]) -> None:
-    """Fusionne les vérités de la mission dans v7-data.json (lu par le générateur de schémas)."""
-    data = json.loads(V7_DATA.read_text(encoding="utf-8")) if V7_DATA.exists() else {}
-    data.setdefault("_lisez_moi", "Généré par authoring/generateurs. Montants en millimes. "
-                                  "Ne pas éditer à la main : relancer le générateur de la mission.")
-    data.setdefault("missions", {})
+def bloc_v7_data(spec: MissionSpec, echantillon: dict, attendus: dict[str, dict]) -> dict:
+    """Bloc d'une mission dans v7-data.json : vérités de l'échantillon et nombres clés de la référence."""
     inds = [indicateur_dict(i) for i in spec.indicateurs]
-    data["missions"][spec.code] = {
+    return {
         "numero": spec.numero, "titre": spec.titre, "entreprise": spec.entreprise, "grain": spec.grain,
         "indicateurs": [{k: i[k] for k in ("code", "libelle", "unite", "formule")} for i in inds],
         "echantillon": echantillon,
@@ -1116,8 +1239,23 @@ def exporter_v7_data(spec: MissionSpec, echantillon: dict, attendus: dict[str, d
                             "par_axe": a["agregats"]}
                       for lot, a in attendus.items()},
     }
-    data["missions"] = dict(sorted(data["missions"].items(), key=lambda kv: (kv[0] != "tronc-commun", kv[0])))
-    ecrire_json(V7_DATA, data)
+
+
+def exporter_v7_data(spec: MissionSpec, echantillon: dict, attendus: dict[str, dict]) -> None:
+    """Fusionne le bloc de la mission dans v7-data.json, clé = code de mission (lu par le générateur de schémas).
+
+    Seul le bloc de cette mission est remplacé : les autres missions restent intactes (aucun écrasement),
+    quel que soit l'ordre de génération. Écriture atomique (fichier temporaire puis renommage).
+    """
+    data = json.loads(V7_DATA.read_text(encoding="utf-8")) if V7_DATA.exists() else {}
+    data["_lisez_moi"] = ("Généré par authoring/generateurs (un bloc par mission, fusionné par code). Montants en "
+                          "millimes. Ne pas éditer à la main : relancer le générateur de la mission.")
+    missions = dict(data.get("missions", {}))
+    missions[spec.code] = bloc_v7_data(spec, echantillon, attendus)
+    data["missions"] = dict(sorted(missions.items(), key=lambda kv: (kv[0] != "tronc-commun", kv[0])))
+    tmp = V7_DATA.with_suffix(".json.tmp")
+    ecrire_json(tmp, data)
+    tmp.replace(V7_DATA)
 
 
 def ecrire_verite_privee(spec: MissionSpec, fichiers: dict[str, tuple[list[str], list[dict]]]) -> Path | None:

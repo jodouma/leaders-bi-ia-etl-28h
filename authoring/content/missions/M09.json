@@ -1,0 +1,1130 @@
+{
+ "title": "Mission 09 · Scène Libre : guide de mission",
+ "cover_title": "Mission 09 · Événementiel\nScène Libre",
+ "subtitle": "Guide de mission du catalogue · billets nets, taux de remplissage, recettes nettes · un billet vendu par fait",
+ "subject_label": "Solen BI 22 h · Guide de mission M09 · Scène Libre",
+ "header_label": "SOLEN  /  MISSION M09 · SCÈNE LIBRE",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Scène Libre (fictifs)",
+ "cover": {
+  "case": "SOLEN DIGITAL · CLIENT FICTIF SCÈNE LIBRE",
+  "flow": "Billets, programme, canaux, remboursements  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "17",
+    "SPECTACLES, DONT 2 ANNULÉS"
+   ],
+   [
+    "2 757",
+    "BILLETS VENDUS APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M09 / GUIDE DE MISSION"
+ },
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M09/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md ; capacité totale lue dans sources/lot*/evenements.xlsx. Solution de référence passée au vérificateur strict sur macOS (application non ouverte dans un navigateur) ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "author": "Youssef Douma · Leaders University",
+ "output_filename": "missions/M09_guide.pdf",
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "pages": [
+  {
+   "kicker": "M09 · SCÈNE LIBRE · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 09**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un organisateur de spectacles fictif, **Scène Libre**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : remplacer le contenu de `mission.txt` par `M09`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Ce qui sera gardé, ignoré ou rejeté",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "12"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "13"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "14"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M09/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M09/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M09/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Scène Libre** (fictif) organise des concerts, des pièces de théâtre et des festivals dans cinq salles, à Tunis, Sousse, Sfax et Nabeul. Quatre canaux vendent les billets : billetterie en ligne (WEB), guichet (GUI), revendeurs (REV) et partenaires (PAR) ; chacun prend des **frais de distribution**. Cette saison, un concert a été annulé, un autre reporté."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nous vendons beaucoup de billets, mais après les annulations, les remboursements et les frais des canaux, que reste-t-il ? Je veux, par événement, par type de spectacle, par mois et par canal : les billets nets, le taux de remplissage et les recettes nettes. Dites-moi quels événements se vendent bien une fois les remboursements déduits, et ce que vous avez dû écarter dans les fichiers.\nÀ partir du 15 juillet, les revendeurs (canal REV) prennent 11 % au lieu de 9 %. Les billets vendus avant gardent l’ancien taux.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Quels spectacles reprogrammer ?** Le taux de remplissage par événement et par type.",
+      "**Quel canal privilégier ?** Les frais de distribution par canal, surtout après la hausse des revendeurs.",
+      "**Que coûtent les annulations ?** Les remboursements, et les frais qui restent dus aux canaux."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "17 événements (14 au lot 1, 3 nouveaux au lot 2), 4 canaux",
+       "cachets des artistes, location des salles, sécurité : les recettes nettes ne sont pas un bénéfice"
+      ],
+      [
+       "billets vendus de janvier à août 2026",
+       "les billets vendus après le 31 août, même pour un spectacle de septembre"
+      ],
+      [
+       "remboursements au statut `REMBOURSE`",
+       "demandes `CONSERVE` et `REFUSE` (ignorées)"
+      ],
+      [
+       "le taux de frais historisé (REV au 2026-07-15)",
+       "un second changement de taux (variante 3)"
+      ],
+      [
+       "la capacité de chaque spectacle",
+       "le statut « annulé » ou « reporté » de l’Excel : informatif, non chargé"
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.7
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **un billet vendu**, clé `billet_id` (ex. `B100234`). Prix et frais en **millimes entiers** ; frais du canal en **pour mille** entier (9 % → 90). Formules exactes du cahier (§ 9) ; les trois demandées par la direction sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "Billets vendus",
+       "nombre",
+       "nombre de billets acceptés"
+      ],
+      [
+       "Billets remboursés",
+       "nombre",
+       "remboursements acceptés au statut `REMBOURSE`, un par billet"
+      ],
+      [
+       "**Billets nets**",
+       "nombre",
+       "billets vendus − billets remboursés"
+      ],
+      [
+       "**Taux de remplissage**",
+       "%",
+       "billets nets ÷ capacité des événements (somme des capacités des événements concernés)"
+      ],
+      [
+       "Recettes des billets",
+       "TND",
+       "somme des prix **payés** des billets acceptés"
+      ],
+      [
+       "Remboursements",
+       "TND",
+       "somme des montants rendus des remboursements acceptés"
+      ],
+      [
+       "Frais de distribution",
+       "TND",
+       "somme des frais des billets, au taux du canal valable à la **date de vente**"
+      ],
+      [
+       "**Recettes nettes**",
+       "TND",
+       "recettes des billets − remboursements − frais de distribution"
+      ]
+     ],
+     "widths": [
+      1.6,
+      0.6,
+      3.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Le taux de remplissage a pour dénominateur la **capacité** : il se lit par événement, par type, par lieu ou par mois, jamais par canal (une salle ne dépend d’aucun canal). L’axe « mois » est le mois du **spectacle**, pas celui de la vente."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key` (AAAAMMJJ)"
+      ],
+      [
+       "`dim_evenement`",
+       "un spectacle : type, lieu, ville, date, capacité",
+       "`evenement_key` · `evenement_id`"
+      ],
+      [
+       "`dim_canal` (SCD2)",
+       "une **version** de canal : `frais_pour_mille`, `valid_from`, `valid_to`",
+       "`canal_key` · `canal_id`"
+      ],
+      [
+       "`fact_billet`",
+       "un billet accepté, son prix et ses frais",
+       "`billet_id`"
+      ],
+      [
+       "`fact_remboursement`",
+       "un remboursement `REMBOURSE` accepté",
+       "`remboursement_id`"
+      ]
+     ],
+     "widths": [
+      1.5,
+      2.6,
+      1.5
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_canal`, attribut `frais_pour_mille`. Le canal **REV** (revendeur) passe de **90 ‰ à 110 ‰** le **2026-07-15**, inclus ; l’information arrive avec `lot2/canaux.json`. `dim_canal` passe de 4 à 5 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "canal_id",
+      "frais_pour_mille",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "REV",
+       "90",
+       "2025-09-01",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "REV",
+       "110",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.2,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Un billet REV vendu le 14 juillet paie 9 % ; le 15 juillet, 11 %. Un remboursement prend la version valable à **sa** date, mais il ne recalcule jamais les frais du billet."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M09 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, taux de REV aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles` (tests fournis), `pytest -q` (avec les vôtres) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `billets.csv`, 2 événements (E01 : 10 places, E02 : 8 places), les 4 canaux et 4 demandes de remboursement. Calculez **sur papier**, à deux, avant Codex. La correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "billet_id",
+      "Lu dans le fichier",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "S-001",
+       "E01 · WEB · 2026-03-02 · CAT1 · places 1 · prix 40.000",
+       ""
+      ],
+      [
+       "3",
+       "S-002",
+       "E01 · « web » · 02/03/2026 · CAT2 · places 1 · prix 25,000",
+       ""
+      ],
+      [
+       "4",
+       "S-003",
+       "E01 · GUI · 3 mars 2026 · cat2 · places 1 · prix 20",
+       ""
+      ],
+      [
+       "5",
+       "S-004",
+       "E02 · REV · 2026-03-05 · VIP · places 1 · prix 80,000",
+       ""
+      ],
+      [
+       "6",
+       "S-004",
+       "E02 · REV · 2026-03-05 · VIP · places 1 · prix 80,000",
+       ""
+      ],
+      [
+       "7",
+       "S-005",
+       "E02 · PAR · 2026-03-06 · CAT1 · places 1 · prix 50,0",
+       ""
+      ],
+      [
+       "8",
+       "S-006",
+       "E02 · WEB · 2026-03-06 · CAT1 · places 1 · prix 50.000",
+       ""
+      ],
+      [
+       "9",
+       "S-006",
+       "E02 · WEB · 2026-03-06 · CAT1 · places 2 · prix 50.000",
+       ""
+      ],
+      [
+       "10",
+       "(vide)",
+       "E01 · WEB · 2026-03-07 · CAT1 · places 1 · prix 40.000",
+       ""
+      ],
+      [
+       "11",
+       "S-007",
+       "E09 · WEB · 2026-03-07 · CAT1 · places 1 · prix 40.000",
+       ""
+      ],
+      [
+       "12",
+       "S-008",
+       "E01 · GUI · 2026-03-08 · CAT2 · places 0 · prix 25.000",
+       ""
+      ],
+      [
+       "13",
+       "S-009",
+       "E02 · « Rev » · 2026-03-09 · CAT2 · places 1 · prix 35",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.75,
+      3.5,
+      0.9
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? **2.** Recettes des billets, puis frais (WEB 45 ‰, GUI 0 ‰, REV 90 ‰, PAR 60 ‰).",
+      "**3.** Demandes : `RB-0001` rend 50,000 TND pour `S-005` (`REMBOURSE`) ; `RB-0002` concerne `S-001` (`CONSERVE`) ; `RB-0003` vise `S-099` ; `RB-0004` est `REFUSE`.",
+      "**4.** Billets nets, taux de remplissage (total et par événement), recettes nettes."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardés : ……  Rejets : ……  Recettes : …… TND  Frais : …… TND  Remboursements : …… TND\nBillets nets : ……  Remplissage : …… % (E01 …… %, E02 …… %)  Recettes nettes : …… TND"
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact, **ignorée**. Lignes 8 et 9 : même `billet_id`, places différentes → **les deux** en `id_conflit`. Ligne 10 : `id_manquant`. Ligne 11 : événement `E09` inconnu → `cle_inconnue`. Ligne 12 : 0 place → `quantite_invalide`. Bilan : **6 billets gardés**. `20` pour S-003 est un tarif réduit : on garde le prix payé."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "billet_id",
+      "Événement",
+      "Canal",
+      "Prix",
+      "Frais (‰)",
+      "Frais"
+     ],
+     "rows": [
+      [
+       "S-001",
+       "E01",
+       "WEB",
+       "40,000",
+       "45",
+       "1,800"
+      ],
+      [
+       "S-002",
+       "E01",
+       "WEB",
+       "25,000",
+       "45",
+       "1,125"
+      ],
+      [
+       "S-003",
+       "E01",
+       "GUI",
+       "20,000",
+       "0",
+       "0,000"
+      ],
+      [
+       "S-004",
+       "E02",
+       "REV",
+       "80,000",
+       "90",
+       "7,200"
+      ],
+      [
+       "S-005",
+       "E02",
+       "PAR",
+       "50,000",
+       "60",
+       "3,000"
+      ],
+      [
+       "S-009",
+       "E02",
+       "REV",
+       "35,000",
+       "90",
+       "3,150"
+      ],
+      [
+       "**Total**",
+       "",
+       "",
+       "**250,000**",
+       "",
+       "**16,275**"
+      ]
+     ],
+     "widths": [
+      0.9,
+      0.9,
+      0.8,
+      1,
+      0.9,
+      1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Demandes** : `RB-0001` gardée, 1 billet et 50,000 TND remboursés ; `RB-0002` (`CONSERVE`) et `RB-0004` (`REFUSE`) ignorées, ce ne sont pas des rejets ; `RB-0003` rejetée en `cle_inconnue`. Total : **6 rejets**. Les frais de S-005 restent dus au canal PAR. Montants en TND."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Billets nets",
+       "6 vendus − 1 remboursé",
+       "**5**"
+      ],
+      [
+       "Taux de remplissage",
+       "5 ÷ (10 + 8) ; E01 : 3 ÷ 10 ; E02 : 2 ÷ 8",
+       "**27,78 %** (30,00 % et 25,00 %)"
+      ],
+      [
+       "Recettes nettes",
+       "250,000 − 50,000 − 16,275",
+       "**183,725 TND**"
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.6,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Cherchez **la** ligne qui diffère. Pièges : `50,0` lu 500, les frais retirés du billet remboursé, `RB-0002` compté comme remboursement, une capacité additionnée par billet au lieu de par événement. Entrepôt attendu : `fact_billet` 6, `fact_remboursement` 1, `dim_evenement` 2, `dim_canal` 4, `dim_date` 31."
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**. Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`billets.csv`",
+       "un billet par ligne, UTF-8, séparateur `;` : événement, canal, date de vente, catégorie, `nb_places`, prix",
+       "trois formats de date ; prix `35`, `35,000`, `1 240,000` ; ` ev04 `, `Rev`, `cat2` ; `nb_places` ≠ 1"
+      ],
+      [
+       "`evenements.xlsx`",
+       "feuille `Programme`, **en-têtes ligne 3**, + feuille `Tarifs`",
+       "dates en texte (`4 avril 2026`) ; capacité `1 000` en texte ; le lot 2 redonne tout le programme"
+      ],
+      [
+       "`canaux.json`",
+       "historique des frais (`frais_distribution`, `valide_depuis`)",
+       "frais écrits `9`, `\"9 %\"`, `\"4,5 %\"` → pour mille entier ; lot 2 : 2e version de REV"
+      ],
+      [
+       "`remboursements.sqlite`",
+       "tables `remboursement`, `motif`, `parametre`",
+       "statuts `CONSERVE` et `REFUSE` ; billets inconnus ; lot 2 : recopie depuis le 1er juin"
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.1,
+      2.4
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `billets.csv`",
+       "2 380",
+       "441",
+       "—"
+      ],
+      [
+       "Doublons exacts",
+       "12",
+       "4",
+       "garder une occurrence"
+      ],
+      [
+       "Déjà chargées (16 derniers billets de juin)",
+       "0",
+       "16",
+       "ignorer : rejeu"
+      ],
+      [
+       "Rejets de `billets.csv`",
+       "23",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Billets acceptés",
+       "2 345",
+       "412",
+       "`fact_billet`"
+      ],
+      [
+       "Demandes lues · `CONSERVE`/`REFUSE` · billet inconnu · déjà chargées",
+       "239 · 29 · 2 · 0",
+       "86 · 15 · 1 · 10",
+       "ignorer · `cle_inconnue` · ignorer"
+      ],
+      [
+       "Remboursements acceptés",
+       "208",
+       "60",
+       "`fact_remboursement`"
+      ]
+     ],
+     "widths": [
+      2.3,
+      0.9,
+      0.9,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer ou rejeter ?",
+     "text": "**Ignorer** : doublon exact, ligne déjà chargée, demande `CONSERVE` ou `REFUSE`. **Rejeter** : `id_conflit`, `id_manquant`, `cle_inconnue` (événement, canal ou billet inconnu), `quantite_invalide` (`nb_places` ≠ 1)."
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_billet` et la capacité totale des 14 événements."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M09 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite\navec catalogue/M09/sources/lot1 : dim_date, dim_evenement, dim_canal\n(valid_from, valid_to), puis fact_billet et fact_remboursement, dans\nune transaction. Frais du canal en pour mille entier (9 % -> 90) ;\nfrais_millimes = prix_millimes x frais_pour_mille / 1000, arrondi.\nSeul le statut REMBOURSE crée un remboursement.\nLance initial puis le vérificateur --mission M09 --etape initial et\nrecopie les sorties. J'attends <mes prévisions> : compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M09 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_evenement` 14 · `dim_canal` 4 · `fact_billet` 2 345 · `fact_remboursement` 208"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 8 (6 billets + 2 remboursements) · `id_conflit` 6 · `id_manquant` 5 · `quantite_invalide` 6 · total 25"
+      ],
+      [
+       "Billets nets · taux de remplissage",
+       "2 137 · 34,92 % (capacité 6 120 places)"
+      ],
+      [
+       "**Recettes nettes**",
+       "**94 670,055 TND** (recettes 109 897,000 − remboursements 9 880,000 − frais 5 346,945)"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`\"4,5 %\"` lu comme 4** : les frais d’un canal deviennent faux pour tous ses billets. Convertissez en pour mille entier (45) avant tout calcul.",
+      "**Un remboursement compté pour toute demande** : les 29 demandes `CONSERVE` et `REFUSE` du lot 1 feraient baisser les billets nets à tort."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, 3 nouveaux événements, recopie 16 billets de juin et les remboursements depuis le 1er juin, et apporte la 2e version de REV. **Prévoyez** : (1) lignes de `dim_canal` ; (2) frais d’un billet REV de 80 TND vendu le 14 puis le 15 juillet ; (3) lignes de `fact_billet` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M09. Ajoute python -m solen increment (lot2 de M09).\n- SCD2 sur dim_canal.frais_pour_mille : fermer la version 90 de REV\n  (valid_to 2026-07-15, exclu), ouvrir 110 (valid_from 2026-07-15) ;\n- un billet prend le taux valable à sa date de VENTE, une fois pour\n  toutes ; un remboursement ne recalcule jamais les frais ;\n- nouveaux événements ajoutés, anciens inchangés ;\n- rejeu : billet_id ou numéro de remboursement déjà chargés ignorés.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M09 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M09 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_evenement` 17 · `dim_canal` **5** · `fact_billet` 2 757 (+412) · `fact_remboursement` 268 (+60)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 4 (3 + 1 remboursement) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 10"
+      ],
+      [
+       "Billets nets · taux de remplissage",
+       "2 489 · **32,12 %** (capacité 7 750 places)"
+      ],
+      [
+       "**Recettes nettes**",
+       "**109 866,930 TND** (frais 6 290,070 ; remboursements 12 928,000)"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`UPDATE` du taux de REV** : tous ses billets passent à 11 %, les frais du premier semestre gonflent. La version 90 doit rester pour les ventes d’avant le 15 juillet.",
+      "**Le remplissage qui baisse « tout seul »** : 34,92 % → 32,12 %, car 3 nouveaux spectacles de fin d’été ajoutent 1 630 places encore peu vendues. Ce n’est pas une erreur : dites-le."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Scène Libre."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M09 --etape export\npython -m solen app\npython -m controles.verifier --mission M09 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 757 lignes de `fact_billet`, une somme de `prix_millimes` de 129 085 000 et de `frais_millimes` de 6 290 070 ; `fact_remboursement[montant_millimes]` = 12 928 000 ; `dim_evenement[capacite]` = 7 750. Erreur fréquente : des TND décimaux à la place des millimes."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M09. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par canal, Qualité des\ndonnées ; filtres période, événement, type, canal ; recettes nettes par\nmois de spectacle et par type en barres SVG ; remplissage par événement."
+    },
+    {
+     "type": "text",
+     "text": "**Application** : erreurs fréquentes, un taux de remplissage affiché par canal (sans dénominateur possible) et des mois rangés par date de vente au lieu de la date du spectacle."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** (`dim_date`, `dim_evenement`, `dim_canal` vers les deux faits), par `canal_key`. Codex réécrit `powerbi/mesures.dax` : Billets nets, Taux de remplissage = billets nets ÷ somme de `dim_evenement[capacite]`, Recettes nettes TND. Après le lot 2 et **Actualiser** : 2 489, 32,12 %, 109 866,930 TND. Erreur fréquente : un axe des mois pris dans `dim_date` (date de vente) alors que la référence range par mois du spectacle."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M09/reference/visuels/taux_remplissage_par_evenement.png",
+     "caption": "Graphique de référence après le lot 2 : taux de remplissage par événement, en %. EV05 et EV12, annulés, sont à 0 %.",
+     "height": 175
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Les deux questions posées à la direction",
+     "text": "1) Un billet REV vendu le 10 juillet (frais 9 %) est remboursé le 20 juillet, après le passage à 11 %. Quels frais garde-t-on ? 2) Un spectacle reporté : une demande « report » compte-t-elle comme un remboursement ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Échantillon"
+     ],
+     "rows": [
+      [
+       "**1A · taux de la vente, jamais recalculé** (décidée)",
+       "frais calculés une fois dans `fact_billet`",
+       "recettes nettes 183,725"
+      ],
+      [
+       "1B · taux du jour du remboursement",
+       "frais recalculés à 11 %",
+       "non calculable (vente en mars)"
+      ],
+      [
+       "1C · frais annulés au remboursement",
+       "les 3,000 TND de S-005 rendus",
+       "186,725 TND"
+      ],
+      [
+       "2A · toute demande `REPORT` compte",
+       "`RB-0002` (S-001, 0 TND) devient un remboursement",
+       "4 billets nets, 22,22 %"
+      ],
+      [
+       "**2B · seul `REMBOURSE` compte** (décidée)",
+       "`CONSERVE` ignoré",
+       "**5 billets nets, 27,78 %**"
+      ]
+     ],
+     "widths": [
+      2,
+      2.2,
+      1.3
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Question 1** : les frais sont dus au canal le jour de la vente ; le revendeur a fait son travail. Après le lot 2, ils pèsent 6 290,070 TND, dont 2 394,900 TND pour REV.",
+      "**Question 2** : un client qui garde son billet pour la nouvelle date n’a rien reçu. Le compter ferait perdre un billet occupé et baisser le remplissage.",
+      "**Noter** les deux décisions dans `notes/JOURNAL.md` (Décision)."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Recette nette moyenne par billet net**, par événement",
+       "un test sur l’échantillon (183,725 ÷ 5 = 36,745 TND) ; contre `par_evenement` du lot 2 : EV01 9 013,315 ÷ 209 = 43,126 TND"
+      ],
+      [
+       "**2. Le canal rend ses frais en cas d’annulation** : `frais_rendus_millimes`",
+       "un test : S-005 rend 3,000 TND, recettes nettes 186,725 TND ; la référence de base reste verte"
+      ],
+      [
+       "**3. PAR passe de 6 % à 5 % le 2026-08-01**",
+       "un test sur un petit jeu dans `tests/` : deux versions de PAR, un billet du 31 juillet à 60 ‰, du 1er août à 50 ‰"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "sans filtre : 2 489 billets nets, 32,12 %, 109 866,930 TND ; meilleurs remplissages EV01 95,00 %, EV07 92,22 %, EV10 90,00 %",
+       "« Un taux, avec sa capacité. »"
+      ],
+      [
+       "**2. Détail par canal**",
+       "REV : 90 ‰ jusqu’au 2026-07-14, 110 ‰ ensuite ; frais REV 2 394,900 TND ; un billet EV12 vendu avant le 15 juillet garde 90 ‰",
+       "« Les frais suivent la date de vente. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "rejets 25 puis 10, billets déjà chargés, demandes `CONSERVE`/`REFUSE` ignorées",
+       "« Ignorer n’est pas rejeter. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.7,
+      1.7
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Événement = EV05 (annulé le 2026-04-10). **Prévoyez** : les recettes nettes valent-elles zéro ?",
+      "**Application** : 0 billet net, recettes nettes **−463,290 TND**. **Référence** : `attendu_lot2.json`, `agregats → par_evenement → EV05 → recettes_nettes_millimes` = −463 290.",
+      "**Lecture** : les 192 billets (9 236,000 TND) sont tous remboursés, mais les frais restent dus aux canaux : c’est la décision 1A. Même chose pour EV12 (−139,335 TND)."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M09/reference/visuels/recettes_nettes_par_mois_et_type.png",
+     "caption": "Graphique de référence après le lot 2 : recettes nettes par mois du spectacle et par type, en TND.",
+     "height": 195
+    }
+   ]
+  },
+  {
+   "kicker": "M09 · SCÈNE LIBRE · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Scène Libre, le grain « un billet » et le périmètre ;",
+      "…calculer l’échantillon à la main : 6 billets gardés, 5 nets, 27,78 % de remplissage, 183,725 TND de recettes nettes ;",
+      "…dire pourquoi une demande est ignorée et une autre rejetée ;",
+      "…charger, compléter et rejouer avec `--mission M09`, et montrer qu’un billet REV d’avant le 15 juillet garde 90 ‰ ;",
+      "…donner le taux de remplissage avec sa capacité, et dire pourquoi il n’existe pas par canal ;",
+      "…défendre les décisions 1A et 2B, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Billets nets · taux de remplissage",
+       "2 137 · 34,92 %",
+       "2 489 · 32,12 %"
+      ],
+      [
+       "Recettes nettes",
+       "94 670,055 TND",
+       "109 866,930 TND"
+      ],
+      [
+       "Frais de distribution",
+       "5 346,945 TND",
+       "6 290,070 TND"
+      ],
+      [
+       "Rejets",
+       "25",
+       "10 de plus"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** avant d’écrire : les spectacles sous 20 % de remplissage, le coût des annulations (frais compris), le poids de REV après la hausse. Les recettes nettes ne comptent ni cachets ni salles : ce n’est pas un bénéfice."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M09/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; Scène Libre et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni dans la CI GitHub. Son application n’a pas été ouverte dans un navigateur : seules ses données ont été contrôlées.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; Power BI suit le livret 05, non rejoué pour cette mission."
+     ]
+    }
+   ]
+  }
+ ]
+}

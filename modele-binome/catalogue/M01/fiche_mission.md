@@ -21,7 +21,7 @@ Carthage Market est une enseigne fictive de supérettes : épicerie, boissons, p
 
 1. `outputs/rejets.csv` : chaque ligne écartée avec son motif.
 2. `outputs/entrepot.sqlite` : une étoile (dim_date, dim_produit, dim_magasin, fact_vente, fact_retour).
-3. Le lot 2 chargé, l'historique gardé (Le magasin HAM (Hammamet, franchisé) passe de la région « Cap Bon » à la région « Sahel » le 2026-07-15 (inclus). Cette information arrive avec `lot2/magasins.json`.), un rejeu sans doublon.
+3. Le lot 2 chargé, l'historique gardé et un rejeu sans doublon. Le magasin HAM (Hammamet, franchisé) passe de la région « Cap Bon » à la région « Sahel » le 2026-07-15 (inclus). Cette information arrive avec `lot2/magasins.json`.
 4. `outputs/export/*.csv` + `manifest.json`, puis le rapport Power BI actualisé.
 5. `outputs/app/index.html` : une mini-application locale de trois écrans.
 6. Une recommandation courte à la direction, appuyée sur les chiffres.

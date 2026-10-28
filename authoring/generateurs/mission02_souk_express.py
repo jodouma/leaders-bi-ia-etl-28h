@@ -1,11 +1,9 @@
 """Mission M02 — E-commerce « Souk Express » (lignes de commande, remises, canaux SCD2, remboursements).
 
     python authoring/generateurs/mission02_souk_express.py            # depuis github/
-    python authoring/generateurs/mission02_souk_express.py --v7-data  # + met à jour v7-data.json (fichier partagé)
 
 Écrit modele-binome/catalogue/M02/{fiche_mission.md, cahier_des_charges.md, dictionnaire.md,
-echantillon/, sources/lot1/, sources/lot2/, reference/} et la vérité privée du formateur.
-v7-data.json n'est écrit qu'avec --v7-data (fichier partagé entre missions : à lancer seul).
+echantillon/, sources/lot1/, sources/lot2/, reference/}, le bloc M02 de v7-data.json et la vérité privée du formateur.
 """
 from __future__ import annotations
 
@@ -17,12 +15,11 @@ from common import (ChampsCSV, Doses, Feuille, Lot, LotResultat, Table, Colonne,
                     table_dim_date, rng_mission, jours, date_key, cle_version, construire_csv, ecrire_csv,
                     ecrire_excel, ecrire_json, ecrire_sqlite, preparer_dossier, produire_reference,
                     calculer_attendu_echantillon, exporter_v7_data, ecrire_verite_privee, format_montant,
-                    tnd_fr, md_tableau, taille_dossier)
+                    tnd_fr, md_tableau, taille_dossier, TAILLE_MAX_MISSION)
 from textes_mission02 import SPEC_TEXTES
 
 GRAINE = 260202
 CODE = "M02"
-TAILLE_MAX_M02 = 1_500_000              # contrat de l'édition : dossier de mission < 1,5 Mo
 # code, nom, catégorie, prix, coût (millimes), poids de vente
 PRODUITS = [("P01", "T-shirt en coton bio", "Mode", 45000, 19000, 14),
             ("P02", "Jean coupe droite", "Mode", 89900, 41000, 9),
@@ -42,8 +39,8 @@ PRODUITS = [("P01", "T-shirt en coton bio", "Mode", 45000, 19000, 14),
 # code, nom, famille, depuis, poids, (probabilité de remise, % min, % max), probabilité de remboursement
 CANAUX = [("WEB", "Site souk-express.tn", "site", "2023-02-01", 30, (0.15, 5, 15), 0.030),
           ("APP", "Application mobile Souk Express", "application", "2024-09-15", 22, (0.30, 10, 20), 0.035),
-          ("BZL", "Marketplace Bazar Lina", "marketplace", "2024-01-10", 18, (0.50, 10, 30), 0.085),
-          ("SHM", "Marketplace Sahel Market", "marketplace", "2025-03-03", 8, (0.40, 10, 25), 0.070),
+          ("BZL", "Marketplace Bazar Lina", "marketplace", "2024-01-10", 18, (0.55, 10, 30), 0.100),
+          ("SHM", "Marketplace Sahel Market", "marketplace", "2025-03-03", 8, (0.45, 10, 25), 0.085),
           ("VSO", "Vitrine sociale Souk Express", "réseaux sociaux", "2023-06-01", 12, (0.25, 10, 20), 0.100),
           ("GCO", "Groupe communauté Souk Express", "réseaux sociaux", "2023-06-01", 10, (0.30, 10, 15), 0.090)]
 CHANGEMENT = ("VSO", "marketplace", date(2026, 7, 15))
@@ -359,34 +356,13 @@ Une virgule ou un point sépare les décimales : `18,5` = `18.500` = 18 500 mill
 
 
 # --------------------------------------------------------------------------- compléments du cahier des charges
-def complement_cahier(spec) -> str:
-    q = spec.regle_a_clarifier
-    ecrans = "\n".join(f"{k}. **{t}** — {c}" for k, (t, c) in enumerate(spec.ecrans_app, 1))
-    variantes = "\n".join(f"{k}. {v}" for k, v in enumerate(spec.variantes, 1))
-    return f"""
-### Les deux options étudiées
-
-{q['options']}
-
-## 13. Trois variantes (évolutions possibles demandées en soutenance)
-
-{variantes}
-
-## 14. Parcours de démonstration de l'application (3 écrans)
-
-{ecrans}
-
-Démonstration conseillée : (1) Vue direction, toute la période, puis filtre famille « marketplace » : le CA brut est élevé, le CA net beaucoup moins ; (2) Détail par canal, VSO : deux versions, et le remboursement du 20 juillet compté en « marketplace » ; (3) Qualité des données : rejets par motif et par lot, remboursements `EN_COURS`/`REFUSE` ignorés.
-"""
-
-
 # --------------------------------------------------------------------------- programme principal
 def main(argv: list[str]) -> None:
     spec = MissionSpec(**SPEC_TEXTES, lots=[LOT1, LOT2], graine=GRAINE, tables=TABLES)
     dossier = preparer_dossier(spec)
     rng = rng_mission(GRAINE)
     c1 = generer_commandes(rng, LOT1, 2050, 100001)
-    c2 = generer_commandes(rng, LOT2, 410, int(c1[-1]["commande_id"][1:]) + 1)
+    c2 = generer_commandes(rng, LOT2, 460, int(c1[-1]["commande_id"][1:]) + 1)
     rembs = generer_remboursements(rng, c1 + c2)
     r1 = [r for r in rembs if r["_jour"] <= LOT1.fin]
     r2 = [r for r in rembs if CHEVAUCHEMENT_SQL <= r["_jour"] <= LOT2.fin]
@@ -434,8 +410,6 @@ def main(argv: list[str]) -> None:
         assert b.compteurs["lignes_acceptees_nouvelles"] == len(cumul_c) - (0 if lot is LOT1 else len(c1))
 
     attendus = produire_reference(spec, lots)
-    with open(dossier / "cahier_des_charges.md", "a", encoding="utf-8") as f:
-        f.write(complement_cahier(spec))
     # double contrôle Python pur (sans SQL) des nombres clés
     t = lots[-1].tables_verite
     brut = sum(f["montant_brut_millimes"] for f in t["fact_commande"])
@@ -450,8 +424,7 @@ def main(argv: list[str]) -> None:
     assert next(v for v in t["dim_canal"] if v["canal_key"] == cas["canal_key"])["famille"] == "marketplace"
 
     ech = produire_echantillon(spec, dossier / "echantillon")
-    if "--v7-data" in argv:
-        exporter_v7_data(spec, ech, attendus)
+    exporter_v7_data(spec, ech, attendus)
     ent_c = ["lot", "ligne_id", "commande_id", "date_commande", "canal", "produit", "quantite", "prix_unitaire_millimes",
              "remise_millimes"]
     ids1 = {v["ligne_id"] for v in c1}
@@ -471,7 +444,7 @@ def main(argv: list[str]) -> None:
                               [{"lot": lot, **r} for lot, b in (("lot1", b1), ("lot2", b2)) for r in b.detail_rejets()]),
     })
     taille = taille_dossier(dossier)
-    assert taille < TAILLE_MAX_M02, taille
+    assert taille < TAILLE_MAX_MISSION, taille
     print(f"Mission {CODE} écrite dans {dossier} ({taille / 1024:.0f} Ko) ; lignes rejouées dans lot2 : {len(rejouees)}")
     for a in attendus.values():
         i = a["indicateurs"]

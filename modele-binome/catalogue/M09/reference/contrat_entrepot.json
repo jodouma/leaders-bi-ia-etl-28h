@@ -1,0 +1,341 @@
+{
+  "version_contrat": 1,
+  "mission": "M09",
+  "entreprise": "Scène Libre",
+  "grain": "un billet vendu",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_evenement",
+    "dim_canal",
+    "fact_billet",
+    "fact_remboursement"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_evenement": {
+      "role": "dimension",
+      "cle": "evenement_key",
+      "cle_metier": "evenement_id",
+      "colonnes": [
+        "evenement_key",
+        "evenement_id",
+        "nom",
+        "type_evenement",
+        "lieu",
+        "ville",
+        "date_evenement",
+        "capacite"
+      ],
+      "colonnes_entieres": [
+        "evenement_key",
+        "capacite"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_canal": {
+      "role": "dimension_scd2",
+      "cle": "canal_key",
+      "cle_metier": "canal_id",
+      "colonnes": [
+        "canal_key",
+        "canal_id",
+        "libelle",
+        "frais_pour_mille",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "canal_key",
+        "frais_pour_mille"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_billet": {
+      "role": "fait",
+      "cle": "billet_id",
+      "cle_metier": null,
+      "colonnes": [
+        "billet_id",
+        "date_key",
+        "evenement_key",
+        "canal_key",
+        "categorie",
+        "prix_millimes",
+        "frais_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "evenement_key",
+        "canal_key",
+        "prix_millimes",
+        "frais_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "evenement_key": "dim_evenement.evenement_key",
+        "canal_key": "dim_canal.canal_key"
+      }
+    },
+    "fact_remboursement": {
+      "role": "fait",
+      "cle": "remboursement_id",
+      "cle_metier": null,
+      "colonnes": [
+        "remboursement_id",
+        "billet_id",
+        "date_key",
+        "evenement_key",
+        "canal_key",
+        "motif",
+        "montant_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "evenement_key",
+        "canal_key",
+        "montant_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "billet_id": "fact_billet.billet_id",
+        "date_key": "dim_date.date_key",
+        "evenement_key": "dim_evenement.evenement_key",
+        "canal_key": "dim_canal.canal_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_billet",
+    "fact_remboursement"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_canal",
+    "cle": "canal_key",
+    "cle_metier": "canal_id",
+    "attribut": "frais_pour_mille",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_billet",
+        "colonne": "canal_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_remboursement",
+        "colonne": "canal_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "REV",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "REV",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "REV",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "WEB",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT substr(e.date_evenement, 1, 7) AS mois, e.evenement_id, e.type_evenement, e.lieu, c.canal_id, c.frais_pour_mille, 1 AS vendu, 0 AS rembourse, f.prix_millimes AS prix, 0 AS montant_rembourse, f.frais_millimes AS frais, 0 AS capacite FROM fact_billet f JOIN dim_evenement e ON e.evenement_key = f.evenement_key JOIN dim_canal c ON c.canal_key = f.canal_key UNION ALL SELECT substr(e.date_evenement, 1, 7), e.evenement_id, e.type_evenement, e.lieu, c.canal_id, c.frais_pour_mille, 0, 1, 0, r.montant_millimes, 0, 0 FROM fact_remboursement r JOIN dim_evenement e ON e.evenement_key = r.evenement_key JOIN dim_canal c ON c.canal_key = r.canal_key UNION ALL SELECT substr(e.date_evenement, 1, 7), e.evenement_id, e.type_evenement, e.lieu, '(capacité)', NULL, 0, 0, 0, 0, 0, e.capacite FROM dim_evenement e",
+  "indicateurs": [
+    {
+      "code": "billets_vendus",
+      "libelle": "Billets vendus",
+      "unite": "nombre",
+      "formule": "nombre de billets acceptés",
+      "sql": "SUM(vendu)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "billets_rembourses",
+      "libelle": "Billets remboursés",
+      "unite": "nombre",
+      "formule": "nombre de remboursements acceptés (statut REMBOURSE, un par billet)",
+      "sql": "SUM(rembourse)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "billets_nets",
+      "libelle": "Billets nets",
+      "unite": "nombre",
+      "formule": "billets vendus − billets remboursés",
+      "sql": "SUM(vendu) - SUM(rembourse)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "taux_remplissage",
+      "libelle": "Taux de remplissage",
+      "unite": "ratio",
+      "formule": "billets nets / capacité des événements (somme des capacités des événements concernés)",
+      "sql": "ROUND(1.0 * (SUM(vendu) - SUM(rembourse)) / NULLIF(SUM(capacite), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "recettes_billets_millimes",
+      "libelle": "Recettes des billets",
+      "unite": "millimes",
+      "formule": "somme des prix payés des billets acceptés",
+      "sql": "SUM(prix)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "remboursements_millimes",
+      "libelle": "Remboursements",
+      "unite": "millimes",
+      "formule": "somme des montants rendus des remboursements acceptés",
+      "sql": "SUM(montant_rembourse)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "frais_distribution_millimes",
+      "libelle": "Frais de distribution",
+      "unite": "millimes",
+      "formule": "somme des frais des billets acceptés (taux du canal valable à la date de vente)",
+      "sql": "SUM(frais)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "recettes_nettes_millimes",
+      "libelle": "Recettes nettes",
+      "unite": "millimes",
+      "formule": "recettes des billets − remboursements − frais de distribution",
+      "sql": "SUM(prix) - SUM(montant_rembourse) - SUM(frais)",
+      "tolerance": 0.0,
+      "principal": true
+    }
+  ],
+  "axes": {
+    "par_evenement": "evenement_id",
+    "par_type": "type_evenement",
+    "par_mois": "mois",
+    "par_lieu": "lieu",
+    "par_canal": "canal_id"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "billets.csv",
+      "remboursements.sqlite"
+    ]
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_evenement",
+      "dim_canal",
+      "fact_billet",
+      "fact_remboursement"
+    ],
+    "sommes": {
+      "fact_billet": [
+        "prix_millimes",
+        "frais_millimes"
+      ],
+      "fact_remboursement": [
+        "montant_millimes"
+      ],
+      "dim_evenement": [
+        "capacite"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par canal",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

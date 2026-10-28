@@ -2,7 +2,7 @@
 
 **Quand l'utiliser** : séance 2, premier contact avec les sources de `lot1/`.
 
-**Avant d'envoyer** : dans le terminal, `wc -l <dossier>/lot1/*.csv`. Combien de
+**Avant d'envoyer** : dans le terminal, `wc -l tronc-commun/sources/lot1/*.csv` (ou `catalogue/<mission>/sources/lot1/*.csv`). Combien de
 lignes de données attendez-vous (en-tête exclu) ? Ouvrez le JSON dans l'éditeur :
 combien de boutiques ? Notez vos deux nombres.
 

@@ -189,7 +189,7 @@ SPEC_TEXTES = dict(
                    "fact_retour": ["quantite", "montant_millimes"],
                    "dim_produit": ["prix_millimes", "cout_achat_millimes"]},
     visuels=[
-        {"type": "empile_bas", "indicateur": "ventes_nettes_millimes", "x": "mois", "serie": "region",
+        {"type": "empile", "indicateur": "ventes_nettes_millimes", "x": "mois", "serie": "region",
          "ordre_series": ["Grand Tunis", "Nord", "Cap Bon", "Sahel", "Sud"], "fichier": "ventes_nettes_par_mois_et_region",
          "titre": "Ventes nettes par mois et par région", "libelle_x": "Mois", "libelle_serie": "Région"},
         {"type": "barres", "indicateurs": ["ventes_nettes_millimes", "marge_cout_achat_millimes"], "axe": "magasin_id",
@@ -202,4 +202,6 @@ SPEC_TEXTES = dict(
     ],
     debut_calendrier=date(2026, 1, 1),
     sources_rejets={"ventes": "ventes.csv", "retours": "operations.sqlite"},
+    parcours_app="Pendant la démonstration : choisir une période et un magasin dans les filtres, lire un indicateur et "
+                 "son unité, puis montrer sur l'écran 2 que les ventes de HAM avant le 2026-07-15 restent en « Cap Bon ».",
 )

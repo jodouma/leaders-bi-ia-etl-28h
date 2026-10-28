@@ -1,1429 +1,2249 @@
 {
-  "edition": "V6-15h",
+  "edition": "V7-Solen-22h",
   "language": "fr-FR",
+  "verified_on": "2026-10-28",
+  "output": "presentation/Solen_CODEX_BI_22h.pptx",
   "slides": [
     {
       "section": "A",
       "layout": "cover",
-      "title": "Construire une solution BI\navec Codex",
-      "subtitle": "Atlas Papeterie · de la première vente au rapport Power BI",
-      "duration": "15 h",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-01"
+      "title": "Langage avancé : IA, Codex et BI",
+      "subtitle": "Votre première mission chez Solen Digital",
+      "tagline": "22 h en présence · 5 séances de 4 h + soutenance 2 h · binômes · 0 code à la main",
+      "notes": "Titre figé du contrat d'édition V7 (formateur/fable-v7-solen-22h/design/CONTRAT_EDITION.md §1). Solen Digital est une société fictive : seuls son nom et ses logos fournis sont utilisés. Durées = estimations de conception, à confirmer par un essai humain. Version des faits officiels : 28/10/2026.",
+      "id": "v7-01"
     },
     {
       "section": "A",
       "layout": "cards",
-      "title": "Vous rejoignez Atlas Papeterie",
+      "title": "Lundi matin, vous rejoignez Solen Digital",
+      "kicker": "LA MISSION",
       "items": [
         {
-          "label": "Votre poste",
-          "text": "Nouvelle équipe BI.\nVous apprenez les outils en avançant."
+          "label": "Solen Digital",
+          "text": "Société de services numériques (fictive) qui accompagne des PME."
         },
         {
-          "label": "La demande",
-          "text": "« Combien avons-nous vendu,\noù et dans quelle zone ? »"
+          "label": "Vous deux",
+          "text": "Jeunes diplômés BI, recrutés en binôme le même lundi."
         },
         {
-          "label": "La difficulté",
-          "text": "Des lignes fausses, des répétitions\net une boutique qui change de zone."
+          "label": "Le client",
+          "text": "Maison Zitouna : 3 boutiques\nTUN · NBE · SFX."
         }
       ],
-      "note": "Cas fictif · 2 boutiques · ventes du 5 au 8 janvier 2026.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-02"
+      "note": "Une mission trop grande pour deux débutants… sauf si on la découpe en petites étapes vérifiables.",
+      "notes": "Fil conducteur du contrat §2. Personnages fictifs : Lamia Ben Salah (directrice), Karim Jaziri (responsable BI). Maison Zitouna vend huile d'olive, olives, dattes, savons et coffrets : Tunis Centre (TUN, Grand Tunis), Nabeul (NBE, Cap Bon), Sfax (SFX, Sud) — livret 02, « La mission en une page ». Tous les noms de clients sont inventés.",
+      "id": "v7-02"
     },
     {
       "section": "A",
-      "layout": "cards",
-      "title": "La BI : aider à décider avec des données",
+      "layout": "mail",
+      "title": "Épisode 1 · Le mail de la direction",
+      "kicker": "LA MISSION",
+      "sender": "Lamia Ben Salah, directrice (fictive)",
+      "to": "Vous deux, via Karim Jaziri",
+      "subject": "Maison Zitouna",
+      "body": "« Les ventes montent, mais où passe la marge ?\nPar boutique, par zone et par mois : ventes brutes, retours, ventes nettes, marge sur coût d'achat, taux de retour.\nEt dites-moi ce que vous avez dû écarter, et pourquoi. »",
+      "aside": "À partir du 15 juillet, Nabeul passe de Cap Bon à Nord-Est.",
+      "notes": "Texte abrégé du mail de l'épisode 1 (livret 02, séance 1). Le mail complet précise que les chiffres du premier semestre doivent rester dans Cap Bon : c'est l'annonce du SCD2 de la séance 4. La question « où passe la marge ? » sert de fil rouge jusqu'à la recommandation de S5.",
+      "id": "v7-03"
+    },
+    {
+      "section": "A",
+      "layout": "picture",
+      "title": "De la question de la direction à la décision",
+      "kicker": "LA MISSION",
+      "image": "docs/images/diagrams/v7-direction-decision.png",
       "items": [
-        {
-          "label": "Question",
-          "text": "Quel montant a été vendu\npar zone commerciale ?"
-        },
-        {
-          "label": "Chiffre",
-          "text": "Calculer à partir de ventes\nfiables et bien reliées."
-        },
-        {
-          "label": "Décision",
-          "text": "Comparer les zones, puis\nposer une meilleure question."
-        }
+        "Une question floue devient une question métier.",
+        "Un indicateur défini, avec son unité.",
+        "Sans question, pas de graphique."
       ],
-      "note": "Autres usages : suivre un stock, comparer des achats ou mesurer un délai. Ici, nous étudions les ventes.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-03"
+      "notes": "Schéma v7-direction-decision (authoring/visuals/manifest.json). Chaîne : direction → question métier → données → indicateur → décision. Si l'indicateur ne répond pas à la question, on revient à la question métier. C'est aussi la structure de la recommandation de S5.",
+      "id": "v7-04"
     },
     {
       "section": "A",
-      "layout": "beforeafter",
-      "title": "Une bonne question vient avant le graphique",
-      "leftLabel": "TROP VAGUE",
-      "left": "« Fais un beau tableau\nde bord. »",
-      "rightLabel": "VÉRIFIABLE",
-      "right": "« Montant vendu en TND,\ndu 5 au 8 janvier,\npar zone à la date de vente. »",
-      "note": "On précise la période, l’unité, le niveau de détail et le sens du regroupement.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-04"
+      "layout": "compare",
+      "title": "Deux recrues, deux rôles qui alternent",
+      "kicker": "LE BINÔME",
+      "leftLabel": "AUTEUR",
+      "left": "Rédige la demande à Codex\nLance les contrôles, lit le diff\nCommit, push, ouvre la PR",
+      "rightLabel": "RELECTEUR",
+      "right": "Récupère la branche\nRevue Codex en lecture seule\nÉcrit SA revue, approuve ou non",
+      "neutral": true,
+      "arrow": "⇄",
+      "note": "Deux comptes GitHub · deux comptes Codex Free · deux copies locales · un dépôt par binôme.",
+      "notes": "Contrat §1 (Équipes) et §8 (cycle). Les rôles s'inversent à chaque cycle : S1 et S2 A auteur, S3 B auteur, S4 revue d'un défaut planté et conflit contrôlé. L'auteur ne fusionne jamais sa propre PR. On ne partage jamais un compte.",
+      "id": "v7-05"
     },
     {
       "section": "A",
-      "layout": "diagram",
-      "title": "Le chemin que vous allez construire",
-      "asset": "docs/images/diagrams/v6-pipeline.png",
-      "caption": "Chaque flèche transforme ou transporte des données.",
-      "note": "CSV + SQL → Python → étoile SQLite → 4 CSV → Power BI Desktop Windows.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-05"
-    },
-    {
-      "section": "A",
-      "layout": "navigation",
-      "title": "Cinq séances, cinq petites victoires",
-      "items": [
-        {
-          "letter": "A",
-          "label": "S1 · DÉMARRER",
-          "text": "Poste, Codex,\npremière vente."
-        },
-        {
-          "letter": "B",
-          "label": "S2 · FIABILISER",
-          "text": "CSV, SQL,\nnettoyage, étoile."
-        },
-        {
-          "letter": "C",
-          "label": "S3 · CHARGER",
-          "text": "Ajout, rejeu,\nhistoire."
-        },
-        {
-          "letter": "D",
-          "label": "S4 · MONTRER",
-          "text": "Power BI,\nSkill, revue."
-        },
-        {
-          "letter": "E",
-          "label": "S5 · LIVRER",
-          "text": "Défaut, preuve,\nexplication."
-        }
-      ],
-      "note": "Chaque séance dure 180 min, avec une pause réelle de 10 min.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-06"
-    },
-    {
-      "section": "A",
-      "layout": "table",
-      "title": "15 h avec du temps pour essayer",
-      "headers": [
-        "Séance",
-        "Concepts",
-        "Pratique",
-        "Pause"
-      ],
-      "rows": [
-        [
-          "S1 · démarrer",
-          "60 min",
-          "110 min",
-          "10 min"
-        ],
-        [
-          "S2 · fiabiliser",
-          "60 min",
-          "110 min",
-          "10 min"
-        ],
-        [
-          "S3 · charger",
-          "60 min",
-          "110 min",
-          "10 min"
-        ],
-        [
-          "S4 · montrer",
-          "60 min",
-          "110 min",
-          "10 min"
-        ],
-        [
-          "S5 · livrer",
-          "15 min",
-          "155 min",
-          "10 min"
-        ]
-      ],
-      "note": "Total : 255 min concepts + 595 min pratique + 50 min pause. Hors pauses : 30 % / 70 %.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-07"
-    },
-    {
-      "section": "A",
-      "layout": "cover",
-      "title": "S1 · Je peux commencer",
-      "subtitle": "Victoire : trouver les fichiers, guider Codex et expliquer une vente.",
-      "duration": "3 h",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-08"
-    },
-    {
-      "section": "A",
-      "layout": "schedule",
-      "title": "Votre séance 1 · 180 minutes",
-      "rows": [
-        [
-          "0–60",
-          "Mission + prise en main du poste",
-          "20 T / 40 P"
-        ],
-        [
-          "60–105",
-          "Instructions + petit plan",
-          "15 T / 30 P"
-        ],
-        [
-          "105–115",
-          "Pause",
-          "10 min"
-        ],
-        [
-          "115–155",
-          "Contexte + première vente",
-          "15 T / 25 P"
-        ],
-        [
-          "155–180",
-          "Vérifier + préparer la reprise",
-          "10 T / 15 P"
-        ]
-      ],
-      "note": "T = concepts et démonstrations · P = vous manipulez, cherchez et expliquez.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-09"
-    },
-    {
-      "section": "A",
-      "layout": "cards",
-      "title": "Codex : de la réponse à l’action",
-      "items": [
-        {
-          "label": "Un modèle",
-          "text": "Produit une réponse\nà partir d’un contexte."
-        },
-        {
-          "label": "Un agent",
-          "text": "Associe un modèle à des outils :\nlire, modifier, exécuter."
-        },
-        {
-          "label": "Votre rôle",
-          "text": "Définir la tâche, les limites\net les preuves attendues."
-        }
-      ],
-      "note": "Codex est un agent de programmation d’OpenAI : nous l’utilisons pour adapter et vérifier de petits scripts.",
-      "notes": "Source officielle consultée le 27 octobre 2026 : https://learn.chatgpt.com/docs/app. Origine : agent de programmation OpenAI. Pas de revendication d’adoption ni de productivité garantie.",
-      "id": "v6-10"
-    },
-    {
-      "section": "A",
-      "layout": "beforeafter",
-      "title": "Une conversation et un travail d’agent",
-      "leftLabel": "CONVERSATION",
-      "left": "« Comment nettoyer\nun code boutique ? »\n\nVous lisez une explication.",
-      "rightLabel": "AGENT DANS LE DOSSIER",
-      "right": "« Lis ce fichier. Propose\nun petit changement.\nExécute le contrôle. »",
-      "note": "Une action dépend des outils et permissions disponibles. Lire le résultat reste votre travail.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-11"
-    },
-    {
-      "section": "A",
-      "layout": "diagram",
-      "title": "Plan court → action → preuve → revue",
-      "asset": "docs/images/diagrams/v6-codex-boucle.png",
-      "caption": "Une correction revient au contrôle, puis à la revue.",
-      "note": "Planifier → agir → tester → relire → corriger → relire à nouveau.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-12"
-    },
-    {
-      "section": "A",
-      "layout": "cards",
-      "title": "Le parcours gratuit à vérifier sur votre poste",
-      "items": [
-        {
-          "label": "Application",
-          "text": "Ouvrir l’application de bureau,\nchoisir Codex puis New chat."
-        },
-        {
-          "label": "Offre Free annoncée",
-          "text": "GPT-6 Luna · vitesse Standard.\nPrésence selon déploiement."
-        },
-        {
-          "label": "Observer",
-          "text": "Noter le modèle et les options\nréellement visibles."
-        }
-      ],
-      "note": "Si Codex n’apparaît pas, prévenir le professeur. Lire les données aide, mais ne valide pas la manipulation Codex.",
-      "notes": "État documentaire au 27/10/2026 : https://learn.chatgpt.com/docs/pricing et https://learn.chatgpt.com/docs/app. Accès Free Desktop sous déploiement ; aucun accès CLI Free universel démontré. Compte Free non testé par cette présentation.",
-      "id": "v6-13"
-    },
-    {
-      "section": "A",
-      "layout": "diagram",
-      "title": "Deux espaces sous Windows",
-      "asset": "docs/images/diagrams/v6-postes-wsl.png",
-      "caption": "Codex est une fenêtre Windows ; son agent utilise Ubuntu dans WSL2.",
-      "note": "Windows : agent WSL2 + Python dans Ubuntu ; Power BI Desktop sur l’hôte Windows.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-14"
-    },
-    {
-      "section": "A",
-      "layout": "cards",
-      "title": "Sur Ubuntu : une route, puis un relais Windows",
-      "items": [
-        {
-          "label": "Codex Linux",
-          "text": "Application Linux en preview :\nUbuntu 24.04 ou 26.04 LTS."
-        },
-        {
-          "label": "ETL local",
-          "text": "Le terminal Ubuntu lance\nPython et SQLite."
-        },
-        {
-          "label": "Power BI",
-          "text": "Transférer le paquet complet\nau poste Windows du groupe."
-        }
-      ],
-      "note": "Le poste Windows doit être disponible dès S4. La connexion et les installations se vérifient en salle.",
-      "notes": "Source OpenAI, 27/10/2026 : https://learn.chatgpt.com/docs/linux/linux-app. Preview Ubuntu 24.04/26.04 x64/ARM64. Aucun essai Windows/Ubuntu ou compte Free attesté par ces slides.",
-      "id": "v6-15"
-    },
-    {
-      "section": "A",
-      "layout": "workspace",
-      "title": "Reconnaître les trois endroits où travailler",
-      "note": "Codex ouvre ~/cours-bi ; le terminal entre dans atelier/ avec cd atelier. Enregistrer avant d’exécuter.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-16"
-    },
-    {
-      "section": "A",
-      "layout": "diagram",
-      "title": "Se repérer dans le dossier fourni",
-      "asset": "docs/images/diagrams/v6-dossiers.png",
-      "caption": "Les sources se lisent ; votre copie de travail se construit.",
-      "note": "Ouvrir la racine du cours dans Codex ; exécuter les étapes dans atelier/.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-17"
-    },
-    {
-      "section": "A",
-      "layout": "code",
-      "title": "Premier prompt : lire avant de modifier",
-      "code": "Lis AGENTS.md à la racine du cours.\nLis atelier/data/ventes_initiales.csv.\nExplique ce que décrit une ligne.\nPropose un plan de trois étapes.\nNe modifie aucun fichier.",
-      "items": [
-        "Vérifier le dossier et les chemins.",
-        "Lire le plan : est-il petit et clair ?",
-        "Reformuler une étape avec vos mots."
-      ],
-      "note": "Codex reste ouvert sur ~/cours-bi. AGENTS.md est à la racine ; les données sont dans atelier/data/.",
-      "fontSize": 20,
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-18"
-    },
-    {
-      "section": "A",
-      "layout": "code",
-      "title": "AGENTS.md : garder les règles du projet",
-      "code": "Explique en français simple.\nTravaille une mission à la fois.\nNe change pas les sources.\nGarde les montants en millimes entiers.\nMontre la commande et son résultat.\nNe cache pas un écart.",
-      "items": [
-        "À la racine :\nnano AGENTS.md",
-        "Enregistrer : Ctrl+O (lettre O), puis Entrée.",
-        "Quitter : Ctrl+X. Garder les règles fournies."
-      ],
-      "note": "Modifier ~/cours-bi/AGENTS.md en gardant les règles fournies. Ne créez pas un second fichier dans atelier/.",
-      "fontSize": 20,
-      "notes": "Source : https://learn.chatgpt.com/docs/agent-configuration/agents-md, consultée le 27/10/2026. Nouvelle session pour contrôler la lecture effective des règles.",
-      "id": "v6-19"
-    },
-    {
-      "section": "A",
-      "layout": "exercise",
-      "title": "À vous · 30 min",
-      "question": "Donner une petite mission, puis améliorer le prompt.",
-      "steps": [
-        "À la racine du cours, lire AGENTS.md fourni et ajouter une règle.",
-        "Demander le plan en trois étapes, sans modifier les ventes.",
-        "Repérer une phrase imprécise et la remplacer."
-      ],
-      "note": "Preuve : règle ajoutée dans ~/cours-bi/AGENTS.md + prompt avant/après + plan retenu.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-20"
-    },
-    {
-      "section": "A",
-      "layout": "pause",
-      "title": "Pause · 10 minutes",
-      "subtitle": "Enregistrez votre fichier et votre prochaine action.\nReprenez à la première vente.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-21"
-    },
-    {
-      "section": "A",
-      "layout": "diagram",
-      "title": "Contexte et quota : deux limites différentes",
-      "asset": "docs/images/diagrams/v6-contexte-quota.png",
-      "caption": "Le contexte informe la réponse ; le quota autorise l’usage du compte.",
-      "note": "Un résumé peut alléger une reprise. Il ne remet pas le quota à zéro.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-22"
-    },
-    {
-      "section": "A",
-      "layout": "diagram",
-      "title": "Modèle, vitesse et réflexion : lire les bons mots",
-      "asset": "docs/images/diagrams/v6-modele-effort.png",
-      "caption": "Standard désigne la vitesse ; l’effort désigne la réflexion.",
-      "note": "Free : Luna · Standard = vitesse. High conseillé si visible. Luna ne propose pas Ultra.",
-      "notes": "Sources consultées le 27/10/2026 : https://learn.chatgpt.com/docs/pricing et https://learn.chatgpt.com/docs/models. Free annonce Luna Standard sous déploiement ; High conseillé pour Luna si le choix est disponible. Luna ne supporte pas Ultra. Les options diffèrent selon les comptes.",
-      "id": "v6-23"
-    },
-    {
-      "section": "A",
-      "layout": "equation",
-      "title": "Première victoire : expliquer une vente",
-      "terms": [
-        [
-          "Quantité × prix",
-          "2 × 4 500",
-          "9 000"
-        ],
-        [
-          "Affichage en TND",
-          "9 000 ÷ 1 000",
-          "9,000"
-        ]
-      ],
-      "result": "2 carnets à 4,500 TND → 9,000 TND",
-      "variation": "Prédire avant de lancer : que donneraient 3 carnets au même prix ?",
-      "note": "La multiplication et l’unité précèdent le code. 1 TND = 1 000 millimes.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-24",
-      "units": [
-        "millimes",
-        "TND"
-      ]
-    },
-    {
-      "section": "A",
-      "layout": "exercise",
-      "title": "À vous · prédire, exécuter, comparer",
-      "question": "Montrer une preuve, puis préparer la reprise.",
-      "steps": [
-        "Repérer la vente, prédire son montant, lancer le calcul fourni.",
-        "Noter le résultat observé et l’option modèle/effort visible.",
-        "Écrire SUIVI.md avec la méthode nano du guide : fait, preuve et prochaine action."
-      ],
-      "note": "Quota atteint : continuer le calcul et les contrôles locaux ; noter « agent indisponible ».",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-25"
-    },
-    {
-      "section": "A",
-      "layout": "cards",
-      "title": "À ce stade, je sais…",
-      "items": [
-        {
-          "label": "Je me repère",
-          "text": "Je montre mes fichiers\net mon terminal."
-        },
-        {
-          "label": "Je dirige",
-          "text": "Je limite une demande\net les fichiers modifiables."
-        },
-        {
-          "label": "Je vérifie",
-          "text": "J’explique 9,000 TND\nsans relire Codex."
-        }
-      ],
-      "note": "Sortie S1 : règles locales, prompt amélioré, calcul vérifié et reprise courte.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-26"
-    },
-    {
-      "section": "B",
-      "layout": "cover",
-      "title": "S2 · Je rends les ventes fiables",
-      "subtitle": "Victoire : expliquer les écarts, lire CSV et SQL, dessiner l’étoile.",
-      "duration": "3 h",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-27"
-    },
-    {
-      "section": "B",
-      "layout": "schedule",
-      "title": "Votre séance 2 · 180 minutes",
-      "rows": [
-        [
-          "0–40",
-          "Prédire le sort des lignes",
-          "15 T / 25 P"
-        ],
-        [
-          "40–85",
-          "Petit nettoyage Python",
-          "15 T / 30 P"
-        ],
-        [
-          "85–95",
-          "Pause",
-          "10 min"
-        ],
-        [
-          "95–140",
-          "CSV, vraie extraction SQL",
-          "15 T / 30 P"
-        ],
-        [
-          "140–180",
-          "Fait, dimensions et clés",
-          "15 T / 25 P"
-        ]
-      ],
-      "note": "Le code est amorcé. Vous adaptez une petite partie et expliquez ses effets.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-28"
-    },
-    {
-      "section": "B",
-      "layout": "grain",
-      "title": "Une ligne raconte une vente",
-      "note": "sale_id identifie une vente élémentaire. Ce n’est ni le nombre de clients ni un ticket complet.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-29"
-    },
-    {
-      "section": "B",
-      "layout": "diagram",
-      "title": "Toutes les lignes n’ont pas le même sort",
-      "asset": "docs/images/diagrams/v6-qualite.png",
-      "caption": "Chaque ligne brute a une destination explicable.",
-      "note": "16 lignes = 12 ventes acceptées + 1 doublon identique + 3 rejets.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-30"
-    },
-    {
-      "section": "B",
-      "layout": "table",
-      "title": "Décider avant de coder",
-      "headers": [
-        "Exemple",
-        "Action",
-        "Pourquoi ?"
-      ],
-      "rows": [
-        [
-          "\" nbe \"",
-          "Retirer espaces → NBE",
-          "Même code, écriture différente"
-        ],
-        [
-          "sale_id déjà vu, identique",
-          "Compter un doublon",
-          "Ne pas compter deux fois"
-        ],
-        [
-          "quantity = 0",
-          "Rejeter et expliquer",
-          "Règle : quantité positive"
-        ],
-        [
-          "Date impossible",
-          "Rejeter et expliquer",
-          "Impossible de dater la vente"
-        ]
-      ],
-      "note": "Même sale_id, contenu différent : conflit à signaler. Ne jamais choisir une version au hasard.",
-      "widths": [
-        1.3,
-        1.5,
-        1.7
-      ],
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-31"
-    },
-    {
-      "section": "B",
-      "layout": "code",
-      "title": "Python : une transformation minuscule",
-      "code": "def normaliser_code(texte):\n    if not isinstance(texte, str):\n        raise ValueError(\"code non texte\")\n    return texte.strip().upper()\n\n# \" nbe \" devient \"NBE\"",
-      "items": [
-        "Vérifier que l’entrée est du texte.",
-        "Prédire le résultat de \" tun \".",
-        "None signifie une valeur absente : erreur."
-      ],
-      "note": "Vérifier le type avant de retirer les espaces. None doit être refusé ; il ne doit pas devenir le faux code \"NONE\".",
-      "fontSize": 20,
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-32"
-    },
-    {
-      "section": "B",
-      "layout": "diagram",
-      "title": "Pour l’argent, des millimes entiers",
-      "asset": "docs/images/diagrams/v6-millimes.png",
-      "caption": "Lire exactement le texte, puis stocker une quantité entière.",
-      "note": "4,500 TND = 4 500 millimes. Aucun arrondi silencieux pour masquer une mauvaise valeur.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-33"
-    },
-    {
-      "section": "B",
-      "layout": "exercise",
-      "title": "À vous · 30 min",
-      "question": "Adapter le nettoyage, puis justifier chaque écart.",
-      "steps": [
-        "Demander à Codex un changement limité à la fonction indiquée.",
-        "Exécuter le contrôle du jalon et lire le premier écart.",
-        "Retrouver une ligne rejetée et expliquer sa raison."
-      ],
-      "note": "Preuve attendue : 12 ventes, 32 unités, 99 000 millimes = 99,000 TND.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-34"
-    },
-    {
-      "section": "B",
-      "layout": "pause",
-      "title": "Pause · 10 minutes",
-      "subtitle": "Conservez le contrôle exécuté et sa sortie.\nReprenez aux deux types de sources.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-35"
-    },
-    {
-      "section": "B",
-      "layout": "beforeafter",
-      "title": "CSV et SQL : deux façons de lire une source",
-      "leftLabel": "FICHIER CSV",
-      "left": "Un texte avec en-têtes\net lignes séparées.\n\ndata/ventes_initiales.csv",
-      "rightLabel": "BASE SQLITE",
-      "right": "Des tables interrogées\navec une requête SQL.\n\nsource_operationnelle.sqlite",
-      "note": "La base source est distincte de l’entrepôt outputs/atlas.sqlite. Une extraction SQL lit réellement la source.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-36"
-    },
-    {
-      "section": "B",
-      "layout": "code",
-      "title": "Lire un lot avec SELECT",
-      "code": "SELECT sale_id, date, shop_id,\n       product_id, quantity, unit_price_tnd\nFROM source_sales\nWHERE batch_id = ?\nORDER BY sale_id",
-      "items": [
-        "SELECT : choisir les colonnes.",
-        "FROM : choisir la table source.",
-        "? : paramètre fourni = 2026-01-08."
-      ],
-      "note": "Cette requête lit 3 ventes : S012, S013 et S014. Conserver le SQL, le paramètre et le résultat.",
-      "fontSize": 20,
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-37"
-    },
-    {
-      "id": "v6-source-shop-changes",
-      "section": "B",
-      "layout": "code",
-      "title": "Lire aussi le changement de zone",
-      "code": "SELECT shop_id, effective_date,\n       commercial_zone\nFROM source_shop_changes\nWHERE batch_id = ?\nORDER BY effective_date, shop_id",
-      "items": [
-        "Même paramètre :\n2026-01-08.",
-        "Une ligne : NBE change de zone.",
-        "Conserver aussi ce résultat SQL."
-      ],
-      "fontSize": 20,
-      "note": "Cette deuxième requête lit 1 événement : NBE → Grand Tunis, effectif le 8 janvier 2026.",
-      "notes": "Requête du contrat Atlas V6 : extraction distincte de source_shop_changes, paramètre de lot 2026-01-08. La requête source_sales ne renvoie que les ventes. Le comptage 3 ventes + 1 changement provient de deux SELECT réellement exécutés."
-    },
-    {
-      "section": "B",
-      "layout": "diagram",
-      "title": "La vente au centre de trois descriptions",
-      "asset": "docs/images/diagrams/v6-etoile.png",
-      "caption": "Le fait porte les quantités ; les dimensions décrivent produit, boutique et date.",
-      "note": "Une ligne fact_sales = une vente. Les clés relient les tables sans recopier toutes les descriptions.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-38"
-    },
-    {
-      "section": "B",
-      "layout": "keys",
-      "title": "Deux identifiants, deux rôles",
-      "note": "product_id est le code métier. product_key est la clé de liaison de l’entrepôt.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-39"
-    },
-    {
-      "section": "B",
-      "layout": "exercise",
-      "title": "À vous · lire et ranger les cartes",
-      "question": "Prouver l’extraction, puis expliquer l’étoile.",
-      "steps": [
-        "Exécuter les deux requêtes avec le bon paramètre de lot.",
-        "Montrer les trois ventes et le changement de zone de NBE.",
-        "Classer quantité, nom produit, zone et date autour de la vente."
-      ],
-      "note": "Source SQL réellement lue ; les données originales restent intactes.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-40"
-    },
-    {
-      "section": "B",
-      "layout": "cards",
-      "title": "À ce stade, je sais…",
-      "items": [
-        {
-          "label": "Je décide",
-          "text": "Je justifie nettoyage,\ndoublon et rejet."
-        },
-        {
-          "label": "Je lis",
-          "text": "Je montre une ligne\nobtenue par SELECT."
-        },
-        {
-          "label": "Je relie",
-          "text": "Je distingue vente,\ndimension et clé."
-        }
-      ],
-      "note": "Sortie S2 : ventes propres, preuve SQL, étoile expliquée. Si un total diffère, revenir à la ligne source.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-41"
-    },
-    {
-      "section": "C",
-      "layout": "cover",
-      "title": "S3 · Je charge demain\nsans abîmer hier",
-      "subtitle": "Victoire : ajouter un lot, le rejouer et conserver la zone historique.",
-      "duration": "3 h",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-42"
-    },
-    {
-      "section": "C",
-      "layout": "schedule",
-      "title": "Votre séance 3 · 180 minutes",
-      "rows": [
-        [
-          "0–40",
-          "Charger les dimensions puis les faits",
-          "15 T / 25 P"
-        ],
-        [
-          "40–95",
-          "Deux versions et recherche temporelle",
-          "20 T / 35 P"
-        ],
-        [
-          "95–105",
-          "Pause",
-          "10 min"
-        ],
-        [
-          "105–145",
-          "Ajouter et rejouer le lot SQL",
-          "15 T / 25 P"
-        ],
-        [
-          "145–180",
-          "Clés, contrôles et revue",
-          "10 T / 25 P"
-        ]
-      ],
-      "note": "Ordre des jalons : initial 04 → recherche temporelle 05 → incrément et rejeu 06.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-43"
-    },
-    {
-      "section": "C",
-      "layout": "cards",
-      "title": "Pourquoi charger les descriptions d’abord ?",
-      "items": [
-        {
-          "label": "1 · Dimensions",
-          "text": "Créer les cartes Produit,\nBoutique et Date."
-        },
-        {
-          "label": "2 · Faits",
-          "text": "La vente référence\nles clés de ces cartes."
-        },
-        {
-          "label": "3 · Contrôle",
-          "text": "Une clé étrangère refuse\nune carte absente."
-        }
-      ],
-      "note": "Dans SQLite, le chargement active les clés étrangères avant la transaction.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-44"
-    },
-    {
-      "section": "C",
-      "layout": "commands",
-      "title": "Premier chargement : observer le résultat",
-      "code": "# Depuis la racine du cours\ncd atelier\npython3 executer.py initial\npython3 verifier.py 04",
-      "items": [
-        "Dimensions avant faits.",
-        "12 faits · 32 unités.",
-        "99 000 millimes."
-      ],
-      "note": "Ces commandes sont lancées dans le terminal Ubuntu/WSL. Lire toute erreur avant de continuer.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-45"
-    },
-    {
-      "section": "C",
-      "layout": "diagram",
-      "title": "Nabeul change de zone commerciale le 8 janvier",
-      "asset": "docs/images/diagrams/v6-scd2.png",
-      "caption": "Même boutique NBE ; une ancienne version et une nouvelle version.",
-      "note": "Avant le 8 : Cap Bon. Dès le 8 : Grand Tunis. La fin de validité est exclue.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-51"
-    },
-    {
-      "section": "C",
-      "layout": "table",
-      "title": "À quelle carte rattacher la vente ?",
-      "headers": [
-        "Version boutique",
-        "Période de validité",
-        "Vente concernée"
-      ],
-      "rows": [
-        [
-          "NBE · Cap Bon",
-          "[05/01, 08/01[",
-          "07/01 → ancienne clé"
-        ],
-        [
-          "NBE · Grand Tunis",
-          "[08/01, sans fin[",
-          "08/01 → nouvelle clé"
-        ],
-        [
-          "TUN · Grand Tunis",
-          "[05/01, sans fin[",
-          "Toutes les dates de ce lot"
-        ]
-      ],
-      "note": "Notation SQL : [valid_from, valid_to). NULL signifie « pas de fin connue ». Deux boutiques, trois versions.",
-      "widths": [
-        1.2,
-        1.3,
-        1.5
-      ],
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-52"
-    },
-    {
-      "section": "C",
-      "layout": "code",
-      "title": "La date choisit la version de boutique",
-      "code": "WHERE shop_id = ?\n  AND valid_from <= ?\n  AND (valid_to IS NULL OR ? < valid_to)",
-      "items": [
-        "Le premier ? reçoit le code boutique.",
-        "Les deux autres reçoivent la date de vente.",
-        "Une seule version doit correspondre."
-      ],
-      "note": "Nom technique : SCD2. Les anciennes ventes conservent leur shop_key ; on ne réécrit pas leur histoire.",
-      "fontSize": 20,
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-53"
-    },
-    {
-      "section": "C",
-      "layout": "exercise",
-      "title": "À vous · recherche temporelle · 35 min",
-      "question": "Compléter la recherche avant de lancer l’incrément.",
-      "steps": [
-        "Dans incremental.py, compléter trouver_shop_key avec l’ossature fournie.",
-        "Lancer python3 verifier.py 05 sur le petit cas de deux versions fourni.",
-        "Prédire puis expliquer la clé du 7 janvier et celle du 8 janvier."
-      ],
-      "note": "Le contrôle 05 utilise un cas isolé. Le lot réel sera appliqué seulement après ce contrôle réussi.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-55"
-    },
-    {
-      "section": "C",
-      "layout": "pause",
-      "title": "Pause · 10 minutes",
-      "subtitle": "Conservez le contrôle 05 et votre explication de la frontière.\nReprenez au lot du 8 janvier.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-50"
-    },
-    {
-      "section": "C",
-      "layout": "diagram",
-      "title": "Un ajout n’est pas un second chargement complet",
-      "asset": "docs/images/diagrams/v6-ajout-rejeu.png",
-      "caption": "Le même lot peut revenir : sale_id aide à reconnaître les ventes connues.",
-      "note": "S013 + S014 nouvelles ; S012 identique déjà connue. Le rejeu ne change plus les chiffres.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-46"
-    },
-    {
-      "section": "C",
-      "layout": "increment",
-      "title": "Trois lignes reçues, deux ventes ajoutées",
-      "note": "Le prix de S014 est 6,000 TND par classeur : 2 × 6,000 = 12,000 TND.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-47"
-    },
-    {
-      "section": "C",
-      "layout": "replay",
-      "title": "La preuve du rejeu : le résultat reste stable",
-      "note": "12 + 2 = 14 ventes · 32 + 3 = 35 unités · 99,000 + 16,500 = 115,500 TND.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-48"
-    },
-    {
-      "section": "C",
-      "layout": "exercise",
-      "title": "À vous · 25 min",
-      "question": "Exécuter le lot du 8 janvier, puis le rejouer.",
-      "steps": [
-        "Lancer python3 executer.py increment, puis python3 executer.py rapport.",
-        "Rejouer le lot, relire le rapport et comparer les chiffres et les clés.",
-        "Exécuter python3 verifier.py 06 ; distinguer ce contrôle isolé et vos sorties."
-      ],
-      "note": "Le contrôle 06 vérifie un cas isolé ; gardez aussi les sorties de votre entrepôt dans atelier/outputs/.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-49"
-    },
-    {
-      "section": "C",
-      "layout": "transaction",
-      "title": "Si un conflit apparaît, garder un état cohérent",
-      "note": "Le mécanisme est fourni. Vous expliquez ce qu’il protège et vous contrôlez le résultat.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-54"
-    },
-    {
-      "id": "v6-final-history-review",
-      "section": "C",
-      "layout": "exercise",
-      "title": "À vous · contrôler et revoir · 25 min",
-      "question": "Prouver la stabilité des clés et faire relire.",
-      "number": "À VOUS",
-      "steps": [
-        "Vérifier que les anciennes ventes gardent leur shop_key après le changement.",
-        "Sur une copie de test, essayer une clé absente et expliquer le refus.",
-        "Demander une revue ciblée, corriger, retester et refaire la revue."
-      ],
-      "note": "Ne supprimez pas un contrôle pour obtenir un succès. Gardez le dernier état fonctionnel.",
-      "notes": "Dernier créneau pratique de S3 : 25 min. La recherche temporelle est achevée avant l’incrément ; les clés initiales peuvent maintenant être comparées avec les clés après lot et rejeu. Un seul auteur corrige ; test utile puis deuxième revue."
-    },
-    {
-      "section": "C",
-      "layout": "cards",
-      "title": "À ce stade, je sais…",
-      "items": [
-        {
-          "label": "Je charge",
-          "text": "Les dimensions existent\navant leurs ventes."
-        },
-        {
-          "label": "Je rejoue",
-          "text": "Le lot identique garde\n14 faits et 35 unités."
-        },
-        {
-          "label": "Je garde l’histoire",
-          "text": "La date choisit la version ;\nl’ancienne clé reste stable."
-        }
-      ],
-      "note": "Sortie S3 : entrepôt final contrôlé, rejeu stable, frontière du 8 janvier expliquée.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-56"
-    },
-    {
-      "section": "D",
-      "layout": "cover",
-      "title": "S4 · Je montre\net je révise le rapport",
-      "subtitle": "Victoire : un vrai rapport Power BI et des chiffres reliés aux preuves.",
-      "duration": "3 h",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-57"
-    },
-    {
-      "section": "D",
-      "layout": "schedule",
-      "title": "Votre séance 4 · 180 minutes",
-      "rows": [
-        [
-          "0–35",
-          "Exporter et transférer le paquet",
-          "15 T / 20 P"
-        ],
-        [
-          "35–85",
-          "Importer, typer, relier dans Power BI",
-          "15 T / 35 P"
-        ],
-        [
-          "85–95",
-          "Pause",
-          "10 min"
-        ],
-        [
-          "95–140",
-          "Mesure, graphique et filtre",
-          "15 T / 30 P"
-        ],
-        [
-          "140–180",
-          "Skill local et revue",
-          "15 T / 25 P"
-        ]
-      ],
-      "note": "Le premier rapport Power BI est construit aujourd’hui, avant le défi de S5.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-58"
-    },
-    {
-      "section": "D",
-      "layout": "table",
-      "title": "Exporter quatre tables complètes",
-      "headers": [
-        "Fichier CSV",
-        "Une ligne représente",
-        "Point à garder"
-      ],
-      "rows": [
-        [
-          "dim_product.csv",
-          "Un produit",
-          "product_key unique"
-        ],
-        [
-          "dim_shop.csv",
-          "Une version de boutique",
-          "Anciennes versions incluses"
-        ],
-        [
-          "dim_date.csv",
-          "Un jour",
-          "date_key unique"
-        ],
-        [
-          "fact_sales.csv",
-          "Une vente",
-          "Clés + mesures"
-        ]
-      ],
-      "note": "python3 executer.py export → outputs/powerbi/<delivery_id>/ · 4 CSV + manifest.json, même livraison.",
-      "widths": [
-        1.3,
-        1.3,
-        1.5
-      ],
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-59"
-    },
-    {
-      "section": "D",
-      "layout": "cards",
-      "title": "Passer du monde Python au poste Power BI",
-      "items": [
-        {
-          "label": "Windows + WSL2",
-          "text": "Depuis le dossier export complet :\nexplorer.exe .\nCopier le paquet vers Windows."
-        },
-        {
-          "label": "Ubuntu",
-          "text": "Transférer le même paquet\nau vrai poste Windows\ndu groupe ou de la salle."
-        },
-        {
-          "label": "Dossier stable",
-          "text": "Garder les quatre CSV ensemble\net contrôler manifest.json\navant l’import."
-        }
-      ],
-      "note": "Power BI Desktop ouvre les fichiers Windows. Le dossier source de l’ETL n’est pas le rapport.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-60"
-    },
-    {
-      "section": "D",
-      "layout": "table",
-      "title": "Dans Power BI : importer puis vérifier les types",
-      "headers": [
-        "Colonnes",
-        "Type à choisir",
-        "Pourquoi ?"
-      ],
-      "rows": [
-        [
-          "Clés, quantité, millimes",
-          "Nombre entier",
-          "Garder valeurs exactes et liens"
-        ],
-        [
-          "full_date, valid_from, valid_to",
-          "Date",
-          "Lire les jours et les bornes"
-        ],
-        [
-          "Codes, noms, zone",
-          "Texte",
-          "Ne pas calculer avec un code"
-        ]
-      ],
-      "note": "Obtenir les données → Texte/CSV · séparateur virgule · UTF-8. valid_to vide = valeur null.",
-      "widths": [
-        1.8,
-        1.15,
-        1.7
-      ],
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-61"
-    },
-    {
-      "section": "D",
-      "layout": "star",
-      "title": "Créer trois relations actives 1 → plusieurs",
-      "note": "dim_shop.shop_key → fact_sales.shop_key. Filtrage simple de la dimension vers le fait ; jamais shop_id.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-62"
-    },
-    {
-      "section": "D",
-      "layout": "exercise",
-      "title": "À vous · 35 min sur Windows",
-      "question": "Construire le modèle depuis les quatre fichiers.",
-      "steps": [
-        "Ouvrir Power BI Desktop ; importer les quatre CSV de la même livraison.",
-        "Vérifier les types et créer les trois relations 1:* simples.",
-        "Montrer la vue Modèle et expliquer le côté 1 et le côté plusieurs."
-      ],
-      "note": "Guide pas à pas : powerbi/README.md. Le modèle de secours se trouve dans le même dossier.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-63"
-    },
-    {
-      "section": "D",
-      "layout": "pause",
-      "title": "Pause · 10 minutes",
-      "subtitle": "Enregistrez le rapport Power BI.\nReprenez à la mesure du montant vendu.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-64"
-    },
-    {
-      "section": "D",
-      "layout": "code",
-      "title": "Une mesure pour afficher le montant en TND",
-      "code": "CA TND =\nDIVIDE(\n  SUM(fact_sales[amount_millimes]),\n  1000\n)",
-      "items": [
-        "SUM additionne les montants entiers.",
-        "DIVIDE convertit les millimes en TND.",
-        "Afficher sans unité abrégée, avec 3 décimales."
-      ],
-      "note": "La mesure utilise amount_millimes ; additionner les prix unitaires ne donne pas les ventes.",
-      "fontSize": 20,
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-65"
-    },
-    {
-      "section": "D",
       "layout": "kpis",
-      "title": "Retrouver les mêmes chiffres dans le rapport",
+      "title": "Le contrat du cours",
+      "kicker": "LE CONTRAT",
       "items": [
         {
-          "value": "14",
-          "label": "Ventes élémentaires\nNombre de lignes de vente"
+          "value": "22 h",
+          "label": "en présence\n5 × 4 h\n+ soutenance 2 h"
         },
         {
-          "value": "35",
-          "label": "Unités vendues\nSUM(quantity)"
+          "value": "≈ 8 h",
+          "label": "de travail personnel\n(≈ 30 h au total)"
         },
         {
-          "value": "115,500",
-          "label": "Montant en TND\nCA TND"
+          "value": "70 / 30",
+          "label": "pratique / explications\nhors pauses"
+        },
+        {
+          "value": "0",
+          "label": "ligne de code\ntapée à la main"
         }
       ],
-      "note": "Selon la langue du poste, 115.500 et 115,500 représentent ici le même montant : 115 TND et 500 millimes.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-66"
+      "note": "Durées estimées, à confirmer par un essai réel.",
+      "notes": "Contrat §1 et §3 : séance de 240 min = 2 pauses de 10 min + 220 min actives ≈ 66 min d'explications + 154 min de pratique (70 %). Total actif 1 100 min ≈ 330 explications / 770 pratique. Travail personnel ≈ 8 h : lecture 1 h, mission du catalogue 5 h, finition et oral 2 h. Ce sont des estimations de conception, pas des mesures.",
+      "id": "v7-06"
+    },
+    {
+      "section": "A",
+      "layout": "picture",
+      "title": "Cinq séances, une mission, une soutenance",
+      "kicker": "LE CONTRAT",
+      "image": "docs/images/diagrams/v7-seances.png",
+      "items": [
+        "S1 → S4 : tronc commun guidé.",
+        "Fin S3 : choix d'une mission du catalogue.",
+        "S5 + perso : votre mission, puis soutenance."
+      ],
+      "notes": "Schéma v7-seances. Épisodes Solen : S1 demande et cadrage, S2 premier résultat faux, S3 anomalies et étoile, S4 changement de besoin et revue, S5 livraison ; ≈ 8 h personnelles ; soutenance 2 h pour la promotion. Contrat §7.",
+      "id": "v7-07"
+    },
+    {
+      "section": "A",
+      "layout": "compare",
+      "title": "Règle d'or : Codex écrit, vous décidez",
+      "kicker": "LE CONTRAT",
+      "leftLabel": "CODEX ÉCRIT",
+      "left": "Python · SQL · DAX\nTests · YAML de CI\nExplications",
+      "rightLabel": "VOUS FAITES",
+      "right": "Demandes précises et prévisions\nContrôles, lecture du diff\nGit/GitHub, décisions",
+      "neutral": true,
+      "arrow": "→",
+      "note": "Une valeur n'est vraie que quand vous avez relancé la commande qui la montre.",
+      "notes": "Contrat §1 (Code) et livret 03 §1 : « Trois règles qui ne changent jamais ». Codex ne modifie jamais les sources, reference/ ni controles/ ; il ne commit pas, ne pousse pas, n'ouvre ni ne fusionne de PR. « 26 rejets » annoncé par Codex reste une promesse tant que la ligne du vérificateur n'a pas été lue.",
+      "id": "v7-08"
+    },
+    {
+      "section": "A",
+      "layout": "picture",
+      "title": "Codex propose, les humains décident",
+      "kicker": "LE CONTRAT",
+      "image": "docs/images/diagrams/v7-codex-controle.png",
+      "items": [
+        "Codex propose dans une branche.",
+        "L'auteur contrôle, le binôme relit.",
+        "L'équipe livre après CI verte."
+      ],
+      "notes": "Schéma v7-codex-controle. Un contrôle rouge ou un écart renvoie à Codex avec une demande plus précise. La revue Codex est en lecture seule ; elle ne remplace pas la revue humaine.",
+      "id": "v7-09"
+    },
+    {
+      "section": "A",
+      "layout": "process",
+      "title": "La route A → B → C",
+      "kicker": "LES DOCUMENTS",
+      "items": [
+        {
+          "label": "A · Démarrer",
+          "text": "Livret 01 : poste, Codex Free, GitHub à deux."
+        },
+        {
+          "label": "B · Tronc commun",
+          "text": "Livret 02 : Solen Commerce 360, S1 à S4."
+        },
+        {
+          "label": "C · Livrer",
+          "text": "Livrets 04 et 05 : votre mission, S5, soutenance."
+        }
+      ],
+      "note": "Toujours ouverts : 03 Diriger Codex et Git · 06 Aide-mémoire · prompts/.",
+      "notes": "Livret 00, « La route A → B → C ». Fichiers : 00_lire_moi, 01_demarrer, 02_tronc_commun, 03_diriger_codex_et_git, 04_catalogue_missions (fin S3), 05_livrer_soutenir, 06_aide_memoire. Dossier prompts/ : 18 fiches prêtes à adapter (prompts/README.md).",
+      "id": "v7-10"
+    },
+    {
+      "section": "A",
+      "layout": "picture",
+      "title": "Votre poste : qui fait quoi, où",
+      "kicker": "LES OUTILS",
+      "image": "docs/images/diagrams/v7-postes-wsl.png",
+      "items": [
+        "Windows : app Codex + Power BI Desktop.",
+        "Ubuntu (WSL2) : projet, Python, Git.",
+        "Ubuntu natif : Power BI sur un poste Windows."
+      ],
+      "notes": "Schéma v7-postes-wsl. Contrat §1 (OS). Windows : agent « Windows Subsystem for Linux » choisi dans Settings de l'app, puis redémarrage (OpenAI, Desktop app for Windows, https://learn.chatgpt.com/docs/app/windows, lu le 28/10/2026). Dépôts sous /home (OpenAI WSL, https://learn.chatgpt.com/docs/windows/wsl, lu le 28/10/2026). Ubuntu 24.04/26.04 : app Linux en preview, .deb (https://learn.chatgpt.com/docs/linux/linux-app, lu le 28/10/2026). Power BI Desktop uniquement sur Windows (Microsoft, lu le 28/10/2026). Pas de Docker.",
+      "id": "v7-11"
+    },
+    {
+      "section": "B",
+      "layout": "divider",
+      "title": "Ce que vous saurez faire",
+      "subtitle": "Dix thèmes, chacun prouvé par une action réelle",
+      "notes": "Programme du PROMPT_FABLE §3 (formateur) : dix thèmes, aucun seulement cité. Objectif final : transformer des données brutes en indicateurs utiles à la décision, en sachant piloter l'IA et contrôler sa production.",
+      "id": "v7-12"
+    },
+    {
+      "section": "B",
+      "layout": "statement",
+      "title": "L'objectif final",
+      "kicker": "COMPÉTENCES",
+      "big": "Transformer des données brutes en indicateurs utiles à la décision,",
+      "sub": "en sachant piloter l'IA et contrôler sa production.",
+      "chips": [
+        "CSV · Excel · JSON · SQLite",
+        "Entrepôt en étoile",
+        "App locale + Power BI",
+        "Codex + Git/GitHub"
+      ],
+      "notes": "Formulation reprise du programme (PROMPT_FABLE §3) et du livret 00 (« Ce que vous saurez faire à la fin »).",
+      "id": "v7-13"
+    },
+    {
+      "section": "B",
+      "layout": "grid",
+      "title": "Dix thèmes, cinq séances",
+      "kicker": "COMPÉTENCES",
+      "cols": 5,
+      "items": [
+        {
+          "num": "1",
+          "label": "Python appliqué",
+          "text": "fonctions, modules, exceptions, classe",
+          "tag": "S2 · S3"
+        },
+        {
+          "num": "2",
+          "label": "Données",
+          "text": "pandas : CSV, Excel, JSON",
+          "tag": "S2"
+        },
+        {
+          "num": "3",
+          "label": "Qualité",
+          "text": "doublons, formats, rejets motivés",
+          "tag": "S2"
+        },
+        {
+          "num": "4",
+          "label": "SQL + Python",
+          "text": "base opérationnelle, requêtes ?",
+          "tag": "S3"
+        },
+        {
+          "num": "5",
+          "label": "Modéliser",
+          "text": "grain, étoile, clés",
+          "tag": "S3"
+        },
+        {
+          "num": "6",
+          "label": "ETL",
+          "text": "extraire, nettoyer, charger",
+          "tag": "S2 → S4"
+        },
+        {
+          "num": "7",
+          "label": "Mises à jour",
+          "text": "incrément, rejeu, SCD2",
+          "tag": "S4"
+        },
+        {
+          "num": "8",
+          "label": "Visualiser",
+          "text": "unités, filtres, recommandation",
+          "tag": "S5"
+        },
+        {
+          "num": "9",
+          "label": "Power BI",
+          "text": "types, relations, DAX, actualiser",
+          "tag": "S5"
+        },
+        {
+          "num": "10",
+          "label": "IA et Git",
+          "text": "Codex, AGENTS.md, Skills, Git, CI",
+          "tag": "S1 → S5"
+        }
+      ],
+      "notes": "Les dix thèmes du programme (PROMPT_FABLE §3) placés sur la progression du contrat §7. Python : on reconnaît et explique le code écrit par Codex, on ne le tape pas. Le thème 10 traverse toutes les séances.",
+      "id": "v7-14"
+    },
+    {
+      "section": "B",
+      "layout": "table",
+      "title": "Matrice 1/2 : de la compétence à la preuve",
+      "kicker": "COMPÉTENCES",
+      "headers": [
+        "Compétence",
+        "Mission (épisode)",
+        "Votre action",
+        "Preuve visible"
+      ],
+      "widths": [
+        1.25,
+        1.45,
+        2.0,
+        2.0
+      ],
+      "fontSize": 14,
+      "rows": [
+        [
+          "1 Python",
+          "S2-S3 · lire le code",
+          "Trouver la fonction qui rejette ; expliquer la classe Entrepot",
+          "Explication orale + diff lu"
+        ],
+        [
+          "2 Données",
+          "S2 · premier résultat faux",
+          "Demander la lecture des 4 sources",
+          "Comptes de lignes = les vôtres"
+        ],
+        [
+          "3 Qualité",
+          "S2 · anomalies",
+          "Fixer les règles, prévoir les rejets",
+          "rejets.csv : 26 rejets lot 1"
+        ],
+        [
+          "4 SQL",
+          "S3 · base des retours",
+          "Requête paramétrée « ? »",
+          "25 retours VALIDE en mars"
+        ],
+        [
+          "5 Modélisation",
+          "S3 · étoile",
+          "Fixer le grain, relier par *_key",
+          "5 tables, faits reliés"
+        ]
+      ],
+      "notes": "Matrice demandée par le programme. Chiffres : rejets lot 1 = 26 (reference/README.md) ; retours VALIDE de mars 2026 = 25 lignes, 893 810 millimes (livret 02, S3-M1, sortie attendue). « Votre action » ne contient jamais de saisie de code.",
+      "id": "v7-15"
+    },
+    {
+      "section": "B",
+      "layout": "table",
+      "title": "Matrice 2/2 : de la compétence à la preuve",
+      "kicker": "COMPÉTENCES",
+      "headers": [
+        "Compétence",
+        "Mission (épisode)",
+        "Votre action",
+        "Preuve visible"
+      ],
+      "widths": [
+        1.25,
+        1.45,
+        2.0,
+        2.0
+      ],
+      "fontSize": 14,
+      "rows": [
+        [
+          "6 ETL",
+          "S3 · chargement initial",
+          "Dimensions avant faits",
+          "--etape initial : 0 ÉCHEC"
+        ],
+        [
+          "7 Mises à jour",
+          "S4 · Nabeul change",
+          "Incrément, rejeu, SCD2",
+          "2345 faits ; rejeu = 0 ajout"
+        ],
+        [
+          "8 Visualisation",
+          "S5 · livraison",
+          "Lire un visuel, écrire la reco",
+          "Recommandation en 5 parties"
+        ],
+        [
+          "9 Power BI",
+          "S5 · livraison",
+          "6 relations, 5 mesures, Actualiser",
+          "Rapport actualisé après lot 2"
+        ],
+        [
+          "10 IA + Git",
+          "S1 → S5 · chaque PR",
+          "Demande, revue, correction, merge",
+          "PR relues, CI verte"
+        ]
+      ],
+      "notes": "Suite de la matrice. Chiffres : fact_vente 2345 après lot 2 ; rejeu sans ligne ajoutée (attendu_lot2.json, clé rejeu). Power BI : 6 relations 1:* et 5 mesures (livret 05 §2 ; modele-binome/powerbi/README.md).",
+      "id": "v7-16"
+    },
+    {
+      "section": "C",
+      "layout": "divider",
+      "title": "Git et GitHub, de zéro",
+      "subtitle": "Trois emplacements, un cycle, des rôles qui alternent",
+      "notes": "Contrat §8 : cycle enseigné. Sources GitHub officielles listées en section I (docs/setup/sources.json, vérifiées le 28/10/2026).",
+      "id": "v7-17"
+    },
+    {
+      "section": "C",
+      "layout": "picture",
+      "title": "Trois emplacements pour un même dépôt",
+      "kicker": "GIT",
+      "image": "docs/images/diagrams/v7-trois-emplacements.png",
+      "items": [
+        "Rien ne se synchronise tout seul.",
+        "Pas de lien direct entre vos deux PC.",
+        "Tout passe par GitHub."
+      ],
+      "notes": "Schéma v7-trois-emplacements. commit = enregistrer chez moi ; push = envoyer ; pull = récupérer ; PR = proposer et faire relire. Les deux ordinateurs n'échangent que via GitHub.",
+      "id": "v7-18"
+    },
+    {
+      "section": "C",
+      "layout": "table",
+      "title": "Huit mots, huit gestes",
+      "kicker": "GIT",
+      "headers": [
+        "Mot",
+        "Ce que c'est",
+        "Geste"
+      ],
+      "widths": [
+        1.1,
+        2.8,
+        2.0
+      ],
+      "fontSize": 15,
+      "rows": [
+        [
+          "commit",
+          "un point enregistré, chez moi",
+          "git add · git commit"
+        ],
+        [
+          "branche",
+          "une ligne de travail à part",
+          "git switch -c <branche>"
+        ],
+        [
+          "push",
+          "envoyer mes commits sur GitHub",
+          "git push -u origin <branche>"
+        ],
+        [
+          "pull",
+          "récupérer les commits de GitHub",
+          "git switch main && git pull"
+        ],
+        [
+          "PR",
+          "une demande de fusion, à relire",
+          "Compare & pull request"
+        ],
+        [
+          "revue",
+          "l'avis écrit du partenaire",
+          "Files changed → Review changes"
+        ],
+        [
+          "merge",
+          "intégrer la branche dans main",
+          "Merge pull request"
+        ],
+        [
+          "CI",
+          "contrôles sur une machine neuve",
+          "onglet Actions · controles.yml"
+        ]
+      ],
+      "notes": "Libellés GitHub tirés de la documentation officielle (Creating a pull request, Reviewing proposed changes, Merging a pull request ; docs.github.com, lus le 28/10/2026). <branche> = à remplacer. Les workflows Git (gestes) et les workflows GitHub Actions (CI) sont deux notions différentes.",
+      "id": "v7-19"
+    },
+    {
+      "section": "C",
+      "layout": "picture",
+      "title": "Le cycle d'une pull request",
+      "kicker": "GIT",
+      "image": "docs/images/diagrams/v7-cycle-pr.png",
+      "items": [
+        "15 étapes, toujours dans le même ordre.",
+        "Le partenaire relit avant toute fusion.",
+        "Puis les rôles s'inversent."
+      ],
+      "notes": "Schéma v7-cycle-pr. Contrat §8 : git switch main → git pull → git switch -c <branche> → demande à Codex → contrôles → lire le diff → git add/commit → git push -u origin <branche> → PR → partenaire : git fetch + git switch <branche> + revue Codex lecture seule → revue humaine (Files changed → Review changes → Approve / Request changes) → corrections → CI verte → approbation → Merge pull request → les deux : git switch main && git pull.",
+      "id": "v7-20"
+    },
+    {
+      "section": "C",
+      "layout": "process",
+      "title": "Les rôles alternent à chaque cycle",
+      "kicker": "GIT",
+      "items": [
+        {
+          "label": "S1 · A auteur",
+          "text": "README + journal\nB relit"
+        },
+        {
+          "label": "S2 · A auteur",
+          "text": "Lecture et rejets\nB relit, A corrige"
+        },
+        {
+          "label": "S3 · B auteur",
+          "text": "Étoile, lot 1\nA relit"
+        },
+        {
+          "label": "S4 · revue",
+          "text": "Défaut planté,\nconflit contrôlé"
+        }
+      ],
+      "note": "Chacun : des commits, au moins une PR comme auteur, une revue du partenaire.",
+      "notes": "Progression du livret 02 (S1-M5, S2-M4, S3-M6, S4-M4/M5). L'auteur ne s'approuve pas : GitHub ne le permet pas. L'accord de Codex ne remplace pas le jugement du partenaire.",
+      "id": "v7-21"
+    },
+    {
+      "section": "C",
+      "layout": "compare",
+      "title": "Une revue utile cite ce que VOUS avez vu",
+      "kicker": "REVUE",
+      "leftLabel": "REVUE FAIBLE",
+      "left": "« OK, Codex dit qu'il n'y a aucun défaut. »",
+      "rightLabel": "REVUE UTILE",
+      "right": "« historique.py:42 : valid_to comparé avec <=.\nVente NBE du 2026-07-15 en Cap Bon.\nNon vérifié : le rejeu. → Request changes »",
+      "note": "On n'approuve que si les contrôles sont verts chez vous ET dans la CI.",
+      "notes": "Livret 03 §6, « La revue à deux ». Une revue cite fichier:ligne, la commande et la valeur reproduite, et ce qui n'a pas été vérifié. Ne jamais coller la réponse de Codex comme revue GitHub.",
+      "id": "v7-22"
+    },
+    {
+      "section": "C",
+      "layout": "table",
+      "title": "Une erreur Git se diagnostique, elle ne se force pas",
+      "kicker": "DÉPANNAGE",
+      "headers": [
+        "Symptôme",
+        "Cause",
+        "Réparer"
+      ],
+      "widths": [
+        2.0,
+        1.6,
+        2.6
+      ],
+      "fontSize": 15,
+      "rows": [
+        [
+          "not a git repository",
+          "mauvais dossier",
+          "cd ~/solen-bi puis git status"
+        ],
+        [
+          "commit fait sur main",
+          "branche oubliée",
+          "git switch -c <branche>, push, PR"
+        ],
+        [
+          "push refusé : fetch first",
+          "main en retard",
+          "git pull, contrôles, git push"
+        ],
+        [
+          "croix rouge sur la PR",
+          "CI échouée",
+          "Details, relancer chez soi, prompt 10"
+        ],
+        [
+          "CONFLICT … Merge conflict",
+          "mêmes lignes modifiées",
+          "prompt 15, décider à deux, contrôles"
+        ]
+      ],
+      "notes": "Livret 03, « Dépanner Git sans rien casser ». Avant toute réparation : pwd, git status, git log --oneline -5. Résolution de conflit : Codex propose, les étudiants vérifient et terminent (git add, git commit) ; abandon possible avec git merge --abort.",
+      "id": "v7-23"
+    },
+    {
+      "section": "C",
+      "layout": "statement",
+      "title": "Jamais de raccourci destructif",
+      "kicker": "DÉPANNAGE",
+      "danger": true,
+      "big": "git push --force · git reset --hard\nsupprimer .git · fusionner sa propre PR",
+      "sub": "Ils effacent du travail ou contournent la revue. En cas de doute : montrez git status au binôme.",
+      "notes": "Livret 03, encadré « Interdits ». Le cours n'enseigne aucun force push ni reset destructif comme raccourci débutant (programme §4).",
+      "id": "v7-24"
+    },
+    {
+      "section": "C",
+      "layout": "cards",
+      "title": "Un dépôt public, une CI gratuite",
+      "kicker": "GITHUB",
+      "items": [
+        {
+          "label": "Public recommandé",
+          "text": "Données 100 % synthétiques. Protection de branche et revue requise disponibles sur GitHub Free."
+        },
+        {
+          "label": "controles.yml",
+          "text": "Linux neuf : installe, lance verifier + pytest. Aucune clé IA."
+        },
+        {
+          "label": "Variante privée",
+          "text": "Possible, sans protection imposée : l'auteur ne fusionne pas sa PR."
+        }
+      ],
+      "note": "Authentification : HTTPS + gh auth login (navigateur) ; aucun jeton dans le dépôt.",
+      "notes": "Contrat §1 (Dépôt binôme, CI). GitHub's plans (https://docs.github.com/en/get-started/learning-about-github/githubs-plans, lu le 28/10/2026) : protection de branche / revues requises sur les dépôts publics en Free, ajoutées aux privés par Pro. GitHub Actions billing (https://docs.github.com/en/billing/concepts/product-billing/github-actions, lu le 28/10/2026) : runners standard gratuits sur dépôts publics. gh auth login : https://cli.github.com/manual/gh_auth_login (lu le 28/10/2026).",
+      "id": "v7-25"
     },
     {
       "section": "D",
+      "layout": "divider",
+      "title": "Codex Free : diriger, pas taper",
+      "subtitle": "Uniquement ce qu'un compte Free affiche · faits datés du 28/10/2026",
+      "notes": "Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche. Sources : OpenAI, Pricing, https://learn.chatgpt.com/docs/pricing, lu le 28/10/2026 ; OpenAI, Models, https://learn.chatgpt.com/docs/models, lu le 28/10/2026.",
+      "id": "v7-26"
+    },
+    {
+      "section": "D",
+      "layout": "cards",
+      "title": "Ce que la doc annonce pour Free",
+      "kicker": "CODEX FREE · 28/10/2026",
+      "items": [
+        {
+          "label": "Client",
+          "text": "Application de bureau ChatGPT, mode Codex."
+        },
+        {
+          "label": "Modèle",
+          "text": "GPT-6 Luna, « subject to rollout »."
+        },
+        {
+          "label": "Vitesse",
+          "text": "Standard : une vitesse, pas un effort."
+        },
+        {
+          "label": "CLI",
+          "text": "Listé à partir de Plus : facultatif ici."
+        }
+      ],
+      "note": "Votre écran fait foi : notez ce que VOTRE compte affiche.",
+      "notes": "Pricing (https://learn.chatgpt.com/docs/pricing, lu le 28/10/2026) : Free = « GPT-6 Luna at Standard speed in the desktop app, subject to rollout » ; CLI, IDE et web listés à partir de Plus. Aucun quota chiffré pour Free. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
+      "id": "v7-27"
+    },
+    {
+      "section": "D",
+      "layout": "effort",
+      "title": "Quatre efforts : commencez par High",
+      "kicker": "CODEX FREE · 28/10/2026",
+      "levels": [
+        "Light",
+        "Medium",
+        "High",
+        "Extra High"
+      ],
+      "start": 2,
+      "captions": [
+        "question courte",
+        "petite tâche cadrée",
+        "point de départ",
+        "débogage bloqué"
+      ],
+      "note": "« Start with High for Luna. » Plus d'effort ne dispense jamais de la preuve.",
+      "notes": "Models (https://learn.chatgpt.com/docs/models, lu le 28/10/2026) : « Light in the ChatGPT desktop app … suits quick, well-scoped tasks » ; « Medium balances speed and depth » ; « High and Extra High suit difficult work » ; « Start with High for Luna ». Réglage : sélecteur de modèle (Ctrl + Maj + M) ou Advanced, préréglage « Luna High » (livret 01, Codex 1). Les options varient selon le plan, le client et le déploiement. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
+      "id": "v7-28"
+    },
+    {
+      "section": "D",
+      "layout": "picture",
+      "title": "Tokens · contexte · effort · quota",
+      "kicker": "RESSOURCES",
+      "image": "docs/images/diagrams/v7-tokens-contexte.png",
+      "items": [
+        "Tokens : morceaux de texte.",
+        "Contexte : ce que le chat garde en tête.",
+        "Quota : à lire dans l'app, jamais à deviner."
+      ],
+      "notes": "Schéma v7-tokens-contexte. Pricing (lu le 28/10/2026) : « The number of messages you can send depends on the model used, size and complexity of your tasks » ; « Weekly limits may also apply » ; usage visible dans le tableau d'usage. /status dans le composer montre contexte et limites (Slash commands, https://learn.chatgpt.com/codex/reference/slash-commands, lu le 28/10/2026). On ne promet ni nombre de tokens ni « 4 h de Codex ».",
+      "id": "v7-29"
+    },
+    {
+      "section": "D",
+      "layout": "table",
+      "title": "Six mots à ne pas confondre",
+      "kicker": "RESSOURCES",
+      "headers": [
+        "Mot",
+        "Ce que c'est",
+        "Le bon geste"
+      ],
+      "widths": [
+        1.0,
+        2.6,
+        2.6
+      ],
+      "fontSize": 15,
+      "rows": [
+        [
+          "Modèle",
+          "GPT-6 Luna (annoncé Free)",
+          "sélecteur : choisir Luna"
+        ],
+        [
+          "Effort",
+          "combien il réfléchit",
+          "commencer High"
+        ],
+        [
+          "Vitesse",
+          "Standard, pas un effort",
+          "rien à régler"
+        ],
+        [
+          "Tokens",
+          "demande + fichiers + réponse",
+          "nommer le seul fichier utile"
+        ],
+        [
+          "Contexte",
+          "ce que le chat contient",
+          "note d'état, chat neuf"
+        ],
+        [
+          "Quota",
+          "usage permis sur une période",
+          "/status, tableau d'usage"
+        ]
+      ],
+      "notes": "Livret 03 §2. Monter l'effort ne vide pas un contexte surchargé ; un chat neuf ne rend pas de quota. Sources : Pricing et Models (lus le 28/10/2026).",
+      "id": "v7-30"
+    },
+    {
+      "section": "D",
+      "layout": "table",
+      "title": "Quelle tâche, quel effort, quelle preuve ?",
+      "kicker": "LA FICHE TÂCHE",
+      "headers": [
+        "Tâche (exemple Solen)",
+        "Modèle",
+        "Effort",
+        "Raison",
+        "Preuve attendue"
+      ],
+      "widths": [
+        2.3,
+        0.8,
+        1.35,
+        1.5,
+        1.9
+      ],
+      "fontSize": 13.5,
+      "rows": [
+        [
+          "Comprendre le grain de fact_vente",
+          "Luna",
+          "High",
+          "relier fichiers et notions",
+          "vous l'expliquez sans l'écran"
+        ],
+        [
+          "Planifier outputs/rejets.csv",
+          "Luna",
+          "High",
+          "découper avant d'écrire",
+          "3 à 5 étapes, un contrôle chacune"
+        ],
+        [
+          "Petite fonction : 18,500 → 18500",
+          "Luna",
+          "Medium ou High",
+          "petit, bien délimité",
+          "diff lu + test vert"
+        ],
+        [
+          "Intégrer python -m solen initial",
+          "Luna",
+          "High",
+          "plusieurs modules",
+          "--etape initial OK"
+        ],
+        [
+          "Déboguer « attendu 1960, observé 1966 »",
+          "Luna",
+          "High → Extra High",
+          "la cause, pas le symptôme",
+          "erreur reproduite puis disparue"
+        ],
+        [
+          "Revoir avec $revoir-bi",
+          "Luna",
+          "High",
+          "trouver ce qui manque",
+          "constats fichier:ligne"
+        ],
+        [
+          "Question courte : « valid_to ? »",
+          "Luna",
+          "Light",
+          "rien à relier",
+          "vous reformulez"
+        ]
+      ],
+      "note": "Un seul modèle annoncé pour Free : seul l'effort change. Le schéma v7-tache-modele-effort est dans le livret 03.",
+      "notes": "Fiche tâche → modèle accessible → effort accessible → raison → preuve attendue (livret 03, « Quel effort pour quelle tâche ? » ; schéma docs/images/diagrams/v7-tache-modele-effort.png). Models (https://learn.chatgpt.com/docs/models, lu le 28/10/2026) : « Start with High for Luna » ; Light pour les tâches rapides et cadrées ; High et Extra High pour le travail difficile. Un faible effort n'est pas toujours moins cher : comparer qualité et reprises. Seuls les choix visibles sur un compte Free sont enseignés ; on ne copie pas les modèles payants de l'auteur. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
+      "id": "v7-31"
+    },
+    {
+      "section": "D",
+      "layout": "grid",
+      "title": "Les huit habitudes",
+      "kicker": "MÉTHODE",
+      "cols": 4,
+      "items": [
+        {
+          "num": "1",
+          "label": "Être précis",
+          "text": "résultat, fichiers, contrôle, prévision"
+        },
+        {
+          "num": "2",
+          "label": "Plan court",
+          "text": "3 à 5 étapes, une à la fois"
+        },
+        {
+          "num": "3",
+          "label": "Diff + contrôle",
+          "text": "déterministe, pas « tout est bon ? »"
+        },
+        {
+          "num": "4",
+          "label": "Note courte",
+          "text": "état · décision · preuve · objectif"
+        },
+        {
+          "num": "5",
+          "label": "Six mots",
+          "text": "tokens ≠ contexte ≠ effort ≠ quota"
+        },
+        {
+          "num": "6",
+          "label": "Revue → fix",
+          "text": "lecture seule, correction, recontrôle"
+        },
+        {
+          "num": "7",
+          "label": "AGENTS.md + Skills",
+          "text": "règles et méthodes du dépôt"
+        },
+        {
+          "num": "8",
+          "label": "Parallèle ?",
+          "text": "seulement si utile et proposé"
+        }
+      ],
+      "notes": "Livret 03 §3 « Les huit habitudes », reprises du programme §5. En une ligne : précis · plan court · diff lu et contrôle déterministe · note courte · six mots distincts · revue → correction → recontrôle + cas limite · AGENTS.md et Skills · parallèle seulement si utile. Méthode du livret 03 (édition V7), état au 28/10/2026.",
+      "id": "v7-32"
+    },
+    {
+      "section": "D",
+      "layout": "compare",
+      "title": "Habitude 1 : une demande précise",
+      "kicker": "MÉTHODE",
+      "leftLabel": "FLOUE",
+      "left": "« Fais le nettoyage des ventes. »",
+      "rightLabel": "PRÉCISE",
+      "right": "« Rejette les quantités ≤ 0, motif quantite_invalide, dans outputs/rejets.csv.\nSources et controles/ intacts.\nJe prévois 1 rejet (E-009-1). »",
+      "note": "Objectif observable · fichiers à toucher et à ne pas toucher · contrôle · votre prévision.",
+      "notes": "Exemple du livret 03, habitude 1. Sur l'échantillon, E-009-1 a une quantité -1 : seul rejet quantite_invalide (echantillon/attendu.md). « Recopie la sortie réelle » termine la demande. Méthode du livret 03 (édition V7), état au 28/10/2026.",
+      "id": "v7-33"
+    },
+    {
+      "section": "D",
+      "layout": "process",
+      "title": "Habitude 6 : revue → correction → revue",
+      "kicker": "MÉTHODE",
+      "items": [
+        {
+          "label": "Lecture seule",
+          "text": "$revoir-bi : ≤ 3 défauts, avec preuve"
+        },
+        {
+          "label": "Constater",
+          "text": "vous reproduisez le défaut"
+        },
+        {
+          "label": "Corriger",
+          "text": "une demande par défaut"
+        },
+        {
+          "label": "Recontrôler",
+          "text": "tous les contrôles + un cas limite"
+        }
+      ],
+      "note": "Cas limite : vente NBE du 2026-07-14 → Cap Bon ; du 2026-07-15 → Nord-Est.",
+      "notes": "Livret 03, habitude 6 et prompts 11 (revue lecture seule) et 12 (corriger après revue). valid_from inclus, valid_to exclu : si la vente du 15 tombe en Cap Bon, valid_to est traité comme inclus, défaut établi. Méthode du livret 03 (édition V7), état au 28/10/2026.",
+      "id": "v7-34"
+    },
+    {
+      "section": "D",
+      "layout": "table",
+      "title": "AGENTS.md et Skills : les règles du dépôt",
+      "kicker": "MÉTHODE",
+      "headers": [
+        "Fichier",
+        "Quand",
+        "Ce qu'il garantit"
+      ],
+      "widths": [
+        1.5,
+        1.8,
+        2.9
+      ],
+      "fontSize": 15,
+      "rows": [
+        [
+          "AGENTS.md",
+          "lu avant tout travail",
+          "code dans solen/ ; sources, référence, controles/ intacts"
+        ],
+        [
+          "$expliquer-bi",
+          "comprendre une notion",
+          "exemple chiffré d'abord ; rien n'est modifié"
+        ],
+        [
+          "$revoir-bi",
+          "avant votre revue",
+          "lecture seule ; ≤ 3 défauts établis"
+        ],
+        [
+          "$preparer-pr",
+          "avant commit / push",
+          "OK · À corriger · Non vérifié"
+        ]
+      ],
+      "note": "Codex écrit ces fichiers ; vous expliquez et améliorez les consignes.",
+      "notes": "Livret 03, habitude 7. AGENTS.md : lu avant tout travail, de la racine vers le dossier courant (OpenAI, AGENTS.md, https://learn.chatgpt.com/docs/agent-configuration/agents-md, lu le 28/10/2026). Skills : .agents/skills/<nom>/SKILL.md avec name et description (OpenAI, Build skills, https://learn.chatgpt.com/docs/build-skills, lu le 28/10/2026). La découverte d'un Skill sur un compte Free n'est pas encore prouvée : sinon « Lis .agents/skills/revoir-bi/SKILL.md et applique sa méthode ».",
+      "id": "v7-35"
+    },
+    {
+      "section": "D",
+      "layout": "compare",
+      "title": "Habitude 8 : workers parallèles, facultatifs",
+      "kicker": "MÉTHODE",
+      "leftLabel": "AVEC SOUS-AGENTS (SI PROPOSÉS)",
+      "left": "Deux lectures indépendantes : données/rejets et modèle/historique.\nPlus de tokens consommés.",
+      "rightLabel": "SANS (MÉTHODE DE BASE)",
+      "right": "Deux chats successifs avec $revoir-bi, un par angle.\nMême résultat, moins d'usage.",
+      "neutral": true,
+      "arrow": "ou",
+      "note": "Ils ne démarrent que sur demande explicite ; disponibilité Free non garantie.",
+      "notes": "OpenAI, Subagents (https://learn.chatgpt.com/docs/agent-configuration/subagents, lu le 28/10/2026) : travailleurs parallèles sur demande explicite, plus de tokens. Livret 03, habitude 8. Aucun besoin de lancer dix agents ; la revue séquentielle est la route gratuite de base.",
+      "id": "v7-36"
+    },
+    {
+      "section": "D",
+      "layout": "cards",
+      "title": "Quota atteint : le travail continue",
+      "kicker": "SANS CODEX",
+      "items": [
+        {
+          "label": "Git et revue",
+          "text": "Commiter ce qui est contrôlé, PR, relire celle du binôme."
+        },
+        {
+          "label": "Comprendre",
+          "text": "Lire le diff, calculer à la main, interpréter les visuels."
+        },
+        {
+          "label": "Préparer",
+          "text": "Note d'état, prochaine demande avec votre prévision."
+        }
+      ],
+      "note": "Jamais : coder à la main, payer, utiliser le compte d'un autre. Notez l'heure de reprise.",
+      "notes": "Livret 03 §8 et livret 01 « Compte Free ». Point de reprise : modele-binome/ du dépôt du cours + notes/JOURNAL.md. Pricing (lu le 28/10/2026) : limites variables, hebdomadaires possibles. Si Luna est absent ou l'effort grisé : noter ce qui s'affiche, utiliser ce qui est proposé, prévenir le professeur.",
+      "id": "v7-37"
+    },
+    {
+      "section": "E",
+      "layout": "divider",
+      "title": "Les notions BI",
+      "subtitle": "Chaque notion avec son schéma et les chiffres de Maison Zitouna",
+      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026.",
+      "id": "v7-38"
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "Des quatre sources au rapport",
+      "kicker": "ETL",
+      "image": "docs/images/diagrams/v7-pipeline.png",
+      "items": [
+        "Sources intactes, lues seulement.",
+        "Dimensions avant faits.",
+        "Rejets dans rejets.csv, avec motif."
+      ],
+      "notes": "Schéma v7-pipeline. Sources lot 1 : ventes.csv (1998 lignes), catalogue.xlsx (8 produits, 6 familles), boutiques.json (3 boutiques), operations.sqlite (82 retours : 78 VALIDE, 4 ANNULE). Montants en millimes entiers dans l'entrepôt, affichés en TND à 3 décimales. Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026.",
+      "id": "v7-39"
+    },
+    {
+      "section": "E",
+      "layout": "grain",
+      "title": "Le grain : une ligne de fait = une ligne de ticket",
+      "kicker": "GRAIN",
+      "tiles": [
+        [
+          "QUOI ?",
+          "P01"
+        ],
+        [
+          "OÙ ?",
+          "TUN"
+        ],
+        [
+          "QUAND ?",
+          "2026-03-02"
+        ],
+        [
+          "COMBIEN ?",
+          "2 × 18,500 TND"
+        ]
+      ],
+      "idline": "E-001-1 : identifiant stable, même si le fichier est rejoué.",
+      "notes": "Première ligne de l'échantillon (echantillon/attendu.md) : E-001-1, 2026-03-02, TUN, P01, quantité 2, prix 18,500 → 37,000 TND bruts. Le grain est fixé à la réunion de cadrage (épisode 2). La clé métier ligne_id rend le rejeu idempotent.",
+      "id": "v7-40"
+    },
+    {
+      "section": "E",
+      "layout": "compare",
+      "title": "Fait ou dimension ?",
+      "kicker": "MODÉLISATION",
+      "leftLabel": "FAIT · ce qu'on mesure",
+      "left": "fact_vente : quantité, montant brut\nfact_retour : montant remboursé\nbeaucoup de lignes",
+      "rightLabel": "DIMENSION · ce qui décrit",
+      "right": "dim_produit · dim_boutique · dim_date\npeu de lignes\non filtre et on regroupe par elles",
+      "neutral": true,
+      "arrow": "→",
+      "notes": "Livret 00, « Dix mots » ; contrat §5. Après lot 1 : fact_vente 1960, fact_retour 76, dim_produit 8, dim_boutique 3, dim_date 181 (reference/README.md).",
+      "id": "v7-41"
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "L'étoile de la mission 00",
+      "kicker": "MODÉLISATION",
+      "image": "docs/images/diagrams/v7-etoile.png",
+      "items": [
+        "3 dimensions, 2 tables de faits.",
+        "Chaque relation : 1 → plusieurs.",
+        "Les deux faits ne sont pas reliés."
+      ],
+      "notes": "Schéma v7-etoile. Même modèle dans Power BI : 6 relations 1:*, filtre croisé simple, toutes actives (livret 05 §2 ; modele-binome/powerbi/README.md §4).",
+      "id": "v7-42"
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "Clé métier et clé technique",
+      "kicker": "CLÉS",
+      "image": "docs/images/diagrams/v7-cles.png",
+      "items": [
+        "NBE = clé métier (sources).",
+        "2 et 5 = clés techniques (versions).",
+        "Les faits pointent vers boutique_key."
+      ],
+      "notes": "Schéma v7-cles. boutique_id = NBE identifie la boutique ; boutique_key identifie une version (2 = Cap Bon, 5 = Nord-Est sur ce schéma). On ne relie jamais par boutique_id dans Power BI : NBE a deux lignes. Les numéros de clé réels dépendent du code ; le vérificateur contrôle la zone à la date, pas le numéro.",
+      "id": "v7-43"
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "Nettoyer sans toucher aux sources",
+      "kicker": "QUALITÉ",
+      "image": "docs/images/diagrams/v7-nettoyage.png",
+      "items": [
+        "Formats → millimes, dates ISO.",
+        "Doublon exact : une occurrence gardée.",
+        "Rejet = une ligne + un motif."
+      ],
+      "notes": "Schéma v7-nettoyage (exemple pédagogique L001…L005, distinct de l'échantillon). Motifs standard du contrat §5 : id_conflit, id_manquant, cle_inconnue, quantite_invalide. Les sources restent intactes ; les rejets vont dans outputs/rejets.csv.",
+      "id": "v7-44"
+    },
+    {
+      "section": "E",
+      "layout": "process",
+      "title": "L'échantillon : 12 lignes → 6 gardées",
+      "kicker": "QUALITÉ",
+      "items": [
+        {
+          "label": "12 lues",
+          "text": "ventes.csv\nde l'échantillon"
+        },
+        {
+          "label": "1 doublon",
+          "text": "E-003-1 répété :\nignoré"
+        },
+        {
+          "label": "5 rejets",
+          "text": "2 id_conflit\n1 id_manquant\n1 cle_inconnue\n1 quantite_invalide"
+        },
+        {
+          "label": "6 gardées",
+          "text": "à calculer\nà la main"
+        }
+      ],
+      "note": "Un doublon exact n'est pas un rejet : on garde une occurrence.",
+      "notes": "Source : modele-binome/tronc-commun/echantillon/attendu.md (calcul à la main de l'échantillon), lu le 28/10/2026. Lignes rejetées : E-006-1 (deux fois, quantités 2 et 4 → id_conflit), ligne sans identifiant, E-008-1 (P99 inconnu), E-009-1 (quantité -1).",
+      "id": "v7-45"
+    },
+    {
+      "section": "E",
+      "layout": "kpis",
+      "title": "L'échantillon, calculé à la main",
+      "kicker": "INDICATEURS",
+      "items": [
+        {
+          "value": "127,350",
+          "label": "TND ventes brutes"
+        },
+        {
+          "value": "112,850",
+          "label": "TND ventes nettes\n(− 14,500 de retours)"
+        },
+        {
+          "value": "45,600",
+          "label": "TND marge sur coût d'achat"
+        },
+        {
+          "value": "11,39 %",
+          "label": "taux de retour\n14 500 / 127 350"
+        }
+      ],
+      "note": "Calculez AVANT de demander quoi que ce soit à Codex : ces nombres vérifient son code.",
+      "notes": "Source : modele-binome/tronc-commun/echantillon/attendu.md (calcul à la main de l'échantillon), lu le 28/10/2026. Retours : R-0001 (14,500 TND gardés), R-0002 ANNULE (ignoré, pas un rejet), R-0003 vise E-099-9 inexistant (rejet cle_inconnue). Coût d'achat des unités nettes = 76,000 − 8,750 = 67,250 TND ; marge = 112,850 − 67,250 = 45,600 TND.",
+      "id": "v7-46"
+    },
+    {
+      "section": "E",
+      "layout": "table",
+      "title": "Cinq indicateurs, cinq définitions exactes",
+      "kicker": "INDICATEURS",
+      "headers": [
+        "Indicateur",
+        "Définition",
+        "Unité"
+      ],
+      "widths": [
+        1.6,
+        3.6,
+        0.9
+      ],
+      "fontSize": 16,
+      "rows": [
+        [
+          "Ventes brutes",
+          "Σ quantité × prix du ticket, lignes acceptées",
+          "TND"
+        ],
+        [
+          "Retours",
+          "Σ remboursements des retours VALIDE acceptés",
+          "TND"
+        ],
+        [
+          "Ventes nettes",
+          "ventes brutes − retours",
+          "TND"
+        ],
+        [
+          "Marge sur coût d'achat",
+          "ventes nettes − coût d'achat des unités nettes",
+          "TND"
+        ],
+        [
+          "Taux de retour",
+          "retours / ventes brutes (en montant)",
+          "%"
+        ]
+      ],
+      "note": "« Marge » veut toujours dire marge sur coût d'achat, jamais « bénéfice ».",
+      "notes": "Définitions du cahier des charges (livret 02, « La mission en une page » ; contrat §6). Mêmes définitions dans le PDF, le code, l'app, les tests, le DAX et ces diapositives. Stockage en millimes entiers (1 TND = 1 000 millimes).",
+      "id": "v7-47"
+    },
+    {
+      "section": "E",
+      "layout": "code",
+      "title": "SQL paramétré : le « ? » est une case",
+      "kicker": "SQL",
+      "code": "sql = \"SELECT * FROM retour\"\n      \" WHERE statut = ?\"\n      \" AND date_retour >= ?\"\n      \" AND date_retour < ?\"\nmars = requete_sqlite(base, sql,\n  (\"VALIDE\", \"2026-03-01\", \"2026-04-01\"))",
+      "items": [
+        "Base opérationnelle ouverte en lecture seule.",
+        "La valeur part à part : jamais lue comme du SQL.",
+        "Résultat : 25 retours VALIDE en mars 2026."
+      ],
+      "caption": "Code produit par Codex · à lire, pas à taper",
+      "notes": "Livret 02, S3-M1 « SQL paramétré depuis Python » : sortie attendue « retours VALIDE 2026-03 : 25 lignes · 893810 millimes (893,810 TND) ». Borne de fin exclue (< 2026-04-01). Une chaîne construite avec NBE' OR '1'='1 changerait le sens de la requête. Base opérationnelle (sert à travailler) ≠ entrepôt (sert à analyser).",
+      "id": "v7-48"
+    },
+    {
+      "section": "E",
+      "layout": "kpis",
+      "title": "Lot 1 : le chargement initial",
+      "kicker": "CHARGEMENT",
+      "items": [
+        {
+          "value": "1998",
+          "label": "lignes lues\ndans ventes.csv"
+        },
+        {
+          "value": "26",
+          "label": "rejets motivés\n(dont 2 retours)"
+        },
+        {
+          "value": "1960",
+          "label": "faits dans\nfact_vente"
+        },
+        {
+          "value": "74 309,500",
+          "label": "TND de ventes nettes"
+        }
+      ],
+      "note": "14 doublons exacts ignorés · rejets : 8 cle_inconnue, 6 id_conflit, 5 id_manquant, 7 quantite_invalide.",
+      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026. Lot 1 : ventes brutes 78 067,830 TND ; retours 3 758,330 TND ; ventes nettes 74 309,500 TND ; marge 28 991,700 TND ; taux de retour 4,81 %. 1998 − 14 doublons − 24 rejets ventes = 1960 faits ; 2 rejets viennent de operations.sqlite (cle_inconnue).",
+      "id": "v7-49"
+    },
+    {
+      "section": "E",
+      "layout": "compare",
+      "title": "Épisode 3 : un total plausible… et faux",
+      "kicker": "INDICATEUR",
+      "leftLabel": "LE TABLEUR DE KARIM",
+      "left": "Toutes les lignes, sans règle\n78 839,780 TND",
+      "rightLabel": "APRÈS NETTOYAGE",
+      "right": "Doublons, conflits, rejets écartés\n78 067,830 TND",
+      "note": "771,950 TND d'écart : assez petit pour passer, assez grand pour tromper.",
+      "notes": "Livret 02, séance 2, épisode 3 : sur le lot 1, somme brute de toutes les lignes = 78 839,780 TND ; ventes brutes après nettoyage = 78 067,830 TND (reference/README.md). Sur l'échantillon : 192,850 TND sans règle contre 127,350 TND à la main.",
+      "id": "v7-50"
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "Un chiffre plausible n'est pas un chiffre juste",
+      "kicker": "INDICATEUR",
+      "image": "docs/images/diagrams/v7-indicateur-controle.png",
+      "items": [
+        "Même formule, données différentes.",
+        "Le contrôle : ligne_id distincts = lignes de fact_vente.",
+        "Écrire le contrôle avant de croire le total."
+      ],
+      "notes": "Schéma v7-indicateur-controle. Correct = après dédoublonnage ; erreur plausible = un doublon compté deux fois. Le contrôle qui tranche : nombre de ligne_id distincts parmi les lignes acceptées = nombre de lignes de fact_vente.",
+      "id": "v7-51"
+    },
+    {
+      "section": "E",
+      "layout": "loads",
+      "title": "Charger · compléter · rejouer",
+      "kicker": "MISES À JOUR",
+      "panels": [
+        {
+          "label": "1 · Chargement initial",
+          "tag": "lot1",
+          "lines": [
+            "1998 lignes lues",
+            "26 rejets",
+            "1960 faits insérés"
+          ],
+          "total": "fact_vente : 1960"
+        },
+        {
+          "label": "2 · Incrément",
+          "tag": "lot2",
+          "lines": [
+            "413 lignes lues",
+            "15 déjà chargées : ignorées",
+            "385 nouvelles insérées"
+          ],
+          "total": "fact_vente : 2345"
+        },
+        {
+          "label": "3 · Rejeu",
+          "tag": "lot2 relancé",
+          "lines": [
+            "413 lignes lues",
+            "0 insertion",
+            "totaux identiques"
+          ],
+          "total": "fact_vente : 2345"
+        }
+      ],
+      "formula": "1960 + 385 = 2345 · rejeu : 0 ajout (clé métier ligne_id)",
+      "notes": "Version native et chiffrée du schéma v7-chargements (le PNG du kit affiche « n » et « 3 déjà connues » ; les compteurs réels sont ceux de la référence). Lot 2 (livret 02, S4-M2 ; attendu_lot2.json) : ventes.csv 413 lues, 4 doublons + 15 déjà chargées (29-30 juin) ignorées, 9 rejetées, 385 ajoutées ; operations.sqlite 29 lus, 2 ANNULE + 3 déjà chargés, 1 rejet, 23 ajoutés ; 62 jours et 1 version SCD2 ajoutés. Rejeu : « relancer lot2 donne exactement ce fichier » (attendu_lot2.json, clé rejeu).",
+      "id": "v7-52"
+    },
+    {
+      "section": "E",
+      "layout": "picture",
+      "title": "SCD2 : NBE change de zone le 2026-07-15",
+      "kicker": "HISTORIQUE",
+      "image": "docs/images/diagrams/v7-scd2-frise.png",
+      "items": [
+        "valid_from inclus, valid_to exclu.",
+        "Vente du 14 juillet → Cap Bon.",
+        "Vente du 15 juillet → Nord-Est."
+      ],
+      "notes": "Schéma v7-scd2-frise. Référence après le dernier lot : NBE Cap Bon du 2021-05-10 au 2026-07-15 (exclu), NBE Nord-Est depuis le 2026-07-15 (courante) ; SFX Sud ; TUN Grand Tunis. Le schéma simplifie la date de début de la version 1 au 2026-01-01 (début des données) ; la vraie valid_from est 2021-05-10 (reference/README.md). Un fait ancien reste rattaché à la version valable à sa date : on n'écrit jamais UPDATE … SET zone.",
+      "id": "v7-53"
+    },
+    {
+      "section": "E",
+      "layout": "kpis",
+      "title": "Après le lot 2",
+      "kicker": "INDICATEURS",
+      "items": [
+        {
+          "value": "2345",
+          "label": "faits dans\nfact_vente"
+        },
+        {
+          "value": "91 444,460",
+          "label": "TND de ventes nettes"
+        },
+        {
+          "value": "35 606,860",
+          "label": "TND de marge\nsur coût d'achat"
+        },
+        {
+          "value": "4,60 %",
+          "label": "taux de retour"
+        }
+      ],
+      "note": "Le premier semestre n'a pas bougé : Nabeul reste en Cap Bon jusqu'au 14 juillet.",
+      "notes": "Source des chiffres : modele-binome/tronc-commun/reference/README.md et attendu_lot1.json / attendu_lot2.json (calculés par le générateur depuis la vérité terrain, sans ETL), lus le 28/10/2026. Après lot 2 : ventes brutes 95 849,090 TND ; retours 4 404,630 TND ; ventes nettes 91 444,460 TND ; coût d'achat des unités nettes 55 837,600 TND ; marge 35 606,860 TND ; taux de retour 4,60 % ; unités nettes 4264. Mêmes valeurs dans la capture réelle de l'application de référence.",
+      "id": "v7-54"
+    },
+    {
+      "section": "E",
       "layout": "chart",
-      "title": "Le graphique doit garder la zone historique",
+      "title": "Ventes nettes par zone, après le lot 2",
+      "kicker": "VISUALISATION",
       "labels": [
+        "Grand Tunis",
+        "Sud",
         "Cap Bon",
-        "Grand Tunis"
+        "Nord-Est"
+      ],
+      "millimes": [
+        40887210,
+        26579870,
+        19653980,
+        4323400
       ],
       "values": [
-        43.5,
-        72
+        40887.21,
+        26579.87,
+        19653.98,
+        4323.4
       ],
-      "period": "Ventes du 5 au 8 janvier 2026 · zone valable à la date de vente",
-      "insight": "72,000\nTND",
-      "explanation": "Grand Tunis : Tunis\n+ Nabeul dès le 8.",
-      "note": "Cap Bon : 43,500 TND. Grand Tunis : 67,500 + 4,500 = 72,000 TND. Total : 115,500 TND.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-67"
+      "period": "Janvier → août 2026 · TND · zone valable à la date de chaque vente",
+      "insight": "Nord-Est : 4 323,400 TND",
+      "explanation": "Uniquement les ventes de Nabeul depuis le 15 juillet. Cap Bon garde tout le reste.",
+      "total": "91 444,460 TND",
+      "notes": "Graphique natif PowerPoint (éditable). Source : modele-binome/tronc-commun/reference/attendu_lot2.json, clé agregats.par_zone.<zone>.ventes_nettes_millimes, divisé par 1 000 (lu le 28/10/2026). Grand Tunis 40 887,210 TND; Sud 26 579,870 TND; Cap Bon 19 653,980 TND; Nord-Est 4 323,400 TND. Total = 91 444,460 TND = ventes nettes après lot 2. Avant le lot 2, Cap Bon valait 19 262,780 TND (attendu_lot1.json) : il ne gagne que les ventes de Nabeul du 1er au 14 juillet.",
+      "id": "v7-55"
     },
     {
-      "section": "D",
-      "layout": "exercise",
-      "title": "À vous · 30 min",
-      "question": "Créer le graphique, filtrer, puis actualiser.",
-      "steps": [
-        "Carte CA TND + barres par dim_shop[commercial_zone].",
-        "Filtrer une zone, expliquer le montant, puis retirer le filtre.",
-        "Copier un export complet dans le dossier Windows, puis Actualiser."
-      ],
-      "note": "Une modification SQLite ne met pas les CSV à jour : refaire l’export avant l’actualisation.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-68"
+      "section": "F",
+      "layout": "divider",
+      "title": "Les cinq séances",
+      "subtitle": "240 minutes chacune · 2 pauses · 70 % de pratique",
+      "notes": "Minutages : livret 02 (S1 à S4) et livret 05 (S5). Ce sont des estimations de conception, à confirmer par un essai réel.",
+      "id": "v7-56"
     },
     {
-      "section": "D",
-      "layout": "code",
-      "title": "Un Skill : une recette de revue réutilisable",
-      "code": "---\nname: revoir-bi\ndescription: Vérifier le rapport Atlas.\n---\nComparer les totaux SQL et Power BI.\nVérifier les relations avec shop_key.\nCiter un écart avec sa preuve.",
-      "items": [
-        "À la racine du cours, créer le dossier du Skill.",
-        "Éditer SKILL.md avec la méthode nano du guide.",
-        "Changer une règle utile, puis essayer le Skill."
-      ],
-      "note": "À la racine : .agents/skills/revoir-bi/SKILL.md. Si non découvert, demander sa lecture et le noter.",
-      "fontSize": 18,
-      "notes": "Sources officielles au 27/10/2026 : https://learn.chatgpt.com/docs/build-skills. Disponibilité et découverte à vérifier sur le vrai compte Free. Un Skill ne crée ni outil ni garantie de justesse.",
-      "id": "v6-69"
-    },
-    {
-      "section": "D",
-      "layout": "diagram",
-      "title": "Deux lectures, un seul auteur des corrections",
-      "asset": "docs/images/diagrams/v6-revue.png",
-      "caption": "Séparer les questions aide à trouver des erreurs différentes.",
-      "note": "Si disponibles et quota suffisant : au plus 2 sous-agents en lecture seule. Sinon, 2 passes successives.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-70"
-    },
-    {
-      "section": "D",
-      "layout": "exercise",
-      "title": "À vous · revue → correction → deuxième revue",
-      "question": "Utiliser votre Skill sur deux questions précises.",
-      "steps": [
-        "Données : rejets, doublons, unités et totaux ; histoire : dates et relations.",
-        "Rassembler les constats ; un seul auteur corrige le défaut établi.",
-        "Relancer le contrôle et refaire la revue du résultat corrigé."
-      ],
-      "note": "Une conversation qui joue deux rôles n’est pas deux sous-agents. Chaque agent utilise du quota.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-71"
-    },
-    {
-      "section": "D",
-      "layout": "cards",
-      "title": "À ce stade, je sais…",
-      "items": [
-        {
-          "label": "Je montre",
-          "text": "Trois relations actives,\nune carte et un graphique."
-        },
-        {
-          "label": "Je compare",
-          "text": "SQL et Power BI donnent\nles mêmes chiffres."
-        },
-        {
-          "label": "Je révise",
-          "text": "Le Skill guide la revue ;\nla correction est recontrôlée."
-        }
-      ],
-      "note": "Sortie S4 : rapport Power BI enregistré, preuve de filtre/actualisation et revue traçable.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-72"
-    },
-    {
-      "section": "E",
-      "layout": "cover",
-      "title": "S5 · Je livre\net je défends les chiffres",
-      "subtitle": "Atlas vous confie un défaut connu à réparer · groupe de 3 au maximum.",
-      "duration": "3 h",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-73"
-    },
-    {
-      "section": "E",
-      "layout": "schedule",
-      "title": "Votre séance 5 · 180 minutes",
-      "rows": [
+      "section": "F",
+      "layout": "session",
+      "title": "Séance 1 · La demande et le cadrage",
+      "kicker": "S1 · 240 MIN",
+      "segments": [
         [
-          "0–30",
-          "Commande finale + plan et rôles",
-          "15 T / 15 P"
+          "Épisode 1, rôles",
+          15,
+          "e"
         ],
         [
-          "30–95",
-          "Reproduire, réparer, revoir, recontrôler",
-          "65 P"
+          "Traduire la demande",
+          30,
+          "m"
         ],
         [
-          "95–105",
+          "Échantillon à la main",
+          35,
+          "p"
+        ],
+        [
           "Pause",
-          "10 min"
+          10,
+          "z"
         ],
         [
-          "105–160",
-          "Actualiser et défendre le rapport",
-          "55 P"
+          "Cadrage, outils",
+          46,
+          "m"
         ],
         [
-          "160–180",
-          "Dernier passage et remise",
-          "20 P"
+          "1re demande à Codex",
+          25,
+          "p"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Cycle Git n°1",
+          59,
+          "m"
+        ],
+        [
+          "Note",
+          10,
+          "p"
         ]
       ],
-      "note": "Le défi prolonge Atlas. Il réutilise un cas déjà rencontré et le rapport réalisé en S4.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-74"
+      "prove": [
+        "Dépôt du binôme créé, partenaire invité",
+        "1re PR (README + journal) relue et fusionnée",
+        "Calcul à la main = attendu.md"
+      ],
+      "notes": "Livret 02, séance 1 : 15 + 15/15 + 35 + pause 10 + 10 + 12/24 + 25 + pause 10 + 14/45 + 10 = 240 min ; 66 min d'explications, 154 de pratique. Épisodes 1 et 2 (mail, réunion de cadrage).",
+      "id": "v7-57"
     },
     {
-      "section": "E",
-      "layout": "cards",
-      "title": "Un défaut court, une réparation prouvée",
+      "section": "F",
+      "layout": "session",
+      "title": "Séance 2 · Un premier résultat… faux",
+      "kicker": "S2 · 240 MIN",
+      "segments": [
+        [
+          "Épisode 3",
+          12,
+          "e"
+        ],
+        [
+          "Lire 3 formats (pandas)",
+          44,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Nettoyer, rejeter",
+          54,
+          "m"
+        ],
+        [
+          "Fonctions, modules",
+          34,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "PR : A auteur, B relit",
+          66,
+          "m"
+        ],
+        [
+          "Note",
+          10,
+          "p"
+        ]
+      ],
+      "prove": [
+        "outputs/rejets.csv existe",
+        "Gardées / rejetées = référence",
+        "PR de A relue, corrigée, fusionnée"
+      ],
+      "notes": "Livret 02, séance 2 : 12 + 14/30 + pause + 14/40 + 14/20 + pause + 12/54 + 10. Épisode 3 : le total de Karim (78 839,780 TND) est faux ; le vrai est 78 067,830 TND.",
+      "id": "v7-58"
+    },
+    {
+      "section": "F",
+      "layout": "session",
+      "title": "Séance 3 · Les retours, puis l'étoile",
+      "kicker": "S3 · 240 MIN",
+      "segments": [
+        [
+          "Épisode 4",
+          10,
+          "e"
+        ],
+        [
+          "SQL paramétré",
+          39,
+          "m"
+        ],
+        [
+          "Grain, étoile, clés",
+          31,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Classe Entrepot",
+          25,
+          "m"
+        ],
+        [
+          "Chargement initial",
+          41,
+          "m"
+        ],
+        [
+          "Totaux",
+          20,
+          "p"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "PR : B auteur",
+          39,
+          "m"
+        ],
+        [
+          "Choix mission",
+          15,
+          "m"
+        ]
+      ],
+      "prove": [
+        "--etape initial : 0 ÉCHEC",
+        "Entrepôt : 5 tables reliées",
+        "Mission du catalogue choisie"
+      ],
+      "notes": "Livret 02, séance 3 : 10 + 14/25 + 16/15 + pause + 10/15 + 6/35 + 20 + pause + 5/34 + 5/10. Épisode 4 : base opérationnelle des retours, deux retours pointent vers des tickets introuvables (TK1999-1, TK2817-2).",
+      "id": "v7-59"
+    },
+    {
+      "section": "F",
+      "layout": "session",
+      "title": "Séance 4 · Le besoin change, la revue",
+      "kicker": "S4 · 240 MIN",
+      "segments": [
+        [
+          "Épisode 5",
+          8,
+          "e"
+        ],
+        [
+          "Incrément, SCD2",
+          40,
+          "m"
+        ],
+        [
+          "Rejeu",
+          17,
+          "m"
+        ],
+        [
+          "Tests, CI",
+          32,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Revue → fix",
+          40,
+          "m"
+        ],
+        [
+          "Conflit",
+          28,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Skills",
+          22,
+          "m"
+        ],
+        [
+          "Export",
+          14,
+          "m"
+        ],
+        [
+          "App, bilan",
+          19,
+          "m"
+        ]
+      ],
+      "prove": [
+        "Lot 2 chargé, historique gardé",
+        "Rejeu stable, CI verte (ETAPE_CI: tout)",
+        "Un conflit résolu, un Skill à vous"
+      ],
+      "notes": "Livret 02, séance 4 : 8 + 12/28 + 5/12 + 10/22 + pause + 8/32 + 8/20 + pause + 7/15 + 4/10 + 4/15. Épisodes 5 (nouveau lot, Nabeul change de zone) et 6 (défaut planté, revue → correction → revue).",
+      "id": "v7-60"
+    },
+    {
+      "section": "F",
+      "layout": "session",
+      "title": "Séance 5 · Livrer et répéter",
+      "kicker": "S5 · 240 MIN",
+      "segments": [
+        [
+          "Épisode 7",
+          15,
+          "m"
+        ],
+        [
+          "App locale",
+          35,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Power BI Desktop",
+          65,
+          "m"
+        ],
+        [
+          "Visuels, reco",
+          45,
+          "m"
+        ],
+        [
+          "Pause",
+          10,
+          "z"
+        ],
+        [
+          "Finir, démo",
+          20,
+          "m"
+        ],
+        [
+          "Répéter à deux",
+          40,
+          "m"
+        ]
+      ],
+      "prove": [
+        "App locale ouverte, chiffres = référence",
+        "Rapport Power BI actualisé",
+        "Recommandation écrite, oral répété"
+      ],
+      "notes": "Livret 05, « Minutage de la séance 5 » : 15 + 35 + pause + 65 + 45 + pause + 20 + 40 = 240 ; 66 explications, 154 pratique. Un seul poste Windows pour deux : alterner. Power BI bloqué plus de 20 min : appeler le professeur, noter le message.",
+      "id": "v7-61"
+    },
+    {
+      "section": "F",
+      "layout": "process",
+      "title": "Fin de S3 : choisir votre mission",
+      "kicker": "LE CATALOGUE",
       "items": [
         {
-          "label": "Données",
-          "text": "Retrouver la source\net expliquer l’écart."
+          "label": "Lire",
+          "text": "au moins deux fiches du livret 04"
         },
         {
-          "label": "Modèle et histoire",
-          "text": "Vérifier les clés\net la frontière du 8 janvier."
+          "label": "Choisir",
+          "text": "un métier que vous savez expliquer"
         },
         {
-          "label": "Rapport et preuves",
-          "text": "Actualiser Power BI\net comparer à SQL."
+          "label": "Noter",
+          "text": "JOURNAL.md, rubrique Décision"
+        },
+        {
+          "label": "Attendre",
+          "text": "mission.txt = tronc-commun jusqu'à fin S4"
         }
       ],
-      "note": "À trois : un rôle chacun. À deux ou seul : regrouper les rôles ; chacun explique sa contribution.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-75"
+      "note": "Mêmes formes, mêmes gestes : seuls les mots du métier changent.",
+      "notes": "Livret 02, S3-M7. Chaque mission a fiche_mission.md, cahier_des_charges.md, dictionnaire.md, échantillon + attendu.md, deux lots, une base SQLite opérationnelle, une dimension historisée, reference/. Le livret 04 (catalogue) est en cours de construction à la date de ce deck.",
+      "id": "v7-62"
     },
     {
-      "section": "E",
-      "layout": "exercise",
-      "title": "À vous · 65 min",
-      "question": "Rendre le défaut reproductible avant de le corriger.",
-      "steps": [
-        "Écrire le symptôme, le résultat attendu et un plan court.",
-        "Réparer seulement le défaut fourni, puis lancer le contrôle utile.",
-        "Faire une revue indépendante, corriger et refaire la revue."
-      ],
-      "note": "Conserver : prompt, fichiers modifiés, commande réelle, résultat et limite éventuelle.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-76"
-    },
-    {
-      "section": "E",
-      "layout": "pause",
-      "title": "Pause · 10 minutes",
-      "subtitle": "Sauvez le dernier état fonctionnel.\nReprenez avec un export complet et le rapport Power BI.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-77"
-    },
-    {
-      "section": "E",
-      "layout": "diagram",
-      "title": "Les chiffres que votre livraison doit expliquer",
-      "asset": "docs/images/diagrams/v6-chiffres-zones.png",
-      "caption": "Le rapport doit raconter la même histoire que les ventes et leurs clés.",
-      "note": "14 ventes · 35 unités · 115,500 TND · Cap Bon 43,500 · Grand Tunis 72,000.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-78"
-    },
-    {
-      "section": "E",
-      "layout": "cards",
-      "title": "La direction demande : « pourquoi y croire ? »",
+      "section": "F",
+      "layout": "process",
+      "title": "Épisode 7 : « Présentez-moi tout ça vendredi »",
+      "kicker": "S5 · LIVRAISON",
       "items": [
         {
-          "label": "Montrer le chemin",
-          "text": "Ligne source → nettoyage\n→ clé → SQL → Power BI."
+          "label": "« Voir avec mes filtres »",
+          "text": "application locale"
         },
         {
-          "label": "Montrer le changement",
-          "text": "Vente NBE du 7 : Cap Bon.\nVente NBE du 8 : Grand Tunis."
+          "label": "« Pouvoir faire confiance »",
+          "text": "Power BI actualisé + contrôles"
         },
         {
-          "label": "Montrer sa part",
-          "text": "Ce que j’ai changé,\nce que j’ai exécuté,\nce qui reste limité."
+          "label": "« Que conseillez-vous ? »",
+          "text": "recommandation chiffrée"
+        },
+        {
+          "label": "« Chacun répondra »",
+          "text": "démo répétée à deux"
         }
       ],
-      "note": "Utilisez les preuves de votre travail. L’explication peut aussi être écrite.",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-79"
+      "notes": "Livret 05, épisode 7 : mail fictif de Lamia Ben Salah. Chaque phrase du mail fixe un livrable. La présentation de « vendredi » est la soutenance, sur votre mission du catalogue.",
+      "id": "v7-63"
     },
     {
-      "section": "E",
-      "layout": "exercise",
-      "title": "Dernier passage · 20 min",
-      "question": "Remettre un dossier que l’on peut reprendre.",
-      "steps": [
-        "Relancer depuis le jalon documenté et comparer aux valeurs finales.",
-        "Garder code, entrepôt/reconstruction, 4 CSV, manifeste et fichier Power BI.",
-        "Terminer SUIVI.md : contribution, preuve, limite et prochaine action."
-      ],
-      "note": "Référence du défi : 04_defi_atlas.pdf. Aucun résultat annoncé sans contrôle réellement exécuté.",
-      "number": "À VOUS",
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-80"
-    },
-    {
-      "section": "E",
-      "layout": "closing",
-      "title": "Vous savez maintenant\nconstruire et expliquer une chaîne BI",
+      "section": "F",
+      "layout": "capture",
+      "title": "L'application locale : Vue direction",
+      "kicker": "S5 · APPLICATION",
+      "image": "docs/images/captures/app-vue-direction.png",
       "items": [
-        "Guider Codex avec une petite tâche et un contexte utile.",
-        "Lire CSV/SQL, nettoyer et préserver l’histoire des ventes.",
-        "Relier Power BI aux tables et défendre les chiffres."
+        "Cinq indicateurs en cartes.",
+        "Barres empilées par mois et zone.",
+        "Nord-Est apparaît en juillet."
       ],
-      "notes": "Cas pédagogique fictif Atlas Papeterie. Parcours Licence BI 15 h : cinq séances de 180 min. Les montants sont en TND à l’affichage et millimes entiers au stockage. Un fait = une vente élémentaire. Les contrôles indiquent des attendus ; conserver les observations réellement exécutées.",
-      "id": "v6-81"
+      "caption": "Capture réelle, macOS · application de référence, après lots 1 et 2 · réussite : ventes nettes 91 444,460 TND = référence.",
+      "notes": "docs/images/captures/REGISTRE.json : navigateur intégré de l'application Claude, macOS 26.3, viewport 1280×900, page servie en local, 2026-10-28. Limite : capture de la solution de référence privée, pas d'une production étudiante ; 800 px. Une seule page HTML autonome générée par python -m solen app (outputs/app/index.html), sans serveur.",
+      "id": "v7-64"
     },
     {
-      "section": "E",
+      "section": "F",
+      "layout": "capture",
+      "title": "L'application locale : Qualité des données",
+      "kicker": "S5 · APPLICATION",
+      "image": "docs/images/captures/app-qualite.png",
+      "items": [
+        "Rejets par motif et par lot.",
+        "Lot 1 : 8 · 6 · 5 · 7.",
+        "Lot 2 : 4 · 2 · 2 · 2."
+      ],
+      "caption": "Capture réelle, macOS · application de référence · réussite : rejets par motif = reference/README.md.",
+      "notes": "docs/images/captures/REGISTRE.json : même environnement (macOS 26.3, navigateur intégré, 2026-10-28). Motifs : cle_inconnue, id_conflit, id_manquant, quantite_invalide. Ordre des motifs selon reference/README.md. Limite : solution de référence, pas une production étudiante.",
+      "id": "v7-65"
+    },
+    {
+      "section": "F",
+      "layout": "process",
+      "title": "Power BI Desktop : quatre gestes",
+      "kicker": "S5 · POWER BI",
+      "items": [
+        {
+          "label": "Importer",
+          "text": "5 CSV exportés, types fixés"
+        },
+        {
+          "label": "Relier",
+          "text": "6 relations 1:* par *_key"
+        },
+        {
+          "label": "Mesurer",
+          "text": "5 mesures DAX écrites par Codex"
+        },
+        {
+          "label": "Actualiser",
+          "text": "après le lot 2 :\n91 444,460 TND"
+        }
+      ],
+      "note": "Pas de capture Power BI ici : elles seront prises sur un vrai poste Windows.",
+      "notes": "modele-binome/powerbi/README.md et livret 05 §2. Power BI Desktop : gratuit, Windows uniquement (Microsoft, Download Power BI Desktop, https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop, lu le 28/10/2026). Jamais de relation par boutique_id. Actualiser prouve que le rapport relit les CSV, pas que les CSV sont justes. Captures Power BI : placeholders, en attente du prévol Windows Ines/Rayan (aucune capture fabriquée).",
+      "id": "v7-66"
+    },
+    {
+      "section": "F",
+      "layout": "process",
+      "title": "La recommandation en cinq parties",
+      "kicker": "S5 · DÉCISION",
+      "items": [
+        {
+          "label": "Constat",
+          "text": "un chiffre, son unité"
+        },
+        {
+          "label": "Cause",
+          "text": "plausible, vérifiée"
+        },
+        {
+          "label": "Action",
+          "text": "précise, pour lundi"
+        },
+        {
+          "label": "Limite",
+          "text": "ce qu'on ne sait pas"
+        },
+        {
+          "label": "Donnée",
+          "text": "ce qui trancherait"
+        }
+      ],
+      "note": "Exemple : Sud à 7,40 % de retours… à cause d'un seul coffret de 1 240,000 TND.",
+      "notes": "Livret 05 §4, exemple travaillé : zone Sud (Sfax) 7,40 % de retours (2 124,470 / 28 704,340 TND, cohérent avec attendu_lot2.json par_zone.Sud) ; un coffret entreprise de 1 240,000 TND vendu le 28 mai, rendu le 2 juin ; sans lui le Sud serait ≈ 3,1 % et juin 2,2 %. Recommandation : revoir les conditions de retour des coffrets, pas un plan qualité sur toute la boutique. Limite : 8 mois, un seul retour. Donnée : motif du retour (présent dans operations.sqlite, non chargé).",
+      "id": "v7-67"
+    },
+    {
+      "section": "G",
+      "layout": "divider",
+      "title": "Le catalogue des dix missions",
+      "subtitle": "Une par binôme · même méthode, résultats propres",
+      "notes": "Contrat §6 et fiches modele-binome/catalogue/M01…M10/fiche_mission.md (lues le 28/10/2026). Entreprises fictives.",
+      "id": "v7-68"
+    },
+    {
+      "section": "G",
+      "layout": "table",
+      "title": "Dix entreprises, dix questions de direction",
+      "kicker": "CATALOGUE",
+      "headers": [
+        "#",
+        "Entreprise fictive",
+        "Grain",
+        "La direction veut savoir…"
+      ],
+      "widths": [
+        0.45,
+        1.75,
+        1.45,
+        3.6
+      ],
+      "fontSize": 12.5,
+      "rows": [
+        [
+          "M01",
+          "Carthage Market",
+          "ligne de ticket",
+          "quels magasins et produits portent ventes et marge"
+        ],
+        [
+          "M02",
+          "Souk Express",
+          "ligne de commande",
+          "quels canaux vendent vraiment, remises et remboursements ôtés"
+        ],
+        [
+          "M03",
+          "Medina Distribution",
+          "ligne de facture",
+          "quels clients et produits font baisser la rentabilité"
+        ],
+        [
+          "M04",
+          "Colis Rapide",
+          "colis livré",
+          "où se concentrent retards, pénalités et coûts"
+        ],
+        [
+          "M05",
+          "Académie Nour",
+          "présence",
+          "quelles sessions remplissent et encaissent"
+        ],
+        [
+          "M06",
+          "Dar Azur",
+          "séjour (nuitées)",
+          "quelles maisons remplissent et gagnent de l'argent"
+        ],
+        [
+          "M07",
+          "FibreNet",
+          "facture mensuelle",
+          "combien d'abonnés et de MRR on gagne et perd"
+        ],
+        [
+          "M08",
+          "TechniServ",
+          "intervention",
+          "si les contrats de maintenance sont rentables"
+        ],
+        [
+          "M09",
+          "Scène Libre",
+          "billet vendu",
+          "ce qui reste après annulations, remboursements, frais"
+        ],
+        [
+          "M10",
+          "Pixel Studio",
+          "ligne de temps",
+          "quels projets rapportent vraiment"
+        ]
+      ],
+      "notes": "Questions résumées du « message de la direction » de chaque fiche_mission.md. Chaque mission a un changement SCD2 au 15 juillet (M01 Hammamet → Sahel ; M02 VSO → marketplace ; M03 CL04 → grande surface ; M04 agence de Nabeul → Centre-Sahel ; M05 SES-2619 → Sfax ; M06 commission OTA 18 % → 15 % ; M07 Fibre 300 → gamme pro, 99,900 TND ; M08 EQ-017 → CT-09 ; M09 frais REV 9 % → 11 % ; M10 PX07 → Nour Jebali) et une règle à clarifier tranchée par la direction (fiche, section « La règle à clarifier »).",
+      "id": "v7-69"
+    },
+    {
+      "section": "G",
+      "layout": "grid",
+      "title": "Les règles communes",
+      "kicker": "CATALOGUE",
+      "cols": 3,
+      "items": [
+        {
+          "num": "4",
+          "label": "sources",
+          "text": "CSV · Excel · JSON · SQLite opérationnelle"
+        },
+        {
+          "num": "2",
+          "label": "lots + échantillon",
+          "text": "initial, incrément ; ≤ 12 lignes à la main"
+        },
+        {
+          "num": "1",
+          "label": "dimension SCD2",
+          "text": "changement daté du 15 juillet"
+        },
+        {
+          "num": "0",
+          "label": "source modifiée",
+          "text": "rejets dans outputs/rejets.csv, avec motif"
+        },
+        {
+          "num": "3",
+          "label": "écrans d'app",
+          "text": "vue direction · détail SCD2 · qualité"
+        },
+        {
+          "num": "1",
+          "label": "règle à clarifier",
+          "text": "tranchée par la direction, appliquée partout"
+        }
+      ],
+      "note": "Millimes entiers · vérificateur = référence · PR relues · recommandation · Power BI.",
+      "notes": "Contrat §5 (socle commun) : quatre sources, deux lots, échantillon ≤ 12 lignes avec attendu.md, au moins 6 types d'anomalies, rejets motivés, dimensions avant faits, SCD2 valid_from inclus / valid_to exclu, rejeu sans doublon, export + manifest.json. Oracle : reference/attendu_*.json calculé par le générateur. Chaque mission a aussi 3 variantes possibles (fiche_mission.md).",
+      "id": "v7-70"
+    },
+    {
+      "section": "H",
+      "layout": "divider",
+      "title": "Soutenance et critères annoncés",
+      "subtitle": "Une démo à deux, des questions à chacun",
+      "notes": "Livret 05 §6 et contrat §3/§9. La grille chiffrée et les ancrages restent privés (jury/) : aucun point n'est montré ici.",
+      "id": "v7-71"
+    },
+    {
+      "section": "H",
+      "layout": "picture",
+      "title": "120 minutes à partager",
+      "kicker": "FORMAT",
+      "image": "docs/images/diagrams/v7-soutenance.png",
+      "items": [
+        "10 accueil + 100 binômes + 10 délibération.",
+        "Durée par binôme = 100 / N.",
+        "Préparez la version de 6 minutes."
+      ],
+      "notes": "Schéma v7-soutenance ; contrat §3. N = 5 → 20 min (6 démo + 2 × 6 questions + 2 transition) ; N = 8 → 12,5 min ; N ≥ 11 → ≈ 9,1 min ou moins : impossible en un seul créneau sans second créneau ou deux jurys en parallèle. À signaler au professeur dès que N est connu.",
+      "id": "v7-72"
+    },
+    {
+      "section": "H",
+      "layout": "table",
+      "title": "Le script de démonstration : 6 minutes",
+      "kicker": "DÉMO",
+      "headers": [
+        "Minute",
+        "Qui",
+        "Ce que vous montrez"
+      ],
+      "widths": [
+        1.1,
+        0.6,
+        4.5
+      ],
+      "fontSize": 16,
+      "rows": [
+        [
+          "0:00–0:30",
+          "A",
+          "Le client, la question, le grain"
+        ],
+        [
+          "0:30–1:30",
+          "A",
+          "Vérificateur vert, puis rejeu : aucune ligne ajoutée"
+        ],
+        [
+          "1:30–3:00",
+          "A",
+          "L'app : vue direction, un filtre, détail, qualité"
+        ],
+        [
+          "3:00–4:30",
+          "B",
+          "Power BI : relations, une mesure, actualisation"
+        ],
+        [
+          "4:30–5:30",
+          "B",
+          "La recommandation : constat → donnée"
+        ],
+        [
+          "5:30–6:00",
+          "B",
+          "GitHub : PR, revues, CI verte"
+        ]
+      ],
+      "note": "Tout est ouvert avant votre tour · un chiffre, une preuve · on ne lit pas.",
+      "notes": "Livret 05, « Le script de démonstration : 6 minutes ». Phrases clés : « Une ligne de fait = … », « Relancer ne crée aucun doublon », « Ce chiffre égale la référence », « Le rapport relit l'export », « Nous conseillons… mais… », « Nous avons alterné auteur et relecteur ». Un imprévu : dire ce qu'on voit, ce qu'on attendait, ce qu'on vérifierait.",
+      "id": "v7-73"
+    },
+    {
+      "section": "H",
+      "layout": "cards",
+      "title": "Les critères annoncés",
+      "kicker": "CRITÈRES PUBLICS",
+      "items": [
+        {
+          "label": "Résultats de la mission",
+          "text": "chiffres = référence"
+        },
+        {
+          "label": "Entrepôt et historique",
+          "text": "étoile, SCD2, rejeu"
+        },
+        {
+          "label": "Livraison lisible",
+          "text": "app, Power BI, recommandation"
+        },
+        {
+          "label": "Collaboration Git",
+          "text": "PR, revues, CI"
+        }
+      ],
+      "note": "S'y ajoutent les questions individuelles : chacun répond seul.",
+      "notes": "Livret 05, encadré « Les critères annoncés (publics) » ; contrat §9 : part commune binôme (dépôt, résultats = référence, app/Power BI, qualité des PR) et part individuelle. Les points, la grille /20 et les ancrages sont dans jury/ (privé) et ne sont pas montrés aux étudiants.",
+      "id": "v7-74"
+    },
+    {
+      "section": "H",
+      "layout": "grid",
+      "title": "Les questions individuelles",
+      "kicker": "CRITÈRES PUBLICS",
+      "cols": 3,
+      "items": [
+        {
+          "num": "1",
+          "label": "Un indicateur",
+          "text": "ce qu'il mesure, son unité"
+        },
+        {
+          "num": "2",
+          "label": "Prévoir",
+          "text": "le résultat d'un filtre"
+        },
+        {
+          "num": "3",
+          "label": "Suivre une ligne",
+          "text": "de la source au graphique"
+        },
+        {
+          "num": "4",
+          "label": "Rejet et version",
+          "text": "id_conflit ; NBE le 14 juillet"
+        },
+        {
+          "num": "5",
+          "label": "Revue",
+          "text": "un défaut et son commit"
+        },
+        {
+          "num": "6",
+          "label": "Rejeu",
+          "text": "relancer : rien ne change"
+        },
+        {
+          "num": "7",
+          "label": "Contribution Git",
+          "text": "une PR écrite, une relue"
+        },
+        {
+          "num": "8",
+          "label": "Recommandation",
+          "text": "la défendre, avec sa limite"
+        },
+        {
+          "num": "9",
+          "label": "Variation",
+          "text": "avec Codex, puis contrôlée"
+        }
+      ],
+      "notes": "Livret 05, « Les questions individuelles : à quoi s'entraîner ». S'entraîner avec : cahier des charges, prompt 14, outputs/rejets.csv, écran Détail, PR fermées, --etape rejeu, git shortlog -sn, prompt 18. Codex est autorisé pendant une variation si le jury le demande : il veut voir votre demande, votre prévision et votre contrôle.",
+      "id": "v7-75"
+    },
+    {
+      "section": "I",
+      "layout": "divider",
+      "title": "Sources et licences",
+      "subtitle": "Pages officielles vérifiées le 28/10/2026",
+      "notes": "docs/setup/sources.json : 38 sources, verified_on 2026-10-28. Portée : pages lues en ligne ; aucune installation Windows/WSL ou Ubuntu, aucun compte Codex Free, aucun quota ni parcours GitHub à deux comptes n'a été exécuté pour ce catalogue.",
+      "id": "v7-76"
+    },
+    {
+      "section": "I",
       "layout": "sources",
-      "title": "Pour retrouver les repères officiels",
+      "title": "Codex et ChatGPT · OpenAI",
+      "kicker": "SOURCES · VÉRIFIÉES LE 28/10/2026",
+      "links": [
+        [
+          "Pricing (offre Free)",
+          "https://learn.chatgpt.com/docs/pricing"
+        ],
+        [
+          "Models (efforts, Luna)",
+          "https://learn.chatgpt.com/docs/models"
+        ],
+        [
+          "Desktop app for Windows",
+          "https://learn.chatgpt.com/docs/app/windows"
+        ],
+        [
+          "WSL",
+          "https://learn.chatgpt.com/docs/windows/wsl"
+        ],
+        [
+          "Desktop app for Linux",
+          "https://learn.chatgpt.com/docs/linux/linux-app"
+        ],
+        [
+          "Slash commands",
+          "https://learn.chatgpt.com/codex/reference/slash-commands"
+        ],
+        [
+          "AGENTS.md",
+          "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+        ],
+        [
+          "Build skills",
+          "https://learn.chatgpt.com/docs/build-skills"
+        ],
+        [
+          "Subagents",
+          "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+        ],
+        [
+          "Codex CLI (annexe facultative)",
+          "https://learn.chatgpt.com/docs/codex/cli"
+        ]
+      ],
+      "notes": "URLs reprises de docs/setup/sources.json (verified_on 2026-10-28). Ces pages peuvent changer : l'écran du compte de l'étudiant fait foi. Le compte auteur est un plan payant : l'accès Free réel n'est pas encore prouvé ; il le sera par le prévol Ines/Rayan. Chaque étudiant relève ce que SON écran affiche.",
+      "id": "v7-77"
+    },
+    {
+      "section": "I",
+      "layout": "sources",
+      "title": "GitHub, Microsoft, Python, Ubuntu",
+      "kicker": "SOURCES · VÉRIFIÉES LE 28/10/2026",
+      "links": [
+        [
+          "GitHub’s plans",
+          "https://docs.github.com/en/get-started/learning-about-github/githubs-plans"
+        ],
+        [
+          "GitHub Actions billing",
+          "https://docs.github.com/en/billing/concepts/product-billing/github-actions"
+        ],
+        [
+          "Creating a pull request",
+          "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"
+        ],
+        [
+          "Reviewing proposed changes",
+          "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request"
+        ],
+        [
+          "Resolving a merge conflict",
+          "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github"
+        ],
+        [
+          "gh auth login",
+          "https://cli.github.com/manual/gh_auth_login"
+        ],
+        [
+          "Install WSL (Microsoft)",
+          "https://learn.microsoft.com/en-us/windows/wsl/install"
+        ],
+        [
+          "Download Power BI Desktop",
+          "https://learn.microsoft.com/en-us/power-bi/fundamentals/desktop-get-the-desktop"
+        ],
+        [
+          "venv (Python)",
+          "https://docs.python.org/3/library/venv.html"
+        ],
+        [
+          "Python on Ubuntu (Canonical)",
+          "https://ubuntu.com/developers/docs/howto/python-setup/"
+        ]
+      ],
+      "notes": "Sélection de docs/setup/sources.json (38 sources au total, toutes vérifiées le 28/10/2026). La liste complète est dans ce fichier et dans les livrets 01 et 06.",
+      "id": "v7-78"
+    },
+    {
+      "section": "I",
+      "layout": "cards",
+      "title": "Licences et provenance",
+      "kicker": "LICENCES",
       "items": [
         {
-          "label": "Codex",
-          "text": "Application, Free, modèles,\nWSL2 et Linux ; règles\net Skills locaux."
+          "label": "Polices",
+          "text": "Inter et Plus Jakarta Sans : SIL OFL 1.1 (schémas). Arial et Courier New ici."
         },
         {
-          "label": "Power BI",
-          "text": "Import CSV, types, relations,\nmesures et actualisation\ndans le guide du kit."
+          "label": "Logos",
+          "text": "Leaders et Solen Digital tels que fournis, proportions gardées."
         },
         {
-          "label": "Votre preuve",
-          "text": "Le compte et le poste réels\nrestent à vérifier.\nUne procédure ne vaut pas un essai."
+          "label": "Visuels",
+          "text": "Schémas originaux · 2 captures réelles macOS · aucune interface simulée."
         }
       ],
-      "note": "Sources et dates dans les notes de ces slides et authoring/slides/README.md · état documentaire : 27/10/2026.",
-      "notes": "OpenAI : https://learn.chatgpt.com/docs/app ; https://learn.chatgpt.com/docs/pricing ; https://learn.chatgpt.com/docs/models ; https://learn.chatgpt.com/docs/app/windows ; https://learn.chatgpt.com/docs/linux/linux-app ; https://learn.chatgpt.com/docs/build-skills ; https://learn.chatgpt.com/docs/agent-configuration/subagents. Microsoft : voir powerbi/README.md pour les références vérifiées par le kit. Les timings sont des estimations de conception sans mesure novice humaine. Les supports ne prouvent pas l’installation Windows/Ubuntu, l’accès Free, la découverte de Skills ou une manipulation Power BI réelle.",
-      "id": "v6-82"
+      "note": "Données 100 % synthétiques · entreprises et personnes fictives · registre des captures : docs/images/captures/REGISTRE.json.",
+      "notes": "authoring/visuals/manifest.json (licence : schémas originaux, aucune interface simulée, polices OFL avec notices authoring/assets/fonts/*-OFL.txt). Logos : authoring/assets/leaders-logo.jpeg et solen-digital-horizontal.png, fournis. Captures : app-vue-direction.png et app-qualite.png, macOS 26.3, 2026-10-28.",
+      "id": "v7-79"
+    },
+    {
+      "section": "I",
+      "layout": "closing",
+      "title": "Lundi, 9 h : votre première mission commence",
+      "items": [
+        "Lire le livret 00, puis 01 selon votre poste.",
+        "Créer deux comptes : GitHub et ChatGPT (Free).",
+        "Venir avec une question : « où passe la marge ? »"
+      ],
+      "notes": "Préparation avant S1 (livret 00, « À ce stade, je sais… » ; livret 01). Aucun paiement ni clé API. Le compte Free et l'affichage de Luna sont à vérifier par chaque étudiant.",
+      "id": "v7-80"
     }
   ]
 }

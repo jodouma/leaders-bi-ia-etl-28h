@@ -20,7 +20,7 @@ dans solen/ seulement. Sources intactes.
   codes en strip + majuscules.
 Écris outputs/rejets.csv avec la ligne d'origine et une colonne motif.
 Teste d'abord sur l'échantillon : j'attends <mes comptes>. Puis sur lot1, et lance
-python -m controles.verifier --mission $(cat mission.txt) --etape initial si ce contrôle couvre déjà les rejets.
+python -m controles.verifier --mission $(cat mission.txt) --etape rejets
 Montre la fonction qui décide du motif et explique l'ordre des règles.
 ```
 

@@ -25,13 +25,14 @@
   },
   "load_counters": {
     "data_file": "authoring/generateurs/v7-data.json",
-    "present": false,
-    "sha256": null,
+    "present": true,
+    "sha256": "e29f567efb89435ce9feec024fefa23a311d85c42250fcbd62081c8c50baf425",
     "placeholders_n": [
       "lot1.faits",
       "lot1.inserees",
       "lot1.lues",
       "lot1.rejets",
+      "lot2.deja_connues",
       "lot2.faits",
       "lot2.lues",
       "lot2.nouvelles",
@@ -41,7 +42,7 @@
   },
   "contact_sheet": {
     "png": "docs/images/diagrams/v7-contact-sheet.png",
-    "sha256": "516da1a41dbb4d5e3aacc6e6f478e6a22402a1b8d5101be72a96b88d3d147a96"
+    "sha256": "e8dede246bdc662bdf707596c6df29485af9e77011fdbac90acd1870c1e0db8e"
   },
   "license": "Schémas originaux ; aucune interface simulée, aucune capture, aucun logo tiers. Polices SIL OFL 1.1, glyphes en contours dans les SVG.",
   "assets": [
@@ -195,8 +196,8 @@
     {
       "id": "v7-cles",
       "title": "Clé métier et clé technique",
-      "description": "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : 2 pour Cap Bon (du 2026-01-01 au 2026-07-15 exclu), 5 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.",
-      "alt": "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : 2 pour Cap Bon (du 2026-01-01 au 2026-07-15 exclu), 5 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.",
+      "description": "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : 2 pour Cap Bon (du 2021-05-10 au 2026-07-15 exclu), 4 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.",
+      "alt": "La clé métier boutique_id = NBE identifie la boutique de Nabeul dans les sources. Dans dim_boutique, la clé technique boutique_key identifie une version : 2 pour Cap Bon (du 2021-05-10 au 2026-07-15 exclu), 4 pour Nord-Est (depuis le 2026-07-15, valid_to NULL). Les faits pointent vers boutique_key.",
       "svg": "docs/images/diagrams/v7-cles.svg",
       "png": "docs/images/diagrams/v7-cles.png",
       "viewbox": [
@@ -209,8 +210,8 @@
       ],
       "text_min_px": 26,
       "sha256": {
-        "svg": "b13db78026059dea4d12f08af0e7dc6c993d9479f49edf96e3871693d1479d78",
-        "png": "8c0dafc6d641984482a42d19a56fb3d6aa772b2132ecfcc90e747f50924103fe"
+        "svg": "3a344b5541709b9b89192daac596de9020ec1a84c714556fa5bf27005411ff1a",
+        "png": "c4cf7d15ae0a42e4f2221e14924d88abff60458221b673d571e67d192004d024"
       }
     },
     {
@@ -237,8 +238,8 @@
     {
       "id": "v7-chargements",
       "title": "Charger · compléter · rejouer",
-      "description": "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et 3 lignes déjà connues, ignorées), puis rejeu du lot 2 : 0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.",
-      "alt": "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et 3 lignes déjà connues, ignorées), puis rejeu du lot 2 : 0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.",
+      "description": "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et des lignes déjà connues, ignorées), puis rejeu du lot 2 : 0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.",
+      "alt": "Chargement initial du lot 1, puis incrément du lot 2 (nouvelles lignes et des lignes déjà connues, ignorées), puis rejeu du lot 2 : 0 insertion et des totaux identiques. Les compteurs viennent de v7-data.json quand il existe ; sinon ils sont notés n.",
       "svg": "docs/images/diagrams/v7-chargements.svg",
       "png": "docs/images/diagrams/v7-chargements.png",
       "viewbox": [
@@ -251,15 +252,15 @@
       ],
       "text_min_px": 26,
       "sha256": {
-        "svg": "eba5e88d0d7a8c565cb5a22747d7a06f9d712422390a7cb4c72096ac605e1037",
-        "png": "04abf710de85569331ab75711997c2072464679cb477cbe6dca4c3f57859e22b"
+        "svg": "a20d7f0ccacac112eea9b5f04fd8e7655ecc3bc9a2f7bea11ea9778f89121c45",
+        "png": "12f7540610246f296053cf9e9850f6ab5c7dea04c39dc61d3b9827b2eb1c8e7f"
       }
     },
     {
       "id": "v7-scd2-frise",
       "title": "NBE change de zone le 2026-07-15",
-      "description": "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2026-01-01, 2026-07-15) ; version 2 (boutique_key 5, Nord-Est) sur [2026-07-15, NULL). Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.",
-      "alt": "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2026-01-01, 2026-07-15) ; version 2 (boutique_key 5, Nord-Est) sur [2026-07-15, NULL). Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.",
+      "description": "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2021-05-10, 2026-07-15) ; version 2 (boutique_key 4, Nord-Est) sur [2026-07-15, NULL). Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.",
+      "alt": "Frise de la boutique NBE : version 1 (boutique_key 2, Cap Bon) sur [2021-05-10, 2026-07-15) ; version 2 (boutique_key 4, Nord-Est) sur [2026-07-15, NULL). Une vente du 2026-07-14 est rattachée à la version 1, une vente du 2026-07-15 à la version 2. La frontière du 2026-07-15 appartient à la nouvelle version.",
       "svg": "docs/images/diagrams/v7-scd2-frise.svg",
       "png": "docs/images/diagrams/v7-scd2-frise.png",
       "viewbox": [
@@ -272,8 +273,8 @@
       ],
       "text_min_px": 26,
       "sha256": {
-        "svg": "31cb205d400a37f29a8bfe87e672659cf5027d40735e51ab6aadb8034eb71678",
-        "png": "569a67d5fb563417e79990693323ad5c36623ae251373d65d56cb058cd23cf7d"
+        "svg": "2db6a2824ee43ebabe1ea31fbd24f550b1fa1e219a3c0235e54efb24b5ae81dc",
+        "png": "902424c6e86ee996f014b3cb07fe82b035421d29ac4311a4e8e193014746272f"
       }
     },
     {

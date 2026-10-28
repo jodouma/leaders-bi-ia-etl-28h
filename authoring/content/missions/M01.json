@@ -1,0 +1,1128 @@
+{
+ "title": "Mission 01 · Carthage Market : guide de mission",
+ "cover_title": "Mission 01 · Réseau de magasins\nCarthage Market",
+ "subtitle": "Guide de mission du catalogue · ventes nettes, marge sur coût d’achat, part des franchisés, taux de retour · une ligne de ticket par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M01 · Carthage Market",
+ "output_filename": "missions/M01_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M01 · CARTHAGE MARKET",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Carthage Market (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF CARTHAGE MARKET",
+  "flow": "Tickets, catalogue, magasins, retours  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "7",
+    "MAGASINS, DONT 4 FRANCHISÉS"
+   ],
+   [
+    "2 570",
+    "LIGNES DE TICKET APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M01 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M01/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Solution de référence passée au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M01 · CARTHAGE MARKET · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 01**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un nouveau client fictif, **Carthage Market**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : remplacer le contenu de `mission.txt` par `M01`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Ce qui sera gardé, ignoré ou rejeté",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "12"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "13"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "14"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M01/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M01/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M01/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Carthage Market** est une enseigne fictive de **sept supérettes** de quartier. Trois magasins sont **propres** (gérés par l’enseigne), quatre sont **franchisés** (un commerçant partenaire utilise la marque). Les caisses exportent les lignes de ticket avec leurs remises ; catalogue, magasins et retours vivent dans trois autres fichiers."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nous ouvrons de plus en plus de magasins en franchise. Avant d’aller plus loin, je veux savoir quels magasins et quels produits apportent les ventes et la marge. Par magasin, par région, par famille et par mois : les ventes nettes, la marge sur coût d’achat, la part des franchisés dans les ventes nettes et le taux de retour. Dites-moi aussi quelles lignes vous avez dû écarter, et pourquoi.\nLe 15 juillet, le magasin de Hammamet quitte la région Cap Bon et rejoint la région Sahel. Les chiffres du premier semestre doivent rester dans Cap Bon.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Continuer la franchise ?** La part des franchisés et leur marge, comparées aux magasins propres.",
+      "**Quels produits pousser ?** Ventes nettes et marge sur coût d’achat par famille et par produit.",
+      "**Les promotions coûtent-elles trop ?** Les remises, déjà déduites des ventes, suivies à part."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "7 magasins, 12 produits, 5 familles ; janvier → août 2026",
+       "stocks, fournisseurs, toute date après le 31 août"
+      ],
+      [
+       "ventes payées, remises, retours `VALIDE`",
+       "retours `ANNULE` (ignorés)"
+      ],
+      [
+       "coût d’achat du catalogue, fixe sur 2026",
+       "loyers, salaires, redevance de franchise : la marge n’est pas un bénéfice"
+      ],
+      [
+       "la région historisée (HAM au 2026-07-15)",
+       "un changement de type propre/franchisé (variante 2)"
+      ],
+      [
+       "le montant de la remise",
+       "code promo, mode de paiement, motif du retour : dans les sources, non chargés"
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.7
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **une ligne de ticket de caisse**, clé `ligne_id` (ex. `T500234-2`). Montants stockés en **millimes entiers**, affichés en TND à 3 décimales. Formules exactes du cahier (§ 9) ; les quatre demandées par la direction sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "TND",
+       "somme de (quantité × prix unitaire − remise) des lignes acceptées : le montant **payé**"
+      ],
+      [
+       "Remises",
+       "TND",
+       "somme des remises des lignes acceptées (déjà déduites des ventes brutes)"
+      ],
+      [
+       "Retours",
+       "TND",
+       "somme des montants remboursés des retours `VALIDE` acceptés"
+      ],
+      [
+       "**Ventes nettes**",
+       "TND",
+       "ventes brutes − retours"
+      ],
+      [
+       "Coût d’achat des unités nettes",
+       "TND",
+       "(unités vendues − unités retournées) × coût d’achat unitaire, produit par produit"
+      ],
+      [
+       "**Marge sur coût d’achat**",
+       "TND",
+       "ventes nettes − coût d’achat des unités nettes"
+      ],
+      [
+       "**Part des franchisés**",
+       "%",
+       "ventes nettes des magasins franchisés ÷ ventes nettes totales"
+      ],
+      [
+       "**Taux de retour**",
+       "%",
+       "retours ÷ ventes brutes, en montant"
+      ]
+     ],
+     "widths": [
+      1.6,
+      0.6,
+      3.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Deux indicateurs sont des **rapports** : montrez toujours leur dénominateur. Un mouvement compte dans le mois **de sa propre date** ; un retour, le jour du retour. Un mouvement est « franchisé » si la version du magasin valable à sa date est de type `franchisé`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key` (AAAAMMJJ)"
+      ],
+      [
+       "`dim_produit`",
+       "un article : famille, prix, coût d’achat",
+       "`produit_key` · `produit_id`"
+      ],
+      [
+       "`dim_magasin` (SCD2)",
+       "une **version** de magasin : type, région, `valid_from`, `valid_to`",
+       "`magasin_key` · `magasin_id`"
+      ],
+      [
+       "`fact_vente`",
+       "une ligne de ticket acceptée",
+       "`ligne_id`"
+      ],
+      [
+       "`fact_retour`",
+       "un retour `VALIDE` accepté",
+       "`retour_id`"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.5
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_magasin`, attribut `region`. Le magasin **HAM** (Hammamet, franchisé) passe de « Cap Bon » à « Sahel » le **2026-07-15**, inclus ; l’information arrive avec `lot2/magasins.json`. `dim_magasin` passe de 7 à 8 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "magasin_id",
+      "region",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "HAM",
+       "Cap Bon",
+       "2022-04-11",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "HAM",
+       "Sahel",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.2,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Une vente de HAM du 14 juillet est en Cap Bon ; du 15 juillet, en Sahel. Un retour suit la version valable à la **date du retour**."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M01 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de HAM aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles` (tests fournis), `pytest -q` (avec les vôtres) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `ventes.csv`, le catalogue, les 7 magasins et 3 retours. Calculez **sur papier**, à deux, avant toute demande à Codex. La correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "ligne_id",
+      "Lu dans le fichier",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "E-01-1",
+       "2026-03-02 · LAC · C101 · qté 4 · prix 1.350 · remise 0",
+       ""
+      ],
+      [
+       "3",
+       "E-01-2",
+       "02/03/2026 · LAC · C111 · qté 1 · prix 21,500 · remise 2,150",
+       ""
+      ],
+      [
+       "4",
+       "E-02-1",
+       "3 mars 2026 · « ari » · C105 · qté 2 · prix 4.2 · remise 0",
+       ""
+      ],
+      [
+       "5",
+       "E-03-1",
+       "2026-03-04 · HAM · C107 · qté 6 · prix 1,490 · remise 0",
+       ""
+      ],
+      [
+       "6",
+       "E-03-1",
+       "2026-03-04 · HAM · C107 · qté 6 · prix 1,490 · remise 0",
+       ""
+      ],
+      [
+       "7",
+       "E-04-1",
+       "2026-03-05 · « Sou » · C110 · qté 2 · prix 9.800 · remise 1.960",
+       ""
+      ],
+      [
+       "8",
+       "E-05-1",
+       "2026-03-06 · GAB · C104 · qté 1 · prix 7,8 · remise 0",
+       ""
+      ],
+      [
+       "9",
+       "E-06-1",
+       "2026-03-07 · SFX · C108 · qté 2 · prix 2.400 · remise 0",
+       ""
+      ],
+      [
+       "10",
+       "E-06-1",
+       "2026-03-07 · SFX · C108 · qté 3 · prix 2.400 · remise 0",
+       ""
+      ],
+      [
+       "11",
+       "(vide)",
+       "2026-03-08 · BIZ · C102 · qté 2 · prix 1.150 · remise 0",
+       ""
+      ],
+      [
+       "12",
+       "E-08-1",
+       "2026-03-09 · TOZ · C106 · qté 1 · prix 3.600 · remise 0",
+       ""
+      ],
+      [
+       "13",
+       "E-09-1",
+       "2026-03-09 · LAC · C112 · qté 1,5 · prix 3.800 · remise 0",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.75,
+      3.5,
+      0.9
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? **2.** Ventes brutes, remise déduite (décision A), et total des remises.",
+      "**3.** Retours : `R-0001` rend 1 des 2 shampoings de `E-04-1` (`VALIDE`) ; `R-0002` est `ANNULE` ; `R-0003` vise `E-99-9`.",
+      "**4.** Ventes nettes, marge (coûts : C101 0,980 · C111 14,800 · C105 2,900 · C107 1,160 · C110 5,600 · C104 5,300), part des franchisés (ARI, GAB, HAM), taux de retour."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardées : ……  Rejets : ……  Ventes brutes : …… TND  Retours : …… TND\nVentes nettes : …… TND  Marge : …… TND  Franchisés : …… %  Taux de retour : …… %"
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact de la ligne 5, **ignorée** (pas un rejet). Lignes 9 et 10 : même `ligne_id`, quantités différentes → **les deux** en `id_conflit`. Ligne 11 : `id_manquant`. Ligne 12 : magasin `TOZ` inconnu → `cle_inconnue`. Ligne 13 : quantité 1,5 → `quantite_invalide`. Bilan : 12 lues, 1 doublon, 5 rejets, **6 gardées**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "ligne_id",
+      "Magasin",
+      "Type",
+      "Calcul",
+      "Montant payé"
+     ],
+     "rows": [
+      [
+       "E-01-1",
+       "LAC",
+       "propre",
+       "4 × 1,350 − 0",
+       "5,400 TND"
+      ],
+      [
+       "E-01-2",
+       "LAC",
+       "propre",
+       "1 × 21,500 − 2,150",
+       "19,350 TND"
+      ],
+      [
+       "E-02-1",
+       "ARI",
+       "franchisé",
+       "2 × 4,200 − 0",
+       "8,400 TND"
+      ],
+      [
+       "E-03-1",
+       "HAM",
+       "franchisé",
+       "6 × 1,490 − 0",
+       "8,940 TND"
+      ],
+      [
+       "E-04-1",
+       "SOU",
+       "propre",
+       "2 × 9,800 − 1,960",
+       "17,640 TND"
+      ],
+      [
+       "E-05-1",
+       "GAB",
+       "franchisé",
+       "1 × 7,800 − 0",
+       "7,800 TND"
+      ],
+      [
+       "**Total**",
+       "",
+       "",
+       "remises : 4,110 TND",
+       "**67,530 TND**"
+      ]
+     ],
+     "widths": [
+      0.9,
+      0.8,
+      0.9,
+      1.6,
+      1.1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Retours** : `R-0001` rembourse le prix **payé** d’un shampoing, 17,640 ÷ 2 = **8,820 TND** ; `R-0002` est ignoré ; `R-0003` est rejeté en `cle_inconnue` (source `operations.sqlite`). Total : **6 rejets**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Ventes nettes",
+       "67,530 − 8,820",
+       "**58,710 TND**"
+      ],
+      [
+       "Coût d’achat des unités nettes",
+       "47,980 pour les unités vendues, moins 5,600 pour le shampoing rendu",
+       "42,380 TND"
+      ],
+      [
+       "Marge sur coût d’achat",
+       "58,710 − 42,380",
+       "**16,330 TND**"
+      ],
+      [
+       "Part des franchisés",
+       "(8,400 + 8,940 + 7,800) ÷ 58,710",
+       "**42,82 %**"
+      ],
+      [
+       "Taux de retour",
+       "8,820 ÷ 67,530",
+       "**13,06 %**"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3,
+      1
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Cherchez **la** ligne qui diffère. Pièges : remise comptée par unité, `4.2` lu 4,020, doublon compté comme rejet, retour au prix catalogue (9,800). Entrepôt attendu : `fact_vente` 6, `fact_retour` 1, `dim_magasin` 7, `dim_date` 31 (`attendu.json`)."
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**. Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`ventes.csv`",
+       "lignes de ticket, UTF-8, séparateur `;`",
+       "trois formats de date ; prix et remise en `21.500`, `21,5`, `1 240,000` ; codes en minuscules ou avec espaces"
+      ],
+      [
+       "`catalogue.xlsx`",
+       "feuille `Catalogue`, **en-têtes ligne 3**, + feuille `Familles`",
+       "nombres en texte ; code « ` c108` » ; famille en code (`LAI`) à traduire"
+      ],
+      [
+       "`magasins.json`",
+       "type et historique des régions (`valide_depuis`)",
+       "type « ` Franchisé` » ; lot 2 : 2e version de HAM"
+      ],
+      [
+       "`operations.sqlite`",
+       "tables `retour`, `motif_retour`, `parametre`",
+       "retours `ANNULE` ; retours vers une ligne inconnue"
+      ]
+     ],
+     "widths": [
+      1.25,
+      2,
+      2.6
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `ventes.csv`",
+       "2 184",
+       "449",
+       "—"
+      ],
+      [
+       "Doublons exacts",
+       "12",
+       "4",
+       "garder une occurrence"
+      ],
+      [
+       "Déjà chargées (ventes des 29-30 juin)",
+       "0",
+       "16",
+       "ignorer : rejeu"
+      ],
+      [
+       "Rejets de `ventes.csv`",
+       "22",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Lignes de vente acceptées",
+       "2 150",
+       "420",
+       "`fact_vente`"
+      ],
+      [
+       "Retours lus · `ANNULE` · ligne inconnue · déjà chargés",
+       "65 · 4 · 2 · 0",
+       "28 · 2 · 1 · 4",
+       "ignorer · ignorer · `cle_inconnue` · ignorer"
+      ],
+      [
+       "Retours acceptés",
+       "59",
+       "21",
+       "`fact_retour`"
+      ]
+     ],
+     "widths": [
+      2.2,
+      0.9,
+      0.9,
+      1.6
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer ou rejeter ?",
+     "text": "**Ignorer** (rien dans `rejets.csv`) : doublon exact, retour `ANNULE`, ligne déjà chargée. **Rejeter** avec `lot`, `source`, `numero_ligne`, `motif`. Le type se normalise en minuscules (`propre`, `franchisé`), sinon la part des franchisés tombe à 0 %."
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_vente` et de `dim_magasin`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M01 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite\navec catalogue/M01/sources/lot1 : dim_date, dim_produit, dim_magasin,\npuis fact_vente et fact_retour, dans une transaction. Clés *_key\nentières, *_id texte, millimes entiers ; dim_magasin a valid_from et\nvalid_to (NULL = courante). Brut = qté × prix − remise de la ligne.\nLance initial puis le vérificateur --mission M01 --etape initial et\nrecopie les sorties. J'attends <mes prévisions> : compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M01 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_produit` 12 · `dim_magasin` 7 · `fact_vente` 2 150 · `fact_retour` 59"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 8 (6 ventes + 2 retours) · `id_conflit` 6 · `id_manquant` 4 · `quantite_invalide` 6 · total 24"
+      ],
+      [
+       "Ventes brutes · remises · retours",
+       "18 804,510 · 206,260 · 367,487 TND"
+      ],
+      [
+       "**Ventes nettes · marge**",
+       "**18 437,023 · 5 650,693 TND**"
+      ],
+      [
+       "Part des franchisés · taux de retour",
+       "44,10 % · 1,95 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Catalogue lu dès la ligne 1** : colonnes « Unnamed », le titre devient un produit. Les en-têtes sont à la **ligne 3** de la feuille `Catalogue`.",
+      "**Remise multipliée par la quantité** : `E-04-1` donnerait 15,680 au lieu de 17,640 TND. La remise vaut pour toute la ligne : l’échantillon doit redonner 67,530 TND."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, recopie des lignes déjà chargées et apporte la 2e version de HAM. **Prévoyez** : (1) lignes de `dim_magasin` ; (2) région d’une vente de HAM du 14 puis du 15 juillet ; (3) lignes de `fact_vente` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M01. Ajoute python -m solen increment (lot2 de M01).\n- SCD2 sur dim_magasin.region : fermer la version Cap Bon de HAM\n  (valid_to 2026-07-15, exclu), ouvrir Sahel (valid_from 2026-07-15) ;\n- une vente prend la version valable à SA date, un retour celle de la\n  date du RETOUR ; ne jamais modifier les faits anciens ;\n- rejeu : une clé métier déjà chargée est ignorée.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M01 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M01 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_magasin` **8** · `fact_vente` 2 570 (+420) · `fact_retour` 80 (+21)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 3 (2 + 1 retour) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 3 · total 10"
+      ],
+      [
+       "**Ventes nettes · marge**",
+       "**21 880,226 · 6 637,916 TND** (brutes 22 353,670 · retours 473,444)"
+      ],
+      [
+       "Part des franchisés · taux de retour",
+       "44,51 % · 2,12 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`UPDATE region` sur la ligne de HAM** : tout son premier semestre passe en Sahel et Cap Bon perd 2 404,823 TND. Le vérificateur le voit aux dates frontières.",
+      "**Rejets ajoutés deux fois** : au rejeu, `rejets.csv` passe de 10 à 20 lignes pour le lot 2. Relancer un lot **remplace** ses rejets."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Carthage Market."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M01 --etape export\npython -m solen app\npython -m controles.verifier --mission M01 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 570 lignes de `fact_vente`, une somme de `montant_brut_millimes` de 22 353 670 et de `remise_millimes` de 344 040. Erreurs fréquentes : des TND décimaux au lieu des millimes ; le texte `None` dans `valid_to`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M01. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par magasin, Qualité des\ndonnées ; filtres période, magasin, région, type ; ventes nettes par\nmois et par région en barres SVG, lues dans l'entrepôt."
+    },
+    {
+     "type": "text",
+     "text": "**Application** : erreurs fréquentes, un graphique chargé depuis un CDN (le vérificateur refuse tout lien réseau) et des chiffres recopiés dans le HTML au lieu d’être lus dans l’entrepôt."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV en UTF-8, types fixés, **six relations 1:*** par `magasin_key`, jamais par `magasin_id` (HAM a deux lignes). Codex réécrit `powerbi/mesures.dax` : Ventes nettes TND, Marge sur coût d’achat TND, Part des franchisés, Taux de retour. Après le lot 2 et **Actualiser** : 21 880,226 TND, 6 637,916 TND, 44,51 %, 2,12 %. Erreurs fréquentes : une part des franchisés calculée comme **moyenne des parts** par magasin (ce n’est pas le rapport des sommes) ; une relation « plusieurs à plusieurs » acceptée."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M01/reference/visuels/ventes_nettes_et_marge_par_magasin.png",
+     "caption": "Graphique de référence après le lot 2 : ventes nettes et marge sur coût d’achat par magasin, en TND. Votre application et votre rapport doivent retrouver ces valeurs.",
+     "height": 175
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "La question posée à la direction",
+     "text": "Une ligne vendue en promotion (code `RAMADAN26`, remise de 10 %) : la marge se calcule-t-elle sur le prix **payé**, ou sur le prix du **catalogue**, la remise étant suivie à part comme une dépense de promotion ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Échantillon"
+     ],
+     "rows": [
+      [
+       "**A · remise avant la marge** (décidée)",
+       "brut = qté × prix − remise ; la remise baisse ventes et marge ; « Remises » reste affiché à part",
+       "marge 16,330 TND"
+      ],
+      [
+       "B · remise après la marge",
+       "brut au prix catalogue ; la marge ignore la remise",
+       "marge 20,440 TND"
+      ]
+     ],
+     "widths": [
+      1.7,
+      2.6,
+      1.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Décision : A.** Les ventes brutes sont le montant réellement payé ; un retour rembourse le prix payé, remise comprise. C’est ce que calcule la référence."
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Partir d’une ligne** : `E-01-2` vaut 21,500 TND au catalogue, le client a payé 19,350 TND. C’est l’argent encaissé.",
+      "**Donner l’ordre de grandeur** : après le lot 2, les remises valent 344,040 TND, environ 5 % de la marge (6 637,916 TND). Avec B, la marge paraîtrait plus haute d’autant (raisonnement, non calculé par la référence).",
+      "**Rester cohérent** : `R-0001` rembourse 8,820 TND, pas 9,800. Notez la décision dans `notes/JOURNAL.md` (Décision)."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Taux de marge par famille** = marge ÷ ventes nettes",
+       "un test sur l’échantillon fait à la main ; contre `par_famille` du lot 2 : Épicerie 2 318,723 ÷ 8 663,943 = 26,76 %, Hygiène 41,88 %"
+      ],
+      [
+       "**2. SOU devient franchisé le 2026-08-01** : le type devient historisé",
+       "un test sur un petit jeu dans `tests/` : SOU `propre` le 31 juillet, `franchisé` le 1er août ; la part des franchisés monte en août"
+      ],
+      [
+       "**3. KAI ouvre le 2026-09-01**, région « Centre » (lot 3)",
+       "un test : `dim_magasin` + 1, aucune vente de KAI avant son ouverture, lots 1 et 2 inchangés"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Méthode : prompt 18 (analyser sans modifier), puis 03, 09 et 13. La référence reste verte ; les variantes 2 et 3 se prouvent par **leurs** tests, sans toucher aux sources."
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "quatre indicateurs ; ventes nettes par mois et par région ; filtres période, magasin, région, type",
+       "« 21 880,226 TND de ventes nettes, dont 44,51 % en franchise. »"
+      ],
+      [
+       "**2. Détail par magasin**",
+       "HAM : Cap Bon jusqu’au 2026-07-14, Sahel ensuite ; ventes nettes et marge par version et par mois",
+       "« Le premier semestre de Hammamet reste en Cap Bon. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "lignes lues, gardées, déjà chargées, rejetées par motif et par lot",
+       "« 34 lignes écartées, chacune avec son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Région = Cap Bon. **Prévoyez** : a-t-il bougé entre le lot 1 et le lot 2 ?",
+      "**Application** : ventes nettes **2 565,293 TND** après le lot 2 (2 404,823 après le lot 1). **Référence** : `attendu_lot2.json`, `agregats → par_region → Cap Bon → ventes_nettes_millimes` = 2 565 293.",
+      "**Lecture** : les 160,470 TND d’écart sont les ventes nettes de HAM du 1er au 14 juillet. Pour une preuve SQL en lecture seule, reprenez la demande du livret 05 (partie 1) en filtrant Cap Bon."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M01/reference/visuels/ventes_nettes_par_mois_et_region.png",
+     "caption": "Graphique de référence après le lot 2 : ventes nettes par mois et par région, en TND. En juillet, HAM compte en Cap Bon jusqu’au 14, puis en Sahel.",
+     "height": 205
+    }
+   ]
+  },
+  {
+   "kicker": "M01 · CARTHAGE MARKET · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Carthage Market, le grain « ligne de ticket » et le périmètre ;",
+      "…calculer l’échantillon à la main : 6 lignes gardées, 67,530 TND de ventes brutes, 58,710 TND de ventes nettes, 42,82 % de part des franchisés ;",
+      "…dire pourquoi une ligne est ignorée ou rejetée, et avec quel motif ;",
+      "…charger, compléter et rejouer avec `--mission M01`, et montrer que HAM reste en Cap Bon avant le 2026-07-15 ;",
+      "…donner chaque indicateur avec son unité et, pour un taux, son dénominateur ;",
+      "…défendre la décision A, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Ventes nettes",
+       "18 437,023 TND",
+       "21 880,226 TND"
+      ],
+      [
+       "Marge sur coût d’achat",
+       "5 650,693 TND",
+       "6 637,916 TND"
+      ],
+      [
+       "Part des franchisés · taux de retour",
+       "44,10 % · 1,95 %",
+       "44,51 % · 2,12 %"
+      ],
+      [
+       "`fact_vente` · rejets",
+       "2 150 · 24",
+       "2 570 · 10 de plus"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** avant d’écrire : la marge des franchisés face aux propres (agrégats `par_type`), la famille au taux de marge le plus bas, le coût des promotions. Une marge sur coût d’achat ne compte ni loyers, ni salaires, ni redevance de franchise."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M01/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; Carthage Market et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni dans la CI GitHub.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; Power BI suit le livret 05, non rejoué pour cette mission."
+     ]
+    }
+   ]
+  }
+ ]
+}

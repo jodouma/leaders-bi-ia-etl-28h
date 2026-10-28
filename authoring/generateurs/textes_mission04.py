@@ -79,7 +79,7 @@ SPEC_TEXTES = dict(
             ColonneSource("penalite.id / numero_penalite", "entier / texte", "Ligne et numéro de la pénalité.", "PE26-00012"),
             ColonneSource("penalite.colis_id", "texte", "Colis livré en retard.", "CR100234"),
             ColonneSource("penalite.jours_retard", "entier", "Jours de retard constatés par la facturation.", "2"),
-            ColonneSource("penalite.montant_penalite", "réel", "Pénalité remboursée au client en TND.", "1.4"),
+            ColonneSource("penalite.montant_penalite", "réel", "Pénalité remboursée au client en TND (10 % par jour de retard, 5 jours au plus, rien pour ECO).", "2.8"),
             ColonneSource("penalite.statut", "texte", "`APPLIQUEE` ou `ANNULEE`.", "APPLIQUEE"),
         ], ["factures annulées puis refaites", "pénalités annulées", "factures et pénalités vers un colis inconnu",
             "lot2 : recopie des factures des colis de fin juin"]),
@@ -91,7 +91,7 @@ SPEC_TEXTES = dict(
                    principal=False),
         Indicateur("ponctualite", "Ponctualité", "ratio", "colis à l'heure / colis livrés",
                    "ROUND(1.0 * SUM(a_l_heure) / NULLIF(SUM(nb), 0), 6)", tolerance=0.0001),
-        Indicateur("retard_moyen_jours", "Retard moyen (jours)", "ratio",
+        Indicateur("retard_moyen_jours", "Retard moyen", "jours",
                    "somme des jours de retard / nombre de colis EN RETARD (les colis à l'heure ne comptent pas) ; "
                    "jours de retard = date_livraison − date_promise, en jours calendaires",
                    "ROUND(1.0 * SUM(retard) / NULLIF(SUM(nb) - SUM(a_l_heure), 0), 6)", tolerance=0.001),
@@ -203,8 +203,18 @@ SPEC_TEXTES = dict(
          "axe": "tranche", "fichier": "revenu_cout_marge_par_tranche",
          "titre": "Revenu net, coût transporteur et marge de livraison par tranche de poids",
          "libelle_x": "Tranche de poids", "libelle_y": "Montant"},
+        {"type": "barres", "indicateurs": ["retard_moyen_jours"], "axe": "agence_id", "fichier": "retard_moyen_par_agence",
+         "titre": "Retard moyen des colis en retard, par agence", "libelle_x": "Agence"},
         {"type": "rejets", "fichier": "rejets_par_motif", "titre": "Lignes rejetées par motif et par lot"},
     ],
     debut_calendrier=date(2026, 1, 1),
     sources_rejets={"colis": "colis.csv", "facturation": "facturation.sqlite"},
+    regle_mois="(une ligne par colis livré). Un colis est rangé dans le mois **de sa date de livraison**.",
+    parcours_app="Démonstration conseillée (5 minutes) : écran 1 sans filtre (ponctualité, retard moyen en jours et "
+                 "montants) → filtre zone « Sud » (où se concentrent retards et coûts) → écran 2, agence NAB (deux "
+                 "versions, chiffres de juillet répartis entre Nord et Centre-Sahel) → écran 3 (rejets par motif et "
+                 "par lot, puis une ligne par chargement : lot 1, lot 2 et le rejeu à 0 ajout).",
 )
+SPEC_TEXTES["regle_a_clarifier"]["consequence"] = (
+    "Exemple : le colis de Nabeul expédié le 2026-07-13 et livré le 2026-07-16 (date promise 2026-07-16) est "
+    "**à l'heure** et compte dans la zone **Centre-Sahel**, mois 2026-07.")

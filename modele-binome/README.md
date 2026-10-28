@@ -82,11 +82,12 @@ python -m controles.verifier --mission $(cat mission.txt) --etape initial
 pytest controles
 ```
 
-**Prévoyez d'abord** : réussite ou échec ? Les deux commandes **échouent**, et
-c'est normal : rien n'est encore construit, `solen/` est vide et
+**Prévoyez d'abord** : réussite ou échec ? Le vérificateur **échoue**, et c'est
+normal : rien n'est encore construit, `solen/` est vide et
 `outputs/entrepot.sqlite` n'existe pas. Lisez le message : il dit ce qui manque.
-Ce premier échec est votre point de départ ; chaque PR doit en faire passer un
-morceau au vert. Notez-le dans `notes/JOURNAL.md`.
+`pytest controles` passe les tests de structure et **saute** ceux qui ont besoin
+d'un entrepôt (« skipped ») : c'est votre point de départ. Chaque PR doit faire
+passer un morceau de plus au vert. Notez-le dans `notes/JOURNAL.md`.
 
 Sur GitHub, l'onglet **Actions** exécute `.github/workflows/controles.yml` à chaque
 PR. Au départ, il ne lance que l'installation (variable `ETAPE_CI: aucune`) ;

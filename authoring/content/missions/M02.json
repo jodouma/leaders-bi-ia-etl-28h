@@ -1,0 +1,1115 @@
+{
+ "title": "Mission 02 · Souk Express : guide de mission",
+ "cover_title": "Mission 02 · E-commerce\nSouk Express",
+ "subtitle": "Guide de mission du catalogue · CA brut, remises, remboursements, CA net, panier moyen net · une ligne de commande par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M02 · Souk Express",
+ "output_filename": "missions/M02_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M02 · SOUK EXPRESS",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Souk Express (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF SOUK EXPRESS",
+  "flow": "Commandes, produits, canaux, remboursements  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "6",
+    "CANAUX DE VENTE"
+   ],
+   [
+    "1 580",
+    "COMMANDES APRÈS LE LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M02 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M02/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Solution de référence passée au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M02 · SOUK EXPRESS · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 02**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un vendeur en ligne fictif, **Souk Express**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : remplacer le contenu de `mission.txt` par `M02`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "L’encodage du lot 2, les statuts à ignorer",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "12"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "13"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "14"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M02/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M02/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M02/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Souk Express** vend en ligne par **six canaux** : son site (WEB), son application (APP), deux places de marché partenaires (Bazar Lina BZL, Sahel Market SHM) et deux canaux sociaux (la vitrine sociale VSO, le groupe communauté GCO). Chaque canal se dit « rentable », mais personne ne retire les remises et les remboursements."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nos places de marché font beaucoup de chiffre d’affaires, mais avec beaucoup de codes promo et de remboursements. Je veux savoir quels canaux nous font vraiment vendre une fois les remises et les remboursements enlevés. Par canal, par famille de canal et par mois : CA brut, remises, remboursements, CA net et panier moyen net. Dites-moi aussi ce que vous avez dû écarter, et pourquoi.\nÀ partir du 15 juillet, notre vitrine sociale (VSO) accueille des vendeurs partenaires : elle passe de la famille « réseaux sociaux » à la famille « marketplace ». Les chiffres du premier semestre doivent rester dans « réseaux sociaux ».\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Garder ou renégocier les places de marché ?** Leur CA net comparé à leur CA brut.",
+      "**Limiter les codes promo ?** Les remises par canal, en TND et rapportées au CA brut.",
+      "**Où le client dépense-t-il le plus par commande ?** Le panier moyen net par canal et par famille."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "6 canaux, 15 produits, 5 catégories ; janvier → août 2026",
+       "les frais de livraison, toute date après le 31 août"
+      ],
+      [
+       "remboursements au statut `REMBOURSE`",
+       "demandes `EN_COURS` (pas encore payées) et `REFUSE`"
+      ],
+      [
+       "CA brut, remises, remboursements, CA net, panier",
+       "une marge : le coût de revient est chargé mais reste informatif"
+      ],
+      [
+       "la famille de canal historisée (VSO au 2026-07-15)",
+       "les commissions des places de marché, non fournies"
+      ],
+      [
+       "le montant de la remise",
+       "ville de livraison, motif du remboursement : dans les sources, non chargés"
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.7
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **une ligne de commande en ligne**, clé `ligne_id` (ex. `C100234-2`). Une commande (`commande_id`) peut avoir plusieurs lignes. Montants en **millimes entiers**, affichés en TND à 3 décimales. Formules exactes du cahier (§ 9) ; les cinq demandées par la direction sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "**CA brut**",
+       "TND",
+       "somme de quantité × prix unitaire **payé** des lignes de commande acceptées"
+      ],
+      [
+       "**Remises**",
+       "TND",
+       "somme des remises (TND, pour la ligne entière) des lignes acceptées"
+      ],
+      [
+       "**Remboursements**",
+       "TND",
+       "somme des montants des remboursements au statut `REMBOURSE` acceptés"
+      ],
+      [
+       "**CA net**",
+       "TND",
+       "CA brut − remises − remboursements"
+      ],
+      [
+       "Nombre de commandes",
+       "nombre",
+       "nombre de `commande_id` **distincts** parmi les lignes acceptées"
+      ],
+      [
+       "**Panier moyen net**",
+       "TND",
+       "CA net ÷ nombre de commandes distinctes, arrondi au millime"
+      ],
+      [
+       "Unités nettes",
+       "nombre",
+       "unités commandées − unités remboursées"
+      ]
+     ],
+     "widths": [
+      1.6,
+      0.6,
+      3.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Le panier moyen est un **rapport** : son dénominateur compte des commandes, pas des lignes. Par catégorie, une commande à deux catégories compte dans chacune. Un mouvement compte dans le mois **de sa propre date** ; un remboursement, le jour du remboursement. Le montant remboursé est déjà net de la remise."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key` (AAAAMMJJ)"
+      ],
+      [
+       "`dim_produit`",
+       "un produit : catégorie, prix, coût",
+       "`produit_key` · `produit_id`"
+      ],
+      [
+       "`dim_canal` (SCD2)",
+       "une **version** de canal : nom, famille, `valid_from`, `valid_to`",
+       "`canal_key` · `canal_id`"
+      ],
+      [
+       "`fact_commande`",
+       "une ligne de commande acceptée, avec `commande_id`",
+       "`ligne_id`"
+      ],
+      [
+       "`fact_remboursement`",
+       "un remboursement `REMBOURSE` accepté",
+       "`remboursement_id`"
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.6,
+      1.5
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_canal`, attribut `famille`. La vitrine sociale **VSO** passe de « réseaux sociaux » à « marketplace » le **2026-07-15**, inclus ; l’information arrive avec `lot2/canaux.json`. `dim_canal` passe de 6 à 7 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "canal_id",
+      "famille",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "VSO",
+       "réseaux sociaux",
+       "2023-06-01",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "VSO",
+       "marketplace",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.4,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Une commande VSO du 14 juillet compte en « réseaux sociaux » ; du 15 juillet, en « marketplace ». Un remboursement prend le canal de sa ligne de commande, mais la version valable à la **date du remboursement** (règle à clarifier)."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M02 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de VSO aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles` (tests fournis), `pytest -q` (avec les vôtres) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `commandes.csv`, le catalogue, les 6 canaux et 4 remboursements. Calculez **sur papier**, à deux, avant toute demande à Codex. La correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "ligne_id",
+      "Lu dans le fichier",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "E-01-1",
+       "2026-03-02 · WEB · P01 · qté 2 · prix 45.000 · remise vide",
+       ""
+      ],
+      [
+       "3",
+       "E-01-2",
+       "02/03/2026 · WEB · P12 · qté 1 · prix 18,5 · remise vide",
+       ""
+      ],
+      [
+       "4",
+       "E-02-1",
+       "3 mars 2026 · « bzl » · P02 · qté 1 · prix 89,900 · remise 9,000",
+       ""
+      ],
+      [
+       "5",
+       "E-03-1",
+       "2026-03-05 · VSO · P03 · qté 3 · prix 15.900 · remise 0",
+       ""
+      ],
+      [
+       "6",
+       "E-03-1",
+       "2026-03-05 · VSO · P03 · qté 3 · prix 15.900 · remise 0",
+       ""
+      ],
+      [
+       "7",
+       "E-04-1",
+       "2026-03-06 · « App » · P06 · qté 2 · prix 32,500 · remise 6.5",
+       ""
+      ],
+      [
+       "8",
+       "E-05-1",
+       "2026-03-07 · SHM · P01 · qté 1 · prix 40.500 · remise 4,050",
+       ""
+      ],
+      [
+       "9",
+       "E-06-1",
+       "2026-03-07 · WEB · P12 · qté 1 · prix 18.500 · remise vide",
+       ""
+      ],
+      [
+       "10",
+       "E-06-1",
+       "2026-03-07 · WEB · P12 · qté 2 · prix 18.500 · remise vide",
+       ""
+      ],
+      [
+       "11",
+       "(vide)",
+       "2026-03-08 · GCO · P01 · qté 1 · prix 45.000 · remise vide",
+       ""
+      ],
+      [
+       "12",
+       "E-08-1",
+       "2026-03-09 · WEB · X99 · qté 1 · prix 9.000 · remise vide",
+       ""
+      ],
+      [
+       "13",
+       "E-09-1",
+       "2026-03-09 · APP · P06 · qté 0 · prix 32.500 · remise vide",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.75,
+      3.5,
+      0.9
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? Combien de **commandes** distinctes parmi les lignes gardées ?",
+      "**2.** CA brut au prix payé (`40.500` est un prix promotionnel), puis total des remises (vide ou `0` = pas de remise).",
+      "**3.** Remboursements : `RB-0001` rend 1 coque de `E-03-1` (`REMBOURSE`, 15,900 TND) ; `RB-0002` est `REFUSE` ; `RB-0003` vise `E-99-9` ; `RB-0004` est `EN_COURS`.",
+      "**4.** CA net, puis panier moyen net."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardées : ……  Commandes : ……  Rejets : ……  CA brut : …… TND  Remises : …… TND\nRemboursements : …… TND  CA net : …… TND  Panier moyen net : …… TND"
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact de la ligne 5, **ignorée**. Lignes 9 et 10 : même `ligne_id`, quantités différentes → **les deux** en `id_conflit`. Ligne 11 : `id_manquant`. Ligne 12 : produit `X99` inconnu → `cle_inconnue`. Ligne 13 : quantité 0 → `quantite_invalide`. Bilan : 12 lues, 1 doublon, 5 rejets, **6 lignes gardées dans 5 commandes** (`E-01` a deux lignes)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "ligne_id",
+      "Commande",
+      "Canal",
+      "Calcul du brut",
+      "Brut",
+      "Remise"
+     ],
+     "rows": [
+      [
+       "E-01-1",
+       "E-01",
+       "WEB",
+       "2 × 45,000",
+       "90,000",
+       "0,000"
+      ],
+      [
+       "E-01-2",
+       "E-01",
+       "WEB",
+       "1 × 18,500",
+       "18,500",
+       "0,000"
+      ],
+      [
+       "E-02-1",
+       "E-02",
+       "BZL",
+       "1 × 89,900",
+       "89,900",
+       "9,000"
+      ],
+      [
+       "E-03-1",
+       "E-03",
+       "VSO",
+       "3 × 15,900",
+       "47,700",
+       "0,000"
+      ],
+      [
+       "E-04-1",
+       "E-04",
+       "APP",
+       "2 × 32,500",
+       "65,000",
+       "6,500"
+      ],
+      [
+       "E-05-1",
+       "E-05",
+       "SHM",
+       "1 × 40,500",
+       "40,500",
+       "4,050"
+      ],
+      [
+       "**Total**",
+       "5 commandes",
+       "",
+       "",
+       "**351,600**",
+       "**19,550**"
+      ]
+     ],
+     "widths": [
+      0.9,
+      1,
+      0.7,
+      1.3,
+      0.9,
+      0.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Montants en TND. **Remboursements** : seul `RB-0001` compte, **15,900 TND**. `RB-0002` (`REFUSE`) et `RB-0004` (`EN_COURS`) sont ignorés, pas rejetés ; `RB-0003` est rejeté en `cle_inconnue` (source `operations.sqlite`). Total : **6 rejets**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "CA net",
+       "351,600 − 19,550 − 15,900",
+       "**316,150 TND**"
+      ],
+      [
+       "Nombre de commandes",
+       "E-01, E-02, E-03, E-04, E-05",
+       "**5**"
+      ],
+      [
+       "Panier moyen net",
+       "316,150 ÷ 5",
+       "**63,230 TND**"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3,
+      1
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Cherchez **la** ligne qui diffère. Pièges : panier divisé par 6 lignes (52,692 TND) au lieu de 5 commandes ; remise `6.5` lue comme 6,5 % ; `18,5` lu 18,005 ; remboursement `EN_COURS` compté. Entrepôt attendu : `fact_commande` 6, `fact_remboursement` 1, `dim_produit` 15, `dim_canal` 6, `dim_date` 31."
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**. Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`commandes.csv`",
+       "lignes de commande, séparateur `;`",
+       "lot 1 en UTF-8, **lot 2 en `cp1252`** ; trois formats de date ; montants `32,500`, `32.5`, `1 240,000` ; remise vide, `0` ou montant"
+      ],
+      [
+       "`produits.xlsx`",
+       "feuille `Produits`, **en-têtes ligne 3**",
+       "nombres en texte ; code « ` p12` » ; catégorie avec espaces"
+      ],
+      [
+       "`canaux.json`",
+       "canaux et historique des familles (`depuis`)",
+       "lot 2 : 2e version de VSO"
+      ],
+      [
+       "`operations.sqlite`",
+       "tables `remboursement`, `motif_remboursement`, `parametre`",
+       "statuts `EN_COURS` et `REFUSE` ; pas de canal : il vient de la commande"
+      ]
+     ],
+     "widths": [
+      1.25,
+      2,
+      2.6
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `commandes.csv`",
+       "2 085",
+       "488",
+       "—"
+      ],
+      [
+       "Doublons exacts · déjà chargées (29-30 juin)",
+       "12 · 0",
+       "4 · 15",
+       "ignorer"
+      ],
+      [
+       "Rejets de `commandes.csv`",
+       "23",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Lignes acceptées · dont remise vide",
+       "2 050 · 946",
+       "460 · 220",
+       "`fact_commande`, remise 0"
+      ],
+      [
+       "Remboursements lus · `EN_COURS` · `REFUSE`",
+       "125 · 3 · 5",
+       "56 · 6 · 2",
+       "ignorer les non payés"
+      ],
+      [
+       "Vers une ligne inconnue · déjà chargés",
+       "2 · 0",
+       "1 · 3",
+       "`cle_inconnue` · ignorer"
+      ],
+      [
+       "Remboursements acceptés",
+       "115",
+       "44",
+       "`fact_remboursement`"
+      ]
+     ],
+     "widths": [
+      2.4,
+      0.8,
+      0.8,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Le piège du lot 2 : l’encodage",
+     "text": "`lot2/commandes.csv` est écrit en **Windows-1252** (`cp1252`). Lu en UTF-8, pandas s’arrête sur `août` ou `Gabès` avec `UnicodeDecodeError`. Ne « forcez » pas avec `errors='ignore'` (les accents disparaissent) : demandez à Codex de lire le lot 1 en UTF-8 et le lot 2 en `cp1252`, puis vérifiez « Gabès » dans un aperçu."
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord les lignes de `fact_commande` et le nombre de commandes."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M02 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite\navec catalogue/M02/sources/lot1 : dim_date, dim_produit, dim_canal,\npuis fact_commande et fact_remboursement, dans une transaction.\nClés *_key entières, *_id texte, millimes entiers ; dim_canal a\nvalid_from et valid_to (NULL = courante). Remise vide = 0 millime.\nSeul le statut REMBOURSE est chargé. Lance initial puis le vérificateur\n--mission M02 --etape initial. J'attends <mes prévisions> : compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M02 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_produit` 15 · `dim_canal` 6 · `fact_commande` 2 050 · `fact_remboursement` 115"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 8 (6 lignes + 2 remboursements) · `id_conflit` 6 · `id_manquant` 5 · `quantite_invalide` 6 · total 25"
+      ],
+      [
+       "CA brut · remises · remboursements",
+       "225 339,400 · 10 719,800 · 8 621,350 TND"
+      ],
+      [
+       "**CA net · panier moyen net**",
+       "**205 998,250 TND · 160,936 TND** (1 280 commandes)"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Remise vide lue comme « manquante »** : pandas met `NaN`, le CA net de la ligne devient vide ou la ligne est rejetée. 946 lignes ont une remise vide : c’est 0 millime, pas un rejet.",
+      "**Panier divisé par les lignes** : 205 998,250 ÷ 2 050 lignes donne 100,487 TND au lieu de 160,936. Le dénominateur est `COUNT(DISTINCT commande_id)`."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, arrive en `cp1252`, recopie des commandes et des remboursements déjà chargés et apporte la 2e version de VSO. **Prévoyez** : (1) lignes de `dim_canal` ; (2) famille d’une commande VSO du 14 puis du 15 juillet ; (3) lignes de `fact_commande` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M02. Ajoute python -m solen increment (lot2 de M02, lu en\ncp1252). SCD2 sur dim_canal.famille : fermer la version « réseaux\nsociaux » de VSO (valid_to 2026-07-15, exclu), ouvrir « marketplace »\n(valid_from 2026-07-15). Une commande prend la version valable à SA\ndate ; un remboursement prend le canal de sa commande, version valable\nà la date du REMBOURSEMENT. Rejeu : clé métier déjà chargée ignorée.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M02 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M02 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_canal` **7** · `fact_commande` 2 510 (+460) · `fact_remboursement` 159 (+44)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 4 (3 + 1 remboursement) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 10"
+      ],
+      [
+       "CA brut · remises · remboursements",
+       "273 945,700 · 13 353,900 · 12 304,866 TND"
+      ],
+      [
+       "**CA net · panier moyen net**",
+       "**248 286,934 TND · 157,144 TND** (1 580 commandes)"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Remboursement rangé avec la version de la commande** (option A) : le remboursement d’une commande VSO du 30 juin, payé le 20 juillet, reste en « réseaux sociaux ». Le vérificateur attend « marketplace ».",
+      "**Statuts `EN_COURS` chargés** : les demandes de fin août, pas encore payées, gonflent les remboursements. Seul `REMBOURSE` compte, au chargement comme au rejeu."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Souk Express."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M02 --etape export\npython -m solen app\npython -m controles.verifier --mission M02 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 510 lignes de `fact_commande`, une somme de `montant_brut_millimes` de 273 945 700 et de `remise_millimes` de 13 353 900, et 12 304 866 pour `fact_remboursement[montant_millimes]`. L’export s’écrit en **UTF-8**, même si le lot 2 était en `cp1252`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M02. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par canal, Qualité des\ndonnées ; filtres période, canal, famille ; CA net par mois et par\nfamille en barres SVG empilées, lues dans l'entrepôt."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** par `canal_key`, jamais par `canal_id` (VSO a deux lignes). Codex réécrit `powerbi/mesures.dax` : CA brut TND, Remises TND, Remboursements TND, CA net TND, Panier moyen net TND = CA net ÷ `DISTINCTCOUNT(fact_commande[commande_id])`. Après le lot 2 et **Actualiser** : CA net 248 286,934 TND, panier 157,144 TND. Erreurs fréquentes : un panier calculé avec `COUNTROWS(fact_commande)` (des lignes, pas des commandes) ; une carte « Remises » qui additionne une colonne en millimes, mille fois trop grande."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M02/reference/visuels/ca_brut_et_net_par_canal.png",
+     "caption": "Graphique de référence après le lot 2 : CA brut et CA net par canal, en TND. L’écart entre les deux barres, ce sont les remises et les remboursements.",
+     "height": 175
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "La question posée à la direction",
+     "text": "Une cliente a commandé le **30 juin** sur VSO (alors « réseaux sociaux ») et a été remboursée le **20 juillet** (VSO est alors « marketplace »). Dans quelle famille compte ce remboursement ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Mesurable ?"
+     ],
+     "rows": [
+      [
+       "A · famille à la date de la **commande**",
+       "le remboursement reste en « réseaux sociaux » ; il faut relier chaque remboursement à la version de sa commande",
+       "non calculé par la référence"
+      ],
+      [
+       "**B · famille à la date du remboursement** (décidée)",
+       "chaque mouvement suit sa propre date et son propre mois : « marketplace », juillet",
+       "c’est la référence"
+      ]
+     ],
+     "widths": [
+      1.8,
+      2.6,
+      1.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Décision : B.** Même règle pour les commandes et les remboursements, et c’est ce que vérifie `controles/verifier.py`. Sur l’échantillon, les deux options donnent le même chiffre : tout se passe en mars."
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Une seule règle** : « chaque mouvement est rangé à sa date ». Elle se dit en une phrase et s’applique aussi au mois.",
+      "**L’argent sort en juillet** : le remboursement est payé quand VSO est déjà une place de marché.",
+      "**Dire la limite** : juillet « marketplace » porte des remboursements de commandes « réseaux sociaux » ; mesurez l’écart par une requête **en lecture seule**. Notez la décision dans `notes/JOURNAL.md`."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Taux de remise** = remises ÷ CA brut, par canal et par famille",
+       "un test sur l’échantillon (19,550 ÷ 351,600 = 5,56 %) ; contre `par_famille` du lot 2 : marketplace 7 599,900 ÷ 75 860,300 = 10,02 %"
+      ],
+      [
+       "**2. Remboursement à plus de 30 jours refusé** : motif `remboursement_hors_delai`",
+       "un test sur un petit jeu dans `tests/` : 30 jours accepté, 31 rejeté avec le nouveau motif"
+      ],
+      [
+       "**3. APP passe en famille « site » le 2026-08-01**",
+       "un test : troisième version dans `dim_canal`, une commande APP du 31 juillet en « application », du 1er août en « site »"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Méthode : prompt 18, puis 03, 09 et 13. Variantes 2 et 3 : preuve par **leurs** tests, sources intactes."
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "les cinq indicateurs ; CA net par mois et par famille (barres empilées) ; filtres période, canal, famille",
+       "« Sur 273 945,700 TND bruts, il reste 248 286,934 TND nets. »"
+      ],
+      [
+       "**2. Détail par canal**",
+       "VSO : deux versions ; le remboursement du 20 juillet compté en « marketplace »",
+       "« Le premier semestre de VSO reste en réseaux sociaux. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "rejets par motif et par lot ; remboursements `EN_COURS` et `REFUSE` ignorés",
+       "« 35 lignes écartées, chacune avec son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Famille = marketplace. **Prévoyez** : le CA net est-il proche du CA brut ?",
+      "**Application** : CA brut **75 860,300 TND**, CA net **63 021,634 TND**, panier 138,205 TND (après le lot 1 : CA net 49 751,450 TND). **Référence** : `attendu_lot2.json`, `agregats → par_famille → marketplace → ca_net_millimes` = 63 021 634.",
+      "**Lecture** : la famille perd 17 % de son brut en remises et remboursements, contre 3,6 % pour le site. Depuis le 15 juillet, VSO y est incluse."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M02/reference/visuels/ca_net_par_mois_et_famille.png",
+     "caption": "Graphique de référence après le lot 2 : CA net par mois et par famille de canal, en TND. À partir de juillet, VSO alimente la famille « marketplace ».",
+     "height": 205
+    }
+   ]
+  },
+  {
+   "kicker": "M02 · SOUK EXPRESS · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Souk Express, le grain « ligne de commande » et le périmètre ;",
+      "…calculer l’échantillon à la main : 6 lignes dans 5 commandes, 351,600 TND de CA brut, 316,150 TND de CA net, 63,230 TND de panier ;",
+      "…lire le lot 2 en `cp1252` et dire pourquoi un remboursement est ignoré ou rejeté ;",
+      "…charger, compléter et rejouer avec `--mission M02`, et montrer que VSO reste en « réseaux sociaux » avant le 2026-07-15 ;",
+      "…donner chaque indicateur avec son unité, et le dénominateur du panier : des commandes distinctes ;",
+      "…défendre la décision B, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "CA brut",
+       "225 339,400 TND",
+       "273 945,700 TND"
+      ],
+      [
+       "CA net",
+       "205 998,250 TND",
+       "248 286,934 TND"
+      ],
+      [
+       "Panier moyen net · commandes",
+       "160,936 TND · 1 280",
+       "157,144 TND · 1 580"
+      ],
+      [
+       "`fact_commande` · rejets",
+       "2 050 · 25",
+       "2 510 · 10 de plus"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** avant d’écrire : le rapport CA net ÷ CA brut par canal (agrégats `par_canal`), le canal au plus petit panier, la part des remises sur les places de marché. Sans les commissions des places de marché, vous ne savez rien de leur rentabilité."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M02/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; Souk Express et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS (lecture `cp1252` comprise) ; pas rejouée sous Ubuntu/WSL2 ni dans la CI GitHub.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; Power BI suit le livret 05, non rejoué pour cette mission."
+     ]
+    }
+   ]
+  }
+ ]
+}

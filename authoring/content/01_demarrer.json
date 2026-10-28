@@ -353,7 +353,7 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash)",
-     "text": "sudo apt install -y python3 python3-venv python3-pip git\npython3 --version\ngit --version"
+     "text": "sudo apt install -y python3 python3-venv python3-pip git sqlite3\npython3 --version\ngit --version"
     },
     {
      "type": "code",
@@ -537,7 +537,7 @@
     {
      "type": "code",
      "label": "Terminal Ubuntu (bash)",
-     "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install -y python3 python3-venv python3-pip git\npython3 --version\ngit --version"
+     "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install -y python3 python3-venv python3-pip git sqlite3\npython3 --version\ngit --version"
     },
     {
      "type": "code",

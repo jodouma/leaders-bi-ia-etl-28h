@@ -1,0 +1,13 @@
+temps_id;date_travail;collaborateur;profil;projet;heures;tache
+E-01;2026-03-02;C01;développeur;PX01;7.5;développement
+E-02;03/03/2026;C01;développeur;PX01;7,5;intégration
+E-03;4 mars 2026;C02;designer;PX02;3;maquettes
+E-03;4 mars 2026;C02;designer;PX02;3;maquettes
+E-04;2026-03-04; c03 ;chef de projet;PX01;1,25;réunion client
+E-05;2026-03-05;C04;consultant;INT01;2;avant-vente
+E-06;2026-03-05;C02;designer;PX02;4;maquettes
+E-06;2026-03-05;C02;designer;PX02;4,5;maquettes
+;2026-03-06;C01;développeur;PX01;3;recette
+E-07;2026-03-06;C99;développeur;PX01;2;recette
+E-08;2026-03-06;C01;développeur;PX01;-2;recette
+E-09;2026-03-06;C01;développeur; px02;6.25;développement

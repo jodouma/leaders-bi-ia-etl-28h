@@ -6,13 +6,13 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 
 | Indicateur | après lot1 | après lot2 | code |
 |---|---|---|---|
-| CA brut | 220 909,500 TND | 265 265,400 TND | `ca_brut_millimes` |
-| Remises | 9 539,800 TND | 11 783,900 TND | `remises_millimes` |
-| Remboursements | 10 146,717 TND | 11 323,017 TND | `remboursements_millimes` |
-| CA net | 201 222,983 TND | 242 158,483 TND | `ca_net_millimes` |
-| Nombre de commandes | 1266 | 1526 | `nb_commandes` |
-| Panier moyen net | 158,944 TND | 158,688 TND | `panier_moyen_net_millimes` |
-| Unités nettes | 3212 | 3873 | `unites_nettes` |
+| CA brut | 225 339,400 TND | 273 945,700 TND | `ca_brut_millimes` |
+| Remises | 10 719,800 TND | 13 353,900 TND | `remises_millimes` |
+| Remboursements | 8 621,350 TND | 12 304,866 TND | `remboursements_millimes` |
+| CA net | 205 998,250 TND | 248 286,934 TND | `ca_net_millimes` |
+| Nombre de commandes | 1280 | 1580 | `nb_commandes` |
+| Panier moyen net | 160,936 TND | 157,144 TND | `panier_moyen_net_millimes` |
+| Unités nettes | 3241 | 3951 | `unites_nettes` |
 
 ## Lignes par table
 
@@ -21,8 +21,8 @@ Valeurs calculées par le **générateur** (`authoring/generateurs/`) depuis la 
 | `dim_date` | 181 | 243 |
 | `dim_produit` | 15 | 15 |
 | `dim_canal` | 6 | 7 |
-| `fact_commande` | 2050 | 2460 |
-| `fact_remboursement` | 123 | 141 |
+| `fact_commande` | 2050 | 2510 |
+| `fact_remboursement` | 115 | 159 |
 
 ## Rejets par motif (lignes)
 

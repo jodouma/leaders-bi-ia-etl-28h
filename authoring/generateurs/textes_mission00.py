@@ -153,7 +153,7 @@ SPEC_TEXTES = dict(
     ecrans_app=[
         ("Vue direction", "les cinq indicateurs et les ventes nettes par mois et par zone (barres empilées)."),
         ("Détail par boutique", "chaque boutique avec ses versions : NBE en Cap Bon jusqu'au 2026-07-14, puis Nord-Est."),
-        ("Qualité des données", "lignes lues, gardées, rejetées par motif et par lot."),
+        ("Qualité des données", "lignes lues, gardées, rejetées par motif et par lot ; une ligne par chargement (lot 1, lot 2, puis le rejeu du lot 2 à 0 ajout)."),
     ],
     textes_app=["Vue direction", "Détail par boutique", "Qualité des données"],
     export_sommes={"fact_vente": ["quantite", "montant_brut_millimes"], "fact_retour": ["quantite", "montant_millimes"],

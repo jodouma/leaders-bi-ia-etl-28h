@@ -121,3 +121,5 @@ def test_oracle_formats():
     assert V.tnd(12345678) == "12 345,678 TND"
     assert V.egal(100, 100.0, "millimes", 0) and not V.egal(100, 100.5, "millimes", 0)
     assert V.egal(0.04, 0.04005, "ratio", 0.0001)
+    assert V.montrer(2.4109, "jours") == "2,41 jours" and V.montrer(5.5, "heures") == "5,50 h"
+    assert V.egal(2.41, 2.4105, "jours", 0.001) and V.texte(18.0) == V.texte("18") == "18"

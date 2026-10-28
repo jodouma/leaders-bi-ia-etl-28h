@@ -59,7 +59,7 @@ SPEC_TEXTES = dict(
             ColonneSource("ville_livraison", "texte", "Ville de livraison (avec accents ; non chargée dans l'étoile).", "Gabès"),
         ], ["formats de montants et de dates mélangés", "remise vide, `0` ou montant", "doublons",
             "identifiants vides ou en conflit", "codes inconnus", "quantités invalides",
-            "lot2 : fichier en cp1252 (lu en UTF-8, il plante sur `Gabès`)", "lot2 : recopie des commandes des 29 et 30 juin"]),
+            "lot2 : fichier en cp1252 (lu en UTF-8, il plante sur les accents : `août`, `Gabès`)", "lot2 : recopie des commandes des 29 et 30 juin"]),
         Source("produits.xlsx", "excel", "Feuille `Produits` (titre au-dessus, en-têtes à la ligne 3).", [
             ColonneSource("Code article", "texte", "Code produit (une cellule mal saisie).", " p12"),
             ColonneSource("Libellé", "texte", "Nom du produit.", "Miel de thym 1 kg"),
@@ -194,4 +194,8 @@ SPEC_TEXTES = dict(
     ],
     debut_calendrier=date(2026, 1, 1),
     sources_rejets={"commandes": "commandes.csv", "remboursements": "operations.sqlite"},
+    parcours_app="Démonstration conseillée : (1) Vue direction, toute la période, puis filtre famille « marketplace » : "
+                 "le CA brut est élevé, le CA net beaucoup moins ; (2) Détail par canal, VSO : deux versions, et le "
+                 "remboursement du 20 juillet compté en « marketplace » ; (3) Qualité des données : rejets par motif et "
+                 "par lot, remboursements `EN_COURS`/`REFUSE` ignorés.",
 )

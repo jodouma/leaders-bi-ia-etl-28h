@@ -36,9 +36,13 @@ PALE = colors.HexColor('#F3F5FC')
 INK = colors.HexColor('#1A1F4D')
 MUTED = colors.HexColor('#52607B')
 
-for face, filename in [('Inter', 'Inter-400.ttf'), ('InterBold', 'Inter-700.ttf'),
-                       ('Jakarta', 'PlusJakartaSans-800.ttf')]:
-    pdfmetrics.registerFont(TTFont(face, str(ASSETS / 'fonts' / filename)))
+for face, filename, psname in [('Inter', 'Inter-400.ttf', b'Inter-Regular'), ('InterBold', 'Inter-700.ttf', b'Inter-Bold'),
+                               ('Jakarta', 'PlusJakartaSans-800.ttf', b'PlusJakartaSans-ExtraBold')]:
+    font = TTFont(face, str(ASSETS / 'fonts' / filename))
+    # Les fichiers statiques Inter 400 et 700 portent le même nom PostScript interne (« Inter-Regular ») :
+    # sans nom distinct, ReportLab fusionne les deux faces et le gras disparaît du PDF.
+    font.face.name = psname
+    pdfmetrics.registerFont(font)
 pdfmetrics.registerFontFamily('Inter', normal='Inter', bold='InterBold')
 
 BODY = ParagraphStyle('body', fontName='Inter', fontSize=10.5, leading=14.6,

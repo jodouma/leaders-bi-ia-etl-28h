@@ -4,7 +4,7 @@
 (prompt 02). Sert aussi en séance 5 pour l'application locale (`python -m solen app`).
 
 **Avant d'envoyer** : `git switch -c <branche>`. Écrivez la valeur que vous
-attendez (ex. « 1 482 lignes acceptées »), ou au moins son ordre de grandeur.
+attendez (ex. « le nombre de lignes acceptées indiqué dans reference/README.md »), ou au moins son ordre de grandeur.
 
 ## Le prompt
 

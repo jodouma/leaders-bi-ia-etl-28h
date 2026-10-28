@@ -50,7 +50,7 @@ lancent les contrôles, expliquent et décident. Réponds en français simple et
 ## Contrôler et rendre compte
 
 - Préfère les contrôles déterministes : `python -m controles.verifier --mission
-  $(cat mission.txt) --etape initial|increment|rejeu|export|tout`, puis `pytest controles`.
+  $(cat mission.txt) --etape rejets|initial|increment|rejeu|export|app|tout`, puis `pytest controles`.
 - Lance le contrôle utile après chaque modification et rapporte le résultat réel.
   Sépare « exécuté et réussi », « exécuté et échoué » et « non exécuté ».
 - Explique en 3 à 6 lignes ce que fait le changement et quel fichier lire dans le

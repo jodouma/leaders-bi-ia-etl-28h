@@ -39,7 +39,7 @@ Les sources sont **lues, jamais modifiées**.
 |---|---|
 | `id_conflit` | même identifiant sur deux lignes différentes : les deux lignes sont rejetées |
 | `id_manquant` | identifiant vide |
-| `cle_inconnue` | code absent du référentiel (produit, boutique, ligne de vente…) |
+| `cle_inconnue` | code absent du référentiel ou ligne d'origine inconnue |
 | `quantite_invalide` | quantité nulle, négative ou non entière |
 
 Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le motif) :
@@ -168,7 +168,7 @@ Le magasin HAM (Hammamet, franchisé) passe de la région « Cap Bon » à la r�
 | Taux de retour | ratio | retours / ventes brutes (en montant) |
 | Unités nettes | nombre | unités vendues − unités retournées |
 
-Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (ventes et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
+Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (faits et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
 
 ## 10. Sorties
 
@@ -195,7 +195,7 @@ Options étudiées :
 - A : remise déduite **avant** la marge. Ventes brutes = quantité × prix − remise ; la remise baisse les ventes et la marge.
 - B : remise déduite **après** la marge. Ventes brutes au prix catalogue ; la marge ignore la remise ; un indicateur « remises » est suivi à part.
 
-## 13. Trois variantes (évolutions possibles en soutenance)
+## 13. Trois variantes (évolutions possibles)
 
 1. Nouvel indicateur : marge par famille et taux de marge = marge sur coût d'achat / ventes nettes, par famille de produits.
 2. Changement historique : le magasin SOU (Sousse, propre) devient franchisé le 2026-08-01 → le type devient lui aussi historisé (nouvelle version de `dim_magasin`) et la part des franchisés change à partir d'août.

@@ -1,0 +1,1133 @@
+{
+ "title": "Mission 04 · Colis Rapide : guide de mission",
+ "cover_title": "Mission 04 · Livraison\nColis Rapide",
+ "subtitle": "Guide de mission du catalogue · ponctualité, retard moyen, revenu net de pénalités, coût transporteur, marge de livraison · un colis livré par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M04 · Colis Rapide",
+ "output_filename": "missions/M04_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M04 · COLIS RAPIDE",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et Colis Rapide (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF COLIS RAPIDE",
+  "flow": "Colis, tarifs, agences, facturation  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "7",
+    "AGENCES, 4 ZONES"
+   ],
+   [
+    "2 497",
+    "COLIS LIVRÉS APRÈS LOT 2"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M04 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M04/reference/README.md, attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Solution de référence passée au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M04 · COLIS RAPIDE · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 04**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un livreur fictif, **Colis Rapide**. Ici, le fait n’est plus une vente mais un **colis livré**, avec une date promise et une date de livraison. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR : remplacer le contenu de `mission.txt` par `M04`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Indicateurs, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Retards, tranches, factures **avant** Codex",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Poids, grille tarifaire, factures annulées",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Deux décisions à défendre, une variante",
+       "12"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "13"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "14"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M04/` : le cahier gagne en cas de doute"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M04/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M04/reference/README.md` et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Colis Rapide** livre des colis partout en Tunisie depuis **sept agences**, chacune rattachée à une zone : Grand Tunis, Nord, Centre-Sahel, Sud. Trois services : Standard (STD), Express (EXP), Économique (ECO). Un colis livré après la date promise donne une **pénalité** remboursée au client. Les clients se plaignent des retards, et personne ne sait dire où l’on perd de l’argent."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nos clients disent que nous livrons en retard, et nos pénalités augmentent. Je veux savoir où se concentrent les retards et les coûts : par agence, par zone, par service, par tranche de poids et par mois. Donnez-moi la ponctualité, le retard moyen, le revenu facturé net des pénalités, le coût transporteur et la marge de livraison. Dites-moi aussi quels colis vous avez dû écarter, et pourquoi.\nÀ partir du 15 juillet, l’agence de Nabeul quitte la zone Nord et rejoint la zone Centre-Sahel. Les chiffres du premier semestre doivent rester dans la zone Nord.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Où agir sur les retards ?** Ponctualité et retard moyen par agence, zone et service.",
+      "**Le service Express tient-il sa promesse ?** Ses pénalités comparées à son revenu.",
+      "**Quelles livraisons coûtent plus qu’elles ne rapportent ?** Marge de livraison par tranche de poids et par zone de destination."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "colis **livrés** de janvier à août 2026, 7 agences, 3 services, 16 tarifs",
+       "colis perdus ou en cours de route ; toute date après le 31 août"
+      ],
+      [
+       "factures `EMISE` ou `PAYEE`, pénalités `APPLIQUEE`",
+       "factures et pénalités `ANNULEE` (ignorées)"
+      ],
+      [
+       "coût transporteur de la grille",
+       "salaires, loyers, carburant des agences : la marge de livraison n’est pas un bénéfice"
+      ],
+      [
+       "la zone d’agence historisée (NAB au 2026-07-15)",
+       "la ville du destinataire : dans la source, non chargée"
+      ]
+     ],
+     "widths": [
+      2.3,
+      2.7
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Grain** : une ligne de fait = **un colis livré**, clé `colis_id` (ex. `CR100234`). Un colis compte dans le mois de sa **date de livraison**. Poids en **grammes entiers**, montants en **millimes entiers**. Formules exactes du cahier (§ 9)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "Colis livrés · colis à l’heure",
+       "nombre",
+       "colis acceptés · colis avec date de livraison ≤ date promise (le jour promis = à l’heure)"
+      ],
+      [
+       "**Ponctualité**",
+       "%",
+       "colis à l’heure ÷ colis livrés"
+      ],
+      [
+       "**Retard moyen**",
+       "jours",
+       "somme des jours de retard ÷ nombre de colis **en retard** (les colis à l’heure ne comptent pas)"
+      ],
+      [
+       "Montant facturé",
+       "TND",
+       "somme des factures `EMISE` ou `PAYEE` des colis acceptés"
+      ],
+      [
+       "Pénalités de retard",
+       "TND",
+       "somme des pénalités `APPLIQUEE` des colis acceptés"
+      ],
+      [
+       "**Revenu facturé net de pénalités**",
+       "TND",
+       "montant facturé − pénalités de retard"
+      ],
+      [
+       "**Coût transporteur**",
+       "TND",
+       "somme du coût de la grille (zone de destination × tranche de poids)"
+      ],
+      [
+       "**Marge de livraison**",
+       "TND",
+       "revenu facturé net − coût transporteur (marge partielle)"
+      ]
+     ],
+     "widths": [
+      1.7,
+      0.6,
+      3.1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Deux indicateurs sont des **rapports** avec des dénominateurs différents : tous les colis pour la ponctualité, les seuls colis en retard pour le retard moyen. `retard_jours` vaut 0 pour un colis à l’heure, jamais une valeur négative."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "un jour, du 2026-01-01 au dernier jour chargé",
+       "`date_key`"
+      ],
+      [
+       "`dim_agence` (SCD2)",
+       "une **version** d’agence : ville, zone, `valid_from`, `valid_to`",
+       "`agence_key` · `agence_id`"
+      ],
+      [
+       "`dim_service`",
+       "STD, EXP, ECO : délai promis, coefficient de prix",
+       "`service_key` · `service_id`"
+      ],
+      [
+       "`dim_tarif`",
+       "zone de destination × tranche : prix, coût transporteur",
+       "`tarif_key` · `tarif_id` (`SU-T3`)"
+      ],
+      [
+       "`fact_colis`",
+       "un colis livré : dates, poids, retard, facture, pénalité, coût",
+       "`colis_id`"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.7,
+      1.5
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_agence`, attribut `zone`. L’agence **NAB** (Nabeul) passe de « Nord » à « Centre-Sahel » le **2026-07-15**, inclus ; l’information arrive avec `lot2/agences.json`. `dim_agence` passe de 7 à 8 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "agence_id",
+      "zone",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "NAB",
+       "Nord",
+       "2020-09-01",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "NAB",
+       "Centre-Sahel",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.4,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "La date qui choisit la version est la **date de livraison**, celle du fait. Un colis de NAB livré le 14 juillet compte en Nord ; livré le 15 ou le 16, en Centre-Sahel, même s’il est parti avant."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "La mission est acceptée quand chaque contrôle est vert. Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution. Le retard moyen y est comparé à 0,001 jour près."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M04 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de NAB aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Lecture : le vérificateur affiche le retard moyen comme un ratio, suivi d’un pourcentage entre parenthèses ; seul le premier nombre compte (`2,41…` = 2,41 jours)."
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` contient **12 lignes** de `colis.csv`, la grille, les 7 agences, 8 factures et 4 pénalités. Calculez **sur papier**, à deux, avant toute demande à Codex. La correction est page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "colis_id",
+      "Livré · agence · zone dest. · poids · service",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "CR-E01",
+       "2026-03-05 · TUN · GT · 0.800 kg · STD",
+       ""
+      ],
+      [
+       "3",
+       "CR-E02",
+       "03/03/2026 · ARI · NO · 2,5 kg · EXP",
+       ""
+      ],
+      [
+       "4",
+       "CR-E03",
+       "8 mars 2026 · « sfx » · SU · 5.000 kg · STD",
+       ""
+      ],
+      [
+       "5",
+       "CR-E04",
+       "2026-03-08 · NAB · « sa » · 12,75 kg · ECO",
+       ""
+      ],
+      [
+       "6",
+       "CR-E05",
+       "2026-03-09 · SOU · GT · 1 kg · EXP",
+       ""
+      ],
+      [
+       "7",
+       "CR-E05",
+       "2026-03-09 · SOU · GT · 1 kg · EXP",
+       ""
+      ],
+      [
+       "8",
+       "CR-E06",
+       "2026-03-09 · TUN · NO · 3.2 kg · STD",
+       ""
+      ],
+      [
+       "9",
+       "CR-E06",
+       "2026-03-10 · TUN · NO · 3.2 kg · STD",
+       ""
+      ],
+      [
+       "10",
+       "(vide)",
+       "2026-03-10 · BIZ · NO · 1.1 kg · STD",
+       ""
+      ],
+      [
+       "11",
+       "CR-E07",
+       "2026-03-11 · KAI · SA · 2.0 kg · STD",
+       ""
+      ],
+      [
+       "12",
+       "CR-E08",
+       "2026-03-11 · GAB · SU · -1,200 kg · STD",
+       ""
+      ],
+      [
+       "13",
+       "CR-E09",
+       "2026-03-13 · GAB · SU · 7.4 kg · STD",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.8,
+      3.4,
+      0.9
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1.** Chaque ligne : gardée, ignorée ou rejetée (motif) ? **2.** Dates promises des colis gardés : E01 03-05, E02 03-03, E03 03-06, E04 03-09, E05 03-06, E09 03-12. Retard, à l’heure ou non ?",
+      "**3.** Tranche (borne basse exclue, haute incluse : T1 ≤ 1 kg, T2 ≤ 5, T3 ≤ 10, T4 au-delà), puis coût transporteur de la grille.",
+      "**4.** Factures : celle de `CR-E03` est `ANNULEE` puis refaite à 14,000 TND ; une pénalité est `ANNULEE` ; `FA-E08` vise `CR-E99`. Ponctualité, retard moyen, revenu net, marge."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Mes résultats, avant de tourner la page",
+     "text": "Gardés : ……  À l’heure : ……  Ponctualité : …… %  Retard moyen : …… jours\nFacturé : …… TND  Pénalités : …… TND  Revenu net : …… TND  Coût : …… TND  Marge : …… TND"
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 7 : doublon exact, **ignorée**. Lignes 8 et 9 : même `colis_id`, dates différentes → **les deux** en `id_conflit`. Ligne 10 : `id_manquant`. Ligne 11 : agence `KAI` inconnue → `cle_inconnue`. Ligne 12 : poids −1,200 kg → `quantite_invalide`. Bilan : **6 colis gardés**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "colis",
+      "Promis → livré",
+      "Retard",
+      "Tranche",
+      "Coût",
+      "Facturé",
+      "Pénalité"
+     ],
+     "rows": [
+      [
+       "CR-E01",
+       "03-05 → 03-05",
+       "0 · à l’heure",
+       "800 g · T1",
+       "4,200",
+       "7,000",
+       "0,000"
+      ],
+      [
+       "CR-E02",
+       "03-03 → 03-03",
+       "0 · à l’heure",
+       "2 500 g · T2",
+       "7,400",
+       "17,250",
+       "0,000"
+      ],
+      [
+       "CR-E03",
+       "03-06 → 03-08",
+       "2 jours",
+       "5 000 g · T2",
+       "10,200",
+       "14,000",
+       "2,800"
+      ],
+      [
+       "CR-E04",
+       "03-09 → 03-08",
+       "0 · en avance",
+       "12 750 g · T4",
+       "17,200",
+       "20,400",
+       "0,000"
+      ],
+      [
+       "CR-E05",
+       "03-06 → 03-09",
+       "3 jours",
+       "1 000 g · T1",
+       "4,200",
+       "10,500",
+       "3,150"
+      ],
+      [
+       "CR-E09",
+       "03-12 → 03-13",
+       "1 jour",
+       "7 400 g · T3",
+       "15,300",
+       "19,500",
+       "1,950"
+      ],
+      [
+       "**Total**",
+       "",
+       "6 jours",
+       "",
+       "**58,500**",
+       "**88,650**",
+       "**7,900**"
+      ]
+     ],
+     "widths": [
+      0.75,
+      1.15,
+      1,
+      1,
+      0.65,
+      0.7,
+      0.7
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Montants en TND. `FA-E03` (annulée, refaite) et la pénalité `PE-E02` (annulée) sont **ignorées** ; `FA-E08` est rejetée en `cle_inconnue` (source `facturation.sqlite`). Total : **6 rejets**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Ponctualité",
+       "3 colis à l’heure (E01, E02, E04) ÷ 6",
+       "**50,00 %**"
+      ],
+      [
+       "Retard moyen",
+       "(2 + 3 + 1) ÷ 3 colis en retard",
+       "**2,00 jours**"
+      ],
+      [
+       "Revenu facturé net",
+       "88,650 − 7,900",
+       "**80,750 TND**"
+      ],
+      [
+       "Marge de livraison",
+       "80,750 − 58,500",
+       "**22,250 TND**"
+      ]
+     ],
+     "widths": [
+      1.5,
+      3,
+      1
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Cherchez **la** ligne qui diffère. Pièges : retard moyen divisé par 6 colis (1,00 jour) ; `CR-E04` compté −1 jour ; `5.000` kg classé en T3 ; `1` kg lu 1 gramme ; facture annulée de `CR-E03` comptée. Entrepôt attendu : `fact_colis` 6, `dim_agence` 7, `dim_service` 3, `dim_tarif` 16, `dim_date` 31."
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**, en UTF-8 (`Médenine`, `Gabès`). Le dictionnaire décrit chaque colonne ; voici l’essentiel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`colis.csv`",
+       "colis livrés : trois dates, agence, zone de destination, `poids_kg`, service",
+       "poids `2.350`, `2,35`, `1` ; trois formats de date ; codes « ` nab ` », `Exp`"
+      ],
+      [
+       "`tarifs.xlsx`",
+       "feuilles `Grille` (**en-têtes ligne 3**), `Tranches`, `Zones`, `Services`",
+       "nombres en texte ; une cellule « ` su / T3` »"
+      ],
+      [
+       "`agences.json`",
+       "agences et historique des zones",
+       "une date `valide_depuis` au format JJ/MM/AAAA ; lot 2 : 2e version de NAB"
+      ],
+      [
+       "`facturation.sqlite`",
+       "tables `facture`, `penalite`, `parametre`",
+       "factures `ANNULEE` puis refaites ; pénalités `ANNULEE` ; colis inconnus"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.3,
+      2.3
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `colis.csv`",
+       "2 116",
+       "444",
+       "—"
+      ],
+      [
+       "Doublons exacts · déjà chargés (fin juin)",
+       "12 · 0",
+       "4 · 14",
+       "ignorer"
+      ],
+      [
+       "Rejets de `colis.csv`",
+       "24",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Colis acceptés",
+       "2 080",
+       "417",
+       "`fact_colis`"
+      ],
+      [
+       "Factures lues · `ANNULEE`",
+       "2 129 · 46",
+       "439 · 7",
+       "ignorer les annulées"
+      ],
+      [
+       "Pénalités lues · `ANNULEE` · appliquées",
+       "281 · 28 · 251",
+       "74 · 11 · 60",
+       "`penalite_millimes`"
+      ],
+      [
+       "Facturation vers un colis inconnu",
+       "5",
+       "2",
+       "`cle_inconnue`"
+      ]
+     ],
+     "widths": [
+      2.4,
+      0.9,
+      0.9,
+      1.3
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Le poids joue le rôle de la quantité",
+     "text": "Un poids illisible, nul, négatif ou **au-dessus de 30 kg** est rejeté en `quantite_invalide`. Il se stocke en grammes entiers (2,35 kg = 2 350 g) : un `float` en kg finit par classer un colis de 5,000 kg dans la mauvaise tranche. Une facture annulée n’est pas un rejet : la facture refaite compte."
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun, une petite PR à la fois : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). **Prévoyez** d’abord le nombre de colis et la ponctualité, à quelques points près."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M04 : lis mission.txt, le cahier des charges et le dictionnaire.\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite\navec catalogue/M04/sources/lot1 : dim_date, dim_agence, dim_service,\ndim_tarif, puis fact_colis, dans une transaction. Poids en grammes\nentiers, millimes entiers ; dim_agence a valid_from et valid_to.\nretard_jours jamais négatif ; livré le jour promis = à l'heure.\nFacture EMISE ou PAYEE de la base, pénalités APPLIQUEE.\nLance initial puis --mission M04 --etape initial. J'attends <...>."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M04 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_agence` 7 · `dim_service` 3 · `dim_tarif` 16 · `fact_colis` 2 080"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 11 (6 colis + 5 facturation) · `id_conflit` 6 · `id_manquant` 5 · `quantite_invalide` 7 · total 29"
+      ],
+      [
+       "**Ponctualité · retard moyen**",
+       "**84,57 %** (1 759 à l’heure) · **2,49 jours**"
+      ],
+      [
+       "Facturé · pénalités · coût",
+       "26 977,730 · 825,232 · 16 969,000 TND"
+      ],
+      [
+       "**Revenu net · marge de livraison**",
+       "**26 152,498 · 9 183,498 TND**"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Montant recalculé depuis la grille** : la grille donne le prix catalogue Standard, pas ce qui a été facturé (coefficient du service, remises). Le montant vient de la facture non annulée de `facturation.sqlite`.",
+      "**Retard moyen sur tous les colis** : diviser par 2 080 colis au lieu des 321 en retard fait tomber le retard à moins d’un demi-jour. Le dénominateur ne compte que les colis en retard."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, recopie des colis livrés fin juin **avec leurs factures**, et apporte la 2e version de NAB. **Prévoyez** : (1) lignes de `dim_agence` ; (2) zone d’un colis NAB expédié le 13 juillet et livré le 16 ; (3) lignes de `fact_colis` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M04. Ajoute python -m solen increment (lot2 de M04).\nSCD2 sur dim_agence.zone : fermer la version Nord de NAB (valid_to\n2026-07-15, exclu), ouvrir Centre-Sahel (valid_from 2026-07-15).\nUn colis prend la version valable à sa DATE DE LIVRAISON, pas à sa\ndate d'expédition ; ne jamais modifier les colis anciens.\nRejeu : un colis_id déjà chargé est ignoré, sa facture aussi.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M04 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M04 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_agence` **8** · `fact_colis` 2 497 (+417 ; 14 colis rejoués ignorés)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 5 (3 + 2 facturation) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 11"
+      ],
+      [
+       "**Ponctualité · retard moyen**",
+       "**83,82 %** (2 093 à l’heure) · **2,41 jours**"
+      ],
+      [
+       "Facturé · pénalités · coût",
+       "32 172,580 · 1 005,341 · 20 308,300 TND"
+      ],
+      [
+       "**Revenu net · marge de livraison**",
+       "**31 167,239 · 10 858,939 TND**"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**La version choisie à la date d’expédition** : le colis parti le 13 juillet reste en Nord. Le cahier (règle 2) range le colis à sa date de livraison, en Centre-Sahel.",
+      "**Les factures recopiées ajoutées** : les 14 colis de fin juin sont ignorés, mais si leurs factures repassent, le montant facturé grossit. Une facture d’un colis déjà chargé est ignorée elle aussi."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour Colis Rapide."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M04 --etape export\npython -m solen app\npython -m controles.verifier --mission M04 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 497 lignes de `fact_colis`, une somme de `a_l_heure` de 2 093, de `montant_facture_millimes` de 32 172 580, de `penalite_millimes` de 1 005 341 et de `cout_transporteur_millimes` de 20 308 300. Erreur fréquente : `a_l_heure` exporté en `True`/`False` au lieu de 1/0."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M04. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par agence, Qualité des\ndonnées ; filtres période, agence, zone, service ; revenu net par mois\net par zone d'agence en barres SVG empilées, lues dans l'entrepôt."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **quatre relations 1:*** (quatre dimensions vers l’unique fait), par `agence_key`, jamais par `agence_id`. Codex réécrit `powerbi/mesures.dax` : Ponctualité, Retard moyen (jours), Revenu net TND, Coût transporteur TND, Marge de livraison TND. Après le lot 2 et **Actualiser** : 83,82 %, 2,41 jours, 31 167,239 TND, 20 308,300 TND, 10 858,939 TND. Erreur fréquente : un retard moyen = `AVERAGE(fact_colis[retard_jours])`, qui moyenne aussi les zéros des colis à l’heure."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M04/reference/visuels/revenu_cout_marge_par_tranche.png",
+     "caption": "Graphique de référence après le lot 2 : revenu net, coût transporteur et marge de livraison par tranche de poids, en TND.",
+     "height": 175
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · RÈGLE ET VARIANTES",
+   "title": "Les règles à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Les deux questions posées à la direction",
+     "text": "(1) Un colis livré **le jour même** de la date promise est-il à l’heure ? (2) Un colis de Nabeul expédié le **13 juillet** (zone Nord) et livré le **16 juillet** (zone Centre-Sahel) : dans quelle zone le compter ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Question",
+      "Décision",
+      "Effet mesurable"
+     ],
+     "rows": [
+      [
+       "(1) Le jour promis",
+       "**A · à l’heure**, retard 0 jour",
+       "échantillon : 50,00 %. Si « à l’heure » voulait dire « avant la date », E01 et E02 basculeraient : 1 ÷ 6 = 16,67 % (calcul de ce guide)"
+      ],
+      [
+       "(2) Colis à cheval sur le changement",
+       "**B · version à la date de livraison**",
+       "Centre-Sahel, juillet ; l’écart avec la date d’expédition n’est pas fourni par la référence"
+      ]
+     ],
+     "widths": [
+      1.4,
+      1.6,
+      2.6
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**(1) La promesse faite au client est une date** : livrer ce jour-là, c’est la tenir. C’est aussi la règle des pénalités : aucune pénalité pour un colis livré le jour promis.",
+      "**(2) Le fait, c’est la livraison** : la date du fait (`date_key`) est celle de la livraison, comme le mois de rangement. Une seule date choisit tout.",
+      "**Dire la limite** : une agence change de zone en plein trajet ; quelques colis de juillet passent ainsi en Centre-Sahel. Mesurez-les par une requête **en lecture seule**. Notez les deux décisions dans `notes/JOURNAL.md`."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. Taux de pénalité** = pénalités ÷ montant facturé, par agence et par service",
+       "un test sur l’échantillon : 7,900 ÷ 88,650 = 8,91 % ; contre `par_agence` du lot 2 : GAB 122,423 ÷ 2 053,950 = 5,96 %"
+      ],
+      [
+       "**2. Retard en jours ouvrés** (samedi et dimanche exclus)",
+       "un test sur un petit jeu dans `tests/` : un colis promis un vendredi et livré le lundi a 1 jour de retard"
+      ],
+      [
+       "**3. BIZ rejoint « Grand Tunis » le 2026-08-16**",
+       "un test : deuxième version de BIZ, un colis du 15 août en Nord, du 16 en Grand Tunis"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Méthode : prompt 18, puis 03, 09 et 13. La référence reste verte ; chaque variante se prouve par **son** test, sources intactes."
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "ponctualité, revenu net, pénalités, coût, marge ; revenu net par mois et par zone d’agence ; filtres période, agence, zone, service",
+       "« 83,82 % des colis arrivent à l’heure. »"
+      ],
+      [
+       "**2. Détail par agence**",
+       "NAB : Nord jusqu’au 2026-07-14, puis Centre-Sahel ; juillet réparti entre les deux zones",
+       "« Le premier semestre de Nabeul reste en Nord. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "rejets par motif, par source et par lot : 29 puis 11",
+       "« 40 lignes écartées, chacune avec son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Zone = Sud. **Prévoyez** : la ponctualité y est-elle meilleure ou pire que 83,82 % ?",
+      "**Application** : ponctualité **73,17 %**, revenu net 5 878,458 TND, marge 1 702,158 TND (lot 1 : 75,49 %). **Référence** : `attendu_lot2.json`, `agregats → par_zone → Sud → ponctualite` = 0,731651.",
+      "**Lecture** : le Sud a 436 colis et 305,422 TND de pénalités. Le retard moyen (2,23 jours) se lit dans la référence ; s’il manque dans votre application, montrez-le dans Power BI."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M04/reference/visuels/revenu_net_par_mois_et_zone.png",
+     "caption": "Graphique de référence après le lot 2 : revenu facturé net par mois et par zone d’agence, en TND. Juillet est partagé entre Nord et Centre-Sahel pour Nabeul.",
+     "height": 200
+    }
+   ]
+  },
+  {
+   "kicker": "M04 · COLIS RAPIDE · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de Colis Rapide, le grain « colis livré » et le périmètre ;",
+      "…calculer l’échantillon à la main : 6 colis, 50,00 % de ponctualité, 2,00 jours de retard moyen, 22,250 TND de marge de livraison ;",
+      "…convertir un poids en grammes, choisir une tranche, ignorer une facture annulée ;",
+      "…charger, compléter et rejouer avec `--mission M04`, et montrer que Nabeul reste en Nord avant le 2026-07-15 ;",
+      "…donner le dénominateur de la ponctualité et celui du retard moyen, qui ne sont pas les mêmes ;",
+      "…défendre les deux décisions, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Après le lot 1",
+      "Après le lot 2"
+     ],
+     "rows": [
+      [
+       "Colis livrés · ponctualité",
+       "2 080 · 84,57 %",
+       "2 497 · 83,82 %"
+      ],
+      [
+       "Retard moyen",
+       "2,49 jours",
+       "2,41 jours"
+      ],
+      [
+       "Revenu net · marge de livraison",
+       "26 152,498 · 9 183,498 TND",
+       "31 167,239 · 10 858,939 TND"
+      ],
+      [
+       "Rejets",
+       "29",
+       "11 de plus"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** avant d’écrire : l’agence à la ponctualité la plus basse (agrégats `par_agence`), les pénalités du service Express (`par_service`), la tranche à la marge la plus faible. La marge de livraison ne compte ni salaires, ni loyers, ni carburant."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M04/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Données 100 % synthétiques ; Colis Rapide et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni dans la CI GitHub. Son application n’affichait pas le retard moyen en jours.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; Power BI suit le livret 05, non rejoué pour cette mission."
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,586 @@
+{
+  "source": "Parc d'équipements sous contrat TechniServ",
+  "extrait_le": "2026-08-31",
+  "equipements": [
+    {
+      "id": "EQ-001",
+      "designation": "Climatiseur split 18 000 BTU",
+      "categorie": "CLIM",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-002",
+      "designation": "Climatiseur gainable 48 000 BTU",
+      "categorie": "CLIM",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-003",
+      "designation": "Groupe d'eau glacée",
+      "categorie": "CLIM",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-004",
+      "designation": "Ascenseur 8 personnes",
+      "categorie": "ASC",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-005",
+      "designation": "Ascenseur 630 kg",
+      "categorie": "ASC",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-006",
+      "designation": "Groupe électrogène 100 kVA",
+      "categorie": "GE",
+      "site": "Tour Azuria — Tunis",
+      "historique": [
+        {
+          "contrat": "CT-01",
+          "valide_depuis": "2024-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-007",
+      "designation": "Centrale de traitement d'air",
+      "categorie": "CLIM",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-008",
+      "designation": "Climatiseur split 18 000 BTU",
+      "categorie": "CLIM",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-009",
+      "designation": "Monte-charge 1 000 kg",
+      "categorie": "ASC",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-010",
+      "designation": "Ascenseur 8 personnes",
+      "categorie": "ASC",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-011",
+      "designation": "Groupe électrogène 250 kVA",
+      "categorie": "GE",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-012",
+      "designation": "Groupe électrogène 60 kVA",
+      "categorie": "GE",
+      "site": "Clinique Les Glycines — Ariana",
+      "historique": [
+        {
+          "contrat": "CT-02",
+          "valide_depuis": "2023-06-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-013",
+      "designation": "Climatiseur gainable 48 000 BTU",
+      "categorie": "CLIM",
+      "site": "Résidences Nakhla — Les Berges",
+      "historique": [
+        {
+          "contrat": "CT-03",
+          "valide_depuis": "2024-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-014",
+      "designation": "Ascenseur 630 kg",
+      "categorie": "ASC",
+      "site": "Résidences Nakhla — Les Berges",
+      "historique": [
+        {
+          "contrat": "CT-03",
+          "valide_depuis": "2024-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-015",
+      "designation": "Monte-charge 1 000 kg",
+      "categorie": "ASC",
+      "site": "Résidences Nakhla — Les Berges",
+      "historique": [
+        {
+          "contrat": "CT-03",
+          "valide_depuis": "2024-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-016",
+      "designation": "Ascenseur 8 personnes",
+      "categorie": "ASC",
+      "site": "Résidences Nakhla — Les Berges",
+      "historique": [
+        {
+          "contrat": "CT-03",
+          "valide_depuis": "2024-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-017",
+      "designation": "Groupe électrogène 100 kVA",
+      "categorie": "GE",
+      "site": "Résidences Nakhla — Les Berges",
+      "historique": [
+        {
+          "contrat": "CT-03",
+          "valide_depuis": "2024-09-01"
+        },
+        {
+          "contrat": "CT-09",
+          "valide_depuis": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "id": "EQ-018",
+      "designation": "Groupe d'eau glacée",
+      "categorie": "CLIM",
+      "site": "Hôtel Corail Bleu — Hammamet",
+      "historique": [
+        {
+          "contrat": "CT-04",
+          "valide_depuis": "2025-02-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-019",
+      "designation": "Centrale de traitement d'air",
+      "categorie": "CLIM",
+      "site": "Hôtel Corail Bleu — Hammamet",
+      "historique": [
+        {
+          "contrat": "CT-04",
+          "valide_depuis": "2025-02-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-020",
+      "designation": "Climatiseur split 18 000 BTU",
+      "categorie": "CLIM",
+      "site": "Hôtel Corail Bleu — Hammamet",
+      "historique": [
+        {
+          "contrat": "CT-04",
+          "valide_depuis": "2025-02-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-021",
+      "designation": "Ascenseur 630 kg",
+      "categorie": "ASC",
+      "site": "Hôtel Corail Bleu — Hammamet",
+      "historique": [
+        {
+          "contrat": "CT-04",
+          "valide_depuis": "2025-02-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-022",
+      "designation": "Monte-charge 1 000 kg",
+      "categorie": "ASC",
+      "site": "Hôtel Corail Bleu — Hammamet",
+      "historique": [
+        {
+          "contrat": "CT-04",
+          "valide_depuis": "2025-02-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-023",
+      "designation": "Groupe électrogène 250 kVA",
+      "categorie": "GE",
+      "site": "Hôtel Corail Bleu — Hammamet",
+      "historique": [
+        {
+          "contrat": "CT-04",
+          "valide_depuis": "2025-02-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-024",
+      "designation": "Climatiseur gainable 48 000 BTU",
+      "categorie": "CLIM",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": "CT-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-025",
+      "designation": "Groupe d'eau glacée",
+      "categorie": "CLIM",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": "CT-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-026",
+      "designation": "Centrale de traitement d'air",
+      "categorie": "CLIM",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": "CT-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-027",
+      "designation": "Ascenseur 8 personnes",
+      "categorie": "ASC",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": " ct-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-028",
+      "designation": "Ascenseur 630 kg",
+      "categorie": "ASC",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": "CT-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-029",
+      "designation": "Monte-charge 1 000 kg",
+      "categorie": "ASC",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": "CT-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-030",
+      "designation": "Groupe électrogène 60 kVA",
+      "categorie": "GE",
+      "site": "Centre Zéphyr — Sousse",
+      "historique": [
+        {
+          "contrat": "CT-05",
+          "valide_depuis": "2023-01-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-031",
+      "designation": "Climatiseur split 18 000 BTU",
+      "categorie": "CLIM",
+      "site": "École Les Amandiers — Ben Arous",
+      "historique": [
+        {
+          "contrat": "CT-06",
+          "valide_depuis": "2025-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-032",
+      "designation": "Climatiseur gainable 48 000 BTU",
+      "categorie": "CLIM",
+      "site": "École Les Amandiers — Ben Arous",
+      "historique": [
+        {
+          "contrat": "CT-06",
+          "valide_depuis": "2025-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-033",
+      "designation": "Groupe électrogène 100 kVA",
+      "categorie": "GE",
+      "site": "École Les Amandiers — Ben Arous",
+      "historique": [
+        {
+          "contrat": "CT-06",
+          "valide_depuis": "2025-09-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-034",
+      "designation": "Groupe d'eau glacée",
+      "categorie": "CLIM",
+      "site": "Frigo Sud — Sfax",
+      "historique": [
+        {
+          "contrat": "CT-07",
+          "valide_depuis": "2024-04-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-035",
+      "designation": "Centrale de traitement d'air",
+      "categorie": "CLIM",
+      "site": "Frigo Sud — Sfax",
+      "historique": [
+        {
+          "contrat": "CT-07",
+          "valide_depuis": "2024-04-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-036",
+      "designation": "Groupe électrogène 250 kVA",
+      "categorie": "GE",
+      "site": "Frigo Sud — Sfax",
+      "historique": [
+        {
+          "contrat": "CT-07",
+          "valide_depuis": "2024-04-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-037",
+      "designation": "Groupe électrogène 60 kVA",
+      "categorie": "GE",
+      "site": "Frigo Sud — Sfax",
+      "historique": [
+        {
+          "contrat": "CT-07",
+          "valide_depuis": "2024-04-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-038",
+      "designation": "Climatiseur split 18 000 BTU",
+      "categorie": "CLIM",
+      "site": "Résidence Belle Rive — La Marsa",
+      "historique": [
+        {
+          "contrat": "CT-08",
+          "valide_depuis": "01/03/2026"
+        }
+      ]
+    },
+    {
+      "id": "EQ-039",
+      "designation": "Ascenseur 8 personnes",
+      "categorie": "ASC",
+      "site": "Résidence Belle Rive — La Marsa",
+      "historique": [
+        {
+          "contrat": "CT-08",
+          "valide_depuis": "2026-03-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-040",
+      "designation": "Ascenseur 630 kg",
+      "categorie": "ASC",
+      "site": "Résidence Belle Rive — La Marsa",
+      "historique": [
+        {
+          "contrat": "CT-08",
+          "valide_depuis": "2026-03-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-041",
+      "designation": "Monte-charge 1 000 kg",
+      "categorie": "ASC",
+      "site": "Résidences Nakhla — Les Jardins",
+      "historique": [
+        {
+          "contrat": "CT-09",
+          "valide_depuis": "2025-11-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-042",
+      "designation": "Groupe électrogène 100 kVA",
+      "categorie": "GE",
+      "site": "Résidences Nakhla — Les Jardins",
+      "historique": [
+        {
+          "contrat": "CT-09",
+          "valide_depuis": "2025-11-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-043",
+      "designation": "Groupe électrogène 250 kVA",
+      "categorie": "GE",
+      "site": "Résidences Nakhla — Les Jardins",
+      "historique": [
+        {
+          "contrat": "CT-09",
+          "valide_depuis": "2025-11-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-044",
+      "designation": "Climatiseur gainable 48 000 BTU",
+      "categorie": "CLIM",
+      "site": "Centre Altaïr — Monastir",
+      "historique": [
+        {
+          "contrat": "CT-10",
+          "valide_depuis": "2025-05-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-045",
+      "designation": "Groupe d'eau glacée",
+      "categorie": "CLIM",
+      "site": "Centre Altaïr — Monastir",
+      "historique": [
+        {
+          "contrat": "CT-10",
+          "valide_depuis": "2025-05-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-046",
+      "designation": "Centrale de traitement d'air",
+      "categorie": "CLIM",
+      "site": "Centre Altaïr — Monastir",
+      "historique": [
+        {
+          "contrat": "CT-10",
+          "valide_depuis": "2025-05-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-047",
+      "designation": "Groupe électrogène 60 kVA",
+      "categorie": "GE",
+      "site": "Centre Altaïr — Monastir",
+      "historique": [
+        {
+          "contrat": "CT-10",
+          "valide_depuis": "2025-05-01"
+        }
+      ]
+    },
+    {
+      "id": "EQ-048",
+      "designation": "Groupe électrogène 100 kVA",
+      "categorie": "GE",
+      "site": "Centre Altaïr — Monastir",
+      "historique": [
+        {
+          "contrat": "CT-10",
+          "valide_depuis": "2025-05-01"
+        }
+      ]
+    }
+  ]
+}

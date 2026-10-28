@@ -1,0 +1,1578 @@
+{
+ "title": "Le catalogue des dix missions",
+ "cover_title": "Le catalogue des dix missions",
+ "subtitle": "Choisir sa mission, connaître le socle commun, planifier jusqu’à la soutenance · fin de la séance 3 et travail personnel",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Livret 04 · Catalogue des missions",
+ "output_filename": "04_catalogue_missions.pdf",
+ "header_label": "SOLEN  /  IA, CODEX ET BI",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · DIX CLIENTS FICTIFS",
+  "flow": "Choisir  →  calculer à la main  →  charger  →  historiser  →  livrer",
+  "stats": [
+   [
+    "10",
+    "MISSIONS AU CHOIX"
+   ],
+   [
+    "1",
+    "MISSION PAR BINÔME"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "04 / CATALOGUE DES MISSIONS"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M01…M10/reference/README.md et echantillon/attendu.md ; M07 : valeurs mensuelles de attendu_lot*.json (par_mois). Liste de contrôle identique au livret 05. Solutions de référence passées au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "04 / CATALOGUE · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce livret sert à la **fin de la séance 3** : vous choisissez, à deux, **une** des dix missions du catalogue. Elle sera votre projet jusqu’à la soutenance. Chaque mission applique la méthode du tronc commun (Maison Zitouna) à une autre entreprise fictive ; son guide détaillé est dans `pdf/missions/Mxx_guide.pdf`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y trouvez",
+      "Page"
+     ],
+     "rows": [
+      [
+       "Comment choisir",
+       "Quatre critères et une méthode en 20 minutes",
+       "3"
+      ],
+      [
+       "Les dix missions en un coup d’œil",
+       "Entreprise, question, grain, historique, indicateurs, règle, chiffre clé",
+       "4"
+      ],
+      [
+       "Les règles communes",
+       "Le socle identique pour toutes les missions, de la source à la livraison",
+       "7"
+      ],
+      [
+       "Planning conseillé",
+       "De la séance 3 à la séance 5, et le travail personnel",
+       "11"
+      ],
+      [
+       "Les dix fiches",
+       "Une page par mission : M01 à M10",
+       "12"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "22"
+      ]
+     ],
+     "widths": [
+      2,
+      3.2,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      5,
+      9,
+      10,
+      20
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fiche",
+      "Mission",
+      "Page"
+     ],
+     "rows": [
+      [
+       "M01",
+       "Réseau de magasins · Carthage Market",
+       "12"
+      ],
+      [
+       "M02",
+       "E-commerce · Souk Express",
+       "13"
+      ],
+      [
+       "M03",
+       "Distribution B2B · Medina Distribution",
+       "14"
+      ],
+      [
+       "M04",
+       "Livraison · Colis Rapide",
+       "15"
+      ],
+      [
+       "M05",
+       "Centre de formation · Académie Nour",
+       "16"
+      ],
+      [
+       "M06",
+       "Hôtellerie · Dar Azur",
+       "17"
+      ],
+      [
+       "M07",
+       "Abonnements · FibreNet",
+       "18"
+      ],
+      [
+       "M08",
+       "Maintenance · TechniServ",
+       "19"
+      ],
+      [
+       "M09",
+       "Événementiel · Scène Libre",
+       "20"
+      ],
+      [
+       "M10",
+       "Agence numérique · Pixel Studio",
+       "21"
+      ]
+     ],
+     "widths": [
+      0.6,
+      4.6,
+      0.5
+     ],
+     "toc_refs": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · COMMENT CHOISIR",
+   "title": "Comment choisir votre mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Les dix missions ont **la même difficulté** : même socle (quatre sources, deux lots, une étoile, une dimension historisée), mêmes étapes, même vérificateur. Aucune ne rapporte plus de points qu’une autre. Ce qui change : le métier, les indicateurs, la règle à trancher et le piège propre à chaque jeu de données. Choisissez donc la mission que vous aurez envie d’**expliquer** devant un jury."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Critère",
+      "La question à vous poser",
+      "Où regarder"
+     ],
+     "rows": [
+      [
+       "**1. L’intérêt**",
+       "Quel métier avez-vous envie de comprendre : commerce, transport, formation, hôtellerie, services ?",
+       "le contexte de chaque fiche"
+      ],
+      [
+       "**2. Le type de décision**",
+       "Aimez-vous parler d’argent (marge, CA net), de qualité de service (ponctualité, délai), ou de remplissage (occupation, assiduité) ?",
+       "la question de décision"
+      ],
+      [
+       "**3. Le ratio et son dénominateur**",
+       "Quel indicateur est un **rapport**, et que divise-t-il ? C’est souvent la question piège à l’oral.",
+       "colonne « Indicateurs » du tableau suivant"
+      ],
+      [
+       "**4. La dimension historisée**",
+       "Quel attribut change au 2026-07-15, et quelle règle de date suit chaque mouvement ?",
+       "colonne « Historique (SCD2) »"
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.8,
+      1.3
+     ]
+    },
+    {
+     "type": "section",
+     "text": "La méthode, à deux, en 20 minutes"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Chacun lit seul trois fiches de ce livret (5 min)",
+      "À deux : deux missions retenues, avec une raison chacune (5 min)",
+      "Lire la fiche et l’échantillon de chacune dans le dépôt (7 min)",
+      "Choisir et noter la raison dans le journal (3 min)"
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Lisez l’échantillon** (`catalogue/Mxx/echantillon/attendu.md`) avant de choisir : si vous ne comprenez pas le calcul à la main, vous ne pourrez pas contrôler Codex.",
+      "**Ne choisissez pas pour la taille des chiffres** : les montants vont de quelques milliers à plus d’un million de TND selon le métier ; le travail est le même.",
+      "**Si le professeur répartit les missions** entre binômes (pour éviter les doublons), suivez sa consigne ; votre classement des deux missions préférées l’aide."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ce que vous écrivez dans `notes/JOURNAL.md`",
+     "text": "Décision : « Mission Mxx, parce que … ». Preuve : la question de décision recopiée et le résultat de l’échantillon calculé à la main. Prochain objectif : la première PR de la mission (`mission.txt` = `Mxx`)."
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX MISSIONS",
+   "title": "Les dix missions en un coup d’œil (1/3)",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Chaque ligne est une entreprise **fictive**, des données 100 % synthétiques. Dans toutes les missions, le changement historique arrive avec le lot 2 et prend effet le **2026-07-15** (inclus)."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mission",
+      "Question de décision",
+      "Grain : une ligne =",
+      "Historique (SCD2)"
+     ],
+     "rows": [
+      [
+       "**M01** · Carthage Market\nRéseau de magasins",
+       "Quels magasins et produits font les ventes et la marge ? La franchise paie-t-elle ?",
+       "une ligne de ticket",
+       "magasin → région (HAM)"
+      ],
+      [
+       "**M02** · Souk Express\nE-commerce",
+       "Quels canaux vendent vraiment, remises et remboursements enlevés ?",
+       "une ligne de commande",
+       "canal → famille (VSO)"
+      ],
+      [
+       "**M03** · Medina Distribution\nDistribution B2B",
+       "Quels clients et produits font baisser la rentabilité ?",
+       "une ligne de facture",
+       "client → segment (CL04)"
+      ],
+      [
+       "**M04** · Colis Rapide\nLivraison",
+       "Où livre-t-on en retard, et où perd-on de l’argent ?",
+       "un colis livré",
+       "agence → zone (NAB)"
+      ],
+      [
+       "**M05** · Académie Nour\nCentre de formation",
+       "Quelles sessions se remplissent, sont suivies et payées ?",
+       "une présence (participant × séance)",
+       "session → centre (SES-2619)"
+      ],
+      [
+       "**M06** · Dar Azur\nHôtellerie",
+       "Les chambres sont-elles remplies, et que reste-t-il après annulations ?",
+       "un séjour",
+       "canal → commission (OTA)"
+      ],
+      [
+       "**M07** · FibreNet\nAbonnements",
+       "Combien d’abonnés restent, partent, et que rapporte le parc ?",
+       "une facture mensuelle d’abonnement",
+       "offre → gamme et prix (Fibre 300)"
+      ],
+      [
+       "**M08** · TechniServ\nMaintenance",
+       "Quels contrats rapportent, techniciens et pièces payés ?",
+       "une intervention",
+       "équipement → contrat (EQ-017)"
+      ],
+      [
+       "**M09** · Scène Libre\nÉvénementiel",
+       "Quels spectacles se vendent, remboursements et frais retirés ?",
+       "un billet vendu",
+       "canal → frais (REV)"
+      ],
+      [
+       "**M10** · Pixel Studio\nAgence numérique",
+       "Quels projets consomment du temps sans rapporter assez ?",
+       "une ligne de temps",
+       "projet → chef de projet (PX07)"
+      ]
+     ],
+     "widths": [
+      1.35,
+      2.25,
+      1.25,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX MISSIONS",
+   "title": "Les dix missions en un coup d’œil (2/3)",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "En gras : les indicateurs qui sont des **rapports**, suivis de leur dénominateur. Le chiffre clé est la valeur de la référence **après le lot 2**, sans filtre : il vous permet de contrôler votre entrepôt d’un coup d’œil."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mission",
+      "Indicateurs demandés par la direction",
+      "Chiffre clé (lot 2)"
+     ],
+     "rows": [
+      [
+       "**M01** · Carthage Market",
+       "ventes nettes · marge sur coût d’achat · **part des franchisés** (÷ ventes nettes) · **taux de retour** (÷ ventes brutes)",
+       "ventes nettes **21 880,226 TND**"
+      ],
+      [
+       "**M02** · Souk Express",
+       "CA brut · remises · remboursements · CA net · **panier moyen net** (÷ commandes distinctes)",
+       "CA net **248 286,934 TND**"
+      ],
+      [
+       "**M03** · Medina Distribution",
+       "ventes nettes · marge commerciale · **taux d’avoir** (÷ montant facturé)",
+       "marge commerciale **39 074,380 TND**"
+      ],
+      [
+       "**M04** · Colis Rapide",
+       "**ponctualité** (÷ colis livrés) · **retard moyen** (÷ colis en retard) · revenu net de pénalités · coût transporteur",
+       "ponctualité **83,82 %**"
+      ],
+      [
+       "**M05** · Académie Nour",
+       "inscrits · **assiduité** (÷ inscrits × séances) · **remplissage** (÷ capacité) · encaissements nets",
+       "encaissements nets **118 247,000 TND**"
+      ],
+      [
+       "**M06** · Dar Azur",
+       "nuitées · **occupation** (÷ chambres × nuits) · revenu net d’annulations · **RevPAR** (÷ chambres × nuits)",
+       "taux d’occupation **44,48 %**"
+      ],
+      [
+       "**M07** · FibreNet",
+       "**abonnés actifs** et **MRR** (stocks d’un mois) · départs · **taux de départ** (÷ actifs en début de mois)",
+       "MRR d’août **23 158,100 TND**"
+      ],
+      [
+       "**M08** · TechniServ",
+       "interventions · **délai moyen** (÷ correctives) · coût d’intervention · marge de service",
+       "marge de service **104 125,500 TND**"
+      ],
+      [
+       "**M09** · Scène Libre",
+       "billets nets · **remplissage** (÷ capacité) · recettes nettes",
+       "recettes nettes **109 866,930 TND**"
+      ],
+      [
+       "**M10** · Pixel Studio",
+       "heures · coût de charge · facturé net · marge de contribution",
+       "marge de contribution **132 912,525 TND**"
+      ]
+     ],
+     "widths": [
+      1.25,
+      2.95,
+      1.45
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX MISSIONS",
+   "title": "Les dix missions en un coup d’œil (3/3)",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Chaque mission a **une** règle métier ambiguë, tranchée par la direction fictive : vous devrez la défendre à l’oral. La difficulté est **comparable** pour les dix missions ; la dernière colonne dit seulement où chacune est piégeuse."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Mission",
+      "Règle à clarifier → décision",
+      "Difficulté",
+      "Piège propre"
+     ],
+     "rows": [
+      [
+       "**M01** · Carthage Market",
+       "remise : marge sur le prix payé (A) ou catalogue (B) ? → A",
+       "comparable",
+       "remise par ligne, en-têtes Excel à la ligne 3"
+      ],
+      [
+       "**M02** · Souk Express",
+       "remboursement après le changement de famille : date de la commande (A) ou du remboursement (B) ? → B",
+       "comparable",
+       "CSV du lot 2 en `cp1252`, commandes distinctes"
+      ],
+      [
+       "**M03** · Medina Distribution",
+       "avoir après le changement de segment : segment de la facture (A) ou de l’avoir (B) ? → A",
+       "comparable",
+       "avoir `REMISE` sans carton repris, version à la date de facture"
+      ],
+      [
+       "**M04** · Colis Rapide",
+       "livré le jour promis : à l’heure ? zone à l’expédition ou à la livraison ? → à l’heure ; livraison",
+       "comparable",
+       "deux dénominateurs différents, poids en grammes"
+      ],
+      [
+       "**M05** · Académie Nour",
+       "inscrit jamais venu : compte-t-il ? remboursement après le changement de centre ? → oui ; date du remboursement",
+       "comparable",
+       "trois taux à trois dénominateurs, inscrits comptés une fois"
+      ],
+      [
+       "**M06** · Dar Azur",
+       "séjour à cheval sur deux mois ; taux de commission à la réservation ou à l’arrivée ? → mois et taux d’arrivée",
+       "comparable",
+       "CSV du lot 2 en `cp1252`, chambres × nuits"
+      ],
+      [
+       "**M07** · FibreNet",
+       "résilié le dernier jour : actif ? prix du MRR : souscription ou fin de mois ? → départ ; fin de mois",
+       "comparable",
+       "stocks non additifs, fait dérivé des dates"
+      ],
+      [
+       "**M08** · TechniServ",
+       "intervention le jour du changement de contrat ; délai d’un préventif ? → contrat du jour d’intervention ; préventif exclu",
+       "comparable",
+       "date + heure, moyenne non additive, deux faits"
+      ],
+      [
+       "**M09** · Scène Libre",
+       "frais d’un billet remboursé après le changement ; report = remboursement ? → taux de la vente ; non",
+       "comparable",
+       "frais en pour mille, spectacle annulé ou reporté"
+      ],
+      [
+       "**M10** · Pixel Studio",
+       "chef de projet d’une heure ou d’une facture ; heures internes : un coût ? → version du jour ; oui",
+       "comparable",
+       "centièmes d’heure, projet interne sans facture"
+      ]
+     ],
+     "widths": [
+      1.25,
+      2.55,
+      0.95,
+      1.55
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES RÈGLES COMMUNES",
+   "title": "Les règles communes (1/4) : sources et lots",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Les dix missions reposent sur **le même socle** que le tronc commun. Si vous l’avez réussi sur Maison Zitouna, vous savez déjà tout faire : seuls les noms et le métier changent."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Source",
+      "Rôle",
+      "Exemple (M01)"
+     ],
+     "rows": [
+      [
+       "**CSV de faits**",
+       "les lignes au grain du fait (tickets, commandes, colis, présences…)",
+       "`ventes.csv`"
+      ],
+      [
+       "**Classeur Excel**",
+       "le catalogue ou les tarifs, souvent avec un titre au-dessus du tableau",
+       "`catalogue.xlsx`"
+      ],
+      [
+       "**JSON**",
+       "la dimension qui a un historique (`historique[]` avec une date de début)",
+       "`magasins.json`"
+      ],
+      [
+       "**Base SQLite opérationnelle**",
+       "les ajustements : retours, avoirs, remboursements, annulations, paiements",
+       "`operations.sqlite`"
+      ]
+     ],
+     "widths": [
+      1.4,
+      3,
+      1.1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Deux lots**, mêmes fichiers : `lot1` (janvier → juin 2026) pour le chargement initial ; `lot2` (juillet → août) pour l’incrément, avec de nouvelles lignes, quelques lignes **déjà chargées** (pour prouver le rejeu) et **un** changement historique daté. Plus un `echantillon/` de 12 lignes au plus, avec `attendu.md` qui montre l’arithmétique."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-nettoyage.png",
+     "caption": "Nettoyer sans toucher aux sources : chaque ligne lue est gardée, normalisée, ignorée ou rejetée avec un motif.",
+     "height": 175
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES RÈGLES COMMUNES",
+   "title": "Les règles communes (2/4) : anomalies et rejets",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le CSV de faits de chaque mission contient au moins six types d’anomalies, en quantités documentées dans `reference/attendu_lot1.json` et `attendu_lot2.json`. Les règles de nettoyage sont les mêmes partout ; le cahier des charges de votre mission (§ 3 et § 4) donne les exemples et l’ordre exact des contrôles."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Anomalie dans le CSV",
+      "Exemple",
+      "Règle"
+     ],
+     "rows": [
+      [
+       "Doublon exact",
+       "la même ligne deux fois",
+       "garder une occurrence (pas un rejet)"
+      ],
+      [
+       "Doublon d’identifiant",
+       "même `*_id`, contenu différent",
+       "rejeter les deux : `id_conflit`"
+      ],
+      [
+       "Identifiant manquant",
+       "vide",
+       "rejet `id_manquant`"
+      ],
+      [
+       "Clé inconnue",
+       "produit ou agence absent du référentiel",
+       "rejet `cle_inconnue`"
+      ],
+      [
+       "Quantité ≤ 0 ou non entière",
+       "`-2`, `1.5`",
+       "rejet `quantite_invalide`"
+      ],
+      [
+       "Format décimal",
+       "`12,500` · `12.5` · `1 240,000`",
+       "normaliser en millimes entiers"
+      ],
+      [
+       "Format date",
+       "`2026-03-04` · `04/03/2026` · `4 mars 2026`",
+       "ISO `AAAA-MM-JJ`"
+      ],
+      [
+       "Casse, espaces",
+       "` tun ` / `TUN`",
+       "strip + majuscules"
+      ],
+      [
+       "Encodage",
+       "CSV du lot 2 en `cp1252` (M02, M06)",
+       "lire avec le bon encodage"
+      ]
+     ],
+     "widths": [
+      1.5,
+      1.8,
+      2
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer n’est pas rejeter",
+     "text": "**Ignorer** (rien dans `outputs/rejets.csv`) : un doublon exact, un ajustement au statut non retenu (annulé, refusé, brouillon…), une ligne déjà chargée. **Rejeter** : une ligne fautive, écrite dans `outputs/rejets.csv` avec au moins `lot`, `source`, `numero_ligne` et `motif`. Les sources restent intactes."
+    },
+    {
+     "type": "text",
+     "text": "`outputs/rejets.csv` garde les rejets de tous les lots, en UTF-8. Le premier problème trouvé sur une ligne donne son motif ; un ajustement (retour, avoir, remboursement…) qui vise une ligne inconnue est aussi rejeté en `cle_inconnue`, avec pour `numero_ligne` son identifiant dans la base SQLite."
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES RÈGLES COMMUNES",
+   "title": "Les règles communes (3/4) : entrepôt et contrôles",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**L’entrepôt** est `outputs/entrepot.sqlite`, en étoile : `dim_date`, deux ou trois dimensions métier, un ou deux faits au grain défini. Dimensions chargées **avant** les faits ; clés techniques `*_key` entières, clés métier `*_id` en texte ; montants en **millimes entiers** (1 TND = 1 000 millimes), affichés en TND à 3 décimales."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-scd2-frise.png",
+     "caption": "La règle SCD2 du tronc commun, identique dans chaque mission : une version nouvelle à la date du changement, l’ancienne fermée le même jour.",
+     "height": 125
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**SCD2 sur une seule dimension** : une ligne par version, intervalle **[`valid_from`, `valid_to`)** : début inclus, fin exclue, `valid_to` vide = version courante. Un fait prend la version valable à **sa** date ; on ne réécrit jamais le passé.",
+      "**Rejeu** : relancer `increment` n’ajoute aucune ligne. Une clé métier déjà chargée est ignorée ; les rejets du lot sont **remplacés**, pas ajoutés.",
+      "**`mission.txt`** : votre première PR de la mission remplace `tronc-commun` par `M0x`. Codex lit ce fichier ; les données viennent alors de `catalogue/M0x/`."
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi · exemple pour M04",
+     "text": "python -m solen initial      # puis : --etape initial\npython -m solen increment    # puis : --etape increment\npython -m solen increment    # 2e fois, puis : --etape rejeu\npython -m solen export       # puis : --etape export\npython -m solen app          # puis : --etape app\npython -m controles.verifier --mission M04 --etape tout --strict\npytest controles && pytest -q"
+    },
+    {
+     "type": "text",
+     "text": "La **CI** (`.github/workflows/controles.yml`) rejoue la même chaîne sur chaque PR. Avancez `ETAPE_CI` (`aucune` → `initial` → `increment` → `rejeu` → `export` → `tout`) seulement quand l’étape existe. La référence (`reference/attendu_lot*.json`) a été calculée par le générateur, pas par une solution : si un contrôle échoue, on corrige le code, jamais le contrôle."
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES RÈGLES COMMUNES",
+   "title": "Les règles communes (4/4) : livrer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "La liste de contrôle est **la même** que dans le livret 05 (partie 5). Chaque ligne demande une preuve que vous savez montrer."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "☐",
+      "Preuve à obtenir",
+      "Comment la montrer"
+     ],
+     "rows": [
+      [
+       "☐",
+       "Vérificateur complet, strict, vert",
+       "`python -m controles.verifier --mission $(cat mission.txt) --etape tout --strict`"
+      ],
+      [
+       "☐",
+       "Tests verts",
+       "`pytest -q` (les tests fournis et ceux écrits par Codex)"
+      ],
+      [
+       "☐",
+       "CI verte sur `main`",
+       "GitHub → onglet **Actions** : dernier passage vert, `ETAPE_CI: tout`"
+      ],
+      [
+       "☐",
+       "Application à jour",
+       "`python -m solen app`, puis `--etape app` vert ; les trois écrans s’ouvrent"
+      ],
+      [
+       "☐",
+       "Rapport Power BI actualisé",
+       "Le `.pbix` après le lot 2 (dans `powerbi/` s’il fait moins de 10 Mo) et deux captures réelles légendées"
+      ],
+      [
+       "☐",
+       "Mesures DAX de la mission",
+       "`powerbi/mesures.dax` réécrit avec les indicateurs de votre cahier des charges"
+      ],
+      [
+       "☐",
+       "Journal à jour",
+       "`notes/JOURNAL.md` : une entrée par PR, état / décision / preuve / prochain objectif"
+      ],
+      [
+       "☐",
+       "Deux auteurs visibles",
+       "`git shortlog -sn` montre vos deux noms ; chacun a écrit et relu des PR"
+      ],
+      [
+       "☐",
+       "Règle à clarifier tranchée",
+       "Votre décision et sa raison, rubrique Décision du journal"
+      ],
+      [
+       "☐",
+       "Une variante réalisée",
+       "Une des trois variantes de la fiche mission, avec son test (prompt 18)"
+      ],
+      [
+       "☐",
+       "Recommandation écrite",
+       "Les cinq parties, avec les chiffres de votre mission"
+      ]
+     ],
+     "widths": [
+      0.3,
+      1.8,
+      3.2
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**La recommandation** va dans `notes/recommandation.md`, par une PR : constat chiffré, cause plausible, recommandation, limite, prochaine donnée à collecter.",
+      "**La variante** : une des trois de la fiche, analysée d’abord sans modification (prompt 18), prouvée par **son** test ; la référence de base reste verte.",
+      "**La démonstration** suit trois écrans : **Vue direction** (les indicateurs, un graphique, les filtres) → **Détail** par la dimension historisée (les deux versions) → **Qualité des données** (rejets par motif et par lot)."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · PLANNING CONSEILLÉ",
+   "title": "Planning conseillé, de la séance 3 à la soutenance",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le tronc commun continue en séance 4 et 5 ; la mission du catalogue avance **en parallèle**, surtout en travail personnel. Les durées sont des **estimations** de conception, à ajuster."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quand",
+      "Ce que vous faites",
+      "Preuve visible"
+     ],
+     "rows": [
+      [
+       "**Fin de séance 3**",
+       "choisir la mission ; lire la fiche, le cahier des charges et l’échantillon ; calculer l’échantillon à la main",
+       "le choix et sa raison dans le journal"
+      ],
+      [
+       "**Fin de séance 4**",
+       "première PR de la mission : `mission.txt` = `M0x`, la lecture des sources ou le calcul de l’échantillon",
+       "une PR fusionnée, relue par l’autre"
+      ],
+      [
+       "**Travail personnel (≈ 5 h)**",
+       "lot 1 → incrément et rejeu → export → application → Power BI → variante",
+       "les contrôles verts, étape par étape"
+      ],
+      [
+       "**Séance 5**",
+       "finir, cocher la liste de contrôle, écrire la recommandation, répéter la démonstration",
+       "liste cochée, répétition chronométrée"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.6
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Travail personnel",
+      "Commandes à rendre vertes",
+      "Durée estimée"
+     ],
+     "rows": [
+      [
+       "Lot 1 : lecture, nettoyage, étoile",
+       "`--etape initial`",
+       "1 h 30"
+      ],
+      [
+       "Incrément, SCD2, rejeu",
+       "`--etape increment` puis `--etape rejeu`",
+       "1 h"
+      ],
+      [
+       "Export et manifeste",
+       "`--etape export`",
+       "20 min"
+      ],
+      [
+       "Application locale",
+       "`--etape app`",
+       "40 min"
+      ],
+      [
+       "Power BI : import, relations, mesures, actualisation",
+       "cartes = référence après le lot 2",
+       "45 min"
+      ],
+      [
+       "Variante, avec son test",
+       "`pytest -q`, référence toujours verte",
+       "45 min"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2,
+      0.9
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "La règle de la preuve individuelle",
+     "text": "À la fin, **chacun** des deux doit avoir : des **commits** à son nom (`git shortlog -sn`), **au moins une PR** dont il est l’auteur, et **au moins une revue** écrite sur une PR de l’autre (un commentaire précis, pas seulement « OK »). Alternez auteur et relecteur à chaque PR de la mission, comme au tronc commun."
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · RÉSEAU DE MAGASINS",
+   "title": "M01 · Carthage Market",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Réseau fictif de **sept supérettes** : trois magasins propres, quatre franchisés. Les caisses exportent les lignes de ticket avec leurs remises ; le catalogue (prix, coût d’achat, famille), les magasins (type, région) et les retours sont dans trois autres sources. La direction hésite à ouvrir d’autres franchises."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quels magasins et quels produits apportent vraiment les ventes et la marge, et la franchise tient-elle ses promesses ?\n**Grain** : une ligne de ticket de caisse. **Historique** : `dim_magasin` : HAM passe de Cap Bon à Sahel le 2026-07-15.\n**Sources** : `ventes.csv` · `catalogue.xlsx` · `magasins.json` · `operations.sqlite` (retours).\n**Entrepôt** : `dim_date`, `dim_produit`, `dim_magasin` (SCD2), `fact_vente`, `fact_retour`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Ventes nettes (TND)",
+       "ventes brutes (montant payé, remise déduite) − retours",
+       "58,710",
+       "18 437,023",
+       "21 880,226"
+      ],
+      [
+       "Marge sur coût d’achat (TND)",
+       "ventes nettes − coût d’achat des unités nettes",
+       "16,330",
+       "5 650,693",
+       "6 637,916"
+      ],
+      [
+       "Part des franchisés (%)",
+       "ventes nettes des franchisés ÷ ventes nettes totales",
+       "42,82 %",
+       "44,10 %",
+       "44,51 %"
+      ],
+      [
+       "Taux de retour (%)",
+       "retours ÷ ventes brutes, en montant",
+       "13,06 %",
+       "1,95 %",
+       "2,12 %"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Une ligne en promotion : marge sur le prix payé ou sur le prix catalogue ? **Décision A** : les ventes brutes sont le montant payé, remise déduite ; les remises restent suivies à part."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M01/reference/visuels/ventes_nettes_par_mois_et_region.png",
+     "caption": "Référence · Ventes nettes par mois et par région après le lot 2 (TND). Guide détaillé : `pdf/missions/M01_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · E-COMMERCE",
+   "title": "M02 · Souk Express",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Boutique en ligne fictive qui vend par **six canaux** : site, application, deux places de marché, vitrine sociale et groupe communauté. Chaque canal se dit « rentable », mais personne ne retire les remises ni les remboursements. Le fichier de commandes du lot 2 arrive dans un autre encodage."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quels canaux font vraiment vendre, une fois les remises et les remboursements enlevés ?\n**Grain** : une ligne de commande en ligne. **Historique** : `dim_canal` : VSO passe de « réseaux sociaux » à « marketplace » le 2026-07-15.\n**Sources** : `commandes.csv` (lot 2 en `cp1252`) · `produits.xlsx` · `canaux.json` · `operations.sqlite` (remboursements).\n**Entrepôt** : `dim_date`, `dim_produit`, `dim_canal` (SCD2), `fact_commande`, `fact_remboursement`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "CA brut (TND)",
+       "somme de quantité × prix unitaire payé",
+       "351,600",
+       "225 339,400",
+       "273 945,700"
+      ],
+      [
+       "Remises · remboursements (TND)",
+       "remises de ligne · remboursements `REMBOURSE`",
+       "19,550 · 15,900",
+       "10 719,800 · 8 621,350",
+       "13 353,900 · 12 304,866"
+      ],
+      [
+       "CA net (TND)",
+       "CA brut − remises − remboursements",
+       "316,150",
+       "205 998,250",
+       "248 286,934"
+      ],
+      [
+       "Panier moyen net (TND)",
+       "CA net ÷ commandes distinctes",
+       "63,230",
+       "160,936",
+       "157,144"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Commande du 30 juin sur VSO, remboursée le 20 juillet : quelle famille ? **Décision B** : chaque mouvement suit la version du canal valable à sa date (« marketplace », en juillet)."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M02/reference/visuels/ca_net_par_mois_et_famille.png",
+     "caption": "Référence · CA net par mois et par famille de canal après le lot 2 (TND). Guide détaillé : `pdf/missions/M02_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · DISTRIBUTION B2B",
+   "title": "M03 · Medina Distribution",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Grossiste fictif qui revend des cartons d’épicerie et d’entretien à une dizaine de **clients professionnels** (épiceries, restaurants, grandes surfaces, hôtels), à des prix négociés. Des **avoirs** corrigent les factures : produit abîmé, date limite trop proche, erreur de prix."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quels clients et quels produits font baisser la rentabilité commerciale ?\n**Grain** : une ligne de facture. **Historique** : `dim_client` : CL04 passe d’« épicerie » à « grande surface » le 2026-07-15.\n**Sources** : `factures.csv` · `couts.xlsx` · `clients.json` · `avoirs.sqlite`.\n**Entrepôt** : `dim_date`, `dim_produit`, `dim_client` (SCD2), `fact_facture`, `fact_avoir`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Ventes nettes (TND)",
+       "montant facturé (prix négocié) − avoirs `EMIS`",
+       "796,560",
+       "242 930,760",
+       "289 006,880"
+      ],
+      [
+       "Marge commerciale (TND)",
+       "ventes nettes − coût d’achat des cartons nets",
+       "18,160",
+       "32 591,060",
+       "39 074,380"
+      ],
+      [
+       "Taux d’avoir (%)",
+       "avoirs ÷ montant facturé",
+       "4,11 %",
+       "1,09 %",
+       "1,18 %"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Avoir du 20 juillet sur une facture du 30 juin de CL04 : quel segment ? **Décision A** : la version du client à la date de la **facture d’origine** ; l’avoir reste compté dans le mois de sa date. C’est le choix inverse du tronc commun."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M03/reference/visuels/ventes_nettes_par_mois_et_segment.png",
+     "caption": "Référence · Ventes nettes par mois et par segment après le lot 2 (TND). Guide détaillé : `pdf/missions/M03_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · LIVRAISON",
+   "title": "M04 · Colis Rapide",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Transporteur fictif : **sept agences** rattachées à quatre zones, trois services (Standard, Express, Économique). Les clients se plaignent des retards, et personne ne sait où l’on perd de l’argent entre factures, pénalités de retard et coût transporteur."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Où et pourquoi livre-t-on en retard, et où la livraison perd-elle de l’argent ?\n**Grain** : un colis livré. **Historique** : `dim_agence` : NAB passe de « Nord » à « Centre-Sahel » le 2026-07-15.\n**Sources** : `colis.csv` · `tarifs.xlsx` · `agences.json` · `facturation.sqlite` (factures, pénalités).\n**Entrepôt** : `dim_date`, `dim_agence` (SCD2), `dim_service`, `dim_tarif`, `fact_colis`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Ponctualité (%)",
+       "colis à l’heure ÷ colis livrés",
+       "50,00 %",
+       "84,57 %",
+       "83,82 %"
+      ],
+      [
+       "Retard moyen (jours)",
+       "jours de retard ÷ colis **en retard**",
+       "2,00",
+       "2,49",
+       "2,41"
+      ],
+      [
+       "Revenu net de pénalités (TND)",
+       "montant facturé − pénalités de retard",
+       "80,750",
+       "26 152,498",
+       "31 167,239"
+      ],
+      [
+       "Coût transporteur (TND)",
+       "coût de la grille zone × tranche de poids",
+       "58,500",
+       "16 969,000",
+       "20 308,300"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : (1) Livré le jour promis : à l’heure ? (2) Colis de Nabeul expédié le 13 juillet, livré le 16 : quelle zone ? **Décision** : (1) A, à l’heure, retard 0 ; (2) B, la zone valable à la date de livraison."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M04/reference/visuels/revenu_net_par_mois_et_zone.png",
+     "caption": "Référence · Revenu net de pénalités par mois et par zone après le lot 2 (TND). Guide détaillé : `pdf/missions/M04_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · CENTRE DE FORMATION",
+   "title": "M05 · Académie Nour",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Centre fictif de **formations courtes** (Excel, Power BI, comptabilité, anglais, Python…) à Tunis, Sousse et Sfax. Chaque formation est donnée en sessions ; les formateurs remplissent une feuille d’émargement. La direction ne sait pas quelles sessions remplissent leurs objectifs."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quelles sessions se remplissent, sont suivies et sont payées ?\n**Grain** : une présence : un participant inscrit × une séance (présent 0 ou 1). **Historique** : `dim_session` : SES-2619 passe de Sousse à Sfax le 2026-07-15.\n**Sources** : `presences.csv` · `catalogue.xlsx` · `sessions.json` · `operations.sqlite` (inscriptions, paiements, remboursements).\n**Entrepôt** : `dim_date`, `dim_formation`, `dim_session` (SCD2), `fact_presence`, `fact_paiement`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Inscrits (nombre)",
+       "participants distincts, une fois par session",
+       "3",
+       "252",
+       "310"
+      ],
+      [
+       "Taux d’assiduité (%)",
+       "présences ÷ (inscrits × séances)",
+       "50,00 %",
+       "83,00 %",
+       "82,53 %"
+      ],
+      [
+       "Taux de remplissage (%)",
+       "inscrits ÷ capacité du catalogue",
+       "15,00 %",
+       "81,29 %",
+       "79,90 %"
+      ],
+      [
+       "Encaissements nets (TND)",
+       "paiements − remboursements",
+       "800,000",
+       "97 646,000",
+       "118 247,000"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : (1) Un inscrit qui a payé mais n’est jamais venu compte-t-il ? (2) Remboursement du 20 juillet pour SES-2619 : Sousse ou Sfax ? **Décision** : (1) A, il compte ; (2) B, la version valable à la date du remboursement (Sfax)."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M05/reference/visuels/assiduite_et_remplissage_par_centre.png",
+     "caption": "Référence · Taux d’assiduité et de remplissage par centre après le lot 2 (%). Guide détaillé : `pdf/missions/M05_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · HÔTELLERIE",
+   "title": "M06 · Dar Azur",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Petit groupe fictif de **quatre maisons d’hôtes** (Hammamet, Sidi Bou Saïd, Tozeur, Djerba), 64 chambres. Quatre canaux de vente prennent une commission. Le gérant voit des réservations partout, mais ne sait pas si ses chambres sont vraiment remplies ni ce qui reste après les annulations."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Les chambres sont-elles vraiment remplies, et que reste-t-il après les annulations ?\n**Grain** : un séjour, de la date d’arrivée à la date de départ. **Historique** : `dim_canal` : la commission de OTA passe de 18 % à 15 % le 2026-07-15.\n**Sources** : `sejours.csv` (lot 2 en `cp1252`) · `chambres.xlsx` · `canaux.json` · `operations.sqlite` (annulations, paiements).\n**Entrepôt** : `dim_date`, `dim_etablissement`, `dim_canal` (SCD2), `fact_sejour`, `fact_annulation`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Nuitées vendues (nombre)",
+       "nuitées des séjours − nuitées annulées",
+       "13",
+       "4 456",
+       "6 918"
+      ],
+      [
+       "Taux d’occupation (%)",
+       "nuitées ÷ (chambres × nuits de la période)",
+       "0,655 %",
+       "38,47 %",
+       "44,48 %"
+      ],
+      [
+       "Revenu net d’annulations (TND)",
+       "montant des séjours − remboursements",
+       "3 435,750",
+       "949 548,000",
+       "1 717 740,500"
+      ],
+      [
+       "RevPAR (TND)",
+       "revenu net ÷ (chambres × nuits)",
+       "1,732",
+       "81,971",
+       "110,451"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Séjour du 30 juin au 3 juillet : quel mois ? Réservé le 10 juillet pour une arrivée le 20 : quel taux de commission ? **Décision A** : tout au mois d’arrivée, commission au taux valable à la date d’arrivée."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M06/reference/visuels/revpar_par_mois.png",
+     "caption": "Référence · RevPAR par mois après le lot 2 (TND par chambre disponible). Guide détaillé : `pdf/missions/M06_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · ABONNEMENTS",
+   "title": "M07 · FibreNet",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Fournisseur fictif d’**internet par fibre**, pour particuliers et entreprises. Chaque abonnement reçoit une facture par mois ; les dates de début et de fin sont dans la base de l’outil opérationnel. La direction ne sait pas combien d’abonnés restent, combien partent, ni ce que rapporte le parc chaque mois."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Combien d’abonnés restent, combien partent, et que rapporte le parc chaque mois ?\n**Grain** : une facture mensuelle d’abonnement (un abonnement × un mois). **Historique** : `dim_offre` : Fibre 300 passe de « confort » 89,900 à « pro » 99,900 TND le 2026-07-15.\n**Sources** : `facturation.csv` · `comptes.xlsx` · `offres.json` · `abonnements.sqlite` (début, fin).\n**Entrepôt** : `dim_date`, `dim_compte`, `dim_offre` (SCD2), `fact_facture`, `fact_abonnement_mois`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Abonnés actifs fin de mois",
+       "abonnements actifs le dernier jour du mois",
+       "4",
+       "281 (juin)",
+       "287 (août)"
+      ],
+      [
+       "MRR (TND)",
+       "mensualités des actifs, au prix du dernier jour du mois",
+       "269,600",
+       "21 970,500 (juin)",
+       "23 158,100 (août)"
+      ],
+      [
+       "Départs (nombre)",
+       "abonnements dont la date de fin tombe dans le mois",
+       "2",
+       "31 (jan. → juin)",
+       "44 (jan. → août)"
+      ],
+      [
+       "Taux de départ (%)",
+       "départs ÷ actifs en début de mois",
+       "40,00 %",
+       "1,89 %",
+       "2,00 %"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Résilié le 31 mars : actif fin mars ? MRR de juillet de Fibre 300 : 89,900 ou 99,900 TND ? **Décision B** : c’est un départ de mars ; le MRR prend le prix valable le dernier jour du mois."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M07/reference/visuels/mrr_par_mois_et_gamme.png",
+     "caption": "Référence · MRR par mois et par gamme après le lot 2 (TND). Guide détaillé : `pdf/missions/M07_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · MAINTENANCE",
+   "title": "M08 · TechniServ",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Société fictive de **maintenance sous contrat** : 48 équipements (climatisations, ascenseurs, groupes électrogènes) chez 9 clients, 10 contrats payés au mois. Personne ne sait dire quels contrats rapportent vraiment, une fois payés les techniciens et les pièces."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quels contrats rapportent vraiment, une fois payés les techniciens et les pièces ?\n**Grain** : une intervention d’un technicien sur un équipement. **Historique** : `dim_equipement` : EQ-017 passe du contrat CT-03 au contrat CT-09 le 2026-07-15.\n**Sources** : `interventions.csv` · `pieces.xlsx` · `equipements.json` · `operations.sqlite` (contrats, pièces consommées).\n**Entrepôt** : `dim_date`, `dim_contrat`, `dim_equipement` (SCD2), `fact_intervention`, `fact_revenu_contrat`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Interventions (nombre)",
+       "préventives et correctives acceptées",
+       "6",
+       "1 560",
+       "2 030"
+      ],
+      [
+       "Délai moyen (heures)",
+       "délais des correctives ÷ nombre de correctives",
+       "13,25",
+       "19,71",
+       "20,18"
+      ],
+      [
+       "Coût d’intervention (TND)",
+       "pièces + main-d’œuvre",
+       "1 454,000",
+       "457 292,100",
+       "603 674,500"
+      ],
+      [
+       "Marge de service (TND)",
+       "revenu de contrat − coût d’intervention",
+       "1 196,500",
+       "71 707,900",
+       "104 125,500"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Panne d’EQ-017 le 14 juillet, intervention le 15 : quel contrat paie ? Quel délai pour un préventif ? **Décision** : (1) B, le contrat valable à la date d’intervention ; (2) B, le préventif est exclu du délai moyen."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M08/reference/visuels/revenu_cout_marge_par_contrat.png",
+     "caption": "Référence · Revenu, coût et marge de service par contrat après le lot 2 (TND). Guide détaillé : `pdf/missions/M08_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · ÉVÉNEMENTIEL",
+   "title": "M09 · Scène Libre",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Organisateur fictif de **concerts, théâtre et festivals** dans cinq salles. Quatre canaux vendent les billets et prennent des frais. Cette saison, un concert a été annulé et un autre reporté ; la direction ne sait plus quels spectacles se vendent vraiment bien."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quels spectacles se vendent vraiment, une fois les remboursements et les frais retirés ?\n**Grain** : un billet vendu. **Historique** : `dim_canal` : les frais de REV passent de 9 % à 11 % le 2026-07-15.\n**Sources** : `billets.csv` · `evenements.xlsx` · `canaux.json` · `remboursements.sqlite`.\n**Entrepôt** : `dim_date`, `dim_evenement`, `dim_canal` (SCD2), `fact_billet`, `fact_remboursement`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Billets nets (nombre)",
+       "billets vendus − billets remboursés",
+       "5",
+       "2 137",
+       "2 489"
+      ],
+      [
+       "Taux de remplissage (%)",
+       "billets nets ÷ capacité des événements",
+       "27,78 %",
+       "34,92 %",
+       "32,12 %"
+      ],
+      [
+       "Recettes nettes (TND)",
+       "recettes − remboursements − frais de distribution",
+       "183,725",
+       "94 670,055",
+       "109 866,930"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Billet REV vendu le 10 juillet (9 %), remboursé le 20 (11 %) : quels frais ? Un report est-il un remboursement ? **Décision** : 1A, frais au taux de la date de vente, jamais recalculés ; 2B, seul le statut `REMBOURSE` compte."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M09/reference/visuels/taux_remplissage_par_evenement.png",
+     "caption": "Référence · Taux de remplissage par événement après le lot 2 (%). Guide détaillé : `pdf/missions/M09_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · LES DIX FICHES · AGENCE NUMÉRIQUE",
+   "title": "M10 · Pixel Studio",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Agence numérique fictive de **15 personnes** : sites web, applications, campagnes pour une vingtaine de clients. Chacun saisit ses heures ; le coût d’une heure dépend du profil (développeur, designer, chef de projet, consultant). Personne ne sait quels projets consomment du temps sans rapporter assez."
+    },
+    {
+     "type": "text",
+     "text": "**Question de décision** : Quels projets consomment du temps sans rapporter assez ?\n**Grain** : une ligne de temps (un collaborateur, un projet, un jour, une tâche). **Historique** : `dim_projet` : PX07 passe de Hela Mansour à Nour Jebali (cheffe de projet) le 2026-07-15.\n**Sources** : `temps.csv` · `couts.xlsx` · `projets.json` · `facturation.sqlite` (factures, avoirs).\n**Entrepôt** : `dim_date`, `dim_collaborateur`, `dim_projet` (SCD2), `fact_temps`, `fact_facture`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Formule exacte",
+      "Échantillon",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Heures",
+       "heures acceptées (stockées en centièmes d’heure)",
+       "27,5 h",
+       "10 300 h",
+       "12 381,5 h"
+      ],
+      [
+       "Coût de charge (TND)",
+       "heures × taux horaire coût du profil",
+       "923,875",
+       "377 400,125",
+       "453 097,875"
+      ],
+      [
+       "Facturé net (TND)",
+       "factures − avoirs, montants HT",
+       "1 950,000",
+       "460 847,450",
+       "586 010,400"
+      ],
+      [
+       "Marge de contribution (TND)",
+       "facturé net − coût de charge",
+       "1 026,125",
+       "83 447,325",
+       "132 912,525"
+      ]
+     ],
+     "widths": [
+      1.35,
+      1.9,
+      0.85,
+      0.95,
+      0.95
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Règle à clarifier** : Heures de PX07 avant le 15 juillet et facture du 31 juillet : quel chef de projet ? Les heures du projet interne INT01 coûtent-elles ? **Décision** : (1) B, la version valable à la date de chaque fait ; (2) A, toute heure saisie coûte."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/catalogue/M10/reference/visuels/facture_cout_marge_par_type.png",
+     "caption": "Référence · Facturé net, coût de charge et marge par type de projet après le lot 2 (TND). Guide détaillé : `pdf/missions/M10_guide.pdf`.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "04 / CATALOGUE · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…comparer les dix missions par leur question de décision, leur grain, leur dimension historisée et leurs indicateurs ;",
+      "…repérer dans ma mission l’indicateur qui est un rapport et dire son dénominateur ;",
+      "…expliquer le socle commun : quatre sources, deux lots, rejets avec motif, étoile en millimes, SCD2 [`valid_from`, `valid_to`), rejeu ;",
+      "…passer `mission.txt` à `M0x` et lancer le vérificateur avec `--mission M0x` à chaque étape ;",
+      "…planifier la mission jusqu’à la séance 5 et savoir ce que chacun doit prouver dans Git ;",
+      "…vérifier mon entrepôt d’un coup d’œil avec le chiffre clé après le lot 2."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Prochaine action",
+     "text": "Ouvrez le guide de votre mission (`pdf/missions/M0x_guide.pdf`), calculez l’échantillon à la main à deux, puis ouvrez la première PR de la mission."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : chaque valeur des fiches vient de `modele-binome/catalogue/M0x/reference/README.md` (lots 1 et 2) et de `echantillon/attendu.md` (échantillon), calculés par le générateur depuis la vérité, sans ETL. Pour M07, abonnés actifs et MRR sont les valeurs d’**un** mois, lues dans l’agrégat `par_mois` de `attendu_lot*.json` : le tableau du README additionne des fins de mois.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict pour chaque mission, sur macOS seulement ; elle n’a pas été rejouée sous Ubuntu/WSL2 ni dans la CI GitHub. Power BI n’a été rejoué pour aucune mission du catalogue.",
+      "**Durées et planning** : estimations de conception, non mesurées sur des étudiants. L’égalité de difficulté entre missions est un choix de conception (même socle, même vérificateur), pas une mesure.",
+      "**Données** : 100 % synthétiques ; les dix entreprises, Solen Digital comme client et les personnes citées sont fictives."
+     ]
+    }
+   ]
+  }
+ ]
+}

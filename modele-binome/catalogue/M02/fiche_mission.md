@@ -21,7 +21,7 @@ Souk Express vend en ligne par six canaux : son site, son application mobile, de
 
 1. `outputs/rejets.csv` : chaque ligne écartée avec son motif.
 2. `outputs/entrepot.sqlite` : une étoile (dim_date, dim_produit, dim_canal, fact_commande, fact_remboursement).
-3. Le lot 2 chargé, l'historique gardé (Le canal VSO (vitrine sociale) passe de la famille « réseaux sociaux » à la famille « marketplace » le 2026-07-15 (inclus). Cette information arrive avec `lot2/canaux.json`.), un rejeu sans doublon.
+3. Le lot 2 chargé, l'historique gardé et un rejeu sans doublon. Le canal VSO (vitrine sociale) passe de la famille « réseaux sociaux » à la famille « marketplace » le 2026-07-15 (inclus). Cette information arrive avec `lot2/canaux.json`.
 4. `outputs/export/*.csv` + `manifest.json`, puis le rapport Power BI actualisé.
 5. `outputs/app/index.html` : une mini-application locale de trois écrans.
 6. Une recommandation courte à la direction, appuyée sur les chiffres.

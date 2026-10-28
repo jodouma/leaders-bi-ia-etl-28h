@@ -1,0 +1,160 @@
+{
+  "mission": "M10",
+  "echantillon": true,
+  "lignes_csv": 12,
+  "doublons_exacts": 1,
+  "lignes_gardees": 6,
+  "factures_annulees_exclues": 1,
+  "unite_heures": "centièmes d'heure (750 = 7,5 h)",
+  "rejets": {
+    "total": 6,
+    "par_motif": {
+      "cle_inconnue": 2,
+      "id_conflit": 2,
+      "id_manquant": 1,
+      "quantite_invalide": 1
+    },
+    "par_source": {
+      "temps.csv": {
+        "cle_inconnue": 1,
+        "id_conflit": 2,
+        "id_manquant": 1,
+        "quantite_invalide": 1
+      },
+      "facturation.sqlite": {
+        "cle_inconnue": 1
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 31,
+    "dim_collaborateur": 15,
+    "dim_projet": 20,
+    "fact_temps": 6,
+    "fact_facture": 3
+  },
+  "indicateurs": {
+    "heures_centiemes": 2750,
+    "cout_charge_millimes": 923875,
+    "factures_millimes": 2100000,
+    "avoirs_millimes": 150000,
+    "facture_net_millimes": 1950000,
+    "marge_contribution_millimes": 1026125
+  },
+  "agregats": {
+    "par_projet": {
+      "INT01": {
+        "heures_centiemes": 200,
+        "cout_charge_millimes": 95000,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -95000
+      },
+      "PX01": {
+        "heures_centiemes": 1625,
+        "cout_charge_millimes": 538750,
+        "factures_millimes": 1200000,
+        "avoirs_millimes": 150000,
+        "facture_net_millimes": 1050000,
+        "marge_contribution_millimes": 511250
+      },
+      "PX02": {
+        "heures_centiemes": 925,
+        "cout_charge_millimes": 290125,
+        "factures_millimes": 900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 900000,
+        "marge_contribution_millimes": 609875
+      }
+    },
+    "par_client": {
+      "Boulangerie Essalem": {
+        "heures_centiemes": 1625,
+        "cout_charge_millimes": 538750,
+        "factures_millimes": 1200000,
+        "avoirs_millimes": 150000,
+        "facture_net_millimes": 1050000,
+        "marge_contribution_millimes": 511250
+      },
+      "Hôtel Corniche Bleue": {
+        "heures_centiemes": 925,
+        "cout_charge_millimes": 290125,
+        "factures_millimes": 900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 900000,
+        "marge_contribution_millimes": 609875
+      },
+      "Pixel Studio": {
+        "heures_centiemes": 200,
+        "cout_charge_millimes": 95000,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -95000
+      }
+    },
+    "par_type": {
+      "forfait": {
+        "heures_centiemes": 925,
+        "cout_charge_millimes": 290125,
+        "factures_millimes": 900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 900000,
+        "marge_contribution_millimes": 609875
+      },
+      "interne": {
+        "heures_centiemes": 200,
+        "cout_charge_millimes": 95000,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -95000
+      },
+      "régie": {
+        "heures_centiemes": 1625,
+        "cout_charge_millimes": 538750,
+        "factures_millimes": 1200000,
+        "avoirs_millimes": 150000,
+        "facture_net_millimes": 1050000,
+        "marge_contribution_millimes": 511250
+      }
+    },
+    "par_chef_projet": {
+      "Bilel Chaouch": {
+        "heures_centiemes": 200,
+        "cout_charge_millimes": 95000,
+        "factures_millimes": 0,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 0,
+        "marge_contribution_millimes": -95000
+      },
+      "Hela Mansour": {
+        "heures_centiemes": 1625,
+        "cout_charge_millimes": 538750,
+        "factures_millimes": 1200000,
+        "avoirs_millimes": 150000,
+        "facture_net_millimes": 1050000,
+        "marge_contribution_millimes": 511250
+      },
+      "Nour Jebali": {
+        "heures_centiemes": 925,
+        "cout_charge_millimes": 290125,
+        "factures_millimes": 900000,
+        "avoirs_millimes": 0,
+        "facture_net_millimes": 900000,
+        "marge_contribution_millimes": 609875
+      }
+    },
+    "par_mois": {
+      "2026-03": {
+        "heures_centiemes": 2750,
+        "cout_charge_millimes": 923875,
+        "factures_millimes": 2100000,
+        "avoirs_millimes": 150000,
+        "facture_net_millimes": 1950000,
+        "marge_contribution_millimes": 1026125
+      }
+    }
+  }
+}

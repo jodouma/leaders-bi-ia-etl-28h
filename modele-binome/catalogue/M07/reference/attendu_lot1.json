@@ -1,0 +1,531 @@
+{
+  "mission": "M07",
+  "entreprise": "FibreNet",
+  "lot": "lot1",
+  "etape": "initial",
+  "periode": {
+    "debut": "2026-01-01",
+    "fin": "2026-06-30"
+  },
+  "calcule_par": "générateur, depuis la vérité terrain (aucun ETL)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "sources": {
+    "facturation.csv": {
+      "lignes": 1722,
+      "encodage": "utf-8",
+      "separateur": ";"
+    },
+    "comptes.xlsx": {
+      "feuilles": [
+        "Comptes"
+      ],
+      "comptes": 205,
+      "ligne_entete": 3
+    },
+    "offres.json": {
+      "offres": 5,
+      "versions": 5
+    },
+    "abonnements.sqlite": {
+      "abonnement": 345,
+      "actif": 284,
+      "resilie": 58,
+      "annule": 3,
+      "motif_resiliation": 5
+    }
+  },
+  "nettoyage": {
+    "facturation.csv": {
+      "lignes_acceptees_nouvelles": 1688,
+      "doublons_exacts": 12,
+      "deja_charges": 0,
+      "formats_montants": 506,
+      "formats_dates": 384,
+      "casse_espaces": 183
+    },
+    "abonnements.sqlite": {
+      "annules_ignores": 3,
+      "abonnements_acceptes": 339,
+      "resilies_avant_2026_sans_ligne": 27,
+      "lignes_mois_nouvelles": 1688
+    }
+  },
+  "rejets": {
+    "total": 25,
+    "par_motif": {
+      "cle_inconnue": 9,
+      "id_conflit": 6,
+      "id_manquant": 5,
+      "quantite_invalide": 5
+    },
+    "par_source": {
+      "facturation.csv": {
+        "cle_inconnue": 6,
+        "id_conflit": 6,
+        "id_manquant": 5,
+        "quantite_invalide": 5
+      },
+      "abonnements.sqlite": {
+        "cle_inconnue": 3
+      }
+    }
+  },
+  "tables": {
+    "dim_date": 181,
+    "dim_compte": 205,
+    "dim_offre": 5,
+    "fact_facture": 1688,
+    "fact_abonnement_mois": 1688
+  },
+  "indicateurs": {
+    "actifs_fin_mois": 1657,
+    "mrr_millimes": 128465800,
+    "departs": 31,
+    "taux_depart": 0.018891,
+    "actifs_debut_mois": 1641,
+    "nouveaux": 47,
+    "facture_millimes": 130560900
+  },
+  "agregats": {
+    "par_mois": {
+      "2026-01": {
+        "actifs_fin_mois": 270,
+        "mrr_millimes": 20765200,
+        "departs": 4,
+        "taux_depart": 0.015094,
+        "actifs_debut_mois": 265,
+        "nouveaux": 9,
+        "facture_millimes": 20994800
+      },
+      "2026-02": {
+        "actifs_fin_mois": 273,
+        "mrr_millimes": 21253100,
+        "departs": 3,
+        "taux_depart": 0.011111,
+        "actifs_debut_mois": 270,
+        "nouveaux": 6,
+        "facture_millimes": 21382800
+      },
+      "2026-03": {
+        "actifs_fin_mois": 273,
+        "mrr_millimes": 21193100,
+        "departs": 11,
+        "taux_depart": 0.040293,
+        "actifs_debut_mois": 273,
+        "nouveaux": 11,
+        "facture_millimes": 22160200
+      },
+      "2026-04": {
+        "actifs_fin_mois": 278,
+        "mrr_millimes": 21452600,
+        "departs": 3,
+        "taux_depart": 0.010989,
+        "actifs_debut_mois": 273,
+        "nouveaux": 8,
+        "facture_millimes": 21662300
+      },
+      "2026-05": {
+        "actifs_fin_mois": 282,
+        "mrr_millimes": 21831300,
+        "departs": 2,
+        "taux_depart": 0.007194,
+        "actifs_debut_mois": 278,
+        "nouveaux": 6,
+        "facture_millimes": 21921100
+      },
+      "2026-06": {
+        "actifs_fin_mois": 281,
+        "mrr_millimes": 21970500,
+        "departs": 8,
+        "taux_depart": 0.028369,
+        "actifs_debut_mois": 282,
+        "nouveaux": 7,
+        "facture_millimes": 22439700
+      }
+    },
+    "par_gamme": {
+      "confort": {
+        "actifs_fin_mois": 787,
+        "mrr_millimes": 61131300,
+        "departs": 15,
+        "taux_depart": 0.019305,
+        "actifs_debut_mois": 777,
+        "nouveaux": 25,
+        "facture_millimes": 62279800
+      },
+      "essentiel": {
+        "actifs_fin_mois": 605,
+        "mrr_millimes": 27849500,
+        "departs": 14,
+        "taux_depart": 0.023102,
+        "actifs_debut_mois": 606,
+        "nouveaux": 13,
+        "facture_millimes": 28498100
+      },
+      "pro": {
+        "actifs_fin_mois": 265,
+        "mrr_millimes": 39485000,
+        "departs": 2,
+        "taux_depart": 0.007752,
+        "actifs_debut_mois": 258,
+        "nouveaux": 9,
+        "facture_millimes": 39783000
+      }
+    },
+    "par_offre": {
+      "FN-F100": {
+        "actifs_fin_mois": 481,
+        "mrr_millimes": 33621900,
+        "departs": 10,
+        "taux_depart": 0.020833,
+        "actifs_debut_mois": 480,
+        "nouveaux": 11,
+        "facture_millimes": 34320900
+      },
+      "FN-F20": {
+        "actifs_fin_mois": 234,
+        "mrr_millimes": 9336600,
+        "departs": 5,
+        "taux_depart": 0.021277,
+        "actifs_debut_mois": 235,
+        "nouveaux": 4,
+        "facture_millimes": 9536100
+      },
+      "FN-F300": {
+        "actifs_fin_mois": 306,
+        "mrr_millimes": 27509400,
+        "departs": 5,
+        "taux_depart": 0.016835,
+        "actifs_debut_mois": 297,
+        "nouveaux": 14,
+        "facture_millimes": 27958900
+      },
+      "FN-F50": {
+        "actifs_fin_mois": 371,
+        "mrr_millimes": 18512900,
+        "departs": 9,
+        "taux_depart": 0.024259,
+        "actifs_debut_mois": 371,
+        "nouveaux": 9,
+        "facture_millimes": 18962000
+      },
+      "FN-PRO1G": {
+        "actifs_fin_mois": 265,
+        "mrr_millimes": 39485000,
+        "departs": 2,
+        "taux_depart": 0.007752,
+        "actifs_debut_mois": 258,
+        "nouveaux": 9,
+        "facture_millimes": 39783000
+      }
+    },
+    "par_type_compte": {
+      "entreprise": {
+        "actifs_fin_mois": 1000,
+        "mrr_millimes": 92701500,
+        "departs": 14,
+        "taux_depart": 0.014213,
+        "actifs_debut_mois": 985,
+        "nouveaux": 29,
+        "facture_millimes": 93798300
+      },
+      "particulier": {
+        "actifs_fin_mois": 657,
+        "mrr_millimes": 35764300,
+        "departs": 17,
+        "taux_depart": 0.025915,
+        "actifs_debut_mois": 656,
+        "nouveaux": 18,
+        "facture_millimes": 36762600
+      }
+    },
+    "par_ville": {
+      "Ariana": {
+        "actifs_fin_mois": 308,
+        "mrr_millimes": 26987100,
+        "departs": 6,
+        "taux_depart": 0.019802,
+        "actifs_debut_mois": 303,
+        "nouveaux": 11,
+        "facture_millimes": 27494700
+      },
+      "Bizerte": {
+        "actifs_fin_mois": 110,
+        "mrr_millimes": 6489000,
+        "departs": 1,
+        "taux_depart": 0.009091,
+        "actifs_debut_mois": 110,
+        "nouveaux": 1,
+        "facture_millimes": 6558900
+      },
+      "Monastir": {
+        "actifs_fin_mois": 97,
+        "mrr_millimes": 7604100,
+        "departs": 1,
+        "taux_depart": 0.010638,
+        "actifs_debut_mois": 94,
+        "nouveaux": 4,
+        "facture_millimes": 7674000
+      },
+      "Nabeul": {
+        "actifs_fin_mois": 111,
+        "mrr_millimes": 8588100,
+        "departs": 3,
+        "taux_depart": 0.026786,
+        "actifs_debut_mois": 112,
+        "nouveaux": 2,
+        "facture_millimes": 8797800
+      },
+      "Sfax": {
+        "actifs_fin_mois": 248,
+        "mrr_millimes": 19837400,
+        "departs": 7,
+        "taux_depart": 0.027888,
+        "actifs_debut_mois": 251,
+        "nouveaux": 4,
+        "facture_millimes": 20286700
+      },
+      "Sousse": {
+        "actifs_fin_mois": 342,
+        "mrr_millimes": 27845600,
+        "departs": 7,
+        "taux_depart": 0.02029,
+        "actifs_debut_mois": 345,
+        "nouveaux": 4,
+        "facture_millimes": 28294900
+      },
+      "Tunis": {
+        "actifs_fin_mois": 441,
+        "mrr_millimes": 31114500,
+        "departs": 6,
+        "taux_depart": 0.014085,
+        "actifs_debut_mois": 426,
+        "nouveaux": 21,
+        "facture_millimes": 31453900
+      }
+    },
+    "par_mois_gamme": {
+      "2026-01 · confort": {
+        "actifs_fin_mois": 128,
+        "mrr_millimes": 9907200,
+        "departs": 2,
+        "taux_depart": 0.016,
+        "actifs_debut_mois": 125,
+        "nouveaux": 5,
+        "facture_millimes": 10047000
+      },
+      "2026-01 · essentiel": {
+        "actifs_fin_mois": 100,
+        "mrr_millimes": 4600000,
+        "departs": 2,
+        "taux_depart": 0.019802,
+        "actifs_debut_mois": 101,
+        "nouveaux": 1,
+        "facture_millimes": 4689800
+      },
+      "2026-01 · pro": {
+        "actifs_fin_mois": 42,
+        "mrr_millimes": 6258000,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 39,
+        "nouveaux": 3,
+        "facture_millimes": 6258000
+      },
+      "2026-02 · confort": {
+        "actifs_fin_mois": 132,
+        "mrr_millimes": 10226800,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 128,
+        "nouveaux": 4,
+        "facture_millimes": 10226800
+      },
+      "2026-02 · essentiel": {
+        "actifs_fin_mois": 97,
+        "mrr_millimes": 4470300,
+        "departs": 3,
+        "taux_depart": 0.03,
+        "actifs_debut_mois": 100,
+        "nouveaux": 0,
+        "facture_millimes": 4600000
+      },
+      "2026-02 · pro": {
+        "actifs_fin_mois": 44,
+        "mrr_millimes": 6556000,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 42,
+        "nouveaux": 2,
+        "facture_millimes": 6556000
+      },
+      "2026-03 · confort": {
+        "actifs_fin_mois": 129,
+        "mrr_millimes": 10037100,
+        "departs": 8,
+        "taux_depart": 0.060606,
+        "actifs_debut_mois": 132,
+        "nouveaux": 5,
+        "facture_millimes": 10656300
+      },
+      "2026-03 · essentiel": {
+        "actifs_fin_mois": 100,
+        "mrr_millimes": 4600000,
+        "departs": 1,
+        "taux_depart": 0.010309,
+        "actifs_debut_mois": 97,
+        "nouveaux": 4,
+        "facture_millimes": 4649900
+      },
+      "2026-03 · pro": {
+        "actifs_fin_mois": 44,
+        "mrr_millimes": 6556000,
+        "departs": 2,
+        "taux_depart": 0.045455,
+        "actifs_debut_mois": 44,
+        "nouveaux": 2,
+        "facture_millimes": 6854000
+      },
+      "2026-04 · confort": {
+        "actifs_fin_mois": 130,
+        "mrr_millimes": 10107000,
+        "departs": 2,
+        "taux_depart": 0.015504,
+        "actifs_debut_mois": 129,
+        "nouveaux": 3,
+        "facture_millimes": 10266800
+      },
+      "2026-04 · essentiel": {
+        "actifs_fin_mois": 104,
+        "mrr_millimes": 4789600,
+        "departs": 1,
+        "taux_depart": 0.01,
+        "actifs_debut_mois": 100,
+        "nouveaux": 5,
+        "facture_millimes": 4839500
+      },
+      "2026-04 · pro": {
+        "actifs_fin_mois": 44,
+        "mrr_millimes": 6556000,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 44,
+        "nouveaux": 0,
+        "facture_millimes": 6556000
+      },
+      "2026-05 · confort": {
+        "actifs_fin_mois": 133,
+        "mrr_millimes": 10336700,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 130,
+        "nouveaux": 3,
+        "facture_millimes": 10336700
+      },
+      "2026-05 · essentiel": {
+        "actifs_fin_mois": 104,
+        "mrr_millimes": 4789600,
+        "departs": 2,
+        "taux_depart": 0.019231,
+        "actifs_debut_mois": 104,
+        "nouveaux": 2,
+        "facture_millimes": 4879400
+      },
+      "2026-05 · pro": {
+        "actifs_fin_mois": 45,
+        "mrr_millimes": 6705000,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 44,
+        "nouveaux": 1,
+        "facture_millimes": 6705000
+      },
+      "2026-06 · confort": {
+        "actifs_fin_mois": 135,
+        "mrr_millimes": 10516500,
+        "departs": 3,
+        "taux_depart": 0.022556,
+        "actifs_debut_mois": 133,
+        "nouveaux": 5,
+        "facture_millimes": 10746200
+      },
+      "2026-06 · essentiel": {
+        "actifs_fin_mois": 100,
+        "mrr_millimes": 4600000,
+        "departs": 5,
+        "taux_depart": 0.048077,
+        "actifs_debut_mois": 104,
+        "nouveaux": 1,
+        "facture_millimes": 4839500
+      },
+      "2026-06 · pro": {
+        "actifs_fin_mois": 46,
+        "mrr_millimes": 6854000,
+        "departs": 0,
+        "taux_depart": 0.0,
+        "actifs_debut_mois": 45,
+        "nouveaux": 1,
+        "facture_millimes": 6854000
+      }
+    }
+  },
+  "scd2": {
+    "table": "dim_offre",
+    "cle_metier": "offre_id",
+    "attribut": "gamme",
+    "versions": [
+      {
+        "cle_metier": "FN-F100",
+        "attribut": "confort",
+        "valid_from": "2023-06-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "FN-F20",
+        "attribut": "essentiel",
+        "valid_from": "2023-01-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "FN-F300",
+        "attribut": "confort",
+        "valid_from": "2024-03-01",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "FN-F50",
+        "attribut": "essentiel",
+        "valid_from": "2023-01-02",
+        "valid_to": null
+      },
+      {
+        "cle_metier": "FN-PRO1G",
+        "attribut": "pro",
+        "valid_from": "2024-09-02",
+        "valid_to": null
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "FN-F300",
+        "date": "2026-06-30",
+        "attribut": "confort"
+      },
+      {
+        "cle_metier": "FN-F300",
+        "date": "2026-07-14",
+        "attribut": "confort"
+      },
+      {
+        "cle_metier": "FN-F300",
+        "date": "2026-07-15",
+        "attribut": "confort"
+      },
+      {
+        "cle_metier": "FN-F100",
+        "date": "2026-07-15",
+        "attribut": "confort"
+      }
+    ]
+  }
+}

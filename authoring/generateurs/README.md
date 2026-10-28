@@ -7,16 +7,28 @@ Ces scripts fabriquent les données **100 % synthétiques** de chaque mission et
 Depuis `github/` :
 
 ```bash
-.venv/bin/python authoring/generateurs/mission00_commerce360.py
+.venv/bin/python authoring/generateurs/mission00_commerce360.py          # une mission
+for g in authoring/generateurs/mission*.py; do .venv/bin/python "$g"; done   # les onze
+.venv/bin/python authoring/generateurs/verifier_reproductibilite.py      # 11 OK attendus (ne pas lancer pendant qu'un autre agent génère)
 ```
 
-Le script réécrit uniquement `modele-binome/tronc-commun/{fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/, sources/, reference/}`, met à jour `v7-data.json` et, si le dossier formateur existe, écrit la vérité brute privée dans `formateur/fable-v7-solen-22h/solutions/verite_terrain/<mission>/` (jamais dans le dépôt public).
+Un script réécrit uniquement le dossier de SA mission (`modele-binome/tronc-commun/` ou `modele-binome/catalogue/MNN/` : `fiche_mission.md, cahier_des_charges.md, dictionnaire.md, echantillon/, sources/, reference/`), fusionne SON bloc dans `v7-data.json` et, si le dossier formateur existe, écrit la vérité brute privée dans `formateur/fable-v7-solen-22h/solutions/verite_terrain/<mission>/` (jamais dans le dépôt public).
 
 Reproductible : deux exécutions donnent les mêmes octets (graine fixe, classeur Excel zippé avec des dates figées, SVG avec `svg.hashsalt` fixe, PNG sans métadonnées variables).
 
-| Mission | Script | Graine | Taille générée |
-|---|---|---|---|
-| 00 tronc commun — Maison Zitouna | `mission00_commerce360.py` (+ `textes_mission00.py`) | 260001 | ≈ 640 Ko |
+| Mission | Script (+ `textes_missionNN.py`) | Graine | Taille | CSV de faits lot1 / lot2 (lignes) | Faits après lot2 | Rejets lot1 / lot2 | Nombre clé (après lot2) |
+|---|---|---|---|---|---|---|---|
+| 00 tronc commun — Maison Zitouna | `mission00_commerce360.py` | 260001 | ≈ 626 Ko | `ventes.csv` 1998 / 413 | `fact_vente` 2345 · `fact_retour` 99 | 26 / 10 | Ventes nettes : 91 444,460 TND |
+| M01 — Carthage Market | `mission01_carthage_market.py` | 260101 | ≈ 731 Ko | `ventes.csv` 2184 / 449 | `fact_vente` 2570 · `fact_retour` 80 | 24 / 10 | Ventes nettes : 21 880,226 TND |
+| M02 — Souk Express | `mission02_souk_express.py` | 260202 | ≈ 651 Ko | `commandes.csv` 2085 / 488 | `fact_commande` 2510 · `fact_remboursement` 159 | 25 / 10 | CA net : 248 286,934 TND |
+| M03 — Medina Distribution | `mission03_medina_distribution.py` | 260003 | ≈ 800 Ko | `factures.csv` 2087 / 428 | `fact_facture` 2458 · `fact_avoir` 126 | 24 / 10 | Marge commerciale : 39 074,380 TND |
+| M04 — Colis Rapide | `mission04_colis_rapide.py` | 260004 | ≈ 1025 Ko | `colis.csv` 2116 / 444 | `fact_colis` 2497 | 29 / 11 | Ponctualité : 83,82 % |
+| M05 — Académie Nour | `mission05_academie_nour.py` | 260005 | ≈ 790 Ko | `presences.csv` 1958 / 456 | `fact_presence` 2353 · `fact_paiement` 455 | 26 / 10 | Taux d'assiduité : 82,53 % |
+| M06 — Dar Azur | `mission06_dar_azur.py` | 260006 | ≈ 911 Ko | `sejours.csv` 1938 / 494 | `fact_sejour` 2360 · `fact_annulation` 135 | 29 / 13 | Taux d'occupation : 44,48 % |
+| M07 — FibreNet | `mission07_fibrenet.py` | 260007 | ≈ 793 Ko | `facturation.csv` 1722 / 600 | `fact_facture` 2270 · `fact_abonnement_mois` 2270 | 25 / 13 | MRR (revenu mensuel récurrent) : 23 158,100 TND (août) |
+| M08 — TechniServ | `mission08_techniserv.py` | 260008 | ≈ 1050 Ko | `interventions.csv` 1593 / 491 | `fact_intervention` 2030 · `fact_revenu_contrat` 78 | 26 / 10 | Marge de service : 104 125,500 TND |
+| M09 — Scène Libre | `mission09_scene_libre.py` | 260009 | ≈ 694 Ko | `billets.csv` 2380 / 441 | `fact_billet` 2757 · `fact_remboursement` 268 | 25 / 10 | Recettes nettes : 109 866,930 TND |
+| M10 — Pixel Studio | `mission10_pixel_studio.py` | 261010 | ≈ 747 Ko | `temps.csv` 2015 / 426 | `fact_temps` 2384 · `fact_facture` 86 | 24 / 11 | Marge de contribution : 132 912,525 TND |
 
 Versions utilisées pour la génération de référence : Python 3.13.17 · pandas 3.1.0 · openpyxl 3.1.5 · matplotlib 3.11.2 · pytest 9.2.0. Le code n'utilise que la bibliothèque standard + openpyxl + matplotlib.
 
@@ -47,13 +59,20 @@ Un script `missionNN_<nom>.py` de 150 à 250 lignes, plus ses textes :
 1. Définir `TABLES` (`table_dim_date()` + dimensions + faits ; une dimension `dimension_scd2` avec `valid_from`/`valid_to` nullable) et un `MissionSpec` : textes, `Source`s, `Indicateur`s (formule française + agrégat SQL sur la vue), `vue_analyse` (une ligne par mouvement : colonnes d'axes + colonnes additives), `axes`, `SCD2` (faits concernés + dates frontières), `visuels`.
 2. Générer la vérité (`rng_mission(graine)`), puis pour chaque lot : `construire_csv(evenements, ChampsCSV(...), Doses(...), rng, nouvel_id, rejouees)` ; écrire les sources avec `ecrire_csv` (option `encodage="cp1252"`), `ecrire_excel([Feuille…])`, `ecrire_json`, `ecrire_sqlite(ddl, données)`.
 3. Remplir un `LotResultat` par lot (comptes, nettoyage, rejets par source, **état cumulé** des tables de vérité, bloc incrément) et appeler `produire_reference(spec, lots)`, puis l'échantillon (`calculer_attendu_echantillon`), `exporter_v7_data` et `ecrire_verite_privee`.
-4. Vérifier : taille < 2 Mo, deux exécutions identiques, puis la solution de référence (`solutions/solen_ref`, un adaptateur de plus) passe `python -m controles.verifier --mission MNN --etape tout`.
+
+Ce que le cadre écrit seul (ne pas le recoder dans un script de mission) :
+
+- **Documents** : `MissionSpec.regle_a_clarifier` (`question`, `options`, `decision`, `consequence` facultatif), `variantes` (3), `ecrans_app` (3 écrans) + `parcours_app` (démonstration conseillée), `question_decision` (décision attendue, fiche et cahier), `sections_cahier` (sections propres à la mission, numérotées à partir du § 13), `regle_mois` (phrase du § 9), `scd2.precisions` (puces du § 7), `scd2.libelle_attribut`, `complement_reference` (texte ajouté à `reference/README.md`). Un texte peut être une fonction `attendus → texte` quand il cite des valeurs de référence.
+- **Unités d'indicateur** : `millimes`, `ratio`, `nombre`, `jours`, `heures`, `centiemes_heure` (documents : « 2,41 jours », « 20,18 h » ; le vérificateur compare `ratio`/`jours`/`heures` avec la tolérance du contrat).
+- **Anomalies** : `Doses.quantites_invalides` remplace la liste par défaut quand « 1.5 » est une valeur valable (poids, heures). M04, M05 et M10 gardent leur passage local (même résultat octet pour octet, l'ordre d'affectation diffère).
+- **Graphiques** : `empile` et `barres` (légende sous le graphique, axe sans « () » pour un comptage ; `barres` accepte `top`, `horizontal`, étiquettes inclinées au-delà de 8 valeurs), `rejets`, et `fonction` (`dessiner(spec, con, attendus, base)`) pour un graphique vraiment propre à la mission, listé dans `reference/README.md` comme les autres.
+4. Vérifier : taille < 1,5 Mo (`TAILLE_MAX_MISSION`), deux exécutions identiques, puis la solution de référence (`solutions/solen_ref`, un adaptateur de plus) passe `python -m controles.verifier --mission MNN --etape tout`.
 
 Les 9 anomalies standard (contrat § 5) : doublon exact, `id_conflit`, `id_manquant`, `cle_inconnue`, format décimal, format date, casse/espaces, `quantite_invalide`, encodage (`ecrire_csv(..., encodage="cp1252")` pour M02 et M06).
 
 ## v7-data.json
 
-Exporte, par mission, les vérités de l'échantillon et les nombres clés (indicateurs, tables, rejets, versions SCD2, agrégats par axe) pour le générateur de schémas. Montants en millimes. Ne pas éditer à la main.
+Un bloc par mission (`missions.<code>`), écrit par `exporter_v7_data` à chaque génération : vérités de l'échantillon et nombres clés (indicateurs et unités, tables, rejets, nettoyage, versions SCD2, frontières, agrégats par axe) pour le générateur de schémas. Fusion par code de mission, écriture atomique : générer une mission ne touche jamais le bloc d'une autre (plus d'option `--v7-data`, plus de fichiers `verite_terrain/M0x/v7_data_M0x.json`). Montants en millimes. Ne pas éditer à la main.
 
 ## Décisions de format fixées ici
 

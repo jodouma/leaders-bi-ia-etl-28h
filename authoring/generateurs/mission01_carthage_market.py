@@ -1,11 +1,9 @@
 """Mission M01 — Réseau de magasins : Carthage Market (franchise).
 
     python authoring/generateurs/mission01_carthage_market.py              # depuis github/
-    python authoring/generateurs/mission01_carthage_market.py --v7-data    # + met à jour v7-data.json
 
 Écrit modele-binome/catalogue/M01/{fiche_mission.md, cahier_des_charges.md, dictionnaire.md,
-echantillon/, sources/lot1/, sources/lot2/, reference/} et la vérité privée du formateur.
-v7-data.json (fichier partagé entre missions) n'est mis à jour qu'avec --v7-data.
+echantillon/, sources/lot1/, sources/lot2/, reference/}, le bloc M01 de v7-data.json et la vérité privée du formateur.
 """
 from __future__ import annotations
 
@@ -17,12 +15,11 @@ from common import (ChampsCSV, Doses, Feuille, Lot, LotResultat, Table, Colonne,
                     ecrire_excel, ecrire_json, ecrire_sqlite, preparer_dossier, produire_reference,
                     calculer_attendu_echantillon, exporter_v7_data, ecrire_verite_privee, format_montant,
                     lire_montant_millimes, tnd_fr, pct_fr, md_tableau, taille_dossier, MOIS_FR,
-                    entrepot_verite, indicateur_dict, PALETTE, SERIES, _plt, _sauver, _nombre_fr, _echelle)
+                    TAILLE_MAX_MISSION)
 from textes_mission01 import SPEC_TEXTES
 
 GRAINE = 260101
 CODE = "M01"
-TAILLE_MAX = 1_500_000                       # consigne de l'édition pour un dossier de mission catalogue
 # code, nom, famille, prix, coût (millimes), poids de vente
 PRODUITS = [("C101", "Semoule fine 1 kg", "EPI", 1350, 980, 30),
             ("C102", "Pâtes spaghetti 500 g", "EPI", 1150, 760, 28),
@@ -358,60 +355,6 @@ Une virgule ou un point sépare les décimales : `21,5` = `21.500` = 21 500 mill
 """
 
 
-# --------------------------------------------------------------------------- visuel local
-def visuel_empile_bas(spec, con, v: dict, base) -> None:
-    """Barres empilées comme common.visuel_empile, mais légende SOUS le graphique (5 régions : la légende
-    du cadre commun recouvrait la barre de mars). Type de visuel « empile_bas », ignoré par produire_reference."""
-    from matplotlib.ticker import FuncFormatter
-    plt = _plt()
-    ind = indicateur_dict(next(i for i in spec.indicateurs if i.code == v["indicateur"]))
-    rows = con.execute(f"WITH mouvements AS ({spec.vue_analyse}) SELECT {v['x']}, {v['serie']}, {ind['sql']} "
-                       f"FROM mouvements GROUP BY 1, 2 ORDER BY 1, 2").fetchall()
-    xs = sorted({r[0] for r in rows})
-    series = list(dict.fromkeys(v.get("ordre_series") or sorted({r[1] for r in rows})))
-    div, unite = _echelle(ind)
-    fig, ax = plt.subplots(figsize=(8.5, 4.8))
-    bas = [0.0] * len(xs)
-    for k, s in enumerate(series):
-        val = [next((r[2] for r in rows if r[0] == x and r[1] == s), 0) / div for x in xs]
-        ax.bar(xs, val, bottom=bas, label=s, color=SERIES[k % len(SERIES)], width=0.65)
-        bas = [a + b for a, b in zip(bas, val)]
-    ax.set_title(v["titre"], color=PALETTE["deep"], fontweight="bold", loc="left")
-    ax.set_ylabel(f"{ind['libelle']} ({unite})")
-    ax.set_xlabel(v.get("libelle_x", v["x"]))
-    ax.yaxis.set_major_formatter(FuncFormatter(_nombre_fr))
-    ax.legend(title=v.get("libelle_serie", v["serie"]), frameon=False, ncol=len(series), loc="upper center",
-              bbox_to_anchor=(0.5, -0.16))
-    ax.grid(axis="y", color=PALETTE["pale"])
-    ax.set_axisbelow(True)
-    _sauver(fig, base)
-    plt.close(fig)
-
-
-# --------------------------------------------------------------------------- compléments du cahier
-def completer_cahier(spec, dossier) -> None:
-    """Le cadre commun n'écrit dans le cahier ni les variantes ni le parcours de l'app : on les ajoute ici."""
-    f = dossier / "cahier_des_charges.md"
-    q = spec.regle_a_clarifier
-    variantes = "\n".join(f"{k}. {v}" for k, v in enumerate(spec.variantes, 1))
-    ecrans = "\n".join(f"{k}. **{t}** — {c}" for k, (t, c) in enumerate(spec.ecrans_app, 1))
-    f.write_text(f.read_text(encoding="utf-8") + f"""
-Options étudiées :
-
-{q['options']}
-
-## 13. Trois variantes (évolutions possibles en soutenance)
-
-{variantes}
-
-## 14. Parcours de démonstration de l'application (3 écrans)
-
-{ecrans}
-
-Pendant la démonstration : choisir une période et un magasin dans les filtres, lire un indicateur et son unité, puis montrer sur l'écran 2 que les ventes de HAM avant le 2026-07-15 restent en « Cap Bon ».
-""", encoding="utf-8")
-
-
 # --------------------------------------------------------------------------- programme principal
 def main(argv: list[str]) -> None:
     spec = MissionSpec(**SPEC_TEXTES, lots=[LOT1, LOT2], graine=GRAINE, tables=TABLES)
@@ -464,11 +407,6 @@ def main(argv: list[str]) -> None:
         assert b.compteurs["lignes_acceptees_nouvelles"] == len(ventes_cumul) - (0 if lot is LOT1 else len(ventes1))
 
     attendus = produire_reference(spec, lots)
-    con = entrepot_verite(spec, lots[-1].tables_verite, LOT2.fin)
-    for v in spec.visuels:
-        if v["type"] == "empile_bas":
-            visuel_empile_bas(spec, con, v, dossier / "reference" / "visuels" / v["fichier"])
-    completer_cahier(spec, dossier)
     # double contrôle Python pur (sans SQL) des quatre indicateurs
     vt, rt = ventes1 + ventes2, acc1 + acc2
     brut = sum(v["montant"] for v in vt)
@@ -482,8 +420,7 @@ def main(argv: list[str]) -> None:
     assert abs(ind["taux_retour"] - ret / brut) < 1e-6
 
     ech = produire_echantillon(spec, dossier / "echantillon")
-    if "--v7-data" in argv:
-        exporter_v7_data(spec, ech, attendus)
+    exporter_v7_data(spec, ech, attendus)
     ent_v = ["lot", "ligne_id", "ticket_id", "date_vente", "magasin", "produit", "quantite", "prix_unitaire_millimes",
              "code_promo", "remise_millimes", "montant_millimes"]
     ecrire_verite_privee(spec, {
@@ -503,7 +440,7 @@ def main(argv: list[str]) -> None:
                               [{"lot": lot, **r} for lot, b in (("lot1", b1), ("lot2", b2)) for r in b.detail_rejets()]),
     })
     taille = taille_dossier(dossier)
-    assert taille < TAILLE_MAX, taille
+    assert taille < TAILLE_MAX_MISSION, taille
     print(f"Mission {CODE} écrite dans {dossier} ({taille / 1024:.0f} Ko)")
     for a in attendus.values():
         i = a["indicateurs"]

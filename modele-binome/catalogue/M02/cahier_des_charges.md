@@ -12,7 +12,7 @@ Les sources sont **lues, jamais modifiées**.
 
 | Fichier | Type | Contenu | Pièges connus |
 |---|---|---|---|
-| `commandes.csv` | csv | Lignes de commande exportées du site (séparateur `;`). Lot 1 en UTF-8, **lot 2 en Windows-1252 (`cp1252`)**. | formats de montants et de dates mélangés ; remise vide, `0` ou montant ; doublons ; identifiants vides ou en conflit ; codes inconnus ; quantités invalides ; lot2 : fichier en cp1252 (lu en UTF-8, il plante sur `Gabès`) ; lot2 : recopie des commandes des 29 et 30 juin |
+| `commandes.csv` | csv | Lignes de commande exportées du site (séparateur `;`). Lot 1 en UTF-8, **lot 2 en Windows-1252 (`cp1252`)**. | formats de montants et de dates mélangés ; remise vide, `0` ou montant ; doublons ; identifiants vides ou en conflit ; codes inconnus ; quantités invalides ; lot2 : fichier en cp1252 (lu en UTF-8, il plante sur les accents : `août`, `Gabès`) ; lot2 : recopie des commandes des 29 et 30 juin |
 | `produits.xlsx` | excel | Feuille `Produits` (titre au-dessus, en-têtes à la ligne 3). | titre au-dessus du tableau ; nombres stockés comme texte |
 | `canaux.json` | json | Référentiel des canaux de vente avec l'historique de leur famille. | lot2 : une deuxième version pour VSO (marketplace au 2026-07-15) |
 | `operations.sqlite` | sqlite | Base opérationnelle du service client : tables `remboursement`, `motif_remboursement`, `parametre`. | statuts EN_COURS et REFUSE (à ignorer) ; remboursements vers une ligne inconnue ; pas de canal dans la table : il vient de la commande ; lot2 : recopie des remboursements depuis le 20 juin |
@@ -40,7 +40,7 @@ Les sources sont **lues, jamais modifiées**.
 |---|---|
 | `id_conflit` | même identifiant sur deux lignes différentes : les deux lignes sont rejetées |
 | `id_manquant` | identifiant vide |
-| `cle_inconnue` | code absent du référentiel (produit, boutique, ligne de vente…) |
+| `cle_inconnue` | code absent du référentiel ou ligne d'origine inconnue |
 | `quantite_invalide` | quantité nulle, négative ou non entière |
 
 Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le motif) :
@@ -53,7 +53,7 @@ Ordre des contrôles sur chaque ligne (le premier problème trouvé donne le mot
 6. `ligne_id` déjà présent dans l'entrepôt → ignorée (rejeu), pas un rejet.
 7. Remboursements : statut autre que `REMBOURSE` ignoré → `ref_ligne_commande` absente de `fact_commande` = `cle_inconnue` (numero_ligne = `remboursement.id`) → `numero_remboursement` déjà chargé = ignoré.
 
-`outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `ventes.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
+`outputs/rejets.csv` : une ligne par ligne source rejetée, en UTF-8, avec au moins les colonnes `lot` (`lot1` ou `lot2`), `source` (nom du fichier, ex. `commandes.csv`), `numero_ligne` (numéro de ligne dans le fichier, l'en-tête étant la ligne 1 ; pour la base SQLite, l'identifiant de la ligne), `motif`. Le fichier garde les rejets de tous les lots ; relancer un lot **remplace** ses rejets (pas de doublon). Les doublons exacts ne sont pas des rejets : on garde une occurrence (on peut les noter avec le motif `doublon_exact`, facultatif).
 
 ## 5. Règles métier
 
@@ -167,7 +167,7 @@ Le canal VSO (vitrine sociale) passe de la famille « réseaux sociaux » à la 
 | Panier moyen net | TND (stocké en millimes) | CA net / nombre de commandes distinctes, arrondi au millime |
 | Unités nettes | nombre | unités commandées − unités remboursées |
 
-Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (ventes et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
+Le calcul de référence est fait sur la vue « mouvements » de `reference/contrat_entrepot.json` (faits et ajustements réunis). Un mouvement est rangé dans le mois **de sa propre date**.
 
 ## 10. Sorties
 
@@ -189,12 +189,12 @@ python -m controles.verifier --mission M02 --etape tout
 
 Une cliente a commandé le 30 juin sur la vitrine sociale (VSO, alors « réseaux sociaux ») et a été remboursée le 20 juillet (VSO est alors « marketplace »). Dans quelle famille compte ce remboursement ? — **Décision :** B. Chaque mouvement (ligne de commande ou remboursement) est rattaché à la version du canal valable à SA date et compté dans SON mois. Le remboursement du 20 juillet compte donc en « marketplace », en juillet. C'est la même règle que pour les commandes, et c'est ce que vérifie `controles/verifier.py`.
 
-### Les deux options étudiées
+Options étudiées :
 
 - A : famille valable à la date de la **commande** (« réseaux sociaux ») : il faut relier le remboursement à la version de la commande.
 - B : famille valable à la date du **remboursement** (« marketplace ») : chaque mouvement suit sa propre date.
 
-## 13. Trois variantes (évolutions possibles demandées en soutenance)
+## 13. Trois variantes (évolutions possibles)
 
 1. Nouvel indicateur : taux de remise = remises / CA brut, par canal et par famille.
 2. Nouvelle règle : un remboursement plus de 30 jours après la commande est refusé → nouveau motif `remboursement_hors_delai`.

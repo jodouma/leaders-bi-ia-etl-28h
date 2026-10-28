@@ -1,0 +1,1091 @@
+{
+ "title": "Mission 07 · FibreNet : guide de mission",
+ "cover_title": "Mission 07 · Abonnements\nFibreNet",
+ "subtitle": "Guide de mission du catalogue · abonnés actifs fin de mois, MRR, départs, taux de départ · une facture mensuelle par fait",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Guide de mission M07 · FibreNet",
+ "output_filename": "missions/M07_guide.pdf",
+ "header_label": "SOLEN  /  MISSION M07 · FIBRENET",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital et FibreNet (fictifs)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · CLIENT FICTIF FIBRENET",
+  "flow": "Factures, comptes, offres, abonnements  →  étoile  →  app et Power BI",
+  "stats": [
+   [
+    "287",
+    "ABONNÉS ACTIFS FIN AOÛT"
+   ],
+   [
+    "2,00 %",
+    "TAUX DE DÉPART JAN → AOÛT"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "M07 / GUIDE DE MISSION"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../../docs/setup/sources.json",
+ "verification_scope": "Chiffres repris de modele-binome/catalogue/M07/reference/README.md (tableau mois par mois), attendu_lot1.json, attendu_lot2.json et echantillon/attendu.md. Effets de l’option A : calcul de raisonnement. Solution de référence passée au vérificateur strict sur macOS ; pas d’essai Ubuntu/WSL2, CI, Power BI ni étudiant.",
+ "pages": [
+  {
+   "kicker": "M07 · FIBRENET · SOMMAIRE",
+   "title": "Sommaire",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce guide accompagne votre binôme sur la **mission 07**, choisie dans le catalogue (livret 04). Vous appliquez la méthode du tronc commun à un fournisseur d’internet fictif, **FibreNet**. Codex écrit le code ; vous prévoyez, contrôlez, expliquez et décidez. Première PR de la mission : remplacer le contenu de `mission.txt` par `M07`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous y faites",
+      "Page"
+     ],
+     "rows": [
+      [
+       "La mission et son périmètre",
+       "Le client, la demande, ce qui est dedans et dehors",
+       "3"
+      ],
+      [
+       "Le cahier des charges en bref",
+       "Stocks et flux, grain, tables, critères d’acceptation",
+       "4"
+      ],
+      [
+       "Calculer l’échantillon à la main",
+       "Le calcul **avant** Codex, puis la correction",
+       "6"
+      ],
+      [
+       "Les sources et leurs pièges",
+       "Ce qui sera gardé, ignoré ou rejeté",
+       "8"
+      ],
+      [
+       "Étapes A → B → C",
+       "Charger, compléter et rejouer, livrer",
+       "9"
+      ],
+      [
+       "La règle à clarifier et les variantes",
+       "Défendre la décision, choisir une variante",
+       "12"
+      ],
+      [
+       "La démonstration",
+       "Trois écrans et un chiffre filtré contrôlé",
+       "13"
+      ],
+      [
+       "À ce stade, je sais…",
+       "Le bilan et ce qui a été vérifié",
+       "14"
+      ]
+     ],
+     "widths": [
+      2.2,
+      3,
+      0.5
+     ],
+     "toc_refs": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11,
+      12
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À garder ouvert"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Quoi",
+      "Où, dans votre dépôt"
+     ],
+     "rows": [
+      [
+       "Fiche, cahier des charges, dictionnaire",
+       "`catalogue/M07/` : le cahier gagne en cas de doute (§ 13 surtout)"
+      ],
+      [
+       "L’échantillon et son calcul",
+       "`catalogue/M07/echantillon/` et `attendu.md`"
+      ],
+      [
+       "Les valeurs de référence",
+       "`catalogue/M07/reference/README.md` (tableau mois par mois) et `attendu_lot*.json`"
+      ],
+      [
+       "Votre journal",
+       "`notes/JOURNAL.md` : état, décision, preuve, prochain objectif"
+      ]
+     ],
+     "widths": [
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · LA MISSION",
+   "title": "La mission",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**FibreNet** (fictif) vend des abonnements internet par fibre à des particuliers et à des entreprises, dans sept villes. Chaque abonnement reçoit une facture par mois. Les factures sortent dans un CSV, les comptes dans un classeur Excel, les offres et leurs prix dans un JSON ; les dates de début et de fin des abonnements vivent dans la base de l’outil opérationnel."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Nous gagnons des clients, mais nous en perdons aussi. Je veux voir, mois par mois, par gamme d’offre et par type de compte : le nombre d’abonnés actifs en fin de mois, le revenu mensuel récurrent (MRR), les départs du mois et le taux de départ. Et je veux savoir ce que vous avez dû écarter dans les fichiers, et pourquoi.\nLe 15 juillet, l’offre Fibre 300 passe de la gamme confort à la gamme pro, et son prix passe de 89,900 à 99,900 TND par mois. Les chiffres du premier semestre doivent rester en confort, à l’ancien prix.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "section",
+     "text": "Les décisions que vos chiffres éclairent"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Le parc grandit-il vraiment ?** Abonnés actifs fin de mois, nouveaux et départs, mois par mois.",
+      "**Qui part, et où agir ?** Le taux de départ par gamme et par type de compte ; l’effet du nouveau prix de Fibre 300 sur le MRR."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Vous livrez** : `outputs/rejets.csv`, l’étoile `outputs/entrepot.sqlite` avec les deux lots et un rejeu sans doublon, l’export et le rapport Power BI actualisé, `outputs/app/index.html`, et une recommandation dans `notes/recommandation.md`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Dans le périmètre",
+      "Hors périmètre"
+     ],
+     "rows": [
+      [
+       "5 offres, 3 gammes, 2 types de compte ; janvier → août 2026",
+       "abonnements résiliés avant 2026 (aucune ligne)"
+      ],
+      [
+       "abonnements acceptés, factures acceptées",
+       "abonnements `ANNULE` (jamais installés : ignorés)"
+      ],
+      [
+       "MRR au prix de l’offre valable en fin de mois",
+       "paiements reçus, impayés, coûts du réseau : le MRR n’est pas un bénéfice"
+      ],
+      [
+       "gamme et prix historisés (FN-F300 au 2026-07-15)",
+       "motif de résiliation : présent dans la base, non chargé"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · LE CAHIER DES CHARGES",
+   "title": "Le cahier des charges en bref",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Deux faits, deux grains.** `fact_facture` : une **facture mensuelle** d’abonnement (clé `facture_id`), lue dans le CSV. `fact_abonnement_mois` : un **abonnement × un mois** où il est actif au moins un jour, **calculé** depuis les dates de `abonnements.sqlite` (cahier § 13). Formules exactes du cahier (§ 9) ; les quatre demandées sont en gras."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Formule exacte"
+     ],
+     "rows": [
+      [
+       "**Abonnés actifs fin de mois**",
+       "nombre",
+       "abonnements actifs le dernier jour du mois (`actif_fin` = 1) : valeur d’**un** mois"
+      ],
+      [
+       "**MRR**",
+       "TND",
+       "somme des mensualités des abonnés actifs en fin de mois, au prix de la version valable le dernier jour"
+      ],
+      [
+       "**Départs du mois**",
+       "nombre",
+       "abonnements dont la `date_fin` tombe dans le mois"
+      ],
+      [
+       "**Taux de départ**",
+       "%",
+       "départs ÷ actifs en début de mois (sur plusieurs mois : somme ÷ somme)"
+      ],
+      [
+       "Actifs début · nouveaux",
+       "nombre",
+       "actifs le dernier jour du mois précédent · `date_debut` dans le mois"
+      ],
+      [
+       "Montant facturé",
+       "TND",
+       "somme des factures acceptées, au mois de leur date de facture"
+      ]
+     ],
+     "widths": [
+      1.7,
+      0.6,
+      3.1
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Un stock ne s’additionne pas",
+     "text": "Abonnés actifs et MRR sont des **stocks** : une photo du dernier jour du mois. Additionner six fins de mois donne des « abonnés-mois » : c’est ce que montre le total du README (1 657 après le lot 1), pas un nombre d’abonnés. Pour un mois, lisez `par_mois`. Contrôle de chaque mois : actifs fin = actifs début + nouveaux − départs."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Une ligne =",
+      "Clé"
+     ],
+     "rows": [
+      [
+       "`dim_date` · `dim_compte`",
+       "un jour · un compte (`type_compte`, ville)",
+       "`date_key` · `compte_key`"
+      ],
+      [
+       "`dim_offre` (SCD2)",
+       "une **version** d’offre : gamme, prix mensuel, `valid_from`, `valid_to`",
+       "`offre_key` · `offre_id`"
+      ],
+      [
+       "`fact_facture`",
+       "une facture acceptée, version à la date de facture",
+       "`facture_id`"
+      ],
+      [
+       "`fact_abonnement_mois`",
+       "un abonnement actif un mois : `actif_debut`, `nouveau`, `depart`, `actif_fin`, `mensualite_millimes`",
+       "`abonnement_mois_id`"
+      ]
+     ],
+     "widths": [
+      1.5,
+      2.6,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · LE CAHIER DES CHARGES",
+   "title": "Historique et critères d’acceptation",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Dimension historisée** : `dim_offre`, attributs `gamme` et `prix_mensuel_millimes`. **FN-F300** (Fibre 300) passe de « confort » à 89,900 TND à « pro » à 99,900 TND le **2026-07-15**, inclus (`lot2/offres.json`). `dim_offre` passe de 5 à 6 lignes."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "offre_id",
+      "gamme · prix",
+      "valid_from",
+      "valid_to"
+     ],
+     "rows": [
+      [
+       "FN-F300",
+       "confort · 89,900",
+       "2024-03-01",
+       "2026-07-15 (exclu)"
+      ],
+      [
+       "FN-F300",
+       "pro · 99,900",
+       "2026-07-15",
+       "vide = version courante"
+      ]
+     ],
+     "widths": [
+      1,
+      1.4,
+      1.2,
+      1.8
+     ]
+    },
+    {
+     "type": "text",
+     "text": "La facture de juillet, émise le 1er, reste en confort à 89,900 TND ; la ligne de juillet de `fact_abonnement_mois`, datée du 31, est en pro à 99,900 TND. Les mois de janvier à juin ne changent jamais."
+    },
+    {
+     "type": "section",
+     "text": "Les critères d’acceptation"
+    },
+    {
+     "type": "text",
+     "text": "Le vérificateur compare vos sorties à `reference/attendu_lot1.json` et `attendu_lot2.json`, calculés par le générateur depuis la vérité, pas par une solution."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande (`python -m controles.verifier --mission M07 …`)",
+      "Ce qu’elle vérifie"
+     ],
+     "rows": [
+      [
+       "`--etape initial`",
+       "tables, lignes, rejets par motif, agrégats (mois, gamme, offre, type, ville) après le lot 1"
+      ],
+      [
+       "`--etape increment`",
+       "idem après le lot 2, versions de FN-F300 aux dates frontières ; enregistre une empreinte"
+      ],
+      [
+       "`--etape rejeu`",
+       "après un second `increment` : entrepôt identique à l’empreinte"
+      ],
+      [
+       "`--etape export`",
+       "un CSV par table et `manifest.json` cohérent"
+      ],
+      [
+       "`--etape app`",
+       "trois écrans, filtres, SVG, aucun lien réseau"
+      ],
+      [
+       "`--etape tout --strict`",
+       "tout, export et application obligatoires"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Puis `pytest controles`, `pytest -q` (avec vos tests) et la CI GitHub, en avançant `ETAPE_CI` jusqu’à `tout`."
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · ÉCHANTILLON · À LA MAIN",
+   "title": "L’échantillon, à la main",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "`echantillon/` porte sur **mars 2026** : 12 factures, 5 comptes, 5 offres, 8 abonnements. Calculez **sur papier**, à deux ; correction page suivante."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "N°",
+      "facture_id",
+      "Lu dans le fichier (abonnement · compte · offre · date · nb_mois · montant)",
+      "Décision"
+     ],
+     "rows": [
+      [
+       "2",
+       "F-E001",
+       "AB-E01 · C0001 · FN-F20 · 2026-03-01 · 1 · 39.900",
+       ""
+      ],
+      [
+       "3",
+       "F-E002",
+       "AB-E02 · « c0002 » · fn-f100 · 01/03/2026 · 1 · 69,900",
+       ""
+      ],
+      [
+       "4",
+       "F-E003",
+       "AB-E03 · C0003 · FN-F300 · 10 mars 2026 · 1 · 89.9",
+       ""
+      ],
+      [
+       "5",
+       "F-E004",
+       "AB-E04 · C0004 · FN-PRO1G · 2026-03-01 · 1 · 149,000",
+       ""
+      ],
+      [
+       "6",
+       "F-E004",
+       "AB-E04 · C0004 · FN-PRO1G · 2026-03-01 · 1 · 149,000",
+       ""
+      ],
+      [
+       "7",
+       "F-E005",
+       "AB-E05 · « C0005 » · FN-F50 · 2026-03-01 · 1 · 49,9",
+       ""
+      ],
+      [
+       "8",
+       "F-E006",
+       "AB-E06 · C0003 · FN-F300 · 2026-03-01 · 1 · 89,900",
+       ""
+      ],
+      [
+       "9",
+       "F-E007",
+       "AB-E01 · C0001 · FN-F20 · 2026-03-01 · 1 · 39.900",
+       ""
+      ],
+      [
+       "10",
+       "F-E007",
+       "AB-E01 · C0001 · FN-F20 · 2026-03-01 · 2 · 79.800",
+       ""
+      ],
+      [
+       "11",
+       "(vide)",
+       "AB-E05 · C0005 · FN-F50 · 2026-03-01 · 1 · 49.900",
+       ""
+      ],
+      [
+       "12",
+       "F-E008",
+       "AB-E08 · C0999 · FN-F20 · 2026-03-05 · 1 · 39.900",
+       ""
+      ],
+      [
+       "13",
+       "F-E009",
+       "AB-E06 · C0003 · FN-F300 · 2026-03-01 · 0 · 89.900",
+       ""
+      ]
+     ],
+     "widths": [
+      0.45,
+      0.75,
+      3.5,
+      0.8
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Abonnement",
+      "Offre",
+      "date_debut",
+      "date_fin",
+      "Statut"
+     ],
+     "rows": [
+      [
+       "AB-E01 · AB-E05 · AB-E06",
+       "F20 · F50 · F300",
+       "2025-06-10 · 2025-12-01 · 2025-02-03",
+       "(vide)",
+       "actifs"
+      ],
+      [
+       "AB-E02 · AB-E04",
+       "F100 · PRO1G",
+       "2025-09-01 · 2024-11-04",
+       "2026-03-31 · 2026-03-15",
+       "résiliés"
+      ],
+      [
+       "AB-E03 · AB-E07 · AB-E08",
+       "F300 · F50 · F20",
+       "2026-03-10 · 2026-03-20 · 2026-03-05",
+       "(vide)",
+       "actif · `ANNULE` · compte C0999"
+      ]
+     ],
+     "widths": [
+      1.6,
+      1.1,
+      1.9,
+      1.4,
+      1.3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Mes résultats (mars)** · factures gardées : ……  rejets : ……  facturé : …… TND  actifs début : ……  nouveaux : ……  départs : ……  actifs fin : ……  MRR : …… TND  taux de départ : …… %"
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · ÉCHANTILLON · CORRECTION",
+   "title": "L’échantillon : la correction",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ligne 6 : doublon exact, **ignorée**. Lignes 9 et 10 : même `facture_id`, `nb_mois` différent → **les deux** en `id_conflit`. Ligne 11 : `id_manquant`. Ligne 12 : compte `C0999` inconnu → `cle_inconnue`. Ligne 13 : `nb_mois` = 0 → `quantite_invalide`. **6 factures gardées** : 39,900 + 69,900 + 89,900 + 149,000 + 49,900 + 89,900 = **488,500 TND** facturés."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Abonnement",
+      "actif_debut · nouveau · depart · actif_fin",
+      "MRR de mars"
+     ],
+     "rows": [
+      [
+       "AB-E01 (F20)",
+       "1 · 0 · 0 · 1",
+       "39,900 TND"
+      ],
+      [
+       "AB-E02 (F100), fin le 31 mars",
+       "1 · 0 · **1** · **0**",
+       "0"
+      ],
+      [
+       "AB-E03 (F300), début le 10 mars",
+       "0 · 1 · 0 · 1",
+       "89,900 TND"
+      ],
+      [
+       "AB-E04 (PRO1G), fin le 15 mars",
+       "1 · 0 · 1 · 0",
+       "0"
+      ],
+      [
+       "AB-E05 (F50) · AB-E06 (F300)",
+       "1 · 0 · 0 · 1 (chacun)",
+       "49,900 + 89,900 TND"
+      ],
+      [
+       "AB-E07 · AB-E08",
+       "ignoré (`ANNULE`) · rejet `cle_inconnue`",
+       "—"
+      ]
+     ],
+     "widths": [
+      2,
+      2.2,
+      1.3
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur de mars",
+      "Calcul",
+      "Résultat"
+     ],
+     "rows": [
+      [
+       "Actifs fin de mois",
+       "5 actifs début + 1 nouveau − 2 départs",
+       "**4**"
+      ],
+      [
+       "MRR",
+       "39,900 + 89,900 + 49,900 + 89,900",
+       "**269,600 TND**"
+      ],
+      [
+       "Taux de départ",
+       "2 départs ÷ 5 actifs début",
+       "**40,00 %**"
+      ]
+     ],
+     "widths": [
+      1.6,
+      2.9,
+      1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Rejets : 5 factures + `AB-E08` (source `abonnements.sqlite`) = **6**. Entrepôt attendu : `fact_facture` 6, `fact_abonnement_mois` 6 (AB-E01 à AB-E06), `dim_compte` 5, `dim_offre` 5, `dim_date` 31."
+    },
+    {
+     "type": "callout",
+     "label": "Un autre chiffre ?",
+     "text": "Le piège de la mission : `AB-E02` finit le 31 mars, **dernier jour de service**. C’est un départ de mars et il n’est **pas** actif fin mars (décision B). Autres pièges : MRR calculé avec les factures (488,500) au lieu des abonnés actifs ; `AB-E03` oublié parce que sa facture est du 10 mars."
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · LES SOURCES",
+   "title": "Les sources et leurs pièges",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre sources, mêmes noms dans `lot1/` et `lot2/`, **lues, jamais modifiées**. Particularité : `abonnements.sqlite` est lue **avant** les factures, car une facture vers un abonnement rejeté est elle aussi une `cle_inconnue`."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Fichier",
+      "Contenu",
+      "Pièges"
+     ],
+     "rows": [
+      [
+       "`facturation.csv`",
+       "factures, UTF-8, `;` : `facture_id`, `abonnement_id`, `compte`, `offre`, `mois_facture`, `date_facture`, `nb_mois`, `montant`",
+       "trois formats de date ; `69,9`, `149,000` ; codes en minuscules ; `nb_mois` `0`, `-2`, `1.5`"
+      ],
+      [
+       "`comptes.xlsx`",
+       "feuille `Comptes`, **en-têtes ligne 3**",
+       "« ` Entreprise ` » ; lot 2 : 12 nouveaux comptes"
+      ],
+      [
+       "`offres.json`",
+       "gamme et prix historisés (`valide_depuis`)",
+       "prix tantôt nombre, tantôt « 89,900 » ; lot 2 : 2e version de FN-F300"
+      ],
+      [
+       "`abonnements.sqlite`",
+       "`abonnement` (dates, statut), `motif_resiliation`",
+       "statut `ANNULE` ; compte inconnu ; résiliés en 2025 ; au lot 2, la **base complète**"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.3,
+      2.2
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce que le nettoyage doit trouver",
+      "Lot 1",
+      "Lot 2",
+      "Traitement"
+     ],
+     "rows": [
+      [
+       "Lignes lues dans `facturation.csv`",
+       "1 722",
+       "600",
+       "—"
+      ],
+      [
+       "Doublons exacts · déjà chargées",
+       "12 · 0",
+       "4 · 5",
+       "ignorer"
+      ],
+      [
+       "Rejets de `facturation.csv`",
+       "22",
+       "9",
+       "`rejets.csv`"
+      ],
+      [
+       "Factures acceptées",
+       "1 688",
+       "582",
+       "`fact_facture`"
+      ],
+      [
+       "Abonnements lus · `ANNULE` · compte inconnu",
+       "345 · 3 · 3",
+       "366 · 4 · 4",
+       "ignorer · `cle_inconnue`"
+      ],
+      [
+       "Résiliés avant 2026",
+       "27",
+       "27",
+       "aucune ligne-mois"
+      ],
+      [
+       "Lignes-mois nouvelles",
+       "1 688",
+       "582",
+       "`fact_abonnement_mois`"
+      ]
+     ],
+     "widths": [
+      2.5,
+      0.8,
+      0.8,
+      1.4
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ignorer ou rejeter ?",
+     "text": "**Ignorer** : doublon exact, facture déjà chargée, abonnement `ANNULE`. **Rejeter** : `id_conflit`, `id_manquant`, `cle_inconnue`, `quantite_invalide`. Le lot 2 relit **toute** la base : les abonnements à compte inconnu déjà rejetés au lot 1 sont de nouveau comptés dans les rejets du lot 2 (4)."
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · ÉTAPE A · CHARGER",
+   "title": "Étape A · charger le lot 1",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comme au tronc commun : lecture (prompt 04), nettoyage et rejets (prompt 05), puis l’étoile (prompt 07, adapté ci-dessous). Ici le cœur est la dérivation de `fact_abonnement_mois`. **Prévoyez** : actifs fin juin, et lignes de chaque fait."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 07 adapté",
+     "text": "Mission M07 : lis mission.txt, le cahier des charges (§ 13 surtout).\nDans solen/, python -m solen initial recrée outputs/entrepot.sqlite avec\ncatalogue/M07/sources/lot1 : dim_date, dim_compte, dim_offre, puis\nfact_facture (CSV) et fact_abonnement_mois, CALCULÉE depuis les dates\nde abonnements.sqlite : une ligne par abonnement et par mois actif,\ndate_key = dernier jour du mois, version d'offre de ce jour-là.\ndate_fin = dernier jour de service. Une transaction, millimes entiers.\nLance initial puis --mission M07 --etape initial ; recopie les sorties."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m controles.verifier --mission M07 --etape initial"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 1, la référence attend",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 181 · `dim_compte` 205 · `dim_offre` 5 · `fact_facture` 1 688 · `fact_abonnement_mois` 1 688"
+      ],
+      [
+       "Rejets par motif",
+       "`cle_inconnue` 9 (6 factures + 3 abonnements) · `id_conflit` 6 · `id_manquant` 5 · `quantite_invalide` 5 · total 25"
+      ],
+      [
+       "**Fin juin** : actifs · MRR",
+       "**281 · 21 970,500 TND** (départs de juin 8, taux 2,84 %)"
+      ],
+      [
+       "Sur janvier → juin",
+       "31 départs ÷ 1 641 actifs début = **1,89 %** ; 130 560,900 TND facturés"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**`fact_abonnement_mois` tirée des factures** : un mois sans facture disparaît, une facture du 10 mars ne dit rien de la fin du mois. Le fait vient des **dates** de la base, pas du CSV.",
+      "**`date_fin` ≥ dernier jour = actif** : AB-E02 (fin le 31 mars) serait actif fin mars. La règle est `date_fin` **après** le dernier jour du mois."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · ÉTAPE B · COMPLÉTER",
+   "title": "Étape B · compléter et rejouer",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 ajoute juillet-août, recopie des factures depuis le 10 juin, livre la **base complète** des abonnements et la 2e version de FN-F300. **Prévoyez** : (1) lignes de `dim_offre` ; (2) prix de Fibre 300 dans le MRR de juin, puis de juillet ; (3) lignes de `fact_abonnement_mois` après **deux** `increment`."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · prompt 08 adapté",
+     "text": "Mission M07. Ajoute python -m solen increment (lot2 de M07).\n- SCD2 sur dim_offre (gamme, prix) : fermer FN-F300 confort 89,900\n  (valid_to 2026-07-15, exclu), ouvrir pro 99,900 (valid_from idem) ;\n- calcule les lignes-mois de juillet et août ; une ligne-mois déjà\n  présente (abonnement_mois_id) est ignorée : le passé ne change pas ;\n- une facture prend la version valable à SA date ; rejeu par facture_id.\nLance initial, increment, increment, puis --etape increment et\n--etape rejeu. Mes prévisions : <1>, <2>, <3>. Compare."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m controles.verifier --mission M07 --etape increment\npython -m solen increment\npython -m controles.verifier --mission M07 --etape rejeu"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Après le lot 2 (identique après le rejeu)",
+      "Valeur"
+     ],
+     "rows": [
+      [
+       "Tables",
+       "`dim_date` 243 · `dim_compte` 217 · `dim_offre` **6** · les deux faits 2 270 (+582 chacun)"
+      ],
+      [
+       "Rejets du lot 2",
+       "`cle_inconnue` 7 (3 factures + 4 abonnements) · `id_conflit` 2 · `id_manquant` 2 · `quantite_invalide` 2 · total 13"
+      ],
+      [
+       "**Fin juillet** · **fin août**",
+       "**282 actifs, MRR 22 500,400 TND** · **287 actifs, MRR 23 158,100 TND**"
+      ],
+      [
+       "Départs · taux de départ",
+       "juillet 8 (2,85 %) · août 5 (1,77 %) ; janvier → août 2,00 %"
+      ]
+     ],
+     "widths": [
+      1.9,
+      3.1
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Deux erreurs fréquentes"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Recalculer les mois passés au nouveau prix** : le MRR de juin de Fibre 300 passerait à 99,900 TND et le premier semestre mentirait. Les lignes-mois existantes ne bougent pas.",
+      "**Base complète relue = doublons** : sans clé `abonnement_mois_id`, les 1 688 lignes du lot 1 seraient recréées. Après deux `increment`, 2 270 lignes, pas plus."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · ÉTAPE C · LIVRER",
+   "title": "Étape C · exporter, montrer, actualiser",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le livret 05 détaille les gestes sur Maison Zitouna ; voici ce qui change pour FibreNet."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen export\npython -m controles.verifier --mission M07 --etape export\npython -m solen app\npython -m controles.verifier --mission M07 --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Export** : prévoyez dans `manifest.json` 2 270 lignes pour chaque fait, une somme de `montant_millimes` de 176 825 400 pour `fact_facture`, et pour `fact_abonnement_mois` des sommes `actif_debut` 2 204, `actif_fin` 2 226, `nouveau` 66, `depart` 44."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · application (prompts 02 puis 03)",
+     "text": "Mission M07. python -m solen app écrit outputs/app/index.html autonome,\nsans lien Internet : Vue direction, Détail par offre, Qualité des\ndonnées ; filtres période, gamme, type de compte ; MRR par mois et par\ngamme en barres SVG ; tableau début + nouveaux - départs = fin."
+    },
+    {
+     "type": "text",
+     "text": "**Power BI Desktop** : cinq CSV, types fixés, **six relations 1:*** par `date_key`, `compte_key`, `offre_key`. Codex réécrit `powerbi/mesures.dax` : Abonnés actifs fin de mois, MRR TND (somme de `mensualite_millimes` des lignes `actif_fin` = 1), Départs, Taux de départ (somme des départs ÷ somme des actifs début). Ajoutez un **segment de mois** : sur août, les cartes doivent afficher 287, 23 158,100 TND, 5 et 1,77 %. Sans filtre, elles affichent des abonnés-mois (2 226) : ne présentez jamais ce chiffre comme un nombre d’abonnés. Erreur fréquente : un MRR qui additionne toutes les lignes-mois, y compris les départs."
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M07/reference/visuels/mrr_par_mois_et_gamme.png",
+     "caption": "Graphique de référence après le lot 2 : MRR par mois et par gamme, en TND. En juillet, Fibre 300 quitte « confort » pour « pro » ; le premier semestre ne bouge pas.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · RÈGLE ET VARIANTES",
+   "title": "La règle à clarifier",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "La question posée à la direction",
+     "text": "Un abonnement résilié le 31 mars (dernier jour du mois) est-il encore actif « fin mars » ? Et le MRR de juillet d’un abonné Fibre 300 se calcule-t-il à 89,900 TND (prix de la facture du 1er juillet) ou à 99,900 TND (prix valable le 31 juillet) ?"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Option",
+      "Effet",
+      "Chiffre"
+     ],
+     "rows": [
+      [
+       "A · actif jusqu’au bout, prix de la facture",
+       "AB-E02 actif fin mars ; MRR de juillet au prix du 1er juillet",
+       "échantillon : 5 actifs, MRR 339,500 TND (notre calcul)"
+      ],
+      [
+       "**B · fin = dernier jour de service, prix du dernier jour** (décidée)",
+       "AB-E02 est un départ de mars ; MRR de juillet à 99,900 TND",
+       "échantillon : 4 actifs, MRR 269,600 TND"
+      ]
+     ],
+     "widths": [
+      1.9,
+      2.2,
+      1.6
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Argumenter avec la direction"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Une photo du 31 au soir** : le 31 mars au soir, AB-E02 n’a plus de service. Le compter actif gonflerait le parc d’avril à tort.",
+      "**Le MRR regarde vers l’avant** : il dit ce que le parc rapportera le mois suivant, donc au nouveau prix. Fin juillet, 54 abonnés Fibre 300 sont en pro (déduit de `par_mois_gamme` : 12 248,600 TND pour 100 abonnés pro) ; avec A, le MRR de juillet serait d’environ 540,000 TND plus bas (notre calcul).",
+      "**La facture reste juste** : elle vaut 89,900 TND en juillet, au prix du jour où elle est émise. Montant facturé et MRR ne mesurent pas la même chose. Notez la décision dans `notes/JOURNAL.md` (Décision)."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les trois variantes : en réaliser une"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Variante",
+      "Preuve à montrer"
+     ],
+     "rows": [
+      [
+       "**1. ARPU** = MRR ÷ abonnés actifs fin de mois, par gamme",
+       "contre `par_mois_gamme` (lot 2), août : pro 12 946,200 ÷ 106 = 122,134 TND ; essentiel 4 759,700 ÷ 103 = 46,211 TND"
+      ],
+      [
+       "**2. Départ précoce** : résilié moins de 60 jours après le début",
+       "un test sur un petit jeu dans `tests/` ; colonne `depart_precoce` ; la référence reste verte"
+      ],
+      [
+       "**3. FN-F20 à 34,900 TND le 2026-08-01**",
+       "un test : MRR d’août recalculé pour F20, factures de juillet inchangées, `dim_offre` + 1"
+      ]
+     ],
+     "widths": [
+      2.1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · LA DÉMONSTRATION",
+   "title": "La démonstration",
+   "blocks": [
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "**1. Vue direction**",
+       "actifs et MRR à la fin de la période, départs et taux, MRR par mois et par gamme, tableau début + nouveaux − départs = fin ; filtres période, gamme, type de compte",
+       "« Fin août : 287 abonnés et 23 158,100 TND de MRR. »"
+      ],
+      [
+       "**2. Détail par offre**",
+       "FN-F300 : confort à 89,900 TND jusqu’au 2026-07-14, pro à 99,900 TND ensuite ; actifs, départs, MRR mois par mois",
+       "« Juin reste en confort, août est en pro. »"
+      ],
+      [
+       "**3. Qualité des données**",
+       "factures lues, gardées, déjà chargées, rejetées ; abonnements annulés et rejetés, par lot",
+       "« 38 lignes écartées, chacune avec son motif. »"
+      ]
+     ],
+     "widths": [
+      1.3,
+      2.6,
+      1.8
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Le chiffre filtré à contrôler"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Filtre** : Réinitialiser, puis Mois = août 2026 et Gamme = pro. **Prévoyez** : combien d’abonnés pro fin juin, puis fin août ?",
+      "**Application** : **106** abonnés actifs fin août, MRR **12 946,200 TND** (fin juin : 46 abonnés, 6 854,000 TND). **Référence** : `attendu_lot2.json`, `agregats → par_mois_gamme → « 2026-08 · pro »` : `actifs_fin_mois` 106, `mrr_millimes` 12 946 200.",
+      "**Lecture** : le saut vient surtout de Fibre 300, comptée en pro depuis juillet. Ce n’est pas une vague de nouveaux clients : 8 nouveaux pro en août."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../../modele-binome/catalogue/M07/reference/visuels/actifs_fin_de_mois.png",
+     "caption": "Graphique de référence après le lot 2 : abonnés actifs en fin de mois. Chaque barre est une photo ; on ne les additionne pas.",
+     "height": 190
+    }
+   ]
+  },
+  {
+   "kicker": "M07 · FIBRENET · BILAN",
+   "title": "À ce stade, je sais…",
+   "blocks": [
+    {
+     "type": "bullets",
+     "items": [
+      "…expliquer la question de FibreNet et les deux grains : la facture et l’abonnement-mois ;",
+      "…calculer mars à la main : 5 actifs début, 1 nouveau, 2 départs, 4 actifs fin, 269,600 TND de MRR, 40,00 % de départ ;",
+      "…dire pourquoi une ligne est ignorée ou rejetée, et pourquoi les abonnements se lisent avant les factures ;",
+      "…charger, compléter et rejouer avec `--mission M07`, et montrer que le premier semestre de Fibre 300 reste en confort ;",
+      "…dire pourquoi un stock ne s’additionne pas d’un mois à l’autre ;",
+      "…défendre la décision B, réaliser une variante et la prouver par son test."
+     ]
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Chiffres à connaître",
+      "Fin juin (lot 1)",
+      "Fin août (lot 2)"
+     ],
+     "rows": [
+      [
+       "Abonnés actifs fin de mois",
+       "281",
+       "287"
+      ],
+      [
+       "MRR",
+       "21 970,500 TND",
+       "23 158,100 TND"
+      ],
+      [
+       "Départs du mois · taux",
+       "8 · 2,84 %",
+       "5 · 1,77 %"
+      ],
+      [
+       "Taux de départ cumulé",
+       "1,89 % (janvier → juin)",
+       "2,00 % (janvier → août)"
+      ]
+     ],
+     "widths": [
+      2,
+      1.5,
+      1.5
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Pour la recommandation",
+     "text": "`notes/recommandation.md`, en cinq parties (livret 05). Pistes à **vérifier** : le taux de départ des particuliers face aux entreprises (`par_type_compte`), le pic de mars (11 départs), l’effet réel du nouveau prix de Fibre 300 sur les départs de l’été. Le MRR n’est pas un bénéfice."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : repris de `catalogue/M07/reference/` et de `echantillon/attendu.md`, calculés par le générateur depuis la vérité, sans ETL. Les effets de l’option A sont notre calcul, pas la référence. FibreNet et ses personnes sont fictifs.",
+      "**Pipeline** : une solution de référence du professeur passe le vérificateur strict sur macOS ; pas rejouée sous Ubuntu/WSL2 ni en CI.",
+      "**Prompts, durées, Power BI** : non essayés par des étudiants ; les mesures DAX de cette mission n’ont pas été testées."
+     ]
+    }
+   ]
+  }
+ ]
+}

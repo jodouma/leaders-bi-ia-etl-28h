@@ -25,7 +25,11 @@ permissions:
 env:
   # Jusqu'où le pipeline est construit. Valeurs possibles, dans l'ordre :
   #   aucune     → séance 1 : rien n'est encore construit, on vérifie seulement l'installation
-  #   initial    → le chargement du lot 1 existe
+  #   rejets     → séance 2 : le nettoyage du lot 1 existe. Règle simple : la CI lance
+  #                `python -m solen initial` (même si l'entrepôt n'est pas encore écrit),
+  #                puis contrôle SEULEMENT outputs/rejets.csv (`verifier --etape rejets`).
+  #                Aucune commande `nettoyer` séparée n'est demandée à Codex.
+  #   initial    → le chargement du lot 1 existe (rejets + entrepôt)
   #   increment  → le lot 2 s'ajoute
   #   rejeu      → relancer le lot 2 n'ajoute rien
   #   export     → les CSV et le manifeste sont produits
@@ -68,7 +72,8 @@ jobs:
             echo "Pipeline pas encore construit : seule l'installation est vérifiée."
           fi
 
-      # 5. Chargement initial : recrée l'entrepôt depuis zéro avec le lot 1.
+      # 5. Chargement initial : recrée l'entrepôt depuis zéro avec le lot 1
+      #    (à l'étape « rejets », seul outputs/rejets.csv sera contrôlé ensuite).
       - name: Chargement initial (lot 1)
         if: env.ETAPE_CI != 'aucune'
         run: python -m solen initial

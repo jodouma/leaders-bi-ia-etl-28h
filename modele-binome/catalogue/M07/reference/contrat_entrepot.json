@@ -1,0 +1,341 @@
+{
+  "version_contrat": 1,
+  "mission": "M07",
+  "entreprise": "FibreNet",
+  "grain": "une facture mensuelle d'abonnement (un abonnement × un mois facturé)",
+  "unite_monetaire": "millimes entiers (1 TND = 1 000 millimes)",
+  "fichiers": {
+    "entrepot": "entrepot.sqlite",
+    "rejets": "rejets.csv",
+    "export": "export",
+    "manifest": "export/manifest.json",
+    "app": "app/index.html"
+  },
+  "ordre_tables": [
+    "dim_date",
+    "dim_compte",
+    "dim_offre",
+    "fact_facture",
+    "fact_abonnement_mois"
+  ],
+  "tables": {
+    "dim_date": {
+      "role": "dimension",
+      "cle": "date_key",
+      "cle_metier": null,
+      "colonnes": [
+        "date_key",
+        "date_complete",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "annee",
+        "mois",
+        "jour"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_compte": {
+      "role": "dimension",
+      "cle": "compte_key",
+      "cle_metier": "compte_id",
+      "colonnes": [
+        "compte_key",
+        "compte_id",
+        "nom",
+        "type_compte",
+        "ville"
+      ],
+      "colonnes_entieres": [
+        "compte_key"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {}
+    },
+    "dim_offre": {
+      "role": "dimension_scd2",
+      "cle": "offre_key",
+      "cle_metier": "offre_id",
+      "colonnes": [
+        "offre_key",
+        "offre_id",
+        "nom",
+        "gamme",
+        "prix_mensuel_millimes",
+        "valid_from",
+        "valid_to"
+      ],
+      "colonnes_entieres": [
+        "offre_key",
+        "prix_mensuel_millimes"
+      ],
+      "colonnes_nullables": [
+        "valid_to"
+      ],
+      "cles_etrangeres": {}
+    },
+    "fact_facture": {
+      "role": "fait",
+      "cle": "facture_id",
+      "cle_metier": null,
+      "colonnes": [
+        "facture_id",
+        "date_key",
+        "compte_key",
+        "offre_key",
+        "abonnement_id",
+        "mois_facture",
+        "nb_mois",
+        "montant_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "compte_key",
+        "offre_key",
+        "nb_mois",
+        "montant_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "compte_key": "dim_compte.compte_key",
+        "offre_key": "dim_offre.offre_key"
+      }
+    },
+    "fact_abonnement_mois": {
+      "role": "fait",
+      "cle": "abonnement_mois_id",
+      "cle_metier": null,
+      "colonnes": [
+        "abonnement_mois_id",
+        "abonnement_id",
+        "date_key",
+        "compte_key",
+        "offre_key",
+        "actif_debut",
+        "nouveau",
+        "depart",
+        "actif_fin",
+        "mensualite_millimes"
+      ],
+      "colonnes_entieres": [
+        "date_key",
+        "compte_key",
+        "offre_key",
+        "actif_debut",
+        "nouveau",
+        "depart",
+        "actif_fin",
+        "mensualite_millimes"
+      ],
+      "colonnes_nullables": [],
+      "cles_etrangeres": {
+        "date_key": "dim_date.date_key",
+        "compte_key": "dim_compte.compte_key",
+        "offre_key": "dim_offre.offre_key"
+      }
+    }
+  },
+  "faits": [
+    "fact_facture",
+    "fact_abonnement_mois"
+  ],
+  "dimension_date": {
+    "table": "dim_date",
+    "cle": "date_key",
+    "date": "date_complete",
+    "debut": "2026-01-01",
+    "regle": "une ligne par jour, du 2026-01-01 au dernier jour du dernier lot chargé"
+  },
+  "scd2": {
+    "table": "dim_offre",
+    "cle": "offre_key",
+    "cle_metier": "offre_id",
+    "attribut": "gamme",
+    "valid_from": "valid_from",
+    "valid_to": "valid_to",
+    "regle": "valid_from inclus, valid_to exclu, valid_to NULL = version courante",
+    "faits": [
+      {
+        "table": "fact_facture",
+        "colonne": "offre_key",
+        "date_key": "date_key"
+      },
+      {
+        "table": "fact_abonnement_mois",
+        "colonne": "offre_key",
+        "date_key": "date_key"
+      }
+    ],
+    "frontieres": [
+      {
+        "cle_metier": "FN-F300",
+        "date": "2026-06-30"
+      },
+      {
+        "cle_metier": "FN-F300",
+        "date": "2026-07-14"
+      },
+      {
+        "cle_metier": "FN-F300",
+        "date": "2026-07-15"
+      },
+      {
+        "cle_metier": "FN-F100",
+        "date": "2026-07-15"
+      }
+    ]
+  },
+  "vue_analyse": "SELECT printf('%04d-%02d', d.annee, d.mois) AS mois, o.offre_id, o.gamme, c.type_compte, c.ville, a.actif_debut, a.actif_fin, a.nouveau, a.depart, a.actif_fin * a.mensualite_millimes AS mrr, 0 AS facture FROM fact_abonnement_mois a JOIN dim_date d ON d.date_key = a.date_key JOIN dim_offre o ON o.offre_key = a.offre_key JOIN dim_compte c ON c.compte_key = a.compte_key UNION ALL SELECT printf('%04d-%02d', d.annee, d.mois), o.offre_id, o.gamme, c.type_compte, c.ville, 0, 0, 0, 0, 0, f.montant_millimes FROM fact_facture f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_offre o ON o.offre_key = f.offre_key JOIN dim_compte c ON c.compte_key = f.compte_key",
+  "indicateurs": [
+    {
+      "code": "actifs_fin_mois",
+      "libelle": "Abonnés actifs fin de mois",
+      "unite": "nombre",
+      "formule": "nombre d'abonnements actifs le dernier jour du mois (`actif_fin` = 1) — valeur d'**un** mois : lisez l'agrégat `par_mois` ; sur plusieurs mois, le total de la référence additionne les fins de mois (abonnés-mois)",
+      "sql": "SUM(actif_fin)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "mrr_millimes",
+      "libelle": "MRR (revenu mensuel récurrent)",
+      "unite": "millimes",
+      "formule": "somme des mensualités des abonnements actifs en fin de mois, au prix de la version de l'offre valable le dernier jour du mois",
+      "sql": "SUM(mrr)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "departs",
+      "libelle": "Départs du mois",
+      "unite": "nombre",
+      "formule": "nombre d'abonnements dont la `date_fin` tombe dans le mois",
+      "sql": "SUM(depart)",
+      "tolerance": 0.0,
+      "principal": true
+    },
+    {
+      "code": "taux_depart",
+      "libelle": "Taux de départ",
+      "unite": "ratio",
+      "formule": "départs du mois / abonnés actifs en début de mois (sur plusieurs mois : somme des départs / somme des actifs de début de mois)",
+      "sql": "ROUND(1.0 * SUM(depart) / NULLIF(SUM(actif_debut), 0), 6)",
+      "tolerance": 0.0001,
+      "principal": true
+    },
+    {
+      "code": "actifs_debut_mois",
+      "libelle": "Abonnés actifs début de mois",
+      "unite": "nombre",
+      "formule": "abonnements actifs le dernier jour du mois précédent (`actif_debut` = 1)",
+      "sql": "SUM(actif_debut)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "nouveaux",
+      "libelle": "Nouveaux abonnements",
+      "unite": "nombre",
+      "formule": "abonnements dont la `date_debut` tombe dans le mois",
+      "sql": "SUM(nouveau)",
+      "tolerance": 0.0,
+      "principal": false
+    },
+    {
+      "code": "facture_millimes",
+      "libelle": "Montant facturé",
+      "unite": "millimes",
+      "formule": "somme des montants des factures acceptées, rangées dans le mois de leur date de facture",
+      "sql": "SUM(facture)",
+      "tolerance": 0.0,
+      "principal": false
+    }
+  ],
+  "axes": {
+    "par_mois": "mois",
+    "par_gamme": "gamme",
+    "par_offre": "offre_id",
+    "par_type_compte": "type_compte",
+    "par_ville": "ville",
+    "par_mois_gamme": "mois || ' · ' || gamme"
+  },
+  "rejets": {
+    "colonnes_obligatoires": [
+      "lot",
+      "source",
+      "numero_ligne",
+      "motif"
+    ],
+    "motifs": [
+      "id_conflit",
+      "id_manquant",
+      "cle_inconnue",
+      "quantite_invalide"
+    ],
+    "motifs_toleres": [
+      "doublon_exact"
+    ],
+    "sources": [
+      "abonnements.sqlite",
+      "facturation.csv"
+    ]
+  },
+  "export": {
+    "tables": [
+      "dim_date",
+      "dim_compte",
+      "dim_offre",
+      "fact_facture",
+      "fact_abonnement_mois"
+    ],
+    "sommes": {
+      "fact_facture": [
+        "nb_mois",
+        "montant_millimes"
+      ],
+      "fact_abonnement_mois": [
+        "actif_debut",
+        "actif_fin",
+        "nouveau",
+        "depart",
+        "mensualite_millimes"
+      ],
+      "dim_offre": [
+        "prix_mensuel_millimes"
+      ]
+    },
+    "format": "CSV UTF-8, séparateur virgule, en-tête = noms de colonnes"
+  },
+  "app": {
+    "textes_obligatoires": [
+      "Vue direction",
+      "Détail par offre",
+      "Qualité des données"
+    ],
+    "taille_max_octets": 5000000
+  },
+  "lots": {
+    "lot1": {
+      "etape": "initial",
+      "attendu": "attendu_lot1.json",
+      "debut": "2026-01-01",
+      "fin": "2026-06-30"
+    },
+    "lot2": {
+      "etape": "increment",
+      "attendu": "attendu_lot2.json",
+      "debut": "2026-07-01",
+      "fin": "2026-08-31"
+    }
+  },
+  "etapes": {
+    "initial": "lot1",
+    "increment": "lot2",
+    "rejeu": "lot2"
+  }
+}

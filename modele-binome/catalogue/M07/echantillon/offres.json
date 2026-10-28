@@ -1,0 +1,62 @@
+{
+  "source": "Catalogue des offres FibreNet",
+  "extrait_le": "2026-03-31",
+  "devise": "TND",
+  "offres": [
+    {
+      "code": "FN-F20",
+      "nom": "Fibre 20",
+      "historique": [
+        {
+          "gamme": "essentiel",
+          "valide_depuis": "2023-01-02",
+          "prix_mensuel": "39,900"
+        }
+      ]
+    },
+    {
+      "code": "FN-F50",
+      "nom": "Fibre 50",
+      "historique": [
+        {
+          "gamme": "Essentiel",
+          "valide_depuis": "2023-01-02",
+          "prix_mensuel": 49.9
+        }
+      ]
+    },
+    {
+      "code": "FN-F100",
+      "nom": "Fibre 100",
+      "historique": [
+        {
+          "gamme": "confort",
+          "valide_depuis": "2023-06-01",
+          "prix_mensuel": "69,900"
+        }
+      ]
+    },
+    {
+      "code": "FN-F300",
+      "nom": "Fibre 300",
+      "historique": [
+        {
+          "gamme": "Confort",
+          "valide_depuis": "2024-03-01",
+          "prix_mensuel": 89.9
+        }
+      ]
+    },
+    {
+      "code": "FN-PRO1G",
+      "nom": "Fibre Pro 1 Gbit/s",
+      "historique": [
+        {
+          "gamme": "pro",
+          "valide_depuis": "2024-09-02",
+          "prix_mensuel": "149,000"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2174 @@
+{
+ "title": "Livrer et soutenir : application locale, Power BI Desktop, décision métier, soutenance",
+ "cover_title": "Livrer et soutenir",
+ "subtitle": "Application locale, Power BI Desktop, décision métier, soutenance · séance 5 et préparation de l’oral",
+ "author": "Youssef Douma · Leaders University",
+ "subject_label": "Solen BI 22 h · Livret 05 · Livrer et soutenir",
+ "output_filename": "05_livrer_soutenir.pdf",
+ "header_label": "SOLEN  /  IA, CODEX ET BI",
+ "footer_label": "Youssef Douma · Licence BI · Solen Digital (fictif)",
+ "cover": {
+  "brand_line": "LEADERS UNIVERSITY  /  LICENCE BI",
+  "case": "SOLEN DIGITAL · MAISON ZITOUNA (FICTIFS)",
+  "flow": "Entrepôt  →  application  →  Power BI  →  recommandation  →  soutenance",
+  "stats": [
+   [
+    "240",
+    "MINUTES EN SÉANCE 5"
+   ],
+   [
+    "6",
+    "MIN DE DÉMONSTRATION"
+   ],
+   [
+    "0",
+    "LIGNE DE CODE À LA MAIN"
+   ]
+  ],
+  "footer": "Édition pédagogique · 28 octobre 2026 · données fictives",
+  "label": "05 / LIVRER ET SOUTENIR"
+ },
+ "visual_edition": "V7 · SOLEN BI · 22 h",
+ "source_verification_date": "2026-10-28",
+ "source_catalog": "../../docs/setup/sources.json",
+ "verification_scope": "Chiffres recoupés avec reference/attendu_lot1.json, attendu_lot2.json et un entrepôt de référence ; application de référence ouverte dans un navigateur (macOS). Power BI Desktop non rejoué sur Windows pour cette édition : étapes issues de la documentation Microsoft et de l’édition précédente. Captures référencées : prévues, à produire.",
+ "planned_captures": [
+  "app-vue-direction.png",
+  "app-qualite.png",
+  "powerbi-relations.png",
+  "powerbi-mesure.png",
+  "powerbi-actualiser.png"
+ ],
+ "pages": [
+  {
+   "id": "sommaire",
+   "title": "Sommaire et ce qu’il faut avoir ouvert",
+   "kicker": "05 / LIVRER ET SOUTENIR · SOMMAIRE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ce livret accompagne la **séance 5** et la préparation de la **soutenance**. Vous livrez ce que vous avez construit : une application locale, un rapport Power BI actualisé, une recommandation chiffrée à la direction, puis une démonstration que vous savez refaire devant le jury. Lisez les parties dans l’ordre ; le minutage indique où en être."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Ce que vous produisez",
+      "Page"
+     ],
+     "rows": [
+      [
+       "Épisode 7 et minutage de la séance",
+       "Le plan de vos 240 minutes",
+       "3"
+      ],
+      [
+       "1. Montrer le résultat dans l’application locale",
+       "`outputs/app/index.html` et un chiffre filtré contrôlé",
+       "5"
+      ],
+      [
+       "2. Power BI Desktop, sur Windows",
+       "Un rapport à 5 tables, 6 relations, 5 mesures, actualisé après le lot 2",
+       "10"
+      ],
+      [
+       "3. Lire les visualisations",
+       "Unités, dénominateurs, limites ; l’enquête sur juin",
+       "17"
+      ],
+      [
+       "4. La recommandation à la direction",
+       "Une demi-page : constat → cause → recommandation → limite → donnée",
+       "20"
+      ],
+      [
+       "5. Finir la mission du catalogue",
+       "La liste de contrôle commune, cochée",
+       "23"
+      ],
+      [
+       "6. Répéter la soutenance",
+       "Un script de 6 minutes et des réponses entraînées",
+       "25"
+      ],
+      [
+       "7. Préparer sa démonstration reproductible",
+       "Un essai sur une copie neuve, la veille",
+       "29"
+      ],
+      [
+       "Récapitulatif",
+       "Ce que j’ai construit, ce que je peux refaire",
+       "31"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6,
+      0.5
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Avant la séance, chacun vérifie"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "À avoir",
+      "Comment le vérifier"
+     ],
+     "rows": [
+      [
+       "☐ Le pipeline du tronc commun complet",
+       "`python -m controles.verifier --mission tronc-commun --etape tout` vert dans votre dépôt (ou votre dernière étape verte notée au journal)."
+      ],
+      [
+       "☐ Un poste Windows pour le binôme",
+       "Power BI Desktop installé et lancé une fois (livret 01, annexes). Sur Ubuntu natif : le poste du binôme ou de la salle."
+      ],
+      [
+       "☐ Votre mission du catalogue choisie",
+       "`mission.txt` et le guide de votre mission ouverts (livret 04)."
+      ],
+      [
+       "☐ Les deux comptes prêts",
+       "Chacun a cloné le dépôt, `(.venv)` actif, Codex ouvert sur `~/solen-bi`."
+      ]
+     ],
+     "widths": [
+      1.6,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "episode",
+   "title": "Épisode 7 : « Présentez-moi tout ça vendredi »",
+   "kicker": "05 / LIVRER ET SOUTENIR · ÉPISODE ET MINUTAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le lot 2 est chargé, l’historique de Nabeul est gardé, la CI est verte. Karim Jaziri, votre responsable (personnage fictif), vous transfère un nouveau mail de la directrice."
+    },
+    {
+     "type": "callout",
+     "label": "Le mail de la direction (fictif)",
+     "text": "« Bonjour à tous les deux,\nMerci pour le travail sur Maison Zitouna. Vendredi, présentez-moi le résultat en quelques minutes : je veux voir les chiffres moi-même, avec mes filtres, et comprendre pourquoi je peux leur faire confiance. Dites-moi aussi ce que vous me conseillez de faire, et ce que vous ne savez pas encore. Chacun de vous devra répondre à mes questions.\nLamia Ben Salah, directrice »"
+    },
+    {
+     "type": "text",
+     "text": "Ce mail fixe les quatre livrables de la séance. Chacun répond à une phrase de la direction :"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "« voir les chiffres avec mes filtres » → application locale",
+      "« pouvoir faire confiance » → Power BI actualisé et contrôles",
+      "« ce que vous me conseillez » → recommandation chiffrée",
+      "« chacun répondra » → démo répétée à deux"
+     ]
+    },
+    {
+     "type": "text",
+     "text": "La présentation de « vendredi » est votre **soutenance** : la même démonstration, sur **votre mission du catalogue**, devant un jury. Le tronc commun Maison Zitouna sert ici d’exemple travaillé ; vous refaites ensuite chaque geste sur votre mission."
+    },
+    {
+     "type": "callout",
+     "label": "Rappel de la règle d’or",
+     "text": "Vous ne tapez pas de code. Codex écrit le Python de l’application, les requêtes SQL de contrôle et les mesures DAX. Vous rédigez les demandes, lancez les commandes, lisez les résultats, comparez avec la référence et décidez."
+    }
+   ]
+  },
+  {
+   "id": "minutage",
+   "title": "Minutage de la séance 5 (240 min)",
+   "kicker": "05 / LIVRER ET SOUTENIR · ÉPISODE ET MINUTAGE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Quatre heures, deux vraies pauses de 10 minutes, environ 66 minutes d’explications et 154 minutes de pratique (70 %). Ce sont des **estimations** de conception, pas des mesures : la durée réelle dépend surtout de l’accès au poste Windows."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Moment",
+      "Durée",
+      "Explication",
+      "Pratique",
+      "Partie"
+     ],
+     "rows": [
+      [
+       "Accueil, épisode 7, objectifs",
+       "15 min",
+       "10",
+       "5",
+       "Épisode"
+      ],
+      [
+       "Lancer et contrôler l’application locale",
+       "35 min",
+       "10",
+       "25",
+       "1"
+      ],
+      [
+       "Pause",
+       "10 min",
+       "—",
+       "—",
+       "—"
+      ],
+      [
+       "Power BI Desktop : import, relations, mesures, actualisation",
+       "65 min",
+       "15",
+       "50",
+       "2"
+      ],
+      [
+       "Lire les visualisations, écrire la recommandation",
+       "45 min",
+       "15",
+       "30",
+       "3 et 4"
+      ],
+      [
+       "Pause",
+       "10 min",
+       "—",
+       "—",
+       "—"
+      ],
+      [
+       "Finir la mission, préparer la démo reproductible",
+       "20 min",
+       "6",
+       "14",
+       "5 et 7"
+      ],
+      [
+       "Répéter la soutenance à deux",
+       "40 min",
+       "10",
+       "30",
+       "6"
+      ],
+      [
+       "**Total**",
+       "**240 min**",
+       "**66**",
+       "**154**",
+       ""
+      ]
+     ],
+     "widths": [
+      2.8,
+      0.8,
+      0.8,
+      0.8,
+      0.7
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Si vous prenez du retard"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Un seul poste Windows pour deux** : pendant que A importe dans Power BI, B contrôle un chiffre de l’application (partie 1) et prépare la recommandation (partie 4). Inversez ensuite.",
+      "**Power BI bloque plus de 20 minutes** : appelez le professeur, notez le message exact dans le journal et passez à la partie 3 ; revenez-y après la pause.",
+      "**Priorité de fin de séance** : une application qui s’ouvre, un rapport actualisé, une recommandation écrite. La mise en forme peut attendre ; un chiffre faux, non."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Travail personnel après la séance",
+     "text": "Environ 2 heures de finition et de préparation orale (en plus de la mission du catalogue) : la liste de contrôle de la partie 5, l’essai sur copie neuve de la partie 7, et au moins une répétition chronométrée."
+    }
+   ]
+  },
+  {
+   "id": "app-lancer",
+   "title": "1. Générer et ouvrir l’application locale",
+   "kicker": "05 / LIVRER ET SOUTENIR · 1 · APPLICATION LOCALE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "L’application est **un seul fichier HTML** produit par Python : `outputs/app/index.html`. Les données, le style et le petit programme JavaScript sont à l’intérieur ; il n’y a ni serveur ni connexion Internet. Elle se trouve tout au bout du pipeline :"
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-pipeline.png",
+     "caption": "Des quatre sources au rapport : l’application et Power BI lisent le même entrepôt. Si l’entrepôt est juste et à jour, les deux affichent les mêmes chiffres.",
+     "height": 165
+    },
+    {
+     "type": "text",
+     "text": "Dans le terminal Ubuntu, à la racine du dépôt, `(.venv)` actif, l’entrepôt déjà chargé (lot 1 **et** lot 2) :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen app\npython -m controles.verifier --mission $(cat mission.txt) --etape app"
+    },
+    {
+     "type": "text",
+     "text": "**Prévoyez** d’abord : le vérificateur cherche les trois écrans, des filtres, un graphique SVG et aucun lien réseau. Si Codex n’a pas encore écrit la commande `app`, demandez-la en citant le cahier des charges (§ 10) et les trois écrans de la fiche mission."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Votre poste",
+      "Ouvrir le fichier"
+     ],
+     "rows": [
+      [
+       "Windows + WSL2",
+       "`cd outputs/app`, puis `explorer.exe .`, puis double-clic sur `index.html` (il s’ouvre dans le navigateur Windows). Revenez avec `cd ../..`."
+      ],
+      [
+       "Ubuntu natif",
+       "`xdg-open outputs/app/index.html`, ou glissez le fichier dans Firefox."
+      ]
+     ],
+     "widths": [
+      1.1,
+      3.4
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Si rien ne change",
+     "text": "Le fichier est une **photo** de l’entrepôt au moment de `python -m solen app`. Après un nouveau chargement, relancez `app` puis rechargez la page du navigateur (F5)."
+    }
+   ]
+  },
+  {
+   "id": "app-ecrans",
+   "title": "Les trois écrans et les filtres",
+   "kicker": "05 / LIVRER ET SOUTENIR · 1 · APPLICATION LOCALE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le cahier des charges impose trois écrans, pensés comme un parcours de démonstration. Chacun répond à une question de la direction :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Écran",
+      "Ce qu’on y voit",
+      "Question de la direction"
+     ],
+     "rows": [
+      [
+       "**Vue direction**",
+       "Les cinq indicateurs en cartes, puis les ventes nettes par mois et par zone en barres empilées.",
+       "« Combien, et où ? »"
+      ],
+      [
+       "**Détail par boutique**",
+       "Chaque boutique avec ses versions : NBE en Cap Bon du 2021-05-10 au 2026-07-15 (exclu), puis Nord-Est. Un tableau par zone et par mois.",
+       "« Pourquoi Nabeul apparaît dans deux zones ? »"
+      ],
+      [
+       "**Qualité des données**",
+       "Lignes lues, gardées, rejetées, par motif et par lot.",
+       "« Que avez-vous écarté, et pourquoi ? »"
+      ]
+     ],
+     "widths": [
+      1.1,
+      2.6,
+      1.5
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Les filtres"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Filtre",
+      "Effet",
+      "Piège"
+     ],
+     "rows": [
+      [
+       "**Du mois / Au mois**",
+       "Limite la période (2026-01 à 2026-08).",
+       "Un taux de retour sur un seul mois repose sur peu de lignes."
+      ],
+      [
+       "**Boutique**",
+       "NBE, SFX ou TUN.",
+       "NBE seule montre deux zones en juillet : c’est voulu."
+      ],
+      [
+       "**Zone**",
+       "Cap Bon, Grand Tunis, Nord-Est, Sud.",
+       "Nord-Est n’a des chiffres qu’à partir du 15 juillet."
+      ],
+      [
+       "**Réinitialiser**",
+       "Retire tous les filtres.",
+       "Toujours réinitialiser avant de comparer à la référence."
+      ]
+     ],
+     "widths": [
+      1.1,
+      1.8,
+      2
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/app-vue-direction.png",
+     "caption": "Capture macOS (navigateur) de l’application de référence du professeur · Vue direction, aucun filtre, après les lots 1 et 2 · réussite : ventes nettes 91 444,460 TND = référence. La vôtre peut avoir une autre mise en page, mais les mêmes écrans, filtres et chiffres.",
+     "height": 150
+    }
+   ]
+  },
+  {
+   "id": "app-kpi",
+   "title": "Ce que veut dire chaque indicateur, avec son unité",
+   "kicker": "05 / LIVRER ET SOUTENIR · 1 · APPLICATION LOCALE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Un indicateur sans unité ni définition ne se défend pas. Les définitions viennent du cahier des charges (§ 9) ; elles sont identiques dans l’entrepôt, l’application, le DAX et votre oral. Valeurs **sans filtre** de la référence :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Indicateur",
+      "Unité",
+      "Définition",
+      "Après lot 1",
+      "Après lot 2"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "TND",
+       "somme de quantité × prix du ticket, lignes acceptées",
+       "78 067,830",
+       "95 849,090"
+      ],
+      [
+       "Retours",
+       "TND",
+       "montants remboursés des retours VALIDE acceptés",
+       "3 758,330",
+       "4 404,630"
+      ],
+      [
+       "Ventes nettes",
+       "TND",
+       "ventes brutes − retours",
+       "74 309,500",
+       "91 444,460"
+      ],
+      [
+       "Marge sur coût d’achat",
+       "TND",
+       "ventes nettes − coût d’achat des unités nettes",
+       "28 991,700",
+       "35 606,860"
+      ],
+      [
+       "Taux de retour",
+       "%",
+       "retours ÷ ventes brutes, en montant",
+       "4,81 %",
+       "4,60 %"
+      ]
+     ],
+     "widths": [
+      1.4,
+      0.6,
+      2.5,
+      1,
+      1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Dans l’entrepôt, chaque montant est un **nombre entier de millimes** (1 TND = 1 000 millimes) ; l’application divise par 1 000 seulement à l’affichage, avec 3 décimales. Ainsi aucune erreur d’arrondi ne s’accumule."
+    },
+    {
+     "type": "callout",
+     "label": "Exercice oral (2 min, à deux)",
+     "text": "A choisit un indicateur, B le définit **sans lire** : nom, unité, formule, et la valeur après le lot 2. Puis inversez. Vérifiez la marge à la main : 91 444,460 − 55 837,600 (coût d’achat des unités nettes) = 35 606,860 TND."
+    },
+    {
+     "type": "section",
+     "text": "Trois phrases à savoir dire"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "« Les ventes nettes retirent les retours, mais pas le coût des produits. »",
+      "« La marge sur coût d’achat retire seulement le coût d’achat des unités gardées par les clients : ce n’est pas un bénéfice. »",
+      "« Le taux de retour est un rapport de deux montants : 4 404,630 TND de retours pour 95 849,090 TND de ventes brutes. »"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "app-controle",
+   "title": "Contrôler un chiffre filtré : juste ou seulement plausible ?",
+   "kicker": "05 / LIVRER ET SOUTENIR · 1 · APPLICATION LOCALE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Un chiffre peut avoir l’air raisonnable et être faux. Avant de le montrer à la direction, on écrit le contrôle qui le prouverait faux."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-indicateur-controle.png",
+     "caption": "Un doublon compté deux fois donne un total « un peu trop haut, mais crédible ». Seul un contrôle de comptage le révèle.",
+     "height": 150
+    },
+    {
+     "type": "section",
+     "text": "Exemple travaillé : la zone Nord-Est"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Dans l’application** : Réinitialiser, puis Zone = Nord-Est. **Prévoyez** : quels mois apparaissent ? (Seulement juillet et août : la version Nord-Est commence le 2026-07-15.)",
+      "**Contre la référence** : ventes nettes affichées 4 323,400 TND ; `reference/attendu_lot2.json`, `agregats → par_zone → Nord-Est → ventes_nettes_millimes` = 4 323 400 millimes. Égal.",
+      "**Contre une requête SQL** : demandez à Codex de compter les lignes derrière ce chiffre, en lecture seule."
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Ne modifie rien. Écris puis exécute en lecture seule sur outputs/entrepot.sqlite\nune requête SQL qui donne, pour la zone Nord-Est : le nombre de lignes de fact_vente,\nla somme de montant_brut_millimes, le nombre de retours et leur somme.\nMontre la requête, puis le résultat. Explique chaque jointure en une phrase."
+    },
+    {
+     "type": "text",
+     "text": "Résultat attendu sur le tronc commun : **81** lignes de vente pour 4 457 500 millimes, **6** retours pour 134 100 millimes ; 4 457,500 − 134,100 = 4 323,400 TND. Les trois sources concordent."
+    },
+    {
+     "type": "callout",
+     "label": "Le contrôle qui distingue juste et plausible",
+     "text": "Joindre les ventes à `dim_boutique` par `boutique_id` au lieu de `boutique_key` donne **2 944** lignes et 120 793,330 TND de ventes brutes : les 599 ventes de NBE comptent deux fois (deux versions). Le total paraît une belle croissance. Le contrôle : le nombre de lignes **après** jointure doit rester égal à celui de `fact_vente` (2 345)."
+    }
+   ]
+  },
+  {
+   "id": "app-qualite",
+   "title": "L’écran Qualité des données",
+   "kicker": "05 / LIVRER ET SOUTENIR · 1 · APPLICATION LOCALE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "La direction a demandé « ce que vous avez dû écarter, et pourquoi ». Cet écran y répond. Il ne montre pas des ventes mais des **lignes de fichiers** : son unité est « lignes »."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Motif",
+      "Lot 1",
+      "Lot 2",
+      "Ce que cela veut dire"
+     ],
+     "rows": [
+      [
+       "`cle_inconnue`",
+       "8",
+       "4",
+       "produit, boutique ou ligne de vente absent du référentiel"
+      ],
+      [
+       "`id_conflit`",
+       "6",
+       "2",
+       "même identifiant sur deux lignes différentes : les deux sont rejetées"
+      ],
+      [
+       "`id_manquant`",
+       "5",
+       "2",
+       "identifiant vide"
+      ],
+      [
+       "`quantite_invalide`",
+       "7",
+       "2",
+       "quantité nulle, négative ou non entière"
+      ],
+      [
+       "**Total**",
+       "**26**",
+       "**10**",
+       ""
+      ]
+     ],
+     "widths": [
+      1.4,
+      0.6,
+      0.6,
+      3
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Les doublons exacts (14 au lot 1, 4 au lot 2) et les retours annulés ne sont **pas** des rejets : on garde une occurrence ou on ignore la ligne. Les lignes déjà chargées que le lot 2 recopie (ventes des 29 et 30 juin) sont ignorées : c’est le rejeu."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/app-qualite.png",
+     "caption": "Capture macOS (navigateur) de l’application de référence · écran Qualité des données · réussite : lot 1 = 8 / 6 / 5 / 7 et lot 2 = 4 / 2 / 2 / 2 lignes par motif, comme la référence. Les rejets ne dépendent pas des filtres.",
+     "height": 230
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…générer l’application, l’ouvrir sans serveur, présenter ses trois écrans, dire l’unité de chaque indicateur, et prouver un chiffre filtré par la référence **et** par un comptage SQL."
+    }
+   ]
+  },
+  {
+   "id": "pbi-avant",
+   "title": "2. Power BI Desktop : préparer l’export",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Power BI Desktop est une application **Windows** gratuite. Pour un rapport local, aucune connexion à un compte, aucune licence Pro et aucun essai Fabric ne sont nécessaires : si une fenêtre de connexion s’ouvre, fermez-la. Rien n’est publié en ligne. Python et le pipeline restent dans Ubuntu ; Desktop lit seulement les CSV exportés. Le guide détaillé du dépôt est `powerbi/README.md` ; ce livret en suit les étapes."
+    },
+    {
+     "type": "callout",
+     "label": "Ce qui a été vérifié, et ce qui ne l’a pas été",
+     "text": "Les étapes Power BI de ce livret viennent de la documentation Microsoft et des libellés vérifiés lors de l’édition précédente du cours. Les libellés **Segment**, **Graphique en courbes** et le réglage du format d’une mesure restent à confirmer sur un poste Windows. Si un nom diffère chez vous, cherchez l’équivalent et notez-le dans le journal."
+    },
+    {
+     "type": "section",
+     "text": "Étape 1 · Un export de départ, après le lot 1 seulement"
+    },
+    {
+     "type": "text",
+     "text": "Pour **voir** l’actualisation changer les chiffres plus tard, on commence par l’état après le lot 1 :"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen initial\npython -m solen export\nls outputs/export"
+    },
+    {
+     "type": "text",
+     "text": "Vous devez voir `dim_date.csv`, `dim_produit.csv`, `dim_boutique.csv`, `fact_vente.csv`, `fact_retour.csv` et `manifest.json`. Ouvrez `manifest.json`. **Prévoyez** : `fact_vente` a 1 960 lignes et `montant_brut_millimes` vaut 78 067 830 ; la carte « Ventes brutes » devra donc afficher 78 067,830 TND."
+    },
+    {
+     "type": "section",
+     "text": "Étape 2 · Copier vers Windows"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Votre poste",
+      "Route"
+     ],
+     "rows": [
+      [
+       "Windows + WSL2",
+       "`cd outputs/export`, `explorer.exe .`, `cd ../..`. Copiez les six fichiers dans un dossier Windows stable, par exemple `Documents\\Solen\\export`. Notez le chemin exact et gardez **ce même dossier** pour toutes les actualisations."
+      ],
+      [
+       "Ubuntu natif",
+       "Sur le poste Windows du binôme (avec WSL2) : `git pull`, puis relancez vous-même `initial` et `export`, puis `explorer.exe .`. À défaut, une clé USB vers `Documents\\Solen\\export`. Les `outputs/` ne passent pas par Git : on les reconstruit."
+      ]
+     ],
+     "widths": [
+      1.1,
+      3.4
+     ]
+    }
+   ],
+   "source_ids": [
+    "powerbi-desktop",
+    "wsl-filesystems"
+   ]
+  },
+  {
+   "id": "pbi-import",
+   "title": "Importer les cinq tables et fixer leurs types",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ouvrez Power BI Desktop, puis **Rapport vide**. Premier fichier : **Accueil → Obtenir des données → Texte/CSV**, choisissez `dim_date.csv`. Dans l’aperçu : **Origine du fichier : 65001 : Unicode (UTF-8)**, délimiteur **Virgule**, puis **Transformer les données**. Dans Power Query, ajoutez les quatre autres avec **Accueil → Nouvelle source → Texte/CSV**. Chaque requête porte exactement le nom du fichier sans `.csv`. `manifest.json` n’est pas importé : il sert au contrôle."
+    },
+    {
+     "type": "text",
+     "text": "Pour chaque colonne, cliquez l’icône de type à gauche de son nom et fixez :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Table",
+      "Nombre entier",
+      "Date",
+      "Texte"
+     ],
+     "rows": [
+      [
+       "`dim_date`",
+       "`date_key`, `annee`, `mois`, `jour`",
+       "`date_complete`",
+       "—"
+      ],
+      [
+       "`dim_produit`",
+       "`produit_key`, `prix_millimes`, `cout_achat_millimes`",
+       "—",
+       "`produit_id`, `nom`, `famille`"
+      ],
+      [
+       "`dim_boutique`",
+       "`boutique_key`",
+       "`valid_from`, `valid_to`",
+       "`boutique_id`, `nom`, `zone`"
+      ],
+      [
+       "`fact_vente`",
+       "`date_key`, `produit_key`, `boutique_key`, `quantite`, `prix_unitaire_millimes`, `montant_brut_millimes`",
+       "—",
+       "`ligne_id`"
+      ],
+      [
+       "`fact_retour`",
+       "`date_key`, `produit_key`, `boutique_key`, `quantite`, `montant_millimes`",
+       "—",
+       "`retour_id`"
+      ]
+     ],
+     "widths": [
+      1,
+      2.6,
+      1.1,
+      1.4
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Les montants restent en **nombre entier** de millimes : ne les passez pas en décimal.",
+      "Si une date ISO (`2026-07-15`) donne une erreur : **Modifier le type → Utiliser les paramètres régionaux → Date → Anglais (États-Unis)**.",
+      "Dans `valid_to`, une case vide signifie « version courante » et doit rester `null`, jamais la date du jour.",
+      "Vérifiez qu’aucune colonne n’affiche d’erreur, puis **Fermer et appliquer**."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Pourquoi fixer les types soi-même ?** Power BI les devine sur les premières lignes : une clé en texte d’un côté et en nombre de l’autre empêche la relation. **Bloqué ?** Une seule colonne : délimiteur Virgule. Accents illisibles (`Ã©`) : origine 65001 : Unicode (UTF-8). Texte `NULL` dans `valid_to` : demandez à Codex de corriger l’export, ne contournez pas dans Power BI."
+    }
+   ]
+  },
+  {
+   "id": "pbi-relations",
+   "title": "Relier les tables : six relations, et pourquoi",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Ouvrez la vue **Modèle**, puis **Gérer les relations**. Supprimez les relations détectées automatiquement qui ne sont pas dans la liste. Il en faut **six** : trois dimensions × deux tables de faits. Chacune : **Un à plusieurs (1:*)**, filtre croisé **Simple**, relation **active**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Côté « 1 » (clé unique)",
+      "Côté « * »"
+     ],
+     "rows": [
+      [
+       "`dim_date[date_key]`",
+       "`fact_vente[date_key]` et `fact_retour[date_key]`"
+      ],
+      [
+       "`dim_produit[produit_key]`",
+       "`fact_vente[produit_key]` et `fact_retour[produit_key]`"
+      ],
+      [
+       "`dim_boutique[boutique_key]`",
+       "`fact_vente[boutique_key]` et `fact_retour[boutique_key]`"
+      ]
+     ],
+     "widths": [
+      1.6,
+      2.4
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-etoile.png",
+     "caption": "L’étoile de la mission 00 : chaque dimension (1) filtre les deux tables de faits (plusieurs). Les deux faits ne sont pas reliés entre eux.",
+     "height": 150
+    },
+    {
+     "type": "section",
+     "text": "Pourquoi ces six-là"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Un seul chemin** : Power BI n’accepte qu’un chemin actif entre deux tables. Ici chaque dimension filtre directement chaque fait ; il n’y a qu’un chemin, toutes les relations peuvent être actives.",
+      "**Jamais par `boutique_id`** : NBE a deux lignes (deux versions), alors que chaque `boutique_key` est unique. Python a déjà choisi la bonne version pour chaque vente et chaque retour ; le rapport n’a rien à recalculer.",
+      "**Plusieurs-à-plusieurs proposée** : une clé est en double ; reliez par `*_key`, pas par `*_id`."
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/powerbi-relations.png",
+     "caption": "Power BI Desktop (Windows) · vue Modèle · signe de réussite : six relations 1:* lisibles, aucune entre fact_vente et fact_retour.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "id": "pbi-mesures",
+   "title": "Les cinq mesures DAX : demandées à Codex, collées, expliquées",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Une **mesure** est un calcul que Power BI refait pour chaque filtre. Le DAX est du code : Codex l’écrit dans `powerbi/mesures.dax` ; vous le lisez, le collez, l’expliquez. Fourni pour le tronc commun ; pour votre mission, demandez :"
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Lis mission.txt, le cahier des charges (indicateurs) et contrat_entrepot.json.\nRéécris powerbi/mesures.dax : une mesure par indicateur, avec les noms exacts du\ncahier. Additionne d’abord les millimes, divise par 1 000 ensuite. Un commentaire\nd’une ligne par mesure. Ne modifie aucun autre fichier."
+    },
+    {
+     "type": "text",
+     "text": "Dans Power BI : sélectionnez `fact_vente`, puis **Modélisation → Nouvelle mesure**. Collez **une** formule à la fois, validez, recommencez. Voici celles du tronc commun :"
+    },
+    {
+     "type": "code",
+     "label": "powerbi/mesures.dax · tronc commun (commentaires omis, retrait réduit)",
+     "text": "Ventes brutes TND = DIVIDE(SUM(fact_vente[montant_brut_millimes]), 1000)\n\nRetours TND = DIVIDE(SUM(fact_retour[montant_millimes]), 1000)\n\nVentes nettes TND = [Ventes brutes TND] - [Retours TND]\n\nMarge sur coût d'achat TND =\nVAR cout_vendu_millimes =\n  SUMX(fact_vente, fact_vente[quantite] * RELATED(dim_produit[cout_achat_millimes]))\nVAR cout_retourne_millimes =\n  SUMX(fact_retour, fact_retour[quantite] * RELATED(dim_produit[cout_achat_millimes]))\nRETURN\n  [Ventes nettes TND] - DIVIDE(cout_vendu_millimes - cout_retourne_millimes, 1000)\n\nTaux de retour = DIVIDE([Retours TND], [Ventes brutes TND])"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Virgule refusée entre les arguments de `DIVIDE` : utilisez un point-virgule. Format : 3 décimales pour les TND, **Pourcentage** pour le taux (emplacement du réglage variable selon la version).",
+      "`RELATED` va chercher le coût d’achat dans `dim_produit` par la relation `produit_key`. **Expliquez à votre binôme** : pourquoi le coût des unités **nettes** (vendues − retournées) ?"
+     ]
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/powerbi-mesure.png",
+     "caption": "Power BI Desktop (Windows) · barre de formule · Marge sur coût d’achat TND validée · signe de réussite : la mesure apparaît dans fact_vente, sans erreur.",
+     "height": 170
+    }
+   ]
+  },
+  {
+   "id": "pbi-page",
+   "title": "Construire la page du rapport",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Cliquez l’icône **Rapport** dans la barre de gauche, puis une zone vide du canevas avant chaque nouveau visuel."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Visuel",
+      "Champs",
+      "Titre"
+     ],
+     "rows": [
+      [
+       "**Quatre cartes**",
+       "`Ventes brutes TND`, `Ventes nettes TND`, `Marge sur coût d'achat TND`, `Taux de retour` dans **Valeurs**",
+       "—"
+      ],
+      [
+       "**Graphique à barres groupées**",
+       "`dim_boutique[zone]` en axe, `Ventes nettes TND` en valeurs",
+       "Ventes nettes par zone (TND)"
+      ],
+      [
+       "**Graphique en courbes**",
+       "`dim_date[mois]` en axe X, `Ventes nettes TND` et `Marge sur coût d'achat TND` en valeurs",
+       "Ventes nettes et marge par mois"
+      ],
+      [
+       "**Segment**",
+       "`dim_boutique[nom]` : cliquez une boutique, tous les visuels se filtrent ; recliquez pour retirer le filtre",
+       "—"
+      ]
+     ],
+     "widths": [
+      1.4,
+      2.8,
+      1.4
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Contrôle : comparer à la référence après le lot 1"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Visuel",
+      "Valeur attendue sans filtre"
+     ],
+     "rows": [
+      [
+       "Carte Ventes brutes",
+       "78 067,830 TND (= votre prévision de l’étape 1)"
+      ],
+      [
+       "Carte Ventes nettes",
+       "74 309,500 TND"
+      ],
+      [
+       "Carte Marge sur coût d’achat",
+       "28 991,700 TND"
+      ],
+      [
+       "Carte Taux de retour",
+       "4,81 %"
+      ],
+      [
+       "Barres par zone",
+       "Grand Tunis 34 686,420 · Sud 20 360,300 · Cap Bon 19 262,780 (somme : 74 309,500)"
+      ]
+     ],
+     "widths": [
+      1.6,
+      3.4
+     ]
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Un très grand nombre (× 1 000)** : le visuel utilise la colonne `montant_brut_millimes` au lieu de la mesure. Remplacez-la par la mesure.",
+      "**Aucune barre Nord-Est** : normal après le lot 1, la version n’existe pas encore."
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Enregistrez sous `Documents\\Solen\\Solen_<nomA>_<nomB>.pbix` et notez les valeurs des quatre cartes. Pour versionner le rapport, copiez ce `.pbix` dans le dossier `powerbi/` du dépôt s’il fait moins de 10 Mo, puis commitez-le dans une PR comme le reste."
+    }
+   ]
+  },
+  {
+   "id": "pbi-actualiser",
+   "title": "Actualiser après le lot 2",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "**Prévoyez** d’abord, par écrit : après le lot 2, les ventes nettes montent-elles ou baissent-elles ? Combien de lignes aura `dim_boutique` ? Dans le graphique par zone, les ventes **anciennes** de Nabeul changent-elles de barre ?"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "python -m solen increment\npython -m solen export\npython -m controles.verifier --mission $(cat mission.txt) --etape export"
+    },
+    {
+     "type": "text",
+     "text": "Recopiez les six fichiers dans **le même** dossier Windows en remplaçant les anciens, puis dans Desktop : **Accueil → Actualiser**."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ce qui doit changer",
+      "Avant (lot 1)",
+      "Après (lot 2)"
+     ],
+     "rows": [
+      [
+       "Ventes brutes",
+       "78 067,830 TND",
+       "95 849,090 TND"
+      ],
+      [
+       "**Ventes nettes**",
+       "**74 309,500 TND**",
+       "**91 444,460 TND**"
+      ],
+      [
+       "Marge sur coût d’achat",
+       "28 991,700 TND",
+       "35 606,860 TND"
+      ],
+      [
+       "Taux de retour",
+       "4,81 %",
+       "4,60 %"
+      ],
+      [
+       "Lignes de `dim_boutique`",
+       "**3**",
+       "**4** (NBE a deux versions)"
+      ],
+      [
+       "Lignes de `fact_vente` / `fact_retour`",
+       "1 960 / 76",
+       "2 345 / 99"
+      ],
+      [
+       "Mois dans la courbe",
+       "1 à 6",
+       "1 à 8"
+      ],
+      [
+       "Barres par zone",
+       "3 zones",
+       "4 zones : Cap Bon 19 653,980 ; Grand Tunis 40 887,210 ; Nord-Est 4 323,400 ; Sud 26 579,870"
+      ]
+     ],
+     "widths": [
+      1.7,
+      1.3,
+      2.4
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Cap Bon ne gagne que 391,200 TND : les ventes de Nabeul du 1er au 14 juillet. Tout le premier semestre de Nabeul reste dans Cap Bon."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/captures/powerbi-actualiser.png",
+     "caption": "Power BI Desktop (Windows) · page du rapport après Actualiser · aucun filtre · signe de réussite : Ventes nettes 91 444,460 TND et une barre Nord-Est.",
+     "height": 170
+    }
+   ],
+   "source_ids": [
+    "powerbi-desktop"
+   ]
+  },
+  {
+   "id": "pbi-preuve",
+   "title": "Ce que prouve « Actualiser », et ce qu’il ne prouve pas",
+   "kicker": "05 / LIVRER ET SOUTENIR · 2 · POWER BI DESKTOP",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Remplissez ce tableau à deux, **avant** puis **après** avoir cliqué Actualiser. L’écart entre prévision et observation est ce qui vous apprend quelque chose."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Question",
+      "Ma prévision",
+      "Ce que j’observe"
+     ],
+     "rows": [
+      [
+       "Ventes nettes après le lot 2 (TND)",
+       "",
+       ""
+      ],
+      [
+       "Lignes de `dim_boutique`",
+       "",
+       ""
+      ],
+      [
+       "Zone des ventes de Nabeul de mars",
+       "",
+       ""
+      ],
+      [
+       "Zone des ventes de Nabeul du 20 juillet",
+       "",
+       ""
+      ],
+      [
+       "Valeurs après un 2e clic sur Actualiser",
+       "",
+       ""
+      ]
+     ],
+     "widths": [
+      2.4,
+      1.3,
+      1.3
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ce que prouve « Actualiser »",
+     "text": "Le rapport relit les CSV du dossier à chaque actualisation : il est **branché sur les données**, pas sur des chiffres recopiés. Ce que cela **ne** prouve **pas** : que les CSV sont justes (c’est le rôle du vérificateur), ni que l’entrepôt a changé si vous n’avez pas relancé `export` et recopié les fichiers : Desktop relirait les anciens CSV."
+    },
+    {
+     "type": "section",
+     "text": "Si les chiffres n’ont pas bougé"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "`export` a-t-il été relancé après `increment` ? Les nouveaux fichiers sont-ils dans **le même** dossier ?",
+      "Le chemin de chaque requête : **Transformer les données**, première étape **Source**.",
+      "Gardez deux captures réelles, légendées (environnement, étape, signe de réussite) : la vue Modèle avec ses six relations, et la page après actualisation, sans filtre."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…importer cinq CSV en UTF-8 et fixer leurs types ; relier une étoile à deux faits par six relations 1:* ; coller et expliquer cinq mesures DAX avec leur unité ; actualiser et dire ce que l’actualisation prouve, et ce qu’elle ne prouve pas."
+    }
+   ],
+   "source_ids": [
+    "powerbi-desktop"
+   ]
+  },
+  {
+   "id": "lire-unites",
+   "title": "3. Lire un visuel : unités, dénominateurs, limites",
+   "kicker": "05 / LIVRER ET SOUTENIR · 3 · LIRE LES VISUALISATIONS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Un graphique juste peut encore être mal lu. Avant de commenter un visuel, posez-vous trois questions : **quelle unité ?**, **rapporté à quoi ?**, **sur combien de lignes ?**"
+    },
+    {
+     "type": "section",
+     "text": "Un taux ne se montre jamais seul"
+    },
+    {
+     "type": "text",
+     "text": "Le taux de retour est un rapport : retours ÷ ventes brutes. Sans son dénominateur, il trompe. Comparez, après le lot 2 :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Zone",
+      "Retours",
+      "Ventes brutes",
+      "Taux de retour",
+      "Lignes de vente"
+     ],
+     "rows": [
+      [
+       "Grand Tunis",
+       "1 313,300 TND",
+       "42 200,510 TND",
+       "3,11 %",
+       "1 004"
+      ],
+      [
+       "Nord-Est",
+       "134,100 TND",
+       "4 457,500 TND",
+       "3,01 %",
+       "81"
+      ],
+      [
+       "Sud",
+       "2 124,470 TND",
+       "28 704,340 TND",
+       "7,40 %",
+       "742"
+      ]
+     ],
+     "widths": [
+      1.1,
+      1.2,
+      1.3,
+      1,
+      1
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Grand Tunis et Nord-Est ont presque le même taux, mais Nord-Est repose sur 81 lignes et six semaines : un seul gros retour suffirait à le doubler. **Règle** : à côté d’un taux, montrez toujours le montant du numérateur et du dénominateur."
+    },
+    {
+     "type": "section",
+     "text": "La marge sur coût d’achat n’est pas un bénéfice"
+    },
+    {
+     "type": "text",
+     "text": "Elle retire seulement le coût d’achat des produits gardés par les clients. Elle ne retire ni les loyers des boutiques, ni les salaires, ni le transport, ni les impôts. Dire « Maison Zitouna a gagné 35 606,860 TND » est faux ; dire « après le coût d’achat, il reste 35 606,860 TND pour couvrir les autres charges » est juste."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Je lis…",
+      "Je dis…",
+      "Je ne dis pas…"
+     ],
+     "rows": [
+      [
+       "Marge 35 606,860 TND",
+       "« marge sur coût d’achat »",
+       "« bénéfice », « profit »"
+      ],
+      [
+       "Taux de retour 4,60 %",
+       "« 4,60 % des ventes brutes, en montant »",
+       "« 4,60 % des clients »"
+      ],
+      [
+       "Nord-Est 4 323,400 TND",
+       "« depuis le 15 juillet »",
+       "« la zone qui vend le moins »"
+      ]
+     ],
+     "widths": [
+      1.5,
+      2,
+      1.6
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Les limites de toutes ces données",
+     "text": "Huit mois, trois boutiques, des données 100 % synthétiques. Pas d’heure de vente, pas de client, pas de stock, pas de coût autre que l’achat. Une recommandation sérieuse le dit."
+    }
+   ]
+  },
+  {
+   "id": "lire-scd2",
+   "title": "Les barres empilées par zone, avant et après le changement",
+   "kicker": "05 / LIVRER ET SOUTENIR · 3 · LIRE LES VISUALISATIONS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le graphique « ventes nettes par mois et par zone » est celui de la Vue direction. Il montre l’historique SCD2 en action : la couleur d’une vente dépend de la zone **valable à sa date**."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/tronc-commun/reference/visuels/ventes_nettes_par_mois_et_zone.png",
+     "caption": "Graphique de référence après le lot 2. Juillet a une petite part Cap Bon (Nabeul du 1er au 14) et une part Nord-Est (Nabeul à partir du 15).",
+     "height": 215
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Zone",
+      "Après lot 1",
+      "Après lot 2",
+      "Écart",
+      "Explication"
+     ],
+     "rows": [
+      [
+       "Cap Bon",
+       "19 262,780",
+       "19 653,980",
+       "+391,200",
+       "Nabeul du 1er au 14 juillet"
+      ],
+      [
+       "Grand Tunis",
+       "34 686,420",
+       "40 887,210",
+       "+6 200,790",
+       "juillet et août de Tunis"
+      ],
+      [
+       "Nord-Est",
+       "—",
+       "4 323,400",
+       "+4 323,400",
+       "Nabeul à partir du 15 juillet"
+      ],
+      [
+       "Sud",
+       "20 360,300",
+       "26 579,870",
+       "+6 219,570",
+       "juillet et août de Sfax"
+      ]
+     ],
+     "widths": [
+      1,
+      1,
+      1,
+      1,
+      1.9
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Ventes nettes en TND. **Lecture clé** : aucune barre de janvier à juin n’a changé. Si Nabeul avait été « déplacée » en Nord-Est sur tout l’historique (SCD de type 1, on écrase), Cap Bon aurait perdu tout son passé et le premier semestre aurait menti."
+    },
+    {
+     "type": "callout",
+     "label": "Question de soutenance à préparer",
+     "text": "« Une vente de Nabeul du 14 juillet : quelle zone ? Et du 15 ? » Réponse : Cap Bon puis Nord-Est, car `valid_from` est inclus et `valid_to` exclu. Montrez-le dans l’écran Détail par boutique."
+    }
+   ]
+  },
+  {
+   "id": "lire-juin",
+   "title": "Juin à 15,9 % : une histoire à enquêter",
+   "kicker": "05 / LIVRER ET SOUTENIR · 3 · LIRE LES VISUALISATIONS",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le graphique du taux de retour par mois a un pic énorme en juin. Avant d’annoncer « les clients de juin étaient mécontents », on enquête."
+    },
+    {
+     "type": "figure",
+     "path": "../../modele-binome/tronc-commun/reference/visuels/taux_retour_par_mois.png",
+     "caption": "Graphique de référence : taux de retour par mois, en %. Juin : 15,9 %, les autres mois entre 1,6 % et 5,5 %.",
+     "height": 180
+    },
+    {
+     "type": "section",
+     "text": "Méthode en quatre questions"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**1. Numérateur et dénominateur** : juin = 1 435,700 TND de retours ÷ 9 042,420 TND de ventes brutes = 15,9 %.",
+      "**2. Combien de lignes ?** Demandez à Codex, en lecture seule, la liste des retours de juin triés par montant. Il n’y en a que **9**.",
+      "**3. Un seul retour pèse-t-il tout ?** Oui : un coffret entreprise (20 coffrets) de **1 240,000 TND**, retourné le 2 juin à Sfax. Sans lui : 195,700 ÷ 9 042,420 = 2,2 %.",
+      "**4. D’où vient-il ?** Suivez sa vente d’origine : elle date du **28 mai**. La règle de la direction (décision B) range chaque mouvement dans **son** mois : la vente gonfle mai, le retour gonfle juin. Le taux d’un mois compare des retours à des ventes qui ne sont pas toujours les mêmes tickets."
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · texte à adapter",
+     "text": "Utilise $expliquer-bi. Ne modifie rien.\nListe les retours de juin 2026 de fact_retour, triés par montant décroissant :\nretour_id, date, boutique, produit, quantité, montant en TND.\nPour le plus gros, retrouve la ligne de vente d'origine dans operations.sqlite\n(ref_ligne_ticket) puis dans fact_vente : date, boutique, montant."
+    },
+    {
+     "type": "text",
+     "text": "Vérifiez au moins une valeur vous-mêmes (dans l’application : Boutique = SFX, juin seul). Puis demandez-vous : **que manque-t-il pour conclure ?** Le motif du retour existe dans la source (`code_motif` de `operations.sqlite`) mais n’est pas chargé dans l’entrepôt."
+    }
+   ]
+  },
+  {
+   "id": "reco-modele",
+   "title": "4. La recommandation : un modèle en cinq parties",
+   "kicker": "05 / LIVRER ET SOUTENIR · 4 · RECOMMANDATION À LA DIRECTION",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "La directrice ne veut pas un tableau de plus : elle veut savoir **quoi faire**. Une recommandation tient en une demi-page et suit toujours le même ordre."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-direction-decision.png",
+     "caption": "De la question de la direction à la décision : la recommandation est le dernier maillon.",
+     "height": 115
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Partie",
+      "Question à laquelle elle répond",
+      "Règle"
+     ],
+     "rows": [
+      [
+       "**1. Constat chiffré**",
+       "Que montrent les données ?",
+       "Un ou deux chiffres, avec unité, période et dénominateur."
+      ],
+      [
+       "**2. Cause plausible**",
+       "Pourquoi, probablement ?",
+       "« Plausible », pas « prouvée ». Citez la vérification faite."
+      ],
+      [
+       "**3. Recommandation**",
+       "Que faire lundi ?",
+       "Une action précise, à la portée de la direction."
+      ],
+      [
+       "**4. Limite**",
+       "Pourquoi pourrions-nous nous tromper ?",
+       "Taille des données, période, ce que l’indicateur ne mesure pas."
+      ],
+      [
+       "**5. Prochaine donnée à collecter**",
+       "Qu’est-ce qui trancherait ?",
+       "Une donnée précise, qui existe ou peut être collectée."
+      ]
+     ],
+     "widths": [
+      1.5,
+      1.8,
+      2.4
+     ]
+    },
+    {
+     "type": "text",
+     "text": "**Où l’écrire ?** Par exemple `notes/recommandation.md` (sauf autre emplacement dans le guide de votre mission), via une PR. Écrivez-la **vous-mêmes** ; Codex relit et questionne, il ne choisit pas à votre place."
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · relecture critique",
+     "text": "Voici notre recommandation à la direction. Ne la réécris pas.\nPour chaque chiffre, dis si on peut le retrouver dans outputs/ ou la référence,\net comment. Signale toute phrase qui affirme plus que ce que les données prouvent.\nPose-nous deux questions qu'un jury pourrait poser."
+    }
+   ]
+  },
+  {
+   "id": "reco-exemple",
+   "title": "Exemple travaillé sur Maison Zitouna",
+   "kicker": "05 / LIVRER ET SOUTENIR · 4 · RECOMMANDATION À LA DIRECTION",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Voici une recommandation possible pour le tronc commun. Votre mission aura la sienne, avec ses propres chiffres."
+    },
+    {
+     "type": "callout",
+     "label": "1 · Constat chiffré",
+     "text": "De janvier à août 2026, la zone Sud (boutique de Sfax) a un taux de retour de **7,40 %** (2 124,470 TND de retours pour 28 704,340 TND de ventes brutes), plus du double de Grand Tunis (3,11 %). Le mois de juin atteint 15,9 % pour tout le réseau."
+    },
+    {
+     "type": "callout",
+     "label": "2 · Cause plausible",
+     "text": "Un seul retour explique l’essentiel : un coffret entreprise de 1 240,000 TND vendu le 28 mai à Sfax et rendu le 2 juin. Sans lui, le Sud serait à environ 3,1 % et juin à 2,2 %. Vérifié dans l’entrepôt (requête de contrôle) et dans l’application (filtre SFX)."
+    },
+    {
+     "type": "callout",
+     "label": "3 · Recommandation",
+     "text": "Ne pas lancer de plan qualité sur toute la boutique de Sfax. Revoir plutôt les conditions de retour des **coffrets entreprise** (14 vendus en huit mois, à 1 240,000 TND l’unité) : par exemple une validation du responsable avant remboursement. Ajouter au rapport le taux de retour hors coffrets entreprise, à côté du taux total."
+    },
+    {
+     "type": "callout",
+     "label": "4 · Limite",
+     "text": "Huit mois de données, un seul retour de coffret entreprise : ce n’est pas une tendance. La marge sur coût d’achat ne compte ni loyers ni salaires ; nous ne savons rien de la rentabilité réelle de Sfax."
+    },
+    {
+     "type": "callout",
+     "label": "5 · Prochaine donnée à collecter",
+     "text": "Le **motif** de chaque retour (déjà présent dans la base opérationnelle, pas encore chargé dans l’entrepôt), et le lien entre un retour et le mois de sa vente d’origine, pour calculer un taux par mois de vente."
+    }
+   ]
+  },
+  {
+   "id": "reco-pas",
+   "title": "Ce qu’il ne faut pas affirmer",
+   "kicker": "05 / LIVRER ET SOUTENIR · 4 · RECOMMANDATION À LA DIRECTION",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le jury écoute autant ce que vous refusez de dire que ce que vous dites. Voici des phrases tentantes, et pourquoi elles sont fausses sur le tronc commun :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Phrase tentante",
+      "Pourquoi elle est fausse",
+      "Phrase défendable"
+     ],
+     "rows": [
+      [
+       "« Sfax a un problème de qualité. »",
+       "Un seul retour fait l’essentiel de l’écart.",
+       "« Un retour exceptionnel explique l’écart ; à confirmer avec le motif. »"
+      ],
+      [
+       "« Maison Zitouna a gagné 35 606,860 TND. »",
+       "C’est une marge sur coût d’achat, pas un bénéfice.",
+       "« Après le coût d’achat, il reste 35 606,860 TND. »"
+      ],
+      [
+       "« Les ventes montent. »",
+       "Les ventes nettes mensuelles culminent en avril (15 264,440 TND) puis sont plus basses en juin et juillet (≈ 7 600 TND).",
+       "« Sur huit mois, pas de hausse régulière ; pic en mars-avril. »"
+      ],
+      [
+       "« Nord-Est vend moins que Cap Bon. »",
+       "Nord-Est n’existe que depuis le 15 juillet.",
+       "« Trop tôt pour comparer : six semaines de données. »"
+      ],
+      [
+       "« Juin : 15,9 % des clients ont rendu un produit. »",
+       "Le taux est en montant, pas en clients.",
+       "« 15,9 % des ventes brutes de juin, en montant. »"
+      ],
+      [
+       "« Les chiffres sont justes, Power BI le montre. »",
+       "Power BI affiche ce que disent les CSV.",
+       "« Le vérificateur compare à la référence ; Power BI relit l’export. »"
+      ]
+     ],
+     "widths": [
+      1.6,
+      1.9,
+      1.9
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Remarquez la troisième ligne : la phrase de départ de la direction, « les ventes montent », n’est pas confirmée par les données. Le dire poliment, chiffres à l’appui, fait partie du travail."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…lire un taux avec son dénominateur, refuser d’appeler une marge « bénéfice », enquêter sur un pic avant de l’interpréter, et écrire une recommandation en cinq parties que je peux défendre chiffre par chiffre."
+    }
+   ]
+  },
+  {
+   "id": "finir-mission",
+   "title": "5. Finir la mission du catalogue",
+   "kicker": "05 / LIVRER ET SOUTENIR · 5 · FINIR LA MISSION",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Le tronc commun vous a appris les gestes ; votre **mission du catalogue** (`mission.txt` = `Mxx`) est ce que vous présentez à la soutenance :"
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Livret 04 : choisir sa mission et comprendre le socle commun",
+      "Guide de votre mission (`Mxx_guide.pdf`) : sources, indicateurs, variantes",
+      "Ce livret 05 : livrer, recommander, soutenir"
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Le guide dit **quoi** construire ; ce livret dit **comment le livrer**. Votre référence est dans `catalogue/Mxx/reference/`. La liste de contrôle commune :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "☐",
+      "Preuve à obtenir",
+      "Comment la montrer"
+     ],
+     "rows": [
+      [
+       "☐",
+       "Vérificateur complet, strict, vert",
+       "`python -m controles.verifier --mission $(cat mission.txt) --etape tout --strict`"
+      ],
+      [
+       "☐",
+       "Tests verts",
+       "`pytest -q` (les tests fournis et ceux écrits par Codex)"
+      ],
+      [
+       "☐",
+       "CI verte sur `main`",
+       "GitHub → onglet **Actions** : dernier passage vert, `ETAPE_CI: tout`"
+      ],
+      [
+       "☐",
+       "Application à jour",
+       "`python -m solen app`, puis `--etape app` vert ; les trois écrans s’ouvrent"
+      ],
+      [
+       "☐",
+       "Rapport Power BI actualisé",
+       "Le `.pbix` après le lot 2 (dans `powerbi/` s’il fait moins de 10 Mo) et deux captures réelles légendées"
+      ],
+      [
+       "☐",
+       "Mesures DAX de la mission",
+       "`powerbi/mesures.dax` réécrit avec les indicateurs de votre cahier des charges"
+      ],
+      [
+       "☐",
+       "Journal à jour",
+       "`notes/JOURNAL.md` : une entrée par PR, état / décision / preuve / prochain objectif"
+      ],
+      [
+       "☐",
+       "Deux auteurs visibles",
+       "`git shortlog -sn` montre vos deux noms ; chacun a écrit et relu des PR"
+      ],
+      [
+       "☐",
+       "Règle à clarifier tranchée",
+       "Votre décision et sa raison, rubrique Décision du journal"
+      ],
+      [
+       "☐",
+       "Une variante réalisée",
+       "Une des trois variantes de la fiche mission, avec son test (prompt 18)"
+      ],
+      [
+       "☐",
+       "Recommandation écrite",
+       "Les cinq parties, avec les chiffres de votre mission"
+      ]
+     ],
+     "widths": [
+      0.3,
+      1.8,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "finir-variante",
+   "title": "Réaliser une variante et prouver sa contribution",
+   "kicker": "05 / LIVRER ET SOUTENIR · 5 · FINIR LA MISSION",
+   "blocks": [
+    {
+     "type": "section",
+     "text": "La variante : analyser avant de coder"
+    },
+    {
+     "type": "text",
+     "text": "Chaque fiche mission propose trois variantes (nouvel indicateur, nouvelle règle, nouvelle source ou changement historique). Utilisez le prompt `prompts/18-variation-metier.md` : d’abord une analyse **sans modification**, avec votre prévision ; ensuite une étape à la fois (prompts 03, 09 et 13). Sur le tronc commun, la variante 1 serait : panier moyen net = ventes nettes ÷ nombre de tickets distincts."
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "L’ambiguïté est tranchée par **vous**, et notée dans le journal.",
+      "Les contrôles de référence restent verts : une variante ajoute, elle ne casse pas l’existant.",
+      "Le nouveau chiffre est vérifié à la main sur l’échantillon, et prouvé par **son** test.",
+      "Ne modifiez jamais la valeur de référence pour qu’elle colle au nouveau calcul."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Prouver que vous avez travaillé à deux"
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · ~/solen-bi",
+     "text": "git switch main\ngit pull\ngit shortlog -sn\ngit log --oneline --graph -15"
+    },
+    {
+     "type": "text",
+     "text": "`git shortlog -sn` compte les commits par auteur. Sur GitHub, l’onglet **Pull requests → Closed** montre qui a ouvert chaque PR et qui l’a relue. Chacun doit pouvoir montrer **une PR qu’il a écrite** et **une revue qu’il a faite** (avec un commentaire précis, pas seulement « OK »)."
+    },
+    {
+     "type": "callout",
+     "label": "Si un nom manque dans git log",
+     "text": "Un commit fait avec une autre adresse e-mail que celle du compte GitHub apparaît sous un autre nom. Ne réécrivez pas l’historique : notez-le dans le journal et montrez vos PR et revues sur GitHub."
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…relier le livret 04, le guide de ma mission et ce livret ; cocher la liste de contrôle commune avec une preuve pour chaque ligne ; réaliser une variante sans casser la référence ; montrer ma part du travail dans Git et sur GitHub."
+    }
+   ]
+  },
+  {
+   "id": "sout-format",
+   "title": "6. Le format de la soutenance",
+   "kicker": "05 / LIVRER ET SOUTENIR · 6 · RÉPÉTER LA SOUTENANCE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "La soutenance a lieu sur un créneau de **120 minutes** pour toute la promotion : 10 minutes d’accueil et de consignes, 10 minutes de délibération du jury, et 100 minutes partagées entre les N binômes. Chaque binôme dispose donc de **100 ÷ N minutes**."
+    },
+    {
+     "type": "figure",
+     "path": "../../docs/images/diagrams/v7-soutenance.png",
+     "caption": "Soutenance : 120 minutes à partager. La durée par binôme dépend du nombre de binômes.",
+     "height": 260
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Binômes (N)",
+      "Durée par binôme",
+      "Organisation"
+     ],
+     "rows": [
+      [
+       "5",
+       "20 min",
+       "6 min de démonstration, 2 × 6 min de questions individuelles, 2 min de transition"
+      ],
+      [
+       "8",
+       "12,5 min",
+       "démonstration plus courte et questions resserrées ; le professeur annonce le découpage"
+      ],
+      [
+       "11 ou plus",
+       "≈ 9 min ou moins",
+       "impossible en un seul créneau : second créneau ou deux jurys en parallèle"
+      ]
+     ],
+     "widths": [
+      1,
+      1.1,
+      3.2
+     ]
+    },
+    {
+     "type": "text",
+     "text": "Le professeur vous annonce la durée exacte. Préparez la version de **6 minutes** : elle se raccourcit facilement, l’inverse est difficile. Les questions sont **individuelles** : chacun répond seul, le binôme ne souffle pas."
+    }
+   ]
+  },
+  {
+   "id": "sout-script",
+   "title": "Le script de démonstration : 6 minutes",
+   "kicker": "05 / LIVRER ET SOUTENIR · 6 · RÉPÉTER LA SOUTENANCE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Une démonstration réussie suit le chemin de la direction : la question, la preuve, la réponse. Partagez la parole : A présente la première moitié, B la seconde."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Minute",
+      "Qui",
+      "Ce que vous montrez",
+      "Phrase clé"
+     ],
+     "rows": [
+      [
+       "0:00 – 0:30",
+       "A",
+       "Le client, la question de la direction, le grain du fait",
+       "« Une ligne de fait = … »"
+      ],
+      [
+       "0:30 – 1:30",
+       "A",
+       "Le terminal : vérificateur strict vert, puis l’incrément relancé (rejeu) : aucune ligne ajoutée",
+       "« Relancer ne crée aucun doublon. »"
+      ],
+      [
+       "1:30 – 3:00",
+       "A",
+       "L’application : Vue direction, un filtre, Détail (la version historique), Qualité (les rejets)",
+       "« Ce chiffre égale la référence. »"
+      ],
+      [
+       "3:00 – 4:30",
+       "B",
+       "Power BI : les relations, une mesure DAX, la page après actualisation",
+       "« Le rapport relit l’export. »"
+      ],
+      [
+       "4:30 – 5:30",
+       "B",
+       "La recommandation : constat, cause, action, limite, donnée",
+       "« Nous conseillons… mais… »"
+      ],
+      [
+       "5:30 – 6:00",
+       "B",
+       "GitHub : PR fermées, revues, CI verte",
+       "« Nous avons alterné auteur et relecteur. »"
+      ]
+     ],
+     "widths": [
+      1,
+      0.5,
+      2.6,
+      1.6
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Règles de démonstration"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Tout est déjà ouvert** avant votre tour (partie 7) : pas de recherche de fenêtre devant le jury.",
+      "**Un chiffre, une preuve** : chaque chiffre annoncé est montré à l’écran, avec son unité.",
+      "**Ne lisez pas** : un aide-mémoire de six lignes au plus, pas de texte rédigé.",
+      "**Un imprévu** : dites ce que vous voyez, ce que vous attendiez, et ce que vous vérifieriez. C’est une compétence, pas un échec."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Les critères annoncés (publics)",
+     "text": "Le jury regarde quatre ensembles pour le binôme : **résultats de la mission**, **entrepôt et historique**, **livraison lisible**, **collaboration Git/GitHub**. S’y ajoutent les **questions individuelles** de la page suivante."
+    }
+   ]
+  },
+  {
+   "id": "sout-questions",
+   "title": "Les questions individuelles : à quoi s’entraîner",
+   "kicker": "05 / LIVRER ET SOUTENIR · 6 · RÉPÉTER LA SOUTENANCE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Chaque membre du binôme reçoit quelques questions, posées à lui seul, souvent avec une manipulation à l’écran. Voici les types de questions, un exemple sur le tronc commun et comment vous entraîner."
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Type de question",
+      "Exemple (tronc commun)",
+      "S’entraîner avec"
+     ],
+     "rows": [
+      [
+       "Expliquer un indicateur et son unité",
+       "« Que mesure le taux de retour ? Quel est son dénominateur ? »",
+       "Cahier des charges § 9 ; partie 1"
+      ],
+      [
+       "Prévoir un petit résultat",
+       "« Si je filtre Nord-Est, quels mois apparaissent ? »",
+       "Prévoir **avant** chaque clic"
+      ],
+      [
+       "Suivre une ligne de la source au graphique",
+       "« Où finit cette ligne de `ventes.csv` ? Dans quelle barre ? »",
+       "Prompt 14"
+      ],
+      [
+       "Expliquer un rejet et une version historique",
+       "« Pourquoi cette ligne est-elle en `id_conflit` ? Quelle zone pour Nabeul le 14 juillet ? »",
+       "`outputs/rejets.csv` ; écran Détail"
+      ],
+      [
+       "Montrer une anomalie trouvée en revue et sa correction",
+       "« Montrez une demande de changement et le commit qui la corrige. »",
+       "Vos PR fermées sur GitHub"
+      ],
+      [
+       "Prouver le rejeu",
+       "« Relancez le lot 2 : que se passe-t-il ? »",
+       "`--etape rejeu` ; nombre de lignes inchangé"
+      ],
+      [
+       "Montrer sa contribution Git",
+       "« Montrez une PR que vous avez écrite et une que vous avez relue. »",
+       "`git shortlog -sn` ; onglet Pull requests"
+      ],
+      [
+       "Défendre une recommandation",
+       "« Pourquoi ne pas fermer la boutique de Sfax ? »",
+       "Partie 4 ; la limite et la donnée manquante"
+      ],
+      [
+       "Résoudre une variation avec Codex et la contrôler",
+       "« La direction veut un nouvel indicateur : montrez comment vous le feriez et le vérifieriez. »",
+       "Prompt 18 ; votre variante"
+      ]
+     ],
+     "widths": [
+      1.7,
+      2.4,
+      1.4
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Ce que « répondre seul » veut dire",
+     "text": "Vous pouvez utiliser Codex pendant une question de variation si le jury le demande : il veut voir **votre** demande, **votre** prévision et **votre** contrôle du résultat. Réciter une explication de Codex ne suffit pas : reformulez avec vos mots et votre exemple."
+    }
+   ]
+  },
+  {
+   "id": "sout-repeter",
+   "title": "Répéter à deux, chronomètre en main",
+   "kicker": "05 / LIVRER ET SOUTENIR · 6 · RÉPÉTER LA SOUTENANCE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Comptez 30 minutes de pratique en séance, puis au moins une répétition complète chez vous. La répétition se fait **sur votre mission** ; si elle n’est pas finie, répétez sur le tronc commun."
+    },
+    {
+     "type": "diagram",
+     "nodes": [
+      "Démo chronométrée : 6 min, sans s’arrêter",
+      "Questions croisées : B interroge A (6 min)",
+      "Questions croisées : A interroge B (6 min)",
+      "Debrief : 3 corrections notées au journal"
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Pendant les questions croisées"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "Celui qui interroge tire deux types dans le tableau de la page précédente et invente la question sur **votre** mission.",
+      "Celui qui répond montre à l’écran ; l’autre ne souffle pas.",
+      "Si la réponse hésite, préparez-la avec le prompt 14, puis répondez **sans** relire la réponse de Codex."
+     ]
+    },
+    {
+     "type": "code",
+     "label": "Demande à Codex · s’entraîner aux questions",
+     "text": "Utilise $expliquer-bi. Ne modifie rien.\nPose-moi une question de soutenance du type « <type de question> » sur notre\nmission (lis mission.txt). Attends ma réponse avant de corriger. Ensuite, dis ce qui\nétait juste, ce qui manquait, et quelle valeur je peux montrer à l'écran."
+    },
+    {
+     "type": "section",
+     "text": "Grille de debrief (pour vous, pas de note)"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Question",
+      "Oui / à revoir"
+     ],
+     "rows": [
+      [
+       "La démo tient-elle en 6 minutes ?",
+       ""
+      ],
+      [
+       "Chaque chiffre annoncé a-t-il été montré, avec son unité ?",
+       ""
+      ],
+      [
+       "Chacun a-t-il parlé environ la moitié du temps ?",
+       ""
+      ],
+      [
+       "La recommandation contient-elle une limite et une prochaine donnée ?",
+       ""
+      ],
+      [
+       "Chacun a-t-il réussi au moins une question sans aide ?",
+       ""
+      ]
+     ],
+     "widths": [
+      4,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "demo-neuve",
+   "title": "7. L’essai sur copie neuve, la veille",
+   "kicker": "05 / LIVRER ET SOUTENIR · 7 · DÉMONSTRATION REPRODUCTIBLE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "« Ça marche sur mon poste » ne suffit pas : votre dépôt doit se reconstruire **depuis zéro**, comme le fait la CI. La veille de la soutenance, l’un de vous clone le dépôt dans un **nouveau dossier** et rejoue tout, dans l’ordre."
+    },
+    {
+     "type": "code",
+     "label": "Terminal Ubuntu (bash) · dossier personnel",
+     "text": "cd ~\ngit clone https://github.com/<compte>/<depot>.git essai-neuf\ncd essai-neuf\npython3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install -r requirements.txt\npython -m solen initial\npython -m solen increment\npython -m solen increment\npython -m solen export\npython -m solen app\npython -m controles.verifier --mission $(cat mission.txt) --etape tout --strict\npytest -q"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Commande",
+      "Ce qu’elle prouve"
+     ],
+     "rows": [
+      [
+       "`initial`",
+       "l’entrepôt se recrée depuis zéro avec le lot 1"
+      ],
+      [
+       "`increment` (1re fois)",
+       "le lot 2 s’ajoute, avec la nouvelle version historique"
+      ],
+      [
+       "`increment` (2e fois)",
+       "le rejeu : aucune ligne ajoutée"
+      ],
+      [
+       "`export` puis `app`",
+       "les CSV, le manifeste et l’application sont reconstruits depuis le code"
+      ],
+      [
+       "vérificateur `--strict` et `pytest`",
+       "tout est égal à la référence, export et application compris"
+      ]
+     ],
+     "widths": [
+      1.6,
+      3.4
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Si l’essai neuf échoue alors que votre dossier habituel marche",
+     "text": "C’est une vraie découverte : un fichier oublié dans un commit, une bibliothèque absente de `requirements.txt`, un chemin propre à votre poste. Notez le message, demandez à Codex la cause **sans modifier**, corrigez par une PR, puis refaites l’essai. Supprimez ensuite `~/essai-neuf`."
+    }
+   ]
+  },
+  {
+   "id": "demo-ouvert",
+   "title": "Le jour J : ce qui doit être ouvert, et le plan B",
+   "kicker": "05 / LIVRER ET SOUTENIR · 7 · DÉMONSTRATION REPRODUCTIBLE",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "Cinq minutes avant votre tour, tout est ouvert dans cet ordre, sur le poste qui sert à la démonstration :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "Ordre",
+      "Fenêtre",
+      "État attendu"
+     ],
+     "rows": [
+      [
+       "1",
+       "Terminal Ubuntu dans le dépôt, `(.venv)` actif",
+       "Le vérificateur strict vient de passer au vert ; la commande `python -m solen increment` est prête pour le rejeu"
+      ],
+      [
+       "2",
+       "Navigateur : `outputs/app/index.html`",
+       "Vue direction, filtres réinitialisés"
+      ],
+      [
+       "3",
+       "Power BI Desktop : votre `.pbix`",
+       "Actualisé après le lot 2, vue Rapport, sans filtre ; vue Modèle à un clic"
+      ],
+      [
+       "4",
+       "Recommandation",
+       "`notes/recommandation.md` (ou l’emplacement du guide de mission) ouvert"
+      ],
+      [
+       "5",
+       "GitHub, trois onglets",
+       "Pull requests (Closed), Actions (dernier passage vert), page d’accueil du dépôt"
+      ],
+      [
+       "6",
+       "`notes/JOURNAL.md`",
+       "Ouvert, pour une question sur une décision"
+      ]
+     ],
+     "widths": [
+      0.6,
+      1.8,
+      3
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Plan B"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Pas de poste Windows ou Power BI qui refuse de s’ouvrir** : montrez vos deux captures réelles légendées (vue Modèle, page après actualisation) et le `.pbix` dans le dépôt, puis expliquez ce que vous auriez montré.",
+      "**Pas de réseau** : l’application et le pipeline fonctionnent hors ligne ; seul GitHub manque. Gardez une capture de l’onglet Actions vert et de la liste des PR.",
+      "**Un contrôle rouge le jour J** : ne masquez rien. Lisez le message, dites ce qu’il signifie et ce que vous corrigeriez. Un rouge expliqué vaut mieux qu’un vert inexplicable."
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "À ce stade, je sais…",
+     "text": "…reconstruire mon dépôt depuis un clone neuf avec les commandes dans le bon ordre, dire ce que prouve chacune, préparer mes fenêtres pour une démonstration sans recherche et prévoir un plan B honnête."
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "title": "Ce que j’ai construit et ce que je peux refaire",
+   "kicker": "05 / LIVRER ET SOUTENIR · RÉCAPITULATIF",
+   "blocks": [
+    {
+     "type": "text",
+     "text": "En cinq séances et une mission, vous avez traversé tout le chemin d’un projet BI, de la question de la direction à la décision :"
+    },
+    {
+     "type": "table",
+     "headers": [
+      "J’ai construit…",
+      "…et je sais le refaire"
+     ],
+     "rows": [
+      [
+       "Un pipeline qui lit un CSV, un Excel, un JSON et une base SQLite",
+       "Lire des sources hétérogènes avec Codex, sans modifier les originaux"
+      ],
+      [
+       "Un fichier de rejets avec motifs",
+       "Nettoyer selon des règles écrites, et justifier chaque rejet"
+      ],
+      [
+       "Un entrepôt en étoile en millimes entiers",
+       "Choisir un grain, des clés techniques, charger dimensions puis faits"
+      ],
+      [
+       "Un historique SCD2 et un rejeu sans doublon",
+       "Garder le passé vrai et relancer un lot sans risque"
+      ],
+      [
+       "Des tests, une CI verte, des PR relues à deux",
+       "Travailler en équipe avec Git et GitHub, revue puis correction"
+      ],
+      [
+       "Une application locale et un rapport Power BI actualisé",
+       "Livrer des chiffres lisibles, filtrables et contrôlés"
+      ],
+      [
+       "Une recommandation chiffrée",
+       "Passer d’un indicateur à une décision, avec ses limites"
+      ]
+     ],
+     "widths": [
+      2.4,
+      2.6
+     ]
+    },
+    {
+     "type": "section",
+     "text": "À ce stade, je sais…"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "…générer l’application locale, présenter ses trois écrans et prouver un chiffre filtré par la référence et par un comptage SQL ;",
+      "…construire dans Power BI Desktop un modèle de 5 tables et 6 relations, coller et expliquer 5 mesures DAX, actualiser et dire ce que cela prouve ;",
+      "…lire un taux avec son dénominateur, ne jamais appeler une marge partielle « bénéfice », enquêter sur un pic avant de l’interpréter ;",
+      "…écrire une recommandation en cinq parties et refuser d’affirmer plus que les données ;",
+      "…cocher la liste de contrôle de ma mission, preuve à l’appui, et montrer ma contribution Git ;",
+      "…tenir une démonstration de 6 minutes et répondre seul aux questions individuelles ;",
+      "…reconstruire mon projet depuis un clone neuf."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "limites",
+   "title": "Et après ? D’où viennent ces étapes",
+   "kicker": "05 / LIVRER ET SOUTENIR · RÉCAPITULATIF",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "Et après ?",
+     "text": "Le même chemin s’applique à n’importe quelles données d’entreprise : définir l’indicateur, décrire la règle, faire écrire le code, contrôler, expliquer. Gardez votre dépôt : c’est une preuve concrète de ce que vous savez faire."
+    },
+    {
+     "type": "section",
+     "text": "Ce qui a été vérifié, et ce qui ne l’a pas été"
+    },
+    {
+     "type": "bullets",
+     "items": [
+      "**Chiffres** : toutes les valeurs du tronc commun viennent de `modele-binome/tronc-commun/reference/` (calculées par le générateur, sans ETL) et ont été recoupées avec un entrepôt de référence. Les données sont 100 % synthétiques ; Maison Zitouna, Solen Digital comme client, Lamia Ben Salah et Karim Jaziri sont fictifs.",
+      "**Application** : les trois écrans et les filtres décrits sont ceux de l’application de référence du professeur, ouverte dans un navigateur sous macOS (captures macOS). Votre application peut différer en apparence.",
+      "**Power BI Desktop** : étapes issues de la documentation Microsoft et des libellés vérifiés lors de l’édition précédente du cours ; elles n’ont **pas** été rejouées sur un poste Windows pour cette édition. Segment, Graphique en courbes et format de mesure : à confirmer.",
+      "**Ouvrir un fichier** : `explorer.exe .` (WSL) et `xdg-open` (Ubuntu) sont les routes prévues ; elles restent à confirmer sur les postes de la salle.",
+      "**Captures** : les emplacements marqués « Capture à réaliser » seront remplacés par des captures réelles, légendées avec leur environnement.",
+      "**Durées** : estimations de conception, pas mesures sur des étudiants."
+     ]
+    },
+    {
+     "type": "section",
+     "text": "Sources techniques"
+    },
+    {
+     "type": "text",
+     "text": "Power BI Desktop : https://learn.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop\nConnecteur Texte/CSV : https://learn.microsoft.com/power-query/connectors/text-csv\nSchéma en étoile : https://learn.microsoft.com/power-bi/guidance/star-schema\nRelations : https://learn.microsoft.com/power-bi/transform-model/desktop-create-and-manage-relationships"
+    }
+   ],
+   "source_ids": [
+    "powerbi-desktop"
+   ]
+  }
+ ]
+}
